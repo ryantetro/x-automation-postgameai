@@ -2,6 +2,8 @@
 
 Steps to run the bot on a schedule and post to X (Twitter).
 
+**You do not need Vercel (or any other host).** This bot runs on **GitHub Actions**: when the schedule hits (6am & 6pm ET), GitHub runs the script, it posts one tweet, and the job ends. There is no long‑running server — nothing to "deploy" or keep running 24/7.
+
 ---
 
 ## 1. Get X (Twitter) API access
@@ -111,7 +113,9 @@ When everything works:
 ## Quick checklist
 
 - [ ] X app has Read and Write permission  
-- [ ] All 5 X + OpenAI secrets added in GitHub  
-- [ ] Repo pushed (bot-only or workspace with root workflow)  
-- [ ] One successful manual run from the Actions tab  
+- [ ] All 5 X + OpenAI secrets added in GitHub (Settings → Secrets and variables → Actions)  
+- [ ] Repo pushed (done if you used this workspace)  
+- [ ] One successful manual run from the Actions tab (Run workflow)  
 - [ ] `POST_ENABLED` is `true` (or unset) for live posting  
+
+**No Vercel or other deployment needed** — GitHub Actions runs the bot on schedule.

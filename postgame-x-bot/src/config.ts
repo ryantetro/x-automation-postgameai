@@ -69,8 +69,9 @@ export function getSportForRun(): string {
   return ROTATION_SPORTS[index];
 }
 
-const postEnabledRaw = getEnv("POST_ENABLED", "true").toLowerCase();
-export const POST_ENABLED = !["false", "0", "no", ""].includes(postEnabledRaw);
+// When var is unset or empty (e.g. in GitHub Actions), default to true so we actually post
+const postEnabledRaw = getEnv("POST_ENABLED", "true").toLowerCase() || "true";
+export const POST_ENABLED = !["false", "0", "no"].includes(postEnabledRaw);
 
 export const PROMPTS_DIR = resolve(REPO_ROOT, "prompts");
 export const LOGS_DIR = resolve(REPO_ROOT, "logs");
