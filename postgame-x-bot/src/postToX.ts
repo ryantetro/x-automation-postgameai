@@ -30,8 +30,11 @@ export function postToX(text: string): Promise<{ success: boolean; error?: strin
       console.info("Posted to X successfully");
       return { success: true };
     })
-    .catch((err: Error) => {
+    .catch((err: Error & { code?: number; data?: { status?: number } }) => {
       console.error("Failed to post to X:", err);
-      return { success: false, error: err.message };
+      const code = typeof err?.code === "number" ? err.code : err?.data?.status;
+      return { success: false, error: err.message, statusCode: code };
     });
 }
+
+export type PostResult = { success: boolean; error?: string; statusCode?: number };

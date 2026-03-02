@@ -117,13 +117,32 @@ async function main(): Promise<number> {
     return 1;
   }
 
-  const { success, error } = await postToX(text);
-  appendLog(success, text, error ?? null);
-  if (!success) {
-    console.error("Post failed:", error);
-    return 1;
+  const POST_RETRY_WAIT_MS = 8000;
+  const POST_MAX_ATTEMPTS = 2;
+
+  let lastError: string | undefined;
+  for (let attempt = 1; attempt <= POST_MAX_ATTEMPTS; attempt++) {
+    const result = await postToX(text);
+    if (result.success) {
+      appendLog(true, text, null);
+      return 0;
+    }
+    lastError = result.error;
+    const isRetryable =
+      result.statusCode === 403 ||
+      result.statusCode === 503 ||
+      (result.error?.includes("403") ?? false) ||
+      (result.error?.includes("503") ?? false);
+    if (attempt < POST_MAX_ATTEMPTS && isRetryable) {
+      console.warn("Post failed (attempt %d), retrying in %ds...", attempt, POST_RETRY_WAIT_MS / 1000);
+      await new Promise((r) => setTimeout(r, POST_RETRY_WAIT_MS));
+    } else {
+      break;
+    }
   }
-  return 0;
+  appendLog(false, text, lastError ?? null);
+  console.error("Post failed:", lastError);
+  return 1;
 }
 
 main()
