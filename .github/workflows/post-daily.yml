@@ -1,0 +1,39 @@
+# Post to X (6am & 6pm ET) — runs postgame-x-bot from this workspace
+name: Post to X (6am & 6pm ET)
+
+on:
+  schedule:
+    - cron: '0 11 * * *'
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: postgame-x-bot
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: postgame-x-bot/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run bot
+        env:
+          X_CONSUMER_KEY: ${{ secrets.X_CONSUMER_KEY }}
+          X_CONSUMER_SECRET: ${{ secrets.X_CONSUMER_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          API_SPORTS_KEY: ${{ secrets.API_SPORTS_KEY }}
+          TARGET_SPORT: ${{ vars.TARGET_SPORT }}
+          POST_ENABLED: ${{ vars.POST_ENABLED }}
+        run: npx tsx src/main.ts
