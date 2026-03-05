@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-03-05T21:39:15.438Z",
+  "updatedAt": "2026-03-05T21:43:44.230Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -165,6 +165,30 @@
       "source": "fallback",
       "status": "dry_run",
       "text": "2026-03-05: No games today. postgame AI · getpostgame.ai #NBA"
+    },
+    {
+      "runId": "f729d740-e4e4-456a-a042-b1e5bf39eefd",
+      "tweetId": "2029674243919859729",
+      "postedAt": "2026-03-05T21:43:41.855Z",
+      "dateContext": "2026-03-05",
+      "sport": "nba",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "posted",
+      "text": "Coaches who review game film within 48 hours boost retention by 30%. postgame AI helps you quickly capture your postgame thoughts, ensuring you maximize that critical development window for your players. postgame AI · getpostgame.ai #CoachingTips #NBA",
+      "metrics": {
+        "fetchedAt": "2026-03-05T21:43:44.230Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "impressionCount": 0,
+        "engagementCount": 0,
+        "engagementRate": null
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-05T21:43:44.230Z"
     }
   ]
 }
