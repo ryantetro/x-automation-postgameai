@@ -20,7 +20,8 @@ Write a tweet that:
 1. Leads with a concrete fact: a stat, what research shows, what elite coaches/teams do, or a clear trend. Make it credible and interesting.
 2. Then relate that fact to how postgame AI helps with coaching and how it connects to the app—e.g. "postgame AI helps you do exactly that," "that's what postgame AI is built for."
 3. End with "postgame AI · getpostgame.ai" and 1–2 hashtags. CRITICAL: Stay under 275 characters—use two short sentences only. Reply with ONLY the tweet. Do not lead with a single game score.
-{avoid_block}`;
+{avoid_block}
+{iteration_block}`;
 
 const STRICT_FOLLOWUP =
   ` Your last reply was too long, incomplete, or missing postgame AI / getpostgame.ai. Write a NEW tweet: lead with a fact (stat/research/trend), then relate to how postgame AI helps and connects to the app; 2–3 sentences, under 275 characters; MUST include both "postgame AI" and "getpostgame.ai". Reply with only the tweet text.`;
@@ -35,6 +36,8 @@ export interface GeneratePostOptions {
   angle?: string;
   /** Date string for prompt context (e.g. 2026-02-27). */
   date?: string;
+  /** Insights from prior analytics to iterate toward winning patterns. */
+  iterationGuidance?: string;
 }
 
 /** Strip quotes, markdown fences, and "Tweet:"-style prefixes so validation doesn't fail on formatting. */
@@ -72,10 +75,14 @@ export async function generatePost(
     (options.recentTweets?.length ?? 0) > 0
       ? `\nDo NOT repeat or closely mimic these recent tweets:\n${options.recentTweets!.slice(0, 12).map((t) => `- ${t}`).join("\n")}`
       : "";
+  const iterationBlock = options.iterationGuidance
+    ? `\nIteration guidance from recent tweet analytics (follow these patterns):\n${options.iterationGuidance}`
+    : "";
   let userMessage = USER_MESSAGE_TEMPLATE.replace(/\{sport\}/g, sport)
     .replace(/\{date\}/g, date)
     .replace(/\{angle\}/g, angle)
-    .replace(/\{avoid_block\}/g, avoidBlock);
+    .replace(/\{avoid_block\}/g, avoidBlock)
+    .replace(/\{iteration_block\}/g, iterationBlock);
 
   const clientOptions: ConstructorParameters<typeof OpenAI>[0] = { apiKey: OPENAI_API_KEY };
   if (!USE_OPENAI_API && LLM_BASE_URL) clientOptions.baseURL = LLM_BASE_URL;

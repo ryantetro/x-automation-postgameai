@@ -35,9 +35,32 @@ Automated sports content for X (Twitter): fetch data from API-Sports (with ESPN 
    ```
    or `npx tsx src/main.ts`
 
+## Analytics Feedback Loop
+
+The bot now runs a closed loop:
+- Logs each post with metadata (`tweet_id`, sport, angle, source) in `state/tweet-analytics.json`
+- Pulls X metrics for recent tweets
+- Scores posts and derives winner/loser patterns
+- Feeds those patterns back into generation prompts on future runs
+
+Useful commands:
+
+```bash
+npm run analytics:pull    # Refresh metrics for recent tweets
+npm run analytics:report  # Print + save winner/loser pattern report
+```
+
+Environment variables:
+- `ANALYTICS_ENABLED` (default `true`)
+- `ANALYTICS_LOOKBACK_DAYS` (default `21`)
+- `ANALYTICS_MIN_AGE_MINUTES` (default `45`)
+- `ANALYTICS_MAX_REFRESH` (default `40`)
+
+On GitHub Actions, the workflow now auto-commits `state/tweet-analytics.json` after each run so learning persists across scheduled jobs with no manual intervention.
+
 ## GitHub Actions
 
-Workflow runs at **6am and 6pm ET** (cron) and supports manual `workflow_dispatch`. Add the same env vars as **Repository secrets** (`X_CONSUMER_KEY`, etc.). Optionally set **Variables**: `TARGET_SPORT` (default `nba`), `POST_ENABLED` (default `true`).
+Workflow runs at **6am and 6pm ET** (cron) and supports manual `workflow_dispatch`. Add the same env vars as **Repository secrets** (`X_CONSUMER_KEY`, etc.). Optionally set **Variables**: `TARGET_SPORT` (default `nba`), `POST_ENABLED` (default `true`), `ANALYTICS_ENABLED`, `ANALYTICS_LOOKBACK_DAYS`, `ANALYTICS_MIN_AGE_MINUTES`, `ANALYTICS_MAX_REFRESH`.
 
 If this repo lives inside a monorepo, copy `.github/workflows/post-daily.yml` to the root `.github/workflows/` and set `working-directory: postgame-x-bot` (or `cd postgame-x-bot`) before install/run.
 

@@ -17,6 +17,12 @@ function getEnv(key: string, defaultValue = ""): string {
   return (process.env[key] ?? defaultValue).trim();
 }
 
+function getIntEnv(key: string, defaultValue: number): number {
+  const raw = getEnv(key, String(defaultValue));
+  const parsed = Number.parseInt(raw, 10);
+  return Number.isFinite(parsed) ? parsed : defaultValue;
+}
+
 // X (Twitter): support both X_CONSUMER_* and X_APP_*, X_ACCESS_SECRET
 export const X_CONSUMER_KEY = getEnv("X_CONSUMER_KEY") || getEnv("X_APP_KEY");
 export const X_CONSUMER_SECRET = getEnv("X_CONSUMER_SECRET") || getEnv("X_APP_SECRET");
@@ -75,6 +81,11 @@ export const POST_ENABLED = !["false", "0", "no"].includes(postEnabledRaw);
 
 export const PROMPTS_DIR = resolve(REPO_ROOT, "prompts");
 export const LOGS_DIR = resolve(REPO_ROOT, "logs");
+export const STATE_DIR = resolve(REPO_ROOT, "state");
+export const ANALYTICS_ENABLED = !["false", "0", "no"].includes(getEnv("ANALYTICS_ENABLED", "true").toLowerCase());
+export const ANALYTICS_LOOKBACK_DAYS = Math.max(1, getIntEnv("ANALYTICS_LOOKBACK_DAYS", 21));
+export const ANALYTICS_MIN_AGE_MINUTES = Math.max(5, getIntEnv("ANALYTICS_MIN_AGE_MINUTES", 45));
+export const ANALYTICS_MAX_REFRESH = Math.max(1, getIntEnv("ANALYTICS_MAX_REFRESH", 40));
 
 export interface ValidateConfigOptions {
   requireX?: boolean;

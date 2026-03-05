@@ -1,5 +1,7 @@
 .env
 logs/*.log
+logs/*.json
+logs/*.md
 __pycache__/
 .python-version
 *.pyc

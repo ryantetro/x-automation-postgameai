@@ -7,11 +7,17 @@ on:
     - cron: '0 23 * * *'
   workflow_dispatch:  # Allow manual run
 
+permissions:
+  contents: write
+
 jobs:
   post:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -23,6 +29,8 @@ jobs:
         run: npm ci
 
       - name: Run bot
+        id: run_bot
+        continue-on-error: true
         env:
           X_CONSUMER_KEY: ${{ secrets.X_CONSUMER_KEY }}
           X_CONSUMER_SECRET: ${{ secrets.X_CONSUMER_SECRET }}
@@ -32,4 +40,29 @@ jobs:
           API_SPORTS_KEY: ${{ secrets.API_SPORTS_KEY }}
           TARGET_SPORT: ${{ vars.TARGET_SPORT }}
           POST_ENABLED: ${{ vars.POST_ENABLED }}
+          ANALYTICS_ENABLED: ${{ vars.ANALYTICS_ENABLED }}
+          ANALYTICS_LOOKBACK_DAYS: ${{ vars.ANALYTICS_LOOKBACK_DAYS }}
+          ANALYTICS_MIN_AGE_MINUTES: ${{ vars.ANALYTICS_MIN_AGE_MINUTES }}
+          ANALYTICS_MAX_REFRESH: ${{ vars.ANALYTICS_MAX_REFRESH }}
         run: npx tsx src/main.ts
+
+      - name: Persist analytics state
+        if: always()
+        run: |
+          if [ ! -f state/tweet-analytics.json ]; then
+            echo "No analytics state file found; skipping commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/tweet-analytics.json
+          if git diff --cached --quiet; then
+            echo "No state changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(bot): update analytics state [skip ci]"
+          git push
+
+      - name: Fail workflow if bot run failed
+        if: steps.run_bot.outcome == 'failure'
+        run: exit 1
