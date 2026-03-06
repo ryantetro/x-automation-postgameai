@@ -1,0 +1,127 @@
+import { loadStore, compact, safeDate, sportClass, lastUpdatedStr } from "../lib/data";
+import Sidebar from "../components/Sidebar";
+
+export const dynamic = "force-dynamic";
+
+export default async function PostsPage() {
+  const store = await loadStore();
+
+  const allPosts = store.tweets
+    .filter((t) => t.status === "posted")
+    .sort((a, b) => Date.parse(b.postedAt) - Date.parse(a.postedAt));
+
+  const totalPosts = allPosts.length;
+  const withMetrics = allPosts.filter((t) => !!t.metrics).length;
+  const published = allPosts.filter((t) => !!t.tweetId).length;
+
+  const sports = [...new Set(allPosts.map((t) => t.sport.toLowerCase()))];
+
+  const lastUpdated = lastUpdatedStr(store.updatedAt);
+
+  return (
+    <div className="dash">
+      <Sidebar activePage="posts" />
+      <main className="main">
+        <header className="header">
+          <div className="header-left">
+            <h2>Posts</h2>
+            <span>All automated posts from the bot</span>
+          </div>
+          <div className="header-right">
+            <span className="header-badge">{totalPosts} total &middot; {published} published</span>
+            <span className="header-badge">Updated {lastUpdated}</span>
+          </div>
+        </header>
+
+        <div className="content">
+          {/* Summary strip */}
+          <div className="stat-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+            <div className="stat-card green">
+              <div className="stat-label">Total posts</div>
+              <div className="stat-value">{totalPosts}</div>
+              <div className="stat-sub">{published} published to X</div>
+            </div>
+            <div className="stat-card blue">
+              <div className="stat-label">With metrics</div>
+              <div className="stat-value stat-value-blue">{withMetrics}</div>
+              <div className="stat-sub">Analytics data collected</div>
+            </div>
+            <div className="stat-card amber">
+              <div className="stat-label">Sports covered</div>
+              <div className="stat-value">{sports.length}</div>
+              <div className="stat-sub">{sports.join(", ") || "—"}</div>
+            </div>
+          </div>
+
+          {/* Post cards */}
+          <div className="post-feed">
+            {allPosts.length > 0 ? (
+              allPosts.map((tweet) => {
+                const m = tweet.metrics;
+                const imp = m?.impressionCount ?? 0;
+                const engRate = m?.engagementRate ?? (imp > 0 && m ? (m.engagementCount / imp) * 100 : 0);
+
+                return (
+                  <article className="post-card" key={tweet.runId}>
+                    <div className="post-card-top">
+                      <span className={`sport-pill ${sportClass(tweet.sport)}`}>{tweet.sport}</span>
+                      <span className="post-card-date">{safeDate(tweet.postedAt)}</span>
+                      <span className="post-card-angle">{tweet.angle}</span>
+                      {tweet.tweetId && (
+                        <a
+                          className="view-link post-card-link"
+                          href={`https://x.com/i/web/status/${tweet.tweetId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View on X &#8599;
+                        </a>
+                      )}
+                    </div>
+
+                    <p className="post-card-text">{tweet.text}</p>
+
+                    {m && (
+                      <div className="post-card-metrics">
+                        <div className="pcm">
+                          <span className="pcm-val">{compact(imp)}</span>
+                          <span className="pcm-label">Impressions</span>
+                        </div>
+                        <div className="pcm">
+                          <span className="pcm-val">{compact(m.likeCount)}</span>
+                          <span className="pcm-label">Likes</span>
+                        </div>
+                        <div className="pcm">
+                          <span className="pcm-val">{compact(m.retweetCount)}</span>
+                          <span className="pcm-label">Retweets</span>
+                        </div>
+                        <div className="pcm">
+                          <span className="pcm-val">{compact(m.replyCount)}</span>
+                          <span className="pcm-label">Replies</span>
+                        </div>
+                        <div className="pcm">
+                          <span className="pcm-val">{compact(m.bookmarkCount)}</span>
+                          <span className="pcm-label">Bookmarks</span>
+                        </div>
+                        <div className="pcm">
+                          <span className={`pcm-val ${engRate > 0 ? "pcm-green" : ""}`}>{engRate.toFixed(2)}%</span>
+                          <span className="pcm-label">Eng. rate</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {!m && (
+                      <div className="post-card-no-metrics">No metrics collected yet</div>
+                    )}
+                  </article>
+                );
+              })
+            ) : (
+              <div className="empty-state">No posts yet. Run the bot to see results here.</div>
+            )}
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
