@@ -1,6 +1,11 @@
 {
   "name": "x-automation-monorepo",
   "private": true,
+  "dependencies": {
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
   "scripts": {
     "dev": "npm --prefix next-app run dev",
     "build": "npm --prefix next-app run build",
