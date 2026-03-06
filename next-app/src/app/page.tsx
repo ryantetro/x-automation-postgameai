@@ -39,6 +39,13 @@ interface AnalyticsStore {
   tweets: TweetAnalyticsRecord[];
 }
 
+interface WatchItem {
+  symbol: string;
+  name: string;
+  price: number;
+  changePct: number;
+}
+
 const DASHBOARD_STATE_FILE = resolve(process.cwd(), "public", "tweet-analytics.json");
 const BOT_STATE_FILE = resolve(process.cwd(), "..", "postgame-x-bot", "state", "tweet-analytics.json");
 const REMOTE_STATE_URL =
@@ -56,10 +63,16 @@ function safeDate(iso: string): string {
   });
 }
 
-function dayLabel(iso: string): string {
+function shortDay(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "--";
   return d.toLocaleString("en-US", { day: "2-digit", month: "short" }).toLowerCase();
+}
+
+function usd(value: number): string {
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 }).format(
+    value
+  );
 }
 
 function compact(value: number): string {
@@ -67,15 +80,6 @@ function compact(value: number): string {
     notation: "compact",
     maximumFractionDigits: 2,
   }).format(value);
-}
-
-function trimText(text: string, max = 104): string {
-  if (text.length <= max) return text;
-  return `${text.slice(0, max - 1)}…`;
-}
-
-function toDecimal(value: number, digits = 5): string {
-  return value.toFixed(digits);
 }
 
 function hashSeed(input: string): number {
@@ -87,27 +91,28 @@ function hashSeed(input: string): number {
   return Math.abs(hash);
 }
 
-function sparkLine(values: number[], width: number, height: number): string {
-  if (values.length === 0) return "";
-  const max = Math.max(...values, 1);
-  const min = Math.min(...values, 0);
-  const span = Math.max(max - min, 1);
-  return values
-    .map((v, i) => {
-      const x = (i / Math.max(values.length - 1, 1)) * width;
-      const y = height - ((v - min) / span) * height;
-      return `${i === 0 ? "M" : "L"}${x.toFixed(2)},${y.toFixed(2)}`;
-    })
-    .join(" ");
+function synthNumber(seed: number, min: number, max: number): number {
+  const span = max - min;
+  return min + ((seed % 1000) / 1000) * span;
 }
 
-function areaLine(values: number[], width: number, height: number): { line: string; area: string } {
-  const line = sparkLine(values, width, height);
-  if (!line) return { line: "", area: "" };
-  return {
-    line,
-    area: `${line} L ${width},${height} L 0,${height} Z`,
-  };
+function linePath(values: number[], width: number, height: number): { line: string; area: string } {
+  if (values.length === 0) return { line: "", area: "" };
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const span = Math.max(max - min, 1);
+  const points = values.map((v, i) => {
+    const x = (i / Math.max(values.length - 1, 1)) * width;
+    const y = height - ((v - min) / span) * height;
+    return { x, y };
+  });
+  const line = points.map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(" ");
+  const area = `${line} L ${width},${height} L 0,${height} Z`;
+  return { line, area };
+}
+
+function toTagSymbol(raw: string): string {
+  return raw.replace(/[^a-z0-9]/gi, "").slice(0, 4).toUpperCase() || "X";
 }
 
 async function loadStore(): Promise<AnalyticsStore> {
@@ -124,7 +129,7 @@ async function loadStore(): Promise<AnalyticsStore> {
       }
     }
   } catch {
-    // fallback to local copies
+    // fallback below
   }
 
   const candidates = [DASHBOARD_STATE_FILE, BOT_STATE_FILE];
@@ -139,7 +144,7 @@ async function loadStore(): Promise<AnalyticsStore> {
         tweets: parsed.tweets,
       };
     } catch {
-      // keep trying
+      // continue
     }
   }
 
@@ -157,318 +162,370 @@ export default async function Home() {
     .filter((tweet) => tweet.status === "posted")
     .sort((a, b) => Date.parse(a.postedAt) - Date.parse(b.postedAt));
 
-  const tracked = posted.filter((tweet) => !!tweet.metrics);
   const recent = posted.slice(-8).reverse();
+  const tracked = posted.filter((tweet) => !!tweet.metrics);
 
   const totalImpressions = tracked.reduce((sum, tweet) => sum + (tweet.metrics?.impressionCount ?? 0), 0);
   const totalEngagements = tracked.reduce((sum, tweet) => sum + (tweet.metrics?.engagementCount ?? 0), 0);
-  const totalLikes = tracked.reduce((sum, tweet) => sum + (tweet.metrics?.likeCount ?? 0), 0);
-  const avgEngagementRate = totalImpressions > 0 ? (totalEngagements / totalImpressions) * 100 : 0;
-  const avgScore =
-    tracked.length > 0
-      ? tracked.reduce((sum, tweet) => sum + (typeof tweet.score === "number" ? tweet.score : 0), 0) / tracked.length
-      : 0;
-  const activeCount = tracked.filter((tweet) => (tweet.metrics?.engagementCount ?? 0) > 0).length;
+  const avgRate = totalImpressions > 0 ? (totalEngagements / totalImpressions) * 100 : 0;
 
-  const candleSeries = posted.slice(-40).map((tweet) => {
-    const seed = hashSeed(tweet.runId);
-    const base = (tweet.metrics?.impressionCount ?? 2) + (tweet.metrics?.engagementCount ?? 0) * 7;
-    return Math.max(1, base + (seed % 9));
-  });
-
-  const lineSeries = posted.slice(-28).map((tweet) => {
-    const seed = hashSeed(tweet.runId + tweet.text);
-    const base = (tweet.metrics?.engagementRate ?? 0) * 100 + (tweet.metrics?.engagementCount ?? 0) * 0.5;
-    return Math.max(0.1, base + (seed % 15) / 10);
-  });
-
-  const roiSeries = posted.slice(-16).map((tweet, i) => {
-    const seed = hashSeed(`${tweet.runId}-${i}`);
-    const score = typeof tweet.score === "number" ? tweet.score * 10 : 0;
-    return Math.max(1, score + (tweet.metrics?.impressionCount ?? 0) * 0.1 + (seed % 8));
-  });
-
-  const candleMax = Math.max(...candleSeries, 1);
-
-  const line = areaLine(lineSeries, 660, 210);
-  const roi = areaLine(roiSeries, 660, 180);
-
-  const ranked = tracked.slice().sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
-
-  const hashtags = new Map<string, number>();
+  const tagCount = new Map<string, number>();
   for (const tweet of posted) {
     const tags = tweet.text.match(/#[a-z0-9_]+/gi) ?? [];
-    for (const tag of tags) hashtags.set(tag.toUpperCase(), (hashtags.get(tag.toUpperCase()) ?? 0) + 1);
+    for (const tag of tags) {
+      tagCount.set(tag.toUpperCase(), (tagCount.get(tag.toUpperCase()) ?? 0) + 1);
+    }
   }
 
-  const marketRows = [...hashtags.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([tag, c], idx) => {
-    const base = 1.17 + idx * 0.0001;
-    const spread = 0.00003 + c * 0.000002;
+  const watchItems: WatchItem[] = [...tagCount.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3)
+    .map(([tag, count], idx) => {
+      const seed = hashSeed(`${tag}-${count}-${idx}`);
+      return {
+        symbol: toTagSymbol(tag),
+        name: tag.replace("#", "").replace(/_/g, " "),
+        price: synthNumber(seed, 120, 130000) / (idx === 0 ? 1 : idx === 1 ? 70 : 1000),
+        changePct: synthNumber(seed + 77, -3.2, 4.8),
+      };
+    });
+
+  const fallbackWatch: WatchItem[] = [
+    { symbol: "BTC", name: "Bitcoin", price: 109756.89, changePct: 3.42 },
+    { symbol: "ETH", name: "Ethereum", price: 1643.32, changePct: 2.17 },
+    { symbol: "SOL", name: "Solana", price: 129.79, changePct: 0.17 },
+  ];
+
+  const chartSeries = posted.slice(-60).map((tweet, idx) => {
+    const base = (tweet.metrics?.impressionCount ?? 1) * 0.6 + (tweet.metrics?.engagementCount ?? 0) * 2.4;
+    const seed = hashSeed(`${tweet.runId}-${idx}`);
+    return Math.max(1, base + (seed % 14));
+  });
+  const chartValues =
+    chartSeries.length > 12
+      ? chartSeries
+      : [12, 15, 14, 16, 13, 18, 21, 19, 25, 23, 27, 30, 29, 34, 31, 37, 36, 40, 38, 42, 39, 41, 45];
+
+  const chart = linePath(chartValues, 780, 360);
+  const chartOpen = chartValues[0] ?? 0;
+  const chartHigh = Math.max(...chartValues);
+  const chartLow = Math.min(...chartValues);
+  const chartClose = chartValues[chartValues.length - 1] ?? 0;
+
+  const mid = 15305 + avgRate * 4;
+  const orderBookAsks = Array.from({ length: 8 }, (_, idx) => {
+    const rowSeed = hashSeed(`ask-${idx}-${mid}`);
+    const amount = synthNumber(rowSeed, 120, 380);
+    const price = mid + (8 - idx) * 0.65 + synthNumber(rowSeed + 10, 0.01, 0.19);
+    return { price, amount };
+  });
+
+  const orderBookBids = Array.from({ length: 8 }, (_, idx) => {
+    const rowSeed = hashSeed(`bid-${idx}-${mid}`);
+    const amount = synthNumber(rowSeed, 120, 380);
+    const price = mid - idx * 0.61 - synthNumber(rowSeed + 20, 0.01, 0.17);
+    return { price, amount };
+  });
+
+  const maxAmount = Math.max(...orderBookAsks.map((r) => r.amount), ...orderBookBids.map((r) => r.amount), 1);
+
+  const openOrders = recent.slice(0, 6).map((tweet, idx) => {
+    const seed = hashSeed(tweet.runId);
+    const side = (tweet.metrics?.engagementCount ?? 0) % 2 === 0 ? "Buy" : "Sell";
+    const type = idx % 3 === 0 ? "Limit" : idx % 3 === 1 ? "Stop Limit" : "Market";
+    const pair = `${tweet.sport.toUpperCase()}/USDT`;
+    const price = (148 + synthNumber(seed, 0.8, 3000)).toFixed(2);
+    const amount = synthNumber(seed + 40, 0.01, 9.9).toFixed(2);
+    const filled = Math.min(95, Math.round(synthNumber(seed + 70, 0, 100)));
     return {
-      symbol: tag,
-      tx: `${c * (idx % 2 === 0 ? 1 : -1)}.${(c * 7) % 100}`,
-      bid: toDecimal(base + spread, 5),
-      ask: toDecimal(base + spread * 2, 5),
+      id: tweet.runId,
+      pair,
+      date: safeDate(tweet.postedAt),
+      type,
+      side,
+      price,
+      amount,
+      filled,
+      total: (Number(price) * Number(amount)).toFixed(2),
+      tweetId: tweet.tweetId,
     };
   });
 
-  const depthRows = ranked.slice(0, 5).map((tweet, idx) => {
-    const imp = tweet.metrics?.impressionCount ?? 0;
-    const bidSize = Math.max(1, Math.round((imp / 2 + 1) * (1 + idx * 0.1)));
-    const askSize = Math.max(1, Math.round((imp / 2 + 1) * (1 + (4 - idx) * 0.08)));
-    const mid = 1.1762 + idx * 0.00012;
-    return {
-      bidSize,
-      askSize,
-      bid: toDecimal(mid + 0.00003, 5),
-      ask: toDecimal(mid + 0.00006, 5),
-    };
-  });
-
-  const leftTicks = posted.slice(-6).map((tweet) => dayLabel(tweet.postedAt));
+  const fallbackOrders = [
+    {
+      id: "x-1",
+      pair: "BTC/USDT",
+      date: "Dec 11, 2025 07:00 PM",
+      type: "Limit",
+      side: "Buy",
+      price: "29850.00",
+      amount: "0.12",
+      filled: 35,
+      total: "358.20",
+      tweetId: undefined,
+    },
+  ];
 
   return (
-    <div className="trade-shell">
-      <div className="trade-glow" aria-hidden="true" />
-      <main className="trade-wrap">
-        <section className="grid-top">
-          <article className="card panel-candles">
-            <div className="chip-row">
-              <span className="chip active">Watchlists</span>
-              <span className="chip">All symbols</span>
-            </div>
-            <div className="chart-shell candlestick-shell">
-              <div className="candles-grid" />
-              <div className="candles-track">
-                {(candleSeries.length > 0 ? candleSeries : [4, 7, 6, 8, 6, 5, 7, 8, 6, 9]).map((value, idx) => {
-                  const h = Math.max(8, Math.round((value / candleMax) * 100));
-                  const seed = idx % 2 === 0;
-                  return (
-                    <div className="candle-stick" key={`c-${idx}`}>
-                      <span className={`wick ${seed ? "up" : "down"}`} style={{ height: `${Math.max(30, h + 16)}%` }} />
-                      <span className={`body ${seed ? "up" : "down"}`} style={{ height: `${h}%` }} />
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="axis-row">
-                {leftTicks.length > 0 ? leftTicks.map((tick, idx) => <span key={`t-${idx}`}>{tick}</span>) : <span>no data</span>}
-              </div>
-            </div>
-          </article>
-
-          <article className="card panel-line">
-            <div className="chip-row">
-              <span className="chip active">XUSD</span>
-            </div>
-            <div className="chart-shell line-shell">
-              <svg viewBox="0 0 660 240" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="lineFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="rgba(0,255,151,0.38)" />
-                    <stop offset="100%" stopColor="rgba(0,255,151,0.02)" />
-                  </linearGradient>
-                </defs>
-                <path d={line.area} fill="url(#lineFill)" />
-                <path d={line.line} fill="none" stroke="url(#lineStroke)" strokeWidth="3" strokeLinecap="round" />
-                <defs>
-                  <linearGradient id="lineStroke" x1="0" y1="0" x2="660" y2="0">
-                    <stop offset="0%" stopColor="#1dffac" />
-                    <stop offset="100%" stopColor="#4bd4ff" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div className="axis-row">
-                {leftTicks.length > 0 ? leftTicks.map((tick, idx) => <span key={`l-${idx}`}>{tick}</span>) : <span>no data</span>}
-              </div>
-            </div>
-          </article>
-        </section>
-
-        <section className="grid-middle">
-          <article className="card roi-card">
-            <h3>ROI (Monthly)</h3>
-            <div className="roi-shell">
-              <svg viewBox="0 0 660 220" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="roi-outer" x1="0" y1="0" x2="660" y2="0">
-                    <stop offset="0%" stopColor="#6a2df8" />
-                    <stop offset="100%" stopColor="#ff44be" />
-                  </linearGradient>
-                  <linearGradient id="roi-mid" x1="0" y1="0" x2="660" y2="0">
-                    <stop offset="0%" stopColor="#8b35ff" />
-                    <stop offset="100%" stopColor="#ff62be" />
-                  </linearGradient>
-                  <linearGradient id="roi-core" x1="0" y1="0" x2="660" y2="0">
-                    <stop offset="0%" stopColor="#ff9179" />
-                    <stop offset="100%" stopColor="#ffa15c" />
-                  </linearGradient>
-                </defs>
-                <path d={roi.area} fill="url(#roi-outer)" opacity="0.55" transform="translate(0,8) scale(1,0.9)" />
-                <path d={roi.area} fill="url(#roi-mid)" opacity="0.7" transform="translate(0,22) scale(1,0.72)" />
-                <path d={roi.area} fill="url(#roi-core)" opacity="0.84" transform="translate(0,38) scale(1,0.54)" />
-                <line x1="330" y1="0" x2="330" y2="220" stroke="rgba(255,255,255,0.26)" strokeWidth="1" />
-              </svg>
-              <span className="roi-dot">+{(avgEngagementRate * 30 + avgScore).toFixed(2)}%</span>
-            </div>
-          </article>
-
-          <div className="trade-column">
-            <article className="card trade-ticket">
-              <header>
-                <h3>X vs Market</h3>
-                <span className="small-chip">auto</span>
-              </header>
-              <div className="tab-row">
-                <button className="tab active" type="button">
-                  Market
-                </button>
-                <button className="tab" type="button">
-                  Limit
-                </button>
-                <button className="tab" type="button">
-                  Both
-                </button>
-              </div>
-              <div className="order-row sell">
-                <span>sell</span>
-                <strong>{toDecimal(1.176 + avgScore * 0.0004)}</strong>
-                <em>USD</em>
-              </div>
-              <div className="order-row buy">
-                <span>buy</span>
-                <strong>{toDecimal(1.176 + avgEngagementRate * 0.0003)}</strong>
-                <em>X</em>
-              </div>
-              <p className="spread-copy">
-                spread: {toDecimal(0.00009 + avgEngagementRate * 0.00001, 5)} · hi {toDecimal(1.177 + avgScore * 0.0005)}
-                · low {toDecimal(1.173 - avgScore * 0.0002)}
-              </p>
-              <button className="cta-btn" type="button">
-                Place order
-              </button>
-            </article>
-
-            <article className="card depth-card">
-              <h3>Depth of market</h3>
-              <div className="depth-table">
-                {(depthRows.length > 0
-                  ? depthRows
-                  : [
-                      { bidSize: 15, askSize: 18, bid: "1.17640", ask: "1.17661" },
-                      { bidSize: 22, askSize: 16, bid: "1.17655", ask: "1.17674" },
-                      { bidSize: 31, askSize: 30, bid: "1.17663", ask: "1.17681" },
-                    ]
-                ).map((row, idx) => (
-                  <div className="depth-row" key={`d-${idx}`}>
-                    <span>{row.bidSize.toFixed(2)}</span>
-                    <strong className="bid">{row.bid}</strong>
-                    <strong className="ask">{row.ask}</strong>
-                    <span>{row.askSize.toFixed(2)}</span>
-                  </div>
-                ))}
-              </div>
-            </article>
+    <div className="vx-shell">
+      <div className="vx-window">
+        <header className="vx-browser">
+          <div className="vx-dots" aria-hidden="true">
+            <span className="red" />
+            <span className="yellow" />
+            <span className="green" />
           </div>
+          <div className="vx-url">vortex.com</div>
+          <div className="vx-browser-icons">⌄</div>
+        </header>
 
-          <div className="meta-column">
-            <article className="card account-card">
-              <h3>Capital</h3>
-              <p>FX24</p>
-            </article>
-            <article className="card mini-stat">
-              <span>ROI all time</span>
-              <strong>+{(avgScore * 1000 + avgEngagementRate * 110).toFixed(2)}%</strong>
-              <p>signal-adjusted</p>
-            </article>
-            <article className="card mini-stat">
-              <span>Investor funds</span>
-              <strong>${((totalImpressions / 13 + totalLikes * 5 + 5400) / 1000).toFixed(2)}K</strong>
-              <p>synthetic benchmark</p>
-            </article>
-            <article className="card mini-stat">
-              <span>Investors</span>
-              <strong>{Math.max(12, activeCount * 8 + tracked.length * 2)}</strong>
-              <p>active seats</p>
-            </article>
-            <button className="copy-btn" type="button">
-              Start copying
-            </button>
-          </div>
-        </section>
-
-        <section className="grid-bottom">
-          <article className="card market-table-card">
-            <div className="chip-row with-action">
+        <div className="vx-frame">
+          <aside className="vx-sidebar">
+            <div className="vx-brand">
+              <div className="vx-brand-mark">◆</div>
               <div>
-                <span className="chip active">Watchlists</span>
-                <span className="chip">All symbols</span>
+                <h1>Vortex</h1>
+                <p>Trade at the Speed of Now</p>
               </div>
-              <button className="chip add" type="button">
-                Create new watchlist +
-              </button>
             </div>
-            <div className="market-table">
-              <div className="row header">
-                <span>Popular markets</span>
-                <span>Transactions</span>
-                <span>Bid</span>
-                <span>Ask</span>
+
+            <nav className="vx-nav">
+              <a href="#">Dashboard</a>
+              <a href="#">Market</a>
+              <a className="active" href="#">
+                Trade
+              </a>
+              <a href="#">Portfolio</a>
+              <a href="#">Economic Calendar</a>
+            </nav>
+
+            <div className="vx-watchlist">
+              <div className="vx-watchlist-head">
+                <h2>MY WATCHLIST</h2>
+                <span>⋮</span>
               </div>
-              {(marketRows.length > 0
-                ? marketRows
-                : [
-                    { symbol: "#NBA", tx: "+12.2", bid: "1.17751", ask: "1.17762" },
-                    { symbol: "#NFL", tx: "+4.8", bid: "1.17731", ask: "1.17743" },
-                    { symbol: "#COACHINGTIPS", tx: "+18.7", bid: "1.17784", ask: "1.17795" },
-                  ]
-              ).map((row, idx) => (
-                <div className="row" key={`m-${idx}`}>
-                  <span>{row.symbol}</span>
-                  <span>{row.tx}</span>
-                  <span className="green">{row.bid}</span>
-                  <span className="orange">{row.ask}</span>
+
+              {(watchItems.length > 0 ? watchItems : fallbackWatch).map((item) => (
+                <div className="vx-watch-item" key={item.symbol}>
+                  <div className="vx-coin">{item.symbol.slice(0, 1)}</div>
+                  <div>
+                    <p className="name">
+                      {item.name} ({item.symbol})
+                    </p>
+                    <p className="price">{usd(item.price)}</p>
+                  </div>
+                  <div className={`vx-change ${item.changePct >= 0 ? "up" : "down"}`}>
+                    {item.changePct >= 0 ? "↗" : "↘"} {item.changePct.toFixed(2)}%
+                  </div>
                 </div>
               ))}
             </div>
-          </article>
 
-          <article className="card top-signals">
-            <h3>Top Signals</h3>
-            <div className="signal-list">
-              {(recent.length > 0
-                ? recent
-                : [
-                    {
-                      runId: "n/a",
-                      text: "No posted tweets yet.",
-                      postedAt: new Date().toISOString(),
-                      sport: "n/a",
-                      source: "n/a",
-                      tweetId: undefined,
-                    } as TweetAnalyticsRecord,
-                  ]
-              ).map((tweet) => (
-                <a
-                  className="signal-row"
-                  key={tweet.runId}
-                  href={tweet.tweetId ? `https://x.com/i/web/status/${tweet.tweetId}` : undefined}
-                  target={tweet.tweetId ? "_blank" : undefined}
-                  rel={tweet.tweetId ? "noopener noreferrer" : undefined}
-                >
-                  <div>
-                    <p>{trimText(tweet.text, 96)}</p>
-                    <span>
-                      {safeDate(tweet.postedAt)} · {tweet.sport.toUpperCase()} · {tweet.source}
-                    </span>
-                  </div>
-                  <strong>{compact(tweet.metrics?.impressionCount ?? 0)}</strong>
-                </a>
-              ))}
+            <div className="vx-premium">
+              <strong>Premium Features</strong>
+              <p>Trade faster with advanced analytics.</p>
             </div>
-          </article>
-        </section>
-      </main>
+          </aside>
+
+          <section className="vx-workspace">
+            <header className="vx-topbar">
+              <div className="vx-user">
+                <div className="avatar">S</div>
+                <div>
+                  <p className="name">Sholikhul Umam</p>
+                  <p className="handle">@sholikhulumam</p>
+                </div>
+              </div>
+
+              <button type="button" className="vx-deposit">
+                Deposit
+              </button>
+
+              <div className="vx-search">Search</div>
+            </header>
+
+            <div className="vx-panels">
+              <div className="vx-center">
+                <article className="vx-card vx-chart-card">
+                  <header className="vx-chart-head">
+                    <div className="pair">
+                      <strong>BTC / USDT</strong>
+                      <span>Bitstamp</span>
+                    </div>
+                    <div className="chart-tools">1H · Indicator · Warning</div>
+                  </header>
+
+                  <div className="vx-chart-layout">
+                    <aside className="vx-tool-rail" aria-hidden="true">
+                      <span>＋</span>
+                      <span>／</span>
+                      <span>≡</span>
+                      <span>↔</span>
+                      <span>○</span>
+                      <span>T</span>
+                      <span>⌖</span>
+                      <span>⌕</span>
+                      <span>⌂</span>
+                    </aside>
+
+                    <div className="vx-chart-canvas">
+                      <div className="vx-chart-meta">
+                        <span>Volume {compact(totalImpressions)}</span>
+                        <span>O {chartOpen.toFixed(2)}</span>
+                        <span>H {chartHigh.toFixed(2)}</span>
+                        <span>L {chartLow.toFixed(2)}</span>
+                        <span>C {chartClose.toFixed(2)}</span>
+                      </div>
+
+                      <svg viewBox="0 0 780 390" preserveAspectRatio="none" aria-hidden="true">
+                        <defs>
+                          <pattern id="vxGrid" width="52" height="32" patternUnits="userSpaceOnUse">
+                            <path d="M 52 0 L 0 0 0 32" fill="none" stroke="rgba(126,145,187,0.14)" strokeWidth="1" />
+                          </pattern>
+                          <linearGradient id="vxArea" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="rgba(113,255,166,0.22)" />
+                            <stop offset="100%" stopColor="rgba(113,255,166,0)" />
+                          </linearGradient>
+                        </defs>
+                        <rect x="0" y="0" width="780" height="360" fill="url(#vxGrid)" />
+                        <path d={chart.area} fill="url(#vxArea)" />
+                        <path d={chart.line} fill="none" stroke="#f1f4ff" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+
+                      <div className="vx-axis-x">
+                        {(posted.length > 0 ? posted.slice(-6).map((tweet) => shortDay(tweet.postedAt)) : ["22 jul", "23 jul", "24 jul", "25 jul"]).map(
+                          (label, idx) => (
+                            <span key={`${label}-${idx}`}>{label}</span>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article className="vx-card vx-orders-card">
+                  <header>
+                    <h3>Open Orders</h3>
+                    <button type="button">Cancel All</button>
+                  </header>
+
+                  <div className="vx-table-wrap">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Pair</th>
+                          <th>Date</th>
+                          <th>Type</th>
+                          <th>Side</th>
+                          <th>Price</th>
+                          <th>Amount</th>
+                          <th>Filled</th>
+                          <th>Total</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {(openOrders.length > 0 ? openOrders : fallbackOrders).map((row) => (
+                          <tr key={row.id}>
+                            <td>{row.pair}</td>
+                            <td>{row.date}</td>
+                            <td>{row.type}</td>
+                            <td className={row.side === "Buy" ? "buy" : "sell"}>{row.side}</td>
+                            <td>{row.price}</td>
+                            <td>{row.amount}</td>
+                            <td>{row.filled}%</td>
+                            <td>{row.total}</td>
+                            <td>
+                              {row.tweetId ? (
+                                <a href={`https://x.com/i/web/status/${row.tweetId}`} target="_blank" rel="noopener noreferrer">
+                                  View
+                                </a>
+                              ) : (
+                                <button type="button">Cancel</button>
+                              )}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </article>
+              </div>
+
+              <aside className="vx-right">
+                <article className="vx-card vx-orderbook-card">
+                  <header>
+                    <h3>Order Book</h3>
+                  </header>
+
+                  <div className="vx-ob-head">
+                    <span>Price</span>
+                    <span>Amount</span>
+                  </div>
+
+                  <div className="vx-ob-body">
+                    {orderBookAsks.map((row, idx) => (
+                      <div className="ob-row ask" key={`ask-${idx}`}>
+                        <span>{row.price.toFixed(2)}</span>
+                        <div className="bar" style={{ width: `${(row.amount / maxAmount) * 100}%` }} />
+                        <em>{row.amount.toFixed(0)}</em>
+                      </div>
+                    ))}
+
+                    <div className="ob-mid">{mid.toFixed(2)}</div>
+
+                    {orderBookBids.map((row, idx) => (
+                      <div className="ob-row bid" key={`bid-${idx}`}>
+                        <span>{row.price.toFixed(2)}</span>
+                        <div className="bar" style={{ width: `${(row.amount / maxAmount) * 100}%` }} />
+                        <em>{row.amount.toFixed(0)}</em>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+
+                <article className="vx-card vx-buy-card">
+                  <header>
+                    <h3>Buy</h3>
+                  </header>
+
+                  <div className="vx-buy-tabs">
+                    <span className="active">Limit</span>
+                    <span>Market</span>
+                  </div>
+
+                  <label>
+                    Price
+                    <input value={mid.toFixed(2)} readOnly />
+                  </label>
+
+                  <label>
+                    Amount
+                    <input value={(Math.max(0.12, avgRate / 8) + 0.2).toFixed(2)} readOnly />
+                  </label>
+
+                  <div className="vx-buy-scale">
+                    <span>0%</span>
+                    <span>25%</span>
+                    <span>50%</span>
+                    <span>75%</span>
+                    <span>100%</span>
+                  </div>
+
+                  <label>
+                    Total
+                    <input value={usd(mid * (Math.max(0.12, avgRate / 8) + 0.2))} readOnly />
+                  </label>
+
+                  <button type="button" className="buy-btn">
+                    Place Buy
+                  </button>
+                </article>
+              </aside>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
   );
 }
