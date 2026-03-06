@@ -2,6 +2,7 @@
  * Test fetchData (uses network: ESPN, optionally API-Sports).
  */
 import { fetchSportsData } from "../src/fetchData.js";
+import { fetchNewsContext } from "../src/fetchNews.js";
 
 async function main() {
   console.log("--- fetchData (NBA) ---");
@@ -31,7 +32,17 @@ async function main() {
   }
   console.log("\n--- getSportForRun (rotation) ---");
   const { getSportForRun } = await import("../src/config.js");
-  console.log("  ✓ today's sport:", getSportForRun());
+  const todaySport = getSportForRun();
+  console.log("  ✓ today's sport:", todaySport);
+  console.log("\n--- fetchNewsContext ---");
+  const news = await fetchNewsContext(todaySport);
+  console.log("  ✓ used news:", news.usedNews);
+  console.log("  ✓ query:", news.query);
+  console.log("  ✓ candidates:", news.articles.length);
+  console.log("  ✓ selection reason:", news.selectionReason ?? "n/a");
+  if (news.selectedArticle) {
+    console.log("  ✓ selected article:", news.selectedArticle.title);
+  }
   console.log("\n--- done ---");
 }
 

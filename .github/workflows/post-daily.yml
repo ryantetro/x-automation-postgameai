@@ -44,6 +44,14 @@ jobs:
           ANALYTICS_LOOKBACK_DAYS: ${{ vars.ANALYTICS_LOOKBACK_DAYS }}
           ANALYTICS_MIN_AGE_MINUTES: ${{ vars.ANALYTICS_MIN_AGE_MINUTES }}
           ANALYTICS_MAX_REFRESH: ${{ vars.ANALYTICS_MAX_REFRESH }}
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+          NEWS_ENABLED: ${{ vars.NEWS_ENABLED }}
+          NEWS_LOOKBACK_HOURS: ${{ vars.NEWS_LOOKBACK_HOURS }}
+          NEWS_MAX_ARTICLES: ${{ vars.NEWS_MAX_ARTICLES }}
+          NEWS_LANGUAGE: ${{ vars.NEWS_LANGUAGE }}
+          NEWS_SORT_BY: ${{ vars.NEWS_SORT_BY }}
+          NEWS_ALLOWED_DOMAINS: ${{ vars.NEWS_ALLOWED_DOMAINS }}
+          NEWS_ALLOWED_SOURCES: ${{ vars.NEWS_ALLOWED_SOURCES }}
           TRACKING_BASE_URL: ${{ vars.TRACKING_BASE_URL }}
           CLICK_TARGET_URL: ${{ vars.CLICK_TARGET_URL }}
           UTM_SOURCE: ${{ vars.UTM_SOURCE }}

@@ -88,6 +88,45 @@ export const ANALYTICS_MIN_AGE_MINUTES = Math.max(5, getIntEnv("ANALYTICS_MIN_AG
 export const ANALYTICS_MAX_REFRESH = Math.max(1, getIntEnv("ANALYTICS_MAX_REFRESH", 40));
 export const TRACKING_BASE_URL = getEnv("TRACKING_BASE_URL");
 export const CLICK_TARGET_URL = getEnv("CLICK_TARGET_URL", "https://getpostgame.ai");
+export const NEWS_API_KEY = getEnv("NEWS_API_KEY");
+export const NEWS_ENABLED = !["false", "0", "no"].includes(getEnv("NEWS_ENABLED", "true").toLowerCase());
+export const NEWS_LOOKBACK_HOURS = Math.max(1, getIntEnv("NEWS_LOOKBACK_HOURS", 36));
+export const NEWS_MAX_ARTICLES = Math.min(100, Math.max(1, getIntEnv("NEWS_MAX_ARTICLES", 10)));
+export const NEWS_LANGUAGE = getEnv("NEWS_LANGUAGE", "en");
+export const NEWS_SORT_BY = getEnv("NEWS_SORT_BY", "publishedAt");
+export const DEFAULT_NEWS_ALLOWED_DOMAINS = [
+  "espn.com",
+  "theathletic.com",
+  "sports.yahoo.com",
+  "cbssports.com",
+  "nbcsports.com",
+  "foxsports.com",
+  "si.com",
+  "sportingnews.com",
+  "bleacherreport.com",
+  "apnews.com",
+  "reuters.com",
+  "usatoday.com",
+  "goal.com",
+  "sportsnet.ca",
+  "mlb.com",
+  "nba.com",
+  "nfl.com",
+] as const;
+
+function parseCsvEnv(key: string): string[] {
+  return getEnv(key)
+    .split(",")
+    .map((part) => part.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+export const NEWS_ALLOWED_DOMAINS = (() => {
+  const configured = parseCsvEnv("NEWS_ALLOWED_DOMAINS");
+  return configured.length > 0 ? configured : [...DEFAULT_NEWS_ALLOWED_DOMAINS];
+})();
+
+export const NEWS_ALLOWED_SOURCES = parseCsvEnv("NEWS_ALLOWED_SOURCES");
 
 export interface ValidateConfigOptions {
   requireX?: boolean;

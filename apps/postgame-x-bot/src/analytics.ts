@@ -7,6 +7,7 @@ export const ANALYTICS_STORE_FILE = resolve(STATE_DIR, "tweet-analytics.json");
 const STORE_VERSION = 1;
 
 export type TweetStatus = "posted" | "dry_run" | "failed";
+export type ContentMode = "sports_only" | "news_preferred";
 
 export interface TweetMetricsSnapshot {
   fetchedAt: string;
@@ -36,6 +37,13 @@ export interface TweetAnalyticsRecord {
   source: string;
   status: TweetStatus;
   text: string;
+  contentMode?: ContentMode;
+  newsUsed?: boolean;
+  newsQuery?: string;
+  newsArticleTitle?: string;
+  newsArticleUrl?: string;
+  newsSourceName?: string;
+  newsPublishedAt?: string;
   trackedUrl?: string;
   linkTargetUrl?: string;
   metrics?: TweetMetricsSnapshot;
@@ -64,6 +72,18 @@ export interface IterationInsights {
   avoidPatterns: string[];
   topWinnerHashtags: string[];
   promptGuidance: string;
+  contentModeStats: Array<{
+    contentMode: ContentMode;
+    count: number;
+    avgImpressions: number;
+    avgClicks: number;
+  }>;
+  newsSourceStats: Array<{
+    sourceName: string;
+    count: number;
+    avgImpressions: number;
+    avgClicks: number;
+  }>;
 }
 
 export function defaultStore(): AnalyticsStore {
@@ -295,6 +315,12 @@ function avgLength(records: TweetAnalyticsRecord[]): number {
   return Math.round(total / records.length);
 }
 
+function avgMetric(records: TweetAnalyticsRecord[], selector: (record: TweetAnalyticsRecord) => number): number {
+  if (records.length === 0) return 0;
+  const total = records.reduce((acc, record) => acc + selector(record), 0);
+  return Number((total / records.length).toFixed(2));
+}
+
 function collectTopHashtags(records: TweetAnalyticsRecord[], topN = 3): string[] {
   const map = new Map<string, number>();
   for (const record of records) {
@@ -374,6 +400,35 @@ export function buildIterationInsights(store: AnalyticsStore): IterationInsights
 
   const promptGuidance = promptGuidanceLines.join(" ").slice(0, 900);
 
+  const contentModes: ContentMode[] = ["sports_only", "news_preferred"];
+  const contentModeStats = contentModes
+    .map((contentMode) => {
+      const records = store.tweets.filter((tweet) => tweet.status === "posted" && tweet.contentMode === contentMode);
+      return {
+        contentMode,
+        count: records.length,
+        avgImpressions: avgMetric(records, (tweet) => tweet.metrics?.impressionCount ?? 0),
+        avgClicks: avgMetric(records, (tweet) => tweet.clickMetrics?.totalClicks ?? 0),
+      };
+    })
+    .filter((row) => row.count > 0);
+
+  const newsSourceMap = new Map<string, TweetAnalyticsRecord[]>();
+  for (const tweet of store.tweets) {
+    if (tweet.status !== "posted" || !tweet.newsUsed || !tweet.newsSourceName) continue;
+    const bucket = newsSourceMap.get(tweet.newsSourceName) ?? [];
+    bucket.push(tweet);
+    newsSourceMap.set(tweet.newsSourceName, bucket);
+  }
+  const newsSourceStats = [...newsSourceMap.entries()]
+    .map(([sourceName, records]) => ({
+      sourceName,
+      count: records.length,
+      avgImpressions: avgMetric(records, (tweet) => tweet.metrics?.impressionCount ?? 0),
+      avgClicks: avgMetric(records, (tweet) => tweet.clickMetrics?.totalClicks ?? 0),
+    }))
+    .sort((a, b) => b.avgImpressions - a.avgImpressions);
+
   return {
     sampleSize: scored.length,
     winners,
@@ -382,6 +437,8 @@ export function buildIterationInsights(store: AnalyticsStore): IterationInsights
     avoidPatterns,
     topWinnerHashtags,
     promptGuidance,
+    contentModeStats,
+    newsSourceStats,
   };
 }
 
@@ -404,6 +461,30 @@ export function formatInsightsReport(insights: IterationInsights): string {
     lines.push("- No clear avoid pattern yet.");
   } else {
     for (const pattern of insights.avoidPatterns) lines.push(`- ${pattern}`);
+  }
+
+  lines.push("");
+  lines.push("## Content mode performance");
+  if (insights.contentModeStats.length === 0) {
+    lines.push("- No content mode performance data yet.");
+  } else {
+    for (const row of insights.contentModeStats) {
+      lines.push(
+        `- ${row.contentMode}: ${row.count} post(s), avg impressions ${row.avgImpressions}, avg clicks ${row.avgClicks}`
+      );
+    }
+  }
+
+  lines.push("");
+  lines.push("## News source performance");
+  if (insights.newsSourceStats.length === 0) {
+    lines.push("- No news-assisted tweets yet.");
+  } else {
+    for (const row of insights.newsSourceStats.slice(0, 5)) {
+      lines.push(
+        `- ${row.sourceName}: ${row.count} post(s), avg impressions ${row.avgImpressions}, avg clicks ${row.avgClicks}`
+      );
+    }
   }
 
   lines.push("");

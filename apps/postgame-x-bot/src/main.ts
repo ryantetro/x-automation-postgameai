@@ -16,6 +16,7 @@ import {
   MAX_TWEET_LEN,
 } from "./config.js";
 import { fetchSportsData } from "./fetchData.js";
+import { fetchNewsContext } from "./fetchNews.js";
 import { generatePost, fillFallbackTemplate } from "./generatePost.js";
 import { isValidTweet } from "./validate.js";
 import { getXClient, postToX } from "./postToX.js";
@@ -149,6 +150,12 @@ async function main(): Promise<number> {
     };
   }
 
+  const newsContext = await fetchNewsContext(sport);
+  const contentMode = newsContext.usedNews ? "news_preferred" : "sports_only";
+  if (newsContext.selectionReason) {
+    console.info(`News selection (${contentMode}): ${newsContext.selectionReason}`);
+  }
+
   let recentTexts = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
 
   let text: string | null = null;
@@ -160,6 +167,7 @@ async function main(): Promise<number> {
       date: today,
       iterationGuidance: insights?.promptGuidance,
       reserveChars,
+      newsContext,
     });
     if (text && isValidTweet(text)) {
       if (!isDuplicate(text, recentTexts)) break;
@@ -172,7 +180,7 @@ async function main(): Promise<number> {
 
   if (!text || !isValidTweet(text)) {
     console.info("Using fallback template");
-    text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars });
+    text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars, angle });
     generationSource = "fallback";
   }
 
@@ -194,6 +202,13 @@ async function main(): Promise<number> {
       source: generationSource,
       status: "failed",
       text,
+      contentMode,
+      newsUsed: newsContext.usedNews,
+      newsQuery: newsContext.query,
+      newsArticleTitle: newsContext.selectedArticle?.title,
+      newsArticleUrl: newsContext.selectedArticle?.url,
+      newsSourceName: newsContext.selectedArticle?.sourceName,
+      newsPublishedAt: newsContext.selectedArticle?.publishedAt,
       trackedUrl: trackedUrl ?? undefined,
       linkTargetUrl: CLICK_TARGET_URL,
     });
@@ -221,6 +236,13 @@ async function main(): Promise<number> {
         source: generationSource,
         status: POST_ENABLED ? "posted" : "dry_run",
         text,
+        contentMode,
+        newsUsed: newsContext.usedNews,
+        newsQuery: newsContext.query,
+        newsArticleTitle: newsContext.selectedArticle?.title,
+        newsArticleUrl: newsContext.selectedArticle?.url,
+        newsSourceName: newsContext.selectedArticle?.sourceName,
+        newsPublishedAt: newsContext.selectedArticle?.publishedAt,
         trackedUrl: trackedUrl ?? undefined,
         linkTargetUrl: CLICK_TARGET_URL,
       });
@@ -267,6 +289,13 @@ async function main(): Promise<number> {
     source: generationSource,
     status: "failed",
     text,
+    contentMode,
+    newsUsed: newsContext.usedNews,
+    newsQuery: newsContext.query,
+    newsArticleTitle: newsContext.selectedArticle?.title,
+    newsArticleUrl: newsContext.selectedArticle?.url,
+    newsSourceName: newsContext.selectedArticle?.sourceName,
+    newsPublishedAt: newsContext.selectedArticle?.publishedAt,
     trackedUrl: trackedUrl ?? undefined,
     linkTargetUrl: CLICK_TARGET_URL,
   });
