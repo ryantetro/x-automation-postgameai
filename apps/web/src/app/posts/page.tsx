@@ -13,6 +13,7 @@ export default async function PostsPage() {
   const totalPosts = allPosts.length;
   const withMetrics = allPosts.filter((t) => !!t.metrics).length;
   const published = allPosts.filter((t) => !!t.tweetId).length;
+  const trackedLinks = allPosts.filter((t) => !!t.trackedUrl).length;
 
   const sports = [...new Set(allPosts.map((t) => t.sport.toLowerCase()))];
 
@@ -47,8 +48,8 @@ export default async function PostsPage() {
               <div className="stat-sub">Analytics data collected</div>
             </div>
             <div className="stat-card amber">
-              <div className="stat-label">Sports covered</div>
-              <div className="stat-value">{sports.length}</div>
+              <div className="stat-label">Tracked links</div>
+              <div className="stat-value">{trackedLinks}</div>
               <div className="stat-sub">{sports.join(", ") || "—"}</div>
             </div>
           </div>
@@ -60,6 +61,8 @@ export default async function PostsPage() {
                 const m = tweet.metrics;
                 const imp = m?.impressionCount ?? 0;
                 const engRate = m?.engagementRate ?? (imp > 0 && m ? (m.engagementCount / imp) * 100 : 0);
+                const clicks = tweet.clickMetrics?.totalClicks ?? 0;
+                const uniqueClicks = tweet.clickMetrics?.uniqueClicks ?? 0;
 
                 return (
                   <article className="post-card" key={tweet.runId}>
@@ -75,6 +78,16 @@ export default async function PostsPage() {
                           rel="noopener noreferrer"
                         >
                           View on X &#8599;
+                        </a>
+                      )}
+                      {tweet.trackedUrl && (
+                        <a
+                          className="view-link post-card-link"
+                          href={tweet.trackedUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Test link &#8599;
                         </a>
                       )}
                     </div>
@@ -104,6 +117,10 @@ export default async function PostsPage() {
                           <span className="pcm-label">Bookmarks</span>
                         </div>
                         <div className="pcm">
+                          <span className="pcm-val pcm-amber">{compact(clicks)}</span>
+                          <span className="pcm-label">Clicks</span>
+                        </div>
+                        <div className="pcm">
                           <span className={`pcm-val ${engRate > 0 ? "pcm-green" : ""}`}>{engRate.toFixed(2)}%</span>
                           <span className="pcm-label">Eng. rate</span>
                         </div>
@@ -111,7 +128,9 @@ export default async function PostsPage() {
                     )}
 
                     {!m && (
-                      <div className="post-card-no-metrics">No metrics collected yet</div>
+                      <div className="post-card-no-metrics">
+                        {tweet.trackedUrl ? `${compact(clicks)} clicks · ${compact(uniqueClicks)} unique visitors` : "No metrics collected yet"}
+                      </div>
                     )}
                   </article>
                 );

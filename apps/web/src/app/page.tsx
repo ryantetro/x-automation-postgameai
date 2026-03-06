@@ -16,7 +16,10 @@ export default async function Home() {
   const totalRetweets = tracked.reduce((s, t) => s + (t.metrics?.retweetCount ?? 0), 0);
   const totalReplies = tracked.reduce((s, t) => s + (t.metrics?.replyCount ?? 0), 0);
   const totalBookmarks = tracked.reduce((s, t) => s + (t.metrics?.bookmarkCount ?? 0), 0);
+  const totalClicks = posted.reduce((s, t) => s + (t.clickMetrics?.totalClicks ?? 0), 0);
+  const totalUniqueClicks = posted.reduce((s, t) => s + (t.clickMetrics?.uniqueClicks ?? 0), 0);
   const avgRate = totalImpressions > 0 ? (totalEngagements / totalImpressions) * 100 : 0;
+  const clickThroughRate = totalImpressions > 0 ? (totalClicks / totalImpressions) * 100 : 0;
 
   const chartTweets = posted.slice(-30);
   const chartValues = chartTweets.map((t) => t.metrics?.impressionCount ?? 0);
@@ -64,9 +67,9 @@ export default async function Home() {
               <div className="stat-sub">Engagement / impressions</div>
             </div>
             <div className="stat-card red">
-              <div className="stat-label">Total posts</div>
-              <div className="stat-value">{posted.length}</div>
-              <div className="stat-sub">{posted.filter((t) => t.tweetId).length} published to X</div>
+              <div className="stat-label">Tracked link clicks</div>
+              <div className="stat-value">{compact(totalClicks)}</div>
+              <div className="stat-sub">{compact(totalUniqueClicks)} unique visitors</div>
             </div>
           </div>
 
@@ -121,10 +124,11 @@ export default async function Home() {
                 <div style={{ overflowX: "auto" }}>
                   <table className="posts-table">
                     <thead>
-                      <tr>
+                    <tr>
                         <th>Sport</th>
                         <th>Date</th>
                         <th>Impressions</th>
+                        <th>Clicks</th>
                         <th>Likes</th>
                         <th>Retweets</th>
                         <th>Eng. rate</th>
@@ -137,28 +141,37 @@ export default async function Home() {
                           const m = tweet.metrics;
                           const imp = m?.impressionCount ?? 0;
                           const engRate = m?.engagementRate ?? (imp > 0 && m ? (m.engagementCount / imp) * 100 : 0);
+                          const clicks = tweet.clickMetrics?.totalClicks ?? 0;
                           return (
                             <tr key={tweet.runId}>
                               <td><span className={`sport-pill ${sportClass(tweet.sport)}`}>{tweet.sport}</span></td>
                               <td>{safeDate(tweet.postedAt)}</td>
                               <td>{compact(imp)}</td>
+                              <td>{compact(clicks)}</td>
                               <td>{compact(m?.likeCount ?? 0)}</td>
                               <td>{compact(m?.retweetCount ?? 0)}</td>
                               <td><span className={`rate-badge ${engRate > 0 ? "positive" : "zero"}`}>{engRate.toFixed(2)}%</span></td>
                               <td>
-                                {tweet.tweetId ? (
-                                  <a className="view-link" href={`https://x.com/i/web/status/${tweet.tweetId}`} target="_blank" rel="noopener noreferrer">
-                                    View on X &#8599;
-                                  </a>
-                                ) : (
-                                  <span style={{ color: "var(--text-secondary)" }}>—</span>
-                                )}
+                                <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem", alignItems: "flex-start" }}>
+                                  {tweet.tweetId ? (
+                                    <a className="view-link" href={`https://x.com/i/web/status/${tweet.tweetId}`} target="_blank" rel="noopener noreferrer">
+                                      View on X &#8599;
+                                    </a>
+                                  ) : (
+                                    <span style={{ color: "var(--text-secondary)" }}>—</span>
+                                  )}
+                                  {tweet.trackedUrl ? (
+                                    <a className="view-link" href={tweet.trackedUrl} target="_blank" rel="noopener noreferrer">
+                                      Test link &#8599;
+                                    </a>
+                                  ) : null}
+                                </div>
                               </td>
                             </tr>
                           );
                         })
                       ) : (
-                        <tr><td colSpan={7} className="empty-state">No posts yet. Run the bot to see results here.</td></tr>
+                        <tr><td colSpan={8} className="empty-state">No posts yet. Run the bot to see results here.</td></tr>
                       )}
                     </tbody>
                   </table>
@@ -187,7 +200,8 @@ export default async function Home() {
                   <div className="summary-row"><span className="summary-label">Total impressions</span><span className="summary-val green">{compact(totalImpressions)}</span></div>
                   <div className="summary-row"><span className="summary-label">Total engagement</span><span className="summary-val blue">{compact(totalEngagements)}</span></div>
                   <div className="summary-row"><span className="summary-label">Avg. engagement rate</span><span className="summary-val">{avgRate.toFixed(2)}%</span></div>
-                  <div className="summary-row"><span className="summary-label">Posts published</span><span className="summary-val">{posted.length}</span></div>
+                  <div className="summary-row"><span className="summary-label">Tracked link clicks</span><span className="summary-val amber">{compact(totalClicks)}</span></div>
+                  <div className="summary-row"><span className="summary-label">Click-through rate</span><span className="summary-val">{clickThroughRate.toFixed(2)}%</span></div>
                 </div>
                 <div className="card-footer">Updated {lastUpdated}</div>
               </div>

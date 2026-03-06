@@ -20,6 +20,12 @@ export interface TweetMetricsSnapshot {
   engagementRate: number | null;
 }
 
+export interface ClickMetricsSnapshot {
+  fetchedAt: string;
+  totalClicks: number;
+  uniqueClicks: number;
+}
+
 export interface TweetAnalyticsRecord {
   runId: string;
   tweetId?: string;
@@ -30,7 +36,10 @@ export interface TweetAnalyticsRecord {
   source: string;
   status: TweetStatus;
   text: string;
+  trackedUrl?: string;
+  linkTargetUrl?: string;
   metrics?: TweetMetricsSnapshot;
+  clickMetrics?: ClickMetricsSnapshot;
   score?: number;
   scoreUpdatedAt?: string;
 }

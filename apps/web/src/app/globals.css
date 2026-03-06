@@ -620,6 +620,7 @@ body {
 
 .summary-val.green { color: var(--accent); }
 .summary-val.blue { color: var(--blue); }
+.summary-val.amber { color: var(--amber); }
 
 .card-footer {
   padding: 0.625rem 1.25rem;
@@ -892,6 +893,10 @@ body {
 
 .pcm-green {
   color: var(--accent);
+}
+
+.pcm-amber {
+  color: var(--amber);
 }
 
 .pcm-label {

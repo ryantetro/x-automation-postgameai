@@ -11,6 +11,9 @@ import {
   ANALYTICS_LOOKBACK_DAYS,
   ANALYTICS_MIN_AGE_MINUTES,
   ANALYTICS_MAX_REFRESH,
+  TRACKING_BASE_URL,
+  CLICK_TARGET_URL,
+  MAX_TWEET_LEN,
 } from "./config.js";
 import { fetchSportsData } from "./fetchData.js";
 import { generatePost, fillFallbackTemplate } from "./generatePost.js";
@@ -32,6 +35,20 @@ const MAX_GENERATE_RETRIES = 3;
 const LOG_FILE = resolve(LOGS_DIR, "posts.log");
 const ITERATION_REPORT_FILE = resolve(LOGS_DIR, "iteration-report.md");
 const RECENT_TWEETS_CAP = 60;
+
+function buildTrackedUrl(runId: string): string | null {
+  if (!TRACKING_BASE_URL) return null;
+  const base = TRACKING_BASE_URL.replace(/\/+$/, "");
+  return `${base}/r/${encodeURIComponent(runId)}`;
+}
+
+function appendTrackedUrl(text: string, trackedUrl: string | null): string {
+  if (!trackedUrl) return text;
+  const next = `${text.trim()} ${trackedUrl}`.trim();
+  if (next.length <= MAX_TWEET_LEN) return next;
+  console.warn("Tracked link omitted because tweet body used the full character budget");
+  return text;
+}
 
 /** Read last N posted tweet texts from persistent analytics state (newest first). */
 function readRecentTweetTexts(store: AnalyticsStore, cap: number): string[] {
@@ -86,6 +103,8 @@ async function main(): Promise<number> {
   const today = nowIso.slice(0, 10);
   const sport = getSportForRun();
   const angle = getAngleForDate(new Date());
+  const trackedUrl = buildTrackedUrl(runId);
+  const reserveChars = trackedUrl ? trackedUrl.length + 1 : 0;
 
   const analyticsStore = loadAnalyticsStore(ANALYTICS_STORE_FILE);
   const xClient = getXClient();
@@ -140,6 +159,7 @@ async function main(): Promise<number> {
       angle,
       date: today,
       iterationGuidance: insights?.promptGuidance,
+      reserveChars,
     });
     if (text && isValidTweet(text)) {
       if (!isDuplicate(text, recentTexts)) break;
@@ -152,9 +172,11 @@ async function main(): Promise<number> {
 
   if (!text || !isValidTweet(text)) {
     console.info("Using fallback template");
-    text = fillFallbackTemplate(fetched.sport ?? "nba", fetched);
+    text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars });
     generationSource = "fallback";
   }
+
+  text = appendTrackedUrl(text, trackedUrl);
 
   if (text && isValidTweet(text) && isDuplicate(text, readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP))) {
     console.warn("Fallback tweet is similar to a recent post; posting anyway to avoid skipping");
@@ -172,6 +194,8 @@ async function main(): Promise<number> {
       source: generationSource,
       status: "failed",
       text,
+      trackedUrl: trackedUrl ?? undefined,
+      linkTargetUrl: CLICK_TARGET_URL,
     });
     pruneStore(analyticsStore);
     saveAnalyticsStore(analyticsStore, ANALYTICS_STORE_FILE);
@@ -197,6 +221,8 @@ async function main(): Promise<number> {
         source: generationSource,
         status: POST_ENABLED ? "posted" : "dry_run",
         text,
+        trackedUrl: trackedUrl ?? undefined,
+        linkTargetUrl: CLICK_TARGET_URL,
       });
 
       if (ANALYTICS_ENABLED && xClient && result.tweetId && POST_ENABLED) {
@@ -241,6 +267,8 @@ async function main(): Promise<number> {
     source: generationSource,
     status: "failed",
     text,
+    trackedUrl: trackedUrl ?? undefined,
+    linkTargetUrl: CLICK_TARGET_URL,
   });
   pruneStore(analyticsStore);
   saveAnalyticsStore(analyticsStore, ANALYTICS_STORE_FILE);

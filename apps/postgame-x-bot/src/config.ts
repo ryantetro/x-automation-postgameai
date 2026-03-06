@@ -86,6 +86,8 @@ export const ANALYTICS_ENABLED = !["false", "0", "no"].includes(getEnv("ANALYTIC
 export const ANALYTICS_LOOKBACK_DAYS = Math.max(1, getIntEnv("ANALYTICS_LOOKBACK_DAYS", 21));
 export const ANALYTICS_MIN_AGE_MINUTES = Math.max(5, getIntEnv("ANALYTICS_MIN_AGE_MINUTES", 45));
 export const ANALYTICS_MAX_REFRESH = Math.max(1, getIntEnv("ANALYTICS_MAX_REFRESH", 40));
+export const TRACKING_BASE_URL = getEnv("TRACKING_BASE_URL");
+export const CLICK_TARGET_URL = getEnv("CLICK_TARGET_URL", "https://getpostgame.ai");
 
 export interface ValidateConfigOptions {
   requireX?: boolean;

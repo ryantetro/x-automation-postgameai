@@ -44,6 +44,11 @@ jobs:
           ANALYTICS_LOOKBACK_DAYS: ${{ vars.ANALYTICS_LOOKBACK_DAYS }}
           ANALYTICS_MIN_AGE_MINUTES: ${{ vars.ANALYTICS_MIN_AGE_MINUTES }}
           ANALYTICS_MAX_REFRESH: ${{ vars.ANALYTICS_MAX_REFRESH }}
+          TRACKING_BASE_URL: ${{ vars.TRACKING_BASE_URL }}
+          CLICK_TARGET_URL: ${{ vars.CLICK_TARGET_URL }}
+          UTM_SOURCE: ${{ vars.UTM_SOURCE }}
+          UTM_MEDIUM: ${{ vars.UTM_MEDIUM }}
+          UTM_CAMPAIGN_PREFIX: ${{ vars.UTM_CAMPAIGN_PREFIX }}
         run: npm run bot:post
 
       - name: Persist analytics state

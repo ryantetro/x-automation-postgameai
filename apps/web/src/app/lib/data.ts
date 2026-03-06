@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { getClickMetricsForSlugs, type ClickMetricsSnapshot } from "./clicks";
 
 export type TweetStatus = "posted" | "dry_run" | "failed";
 
@@ -26,7 +27,10 @@ export interface TweetAnalyticsRecord {
   source: string;
   status: TweetStatus;
   text: string;
+  trackedUrl?: string;
+  linkTargetUrl?: string;
   metrics?: TweetMetricsSnapshot;
+  clickMetrics?: ClickMetricsSnapshot;
   score?: number;
   scoreUpdatedAt?: string;
 }
@@ -42,7 +46,7 @@ const REMOTE_STATE_URL =
   process.env.ANALYTICS_JSON_URL ??
   "https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/apps/postgame-x-bot/state/tweet-analytics.json";
 
-export async function loadStore(): Promise<AnalyticsStore> {
+async function loadBaseStore(): Promise<AnalyticsStore> {
   try {
     const r = await fetch(REMOTE_STATE_URL, { cache: "no-store" });
     if (r.ok) {
@@ -65,6 +69,20 @@ export async function loadStore(): Promise<AnalyticsStore> {
   }
 
   return { version: 1, updatedAt: new Date().toISOString(), tweets: [] };
+}
+
+export async function loadStore(options: { includeClicks?: boolean } = {}): Promise<AnalyticsStore> {
+  const includeClicks = options.includeClicks ?? true;
+  const store = await loadBaseStore();
+  if (!includeClicks) return store;
+
+  const clickable = store.tweets.filter((tweet) => !!tweet.trackedUrl);
+  const clickMetrics = await getClickMetricsForSlugs(clickable.map((tweet) => tweet.runId));
+  for (const tweet of store.tweets) {
+    const metrics = clickMetrics.get(tweet.runId);
+    if (metrics) tweet.clickMetrics = metrics;
+  }
+  return store;
 }
 
 export function safeDate(iso: string): string {

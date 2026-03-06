@@ -12,11 +12,11 @@ export default async function AnalyticsPage() {
   const totalImpressions = tracked.reduce((s, t) => s + (t.metrics?.impressionCount ?? 0), 0);
   const totalEngagements = tracked.reduce((s, t) => s + (t.metrics?.engagementCount ?? 0), 0);
   const totalLikes = tracked.reduce((s, t) => s + (t.metrics?.likeCount ?? 0), 0);
-  const totalRetweets = tracked.reduce((s, t) => s + (t.metrics?.retweetCount ?? 0), 0);
-  const totalReplies = tracked.reduce((s, t) => s + (t.metrics?.replyCount ?? 0), 0);
   const totalBookmarks = tracked.reduce((s, t) => s + (t.metrics?.bookmarkCount ?? 0), 0);
   const totalQuotes = tracked.reduce((s, t) => s + (t.metrics?.quoteCount ?? 0), 0);
-  const avgRate = totalImpressions > 0 ? (totalEngagements / totalImpressions) * 100 : 0;
+  const totalClicks = posted.reduce((s, t) => s + (t.clickMetrics?.totalClicks ?? 0), 0);
+  const totalUniqueClicks = posted.reduce((s, t) => s + (t.clickMetrics?.uniqueClicks ?? 0), 0);
+  const clickThroughRate = totalImpressions > 0 ? (totalClicks / totalImpressions) * 100 : 0;
   const avgImpPerPost = tracked.length > 0 ? totalImpressions / tracked.length : 0;
   const avgEngPerPost = tracked.length > 0 ? totalEngagements / tracked.length : 0;
 
@@ -110,14 +110,14 @@ export default async function AnalyticsPage() {
               <div className="stat-sub">Likes + retweets + replies</div>
             </div>
             <div className="stat-card amber">
-              <div className="stat-label">Total likes</div>
-              <div className="stat-value">{compact(totalLikes)}</div>
-              <div className="stat-sub">{compact(totalBookmarks)} bookmarks &middot; {compact(totalQuotes)} quotes</div>
+              <div className="stat-label">Tracked clicks</div>
+              <div className="stat-value">{compact(totalClicks)}</div>
+              <div className="stat-sub">{compact(totalUniqueClicks)} unique visitors</div>
             </div>
             <div className="stat-card red">
-              <div className="stat-label">Engagement rate</div>
-              <div className="stat-value">{avgRate.toFixed(2)}%</div>
-              <div className="stat-sub">{compact(totalRetweets)} retweets &middot; {compact(totalReplies)} replies</div>
+              <div className="stat-label">Click-through rate</div>
+              <div className="stat-value">{clickThroughRate.toFixed(2)}%</div>
+              <div className="stat-sub">{compact(totalLikes)} likes &middot; {compact(totalBookmarks)} bookmarks &middot; {compact(totalQuotes)} quotes</div>
             </div>
           </div>
 

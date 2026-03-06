@@ -38,6 +38,8 @@ export interface GeneratePostOptions {
   date?: string;
   /** Insights from prior analytics to iterate toward winning patterns. */
   iterationGuidance?: string;
+  /** Characters to reserve for a tracked link appended after generation. */
+  reserveChars?: number;
 }
 
 /** Strip quotes, markdown fences, and "Tweet:"-style prefixes so validation doesn't fail on formatting. */
@@ -71,6 +73,7 @@ export async function generatePost(
   const sport = (fetchedData.sport ?? "sports").toLowerCase();
   const date = options.date ?? new Date().toISOString().slice(0, 10);
   const angle = options.angle ?? "film review, feedback, or preparation (pick one)";
+  const maxBodyLength = Math.max(180, MAX_TWEET_LEN - Math.max(0, options.reserveChars ?? 0));
   const avoidBlock =
     (options.recentTweets?.length ?? 0) > 0
       ? `\nDo NOT repeat or closely mimic these recent tweets:\n${options.recentTweets!.slice(0, 12).map((t) => `- ${t}`).join("\n")}`
@@ -83,6 +86,7 @@ export async function generatePost(
     .replace(/\{angle\}/g, angle)
     .replace(/\{avoid_block\}/g, avoidBlock)
     .replace(/\{iteration_block\}/g, iterationBlock);
+  userMessage += `\nReserve space for a short tracking link appended automatically. Keep the body under ${maxBodyLength} characters.`;
 
   const clientOptions: ConstructorParameters<typeof OpenAI>[0] = { apiKey: OPENAI_API_KEY };
   if (!USE_OPENAI_API && LLM_BASE_URL) clientOptions.baseURL = LLM_BASE_URL;
@@ -126,7 +130,11 @@ export async function generatePost(
   return lastContent;
 }
 
-export function fillFallbackTemplate(sport: string, fetchedData: FetchedData): string {
+export function fillFallbackTemplate(
+  sport: string,
+  fetchedData: FetchedData,
+  options: { reserveChars?: number } = {}
+): string {
   let templatePath = resolve(PROMPTS_DIR, "templates", `${sport}_template.txt`);
   if (!existsSync(templatePath)) {
     templatePath = resolve(PROMPTS_DIR, "templates", "nba_template.txt");
@@ -135,7 +143,8 @@ export function fillFallbackTemplate(sport: string, fetchedData: FetchedData): s
   const date = fetchedData.date ?? "";
   let summary = fetchedData.summary ?? "No games today.";
   const placeholderLen = "{date}".length + "{summary}".length;
-  const maxSummaryLen = MAX_TWEET_LEN - template.length - date.length + placeholderLen;
+  const reservedChars = Math.max(0, options.reserveChars ?? 0);
+  const maxSummaryLen = MAX_TWEET_LEN - reservedChars - template.length - date.length + placeholderLen;
   if (summary.length > maxSummaryLen) {
     summary = summary.slice(0, maxSummaryLen - 3) + "...";
   }
@@ -144,5 +153,5 @@ export function fillFallbackTemplate(sport: string, fetchedData: FetchedData): s
     .replace("{date}", date)
     .replace("{summary}", summary)
     .replace("{top_game}", typeof topGame === "object" ? JSON.stringify(topGame) : String(topGame));
-  return filled.trim().slice(0, MAX_TWEET_LEN);
+  return filled.trim().slice(0, Math.max(0, MAX_TWEET_LEN - reservedChars));
 }
