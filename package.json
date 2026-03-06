@@ -2,9 +2,9 @@
   "name": "x-automation-monorepo",
   "private": true,
   "scripts": {
-    "dev": "npm --prefix next-app run dev",
-    "build": "npm --prefix next-app run build",
-    "start": "npm --prefix next-app run start",
-    "lint": "npm --prefix next-app run lint"
+    "dev": "node scripts/run-next.js dev",
+    "build": "node scripts/run-next.js build",
+    "start": "node scripts/run-next.js start",
+    "lint": "node scripts/run-next.js lint"
   }
 }
