@@ -21,4 +21,8 @@ npm run bot:dry-run
 
 ## Deploy
 
-Deploy the repo root to Vercel. The root workspace install now pulls in both apps correctly, and `npm run build` targets `apps/web`.
+Create the Vercel project for the web app with **Root Directory** set to `apps/web`.
+
+Do not set an **Output Directory** override unless you also change Next.js `distDir`.
+
+The bot is not a Vercel app. It runs from GitHub Actions via the root workflow.
