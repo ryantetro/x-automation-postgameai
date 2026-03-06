@@ -5,4 +5,5 @@
 
 ## Vercel (dashboard)
 
-Set **Root Directory** to **`next-app`** in Vercel → Project Settings → General. Then deploy. See [next-app/README.md](./next-app/README.md).
+**Required:** In Vercel → your project → **Settings** → **General** → **Root Directory**, set to **`next-app`** and save.  
+Without this, the build fails with "No Next.js version detected" because the repo root has no Next app. After setting it, redeploy.
