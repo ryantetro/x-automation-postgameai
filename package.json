@@ -1,10 +1,23 @@
 {
-  "name": "x-automation-monorepo",
+  "name": "x-automation",
   "private": true,
+  "workspaces": [
+    "apps/web",
+    "apps/postgame-x-bot"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "dev": "node scripts/run-next.js dev",
-    "build": "node scripts/run-next.js build",
-    "start": "node scripts/run-next.js start",
-    "lint": "node scripts/run-next.js lint"
+    "dev": "npm run dev --workspace @x-automation/web",
+    "build": "npm run build --workspace @x-automation/web",
+    "start": "npm run start --workspace @x-automation/web",
+    "lint": "npm run lint --workspace @x-automation/web",
+    "bot:post": "npm run post --workspace @x-automation/postgame-x-bot",
+    "bot:dry-run": "npm run dry-run --workspace @x-automation/postgame-x-bot",
+    "bot:test": "npm run test --workspace @x-automation/postgame-x-bot",
+    "bot:analytics:pull": "npm run analytics:pull --workspace @x-automation/postgame-x-bot",
+    "bot:analytics:report": "npm run analytics:report --workspace @x-automation/postgame-x-bot",
+    "bot:analytics:backfill": "npm run analytics:backfill --workspace @x-automation/postgame-x-bot"
   }
 }

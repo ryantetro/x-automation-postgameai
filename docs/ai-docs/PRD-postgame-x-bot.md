@@ -61,7 +61,7 @@ Consistency is the hardest part of marketing on X. Between building product and 
 └─────────────┘     └──────────────┘     └─────────────┘     └──────────┘
        │                    │                                       │
        │              ┌─────┴──────┐                                │
-       │              │  Fallback:  │                                │
+       │              │  Fallback: │                                │
        └─────────────▶│  ESPN API  │                          postgame.ai
                       └────────────┘                          (link in bio
                                                                + every post)
@@ -220,7 +220,7 @@ Follow your system instructions. The tweet MUST be under 280 characters.
 ## Project Structure
 
 ```text
-postgame-x-bot/
+apps/postgame-x-bot/
 ├── README.md
 ├── PRD.md
 ├── requirements.txt          # tweepy, openai, requests, python-dotenv
@@ -243,6 +243,74 @@ postgame-x-bot/
 │       └── mlb_template.txt
 └── logs/
     └── posts.log             # Post history with timestamps
+```
+
+### GitHub Actions Workflow (`.github/workflows/post-daily.yml`)
+
+```yaml
+name: Post to X (6am & 6pm ET)
+
+on:
+  schedule:
+    # 6am ET (11:00 UTC) and 6pm ET (23:00 UTC)
+    - cron: '0 11 * * *'
+    - cron: '0 23 * * *'
+  workflow_dispatch:  # Allow manual run
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run bot
+        env:
+          X_CONSUMER_KEY: ${{ secrets.X_CONSUMER_KEY }}
+          X_CONSUMER_SECRET: ${{ secrets.X_CONSUMER_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          API_SPORTS_KEY: ${{ secrets.API_SPORTS_KEY }}
+          TARGET_SPORT: ${{ vars.TARGET_SPORT || 'nba' }}
+          POST_ENABLED: ${{ vars.POST_ENABLED || 'true' }}
+        run: python src/main.py
+```
+
+### `.env.example`
+
+```env
+# X (Twitter) API — OAuth 1.0
+X_CONSUMER_KEY=
+X_CONSUMER_SECRET=
+X_ACCESS_TOKEN=
+X_ACCESS_TOKEN_SECRET=
+
+# OpenAI
+OPENAI_API_KEY=
+
+# API-Sports
+API_SPORTS_KEY=
+
+# Config
+TARGET_SPORT=nba
+POST_ENABLED=true
+```
+
+### `requirements.txt`
+
+```text
+tweepy>=4.14.0
+openai>=1.0.0
+requests>=2.31.0
+python-dotenv>=1.0.0
 ```
 
 ---
@@ -302,6 +370,16 @@ postgame-x-bot/
 | Posts sound robotic | Low engagement, brand harm | Weekly prompt review; keep examples and constraints specific |
 | API-Sports rate limit | No data | 100 req/day sufficient; batch into 3–5 calls max[^2] |
 | X flags account as bot | Suspension | Use "Automated App or Bot"; ≤3 posts/day; vary content |
+
+---
+
+## Open Questions
+
+- [ ] Bot respond to replies/mentions, or post-only for MVP?
+- [ ] Start with NBA + NFL, or follow in-season sports?
+- [ ] Tag team/player accounts for reach (higher spam risk)?
+- [ ] At what impression level is X API Basic ($200/mo) for analytics worth it?[^13]
+- [ ] Post during off-season or pause to preserve quota?
 
 ---
 

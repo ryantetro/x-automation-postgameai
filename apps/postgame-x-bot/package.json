@@ -1,5 +1,5 @@
 {
-  "name": "postgame-x-bot",
+  "name": "@x-automation/postgame-x-bot",
   "version": "1.0.0",
   "description": "Automated X (Twitter) bot for postgame.ai — fetch sports data, generate posts with OpenAI, publish twice daily",
   "type": "module",
@@ -21,13 +21,13 @@
     "node": ">=18"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "openai": "^4.73.0",
-    "twitter-api-v2": "^1.17.2"
+    "dotenv": "16.6.1",
+    "openai": "4.104.0",
+    "twitter-api-v2": "1.29.0"
   },
   "devDependencies": {
-    "@types/node": "^22.10.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
+    "@types/node": "22.19.13",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3"
   }
 }

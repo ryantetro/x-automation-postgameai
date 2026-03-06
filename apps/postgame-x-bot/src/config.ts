@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "..");
-const WORKSPACE_ROOT = resolve(REPO_ROOT, "..");
+const WORKSPACE_ROOT = resolve(REPO_ROOT, "../..");
 
 // Load env: bot .env first, then workspace .env.local and .env (so x-automation/.env.local works)
 dotenv.config({ path: resolve(REPO_ROOT, ".env") });

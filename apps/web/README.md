@@ -13,7 +13,7 @@ Crypto-terminal style dashboard for your automated postgame X bot.
 
 By default the app reads live analytics JSON from:
 
-`https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/postgame-x-bot/state/tweet-analytics.json`
+`https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/apps/postgame-x-bot/state/tweet-analytics.json`
 
 Override with:
 
@@ -23,7 +23,7 @@ ANALYTICS_JSON_URL=https://your-domain-or-raw-json-url
 
 If remote fetch fails, it falls back to local files when present:
 
-- `next-app/public/tweet-analytics.json`
+- `apps/web/public/tweet-analytics.json`
 - `../postgame-x-bot/state/tweet-analytics.json`
 
 ## Local Run
@@ -37,5 +37,4 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Deploy
 
-Deploy `next-app` to Vercel and set `ANALYTICS_JSON_URL` only if you want a custom data endpoint.
-
+Deploy the repo root to Vercel. The root build script targets `apps/web`. Set `ANALYTICS_JSON_URL` only if you want a custom data endpoint.

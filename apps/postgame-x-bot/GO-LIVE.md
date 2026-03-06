@@ -29,9 +29,9 @@ The bot runs on **GitHub Actions**, so the code must be in a GitHub repo.
 
 **Option A — Bot as its own repo (simplest)**  
 - Create a new repo on GitHub (e.g. `postgame-x-bot`).  
-- From your machine, inside the `postgame-x-bot` folder:
+- From your machine, inside the `apps/postgame-x-bot` folder:
   ```bash
-  cd postgame-x-bot
+  cd apps/postgame-x-bot
   git init
   git add .
   git commit -m "Initial commit: postgame X bot"
@@ -39,7 +39,7 @@ The bot runs on **GitHub Actions**, so the code must be in a GitHub repo.
   git branch -M main
   git push -u origin main
   ```
-  The workflow at `postgame-x-bot/.github/workflows/post-daily.yml` will run from the repo root.
+  The workflow at `apps/postgame-x-bot/.github/workflows/post-daily.yml` will run from the repo root.
 
 **Option B — Bot inside this workspace (x-automation)**  
 - Create a repo for the whole workspace (e.g. `x-automation`).  
@@ -53,7 +53,7 @@ The bot runs on **GitHub Actions**, so the code must be in a GitHub repo.
   git branch -M main
   git push -u origin main
   ```
-  Then use the workflow at **`x-automation/.github/workflows/post-daily.yml`** (see step 4 below). That workflow runs the bot from the `postgame-x-bot` subfolder.
+  Then use the workflow at **`x-automation/.github/workflows/post-daily.yml`** (see step 4 below). That workflow runs the bot from the `apps/postgame-x-bot` subfolder.
 
 ---
 
@@ -85,11 +85,11 @@ Under **Variables** you can set:
 
 ## 5. Use the right workflow (if bot is inside a monorepo)
 
-- If the **repo root is the bot** (you pushed only `postgame-x-bot`):  
-  The workflow in `postgame-x-bot/.github/workflows/post-daily.yml` is used automatically. Skip to step 6.
+- If the **repo root is the bot** (you pushed only `apps/postgame-x-bot`):  
+  The workflow in `apps/postgame-x-bot/.github/workflows/post-daily.yml` is used automatically. Skip to step 6.
 
-- If the **repo root is the workspace** (e.g. `x-automation`) and the bot is in `postgame-x-bot/`:  
-  GitHub only runs workflows under the repo root’s `.github/workflows/`. So you need a workflow at the **root** that runs the bot in `postgame-x-bot`. There is a root workflow at `x-automation/.github/workflows/post-daily.yml` that does this; if you don’t have it, copy the one from `postgame-x-bot/.github/workflows/` into the root `.github/workflows/` and add `working-directory: postgame-x-bot` to the steps that run `npm ci` and `npx tsx src/main.ts`.
+- If the **repo root is the workspace** (e.g. `x-automation`) and the bot is in `apps/postgame-x-bot/`:  
+  GitHub only runs workflows under the repo root’s `.github/workflows/`. So you need a workflow at the **root** that runs the bot in `apps/postgame-x-bot`. There is a root workflow at `x-automation/.github/workflows/post-daily.yml` that does this; if you don’t have it, copy the one from `apps/postgame-x-bot/.github/workflows/` into the root `.github/workflows/` and add `working-directory: apps/postgame-x-bot` to the steps that run `npm ci` and `npx tsx src/main.ts`.
 
 ---
 

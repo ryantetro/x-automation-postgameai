@@ -6,7 +6,7 @@ Automated sports content for X (Twitter): fetch data from API-Sports (with ESPN 
 
 1. **Clone and enter the project**
    ```bash
-   cd postgame-x-bot
+   cd apps/postgame-x-bot
    ```
 
 2. **Copy env template and add secrets**
@@ -62,7 +62,7 @@ On GitHub Actions, the workflow now auto-commits `state/tweet-analytics.json` af
 
 Workflow runs at **6am and 6pm ET** (cron) and supports manual `workflow_dispatch`. Add the same env vars as **Repository secrets** (`X_CONSUMER_KEY`, etc.). Optionally set **Variables**: `TARGET_SPORT` (default `nba`), `POST_ENABLED` (default `true`), `ANALYTICS_ENABLED`, `ANALYTICS_LOOKBACK_DAYS`, `ANALYTICS_MIN_AGE_MINUTES`, `ANALYTICS_MAX_REFRESH`.
 
-If this repo lives inside a monorepo, copy `.github/workflows/post-daily.yml` to the root `.github/workflows/` and set `working-directory: postgame-x-bot` (or `cd postgame-x-bot`) before install/run.
+If you are running from the monorepo root, use `npm run bot:dry-run` or `npm run bot:post`. The root GitHub Actions workflow already targets `apps/postgame-x-bot`.
 
 ## PRD
 

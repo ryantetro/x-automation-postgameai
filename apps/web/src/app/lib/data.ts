@@ -40,7 +40,7 @@ export interface AnalyticsStore {
 const BOT_STATE_FILE = resolve(process.cwd(), "..", "postgame-x-bot", "state", "tweet-analytics.json");
 const REMOTE_STATE_URL =
   process.env.ANALYTICS_JSON_URL ??
-  "https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/postgame-x-bot/state/tweet-analytics.json";
+  "https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/apps/postgame-x-bot/state/tweet-analytics.json";
 
 export async function loadStore(): Promise<AnalyticsStore> {
   try {
