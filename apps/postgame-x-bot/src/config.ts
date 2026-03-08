@@ -12,6 +12,9 @@ dotenv.config({ path: resolve(WORKSPACE_ROOT, ".env.local") });
 dotenv.config({ path: resolve(WORKSPACE_ROOT, ".env") });
 
 export const MAX_TWEET_LEN = 280;
+export const MAX_THREADS_TEXT_LEN = 500;
+export const SUPPORTED_POST_TARGETS = ["x", "threads"] as const;
+export type PostTarget = (typeof SUPPORTED_POST_TARGETS)[number];
 
 function getEnv(key: string, defaultValue = ""): string {
   return (process.env[key] ?? defaultValue).trim();
@@ -28,6 +31,10 @@ export const X_CONSUMER_KEY = getEnv("X_CONSUMER_KEY") || getEnv("X_APP_KEY");
 export const X_CONSUMER_SECRET = getEnv("X_CONSUMER_SECRET") || getEnv("X_APP_SECRET");
 export const X_ACCESS_TOKEN = getEnv("X_ACCESS_TOKEN");
 export const X_ACCESS_TOKEN_SECRET = getEnv("X_ACCESS_TOKEN_SECRET") || getEnv("X_ACCESS_SECRET");
+
+// Threads (Meta Graph API)
+export const THREADS_ACCESS_TOKEN = getEnv("THREADS_ACCESS_TOKEN");
+export const THREADS_GRAPH_API_VERSION = getEnv("THREADS_GRAPH_API_VERSION", "v1.0");
 
 // LLM: If OPENAI_API_KEY is set, use OpenAI's API. Else use LLM_API_KEY + LLM_BASE_URL (e.g. Gemini).
 export const OPENAI_API_KEY = getEnv("OPENAI_API_KEY") || getEnv("LLM_API_KEY");
@@ -82,6 +89,7 @@ export const POST_ENABLED = !["false", "0", "no"].includes(postEnabledRaw);
 export const PROMPTS_DIR = resolve(REPO_ROOT, "prompts");
 export const LOGS_DIR = resolve(REPO_ROOT, "logs");
 export const STATE_DIR = resolve(REPO_ROOT, "state");
+export const ANALYTICS_STORE_FILENAME = getEnv("ANALYTICS_STORE_FILENAME", "tweet-analytics.json");
 export const ANALYTICS_ENABLED = !["false", "0", "no"].includes(getEnv("ANALYTICS_ENABLED", "true").toLowerCase());
 export const ANALYTICS_LOOKBACK_DAYS = Math.max(1, getIntEnv("ANALYTICS_LOOKBACK_DAYS", 21));
 export const ANALYTICS_MIN_AGE_MINUTES = Math.max(5, getIntEnv("ANALYTICS_MIN_AGE_MINUTES", 45));
@@ -128,18 +136,34 @@ export const NEWS_ALLOWED_DOMAINS = (() => {
 
 export const NEWS_ALLOWED_SOURCES = parseCsvEnv("NEWS_ALLOWED_SOURCES");
 
+function parsePostTargets(): PostTarget[] {
+  const configured = parseCsvEnv("POST_TARGETS");
+  const normalized = configured.length > 0 ? configured : ["x"];
+  const filtered = normalized.filter((value): value is PostTarget =>
+    SUPPORTED_POST_TARGETS.includes(value as PostTarget)
+  );
+  return filtered.length > 0 ? [...new Set(filtered)] : ["x"];
+}
+
+export const POST_TARGETS = parsePostTargets();
+export const POSTS_TO_X = POST_TARGETS.includes("x");
+export const POSTS_TO_THREADS = POST_TARGETS.includes("threads");
+export const MAX_POST_LEN = POSTS_TO_X ? MAX_TWEET_LEN : MAX_THREADS_TEXT_LEN;
+
 export interface ValidateConfigOptions {
   requireX?: boolean;
+  requireThreads?: boolean;
   requireOpenai?: boolean;
   requireApiSports?: boolean;
 }
 
 export function validateConfig(options: ValidateConfigOptions = {}): string[] {
-  const { requireX = true, requireOpenai = true, requireApiSports = false } = options;
+  const { requireX = true, requireThreads = false, requireOpenai = true, requireApiSports = false } = options;
   const missing: string[] = [];
   if (requireX && (!X_CONSUMER_KEY || !X_CONSUMER_SECRET || !X_ACCESS_TOKEN || !X_ACCESS_TOKEN_SECRET)) {
     missing.push("X_CONSUMER_KEY/X_APP_KEY", "X_CONSUMER_SECRET/X_APP_SECRET", "X_ACCESS_TOKEN", "X_ACCESS_TOKEN_SECRET/X_ACCESS_SECRET");
   }
+  if (requireThreads && !THREADS_ACCESS_TOKEN) missing.push("THREADS_ACCESS_TOKEN");
   if (requireOpenai && !OPENAI_API_KEY) missing.push("OPENAI_API_KEY or LLM_API_KEY");
   if (requireApiSports && !API_SPORTS_KEY) missing.push("API_SPORTS_KEY");
   return [...new Set(missing)];

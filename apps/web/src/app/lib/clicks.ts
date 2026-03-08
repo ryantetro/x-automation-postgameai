@@ -9,6 +9,11 @@ export interface ClickMetricsSnapshot {
   uniqueClicks: number;
 }
 
+export interface ClickMetricsLookup {
+  available: boolean;
+  metrics: Map<string, ClickMetricsSnapshot>;
+}
+
 interface LocalClickRecord {
   totalClicks: number;
   uniqueClicks: number;
@@ -99,12 +104,12 @@ export function buildVisitorFingerprint(headers: Headers): string | null {
   return createHash("sha256").update(basis).digest("hex");
 }
 
-export async function getClickMetricsForSlugs(slugs: string[]): Promise<Map<string, ClickMetricsSnapshot>> {
+export async function getClickMetricsForSlugs(slugs: string[]): Promise<ClickMetricsLookup> {
   const uniqueSlugs = [...new Set(slugs.filter(Boolean))];
   const fetchedAt = new Date().toISOString();
-  const out = new Map<string, ClickMetricsSnapshot>();
+  const metrics = new Map<string, ClickMetricsSnapshot>();
 
-  if (uniqueSlugs.length === 0) return out;
+  if (uniqueSlugs.length === 0) return { available: false, metrics };
 
   if (getRestConfig()) {
     const [totals, uniques] = await Promise.all([
@@ -113,32 +118,27 @@ export async function getClickMetricsForSlugs(slugs: string[]): Promise<Map<stri
     ]);
 
     uniqueSlugs.forEach((slug, index) => {
-      out.set(slug, {
+      metrics.set(slug, {
         fetchedAt,
         totalClicks: toCount(totals?.[index]),
         uniqueClicks: toCount(uniques?.[index]),
       });
     });
-    return out;
+    return { available: true, metrics };
   }
 
-  if (process.env.NODE_ENV === "production") {
-    uniqueSlugs.forEach((slug) => {
-      out.set(slug, { fetchedAt, totalClicks: 0, uniqueClicks: 0 });
-    });
-    return out;
-  }
+  if (process.env.NODE_ENV === "production") return { available: false, metrics };
 
   const store = await readLocalStore();
   uniqueSlugs.forEach((slug) => {
     const row = store[slug];
-    out.set(slug, {
+    metrics.set(slug, {
       fetchedAt,
       totalClicks: row?.totalClicks ?? 0,
       uniqueClicks: row?.uniqueClicks ?? 0,
     });
   });
-  return out;
+  return { available: true, metrics };
 }
 
 export async function recordTrackedClick(

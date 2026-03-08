@@ -7,7 +7,7 @@ import {
   LLM_BASE_URL,
   ACTIVE_LLM_MODEL,
   PROMPTS_DIR,
-  MAX_TWEET_LEN,
+  MAX_POST_LEN,
 } from "./config.js";
 import type { FetchedData } from "./fetchData.js";
 import type { NewsContext } from "./fetchNews.js";
@@ -26,7 +26,7 @@ Tweet rules:
 5. Do not sound like a product ad. The body should stand on its own as a valuable post even without the brand tag.
 6. Mention {brand_name} only once, in a light tag at the end as "{brand_name} · {brand_website}".
 7. Prefer zero hashtags. Use one only if it genuinely adds context.
-8. Stay under 275 characters before any tracked link is appended.
+8. Stay within the active platform character limit before any tracked link is appended.
 9. Archetype rule: {archetype_guidance}
 10. Do not tell the reader what to do. No "coaches need to", "record your thoughts", "document your thoughts", "make every word count", or other instructional CTA language in the main body.
 
@@ -346,7 +346,7 @@ export async function generatePost(
   const sport = (fetchedData.sport ?? "sports").toLowerCase();
   const date = options.date ?? new Date().toISOString().slice(0, 10);
   const angle = options.angle ?? "film review, feedback, or preparation (pick one)";
-  const maxBodyLength = Math.max(180, MAX_TWEET_LEN - Math.max(0, options.reserveChars ?? 0));
+  const maxBodyLength = Math.max(180, MAX_POST_LEN - Math.max(0, options.reserveChars ?? 0));
   const archetype = selectArchetype(sport, date, Boolean(options.newsContext?.usedNews));
   const archetypeGuidance = ARCHETYPE_GUIDANCE[archetype];
   const avoidBlock =
@@ -399,14 +399,16 @@ Rules for news usage:
         if (content) {
           const hasName = content.includes(BRAND_NAME);
           const hasWebsite = content.includes(BRAND_WEBSITE);
-          if ((!hasName || !hasWebsite) && content.length <= MAX_TWEET_LEN - BRAND_SUFFIX.length) {
+          if ((!hasName || !hasWebsite) && content.length <= MAX_POST_LEN - BRAND_SUFFIX.length) {
             content = `${content.trim()}${BRAND_SUFFIX}`;
           }
           if (content.length > maxBodyLength) {
             const compressed = await compressTweetToFit(client, system, content, maxBodyLength);
             if (compressed) content = compressed;
           }
-          if (content.length > 280) console.warn(`LLM returned ${content.length} chars (max 280)`);
+          if (content.length > MAX_POST_LEN) {
+            console.warn(`LLM returned ${content.length} chars (max ${MAX_POST_LEN})`);
+          }
           if (!content.includes(BRAND_NAME)) console.warn(`LLM response missing ${BRAND_NAME}`);
           if (!content.includes(BRAND_WEBSITE)) console.warn(`LLM response missing ${BRAND_WEBSITE}`);
           if (soundsLikeAd(content)) {
@@ -452,7 +454,7 @@ export function fillFallbackTemplate(
   const body = `${sportFacts[factKey]} The best staffs usually win the review before they win the next game.`;
   let text = `${body} ${BRAND_NAME} · ${BRAND_WEBSITE} ${hashtags}`.trim();
   const reservedChars = Math.max(0, options.reserveChars ?? 0);
-  const maxLen = Math.max(0, MAX_TWEET_LEN - reservedChars);
+  const maxLen = Math.max(0, MAX_POST_LEN - reservedChars);
   if (text.length > maxLen) {
     text = `${sportFacts[factKey]} ${BRAND_NAME} · ${BRAND_WEBSITE} ${hashtags}`.trim();
   }

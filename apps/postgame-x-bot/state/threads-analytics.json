@@ -1,0 +1,104 @@
+{
+  "version": 2,
+  "updatedAt": "2026-03-08T19:41:12.808Z",
+  "tweets": [
+    {
+      "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
+      "postedAt": "2026-03-08T19:19:55.377Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Caleb Wilson's thumb injury is a tough break for UNC and his NBA prospects. It highlights the need for coaches to focus on each player's adaptability and development in critical moments. postgame AI · getpostgame.ai https://getpostgame.ai/r/1f1b572b-53cd-42a2-a45f-3337e617c92f",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What happened to Caleb Wilson? How UNC basketball star's thumb injury impacts Tar Heels, NBA draft",
+      "newsArticleUrl": "https://www.sportingnews.com/us/ncaa-basketball/news/what-happened-caleb-wilson-unc-basketball-thumb-injury-nba-draft/b014c8af9b47c216701bc47a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-03-07T14:00:00Z",
+      "trackedUrl": "https://getpostgame.ai/r/1f1b572b-53cd-42a2-a45f-3337e617c92f",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        },
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ]
+    },
+    {
+      "runId": "8f546dce-9f20-47cc-a975-b5a428c8debb",
+      "threadsPostId": "18118755823619749",
+      "postedAt": "2026-03-08T19:30:51.114Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "posted",
+      "text": "Caleb Wilson's thumb injury is a tough blow for UNC and his NBA prospects. Injuries remind us to focus on development for every player on the roster—who's ready to step up? Use those postgame insights to build depth and resilience. postgame AI · getpostgame.ai https://getpostgame.ai/r/8f546dce-9f20-47cc-a975-b5a428c8debb",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What happened to Caleb Wilson? How UNC basketball star's thumb injury impacts Tar Heels, NBA draft",
+      "newsArticleUrl": "https://www.sportingnews.com/us/ncaa-basketball/news/what-happened-caleb-wilson-unc-basketball-thumb-injury-nba-draft/b014c8af9b47c216701bc47a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-03-07T14:00:00Z",
+      "trackedUrl": "https://getpostgame.ai/r/8f546dce-9f20-47cc-a975-b5a428c8debb",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "18118755823619749"
+        }
+      ],
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-03-08T19:31:08.719Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 0,
+        "engagementCount": 0,
+        "engagementRate": null
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-08T19:31:08.719Z"
+    }
+  ],
+  "threadsUserInsights": {
+    "fetchedAt": "2026-03-08T19:41:12.807Z",
+    "views": 0,
+    "likes": 0,
+    "replies": 0,
+    "reposts": 0,
+    "quotes": 0,
+    "clicks": 0,
+    "followersCount": 0,
+    "clicksByUrl": [
+      {
+        "linkUrl": "https://getpostgame.ai/r/8f546dce-9f20-47cc-a975-b5a428c8debb",
+        "value": 0
+      },
+      {
+        "linkUrl": "http://getpostgame.ai/",
+        "value": 0
+      }
+    ]
+  }
+}

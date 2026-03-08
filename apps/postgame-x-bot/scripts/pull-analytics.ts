@@ -10,26 +10,16 @@ import {
   loadAnalyticsStore,
   saveAnalyticsStore,
   refreshMetricsForStore,
+  refreshThreadsMetricsForStore,
   pruneStore,
 } from "../src/analytics.js";
 import { getXClient } from "../src/postToX.js";
+import { THREADS_ACCESS_TOKEN } from "../src/config.js";
 
 async function main(): Promise<number> {
   if (!ANALYTICS_ENABLED) {
     console.log("ANALYTICS_ENABLED=false; skipping metrics pull.");
     return 0;
-  }
-
-  const missing = validateConfig({ requireX: true, requireOpenai: false, requireApiSports: false });
-  if (missing.length > 0) {
-    console.error("Missing required env vars for analytics:", missing.join(", "));
-    return 1;
-  }
-
-  const xClient = getXClient();
-  if (!xClient) {
-    console.error("Unable to initialize X client; check OAuth env vars.");
-    return 1;
   }
 
   const store = loadAnalyticsStore(ANALYTICS_STORE_FILE);
@@ -38,16 +28,48 @@ async function main(): Promise<number> {
     return 0;
   }
 
-  const refreshed = await refreshMetricsForStore(store, xClient, {
-    lookbackDays: ANALYTICS_LOOKBACK_DAYS,
-    minAgeMinutes: ANALYTICS_MIN_AGE_MINUTES,
-    maxTweets: ANALYTICS_MAX_REFRESH,
-  });
+  let refreshedX = { updated: 0, attempted: 0 };
+  const hasXPosts = store.tweets.some((tweet) => !!tweet.tweetId);
+  if (hasXPosts) {
+    const missing = validateConfig({ requireX: true, requireOpenai: false, requireApiSports: false });
+    if (missing.length > 0) {
+      console.warn("Skipping X analytics refresh due to missing env vars:", missing.join(", "));
+    } else {
+      const xClient = getXClient();
+      if (!xClient) {
+        console.warn("Skipping X analytics refresh because the X client could not be initialized.");
+      } else {
+        refreshedX = await refreshMetricsForStore(store, xClient, {
+          lookbackDays: ANALYTICS_LOOKBACK_DAYS,
+          minAgeMinutes: ANALYTICS_MIN_AGE_MINUTES,
+          maxTweets: ANALYTICS_MAX_REFRESH,
+        });
+      }
+    }
+  }
+
+  let refreshedThreads = { updated: 0, attempted: 0, userInsightsUpdated: false };
+  const hasThreadsPosts = store.tweets.some((tweet) => !!tweet.threadsPostId);
+  if (hasThreadsPosts) {
+    if (!THREADS_ACCESS_TOKEN) {
+      console.warn("Skipping Threads analytics refresh because THREADS_ACCESS_TOKEN is not set.");
+    } else {
+      refreshedThreads = await refreshThreadsMetricsForStore(store, {
+        lookbackDays: ANALYTICS_LOOKBACK_DAYS,
+        minAgeMinutes: ANALYTICS_MIN_AGE_MINUTES,
+        maxTweets: ANALYTICS_MAX_REFRESH,
+      });
+    }
+  }
 
   pruneStore(store);
   saveAnalyticsStore(store, ANALYTICS_STORE_FILE);
 
-  console.log(`Analytics refresh complete: updated ${refreshed.updated} tweet(s), attempted ${refreshed.attempted}.`);
+  console.log(
+    `Analytics refresh complete: X updated ${refreshedX.updated}/${refreshedX.attempted}, Threads updated ${refreshedThreads.updated}/${refreshedThreads.attempted}${
+      refreshedThreads.userInsightsUpdated ? ", Threads user insights updated" : ""
+    }.`
+  );
   return 0;
 }
 

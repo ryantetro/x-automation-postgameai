@@ -1,21 +1,32 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import type { TwitterApi } from "twitter-api-v2";
-import { STATE_DIR } from "./config.js";
+import { ANALYTICS_STORE_FILENAME, STATE_DIR, THREADS_ACCESS_TOKEN } from "./config.js";
 
-export const ANALYTICS_STORE_FILE = resolve(STATE_DIR, "tweet-analytics.json");
-const STORE_VERSION = 1;
+export const ANALYTICS_STORE_FILE = resolve(STATE_DIR, ANALYTICS_STORE_FILENAME);
+const STORE_VERSION = 2;
 
 export type TweetStatus = "posted" | "dry_run" | "failed";
 export type ContentMode = "sports_only" | "news_preferred";
+export type PublishPlatform = "x" | "threads";
+
+export interface PlatformPublishResult {
+  platform: PublishPlatform;
+  status: TweetStatus;
+  postId?: string;
+  statusCode?: number;
+  error?: string;
+}
 
 export interface TweetMetricsSnapshot {
+  platform?: PublishPlatform;
   fetchedAt: string;
   likeCount: number;
   replyCount: number;
   retweetCount: number;
   quoteCount: number;
   bookmarkCount: number;
+  shareCount?: number;
   impressionCount: number | null;
   engagementCount: number;
   engagementRate: number | null;
@@ -27,9 +38,27 @@ export interface ClickMetricsSnapshot {
   uniqueClicks: number;
 }
 
+export interface ThreadsLinkClickValue {
+  linkUrl: string;
+  value: number;
+}
+
+export interface ThreadsUserInsightsSnapshot {
+  fetchedAt: string;
+  views: number | null;
+  likes: number | null;
+  replies: number | null;
+  reposts: number | null;
+  quotes: number | null;
+  clicks: number | null;
+  followersCount: number | null;
+  clicksByUrl: ThreadsLinkClickValue[];
+}
+
 export interface TweetAnalyticsRecord {
   runId: string;
   tweetId?: string;
+  threadsPostId?: string;
   postedAt: string;
   dateContext: string;
   sport: string;
@@ -46,6 +75,8 @@ export interface TweetAnalyticsRecord {
   newsPublishedAt?: string;
   trackedUrl?: string;
   linkTargetUrl?: string;
+  publishTargets?: PublishPlatform[];
+  publishResults?: PlatformPublishResult[];
   metrics?: TweetMetricsSnapshot;
   clickMetrics?: ClickMetricsSnapshot;
   score?: number;
@@ -56,6 +87,7 @@ export interface AnalyticsStore {
   version: number;
   updatedAt: string;
   tweets: TweetAnalyticsRecord[];
+  threadsUserInsights?: ThreadsUserInsightsSnapshot;
 }
 
 export interface RefreshOptions {
@@ -104,6 +136,10 @@ export function loadAnalyticsStore(path = ANALYTICS_STORE_FILE): AnalyticsStore 
       version: typeof parsed.version === "number" ? parsed.version : STORE_VERSION,
       updatedAt: typeof parsed.updatedAt === "string" ? parsed.updatedAt : new Date().toISOString(),
       tweets,
+      threadsUserInsights:
+        parsed.threadsUserInsights && typeof parsed.threadsUserInsights === "object"
+          ? (parsed.threadsUserInsights as ThreadsUserInsightsSnapshot)
+          : undefined,
     };
   } catch {
     return defaultStore();
@@ -125,6 +161,13 @@ export function upsertTweetRecord(store: AnalyticsStore, record: TweetAnalyticsR
     const byTweetId = store.tweets.findIndex((t) => t.tweetId === record.tweetId);
     if (byTweetId >= 0) {
       store.tweets[byTweetId] = { ...store.tweets[byTweetId], ...record };
+      return;
+    }
+  }
+  if (record.threadsPostId) {
+    const byThreadsId = store.tweets.findIndex((t) => t.threadsPostId === record.threadsPostId);
+    if (byThreadsId >= 0) {
+      store.tweets[byThreadsId] = { ...store.tweets[byThreadsId], ...record };
       return;
     }
   }
@@ -152,7 +195,8 @@ function computeScore(metrics: TweetMetricsSnapshot): number {
     metrics.retweetCount * 2.2 +
     metrics.replyCount * 2.4 +
     metrics.quoteCount * 2.1 +
-    metrics.bookmarkCount * 1.3;
+    metrics.bookmarkCount * 1.3 +
+    (metrics.shareCount ?? 0) * 1.6;
   if (metrics.impressionCount && metrics.impressionCount > 0) {
     const rate = weighted / metrics.impressionCount;
     return Number((rate * 100 + Math.log10(1 + weighted)).toFixed(4));
@@ -187,16 +231,185 @@ function parseTweetMetrics(row: Record<string, unknown>): TweetMetricsSnapshot {
     impressionCount && impressionCount > 0 ? Number((engagementCount / impressionCount).toFixed(6)) : null;
 
   return {
+    platform: "x",
     fetchedAt: now,
     likeCount,
     replyCount,
     retweetCount,
     quoteCount,
     bookmarkCount,
+    shareCount: 0,
     impressionCount,
     engagementCount,
     engagementRate,
   };
+}
+
+interface ThreadsInsightValueRow {
+  value?: unknown;
+  end_time?: unknown;
+  link_url?: unknown;
+}
+
+interface ThreadsInsightRow {
+  name?: unknown;
+  values?: ThreadsInsightValueRow[];
+  total_value?: { value?: unknown };
+  link_total_values?: ThreadsInsightValueRow[];
+}
+
+function threadsEndpoint(path: string): string {
+  return `https://graph.threads.net/v1.0/${path}`;
+}
+
+async function getThreadsJson(
+  path: string,
+  params: URLSearchParams
+): Promise<{ ok: boolean; status: number; json: Record<string, unknown> }> {
+  const response = await fetch(`${threadsEndpoint(path)}?${params.toString()}`, { method: "GET" });
+  let json: Record<string, unknown> = {};
+  try {
+    json = (await response.json()) as Record<string, unknown>;
+  } catch {
+    json = {};
+  }
+  return {
+    ok: response.ok,
+    status: response.status,
+    json,
+  };
+}
+
+function numberFromUnknown(value: unknown): number {
+  return typeof value === "number" && Number.isFinite(value) ? value : 0;
+}
+
+function nullableNumberFromUnknown(value: unknown): number | null {
+  if (value == null) return null;
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function getThreadsMetricValue(row: ThreadsInsightRow | undefined): number | null {
+  if (!row) return null;
+  const totalValue = nullableNumberFromUnknown(row.total_value?.value);
+  if (totalValue !== null) return totalValue;
+
+  const values = Array.isArray(row.values) ? row.values : [];
+  if (values.length === 0) return null;
+  const last = values[values.length - 1];
+  return nullableNumberFromUnknown(last?.value);
+}
+
+function parseThreadsMediaMetrics(rows: ThreadsInsightRow[]): TweetMetricsSnapshot {
+  const byName = new Map<string, ThreadsInsightRow>();
+  for (const row of rows) {
+    if (typeof row.name === "string") byName.set(row.name, row);
+  }
+
+  const fetchedAt = new Date().toISOString();
+  const likeCount = getThreadsMetricValue(byName.get("likes")) ?? 0;
+  const replyCount = getThreadsMetricValue(byName.get("replies")) ?? 0;
+  const repostCount = getThreadsMetricValue(byName.get("reposts")) ?? 0;
+  const quoteCount = getThreadsMetricValue(byName.get("quotes")) ?? 0;
+  const shareCount = getThreadsMetricValue(byName.get("shares")) ?? 0;
+  const impressionCount = getThreadsMetricValue(byName.get("views"));
+  const engagementCount = likeCount + replyCount + repostCount + quoteCount + shareCount;
+  const engagementRate =
+    impressionCount && impressionCount > 0 ? Number((engagementCount / impressionCount).toFixed(6)) : null;
+
+  return {
+    platform: "threads",
+    fetchedAt,
+    likeCount,
+    replyCount,
+    retweetCount: repostCount,
+    quoteCount,
+    bookmarkCount: 0,
+    shareCount,
+    impressionCount,
+    engagementCount,
+    engagementRate,
+  };
+}
+
+async function fetchThreadsMetricsByPostId(ids: string[]): Promise<Map<string, TweetMetricsSnapshot>> {
+  const out = new Map<string, TweetMetricsSnapshot>();
+  if (!THREADS_ACCESS_TOKEN || ids.length === 0) return out;
+
+  for (const id of ids) {
+    const params = new URLSearchParams({
+      metric: "views,likes,replies,reposts,quotes,shares",
+      access_token: THREADS_ACCESS_TOKEN,
+    });
+    const response = await getThreadsJson(`${encodeURIComponent(id)}/insights`, params);
+    if (!response.ok) {
+      const message =
+        typeof response.json.error === "object" && response.json.error && "message" in response.json.error
+          ? String((response.json.error as { message?: unknown }).message ?? "")
+          : `HTTP ${response.status}`;
+      console.warn(`Threads media insights fetch failed for ${id}: ${message}`);
+      continue;
+    }
+
+    const rows = Array.isArray(response.json.data)
+      ? (response.json.data.filter((row) => typeof row === "object" && row != null) as ThreadsInsightRow[])
+      : [];
+    out.set(id, parseThreadsMediaMetrics(rows));
+  }
+
+  return out;
+}
+
+function parseThreadsUserInsights(rows: ThreadsInsightRow[]): ThreadsUserInsightsSnapshot {
+  const byName = new Map<string, ThreadsInsightRow>();
+  for (const row of rows) {
+    if (typeof row.name === "string") byName.set(row.name, row);
+  }
+
+  const clicksRow = byName.get("clicks");
+  const clicksByUrl = Array.isArray(clicksRow?.link_total_values)
+    ? clicksRow!.link_total_values!
+        .map((row) => ({
+          linkUrl: typeof row.link_url === "string" ? row.link_url : "",
+          value: numberFromUnknown(row.value),
+        }))
+        .filter((row) => row.linkUrl.length > 0)
+    : [];
+
+  return {
+    fetchedAt: new Date().toISOString(),
+    views: getThreadsMetricValue(byName.get("views")),
+    likes: getThreadsMetricValue(byName.get("likes")),
+    replies: getThreadsMetricValue(byName.get("replies")),
+    reposts: getThreadsMetricValue(byName.get("reposts")),
+    quotes: getThreadsMetricValue(byName.get("quotes")),
+    clicks: clicksByUrl.reduce((sum, row) => sum + row.value, 0),
+    followersCount: getThreadsMetricValue(byName.get("followers_count")),
+    clicksByUrl,
+  };
+}
+
+async function fetchThreadsUserInsights(): Promise<ThreadsUserInsightsSnapshot | null> {
+  if (!THREADS_ACCESS_TOKEN) return null;
+
+  const params = new URLSearchParams({
+    metric: "views,likes,replies,reposts,quotes,clicks,followers_count",
+    access_token: THREADS_ACCESS_TOKEN,
+  });
+  const response = await getThreadsJson("me/threads_insights", params);
+  if (!response.ok) {
+    const message =
+      typeof response.json.error === "object" && response.json.error && "message" in response.json.error
+        ? String((response.json.error as { message?: unknown }).message ?? "")
+        : `HTTP ${response.status}`;
+    console.warn(`Threads user insights fetch failed: ${message}`);
+    return null;
+  }
+
+  const rows = Array.isArray(response.json.data)
+    ? (response.json.data.filter((row) => typeof row === "object" && row != null) as ThreadsInsightRow[])
+    : [];
+  return parseThreadsUserInsights(rows);
 }
 
 async function fetchTweetsBatch(
@@ -278,6 +491,46 @@ export async function refreshMetricsForStore(
   }
 
   return { updated, attempted: ids.length };
+}
+
+export async function refreshThreadsMetricsForStore(
+  store: AnalyticsStore,
+  options: RefreshOptions
+): Promise<{ updated: number; attempted: number; userInsightsUpdated: boolean }> {
+  const oldestAllowed = Date.now() - options.lookbackDays * 24 * 60 * 60 * 1000;
+
+  const targets = store.tweets
+    .filter((t) => t.status === "posted" && !!t.threadsPostId)
+    .filter((t) => Date.parse(t.postedAt) >= oldestAllowed)
+    .filter((t) => minutesSince(t.postedAt) >= options.minAgeMinutes)
+    .filter((t) => !t.metrics || t.metrics.platform !== "threads" || minutesSince(t.metrics.fetchedAt) >= 60)
+    .sort((a, b) => Date.parse(b.postedAt) - Date.parse(a.postedAt))
+    .slice(0, options.maxTweets);
+
+  const ids = [...new Set(targets.map((t) => t.threadsPostId!).filter(Boolean))];
+  const byId = await fetchThreadsMetricsByPostId(ids);
+
+  let updated = 0;
+  for (const tweet of targets) {
+    if (!tweet.threadsPostId) continue;
+    const metrics = byId.get(tweet.threadsPostId);
+    if (!metrics) continue;
+    tweet.metrics = metrics;
+    tweet.score = computeScore(metrics);
+    tweet.scoreUpdatedAt = new Date().toISOString();
+    updated++;
+  }
+
+  const userInsights = await fetchThreadsUserInsights();
+  if (userInsights) {
+    store.threadsUserInsights = userInsights;
+  }
+
+  return {
+    updated,
+    attempted: ids.length,
+    userInsightsUpdated: Boolean(userInsights),
+  };
 }
 
 function extractHashtags(text: string): string[] {

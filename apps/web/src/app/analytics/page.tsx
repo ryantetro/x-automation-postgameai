@@ -1,4 +1,4 @@
-import { loadStore, compact, linePath, shortDay, sportClass, lastUpdatedStr } from "../lib/data";
+import { loadStore, chartAxisLabels, compact, linePath, sportClass, lastUpdatedStr } from "../lib/data";
 import Sidebar from "../components/Sidebar";
 
 export const dynamic = "force-dynamic";
@@ -14,11 +14,16 @@ export default async function AnalyticsPage() {
   const totalLikes = tracked.reduce((s, t) => s + (t.metrics?.likeCount ?? 0), 0);
   const totalBookmarks = tracked.reduce((s, t) => s + (t.metrics?.bookmarkCount ?? 0), 0);
   const totalQuotes = tracked.reduce((s, t) => s + (t.metrics?.quoteCount ?? 0), 0);
-  const totalClicks = posted.reduce((s, t) => s + (t.clickMetrics?.totalClicks ?? 0), 0);
-  const totalUniqueClicks = posted.reduce((s, t) => s + (t.clickMetrics?.uniqueClicks ?? 0), 0);
-  const clickThroughRate = totalImpressions > 0 ? (totalClicks / totalImpressions) * 100 : 0;
+  const totalShares = tracked.reduce((s, t) => s + (t.metrics?.shareCount ?? 0), 0);
+  const hasTrackedLinks = posted.some((t) => !!t.trackedUrl);
+  const hasClickMetrics = posted.some((t) => !!t.clickMetrics);
+  const totalClicks = hasClickMetrics ? posted.reduce((s, t) => s + (t.clickMetrics?.totalClicks ?? 0), 0) : null;
+  const totalUniqueClicks = hasClickMetrics ? posted.reduce((s, t) => s + (t.clickMetrics?.uniqueClicks ?? 0), 0) : null;
+  const clickThroughRate = totalImpressions > 0 && totalClicks !== null ? (totalClicks / totalImpressions) * 100 : null;
   const avgImpPerPost = tracked.length > 0 ? totalImpressions / tracked.length : 0;
   const avgEngPerPost = tracked.length > 0 ? totalEngagements / tracked.length : 0;
+  const threadFollowers = store.threadsUserInsights?.followersCount ?? null;
+  const threadProfileViews = store.threadsUserInsights?.views ?? null;
 
   // Impressions chart
   const impChart = linePath(
@@ -81,6 +86,7 @@ export default async function AnalyticsPage() {
 
   const lastUpdated = lastUpdatedStr(store.updatedAt);
   const chartTweets = posted.slice(-30);
+  const chartLabels = chartAxisLabels(chartTweets);
 
   return (
     <div className="dash">
@@ -89,10 +95,10 @@ export default async function AnalyticsPage() {
         <header className="header">
           <div className="header-left">
             <h2>Analytics</h2>
-            <span>Deep dive into your X posting performance</span>
+            <span>Deep dive into your cross-platform posting performance</span>
           </div>
           <div className="header-right">
-            <span className="header-badge">Updated {lastUpdated}</span>
+            <span className="header-badge">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting live analytics"}</span>
           </div>
         </header>
 
@@ -100,24 +106,24 @@ export default async function AnalyticsPage() {
           {/* Stat cards */}
           <div className="stat-grid">
             <div className="stat-card green">
-              <div className="stat-label">Avg. impressions / post</div>
+              <div className="stat-label">Avg. views / impressions / post</div>
               <div className="stat-value">{compact(avgImpPerPost)}</div>
               <div className="stat-sub">Across {tracked.length} tracked posts</div>
             </div>
             <div className="stat-card blue">
               <div className="stat-label">Avg. engagement / post</div>
               <div className="stat-value stat-value-blue">{compact(avgEngPerPost)}</div>
-              <div className="stat-sub">Likes + retweets + replies</div>
+              <div className="stat-sub">Likes + reposts + replies + quotes</div>
             </div>
             <div className="stat-card amber">
-              <div className="stat-label">Tracked clicks</div>
-              <div className="stat-value">{compact(totalClicks)}</div>
-              <div className="stat-sub">{compact(totalUniqueClicks)} unique visitors</div>
+              <div className="stat-label">Threads followers</div>
+              <div className="stat-value">{threadFollowers === null ? "—" : compact(threadFollowers)}</div>
+              <div className="stat-sub">{threadProfileViews === null ? "No Threads profile views yet" : `${compact(threadProfileViews)} profile views`}</div>
             </div>
             <div className="stat-card red">
               <div className="stat-label">Click-through rate</div>
-              <div className="stat-value">{clickThroughRate.toFixed(2)}%</div>
-              <div className="stat-sub">{compact(totalLikes)} likes &middot; {compact(totalBookmarks)} bookmarks &middot; {compact(totalQuotes)} quotes</div>
+              <div className="stat-value">{clickThroughRate === null ? "—" : `${clickThroughRate.toFixed(2)}%`}</div>
+              <div className="stat-sub">{compact(totalLikes)} likes &middot; {compact(totalShares)} shares &middot; {compact(totalQuotes)} quotes &middot; {compact(totalBookmarks)} bookmarks</div>
             </div>
           </div>
 
@@ -146,9 +152,7 @@ export default async function AnalyticsPage() {
                   </svg>
                 </div>
                 <div className="chart-axis">
-                  {chartTweets.filter((_, i) => i % Math.max(1, Math.floor(chartTweets.length / 6)) === 0).slice(0, 6).map((t, i) => (
-                    <span key={i}>{shortDay(t.postedAt)}</span>
-                  ))}
+                  {chartLabels.map((label, i) => <span key={i}>{label}</span>)}
                 </div>
               </div>
             </div>
@@ -173,9 +177,7 @@ export default async function AnalyticsPage() {
                   </svg>
                 </div>
                 <div className="chart-axis">
-                  {chartTweets.filter((_, i) => i % Math.max(1, Math.floor(chartTweets.length / 6)) === 0).slice(0, 6).map((t, i) => (
-                    <span key={i}>{shortDay(t.postedAt)}</span>
-                  ))}
+                  {chartLabels.map((label, i) => <span key={i}>{label}</span>)}
                 </div>
               </div>
             </div>

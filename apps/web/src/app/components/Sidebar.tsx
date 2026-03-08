@@ -18,7 +18,7 @@ export default async function Sidebar({ activePage }: SidebarProps) {
         <div className="brand-icon">X</div>
         <div className="brand-text">
           <h1>PostGame AI</h1>
-          <span>X Automation Dashboard</span>
+          <span>Social Automation Dashboard</span>
         </div>
       </div>
 
@@ -57,7 +57,7 @@ export default async function Sidebar({ activePage }: SidebarProps) {
               <div className={`top-post-badge ${sportClass(tweet.sport)}`}>{tweet.sport.slice(0, 3)}</div>
               <div className="top-post-info">
                 <p className="label">{tweet.sport} &middot; {shortDay(tweet.postedAt)}</p>
-                <p className="sub">{compact(imp)} impressions</p>
+                <p className="sub">{compact(imp)} views / impressions</p>
               </div>
               <span className="top-post-metric">{compact(imp)}</span>
             </div>

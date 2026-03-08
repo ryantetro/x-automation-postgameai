@@ -4,6 +4,9 @@ import { randomUUID } from "node:crypto";
 import {
   validateConfig,
   POST_ENABLED,
+  POST_TARGETS,
+  POSTS_TO_THREADS,
+  POSTS_TO_X,
   getSportForRun,
   getAngleForDate,
   LOGS_DIR,
@@ -13,13 +16,14 @@ import {
   ANALYTICS_MAX_REFRESH,
   TRACKING_BASE_URL,
   CLICK_TARGET_URL,
-  MAX_TWEET_LEN,
+  MAX_POST_LEN,
 } from "./config.js";
 import { fetchSportsData } from "./fetchData.js";
 import { fetchNewsContext } from "./fetchNews.js";
 import { generatePost, fillFallbackTemplate } from "./generatePost.js";
 import { isValidTweet } from "./validate.js";
 import { getXClient, postToX } from "./postToX.js";
+import { postToThreads } from "./postToThreads.js";
 import {
   ANALYTICS_STORE_FILE,
   loadAnalyticsStore,
@@ -27,8 +31,10 @@ import {
   upsertTweetRecord,
   pruneStore,
   refreshMetricsForStore,
+  refreshThreadsMetricsForStore,
   buildIterationInsights,
   formatInsightsReport,
+  type PlatformPublishResult,
   type AnalyticsStore,
 } from "./analytics.js";
 
@@ -46,8 +52,8 @@ function buildTrackedUrl(runId: string): string | null {
 function appendTrackedUrl(text: string, trackedUrl: string | null): string {
   if (!trackedUrl) return text;
   const next = `${text.trim()} ${trackedUrl}`.trim();
-  if (next.length <= MAX_TWEET_LEN) return next;
-  console.warn("Tracked link omitted because tweet body used the full character budget");
+  if (next.length <= MAX_POST_LEN) return next;
+  console.warn("Tracked link omitted because post body used the full character budget");
   return text;
 }
 
@@ -89,7 +95,8 @@ function appendLog(success: boolean, text: string | null, error: string | null):
 
 async function main(): Promise<number> {
   const missing = validateConfig({
-    requireX: POST_ENABLED,
+    requireX: POST_ENABLED && POSTS_TO_X,
+    requireThreads: POST_ENABLED && POSTS_TO_THREADS,
     requireOpenai: true,
     requireApiSports: false,
   });
@@ -108,7 +115,7 @@ async function main(): Promise<number> {
   const reserveChars = trackedUrl ? trackedUrl.length + 1 : 0;
 
   const analyticsStore = loadAnalyticsStore(ANALYTICS_STORE_FILE);
-  const xClient = getXClient();
+  const xClient = POSTS_TO_X ? getXClient() : null;
 
   if (ANALYTICS_ENABLED && xClient) {
     try {
@@ -124,6 +131,25 @@ async function main(): Promise<number> {
       }
     } catch (err) {
       console.warn("Analytics refresh skipped due to API error:", err);
+    }
+  }
+
+  if (ANALYTICS_ENABLED && POSTS_TO_THREADS) {
+    try {
+      const refreshed = await refreshThreadsMetricsForStore(analyticsStore, {
+        lookbackDays: ANALYTICS_LOOKBACK_DAYS,
+        minAgeMinutes: ANALYTICS_MIN_AGE_MINUTES,
+        maxTweets: ANALYTICS_MAX_REFRESH,
+      });
+      if (refreshed.updated > 0 || refreshed.userInsightsUpdated) {
+        console.info(
+          `Threads analytics refreshed: ${refreshed.updated} post(s) updated (${refreshed.attempted} fetched)${
+            refreshed.userInsightsUpdated ? ", user insights updated" : ""
+          }`
+        );
+      }
+    } catch (err) {
+      console.warn("Threads analytics refresh skipped due to API error:", err);
     }
   }
 
@@ -219,75 +245,111 @@ async function main(): Promise<number> {
 
   const POST_RETRY_WAIT_MS = 8000;
   const POST_MAX_ATTEMPTS = 2;
+  const isRetryableFailure = (statusCode?: number, error?: string): boolean =>
+    statusCode === 403 ||
+    statusCode === 429 ||
+    statusCode === 500 ||
+    statusCode === 502 ||
+    statusCode === 503 ||
+    statusCode === 504 ||
+    (error?.includes("403") ?? false) ||
+    (error?.includes("429") ?? false) ||
+    (error?.includes("500") ?? false) ||
+    (error?.includes("502") ?? false) ||
+    (error?.includes("503") ?? false) ||
+    (error?.includes("504") ?? false);
 
-  let lastError: string | undefined;
-  for (let attempt = 1; attempt <= POST_MAX_ATTEMPTS; attempt++) {
-    const result = await postToX(text);
-    if (result.success) {
-      appendLog(true, text, null);
+  async function publishWithRetry(
+    platformLabel: "X" | "Threads",
+    publish: () => Promise<{ success: boolean; error?: string; statusCode?: number; postId?: string }>
+  ): Promise<{ success: boolean; error?: string; statusCode?: number; postId?: string }> {
+    let lastResult: { success: boolean; error?: string; statusCode?: number; postId?: string } = {
+      success: false,
+      error: "Publish was not attempted",
+    };
 
-      upsertTweetRecord(analyticsStore, {
-        runId,
-        tweetId: result.tweetId,
-        postedAt: nowIso,
-        dateContext: today,
-        sport,
-        angle,
-        source: generationSource,
-        status: POST_ENABLED ? "posted" : "dry_run",
-        text,
-        contentMode,
-        newsUsed: newsContext.usedNews,
-        newsQuery: newsContext.query,
-        newsArticleTitle: newsContext.selectedArticle?.title,
-        newsArticleUrl: newsContext.selectedArticle?.url,
-        newsSourceName: newsContext.selectedArticle?.sourceName,
-        newsPublishedAt: newsContext.selectedArticle?.publishedAt,
-        trackedUrl: trackedUrl ?? undefined,
-        linkTargetUrl: CLICK_TARGET_URL,
-      });
+    for (let attempt = 1; attempt <= POST_MAX_ATTEMPTS; attempt++) {
+      const result = await publish();
+      if (result.success) return result;
 
-      if (ANALYTICS_ENABLED && xClient && result.tweetId && POST_ENABLED) {
-        try {
-          await refreshMetricsForStore(analyticsStore, xClient, {
-            lookbackDays: 1,
-            minAgeMinutes: 0,
-            maxTweets: 1,
-          });
-        } catch {
-          // ignore immediate metrics failures
-        }
+      lastResult = result;
+      if (attempt < POST_MAX_ATTEMPTS && isRetryableFailure(result.statusCode, result.error)) {
+        console.warn(
+          "%s post failed (attempt %d), retrying in %ds...",
+          platformLabel,
+          attempt,
+          POST_RETRY_WAIT_MS / 1000
+        );
+        await new Promise((r) => setTimeout(r, POST_RETRY_WAIT_MS));
+        continue;
       }
 
-      pruneStore(analyticsStore);
-      saveAnalyticsStore(analyticsStore, ANALYTICS_STORE_FILE);
-      return 0;
-    }
-
-    lastError = result.error;
-    const isRetryable =
-      result.statusCode === 403 ||
-      result.statusCode === 503 ||
-      (result.error?.includes("403") ?? false) ||
-      (result.error?.includes("503") ?? false);
-
-    if (attempt < POST_MAX_ATTEMPTS && isRetryable) {
-      console.warn("Post failed (attempt %d), retrying in %ds...", attempt, POST_RETRY_WAIT_MS / 1000);
-      await new Promise((r) => setTimeout(r, POST_RETRY_WAIT_MS));
-    } else {
       break;
     }
+
+    return lastResult;
   }
 
-  appendLog(false, text, lastError ?? null);
+  const publishResults: PlatformPublishResult[] = [];
+
+  if (POSTS_TO_X) {
+    const result = await publishWithRetry("X", async () => {
+      const xResult = await postToX(text);
+      return {
+        success: xResult.success,
+        error: xResult.error,
+        statusCode: xResult.statusCode,
+        postId: xResult.tweetId,
+      };
+    });
+    publishResults.push({
+      platform: "x",
+      status: result.success ? (POST_ENABLED ? "posted" : "dry_run") : "failed",
+      postId: result.postId,
+      statusCode: result.statusCode,
+      error: result.error,
+    });
+  }
+
+  if (POSTS_TO_THREADS) {
+    const result = await publishWithRetry("Threads", async () => {
+      const threadsResult = await postToThreads(text);
+      return {
+        success: threadsResult.success,
+        error: threadsResult.error,
+        statusCode: threadsResult.statusCode,
+        postId: threadsResult.threadId,
+      };
+    });
+    publishResults.push({
+      platform: "threads",
+      status: result.success ? (POST_ENABLED ? "posted" : "dry_run") : "failed",
+      postId: result.postId,
+      statusCode: result.statusCode,
+      error: result.error,
+    });
+  }
+
+  const xPublishResult = publishResults.find((result) => result.platform === "x");
+  const threadsPublishResult = publishResults.find((result) => result.platform === "threads");
+  const allSucceeded = publishResults.every((result) => result.status !== "failed");
+  const anySucceeded = publishResults.some((result) => result.status !== "failed");
+  const failureSummary = publishResults
+    .filter((result) => result.status === "failed")
+    .map((result) => `${result.platform}: ${result.error ?? "unknown error"}`)
+    .join("; ");
+
+  appendLog(allSucceeded, text, failureSummary || null);
   upsertTweetRecord(analyticsStore, {
     runId,
+    tweetId: xPublishResult?.postId,
+    threadsPostId: threadsPublishResult?.postId,
     postedAt: nowIso,
     dateContext: today,
     sport,
     angle,
     source: generationSource,
-    status: "failed",
+    status: POST_ENABLED ? (anySucceeded ? "posted" : "failed") : "dry_run",
     text,
     contentMode,
     newsUsed: newsContext.usedNews,
@@ -298,11 +360,38 @@ async function main(): Promise<number> {
     newsPublishedAt: newsContext.selectedArticle?.publishedAt,
     trackedUrl: trackedUrl ?? undefined,
     linkTargetUrl: CLICK_TARGET_URL,
+    publishTargets: [...POST_TARGETS],
+    publishResults,
   });
+
+  if (ANALYTICS_ENABLED && xClient && xPublishResult?.postId && xPublishResult.status === "posted") {
+    try {
+      await refreshMetricsForStore(analyticsStore, xClient, {
+        lookbackDays: 1,
+        minAgeMinutes: 0,
+        maxTweets: 1,
+      });
+    } catch {
+      // ignore immediate metrics failures
+    }
+  }
+  if (ANALYTICS_ENABLED && POSTS_TO_THREADS && threadsPublishResult?.postId && threadsPublishResult.status === "posted") {
+    try {
+      await refreshThreadsMetricsForStore(analyticsStore, {
+        lookbackDays: 1,
+        minAgeMinutes: 0,
+        maxTweets: 1,
+      });
+    } catch {
+      // ignore immediate metrics failures
+    }
+  }
   pruneStore(analyticsStore);
   saveAnalyticsStore(analyticsStore, ANALYTICS_STORE_FILE);
 
-  console.error("Post failed:", lastError);
+  if (allSucceeded) return 0;
+
+  console.error("One or more platform posts failed:", failureSummary || "unknown error");
   return 1;
 }
 

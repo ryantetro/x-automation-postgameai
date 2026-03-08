@@ -12,7 +12,7 @@ export default async function PostsPage() {
 
   const totalPosts = allPosts.length;
   const withMetrics = allPosts.filter((t) => !!t.metrics).length;
-  const published = allPosts.filter((t) => !!t.tweetId).length;
+  const published = allPosts.filter((t) => !!t.tweetId || !!t.threadsPostId).length;
   const trackedLinks = allPosts.filter((t) => !!t.trackedUrl).length;
 
   const sports = [...new Set(allPosts.map((t) => t.sport.toLowerCase()))];
@@ -26,11 +26,11 @@ export default async function PostsPage() {
         <header className="header">
           <div className="header-left">
             <h2>Posts</h2>
-            <span>All automated posts from the bot</span>
+            <span>All automated posts published by the bot</span>
           </div>
           <div className="header-right">
             <span className="header-badge">{totalPosts} total &middot; {published} published</span>
-            <span className="header-badge">Updated {lastUpdated}</span>
+            <span className="header-badge">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting live analytics"}</span>
           </div>
         </header>
 
@@ -40,7 +40,7 @@ export default async function PostsPage() {
             <div className="stat-card green">
               <div className="stat-label">Total posts</div>
               <div className="stat-value">{totalPosts}</div>
-              <div className="stat-sub">{published} published to X</div>
+              <div className="stat-sub">{published} published across platforms</div>
             </div>
             <div className="stat-card blue">
               <div className="stat-label">With metrics</div>
@@ -61,8 +61,8 @@ export default async function PostsPage() {
                 const m = tweet.metrics;
                 const imp = m?.impressionCount ?? 0;
                 const engRate = m?.engagementRate ?? (imp > 0 && m ? (m.engagementCount / imp) * 100 : 0);
-                const clicks = tweet.clickMetrics?.totalClicks ?? 0;
-                const uniqueClicks = tweet.clickMetrics?.uniqueClicks ?? 0;
+                const clicks = tweet.clickMetrics?.totalClicks;
+                const uniqueClicks = tweet.clickMetrics?.uniqueClicks;
 
                 return (
                   <article className="post-card" key={tweet.runId}>
@@ -79,6 +79,11 @@ export default async function PostsPage() {
                         >
                           View on X &#8599;
                         </a>
+                      )}
+                      {!tweet.tweetId && tweet.threadsPostId && (
+                        <span className="view-link post-card-link" style={{ opacity: 0.7 }}>
+                          Posted to Threads
+                        </span>
                       )}
                       {tweet.trackedUrl && (
                         <a
@@ -106,7 +111,7 @@ export default async function PostsPage() {
                         </div>
                         <div className="pcm">
                           <span className="pcm-val">{compact(m.retweetCount)}</span>
-                          <span className="pcm-label">Retweets</span>
+                          <span className="pcm-label">Reposts / RTs</span>
                         </div>
                         <div className="pcm">
                           <span className="pcm-val">{compact(m.replyCount)}</span>
@@ -117,7 +122,11 @@ export default async function PostsPage() {
                           <span className="pcm-label">Bookmarks</span>
                         </div>
                         <div className="pcm">
-                          <span className="pcm-val pcm-amber">{compact(clicks)}</span>
+                          <span className="pcm-val">{compact(m.shareCount ?? 0)}</span>
+                          <span className="pcm-label">Shares</span>
+                        </div>
+                        <div className="pcm">
+                          <span className="pcm-val pcm-amber">{typeof clicks === "number" ? compact(clicks) : "—"}</span>
                           <span className="pcm-label">Clicks</span>
                         </div>
                         <div className="pcm">
@@ -129,7 +138,11 @@ export default async function PostsPage() {
 
                     {!m && (
                       <div className="post-card-no-metrics">
-                        {tweet.trackedUrl ? `${compact(clicks)} clicks · ${compact(uniqueClicks)} unique visitors` : "No metrics collected yet"}
+                        {tweet.trackedUrl
+                          ? typeof clicks === "number" && typeof uniqueClicks === "number"
+                            ? `${compact(clicks)} clicks · ${compact(uniqueClicks)} unique visitors`
+                            : "Click analytics unavailable"
+                          : "No metrics collected yet"}
                       </div>
                     )}
                   </article>

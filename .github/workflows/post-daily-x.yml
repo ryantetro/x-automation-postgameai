@@ -1,0 +1,82 @@
+name: Post to X (6am & 6pm ET)
+
+on:
+  schedule:
+    - cron: '0 11 * * *'
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  post-x:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run X bot
+        id: run_bot
+        continue-on-error: true
+        env:
+          X_APP_KEY: ${{ secrets.X_APP_KEY }}
+          X_APP_SECRET: ${{ secrets.X_APP_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          API_SPORTS_KEY: ${{ secrets.API_SPORTS_KEY }}
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+          TARGET_SPORT: ${{ vars.TARGET_SPORT }}
+          POST_ENABLED: ${{ vars.X_POST_ENABLED || 'false' }}
+          POST_TARGETS: x
+          ANALYTICS_STORE_FILENAME: tweet-analytics.json
+          ANALYTICS_ENABLED: ${{ vars.ANALYTICS_ENABLED || 'true' }}
+          ANALYTICS_LOOKBACK_DAYS: ${{ vars.ANALYTICS_LOOKBACK_DAYS }}
+          ANALYTICS_MIN_AGE_MINUTES: ${{ vars.ANALYTICS_MIN_AGE_MINUTES }}
+          ANALYTICS_MAX_REFRESH: ${{ vars.ANALYTICS_MAX_REFRESH }}
+          NEWS_ENABLED: ${{ vars.NEWS_ENABLED }}
+          NEWS_LOOKBACK_HOURS: ${{ vars.NEWS_LOOKBACK_HOURS }}
+          NEWS_MAX_ARTICLES: ${{ vars.NEWS_MAX_ARTICLES }}
+          NEWS_LANGUAGE: ${{ vars.NEWS_LANGUAGE }}
+          NEWS_SORT_BY: ${{ vars.NEWS_SORT_BY }}
+          NEWS_ALLOWED_DOMAINS: ${{ vars.NEWS_ALLOWED_DOMAINS }}
+          NEWS_ALLOWED_SOURCES: ${{ vars.NEWS_ALLOWED_SOURCES }}
+          TRACKING_BASE_URL: ${{ vars.TRACKING_BASE_URL }}
+          CLICK_TARGET_URL: ${{ vars.CLICK_TARGET_URL }}
+          UTM_SOURCE: ${{ vars.UTM_SOURCE }}
+          UTM_MEDIUM: ${{ vars.UTM_MEDIUM }}
+          UTM_CAMPAIGN_PREFIX: ${{ vars.UTM_CAMPAIGN_PREFIX }}
+        run: npm run bot:post:x
+
+      - name: Persist X analytics state
+        if: always()
+        run: |
+          if [ ! -f apps/postgame-x-bot/state/tweet-analytics.json ]; then
+            echo "No X analytics state file found; skipping commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/postgame-x-bot/state/tweet-analytics.json
+          if git diff --cached --quiet; then
+            echo "No X state changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(bot): update X analytics state [skip ci]"
+          git push
+
+      - name: Fail workflow if X bot run failed
+        if: steps.run_bot.outcome == 'failure'
+        run: exit 1

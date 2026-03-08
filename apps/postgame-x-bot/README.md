@@ -1,6 +1,6 @@
-# postgame.ai X Bot
+# postgame.ai Social Bot
 
-Automated sports content for X (Twitter): fetch data from API-Sports (with ESPN fallback), generate posts with OpenAI, and publish twice daily via GitHub Actions. Built with **TypeScript** and Node.js.
+Automated sports content for X and Threads: fetch data from API-Sports (with ESPN fallback), generate posts with OpenAI, and publish twice daily via GitHub Actions. Built with **TypeScript** and Node.js.
 
 ## Setup
 
@@ -15,15 +15,17 @@ Automated sports content for X (Twitter): fetch data from API-Sports (with ESPN 
    ```
    Fill in:
    - X (Twitter) OAuth 1.0: `X_CONSUMER_KEY`, `X_CONSUMER_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`
+   - Threads Graph API: `THREADS_ACCESS_TOKEN` if you want Threads posting enabled
    - `OPENAI_API_KEY`
    - `API_SPORTS_KEY`
+   - `POST_TARGETS=x` for X only, `POST_TARGETS=threads` for Threads only, or `POST_TARGETS=x,threads` for dual publishing
 
 3. **Install dependencies**
    ```bash
    npm install
    ```
 
-4. **Dry run (no post to X)**
+4. **Dry run (no live post)**
    ```bash
    npm run dry-run
    ```
@@ -34,6 +36,21 @@ Automated sports content for X (Twitter): fetch data from API-Sports (with ESPN 
    npm run post
    ```
    or `npx tsx src/main.ts`
+
+## Platforms
+
+- `POST_TARGETS=x` keeps the current X-only flow
+- `POST_TARGETS=threads` publishes only to Threads
+- `POST_TARGETS=x,threads` cross-posts the same generated text to both platforms
+- `ANALYTICS_STORE_FILENAME=tweet-analytics.json` or `threads-analytics.json` lets each platform persist its own analytics state
+
+Threads implementation notes:
+- publishing uses the Threads Graph API text-post flow
+- Threads text posts allow up to 500 characters; when X is also enabled the bot still uses the stricter 280-character shared limit
+- a preflight check now queries the Threads publishing-limit endpoint before attempting to publish
+- Threads media insights and profile insights are pulled into the analytics store when the token has `threads_manage_insights`
+- existing tracked-link click analytics remain shared at the post level
+- Threads publish results are recorded in `state/tweet-analytics.json`
 
 ## Analytics Feedback Loop
 
@@ -94,20 +111,41 @@ Default allowlist domains:
 
 ## GitHub Actions
 
-Workflow runs at **6am and 6pm ET** (cron) and supports manual `workflow_dispatch`. Add the same env vars as **Repository secrets** (`X_CONSUMER_KEY`, etc.). Optionally set **Variables**: `TARGET_SPORT` (default `nba`), `POST_ENABLED` (default `true`), `ANALYTICS_ENABLED`, `ANALYTICS_LOOKBACK_DAYS`, `ANALYTICS_MIN_AGE_MINUTES`, `ANALYTICS_MAX_REFRESH`.
+There are now two scheduled workflows:
+- `.github/workflows/post-daily-x.yml` runs the X bot with `POST_TARGETS=x` and stores analytics in `state/tweet-analytics.json`
+- `.github/workflows/post-daily-threads.yml` runs the Threads bot with `POST_TARGETS=threads` and stores analytics in `state/threads-analytics.json`
+
+Both workflows run at **6am and 6pm ET** and support manual `workflow_dispatch`.
+
+Repository secrets:
+- X bot: `X_CONSUMER_KEY`, `X_CONSUMER_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`
+- Threads bot: `THREADS_ACCESS_TOKEN`
+- Shared: `OPENAI_API_KEY`, `API_SPORTS_KEY`, `NEWS_API_KEY`
+
+Repository variables:
+- Shared: `TARGET_SPORT`, `ANALYTICS_ENABLED`, `ANALYTICS_LOOKBACK_DAYS`, `ANALYTICS_MIN_AGE_MINUTES`, `ANALYTICS_MAX_REFRESH`, `NEWS_ENABLED`, `NEWS_LOOKBACK_HOURS`, `NEWS_MAX_ARTICLES`, `NEWS_LANGUAGE`, `NEWS_SORT_BY`, `NEWS_ALLOWED_DOMAINS`, `NEWS_ALLOWED_SOURCES`, `TRACKING_BASE_URL`, `CLICK_TARGET_URL`
+- X bot toggle: `X_POST_ENABLED`
+- Threads bot toggle: `THREADS_POST_ENABLED`
 
 If you are running from the monorepo root, use `npm run bot:dry-run` or `npm run bot:post`. The root GitHub Actions workflow already targets `apps/postgame-x-bot`.
 
 Additional GitHub Actions setup for news:
 - Add `NEWS_API_KEY` as a repository secret
 - Add optional repository variables:
-  - `NEWS_ENABLED`
-  - `NEWS_LOOKBACK_HOURS`
-  - `NEWS_MAX_ARTICLES`
-  - `NEWS_LANGUAGE`
-  - `NEWS_SORT_BY`
-  - `NEWS_ALLOWED_DOMAINS`
-  - `NEWS_ALLOWED_SOURCES`
+- `NEWS_ENABLED`
+- `NEWS_LOOKBACK_HOURS`
+- `NEWS_MAX_ARTICLES`
+- `NEWS_LANGUAGE`
+- `NEWS_SORT_BY`
+- `NEWS_ALLOWED_DOMAINS`
+- `NEWS_ALLOWED_SOURCES`
+
+Threads app setup:
+- create a Meta app with Threads API access and a user access token that can publish content
+- ensure the token has `threads_basic` and `threads_content_publish`
+- add `threads_manage_insights` if you want Threads metrics and follower/profile insights in the dashboard
+- store that token as `THREADS_ACCESS_TOKEN`
+- set `POST_TARGETS=x,threads` once the token is ready
 
 ## PRD
 
