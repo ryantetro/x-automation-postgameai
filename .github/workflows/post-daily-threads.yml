@@ -2,12 +2,16 @@ name: Post to Threads (6am & 6pm ET)
 
 on:
   schedule:
-    - cron: '0 11 * * *'
-    - cron: '0 23 * * *'
+    - cron: '5 11 * * *'
+    - cron: '5 23 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:
+  group: bot-state-push
+  cancel-in-progress: false
 
 jobs:
   post-threads:
@@ -71,9 +75,16 @@ jobs:
             exit 0
           fi
           git commit -m "chore(bot): update Threads analytics state [skip ci]"
-          git fetch origin "${GITHUB_REF_NAME}"
-          git rebase "origin/${GITHUB_REF_NAME}"
-          git push
+          git stash --include-untracked || true
+          for attempt in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push && break
+            if [ "${attempt}" -eq 3 ]; then
+              echo "Failed to persist Threads analytics state after ${attempt} attempts."
+              exit 1
+            fi
+            sleep $((attempt * 5))
+          done
+          git stash pop 2>/dev/null || true
 
       - name: Fail workflow if Threads bot run failed
         if: steps.run_bot.outcome == 'failure'
