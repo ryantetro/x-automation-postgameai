@@ -1,15 +1,17 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { LOGS_DIR } from "../src/config.js";
+import { LOGS_DIR, STATE_DIR } from "../src/config.js";
 import {
   ANALYTICS_STORE_FILE,
   buildIterationInsights,
+  buildGenerationInsights,
   loadAnalyticsStore,
   formatInsightsReport,
   type TweetAnalyticsRecord,
 } from "../src/analytics.js";
 
 const REPORT_FILE = resolve(LOGS_DIR, "iteration-report.md");
+const GENERATION_LOG_FILE = resolve(STATE_DIR, "generation-log.jsonl");
 
 function avg(records: TweetAnalyticsRecord[], selector: (tweet: TweetAnalyticsRecord) => number): number {
   if (records.length === 0) return 0;
@@ -122,6 +124,53 @@ function buildPerformanceAppendix(store: ReturnType<typeof loadAnalyticsStore>):
   return lines.join("\n");
 }
 
+function buildGenerationAppendix(): string {
+  const lines: string[] = [];
+  lines.push("## Generation failure summary");
+  if (!existsSync(GENERATION_LOG_FILE)) {
+    lines.push("- No generation log yet.");
+    return lines.join("\n");
+  }
+
+  const entries = readFileSync(GENERATION_LOG_FILE, "utf-8")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      try {
+        return JSON.parse(line) as {
+          failedChecks?: string[];
+          rejectionReason?: string;
+          contentFrameId?: string;
+          hookStructureId?: string;
+          platformTargets?: Array<"x" | "threads">;
+          usedFallback?: boolean;
+        };
+      } catch {
+        return null;
+      }
+    })
+    .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
+
+  const summary = buildGenerationInsights(entries);
+  if (summary.mostCommonFailedChecks.length === 0) {
+    lines.push("- No failed generation checks logged yet.");
+    return lines.join("\n");
+  }
+
+  lines.push("- Failed checks:");
+  for (const row of summary.mostCommonFailedChecks) lines.push(`  - ${row.check}: ${row.count}`);
+  if (summary.rewriteReasons.length > 0) {
+    lines.push("- Rewrite reasons:");
+    for (const row of summary.rewriteReasons) lines.push(`  - ${row.reason}: ${row.count}`);
+  }
+  if (summary.threadsLengthFailures.length > 0) {
+    lines.push("- Threads length failures by hook:");
+    for (const row of summary.threadsLengthFailures) lines.push(`  - ${row.hookStructureId}: ${row.count}`);
+  }
+  return lines.join("\n");
+}
+
 function main(): number {
   const store = loadAnalyticsStore(ANALYTICS_STORE_FILE);
   const insights = buildIterationInsights(store);
@@ -136,6 +185,8 @@ function main(): number {
   }
   sections.push("");
   sections.push(buildPerformanceAppendix(store));
+  sections.push("");
+  sections.push(buildGenerationAppendix());
   const report = sections.join("\n");
   mkdirSync(LOGS_DIR, { recursive: true });
   writeFileSync(REPORT_FILE, `${report}\n`, "utf-8");

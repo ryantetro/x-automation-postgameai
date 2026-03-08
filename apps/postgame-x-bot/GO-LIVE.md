@@ -119,3 +119,26 @@ When everything works:
 - [ ] `POST_ENABLED` is `true` (or unset) for live posting  
 
 **No Vercel or other deployment needed** — GitHub Actions runs the bot on schedule.
+
+---
+
+## Threads token automation
+
+If you want Threads posting and Threads insights to keep working automatically, do this once:
+
+1. Generate a fresh short-lived Threads token in Meta Graph API Explorer.
+2. Exchange it for a long-lived token locally:
+   ```bash
+   THREADS_APP_SECRET=your_threads_app_secret \
+   THREADS_SHORT_LIVED_ACCESS_TOKEN=your_short_lived_threads_token \
+   npm run bot:threads:token:exchange
+   ```
+3. Copy the returned long-lived token into:
+   - local `.env.local` as `THREADS_ACCESS_TOKEN`
+   - GitHub Actions secret `THREADS_ACCESS_TOKEN`
+4. Create one more GitHub Actions secret:
+   - `THREADS_SECRET_ADMIN_TOKEN`
+   - this should be a fine-grained GitHub PAT for this repo with repository `Secrets: Read and write`
+5. Push the workflow at [refresh-threads-token.yml](../../.github/workflows/refresh-threads-token.yml).
+
+After that, GitHub Actions will refresh the Threads token every Monday and overwrite the `THREADS_ACCESS_TOKEN` secret automatically.

@@ -2,13 +2,26 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import type { TwitterApi } from "twitter-api-v2";
 import { ANALYTICS_STORE_FILENAME, STATE_DIR, THREADS_ACCESS_TOKEN } from "./config.js";
+import type {
+  ContentFrameId,
+  EmotionTarget,
+  HookStructureId,
+  NewsMomentType,
+} from "./contentArchitecture.js";
+import { FRAME_DEFINITIONS, HOOK_DEFINITIONS } from "./contentArchitecture.js";
 
 export const ANALYTICS_STORE_FILE = resolve(STATE_DIR, ANALYTICS_STORE_FILENAME);
-const STORE_VERSION = 2;
+const STORE_VERSION = 3;
 
 export type TweetStatus = "posted" | "dry_run" | "failed";
 export type ContentMode = "sports_only" | "news_preferred";
 export type PublishPlatform = "x" | "threads";
+
+export interface PrePublishChecks {
+  hookDetected: boolean;
+  adviceDriftClear: boolean;
+  openerVarietyClear: boolean;
+}
 
 export interface PlatformPublishResult {
   platform: PublishPlatform;
@@ -73,6 +86,15 @@ export interface TweetAnalyticsRecord {
   newsArticleUrl?: string;
   newsSourceName?: string;
   newsPublishedAt?: string;
+  contentFrameId?: ContentFrameId;
+  contentFrameLabel?: string;
+  hookStructureId?: HookStructureId;
+  hookStructureLabel?: string;
+  emotionTarget?: EmotionTarget;
+  frameReason?: string;
+  newsMomentType?: NewsMomentType;
+  prePublishChecks?: PrePublishChecks;
+  openingPattern?: string;
   trackedUrl?: string;
   linkTargetUrl?: string;
   publishTargets?: PublishPlatform[];
@@ -116,6 +138,46 @@ export interface IterationInsights {
     avgImpressions: number;
     avgClicks: number;
   }>;
+  topFramesByPlatform: Array<{
+    platform: PublishPlatform;
+    frameId: ContentFrameId;
+    frameLabel: string;
+    count: number;
+    avgScore: number;
+  }>;
+  topHooksByPlatform: Array<{
+    platform: PublishPlatform;
+    hookStructureId: HookStructureId;
+    hookStructureLabel: string;
+    count: number;
+    avgScore: number;
+  }>;
+  topFrameHookPairs: Array<{
+    platform: PublishPlatform;
+    frameId: ContentFrameId;
+    hookStructureId: HookStructureId;
+    count: number;
+    avgScore: number;
+  }>;
+  topEmotionsByPlatform: Array<{
+    platform: PublishPlatform;
+    emotionTarget: EmotionTarget;
+    count: number;
+    avgScore: number;
+  }>;
+  avoidOpeners: string[];
+  preferredEmotionByPlatform: Array<{
+    platform: PublishPlatform;
+    emotionTarget: EmotionTarget;
+  }>;
+}
+
+export interface GenerationInsightSummary {
+  mostCommonFailedChecks: Array<{ check: string; count: number }>;
+  rewriteReasons: Array<{ reason: string; count: number }>;
+  frameHookFailures: Array<{ frameId: ContentFrameId; hookStructureId: HookStructureId; count: number }>;
+  threadsLengthFailures: Array<{ hookStructureId: HookStructureId; count: number }>;
+  fallbackFrames: Array<{ frameId: ContentFrameId; count: number }>;
 }
 
 export function defaultStore(): AnalyticsStore {
@@ -574,6 +636,10 @@ function avgMetric(records: TweetAnalyticsRecord[], selector: (record: TweetAnal
   return Number((total / records.length).toFixed(2));
 }
 
+function avgScore(records: TweetAnalyticsRecord[]): number {
+  return avgMetric(records, (record) => record.score ?? 0);
+}
+
 function collectTopHashtags(records: TweetAnalyticsRecord[], topN = 3): string[] {
   const map = new Map<string, number>();
   for (const record of records) {
@@ -585,6 +651,27 @@ function collectTopHashtags(records: TweetAnalyticsRecord[], topN = 3): string[]
     .sort((a, b) => b[1] - a[1])
     .slice(0, topN)
     .map(([hashtag]) => hashtag);
+}
+
+function platformsForRecord(record: TweetAnalyticsRecord): PublishPlatform[] {
+  if (record.publishTargets && record.publishTargets.length > 0) return [...new Set(record.publishTargets)];
+  const platforms: PublishPlatform[] = [];
+  if (record.tweetId || record.metrics?.platform === "x") platforms.push("x");
+  if (record.threadsPostId || record.metrics?.platform === "threads") platforms.push("threads");
+  return platforms.length > 0 ? platforms : ["x"];
+}
+
+function topByPlatform<
+  T extends { count: number; avgScore: number; platform: PublishPlatform }
+>(rows: T[]): T[] {
+  const out: T[] = [];
+  for (const platform of ["x", "threads"] as const) {
+    const candidate = rows
+      .filter((row) => row.platform === platform)
+      .sort((a, b) => b.avgScore - a.avgScore || b.count - a.count)[0];
+    if (candidate) out.push(candidate);
+  }
+  return out;
 }
 
 export function buildIterationInsights(store: AnalyticsStore): IterationInsights | null {
@@ -648,10 +735,18 @@ export function buildIterationInsights(store: AnalyticsStore): IterationInsights
   }
 
   const promptGuidanceLines: string[] = [];
-  if (winnerPatterns.length > 0) promptGuidanceLines.push(...winnerPatterns.slice(0, 3));
-  if (avoidPatterns.length > 0) promptGuidanceLines.push(...avoidPatterns.slice(0, 2));
-
-  const promptGuidance = promptGuidanceLines.join(" ").slice(0, 900);
+  const openerCounts = new Map<string, number>();
+  for (const record of scored) {
+    if (!record.openingPattern) continue;
+    openerCounts.set(record.openingPattern, (openerCounts.get(record.openingPattern) ?? 0) + 1);
+  }
+  const avoidOpeners = [...openerCounts.entries()]
+    .filter(([pattern, count]) => pattern === "most_teams" ? count > 1 : count >= 4)
+    .sort((a, b) => b[1] - a[1])
+    .map(([pattern]) => pattern);
+  if (avoidOpeners.includes("most_teams")) {
+    avoidPatterns.push("Do not use 'Most teams...' as an opener in the next batch.");
+  }
 
   const contentModes: ContentMode[] = ["sports_only", "news_preferred"];
   const contentModeStats = contentModes
@@ -682,6 +777,110 @@ export function buildIterationInsights(store: AnalyticsStore): IterationInsights
     }))
     .sort((a, b) => b.avgImpressions - a.avgImpressions);
 
+  const frameRows: IterationInsights["topFramesByPlatform"] = [];
+  const hookRows: IterationInsights["topHooksByPlatform"] = [];
+  const pairRows: IterationInsights["topFrameHookPairs"] = [];
+  const emotionRows: IterationInsights["topEmotionsByPlatform"] = [];
+
+  for (const platform of ["x", "threads"] as const) {
+    const records = scored.filter((tweet) => platformsForRecord(tweet).includes(platform));
+
+    const frames = new Map<ContentFrameId, TweetAnalyticsRecord[]>();
+    const hooks = new Map<HookStructureId, TweetAnalyticsRecord[]>();
+    const pairs = new Map<string, TweetAnalyticsRecord[]>();
+    const emotions = new Map<EmotionTarget, TweetAnalyticsRecord[]>();
+
+    for (const record of records) {
+      if (record.contentFrameId) {
+        const bucket = frames.get(record.contentFrameId) ?? [];
+        bucket.push(record);
+        frames.set(record.contentFrameId, bucket);
+      }
+      if (record.hookStructureId) {
+        const bucket = hooks.get(record.hookStructureId) ?? [];
+        bucket.push(record);
+        hooks.set(record.hookStructureId, bucket);
+      }
+      if (record.contentFrameId && record.hookStructureId) {
+        const key = `${record.contentFrameId}::${record.hookStructureId}`;
+        const bucket = pairs.get(key) ?? [];
+        bucket.push(record);
+        pairs.set(key, bucket);
+      }
+      if (record.emotionTarget) {
+        const bucket = emotions.get(record.emotionTarget) ?? [];
+        bucket.push(record);
+        emotions.set(record.emotionTarget, bucket);
+      }
+    }
+
+    for (const [frameId, recordsForFrame] of frames.entries()) {
+      frameRows.push({
+        platform,
+        frameId,
+        frameLabel: FRAME_DEFINITIONS[frameId]?.label ?? frameId,
+        count: recordsForFrame.length,
+        avgScore: avgScore(recordsForFrame),
+      });
+    }
+    for (const [hookStructureId, recordsForHook] of hooks.entries()) {
+      hookRows.push({
+        platform,
+        hookStructureId,
+        hookStructureLabel: HOOK_DEFINITIONS[hookStructureId]?.label ?? hookStructureId,
+        count: recordsForHook.length,
+        avgScore: avgScore(recordsForHook),
+      });
+    }
+    for (const [key, recordsForPair] of pairs.entries()) {
+      const [frameId, hookStructureId] = key.split("::") as [ContentFrameId, HookStructureId];
+      pairRows.push({
+        platform,
+        frameId,
+        hookStructureId,
+        count: recordsForPair.length,
+        avgScore: avgScore(recordsForPair),
+      });
+    }
+    for (const [emotionTarget, recordsForEmotion] of emotions.entries()) {
+      emotionRows.push({
+        platform,
+        emotionTarget,
+        count: recordsForEmotion.length,
+        avgScore: avgScore(recordsForEmotion),
+      });
+    }
+  }
+
+  const topFramesByPlatform = topByPlatform(frameRows);
+  const topHooksByPlatform = topByPlatform(hookRows);
+  const topFrameHookPairs = topByPlatform(pairRows);
+  const topEmotionsByPlatform = topByPlatform(emotionRows);
+  const preferredEmotionByPlatform = topEmotionsByPlatform.map((row) => ({
+    platform: row.platform,
+    emotionTarget: row.emotionTarget,
+  }));
+
+  if (topFramesByPlatform.length > 0) {
+    promptGuidanceLines.push(
+      ...topFramesByPlatform.map((row) => `Platform ${row.platform.toUpperCase()} is responding best to the ${row.frameLabel} frame.`)
+    );
+  }
+  if (topHooksByPlatform.length > 0) {
+    promptGuidanceLines.push(
+      ...topHooksByPlatform.map((row) => `Platform ${row.platform.toUpperCase()} is responding best to the ${row.hookStructureLabel} hook.`)
+    );
+  }
+  if (preferredEmotionByPlatform.length > 0) {
+    promptGuidanceLines.push(
+      ...preferredEmotionByPlatform.map((row) => `Lean toward ${row.emotionTarget} on ${row.platform.toUpperCase()}.`)
+    );
+  }
+  if (winnerPatterns.length > 0) promptGuidanceLines.push(...winnerPatterns.slice(0, 2));
+  if (avoidPatterns.length > 0) promptGuidanceLines.push(...avoidPatterns.slice(0, 2));
+
+  const promptGuidance = promptGuidanceLines.join(" ").slice(0, 900);
+
   return {
     sampleSize: scored.length,
     winners,
@@ -692,6 +891,12 @@ export function buildIterationInsights(store: AnalyticsStore): IterationInsights
     promptGuidance,
     contentModeStats,
     newsSourceStats,
+    topFramesByPlatform,
+    topHooksByPlatform,
+    topFrameHookPairs,
+    topEmotionsByPlatform,
+    avoidOpeners,
+    preferredEmotionByPlatform,
   };
 }
 
@@ -714,6 +919,36 @@ export function formatInsightsReport(insights: IterationInsights): string {
     lines.push("- No clear avoid pattern yet.");
   } else {
     for (const pattern of insights.avoidPatterns) lines.push(`- ${pattern}`);
+  }
+
+  lines.push("");
+  lines.push("## Top frames by platform");
+  if (insights.topFramesByPlatform.length === 0) {
+    lines.push("- No frame performance data yet.");
+  } else {
+    for (const row of insights.topFramesByPlatform) {
+      lines.push(`- ${row.platform.toUpperCase()}: ${row.frameLabel} (${row.count} post(s), avg score ${row.avgScore})`);
+    }
+  }
+
+  lines.push("");
+  lines.push("## Top hooks by platform");
+  if (insights.topHooksByPlatform.length === 0) {
+    lines.push("- No hook performance data yet.");
+  } else {
+    for (const row of insights.topHooksByPlatform) {
+      lines.push(`- ${row.platform.toUpperCase()}: ${row.hookStructureLabel} (${row.count} post(s), avg score ${row.avgScore})`);
+    }
+  }
+
+  lines.push("");
+  lines.push("## Preferred emotions by platform");
+  if (insights.preferredEmotionByPlatform.length === 0) {
+    lines.push("- No emotion performance data yet.");
+  } else {
+    for (const row of insights.preferredEmotionByPlatform) {
+      lines.push(`- ${row.platform.toUpperCase()}: ${row.emotionTarget}`);
+    }
   }
 
   lines.push("");
@@ -741,6 +976,14 @@ export function formatInsightsReport(insights: IterationInsights): string {
   }
 
   lines.push("");
+  lines.push("## Avoid openers");
+  if (insights.avoidOpeners.length === 0) {
+    lines.push("- No overused opener detected.");
+  } else {
+    for (const opener of insights.avoidOpeners) lines.push(`- ${opener}`);
+  }
+
+  lines.push("");
   lines.push("## Top tweets");
   for (const tweet of insights.winners.slice(0, 3)) {
     const score = tweet.score?.toFixed(3) ?? "n/a";
@@ -755,6 +998,69 @@ export function formatInsightsReport(insights: IterationInsights): string {
   }
 
   return lines.join("\n");
+}
+
+export function buildGenerationInsights(
+  entries: Array<{
+    failedChecks?: string[];
+    rejectionReason?: string;
+    contentFrameId?: ContentFrameId;
+    hookStructureId?: HookStructureId;
+    platformTargets?: PublishPlatform[];
+    usedFallback?: boolean;
+  }>
+): GenerationInsightSummary {
+  const failedChecks = new Map<string, number>();
+  const reasons = new Map<string, number>();
+  const frameHookFailures = new Map<string, number>();
+  const threadsLengthFailures = new Map<HookStructureId, number>();
+  const fallbackFrames = new Map<ContentFrameId, number>();
+
+  for (const entry of entries) {
+    for (const check of entry.failedChecks ?? []) {
+      failedChecks.set(check, (failedChecks.get(check) ?? 0) + 1);
+      if (entry.contentFrameId && entry.hookStructureId) {
+        const key = `${entry.contentFrameId}::${entry.hookStructureId}`;
+        frameHookFailures.set(key, (frameHookFailures.get(key) ?? 0) + 1);
+      }
+      if (check === "length" && entry.platformTargets?.includes("threads") && entry.hookStructureId) {
+        threadsLengthFailures.set(entry.hookStructureId, (threadsLengthFailures.get(entry.hookStructureId) ?? 0) + 1);
+      }
+    }
+
+    if (entry.rejectionReason) {
+      reasons.set(entry.rejectionReason, (reasons.get(entry.rejectionReason) ?? 0) + 1);
+    }
+    if (entry.usedFallback && entry.contentFrameId) {
+      fallbackFrames.set(entry.contentFrameId, (fallbackFrames.get(entry.contentFrameId) ?? 0) + 1);
+    }
+  }
+
+  return {
+    mostCommonFailedChecks: [...failedChecks.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([check, count]) => ({ check, count })),
+    rewriteReasons: [...reasons.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([reason, count]) => ({ reason, count })),
+    frameHookFailures: [...frameHookFailures.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([key, count]) => {
+        const [frameId, hookStructureId] = key.split("::") as [ContentFrameId, HookStructureId];
+        return { frameId, hookStructureId, count };
+      }),
+    threadsLengthFailures: [...threadsLengthFailures.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([hookStructureId, count]) => ({ hookStructureId, count })),
+    fallbackFrames: [...fallbackFrames.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([frameId, count]) => ({ frameId, count })),
+  };
 }
 
 /** Parse a "posts.log" style line and extract successful tweet text entries. */

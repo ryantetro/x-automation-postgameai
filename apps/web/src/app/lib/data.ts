@@ -5,6 +5,29 @@ import { getClickMetricsForSlugs, type ClickMetricsSnapshot } from "./clicks";
 
 export type TweetStatus = "posted" | "dry_run" | "failed";
 export type PublishPlatform = "x" | "threads";
+export type ContentFrameId =
+  | "forty_eight_hour_window"
+  | "film_room_truth"
+  | "development_gap"
+  | "moment_nobody_captures"
+  | "scoreboard_lie"
+  | "conversation_that_doesnt_happen";
+export type HookStructureId =
+  | "specific_number"
+  | "contradiction"
+  | "scene_setter"
+  | "universal_truth"
+  | "insider_divide"
+  | "named_moment";
+export type EmotionTarget =
+  | "recognition"
+  | "frustration"
+  | "validation"
+  | "insider_pride"
+  | "loss"
+  | "urgency"
+  | "provocation"
+  | "vulnerability";
 
 export interface TweetMetricsSnapshot {
   platform?: PublishPlatform;
@@ -48,6 +71,13 @@ export interface TweetAnalyticsRecord {
   source: string;
   status: TweetStatus;
   text: string;
+  contentFrameId?: ContentFrameId;
+  contentFrameLabel?: string;
+  hookStructureId?: HookStructureId;
+  hookStructureLabel?: string;
+  emotionTarget?: EmotionTarget;
+  frameReason?: string;
+  openingPattern?: string;
   trackedUrl?: string;
   linkTargetUrl?: string;
   metrics?: TweetMetricsSnapshot;
@@ -159,6 +189,39 @@ function normalizeTweet(record: Partial<TweetAnalyticsRecord>): TweetAnalyticsRe
     source: nonEmptyString(record.source) ?? "unknown",
     status,
     text: nonEmptyString(record.text) ?? "",
+    contentFrameId:
+      record.contentFrameId === "forty_eight_hour_window" ||
+      record.contentFrameId === "film_room_truth" ||
+      record.contentFrameId === "development_gap" ||
+      record.contentFrameId === "moment_nobody_captures" ||
+      record.contentFrameId === "scoreboard_lie" ||
+      record.contentFrameId === "conversation_that_doesnt_happen"
+        ? record.contentFrameId
+        : undefined,
+    contentFrameLabel: nonEmptyString(record.contentFrameLabel),
+    hookStructureId:
+      record.hookStructureId === "specific_number" ||
+      record.hookStructureId === "contradiction" ||
+      record.hookStructureId === "scene_setter" ||
+      record.hookStructureId === "universal_truth" ||
+      record.hookStructureId === "insider_divide" ||
+      record.hookStructureId === "named_moment"
+        ? record.hookStructureId
+        : undefined,
+    hookStructureLabel: nonEmptyString(record.hookStructureLabel),
+    emotionTarget:
+      record.emotionTarget === "recognition" ||
+      record.emotionTarget === "frustration" ||
+      record.emotionTarget === "validation" ||
+      record.emotionTarget === "insider_pride" ||
+      record.emotionTarget === "loss" ||
+      record.emotionTarget === "urgency" ||
+      record.emotionTarget === "provocation" ||
+      record.emotionTarget === "vulnerability"
+        ? record.emotionTarget
+        : undefined,
+    frameReason: nonEmptyString(record.frameReason),
+    openingPattern: nonEmptyString(record.openingPattern),
     trackedUrl: nonEmptyString(record.trackedUrl),
     linkTargetUrl: nonEmptyString(record.linkTargetUrl),
     metrics: normalizeMetrics(record.metrics),
@@ -360,4 +423,38 @@ export function platformLabel(record: Pick<TweetAnalyticsRecord, "tweetId" | "th
   if (platform === "dual") return "X + Threads";
   if (platform === "threads") return "Threads";
   return "X";
+}
+
+const FRAME_LABELS: Record<ContentFrameId, string> = {
+  forty_eight_hour_window: "48-Hour Window",
+  film_room_truth: "Film Room Truth",
+  development_gap: "Development Gap",
+  moment_nobody_captures: "Moment Nobody Captures",
+  scoreboard_lie: "Scoreboard Lie",
+  conversation_that_doesnt_happen: "Conversation Gap",
+};
+
+const HOOK_LABELS: Record<HookStructureId, string> = {
+  specific_number: "Specific Number",
+  contradiction: "Contradiction",
+  scene_setter: "Scene-Setter",
+  universal_truth: "Universal Truth",
+  insider_divide: "Insider Divide",
+  named_moment: "Named Moment",
+};
+
+export function frameLabel(record: Pick<TweetAnalyticsRecord, "contentFrameId" | "contentFrameLabel">): string {
+  if (record.contentFrameLabel) return record.contentFrameLabel;
+  if (record.contentFrameId) return FRAME_LABELS[record.contentFrameId];
+  return "Unclassified";
+}
+
+export function hookLabel(record: Pick<TweetAnalyticsRecord, "hookStructureId" | "hookStructureLabel">): string {
+  if (record.hookStructureLabel) return record.hookStructureLabel;
+  if (record.hookStructureId) return HOOK_LABELS[record.hookStructureId];
+  return "Unknown Hook";
+}
+
+export function frameClass(frameId?: ContentFrameId): string {
+  return frameId ?? "unclassified";
 }

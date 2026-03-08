@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "updatedAt": "2026-03-08T19:41:12.808Z",
+  "version": 3,
+  "updatedAt": "2026-03-08T23:09:32.509Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -33,7 +33,14 @@
           "platform": "threads",
           "status": "dry_run"
         }
-      ]
+      ],
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "caleb_wilson's"
     },
     {
       "runId": "8f546dce-9f20-47cc-a975-b5a428c8debb",
@@ -66,7 +73,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-08T19:31:08.719Z",
+        "fetchedAt": "2026-03-08T23:09:24.958Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -78,22 +85,213 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T19:31:08.719Z"
+      "scoreUpdatedAt": "2026-03-08T23:09:24.958Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "caleb_wilson's"
+    },
+    {
+      "runId": "a11254e4-bb9c-4d59-b18f-81b70ef900b5",
+      "postedAt": "2026-03-08T20:43:45.148Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "dry_run",
+      "text": "Most basketball film sessions are too long to be useful. The best staffs usually win the review before they win the next game. postgame AI · getpostgame.ai https://getpostgame.ai/r/a11254e4-bb9c-4d59-b18f-81b70ef900b5",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "trackedUrl": "https://getpostgame.ai/r/a11254e4-bb9c-4d59-b18f-81b70ef900b5",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ],
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "newsMomentType": "unknown",
+      "openingPattern": "most_basketball"
+    },
+    {
+      "runId": "a4013268-856b-484c-ab7c-90644f10a3de",
+      "postedAt": "2026-03-08T20:45:44.105Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Caleb Wilson’s thumb injury is a gut punch for UNC, but it’s an all-too-familiar reminder: one player’s setback can expose the entire team’s lack of depth and readiness. Coaches know it’s those critical moments of adversity that reveal who’s really prepared to step up; you can’t fix that in the film room after the fact. postgame AI · getpostgame.ai https://getpostgame.ai/r/a4013268-856b-484c-ab7c-90644f10a3de",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What happened to Caleb Wilson? How UNC basketball star's thumb injury impacts Tar Heels, NBA draft",
+      "newsArticleUrl": "https://www.sportingnews.com/us/ncaa-basketball/news/what-happened-caleb-wilson-unc-basketball-thumb-injury-nba-draft/b014c8af9b47c216701bc47a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-03-07T14:00:00Z",
+      "trackedUrl": "https://getpostgame.ai/r/a4013268-856b-484c-ab7c-90644f10a3de",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ],
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "validation",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "caleb_wilson’s"
+    },
+    {
+      "runId": "e0d6b5eb-42d0-427c-bd6a-4107292752a1",
+      "postedAt": "2026-03-08T21:32:12.149Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Caleb Wilson's thumb injury is a stark reminder that talent doesn't always translate to execution when it matters. Coaches see the gap widen in critical moments, and losing a player like him leaves us questioning who can step up in the clutch. Don't let those key moments slip through your fingers—track what truly matters in your postgame analysis. postgame AI · getpostgame.ai https://getpostgame.ai/r/e0d6b5eb-42d0-427c-bd6a-4107292752a1",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What happened to Caleb Wilson? How UNC basketball star's thumb injury impacts Tar Heels, NBA draft",
+      "newsArticleUrl": "https://www.sportingnews.com/us/ncaa-basketball/news/what-happened-caleb-wilson-unc-basketball-thumb-injury-nba-draft/b014c8af9b47c216701bc47a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-03-07T14:00:00Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "caleb_wilson's",
+      "trackedUrl": "https://getpostgame.ai/r/e0d6b5eb-42d0-427c-bd6a-4107292752a1",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ]
+    },
+    {
+      "runId": "1e5c0787-4e99-4d2f-b680-b7109014e7b2",
+      "postedAt": "2026-03-08T21:36:39.489Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "63% of coaches overlook the critical plays that define seasons. With Caleb Wilson sidelined, UNC's development gap just widened—those 2-3 moments that separate talent from execution are lost in the noise. If you’re not drilling down into those key spots, you’re leaving growth on the table. postgame AI · getpostgame.ai https://getpostgame.ai/r/1e5c0787-4e99-4d2f-b680-b7109014e7b2",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What happened to Caleb Wilson? How UNC basketball star's thumb injury impacts Tar Heels, NBA draft",
+      "newsArticleUrl": "https://www.sportingnews.com/us/ncaa-basketball/news/what-happened-caleb-wilson-unc-basketball-thumb-injury-nba-draft/b014c8af9b47c216701bc47a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-03-07T14:00:00Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "specific_number",
+      "trackedUrl": "https://getpostgame.ai/r/1e5c0787-4e99-4d2f-b680-b7109014e7b2",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ]
+    },
+    {
+      "runId": "8b3c114c-f6a2-424a-8229-df7fad58a39b",
+      "postedAt": "2026-03-08T23:09:24.540Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "dry_run",
+      "text": "Most basketball film sessions are too long to be useful. The best staffs usually win the review before they win the next game. postgame AI · getpostgame.ai https://getpostgame.ai/r/8b3c114c-f6a2-424a-8229-df7fad58a39b",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What happened to Caleb Wilson? How UNC basketball star's thumb injury impacts Tar Heels, NBA draft",
+      "newsArticleUrl": "https://www.sportingnews.com/us/ncaa-basketball/news/what-happened-caleb-wilson-unc-basketball-thumb-injury-nba-draft/b014c8af9b47c216701bc47a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-03-07T14:00:00Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": false,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "most_basketball",
+      "trackedUrl": "https://getpostgame.ai/r/8b3c114c-f6a2-424a-8229-df7fad58a39b",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ]
     }
   ],
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-08T19:41:12.807Z",
+    "fetchedAt": "2026-03-08T23:09:25.216Z",
     "views": 0,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
     "quotes": 0,
-    "clicks": 0,
+    "clicks": 1,
     "followersCount": 0,
     "clicksByUrl": [
       {
         "linkUrl": "https://getpostgame.ai/r/8f546dce-9f20-47cc-a975-b5a428c8debb",
-        "value": 0
+        "value": 1
       },
       {
         "linkUrl": "http://getpostgame.ai/",

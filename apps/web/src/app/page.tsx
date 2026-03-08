@@ -1,4 +1,15 @@
-import { loadStore, compact, sportClass, safeDate, lastUpdatedStr, platformClass, platformLabel } from "./lib/data";
+import {
+  loadStore,
+  compact,
+  sportClass,
+  safeDate,
+  lastUpdatedStr,
+  platformClass,
+  platformLabel,
+  frameLabel,
+  hookLabel,
+  frameClass,
+} from "./lib/data";
 import Sidebar from "./components/Sidebar";
 import InteractiveTimelineChart from "./components/InteractiveTimelineChart";
 
@@ -13,6 +24,17 @@ export default async function Home() {
   const xPosts = posted.filter((t) => !!t.tweetId).length;
   const threadsPosts = posted.filter((t) => !!t.threadsPostId).length;
   const dualPosts = posted.filter((t) => !!t.tweetId && !!t.threadsPostId).length;
+  const frameCounts = new Map<string, number>();
+  const hookCounts = new Map<string, number>();
+  const openingCounts = new Map<string, number>();
+  for (const post of posted) {
+    frameCounts.set(frameLabel(post), (frameCounts.get(frameLabel(post)) ?? 0) + 1);
+    if (post.hookStructureId) hookCounts.set(hookLabel(post), (hookCounts.get(hookLabel(post)) ?? 0) + 1);
+    if (post.openingPattern) openingCounts.set(post.openingPattern, (openingCounts.get(post.openingPattern) ?? 0) + 1);
+  }
+  const topFrame = [...frameCounts.entries()].sort((a, b) => b[1] - a[1])[0];
+  const topHook = [...hookCounts.entries()].sort((a, b) => b[1] - a[1])[0];
+  const overusedOpener = [...openingCounts.entries()].sort((a, b) => b[1] - a[1])[0];
 
   const totalImpressions = tracked.reduce((s, t) => s + (t.metrics?.impressionCount ?? 0), 0);
   const totalEngagements = tracked.reduce((s, t) => s + (t.metrics?.engagementCount ?? 0), 0);
@@ -117,6 +139,7 @@ export default async function Home() {
                       <tr>
                         <th>Sport</th>
                         <th>Platform</th>
+                        <th>Frame</th>
                         <th>Date</th>
                         <th>Impressions</th>
                         <th>Clicks</th>
@@ -137,6 +160,12 @@ export default async function Home() {
                             <tr key={tweet.runId}>
                               <td><span className={`sport-pill ${sportClass(tweet.sport)}`}>{tweet.sport}</span></td>
                               <td><span className={`platform-pill ${platformClass(tweet)}`}>{platformLabel(tweet)}</span></td>
+                              <td>
+                                <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem", alignItems: "flex-start" }}>
+                                  <span className={`frame-pill ${frameClass(tweet.contentFrameId)}`}>{frameLabel(tweet)}</span>
+                                  {tweet.hookStructureId ? <span className="hook-pill">{hookLabel(tweet)}</span> : null}
+                                </div>
+                              </td>
                               <td>{safeDate(tweet.postedAt)}</td>
                               <td>{compact(imp)}</td>
                               <td>{typeof clicks === "number" ? compact(clicks) : "—"}</td>
@@ -165,7 +194,7 @@ export default async function Home() {
                           );
                         })
                       ) : (
-                        <tr><td colSpan={9} className="empty-state">No posts yet. Run the bot to see results here.</td></tr>
+                        <tr><td colSpan={10} className="empty-state">No posts yet. Run the bot to see results here.</td></tr>
                       )}
                     </tbody>
                   </table>
@@ -200,6 +229,15 @@ export default async function Home() {
                   <div className="summary-row"><span className="summary-label">Link clicks</span><span className="summary-val amber">{totalClicks === null ? "—" : compact(totalClicks)}</span></div>
                 </div>
                 <div className="card-footer">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting analytics"}</div>
+              </div>
+
+              <div className="card">
+                <div className="card-header"><h3>Winning content patterns</h3></div>
+                <div className="summary-list">
+                  <div className="summary-row"><span className="summary-label">Top frame</span><span className="summary-val">{topFrame ? `${topFrame[0]} (${topFrame[1]})` : "—"}</span></div>
+                  <div className="summary-row"><span className="summary-label">Top hook</span><span className="summary-val blue">{topHook ? `${topHook[0]} (${topHook[1]})` : "—"}</span></div>
+                  <div className="summary-row"><span className="summary-label">Overused opener</span><span className="summary-val amber">{overusedOpener && overusedOpener[1] > 1 ? `${overusedOpener[0]} (${overusedOpener[1]})` : "None"}</span></div>
+                </div>
               </div>
             </div>
           </div>

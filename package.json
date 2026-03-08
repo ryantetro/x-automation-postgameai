@@ -24,6 +24,9 @@
     "bot:analytics:pull:x": "ANALYTICS_STORE_FILENAME=tweet-analytics.json npm run analytics:pull --workspace @x-automation/postgame-x-bot",
     "bot:analytics:pull:threads": "ANALYTICS_STORE_FILENAME=threads-analytics.json npm run analytics:pull --workspace @x-automation/postgame-x-bot",
     "bot:analytics:report": "npm run analytics:report --workspace @x-automation/postgame-x-bot",
-    "bot:analytics:backfill": "npm run analytics:backfill --workspace @x-automation/postgame-x-bot"
+    "bot:analytics:backfill": "npm run analytics:backfill --workspace @x-automation/postgame-x-bot",
+    "bot:analytics:content-backfill": "npm run analytics:content-backfill --workspace @x-automation/postgame-x-bot",
+    "bot:threads:token:exchange": "npm run threads:token:exchange --workspace @x-automation/postgame-x-bot",
+    "bot:threads:token:refresh": "npm run threads:token:refresh --workspace @x-automation/postgame-x-bot"
   }
 }

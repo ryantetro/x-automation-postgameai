@@ -9,34 +9,54 @@ import {
   PROMPTS_DIR,
   MAX_POST_LEN,
 } from "./config.js";
+import type { ContentDecision, RecentContentDecision } from "./contentArchitecture.js";
+import { FRAME_DEFINITIONS, HOOK_DEFINITIONS } from "./contentArchitecture.js";
+import { evaluatePrePublishChecks, getOpeningPattern } from "./contentHeuristics.js";
 import type { FetchedData } from "./fetchData.js";
 import type { NewsContext } from "./fetchNews.js";
 import { isValidTweet, BRAND_NAME, BRAND_WEBSITE } from "./validate.js";
 
 const BRAND_SUFFIX = ` — ${BRAND_NAME} · ${BRAND_WEBSITE}`;
-const USER_MESSAGE_TEMPLATE = `Context: this post is for the {sport} coaching audience. Date: {date}. Focus theme: {angle}. Archetype: {archetype}.
+const USER_MESSAGE_TEMPLATE = `Context: this post is for the {sport} coaching audience. Date: {date}. Focus theme: {angle}. Frame: {frame_label}. Hook structure: {hook_label}. Emotional target: {emotion_target}.
 
-Write like a sharp X creator, coach, or analyst, not a SaaS brand account.
+Write like a former coach turned analyst, not a SaaS brand account.
 
-Tweet rules:
-1. Open with a strong take, sharp observation, or timely angle. The first sentence should feel punchy and scroll-stopping.
-2. Use 2 short sentences max before the light brand tag.
-3. Sound opinionated, specific, and conversational. Prioritize tension, clarity, and real coaching insight.
-4. Do not write a scoreboard recap, matchup line, live score update, or "Team A at Team B" post.
-5. Do not sound like a product ad. The body should stand on its own as a valuable post even without the brand tag.
-6. Mention {brand_name} only once, in a light tag at the end as "{brand_name} · {brand_website}".
-7. Prefer zero hashtags. Use one only if it genuinely adds context.
-8. Stay within the active platform character limit before any tracked link is appended.
-9. Archetype rule: {archetype_guidance}
-10. Do not tell the reader what to do. No "coaches need to", "record your thoughts", "document your thoughts", "make every word count", or other instructional CTA language in the main body.
+Post requirements:
+1. The first 8 words must earn the scroll-stop. Lead with tension, a hard truth, or a counterintuitive observation. Not a question. Not a stat dump. Not a score recap.
+2. Make coaches feel recognized. The post should sound like something a real coach would screenshot and send to staff.
+3. Use no more than 2 tight sentences before the brand tag.
+4. The body must stand on its own as a strong post even without the brand tag.
+5. Mention {brand_name} only once, lightly, at the end as "{brand_name} · {brand_website}".
+6. Prefer zero hashtags. Use one only if it sharpens the post.
+7. Stay within the active platform character limit before any tracked link is appended.
+8. Archetype rule: {archetype_guidance}
+9. Do not tell the reader what to do. No instructional CTA language in the main body.
+10. News is the hook, not the subject. Use the headline as the excuse to post, then pivot to the coaching truth it reveals.
+11. Describe, never prescribe. The post must describe a situation coaches recognize. It must not tell them what to do about it.
+12. Do not open with "Most teams" if that opener has already been used in the recent batch.
 
-Banned phrases and tones:
+Positive voice model:
+- Sound like this: "Most coaches know the feeling - you saw exactly what went wrong at halftime, then it's gone by Thursday. That's the whole problem."
+- Not like this: "postgame AI helps coaches turn thoughts into organized development notes."
+
+Frame territory:
+{frame_territory}
+
+Frame instruction block:
+{frame_instruction}
+
+Hook guidance:
+{hook_guidance}
+
+Avoid these phrases and tones:
 - "research shows"
 - "helps you"
+- "helps coaches"
 - "turn your postgame thoughts into"
 - "organized development notes"
 - "actionable insights"
 - "player growth"
+- "player development" as a generic slogan
 - "seamlessly"
 - "generic feedback"
 - "specific feedback"
@@ -54,22 +74,28 @@ Banned phrases and tones:
 {iteration_block}`;
 
 const STRICT_FOLLOWUP =
-  ` Your last reply was too long, incomplete, too promotional, instructional, or sounded like a scoreboard/news recap. Write a NEW tweet in a sharper creator voice: 2 short sentences max, specific, opinionated, not corporate, under the limit, with only one light "${BRAND_NAME} · ${BRAND_WEBSITE}" tag at the end. No advice-style lines like "coaches need to" or "record your thoughts". Reply with only the tweet text.`;
+  ` Your last reply was too long, incomplete, too promotional, instructional, or sounded like a scoreboard/news recap. Write a NEW post in a sharper former-coach voice: hard-edged, specific, and screenshot-worthy for a staff chat. Use 2 short sentences max, stay under the limit, and end with one light "${BRAND_NAME} · ${BRAND_WEBSITE}" tag. No advice-style lines like "coaches need to" or "record your thoughts". Reply with only the post text.`;
 
 const AVOID_FOLLOWUP =
-  ` Your previous suggestion was too similar to a recent post. Write a DIFFERENT tweet with a new hook, different wording, and a different angle. Reply with only the tweet text.`;
+  ` Your previous suggestion was too similar to a recent post. Write a DIFFERENT post with a new hook, different wording, and a different coaching tension. Reply with only the post text.`;
 
 const AD_FOLLOWUP =
-  ` Your previous reply sounded like marketing copy. Rewrite it with more edge and less sales language. No "research shows", no "helps you", no "actionable insights", no generic product explanation.`;
+  ` Your previous reply sounded like marketing copy. Rewrite it with more edge, more lived-in coaching language, and less sales wording. No "research shows", no "helps you", no "actionable insights", and no generic product explanation.`;
 
 const NEWS_ENTITY_FOLLOWUP =
-  ` Your previous reply ignored the specific headline context. Rewrite it so the first sentence clearly references the key team, player, event, or trend from the headline.`;
+  ` Your previous reply ignored the specific headline context. Rewrite it so the first sentence clearly references the key team, player, event, or trend from the headline, then pivot to the coaching truth beneath it.`;
 
 const INSTRUCTIONAL_FOLLOWUP =
-  ` Your previous reply sounded too instructional. Rewrite it as an observation or take, not advice. No "coaches need to", "record your thoughts", "document your thoughts", or "make every word count".`;
+  ` Your previous reply sounded too instructional. Rewrite it as an observation or take, not advice. No "coaches need to", "record your thoughts", "document your thoughts", or "make every word count". Make it sound like recognition, frustration, or validation - not guidance.`;
 
 const COMPRESSION_FOLLOWUP =
-  ` Compress the tweet you just wrote so it fits the character limit. Keep the same hook, remove filler, keep "postgame AI" and "getpostgame.ai", and reply with only the shortened tweet.`;
+  ` Compress the post you just wrote so it fits the character limit. Keep the same hook, remove filler, keep "postgame AI" and "getpostgame.ai", and reply with only the shortened post.`;
+
+const WEAK_OPENER_FOLLOWUP =
+  ` Your previous opener did not clearly match the assigned hook structure. Rewrite the opening so the first 8 words unmistakably fit the assigned hook type while keeping the same frame and coaching tension.`;
+
+const OPENER_VARIETY_FOLLOWUP =
+  ` Your previous opener repeated an overused opening pattern from the recent batch. Rewrite it with a different opening structure and do not begin with "Most teams".`;
 
 const SPORT_HASHTAGS: Record<string, string> = {
   nba: "",
@@ -124,13 +150,13 @@ const FALLBACK_FACTS: Record<string, Record<string, string>> = {
 const VIRAL_ARCHETYPES = ["news_take", "contrarian_take", "coaching_truth", "trend_observation"] as const;
 const ARCHETYPE_GUIDANCE: Record<(typeof VIRAL_ARCHETYPES)[number], string> = {
   news_take:
-    "Use the headline as the hook. Name the team, player, or event early. Then make one sharp coaching point about what it reveals. Avoid abstract motivational language.",
+    "Use the headline as the hook. Name the team, player, or event early, then turn it into a sharper coaching truth fans would miss. The headline is the entry point, not the whole post.",
   contrarian_take:
-    "Open with a contrarian coaching claim like 'Most teams...' or 'The problem is not...'. Sound skeptical and clean. Do not use the words feedback, generic, or specific. Do not tell the audience what to do.",
+    "Open with a contrarian coaching claim like 'Most teams...' or 'The problem is not...'. Sound skeptical, earned, and blunt. Do not tell the audience what to do.",
   coaching_truth:
-    "Write one blunt coaching truth that sounds earned, not inspirational. Short, hard-edged, direct. Do not use the words feedback, generic, or specific. No instruction or CTA tone.",
+    "Write one blunt coaching truth that sounds earned, not inspirational. Short, hard-edged, direct. It should feel like a veteran coach finally saying the quiet part out loud.",
   trend_observation:
-    "Point at a pattern coaches can recognize in the sport right now. Use language like reveals, exposes, punishes, rewards, or shows. Do not use the words feedback, generic, or specific. Avoid telling coaches what to do.",
+    "Point at a pattern coaches can recognize in the sport right now. Use language like reveals, exposes, punishes, rewards, or shows. Make the reader feel immediate recognition, not instruction.",
 };
 const BANNED_AD_PHRASES = [
   "research shows",
@@ -227,6 +253,31 @@ export interface GeneratePostOptions {
   reserveChars?: number;
   /** Optional news context to drive a more timely hook when available. */
   newsContext?: NewsContext;
+  /** Pre-selected architecture decision for this post. */
+  contentDecision?: ContentDecision;
+  /** Recent content decisions for opener variety and hook rotation. */
+  recentContentDecisions?: RecentContentDecision[];
+}
+
+export interface GeneratePostAttempt {
+  attemptId: string;
+  rawOutput?: string;
+  cleanedOutput?: string;
+  passedChecks: string[];
+  failedChecks: string[];
+  rejectionReason?: string;
+  acceptedForPublish: boolean;
+}
+
+export interface GeneratePostResult {
+  text: string | null;
+  attempts: GeneratePostAttempt[];
+  openingPattern?: string;
+  prePublishChecks?: {
+    hookDetected: boolean;
+    adviceDriftClear: boolean;
+    openerVarietyClear: boolean;
+  };
 }
 
 /** Strip quotes, markdown fences, and "Tweet:"-style prefixes so validation doesn't fail on formatting. */
@@ -340,21 +391,29 @@ export async function generatePost(
   fetchedData: FetchedData,
   maxRetries = 3,
   options: GeneratePostOptions = {}
-): Promise<string | null> {
-  if (!OPENAI_API_KEY) return null;
+): Promise<GeneratePostResult> {
+  if (!OPENAI_API_KEY) return { text: null, attempts: [] };
   const system = loadSystemPrompt();
   const sport = (fetchedData.sport ?? "sports").toLowerCase();
   const date = options.date ?? new Date().toISOString().slice(0, 10);
   const angle = options.angle ?? "film review, feedback, or preparation (pick one)";
   const maxBodyLength = Math.max(180, MAX_POST_LEN - Math.max(0, options.reserveChars ?? 0));
+  const contentDecision = options.contentDecision;
+  if (!contentDecision) return { text: null, attempts: [] };
   const archetype = selectArchetype(sport, date, Boolean(options.newsContext?.usedNews));
   const archetypeGuidance = ARCHETYPE_GUIDANCE[archetype];
+  const frame = FRAME_DEFINITIONS[contentDecision.frameId];
+  const hook = HOOK_DEFINITIONS[contentDecision.hookStructureId];
   const avoidBlock =
     (options.recentTweets?.length ?? 0) > 0
       ? `\nDo NOT repeat or closely mimic these recent tweets:\n${options.recentTweets!.slice(0, 12).map((t) => `- ${t}`).join("\n")}`
       : "";
   const iterationBlock = options.iterationGuidance
-    ? `\nIteration guidance from recent tweet analytics (follow these patterns):\n${options.iterationGuidance}`
+    ? `\nIteration guidance from recent post analytics:
+- Learn from why strong posts worked, not just what they said.
+- Weight toward hooks that surface tension, uncomfortable truths, or strong coach recognition.
+- Notice whether the winning post triggered recognition, frustration, or validation.
+- Follow these patterns:\n${options.iterationGuidance}`
     : "";
   const newsBlock =
     options.newsContext?.usedNews && options.newsContext.selectedArticle
@@ -368,15 +427,21 @@ Rules for news usage:
 - The first sentence must clearly reference the specific event, team, player, or trend in the headline above.
 - Do not sound like a headline repost or news wire account.
 - Do not explicitly cite the publisher unless necessary for clarity.
+- The headline is your excuse to post. The real post is about what coaches know that fans do not.
 - Turn the article into a coaching, performance, development, or preparation insight.
-- Prefer one of these structures: trend -> why it matters for coaches -> postgame AI; news event -> coaching lesson -> postgame AI; performance shift -> development takeaway -> postgame AI.
+- Prefer one of these structures: trend -> what it reveals -> postgame AI; news event -> coaching truth -> postgame AI; performance shift -> uncomfortable takeaway -> postgame AI.
 - Keep the product mention light. The main body should read like a real take, not product copy.`
       : "";
   let userMessage = USER_MESSAGE_TEMPLATE.replace(/\{sport\}/g, sport)
     .replace(/\{date\}/g, date)
     .replace(/\{angle\}/g, angle)
-    .replace(/\{archetype\}/g, archetype)
+    .replace(/\{frame_label\}/g, frame.label)
+    .replace(/\{hook_label\}/g, hook.label)
+    .replace(/\{emotion_target\}/g, contentDecision.emotionTarget)
     .replace(/\{archetype_guidance\}/g, archetypeGuidance)
+    .replace(/\{frame_territory\}/g, frame.territory)
+    .replace(/\{frame_instruction\}/g, frame.instructionBlock)
+    .replace(/\{hook_guidance\}/g, hook.openingGuidance)
     .replace(/\{brand_name\}/g, BRAND_NAME)
     .replace(/\{brand_website\}/g, BRAND_WEBSITE)
     .replace(/\{avoid_block\}/g, avoidBlock)
@@ -388,13 +453,29 @@ Rules for news usage:
   const client = new OpenAI(clientOptions);
 
   let lastContent: string | null = null;
+  let lastEvaluation:
+    | {
+        hookDetected: boolean;
+        adviceDriftClear: boolean;
+        openerVarietyClear: boolean;
+      }
+    | undefined;
+  const attempts: GeneratePostAttempt[] = [];
+  const recentOpeningPatterns = (options.recentContentDecisions ?? []).map((decision) => decision.openingPattern ?? "");
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
+    const attemptRecord: GeneratePostAttempt = {
+      attemptId: `${Date.now()}-${attempt + 1}`,
+      passedChecks: [],
+      failedChecks: [],
+      acceptedForPublish: false,
+    };
     try {
       if (attempt > 0) userMessage += STRICT_FOLLOWUP;
       const raw = await requestTweet(client, system, userMessage);
       if (raw) {
         let content = raw;
+        attemptRecord.rawOutput = raw;
         lastContent = content;
         if (content) {
           const hasName = content.includes(BRAND_NAME);
@@ -411,15 +492,25 @@ Rules for news usage:
           }
           if (!content.includes(BRAND_NAME)) console.warn(`LLM response missing ${BRAND_NAME}`);
           if (!content.includes(BRAND_WEBSITE)) console.warn(`LLM response missing ${BRAND_WEBSITE}`);
+          attemptRecord.cleanedOutput = content;
           if (soundsLikeAd(content)) {
+            attemptRecord.failedChecks.push("ad_tone");
+            attemptRecord.rejectionReason = "marketing_copy";
+            attempts.push(attemptRecord);
             userMessage += AD_FOLLOWUP;
             continue;
           }
           if (soundsInstructional(content)) {
+            attemptRecord.failedChecks.push("advice_drift_clear");
+            attemptRecord.rejectionReason = "instructional_drift";
+            attempts.push(attemptRecord);
             userMessage += INSTRUCTIONAL_FOLLOWUP;
             continue;
           }
           if (usesRepetitivePhraseFamily(content)) {
+            attemptRecord.failedChecks.push("repetitive_phrase_family");
+            attemptRecord.rejectionReason = "repetitive_phrase_family";
+            attempts.push(attemptRecord);
             userMessage +=
               " Avoid the repeated phrase family around generic/specific feedback, generic/specific notes, targeted notes, postgame chats, and player development. Use different language.";
             continue;
@@ -429,17 +520,62 @@ Rules for news usage:
             options.newsContext.selectedArticle?.title &&
             !referencesHeadline(content, options.newsContext.selectedArticle.title, sport)
           ) {
+            attemptRecord.failedChecks.push("headline_reference");
+            attemptRecord.rejectionReason = "headline_context_missing";
+            attempts.push(attemptRecord);
             userMessage += NEWS_ENTITY_FOLLOWUP;
             continue;
           }
-          return content;
+          const evaluation = evaluatePrePublishChecks(content, contentDecision, recentOpeningPatterns);
+          lastEvaluation = evaluation;
+          if (!evaluation.hookDetected) {
+            attemptRecord.failedChecks.push("hook_detected");
+            attemptRecord.rejectionReason = "weak_opener";
+            attempts.push(attemptRecord);
+            userMessage += WEAK_OPENER_FOLLOWUP;
+            continue;
+          }
+          if (!evaluation.openerVarietyClear) {
+            attemptRecord.failedChecks.push("opener_variety_clear");
+            attemptRecord.rejectionReason = "opener_overuse";
+            attempts.push(attemptRecord);
+            userMessage += OPENER_VARIETY_FOLLOWUP;
+            continue;
+          }
+          attemptRecord.passedChecks.push("hook_detected", "advice_drift_clear", "opener_variety_clear");
+          attemptRecord.acceptedForPublish = true;
+          attempts.push(attemptRecord);
+          return {
+            text: content,
+            attempts,
+            openingPattern: getOpeningPattern(content),
+            prePublishChecks: {
+              hookDetected: evaluation.hookDetected,
+              adviceDriftClear: evaluation.adviceDriftClear,
+              openerVarietyClear: evaluation.openerVarietyClear,
+            },
+          };
         }
       }
     } catch (err) {
       console.warn(`LLM attempt ${attempt + 1} failed:`, err);
+      attemptRecord.failedChecks.push("llm_error");
+      attemptRecord.rejectionReason = "llm_error";
+      attempts.push(attemptRecord);
     }
   }
-  return lastContent;
+  return {
+    text: null,
+    attempts,
+    openingPattern: lastContent ? getOpeningPattern(lastContent) : undefined,
+    prePublishChecks: lastEvaluation
+      ? {
+          hookDetected: lastEvaluation.hookDetected,
+          adviceDriftClear: lastEvaluation.adviceDriftClear,
+          openerVarietyClear: lastEvaluation.openerVarietyClear,
+        }
+      : undefined,
+  };
 }
 
 export function fillFallbackTemplate(

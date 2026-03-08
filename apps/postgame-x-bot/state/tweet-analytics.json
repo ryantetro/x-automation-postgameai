@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "updatedAt": "2026-03-08T11:19:52.337Z",
+  "version": 3,
+  "updatedAt": "2026-03-08T21:36:50.327Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -10,7 +10,14 @@
       "angle": "film review timing and retention (e.g. within 24–48 hours)",
       "source": "fallback",
       "status": "dry_run",
-      "text": "2026-03-05: No games today. postgame AI · getpostgame.ai #NBA"
+      "text": "2026-03-05: No games today. postgame AI · getpostgame.ai #NBA",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "newsMomentType": "unknown",
+      "openingPattern": "specific_number"
     },
     {
       "runId": "71b1364e-e108-45bb-957f-7cfd44363402",
@@ -23,18 +30,27 @@
       "status": "posted",
       "text": "Coaches who review game film within 24–48 hours see a 30% improvement in player retention and performance. postgame AI helps you capture postgame insights quickly so you can maximize that window for development. postgame AI · https://t.co/nSZsKKGSOk #CoachingTips #NBA",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 18,
+        "shareCount": 0,
+        "impressionCount": 19,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.350Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "loss",
+      "newsMomentType": "unknown",
+      "openingPattern": "coaches_who"
     },
     {
       "runId": "0f67859d-1b4c-4185-8a36-2984647e0c63",
@@ -47,18 +63,27 @@
       "status": "posted",
       "text": "Teams leveraging data analytics see a 15% improvement in game performance. postgame AI helps you capture your insights after each match, turning your thoughts into organized player development and tracking. postgame AI · https://t.co/nSZsKKGSOk #SoccerCoaching #DataDriven",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 18,
+        "shareCount": 0,
+        "impressionCount": 19,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.351Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "unknown",
+      "openingPattern": "teams_leveraging"
     },
     {
       "runId": "b120360f-5091-4472-a2a4-01c0aeb15156",
@@ -71,18 +96,27 @@
       "status": "posted",
       "text": "Teams that excel in situational awareness score 25% more in clutch moments. postgame AI captures your insights after each game, turning them into actionable development notes that enhance your team's game IQ. postgame AI · https://t.co/nSZsKKGkYM #MLB #CoachingTips",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 14,
+        "shareCount": 0,
+        "impressionCount": 15,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.351Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "unknown",
+      "openingPattern": "teams_that"
     },
     {
       "runId": "cffdd31f-365f-484d-8e54-498ae3843850",
@@ -95,18 +129,27 @@
       "status": "posted",
       "text": "Elite teams adjust strategies based on situational awareness over 70% of the time. postgame AI helps you capture those crucial in-game insights, turning them into organized player development notes for future reference. postgame AI · https://t.co/nSZsKKGSOk #MLB #CoachingTips",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 16,
+        "shareCount": 0,
+        "impressionCount": 17,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.351Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "unknown",
+      "openingPattern": "elite_teams"
     },
     {
       "runId": "5802ae0a-5eb8-4ec0-819f-a727d0c1e5eb",
@@ -119,18 +162,27 @@
       "status": "posted",
       "text": "Coaches who focus on shot selection see a 30% increase in offensive efficiency. postgame AI helps you analyze decision-making and track player performance, turning your insights into organized development notes. postgame AI · https://t.co/nSZsKKGkYM #NFL #CoachingTips",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 19,
+        "shareCount": 0,
+        "impressionCount": 20,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.351Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "unknown",
+      "openingPattern": "coaches_who"
     },
     {
       "runId": "042b86f4-8430-4d47-9bc3-54b71c9f5885",
@@ -143,18 +195,27 @@
       "status": "posted",
       "text": "Teams that analyze shot selection improve scoring efficiency by 15%. postgame AI helps you capture postgame insights and track decision-making trends, turning your thoughts into actionable player development. postgame AI · https://t.co/nSZsKKGSOk #NFL #CoachingTips",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 24,
+        "shareCount": 0,
+        "impressionCount": 25,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.351Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "unknown",
+      "openingPattern": "teams_that"
     },
     {
       "runId": "a1966844-75bf-4214-b8b1-46ff2c8af33e",
@@ -164,7 +225,14 @@
       "angle": "film review timing and retention (e.g. within 24–48 hours)",
       "source": "fallback",
       "status": "dry_run",
-      "text": "2026-03-05: No games today. postgame AI · getpostgame.ai #NBA"
+      "text": "2026-03-05: No games today. postgame AI · getpostgame.ai #NBA",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "newsMomentType": "unknown",
+      "openingPattern": "specific_number"
     },
     {
       "runId": "f729d740-e4e4-456a-a042-b1e5bf39eefd",
@@ -177,18 +245,27 @@
       "status": "posted",
       "text": "Coaches who review game film within 48 hours boost retention by 30%. postgame AI helps you quickly capture your postgame thoughts, ensuring you maximize that critical development window for your players. postgame AI · getpostgame.ai #CoachingTips #NBA",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 16,
+        "shareCount": 0,
+        "impressionCount": 18,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.350Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "loss",
+      "newsMomentType": "unknown",
+      "openingPattern": "coaches_who"
     },
     {
       "runId": "b1d2cc71-3e52-4e47-a5e8-c1fcb1ddcca9",
@@ -201,18 +278,27 @@
       "status": "posted",
       "text": "Coaches who review game film within 48 hours see a 30% boost in retention. postgame AI helps you effortlessly capture your postgame insights, ensuring you make the most of that critical development period for your players. postgame AI · getpostgame.ai #CoachingTips #NBA",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 20,
+        "shareCount": 0,
+        "impressionCount": 22,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.350Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "urgency",
+      "newsMomentType": "unknown",
+      "openingPattern": "coaches_who"
     },
     {
       "runId": "081ab1d5-b829-49e7-89a4-d85acaa42c44",
@@ -225,18 +311,27 @@
       "status": "posted",
       "text": "Specific feedback can improve player performance by up to 40%. postgame AI turns your postgame insights into organized development notes, ensuring your players receive the targeted guidance they need to excel. postgame AI · getpostgame.ai #CoachingTips #NFL",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 15,
+        "shareCount": 0,
+        "impressionCount": 17,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.350Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "unknown",
+      "openingPattern": "specific_feedback"
     },
     {
       "runId": "1790e3f2-ba94-44e6-a12b-69b5effc5a32",
@@ -250,7 +345,14 @@
       "contentMode": "sports_only",
       "newsUsed": false,
       "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
-      "linkTargetUrl": ""
+      "linkTargetUrl": "",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "unknown",
+      "openingPattern": "coaches_winning"
     },
     {
       "runId": "3bee8914-5cb6-4b3b-b418-d45a9d1a7c6c",
@@ -264,7 +366,14 @@
       "contentMode": "sports_only",
       "newsUsed": false,
       "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
-      "linkTargetUrl": ""
+      "linkTargetUrl": "",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "newsMomentType": "unknown",
+      "openingPattern": "in_the"
     },
     {
       "runId": "de1758aa-8994-40df-8a69-78bb5b19390b",
@@ -281,18 +390,27 @@
       "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
       "linkTargetUrl": "",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 10,
+        "shareCount": 0,
+        "impressionCount": 14,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.350Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "newsMomentType": "unknown",
+      "openingPattern": "pro_teams"
     },
     {
       "runId": "049c57af-63bf-4653-b7ba-8996614d78a8",
@@ -309,18 +427,27 @@
       "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
       "linkTargetUrl": "",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:50.350Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 3,
+        "shareCount": 0,
+        "impressionCount": 7,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:50.350Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "provocation",
+      "newsMomentType": "unknown",
+      "openingPattern": "contradiction"
     },
     {
       "runId": "7b55b2dc-0bfc-400d-82a9-fefd6705b212",
@@ -337,18 +464,170 @@
       "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
       "linkTargetUrl": "",
       "metrics": {
-        "fetchedAt": "2026-03-08T11:19:52.337Z",
+        "platform": "x",
+        "fetchedAt": "2026-03-08T20:45:42.773Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
-        "impressionCount": 0,
+        "shareCount": 0,
+        "impressionCount": 4,
         "engagementCount": 0,
-        "engagementRate": null
+        "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T11:19:52.337Z"
+      "scoreUpdatedAt": "2026-03-08T20:45:42.773Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "unknown",
+      "openingPattern": "focusing_on"
+    },
+    {
+      "runId": "6d785eb7-688d-4daa-bf9a-fb4613163b86",
+      "postedAt": "2026-03-08T20:43:45.148Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "dry_run",
+      "text": "Most basketball film sessions are too long to be useful. The best staffs usually win the review before they win the next game. postgame AI · getpostgame.ai https://getpostgame.ai/r/6d785eb7-688d-4daa-bf9a-fb4613163b86",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "trackedUrl": "https://getpostgame.ai/r/6d785eb7-688d-4daa-bf9a-fb4613163b86",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "newsMomentType": "unknown",
+      "openingPattern": "most_basketball"
+    },
+    {
+      "runId": "1f721316-ff32-43d9-9c34-4eeb02258561",
+      "postedAt": "2026-03-08T20:45:42.369Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Caleb Wilson's thumb injury isn't just a setback; it’s a reminder that key moments hinge on health. One injury can completely alter team dynamics and strategy. postgame AI · getpostgame.ai https://getpostgame.ai/r/1f721316-ff32-43d9-9c34-4eeb02258561",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What happened to Caleb Wilson? How UNC basketball star's thumb injury impacts Tar Heels, NBA draft",
+      "newsArticleUrl": "https://www.sportingnews.com/us/ncaa-basketball/news/what-happened-caleb-wilson-unc-basketball-thumb-injury-nba-draft/b014c8af9b47c216701bc47a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-03-07T14:00:00Z",
+      "trackedUrl": "https://getpostgame.ai/r/1f721316-ff32-43d9-9c34-4eeb02258561",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "caleb_wilson's"
+    },
+    {
+      "runId": "2b96ff89-b0d8-4b83-afcb-8e5eb78e9902",
+      "postedAt": "2026-03-08T21:31:54.482Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Caleb Wilson’s season-ending injury reveals a frustrating truth: one moment can derail months of progress and development. Coaches know that the real challenge is bridging the gap between potential and execution amid constant setbacks. postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What happened to Caleb Wilson? How UNC basketball star's thumb injury impacts Tar Heels, NBA draft",
+      "newsArticleUrl": "https://www.sportingnews.com/us/ncaa-basketball/news/what-happened-caleb-wilson-unc-basketball-thumb-injury-nba-draft/b014c8af9b47c216701bc47a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-03-07T14:00:00Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "caleb_wilson’s",
+      "trackedUrl": "https://getpostgame.ai/r/2b96ff89-b0d8-4b83-afcb-8e5eb78e9902",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ]
+    },
+    {
+      "runId": "e28276d3-a278-406c-8d0a-af786c6a59f6",
+      "postedAt": "2026-03-08T21:36:38.560Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "dry_run",
+      "text": "Most basketball film sessions are too long to be useful. The best staffs usually win the review before they win the next game. postgame AI · getpostgame.ai https://getpostgame.ai/r/e28276d3-a278-406c-8d0a-af786c6a59f6",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What happened to Caleb Wilson? How UNC basketball star's thumb injury impacts Tar Heels, NBA draft",
+      "newsArticleUrl": "https://www.sportingnews.com/us/ncaa-basketball/news/what-happened-caleb-wilson-unc-basketball-thumb-injury-nba-draft/b014c8af9b47c216701bc47a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-03-07T14:00:00Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": false,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "most_basketball",
+      "trackedUrl": "https://getpostgame.ai/r/e28276d3-a278-406c-8d0a-af786c6a59f6",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ]
     }
   ]
 }

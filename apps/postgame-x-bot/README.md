@@ -16,6 +16,7 @@ Automated sports content for X and Threads: fetch data from API-Sports (with ESP
    Fill in:
    - X (Twitter) OAuth 1.0: `X_CONSUMER_KEY`, `X_CONSUMER_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`
    - Threads Graph API: `THREADS_ACCESS_TOKEN` if you want Threads posting enabled
+   - `THREADS_APP_SECRET` only if you want to run the one-time short-lived -> long-lived Threads token exchange locally
    - `OPENAI_API_KEY`
    - `API_SPORTS_KEY`
    - `POST_TARGETS=x` for X only, `POST_TARGETS=threads` for Threads only, or `POST_TARGETS=x,threads` for dual publishing
@@ -66,6 +67,7 @@ Useful commands:
 ```bash
 npm run analytics:pull    # Refresh metrics for recent tweets
 npm run analytics:report  # Print + save winner/loser pattern report
+npm run analytics:content-backfill  # Backfill frame/hook metadata into existing analytics
 ```
 
 Environment variables:
@@ -144,8 +146,36 @@ Threads app setup:
 - create a Meta app with Threads API access and a user access token that can publish content
 - ensure the token has `threads_basic` and `threads_content_publish`
 - add `threads_manage_insights` if you want Threads metrics and follower/profile insights in the dashboard
-- store that token as `THREADS_ACCESS_TOKEN`
+- exchange the short-lived Explorer token for a long-lived token before storing it as `THREADS_ACCESS_TOKEN`
 - set `POST_TARGETS=x,threads` once the token is ready
+
+## Threads token lifecycle
+
+Use a long-lived Threads token, not the 1-hour Explorer token.
+
+One-time exchange from short-lived -> long-lived:
+
+```bash
+THREADS_APP_SECRET=your_threads_app_secret \
+THREADS_SHORT_LIVED_ACCESS_TOKEN=your_short_lived_threads_token \
+npm run bot:threads:token:exchange
+```
+
+Automatic refresh uses the current long-lived `THREADS_ACCESS_TOKEN`:
+
+```bash
+npm run bot:threads:token:refresh
+```
+
+The repo includes a scheduled workflow at [.github/workflows/refresh-threads-token.yml](../../.github/workflows/refresh-threads-token.yml) that refreshes the token every Monday and updates the `THREADS_ACCESS_TOKEN` GitHub Actions secret automatically.
+
+Required GitHub secrets for auto-refresh:
+- `THREADS_ACCESS_TOKEN` — your current long-lived Threads token
+- `THREADS_SECRET_ADMIN_TOKEN` — a GitHub token that can update repository Actions secrets
+
+Recommended GitHub token permissions for `THREADS_SECRET_ADMIN_TOKEN`:
+- fine-grained PAT scoped to this repo
+- repository permission: `Secrets` set to `Read and write`
 
 ## PRD
 

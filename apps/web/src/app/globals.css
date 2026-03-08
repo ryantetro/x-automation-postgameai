@@ -1217,7 +1217,7 @@ button, input, select, textarea { font: inherit; }
 }
 
 /* ── Pills & badges ── */
-.sport-pill, .platform-pill, .rate-badge {
+.sport-pill, .platform-pill, .frame-pill, .hook-pill, .rate-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1242,6 +1242,64 @@ button, input, select, textarea { font: inherit; }
 .platform-pill.dual {
   background: linear-gradient(90deg, var(--accent-soft), var(--blue-soft));
   color: var(--text);
+}
+
+.frame-pill {
+  justify-content: flex-start;
+  border: 1px solid transparent;
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+
+.hook-pill {
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+
+.frame-pill.forty_eight_hour_window {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: rgba(16, 185, 129, 0.18);
+  color: #6ee7b7;
+}
+
+.frame-pill.film_room_truth {
+  background: rgba(59, 130, 246, 0.14);
+  border-color: rgba(59, 130, 246, 0.18);
+  color: #93c5fd;
+}
+
+.frame-pill.development_gap {
+  background: rgba(245, 158, 11, 0.14);
+  border-color: rgba(245, 158, 11, 0.18);
+  color: #fbbf24;
+}
+
+.frame-pill.moment_nobody_captures {
+  background: rgba(168, 85, 247, 0.14);
+  border-color: rgba(168, 85, 247, 0.18);
+  color: #c4b5fd;
+}
+
+.frame-pill.scoreboard_lie {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.18);
+  color: #fda4af;
+}
+
+.frame-pill.conversation_that_doesnt_happen {
+  background: rgba(14, 165, 233, 0.14);
+  border-color: rgba(14, 165, 233, 0.18);
+  color: #7dd3fc;
+}
+
+.frame-pill.unclassified {
+  background: var(--glass-strong);
+  border-color: var(--border);
+  color: var(--text-faint);
 }
 
 .rate-badge.positive { background: var(--accent-soft); color: var(--accent); }

@@ -4,6 +4,7 @@
  * Usage: npx tsx scripts/generate-sample-tweets.ts
  */
 import { getAngleForDate } from "../src/config.js";
+import { selectContentDecision } from "../src/contentArchitecture.js";
 import { fetchSportsData } from "../src/fetchData.js";
 import { generatePost, fillFallbackTemplate } from "../src/generatePost.js";
 import { isValidTweet } from "../src/validate.js";
@@ -40,12 +41,22 @@ async function main() {
     const fetched = dataBySport[sport]!;
     const date = new Date(Date.now() + i * ONE_DAY_MS);
     const angle = getAngleForDate(date);
-    let text = await generatePost(fetched, 2, {
+    const decision = selectContentDecision({
+      sport,
+      date: date.toISOString().slice(0, 10),
+      targetPlatforms: [process.env.POST_TARGETS === "threads" ? "threads" : "x"],
+      newsUsed: false,
+      recentDecisions: [],
+    });
+    const generated = await generatePost(fetched, 2, {
       angle,
       date: date.toISOString().slice(0, 10),
+      contentDecision: decision,
+      recentContentDecisions: [],
     });
+    let text = generated.text;
     if (!text || !isValidTweet(text)) {
-      text = fillFallbackTemplate(sport, fetched);
+      text = fillFallbackTemplate(sport, fetched, { angle });
     }
     const len = text.length;
     console.log(`${i + 1}. [${sport.toUpperCase()}] (${len}/280) angle: ${angle.slice(0, 40)}...`);

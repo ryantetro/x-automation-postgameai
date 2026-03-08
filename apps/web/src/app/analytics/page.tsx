@@ -1,4 +1,4 @@
-import { loadStore, compact, sportClass, lastUpdatedStr } from "../lib/data";
+import { loadStore, compact, sportClass, lastUpdatedStr, frameLabel, hookLabel, frameClass } from "../lib/data";
 import Sidebar from "../components/Sidebar";
 import InteractiveAnalyticsChart from "../components/InteractiveAnalyticsChart";
 
@@ -11,6 +11,10 @@ export default async function AnalyticsPage() {
   const tracked = posted.filter((t) => !!t.metrics);
   const xPosts = posted.filter((t) => !!t.tweetId).length;
   const threadsPosts = posted.filter((t) => !!t.threadsPostId).length;
+  const byPlatform = {
+    x: posted.filter((t) => !!t.tweetId),
+    threads: posted.filter((t) => !!t.threadsPostId),
+  };
 
   const totalImpressions = tracked.reduce((s, t) => s + (t.metrics?.impressionCount ?? 0), 0);
   const totalEngagements = tracked.reduce((s, t) => s + (t.metrics?.engagementCount ?? 0), 0);
@@ -84,6 +88,68 @@ export default async function AnalyticsPage() {
   const maxDay = Math.max(...dayData.map((d) => d.count), 1);
 
   const lastUpdated = lastUpdatedStr(store.updatedAt);
+
+  const frameRows = [...new Map(
+    posted
+      .filter((t) => t.contentFrameId)
+      .map((tweet) => {
+        const label = frameLabel(tweet);
+        return [label, {
+          label,
+          frameId: tweet.contentFrameId!,
+          count: posted.filter((row) => frameLabel(row) === label).length,
+          avgImp: Math.round(
+            posted.filter((row) => frameLabel(row) === label).reduce((sum, row) => sum + (row.metrics?.impressionCount ?? 0), 0) /
+            Math.max(1, posted.filter((row) => frameLabel(row) === label).length)
+          ),
+        }];
+      })
+  ).values()].sort((a, b) => b.avgImp - a.avgImp);
+
+  const hookRows = [...new Map(
+    posted
+      .filter((t) => t.hookStructureId)
+      .map((tweet) => {
+        const label = hookLabel(tweet);
+        return [label, {
+          label,
+          count: posted.filter((row) => hookLabel(row) === label).length,
+          avgScore:
+            posted.filter((row) => hookLabel(row) === label).reduce((sum, row) => sum + (row.score ?? 0), 0) /
+            Math.max(1, posted.filter((row) => hookLabel(row) === label).length),
+        }];
+      })
+  ).values()].sort((a, b) => b.avgScore - a.avgScore);
+
+  const emotionRows = [...new Map(
+    posted
+      .filter((t) => t.emotionTarget)
+      .map((tweet) => [
+        tweet.emotionTarget!,
+        {
+          emotion: tweet.emotionTarget!,
+          count: posted.filter((row) => row.emotionTarget === tweet.emotionTarget).length,
+          avgScore:
+            posted.filter((row) => row.emotionTarget === tweet.emotionTarget).reduce((sum, row) => sum + (row.score ?? 0), 0) /
+            Math.max(1, posted.filter((row) => row.emotionTarget === tweet.emotionTarget).length),
+        },
+      ])
+  ).values()].sort((a, b) => b.avgScore - a.avgScore);
+
+  const platformFrameRows = (["x", "threads"] as const).flatMap((platform) => {
+    const rows = byPlatform[platform];
+    const frames = [...new Set(rows.map((row) => row.contentFrameId).filter(Boolean))];
+    return frames.map((frameId) => {
+      const records = rows.filter((row) => row.contentFrameId === frameId);
+      return {
+        platform,
+        frameId: frameId!,
+        label: frameLabel(records[0]!),
+        count: records.length,
+        avgScore: records.reduce((sum, row) => sum + (row.score ?? 0), 0) / Math.max(1, records.length),
+      };
+    });
+  }).sort((a, b) => b.avgScore - a.avgScore);
 
   return (
     <div className="dash">
@@ -197,6 +263,83 @@ export default async function AnalyticsPage() {
             </div>
 
             <div className="analytics-side-stack">
+              <div className="card">
+                <div className="card-header"><h3>Performance by frame</h3><span className="card-sub">Avg. impressions</span></div>
+                <div className="angle-list">
+                  {frameRows.map((row) => (
+                    <div className="angle-row" key={row.label}>
+                      <span className={`frame-pill ${frameClass(row.frameId)}`}>{row.label}</span>
+                      <div className="angle-info">
+                        <span className="angle-name">{row.count} posts</span>
+                        <span className="angle-sub">{compact(row.avgImp)} avg impressions</span>
+                      </div>
+                    </div>
+                  ))}
+                  {frameRows.length === 0 && <div className="empty-state">No frame data yet</div>}
+                </div>
+              </div>
+
+              <div className="card">
+                <div className="card-header"><h3>Performance by hook</h3><span className="card-sub">Avg. score</span></div>
+                <div className="angle-list">
+                  {hookRows.map((row) => (
+                    <div className="angle-row" key={row.label}>
+                      <span className="hook-pill">{row.label}</span>
+                      <div className="angle-info">
+                        <span className="angle-name">{row.count} posts</span>
+                        <span className="angle-sub">{row.avgScore.toFixed(2)} avg score</span>
+                      </div>
+                    </div>
+                  ))}
+                  {hookRows.length === 0 && <div className="empty-state">No hook data yet</div>}
+                </div>
+              </div>
+
+              <div className="card">
+                <div className="card-header"><h3>Emotion signal</h3><span className="card-sub">What is landing</span></div>
+                <div className="angle-list">
+                  {emotionRows.map((row) => (
+                    <div className="angle-row" key={row.emotion}>
+                      <span className="hook-pill">{row.emotion}</span>
+                      <div className="angle-info">
+                        <span className="angle-name">{row.count} posts</span>
+                        <span className="angle-sub">{row.avgScore.toFixed(2)} avg score</span>
+                      </div>
+                    </div>
+                  ))}
+                  {emotionRows.length === 0 && <div className="empty-state">No emotion data yet</div>}
+                </div>
+              </div>
+
+              <div className="card">
+                <div className="card-header"><h3>Platform x frame</h3><span className="card-sub">Shared architecture, separate weighting</span></div>
+                <div style={{ overflowX: "auto" }}>
+                  <table className="posts-table">
+                    <thead>
+                      <tr>
+                        <th>Platform</th>
+                        <th>Frame</th>
+                        <th>Posts</th>
+                        <th>Avg. score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {platformFrameRows.map((row) => (
+                        <tr key={`${row.platform}-${row.frameId}`}>
+                          <td><span className={`platform-pill ${row.platform}`}>{row.platform.toUpperCase()}</span></td>
+                          <td><span className={`frame-pill ${frameClass(row.frameId)}`}>{row.label}</span></td>
+                          <td>{row.count}</td>
+                          <td>{row.avgScore.toFixed(2)}</td>
+                        </tr>
+                      ))}
+                      {platformFrameRows.length === 0 && (
+                        <tr><td colSpan={4} className="empty-state">No platform/frame data yet</td></tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
               <div className="card">
                 <div className="card-header"><h3>Top angles</h3><span className="card-sub">By avg. impressions</span></div>
                 <div className="angle-list">

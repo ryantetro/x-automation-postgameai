@@ -1,4 +1,15 @@
-import { loadStore, compact, safeDate, sportClass, lastUpdatedStr, platformClass, platformLabel } from "../lib/data";
+import {
+  loadStore,
+  compact,
+  safeDate,
+  sportClass,
+  lastUpdatedStr,
+  platformClass,
+  platformLabel,
+  frameLabel,
+  hookLabel,
+  frameClass,
+} from "../lib/data";
 import Sidebar from "../components/Sidebar";
 
 export const dynamic = "force-dynamic";
@@ -71,6 +82,8 @@ export default async function PostsPage() {
                     <div className="post-card-top">
                       <span className={`sport-pill ${sportClass(tweet.sport)}`}>{tweet.sport}</span>
                       <span className={`platform-pill ${platformClass(tweet)}`}>{platformLabel(tweet)}</span>
+                      <span className={`frame-pill ${frameClass(tweet.contentFrameId)}`}>{frameLabel(tweet)}</span>
+                      {tweet.hookStructureId ? <span className="hook-pill">{hookLabel(tweet)}</span> : null}
                       <span className="post-card-date">{safeDate(tweet.postedAt)}</span>
                       <span className="post-card-angle">{tweet.angle}</span>
                       {tweet.tweetId && (

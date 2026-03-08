@@ -25,6 +25,13 @@ import { isValidTweet } from "./validate.js";
 import { getXClient, postToX } from "./postToX.js";
 import { postToThreads } from "./postToThreads.js";
 import {
+  buildRecentContentDecision,
+  selectContentDecision,
+  type RecentContentDecision,
+} from "./contentArchitecture.js";
+import { getOpeningPattern } from "./contentHeuristics.js";
+import { appendGenerationLog } from "./generationLog.js";
+import {
   ANALYTICS_STORE_FILE,
   loadAnalyticsStore,
   saveAnalyticsStore,
@@ -64,6 +71,22 @@ function readRecentTweetTexts(store: AnalyticsStore, cap: number): string[] {
     .sort((a, b) => Date.parse(b.postedAt) - Date.parse(a.postedAt))
     .slice(0, cap)
     .map((tweet) => tweet.text);
+}
+
+function readRecentContentDecisions(store: AnalyticsStore, cap: number): RecentContentDecision[] {
+  return store.tweets
+    .filter((tweet) => tweet.status === "posted" || tweet.status === "dry_run")
+    .sort((a, b) => Date.parse(b.postedAt) - Date.parse(a.postedAt))
+    .slice(0, cap)
+    .map((tweet) =>
+      buildRecentContentDecision({
+        frameId: tweet.contentFrameId,
+        hookStructureId: tweet.hookStructureId,
+        openingPattern: tweet.openingPattern,
+        text: tweet.text,
+        postedAt: tweet.postedAt,
+      })
+    );
 }
 
 /** True if candidate is exact duplicate or too similar to any recent tweet (same lead or high overlap). */
@@ -183,18 +206,63 @@ async function main(): Promise<number> {
   }
 
   let recentTexts = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
+  const recentContentDecisions = readRecentContentDecisions(analyticsStore, RECENT_TWEETS_CAP);
+  const contentDecision = selectContentDecision({
+    sport,
+    date: today,
+    targetPlatforms: [...POST_TARGETS],
+    newsArticle: newsContext.selectedArticle,
+    newsUsed: newsContext.usedNews,
+    recentDecisions: recentContentDecisions,
+  });
 
   let text: string | null = null;
   let generationSource = "llm";
+  let openingPattern: string | undefined = contentDecision.openingPattern;
+  let prePublishChecks:
+    | {
+        hookDetected: boolean;
+        adviceDriftClear: boolean;
+        openerVarietyClear: boolean;
+      }
+    | undefined;
   for (let attempt = 0; attempt < MAX_GENERATE_RETRIES; attempt++) {
-    text = await generatePost(fetched, 1, {
+    const generated = await generatePost(fetched, 1, {
       recentTweets: recentTexts,
       angle,
       date: today,
       iterationGuidance: insights?.promptGuidance,
       reserveChars,
       newsContext,
+      contentDecision,
+      recentContentDecisions,
     });
+    for (const attemptLog of generated.attempts) {
+      appendGenerationLog({
+        runId,
+        attemptId: attemptLog.attemptId,
+        timestamp: nowIso,
+        platformTargets: [...POST_TARGETS],
+        sport,
+        angle,
+        contentFrameId: contentDecision.frameId,
+        hookStructureId: contentDecision.hookStructureId,
+        emotionTarget: contentDecision.emotionTarget,
+        newsUsed: newsContext.usedNews,
+        newsMomentType: contentDecision.newsMomentType,
+        openingPattern: generated.openingPattern ?? contentDecision.openingPattern,
+        rawOutput: attemptLog.rawOutput,
+        cleanedOutput: attemptLog.cleanedOutput,
+        passedChecks: attemptLog.passedChecks,
+        failedChecks: attemptLog.failedChecks,
+        rejectionReason: attemptLog.rejectionReason,
+        acceptedForPublish: attemptLog.acceptedForPublish,
+        usedFallback: false,
+      });
+    }
+    text = generated.text;
+    openingPattern = generated.openingPattern ?? openingPattern;
+    prePublishChecks = generated.prePublishChecks ?? prePublishChecks;
     if (text && isValidTweet(text)) {
       if (!isDuplicate(text, recentTexts)) break;
       console.info("Tweet too similar to recent; retrying with avoid list");
@@ -208,6 +276,27 @@ async function main(): Promise<number> {
     console.info("Using fallback template");
     text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars, angle });
     generationSource = "fallback";
+    openingPattern = getOpeningPattern(text);
+    appendGenerationLog({
+      runId,
+      attemptId: `${Date.now()}-fallback`,
+      timestamp: new Date().toISOString(),
+      platformTargets: [...POST_TARGETS],
+      sport,
+      angle,
+      contentFrameId: contentDecision.frameId,
+      hookStructureId: contentDecision.hookStructureId,
+      emotionTarget: contentDecision.emotionTarget,
+      newsUsed: newsContext.usedNews,
+      newsMomentType: contentDecision.newsMomentType,
+      openingPattern,
+      cleanedOutput: text,
+      passedChecks: [],
+      failedChecks: ["fallback_used"],
+      rejectionReason: "fallback_template",
+      acceptedForPublish: true,
+      usedFallback: true,
+    });
   }
 
   text = appendTrackedUrl(text, trackedUrl);
@@ -235,6 +324,15 @@ async function main(): Promise<number> {
       newsArticleUrl: newsContext.selectedArticle?.url,
       newsSourceName: newsContext.selectedArticle?.sourceName,
       newsPublishedAt: newsContext.selectedArticle?.publishedAt,
+      contentFrameId: contentDecision.frameId,
+      contentFrameLabel: contentDecision.frameLabel,
+      hookStructureId: contentDecision.hookStructureId,
+      hookStructureLabel: contentDecision.hookStructureLabel,
+      emotionTarget: contentDecision.emotionTarget,
+      frameReason: contentDecision.frameReason,
+      newsMomentType: contentDecision.newsMomentType,
+      prePublishChecks,
+      openingPattern,
       trackedUrl: trackedUrl ?? undefined,
       linkTargetUrl: CLICK_TARGET_URL,
     });
@@ -358,6 +456,15 @@ async function main(): Promise<number> {
     newsArticleUrl: newsContext.selectedArticle?.url,
     newsSourceName: newsContext.selectedArticle?.sourceName,
     newsPublishedAt: newsContext.selectedArticle?.publishedAt,
+    contentFrameId: contentDecision.frameId,
+    contentFrameLabel: contentDecision.frameLabel,
+    hookStructureId: contentDecision.hookStructureId,
+    hookStructureLabel: contentDecision.hookStructureLabel,
+    emotionTarget: contentDecision.emotionTarget,
+    frameReason: contentDecision.frameReason,
+    newsMomentType: contentDecision.newsMomentType,
+    prePublishChecks,
+    openingPattern,
     trackedUrl: trackedUrl ?? undefined,
     linkTargetUrl: CLICK_TARGET_URL,
     publishTargets: [...POST_TARGETS],
