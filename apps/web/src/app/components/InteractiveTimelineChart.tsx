@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 
 type ChartMetric = "impressions" | "engagements" | "likes" | "retweets";
 type ChartRange = "10_posts" | "72h" | "7d" | "30d" | "all";
@@ -48,11 +48,11 @@ type AxisTick = {
 };
 
 const RANGE_OPTIONS: Array<{ value: ChartRange; label: string }> = [
-  { value: "10_posts", label: "Last 10 posts" },
+  { value: "10_posts", label: "Last 10" },
   { value: "72h", label: "72h" },
   { value: "7d", label: "7d" },
   { value: "30d", label: "30d" },
-  { value: "all", label: "All time" },
+  { value: "all", label: "All" },
 ];
 
 const VIEW_OPTIONS: Array<{ value: ChartView; label: string }> = [
@@ -250,10 +250,13 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
   const [sport, setSport] = useState<string>("all");
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [animationSeed, setAnimationSeed] = useState(0);
+  const chartWrapRef = useRef<HTMLDivElement>(null);
+  const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number; flipLeft: boolean } | null>(null);
 
   function refreshChart() {
     setAnimationSeed((value) => value + 1);
     setActiveKey(null);
+    setTooltipPos(null);
   }
 
   function handleMetricChange(nextMetric: ChartMetric) {
@@ -306,6 +309,38 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
     return { ...point, index, x, y };
   });
 
+  function handleChartMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (!chartWrapRef.current || geometry.length === 0) return;
+    const rect = chartWrapRef.current.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const pctX = mouseX / rect.width;
+
+    const style = getComputedStyle(chartWrapRef.current);
+    const padLeft = parseFloat(style.paddingLeft) || 12;
+    const padRight = parseFloat(style.paddingRight) || 12;
+    const svgWidth = rect.width - padLeft - padRight;
+    const svgX = ((mouseX - padLeft) / svgWidth) * CHART_WIDTH;
+
+    let nearest = geometry[0];
+    let nearestDist = Infinity;
+    for (const pt of geometry) {
+      const dist = Math.abs(pt.x - svgX);
+      if (dist < nearestDist) {
+        nearestDist = dist;
+        nearest = pt;
+      }
+    }
+
+    setActiveKey(nearest.key);
+    setTooltipPos({ x: mouseX, y: mouseY, flipLeft: pctX > 0.62 });
+  }
+
+  function handleChartMouseLeave() {
+    setActiveKey(null);
+    setTooltipPos(null);
+  }
+
   const line = geometry.map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(2)},${point.y.toFixed(2)}`).join(" ");
   const area = geometry.length > 0
     ? `${line} L${geometry[geometry.length - 1].x.toFixed(2)},${(CHART_PADDING.top + innerHeight).toFixed(2)} L${geometry[0].x.toFixed(2)},${(CHART_PADDING.top + innerHeight).toFixed(2)} Z`
@@ -333,16 +368,23 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
   const peakValue = Math.max(...displayPoints.map((point) => point.metricValue), 0);
   const averageValue = displayPoints.length > 0 ? Math.round(windowTotal / displayPoints.length) : 0;
 
+  const gradientColors: Record<string, [string, string]> = {
+    green: ["rgba(16, 185, 129, 0.2)", "rgba(16, 185, 129, 0.01)"],
+    blue: ["rgba(59, 130, 246, 0.2)", "rgba(59, 130, 246, 0.01)"],
+    red: ["rgba(239, 68, 68, 0.15)", "rgba(239, 68, 68, 0.01)"],
+    amber: ["rgba(245, 158, 11, 0.2)", "rgba(245, 158, 11, 0.01)"],
+  };
+  const [gradStart, gradEnd] = gradientColors[metricTone] ?? gradientColors.green;
+
   return (
     <section className={`card timeline-card timeline-tone-${metricTone} timeline-card-ready`}>
       <div className="card-header timeline-header">
         <div>
-          <h3>Impressions over time</h3>
+          <h3>Performance timeline</h3>
           <span className="card-sub">{formatRangeLabel(range, filtered.length)}</span>
         </div>
         <div className="timeline-header-badges">
-          <span className="timeline-badge">Actual tweet timestamps</span>
-          <span className="timeline-badge">{view === "daily" ? "Grouped by local day" : "Per-post timeline"}</span>
+          <span className="timeline-badge">{view === "daily" ? "Daily rollup" : "Per-post"}</span>
         </div>
       </div>
 
@@ -401,7 +443,7 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
 
       <div className="timeline-summary-strip">
         <div className="timeline-summary-item">
-          <span className="timeline-summary-label">Window total</span>
+          <span className="timeline-summary-label">Total</span>
           <strong>{formatMetricValue(windowTotal)}</strong>
         </div>
         <div className="timeline-summary-item">
@@ -409,7 +451,7 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
           <strong>{formatMetricValue(peakValue)}</strong>
         </div>
         <div className="timeline-summary-item">
-          <span className="timeline-summary-label">Avg. point</span>
+          <span className="timeline-summary-label">Average</span>
           <strong>{formatMetricValue(averageValue)}</strong>
         </div>
         <div className="timeline-summary-item">
@@ -436,15 +478,21 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
               </div>
             </div>
 
-            <div className="timeline-chart-wrap">
+            <div
+              className="timeline-chart-wrap"
+              ref={chartWrapRef}
+              onMouseMove={handleChartMouseMove}
+              onMouseLeave={handleChartMouseLeave}
+              style={{ cursor: "crosshair" }}
+            >
               <svg viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`} preserveAspectRatio="none" aria-hidden="true">
                 <defs>
                   <pattern id={gridId} width="120" height="60" patternUnits="userSpaceOnUse">
-                    <path d="M120 0H0V60" fill="none" stroke="rgba(146, 163, 184, 0.07)" strokeWidth="1" />
+                    <path d="M120 0H0V60" fill="none" stroke="rgba(255, 255, 255, 0.02)" strokeWidth="1" />
                   </pattern>
                   <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="rgba(34,197,94,0.28)" />
-                    <stop offset="100%" stopColor="rgba(34,197,94,0.02)" />
+                    <stop offset="0%" stopColor={gradStart} />
+                    <stop offset="100%" stopColor={gradEnd} />
                   </linearGradient>
                 </defs>
 
@@ -480,19 +528,47 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                     <circle
                       cx={point.x}
                       cy={point.y}
-                      r={activePoint?.key === point.key ? 8 : 5}
+                      r={activePoint?.key === point.key ? 7 : 4.5}
                       className={`timeline-point-ring ${activePoint?.key === point.key ? "is-active" : ""}`}
                     />
                     <circle
                       cx={point.x}
                       cy={point.y}
-                      r={activePoint?.key === point.key ? 4.5 : 3.5}
+                      r={activePoint?.key === point.key ? 4 : 3}
                       className={`timeline-point ${activePoint?.key === point.key ? "is-active" : ""}`}
-                      onMouseEnter={() => setActiveKey(point.key)}
                     />
                   </g>
                 ))}
               </svg>
+
+              {activePoint && tooltipPos && (
+                <div
+                  className="ichart-tooltip"
+                  style={{
+                    left: tooltipPos.x,
+                    top: tooltipPos.y,
+                    transform: `translate(${tooltipPos.flipLeft ? "calc(-100% - 16px)" : "16px"}, -50%)`,
+                  }}
+                >
+                  <div className="ichart-tooltip-header">
+                    <span className="ichart-tooltip-date">{activePoint.label}</span>
+                    <span className="ichart-tooltip-sport">{activePoint.sport}</span>
+                  </div>
+                  <div className="ichart-tooltip-primary" style={{ color: metricTone === "green" ? "#10b981" : metricTone === "blue" ? "#3b82f6" : metricTone === "red" ? "#ef4444" : "#f59e0b" }}>
+                    {new Intl.NumberFormat("en-US").format(activePoint.metricValue)}
+                    <span>{METRIC_OPTIONS.find((o) => o.value === metric)?.label}</span>
+                  </div>
+                  <div className="ichart-tooltip-grid">
+                    <div><span>Impressions</span><strong>{formatMetricValue(activePoint.impressions)}</strong></div>
+                    <div><span>Engagements</span><strong>{formatMetricValue(activePoint.engagements)}</strong></div>
+                    <div><span>Likes</span><strong>{formatMetricValue(activePoint.likes)}</strong></div>
+                    <div><span>Retweets</span><strong>{formatMetricValue(activePoint.retweets)}</strong></div>
+                  </div>
+                  {view === "daily" && activePoint.posts > 1 && (
+                    <div className="ichart-tooltip-angle">{activePoint.posts} posts rolled up</div>
+                  )}
+                </div>
+              )}
 
               <div className="timeline-axis">
                 {ticks.map((point) => (
@@ -540,24 +616,24 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
 
               <p className="timeline-footnote">
                 {view === "daily"
-                  ? `${activePoint?.posts ?? 0} posts rolled into this day using actual tweet dates.`
-                  : "Timeline spacing is based on the actual post timestamps, not equal spacing by index."}
+                  ? `${activePoint?.posts ?? 0} posts rolled into this day.`
+                  : "Timeline uses actual publish timestamps."}
               </p>
             </div>
 
             <div className="timeline-actions">
               {activePoint?.tweetId ? (
                 <a className="view-link" href={`https://x.com/i/web/status/${activePoint.tweetId}`} target="_blank" rel="noopener noreferrer">
-                  View active tweet on X &#8599;
+                  View on X &#8599;
                 </a>
               ) : (
-                <span className="timeline-footnote">Hover a point to inspect its exact tweet timestamp.</span>
+                <span className="timeline-footnote" style={{ margin: 0 }}>Hover a point to inspect.</span>
               )}
             </div>
           </div>
         </div>
       ) : (
-        <div className="empty-state">No tracked posts match the selected filters.</div>
+        <div className="empty-state" style={{ margin: "1rem" }}>No tracked posts match the selected filters.</div>
       )}
     </section>
   );

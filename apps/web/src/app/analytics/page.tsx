@@ -1,5 +1,6 @@
-import { loadStore, chartAxisLabels, compact, linePath, sportClass, lastUpdatedStr } from "../lib/data";
+import { loadStore, compact, sportClass, lastUpdatedStr } from "../lib/data";
 import Sidebar from "../components/Sidebar";
+import InteractiveAnalyticsChart from "../components/InteractiveAnalyticsChart";
 
 export const dynamic = "force-dynamic";
 
@@ -8,6 +9,8 @@ export default async function AnalyticsPage() {
 
   const posted = store.tweets.filter((t) => t.status === "posted").sort((a, b) => Date.parse(a.postedAt) - Date.parse(b.postedAt));
   const tracked = posted.filter((t) => !!t.metrics);
+  const xPosts = posted.filter((t) => !!t.tweetId).length;
+  const threadsPosts = posted.filter((t) => !!t.threadsPostId).length;
 
   const totalImpressions = tracked.reduce((s, t) => s + (t.metrics?.impressionCount ?? 0), 0);
   const totalEngagements = tracked.reduce((s, t) => s + (t.metrics?.engagementCount ?? 0), 0);
@@ -18,26 +21,24 @@ export default async function AnalyticsPage() {
   const hasTrackedLinks = posted.some((t) => !!t.trackedUrl);
   const hasClickMetrics = posted.some((t) => !!t.clickMetrics);
   const totalClicks = hasClickMetrics ? posted.reduce((s, t) => s + (t.clickMetrics?.totalClicks ?? 0), 0) : null;
-  const totalUniqueClicks = hasClickMetrics ? posted.reduce((s, t) => s + (t.clickMetrics?.uniqueClicks ?? 0), 0) : null;
   const clickThroughRate = totalImpressions > 0 && totalClicks !== null ? (totalClicks / totalImpressions) * 100 : null;
   const avgImpPerPost = tracked.length > 0 ? totalImpressions / tracked.length : 0;
   const avgEngPerPost = tracked.length > 0 ? totalEngagements / tracked.length : 0;
   const threadFollowers = store.threadsUserInsights?.followersCount ?? null;
   const threadProfileViews = store.threadsUserInsights?.views ?? null;
 
-  // Impressions chart
-  const impChart = linePath(
-    posted.slice(-30).map((t) => t.metrics?.impressionCount ?? 0),
-    800, 180
-  );
+  const chartPosts = posted.slice(-30).map((t) => ({
+    postedAt: t.postedAt,
+    sport: t.sport,
+    angle: t.angle,
+    impressions: t.metrics?.impressionCount ?? 0,
+    engagements: t.metrics?.engagementCount ?? 0,
+    likes: t.metrics?.likeCount ?? 0,
+    retweets: t.metrics?.retweetCount ?? 0,
+    replies: t.metrics?.replyCount ?? 0,
+    bookmarks: t.metrics?.bookmarkCount ?? 0,
+  }));
 
-  // Engagement chart
-  const engChart = linePath(
-    posted.slice(-30).map((t) => t.metrics?.engagementCount ?? 0),
-    800, 180
-  );
-
-  // Per-sport breakdown
   const sportMap = new Map<string, { posts: number; impressions: number; engagements: number; likes: number; retweets: number }>();
   for (const t of posted) {
     const key = t.sport.toLowerCase();
@@ -56,7 +57,6 @@ export default async function AnalyticsPage() {
     .sort((a, b) => b.impressions - a.impressions);
   const maxSportImp = Math.max(...sportRows.map((r) => r.impressions), 1);
 
-  // Per-angle breakdown
   const angleMap = new Map<string, { count: number; impressions: number }>();
   for (const t of posted) {
     const key = t.angle || "unknown";
@@ -71,7 +71,6 @@ export default async function AnalyticsPage() {
     .slice(0, 8);
   const maxAngleImp = Math.max(...angleRows.map((r) => r.avgImp), 1);
 
-  // Daily posting frequency
   const dayMap = new Map<string, number>();
   for (const t of posted) {
     const d = new Date(t.postedAt);
@@ -85,8 +84,6 @@ export default async function AnalyticsPage() {
   const maxDay = Math.max(...dayData.map((d) => d.count), 1);
 
   const lastUpdated = lastUpdatedStr(store.updatedAt);
-  const chartTweets = posted.slice(-30);
-  const chartLabels = chartAxisLabels(chartTweets);
 
   return (
     <div className="dash">
@@ -94,21 +91,23 @@ export default async function AnalyticsPage() {
       <main className="main">
         <header className="header">
           <div className="header-left">
+            <span className="page-kicker">Performance intelligence</span>
             <h2>Analytics</h2>
-            <span>Deep dive into your cross-platform posting performance</span>
+            <span>Cross-platform posting performance</span>
           </div>
           <div className="header-right">
-            <span className="header-badge">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting live analytics"}</span>
+            <span className="header-badge">{xPosts} X posts</span>
+            <span className="header-badge">{threadsPosts} Threads</span>
+            <span className="header-badge">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting data"}</span>
           </div>
         </header>
 
         <div className="content">
-          {/* Stat cards */}
           <div className="stat-grid">
             <div className="stat-card green">
-              <div className="stat-label">Avg. views / impressions / post</div>
+              <div className="stat-label">Avg. impressions / post</div>
               <div className="stat-value">{compact(avgImpPerPost)}</div>
-              <div className="stat-sub">Across {tracked.length} tracked posts</div>
+              <div className="stat-sub">{tracked.length} tracked posts</div>
             </div>
             <div className="stat-card blue">
               <div className="stat-label">Avg. engagement / post</div>
@@ -118,7 +117,7 @@ export default async function AnalyticsPage() {
             <div className="stat-card amber">
               <div className="stat-label">Threads followers</div>
               <div className="stat-value">{threadFollowers === null ? "—" : compact(threadFollowers)}</div>
-              <div className="stat-sub">{threadProfileViews === null ? "No Threads profile views yet" : `${compact(threadProfileViews)} profile views`}</div>
+              <div className="stat-sub">{threadProfileViews === null ? "No profile views yet" : `${compact(threadProfileViews)} profile views`}</div>
             </div>
             <div className="stat-card red">
               <div className="stat-label">Click-through rate</div>
@@ -127,65 +126,39 @@ export default async function AnalyticsPage() {
             </div>
           </div>
 
-          {/* Charts side by side */}
           <div className="analytics-charts">
             <div className="card">
               <div className="card-header">
-                <div><h3>Impressions trend</h3><span className="card-sub">Last {chartTweets.length} posts</span></div>
+                <div><h3>Impressions trend</h3><span className="card-sub">Last {chartPosts.length} posts</span></div>
                 <span className="card-sub">{compact(totalImpressions)} total</span>
               </div>
-              <div className="chart-area">
-                <div className="chart-svg-wrap">
-                  <svg viewBox="0 0 800 200" preserveAspectRatio="none" aria-hidden="true">
-                    <defs>
-                      <pattern id="gridA" width="50" height="30" patternUnits="userSpaceOnUse">
-                        <path d="M50 0L0 0 0 30" fill="none" stroke="rgba(139,149,176,0.07)" strokeWidth="1" />
-                      </pattern>
-                      <linearGradient id="areaA" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="rgba(34,197,94,0.25)" />
-                        <stop offset="100%" stopColor="rgba(34,197,94,0)" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="180" fill="url(#gridA)" />
-                    <path d={impChart.area} fill="url(#areaA)" />
-                    <path d={impChart.line} fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <div className="chart-axis">
-                  {chartLabels.map((label, i) => <span key={i}>{label}</span>)}
-                </div>
-              </div>
+              <InteractiveAnalyticsChart
+                posts={chartPosts}
+                metric="impressions"
+                color="#10b981"
+                gradientStart="rgba(16, 185, 129, 0.2)"
+                gradientEnd="rgba(16, 185, 129, 0)"
+                total={totalImpressions}
+              />
             </div>
 
             <div className="card">
               <div className="card-header">
-                <div><h3>Engagement trend</h3><span className="card-sub">Last {chartTweets.length} posts</span></div>
+                <div><h3>Engagement trend</h3><span className="card-sub">Last {chartPosts.length} posts</span></div>
                 <span className="card-sub">{compact(totalEngagements)} total</span>
               </div>
-              <div className="chart-area">
-                <div className="chart-svg-wrap">
-                  <svg viewBox="0 0 800 200" preserveAspectRatio="none" aria-hidden="true">
-                    <defs>
-                      <linearGradient id="areaB" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="rgba(59,130,246,0.25)" />
-                        <stop offset="100%" stopColor="rgba(59,130,246,0)" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="800" height="180" fill="url(#gridA)" />
-                    <path d={engChart.area} fill="url(#areaB)" />
-                    <path d={engChart.line} fill="none" stroke="var(--blue)" strokeWidth="2" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <div className="chart-axis">
-                  {chartLabels.map((label, i) => <span key={i}>{label}</span>)}
-                </div>
-              </div>
+              <InteractiveAnalyticsChart
+                posts={chartPosts}
+                metric="engagements"
+                color="#3b82f6"
+                gradientStart="rgba(59, 130, 246, 0.2)"
+                gradientEnd="rgba(59, 130, 246, 0)"
+                total={totalEngagements}
+              />
             </div>
           </div>
 
-          {/* Bottom grid: sport breakdown, angle performance, day frequency */}
           <div className="analytics-bottom">
-            {/* Sport breakdown */}
             <div className="card">
               <div className="card-header"><h3>Performance by sport</h3></div>
               <div style={{ overflowX: "auto" }}>
@@ -197,7 +170,7 @@ export default async function AnalyticsPage() {
                       <th>Impressions</th>
                       <th>Engagements</th>
                       <th>Eng. rate</th>
-                      <th style={{ width: "30%" }}>Volume</th>
+                      <th style={{ width: "28%" }}>Volume</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -224,7 +197,6 @@ export default async function AnalyticsPage() {
             </div>
 
             <div className="analytics-side-stack">
-              {/* Angle performance */}
               <div className="card">
                 <div className="card-header"><h3>Top angles</h3><span className="card-sub">By avg. impressions</span></div>
                 <div className="angle-list">
@@ -233,7 +205,7 @@ export default async function AnalyticsPage() {
                       <span className="angle-rank">#{i + 1}</span>
                       <div className="angle-info">
                         <span className="angle-name">{row.angle}</span>
-                        <span className="angle-sub">{row.count} posts &middot; {compact(row.impressions)} total imp</span>
+                        <span className="angle-sub">{row.count} posts &middot; {compact(row.impressions)} total</span>
                       </div>
                       <div className="angle-bar-wrap">
                         <div className="angle-bar-fill" style={{ width: `${(row.avgImp / maxAngleImp) * 100}%` }} />
@@ -245,7 +217,6 @@ export default async function AnalyticsPage() {
                 </div>
               </div>
 
-              {/* Posting frequency */}
               <div className="card">
                 <div className="card-header"><h3>Posting frequency</h3><span className="card-sub">By day of week</span></div>
                 <div className="freq-chart">

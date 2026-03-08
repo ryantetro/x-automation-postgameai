@@ -1,4 +1,4 @@
-import { loadStore, compact, safeDate, sportClass, lastUpdatedStr } from "../lib/data";
+import { loadStore, compact, safeDate, sportClass, lastUpdatedStr, platformClass, platformLabel } from "../lib/data";
 import Sidebar from "../components/Sidebar";
 
 export const dynamic = "force-dynamic";
@@ -14,6 +14,8 @@ export default async function PostsPage() {
   const withMetrics = allPosts.filter((t) => !!t.metrics).length;
   const published = allPosts.filter((t) => !!t.tweetId || !!t.threadsPostId).length;
   const trackedLinks = allPosts.filter((t) => !!t.trackedUrl).length;
+  const xPosts = allPosts.filter((t) => !!t.tweetId).length;
+  const threadsPosts = allPosts.filter((t) => !!t.threadsPostId).length;
 
   const sports = [...new Set(allPosts.map((t) => t.sport.toLowerCase()))];
 
@@ -25,36 +27,36 @@ export default async function PostsPage() {
       <main className="main">
         <header className="header">
           <div className="header-left">
+            <span className="page-kicker">Publishing archive</span>
             <h2>Posts</h2>
             <span>All automated posts published by the bot</span>
           </div>
           <div className="header-right">
-            <span className="header-badge">{totalPosts} total &middot; {published} published</span>
-            <span className="header-badge">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting live analytics"}</span>
+            <span className="header-badge">{xPosts} on X</span>
+            <span className="header-badge">{threadsPosts} on Threads</span>
+            <span className="header-badge">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting data"}</span>
           </div>
         </header>
 
         <div className="content">
-          {/* Summary strip */}
-          <div className="stat-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+          <div className="stat-grid stat-grid-three">
             <div className="stat-card green">
               <div className="stat-label">Total posts</div>
               <div className="stat-value">{totalPosts}</div>
               <div className="stat-sub">{published} published across platforms</div>
             </div>
             <div className="stat-card blue">
-              <div className="stat-label">With metrics</div>
-              <div className="stat-value stat-value-blue">{withMetrics}</div>
-              <div className="stat-sub">Analytics data collected</div>
+              <div className="stat-label">Platform split</div>
+              <div className="stat-value stat-value-blue">{xPosts} / {threadsPosts}</div>
+              <div className="stat-sub">X vs Threads volume</div>
             </div>
             <div className="stat-card amber">
-              <div className="stat-label">Tracked links</div>
-              <div className="stat-value">{trackedLinks}</div>
-              <div className="stat-sub">{sports.join(", ") || "—"}</div>
+              <div className="stat-label">Coverage</div>
+              <div className="stat-value">{withMetrics}</div>
+              <div className="stat-sub">{trackedLinks} tracked links &middot; {sports.join(", ") || "—"}</div>
             </div>
           </div>
 
-          {/* Post cards */}
           <div className="post-feed">
             {allPosts.length > 0 ? (
               allPosts.map((tweet) => {
@@ -68,6 +70,7 @@ export default async function PostsPage() {
                   <article className="post-card" key={tweet.runId}>
                     <div className="post-card-top">
                       <span className={`sport-pill ${sportClass(tweet.sport)}`}>{tweet.sport}</span>
+                      <span className={`platform-pill ${platformClass(tweet)}`}>{platformLabel(tweet)}</span>
                       <span className="post-card-date">{safeDate(tweet.postedAt)}</span>
                       <span className="post-card-angle">{tweet.angle}</span>
                       {tweet.tweetId && (
@@ -81,8 +84,8 @@ export default async function PostsPage() {
                         </a>
                       )}
                       {!tweet.tweetId && tweet.threadsPostId && (
-                        <span className="view-link post-card-link" style={{ opacity: 0.7 }}>
-                          Posted to Threads
+                        <span className="view-link post-card-link" style={{ opacity: 0.5 }}>
+                          Threads
                         </span>
                       )}
                       {tweet.trackedUrl && (
@@ -111,7 +114,7 @@ export default async function PostsPage() {
                         </div>
                         <div className="pcm">
                           <span className="pcm-val">{compact(m.retweetCount)}</span>
-                          <span className="pcm-label">Reposts / RTs</span>
+                          <span className="pcm-label">Reposts</span>
                         </div>
                         <div className="pcm">
                           <span className="pcm-val">{compact(m.replyCount)}</span>

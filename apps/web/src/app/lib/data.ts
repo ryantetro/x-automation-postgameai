@@ -348,3 +348,16 @@ export function lastUpdatedStr(iso: string | null): string {
   const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? "—" : d.toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
 }
+
+export function platformClass(record: Pick<TweetAnalyticsRecord, "tweetId" | "threadsPostId">): "x" | "threads" | "dual" {
+  if (record.tweetId && record.threadsPostId) return "dual";
+  if (record.threadsPostId) return "threads";
+  return "x";
+}
+
+export function platformLabel(record: Pick<TweetAnalyticsRecord, "tweetId" | "threadsPostId">): string {
+  const platform = platformClass(record);
+  if (platform === "dual") return "X + Threads";
+  if (platform === "threads") return "Threads";
+  return "X";
+}

@@ -1,4 +1,4 @@
-import { loadStore, compact, sportClass, safeDate, lastUpdatedStr } from "./lib/data";
+import { loadStore, compact, sportClass, safeDate, lastUpdatedStr, platformClass, platformLabel } from "./lib/data";
 import Sidebar from "./components/Sidebar";
 import InteractiveTimelineChart from "./components/InteractiveTimelineChart";
 
@@ -10,6 +10,9 @@ export default async function Home() {
   const posted = store.tweets.filter((t) => t.status === "posted").sort((a, b) => Date.parse(a.postedAt) - Date.parse(b.postedAt));
   const recent = posted.slice(-12).reverse();
   const tracked = posted.filter((t) => !!t.metrics);
+  const xPosts = posted.filter((t) => !!t.tweetId).length;
+  const threadsPosts = posted.filter((t) => !!t.threadsPostId).length;
+  const dualPosts = posted.filter((t) => !!t.tweetId && !!t.threadsPostId).length;
 
   const totalImpressions = tracked.reduce((s, t) => s + (t.metrics?.impressionCount ?? 0), 0);
   const totalEngagements = tracked.reduce((s, t) => s + (t.metrics?.engagementCount ?? 0), 0);
@@ -23,40 +26,42 @@ export default async function Home() {
   const totalClicks = hasClickMetrics ? posted.reduce((s, t) => s + (t.clickMetrics?.totalClicks ?? 0), 0) : null;
   const totalUniqueClicks = hasClickMetrics ? posted.reduce((s, t) => s + (t.clickMetrics?.uniqueClicks ?? 0), 0) : null;
   const avgRate = totalImpressions > 0 ? (totalEngagements / totalImpressions) * 100 : 0;
-  const clickThroughRate = totalImpressions > 0 && totalClicks !== null ? (totalClicks / totalImpressions) * 100 : null;
   const threadFollowers = store.threadsUserInsights?.followersCount ?? null;
   const threadProfileViews = store.threadsUserInsights?.views ?? null;
 
   const engMax = Math.max(totalLikes, totalRetweets, totalReplies, totalBookmarks, totalShares, 1);
   const engRows = [
-    { label: "Likes", icon: "♥", value: totalLikes, pct: (totalLikes / engMax) * 100, color: "var(--red)", bg: "rgba(239,68,68,0.12)" },
-    { label: "Reposts / RTs", icon: "↻", value: totalRetweets, pct: (totalRetweets / engMax) * 100, color: "var(--accent)", bg: "rgba(34,197,94,0.12)" },
-    { label: "Replies", icon: "↩", value: totalReplies, pct: (totalReplies / engMax) * 100, color: "var(--blue)", bg: "rgba(59,130,246,0.12)" },
-    { label: "Bookmarks", icon: "⚑", value: totalBookmarks, pct: (totalBookmarks / engMax) * 100, color: "var(--amber)", bg: "rgba(245,158,11,0.12)" },
-    { label: "Shares", icon: "⇪", value: totalShares, pct: (totalShares / engMax) * 100, color: "var(--text)", bg: "rgba(148,163,184,0.16)" },
+    { label: "Likes", icon: "♥", value: totalLikes, pct: (totalLikes / engMax) * 100, color: "var(--red)", bg: "var(--red-soft)" },
+    { label: "Reposts", icon: "↻", value: totalRetweets, pct: (totalRetweets / engMax) * 100, color: "var(--accent)", bg: "var(--accent-soft)" },
+    { label: "Replies", icon: "↩", value: totalReplies, pct: (totalReplies / engMax) * 100, color: "var(--blue)", bg: "var(--blue-soft)" },
+    { label: "Bookmarks", icon: "⚑", value: totalBookmarks, pct: (totalBookmarks / engMax) * 100, color: "var(--amber)", bg: "var(--amber-soft)" },
+    { label: "Shares", icon: "⇪", value: totalShares, pct: (totalShares / engMax) * 100, color: "var(--text-secondary)", bg: "var(--glass-strong)" },
   ].sort((a, b) => b.value - a.value);
 
   const lastUpdated = lastUpdatedStr(store.updatedAt);
+
   return (
     <div className="dash">
       <Sidebar activePage="dashboard" />
       <main className="main">
         <header className="header">
           <div className="header-left">
+            <span className="page-kicker">Command center</span>
             <h2>Dashboard</h2>
-            <span>{posted.length} posts &middot; {tracked.length} with metrics</span>
+            <span>{posted.length} posts &middot; {xPosts} X &middot; {threadsPosts} Threads</span>
           </div>
           <div className="header-right">
-            <span className="header-badge">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting live analytics"}</span>
+            <span className="header-badge">{dualPosts} dual-published</span>
+            <span className="header-badge">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting data"}</span>
           </div>
         </header>
 
         <div className="content">
           <div className="stat-grid">
             <div className="stat-card green">
-              <div className="stat-label">Total views / impressions</div>
+              <div className="stat-label">Total impressions</div>
               <div className="stat-value">{compact(totalImpressions)}</div>
-              <div className="stat-sub">Across {tracked.length} tracked posts</div>
+              <div className="stat-sub">{tracked.length} tracked posts</div>
             </div>
             <div className="stat-card blue">
               <div className="stat-label">Total engagement</div>
@@ -66,10 +71,10 @@ export default async function Home() {
             <div className="stat-card amber">
               <div className="stat-label">Threads followers</div>
               <div className="stat-value">{threadFollowers === null ? "—" : compact(threadFollowers)}</div>
-              <div className="stat-sub">{threadProfileViews === null ? "No Threads profile views yet" : `${compact(threadProfileViews)} profile views`}</div>
+              <div className="stat-sub">{threadProfileViews === null ? "No profile views yet" : `${compact(threadProfileViews)} profile views`}</div>
             </div>
             <div className="stat-card red">
-              <div className="stat-label">Avg. engagement rate</div>
+              <div className="stat-label">Engagement rate</div>
               <div className="stat-value">{avgRate.toFixed(2)}%</div>
               <div className="stat-sub">
                 {!hasTrackedLinks
@@ -82,7 +87,7 @@ export default async function Home() {
           </div>
 
           <div className="panels">
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               <InteractiveTimelineChart
                 records={posted.map((tweet) => ({
                   runId: tweet.runId,
@@ -109,13 +114,14 @@ export default async function Home() {
                 <div style={{ overflowX: "auto" }}>
                   <table className="posts-table">
                     <thead>
-                    <tr>
+                      <tr>
                         <th>Sport</th>
+                        <th>Platform</th>
                         <th>Date</th>
                         <th>Impressions</th>
                         <th>Clicks</th>
                         <th>Likes</th>
-                        <th>Reposts / RTs</th>
+                        <th>Reposts</th>
                         <th>Eng. rate</th>
                         <th>Action</th>
                       </tr>
@@ -130,6 +136,7 @@ export default async function Home() {
                           return (
                             <tr key={tweet.runId}>
                               <td><span className={`sport-pill ${sportClass(tweet.sport)}`}>{tweet.sport}</span></td>
+                              <td><span className={`platform-pill ${platformClass(tweet)}`}>{platformLabel(tweet)}</span></td>
                               <td>{safeDate(tweet.postedAt)}</td>
                               <td>{compact(imp)}</td>
                               <td>{typeof clicks === "number" ? compact(clicks) : "—"}</td>
@@ -137,15 +144,15 @@ export default async function Home() {
                               <td>{compact(m?.retweetCount ?? 0)}</td>
                               <td><span className={`rate-badge ${engRate > 0 ? "positive" : "zero"}`}>{engRate.toFixed(2)}%</span></td>
                               <td>
-                                <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem", alignItems: "flex-start" }}>
+                                <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem", alignItems: "flex-start" }}>
                                   {tweet.tweetId ? (
                                     <a className="view-link" href={`https://x.com/i/web/status/${tweet.tweetId}`} target="_blank" rel="noopener noreferrer">
                                       View on X &#8599;
                                     </a>
                                   ) : tweet.threadsPostId ? (
-                                    <span className="view-link" style={{ opacity: 0.7 }}>Threads posted</span>
+                                    <span className="view-link" style={{ opacity: 0.5 }}>Threads</span>
                                   ) : (
-                                    <span style={{ color: "var(--text-secondary)" }}>—</span>
+                                    <span style={{ color: "var(--text-faint)" }}>—</span>
                                   )}
                                   {tweet.trackedUrl ? (
                                     <a className="view-link" href={tweet.trackedUrl} target="_blank" rel="noopener noreferrer">
@@ -158,7 +165,7 @@ export default async function Home() {
                           );
                         })
                       ) : (
-                        <tr><td colSpan={8} className="empty-state">No posts yet. Run the bot to see results here.</td></tr>
+                        <tr><td colSpan={9} className="empty-state">No posts yet. Run the bot to see results here.</td></tr>
                       )}
                     </tbody>
                   </table>
@@ -184,14 +191,15 @@ export default async function Home() {
               <div className="card">
                 <div className="card-header"><h3>Summary</h3></div>
                 <div className="summary-list">
-                  <div className="summary-row"><span className="summary-label">Total views / impressions</span><span className="summary-val green">{compact(totalImpressions)}</span></div>
+                  <div className="summary-row"><span className="summary-label">Total impressions</span><span className="summary-val green">{compact(totalImpressions)}</span></div>
                   <div className="summary-row"><span className="summary-label">Total engagement</span><span className="summary-val blue">{compact(totalEngagements)}</span></div>
-                  <div className="summary-row"><span className="summary-label">Avg. engagement rate</span><span className="summary-val">{avgRate.toFixed(2)}%</span></div>
+                  <div className="summary-row"><span className="summary-label">Engagement rate</span><span className="summary-val">{avgRate.toFixed(2)}%</span></div>
+                  <div className="summary-row"><span className="summary-label">X posts</span><span className="summary-val">{compact(xPosts)}</span></div>
                   <div className="summary-row"><span className="summary-label">Threads followers</span><span className="summary-val amber">{threadFollowers === null ? "—" : compact(threadFollowers)}</span></div>
-                  <div className="summary-row"><span className="summary-label">Tracked link clicks</span><span className="summary-val amber">{totalClicks === null ? "—" : compact(totalClicks)}</span></div>
-                  <div className="summary-row"><span className="summary-label">Click-through rate</span><span className="summary-val">{clickThroughRate === null ? "—" : `${clickThroughRate.toFixed(2)}%`}</span></div>
+                  <div className="summary-row"><span className="summary-label">Threads posts</span><span className="summary-val">{compact(threadsPosts)}</span></div>
+                  <div className="summary-row"><span className="summary-label">Link clicks</span><span className="summary-val amber">{totalClicks === null ? "—" : compact(totalClicks)}</span></div>
                 </div>
-                <div className="card-footer">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting live analytics"}</div>
+                <div className="card-footer">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting analytics"}</div>
               </div>
             </div>
           </div>

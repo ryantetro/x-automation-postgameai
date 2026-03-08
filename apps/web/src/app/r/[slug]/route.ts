@@ -17,6 +17,12 @@ function normalizeDestination(url: string): string {
   return `https://${url.replace(/^\/+/, "")}`;
 }
 
+function fallbackDestination(request: NextRequest): string {
+  const configured = process.env.CLICK_TARGET_URL?.trim();
+  if (configured) return normalizeDestination(configured);
+  return request.nextUrl.origin;
+}
+
 function withUtmParams(baseUrl: string, tweet: TweetAnalyticsRecord): string {
   const destination = new URL(normalizeDestination(baseUrl));
   const campaignPrefix = process.env.UTM_CAMPAIGN_PREFIX || "postgame_ai";
@@ -48,7 +54,7 @@ export async function GET(
   const tweet = store.tweets.find((row) => row.runId === slug);
 
   if (!tweet?.trackedUrl || !tweet.linkTargetUrl) {
-    return NextResponse.json({ error: "Tracked link not found" }, { status: 404 });
+    return NextResponse.redirect(fallbackDestination(request), 307);
   }
 
   const visitorFingerprint = buildVisitorFingerprint(request.headers);

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "X Momentum — Post Analytics",
-  description: "Dashboard for X automation posting results and analytics",
+  title: "Postgame Control Center",
+  description: "Dashboard for cross-platform post automation, performance, and analytics",
 };
 
 export default function RootLayout({
@@ -13,6 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body>{children}</body>
     </html>
   );
