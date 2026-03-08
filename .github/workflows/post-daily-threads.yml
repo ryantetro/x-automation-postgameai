@@ -71,6 +71,8 @@ jobs:
             exit 0
           fi
           git commit -m "chore(bot): update Threads analytics state [skip ci]"
+          git fetch origin "${GITHUB_REF_NAME}"
+          git rebase "origin/${GITHUB_REF_NAME}"
           git push
 
       - name: Fail workflow if Threads bot run failed

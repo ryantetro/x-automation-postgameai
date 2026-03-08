@@ -74,6 +74,8 @@ jobs:
             exit 0
           fi
           git commit -m "chore(bot): update X analytics state [skip ci]"
+          git fetch origin "${GITHUB_REF_NAME}"
+          git rebase "origin/${GITHUB_REF_NAME}"
           git push
 
       - name: Fail workflow if X bot run failed
