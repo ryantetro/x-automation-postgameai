@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-03-08T23:09:32.509Z",
+  "updatedAt": "2026-03-08T23:15:43.241Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -277,10 +277,50 @@
           "status": "dry_run"
         }
       ]
+    },
+    {
+      "runId": "a96cfeac-2a45-43f3-9f58-feb0fad6032a",
+      "postedAt": "2026-03-08T23:15:36.617Z",
+      "dateContext": "2026-03-08",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "dry_run",
+      "text": "Most basketball film sessions are too long to be useful. The best staffs usually win the review before they win the next game. postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What happened to Caleb Wilson? How UNC basketball star's thumb injury impacts Tar Heels, NBA draft",
+      "newsArticleUrl": "https://www.sportingnews.com/us/ncaa-basketball/news/what-happened-caleb-wilson-unc-basketball-thumb-injury-nba-draft/b014c8af9b47c216701bc47a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-03-07T14:00:00Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": false,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "most_basketball",
+      "linkTargetUrl": "",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ]
     }
   ],
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-08T23:09:25.216Z",
+    "fetchedAt": "2026-03-08T23:15:37.178Z",
     "views": 0,
     "likes": 0,
     "replies": 0,
