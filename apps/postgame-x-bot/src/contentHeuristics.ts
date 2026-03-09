@@ -52,12 +52,20 @@ export function checkAdviceDrift(text: string): boolean {
   return !ADVICE_PATTERNS.some((pattern) => pattern.test(text));
 }
 
+export interface EvaluatePrePublishChecksOptions {
+  relaxHookCheck?: boolean;
+}
+
 export function evaluatePrePublishChecks(
   text: string,
   decision: ContentDecision,
-  recentOpeningPatterns: string[]
+  recentOpeningPatterns: string[],
+  options?: EvaluatePrePublishChecksOptions
 ): PrePublishEvaluation {
-  const hookDetected = detectHookStructure(text) === decision.hookStructureId;
+  const detectedHook = detectHookStructure(text);
+  const hookDetected = options?.relaxHookCheck
+    ? detectedHook !== null
+    : detectedHook === decision.hookStructureId;
   const adviceDriftClear = checkAdviceDrift(text);
   const nextPattern = getOpeningPattern(text);
   const recentMostTeams = recentOpeningPatterns.filter((pattern) => pattern === "most_teams").length;

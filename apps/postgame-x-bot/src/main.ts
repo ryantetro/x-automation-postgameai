@@ -17,6 +17,7 @@ import {
   TRACKING_BASE_URL,
   CLICK_TARGET_URL,
   MAX_POST_LEN,
+  STATE_DIR,
 } from "./config.js";
 import { fetchSportsData } from "./fetchData.js";
 import { fetchNewsContext } from "./fetchNews.js";
@@ -227,7 +228,7 @@ async function main(): Promise<number> {
       }
     | undefined;
   for (let attempt = 0; attempt < MAX_GENERATE_RETRIES; attempt++) {
-    const generated = await generatePost(fetched, 1, {
+    const generated = await generatePost(fetched, 3, {
       recentTweets: recentTexts,
       angle,
       date: today,
@@ -272,34 +273,76 @@ async function main(): Promise<number> {
     }
   }
 
+  let reusedFromX = false;
   if (!text || !isValidTweet(text)) {
-    console.info("Using fallback template");
-    text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars, angle });
-    generationSource = "fallback";
-    openingPattern = getOpeningPattern(text);
-    appendGenerationLog({
-      runId,
-      attemptId: `${Date.now()}-fallback`,
-      timestamp: new Date().toISOString(),
-      platformTargets: [...POST_TARGETS],
-      sport,
-      angle,
-      contentFrameId: contentDecision.frameId,
-      hookStructureId: contentDecision.hookStructureId,
-      emotionTarget: contentDecision.emotionTarget,
-      newsUsed: newsContext.usedNews,
-      newsMomentType: contentDecision.newsMomentType,
-      openingPattern,
-      cleanedOutput: text,
-      passedChecks: [],
-      failedChecks: ["fallback_used"],
-      rejectionReason: "fallback_template",
-      acceptedForPublish: true,
-      usedFallback: true,
-    });
+    if (POST_TARGETS.length === 1 && POST_TARGETS[0] === "threads") {
+      const xStorePath = resolve(STATE_DIR, "tweet-analytics.json");
+      const xStore = loadAnalyticsStore(xStorePath);
+      const todayPost = xStore.tweets
+        .filter((t) => t.status === "posted" && t.dateContext === today && t.text)
+        .sort((a, b) => Date.parse(b.postedAt) - Date.parse(a.postedAt))[0];
+      if (todayPost?.text && isValidTweet(todayPost.text)) {
+        text = todayPost.text;
+        generationSource = "fallback";
+        openingPattern = getOpeningPattern(text);
+        reusedFromX = true;
+        appendGenerationLog({
+          runId,
+          attemptId: `${Date.now()}-fallback`,
+          timestamp: new Date().toISOString(),
+          platformTargets: [...POST_TARGETS],
+          sport,
+          angle,
+          contentFrameId: contentDecision.frameId,
+          hookStructureId: contentDecision.hookStructureId,
+          emotionTarget: contentDecision.emotionTarget,
+          newsUsed: newsContext.usedNews,
+          newsMomentType: contentDecision.newsMomentType,
+          openingPattern,
+          cleanedOutput: text,
+          passedChecks: [],
+          failedChecks: ["fallback_used"],
+          rejectionReason: "fallback_template",
+          acceptedForPublish: true,
+          usedFallback: true,
+        });
+      }
+    }
+    if (!reusedFromX && (!text || !isValidTweet(text))) {
+      console.info("Using fallback template");
+      text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars, angle });
+      generationSource = "fallback";
+      openingPattern = getOpeningPattern(text);
+      appendGenerationLog({
+        runId,
+        attemptId: `${Date.now()}-fallback`,
+        timestamp: new Date().toISOString(),
+        platformTargets: [...POST_TARGETS],
+        sport,
+        angle,
+        contentFrameId: contentDecision.frameId,
+        hookStructureId: contentDecision.hookStructureId,
+        emotionTarget: contentDecision.emotionTarget,
+        newsUsed: newsContext.usedNews,
+        newsMomentType: contentDecision.newsMomentType,
+        openingPattern,
+        cleanedOutput: text,
+        passedChecks: [],
+        failedChecks: ["fallback_used"],
+        rejectionReason: "fallback_template",
+        acceptedForPublish: true,
+        usedFallback: true,
+      });
+    }
   }
 
   text = appendTrackedUrl(text, trackedUrl);
+
+  if (reusedFromX && text && !isValidTweet(text)) {
+    text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars, angle });
+    text = appendTrackedUrl(text, trackedUrl);
+    openingPattern = getOpeningPattern(text);
+  }
 
   if (text && isValidTweet(text) && isDuplicate(text, readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP))) {
     console.warn("Fallback tweet is similar to a recent post; posting anyway to avoid skipping");

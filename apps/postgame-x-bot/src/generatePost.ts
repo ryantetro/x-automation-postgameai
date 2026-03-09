@@ -526,7 +526,9 @@ Rules for news usage:
             userMessage += NEWS_ENTITY_FOLLOWUP;
             continue;
           }
-          const evaluation = evaluatePrePublishChecks(content, contentDecision, recentOpeningPatterns);
+          const evaluation = evaluatePrePublishChecks(content, contentDecision, recentOpeningPatterns, {
+            relaxHookCheck: attempt === maxRetries - 1,
+          });
           lastEvaluation = evaluation;
           if (!evaluation.hookDetected) {
             attemptRecord.failedChecks.push("hook_detected");
