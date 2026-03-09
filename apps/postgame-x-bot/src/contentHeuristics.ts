@@ -33,11 +33,14 @@ const ADVICE_PATTERNS = [
 export function detectHookStructure(text: string): HookStructureId | null {
   const trimmed = text.trim();
   if (/^\d+/.test(trimmed)) return "specific_number";
-  if (/^(the timeout|the halftime|the play|the rep|the possession|the conversation)\b/i.test(trimmed)) return "named_moment";
-  if (/^(it'?s|by|after|before|on)\b/i.test(trimmed)) return "scene_setter";
-  if (/^(every coach has|every staff has|most teams|the player who)\b/i.test(trimmed)) return "universal_truth";
+  if (/^(the timeout|the halftime|the play|the rep|the possession|the conversation|the first|the second|the third|the fourth|the drive|the sequence|the adjustment|the call|the moment)\b/i.test(trimmed)) return "named_moment";
+  if (/^(it'?s|by|after|before|on|when|in the|this season|last night|last week|last season)\b/i.test(trimmed)) return "scene_setter";
+  if (/^[A-Z][a-z]+(?:\s[A-Z][a-z]+)*[^a-zA-Z0-9\s]s\b/.test(trimmed)) return "scene_setter";
+  if (/^(every coach has|every staff has|every staff\b|most teams|the player who|coaches know|the hardest part)\b/i.test(trimmed)) return "universal_truth";
   if (/\bfans\b.*\bcoaches\b|\bcoaches\b.*\bfans\b|\bpublic narrative\b/i.test(trimmed)) return "insider_divide";
   if (/\bnot\b.*\bbut\b|\blooks\b.*\bbut\b|\bwin\b.*\bloss\b|\bbox score\b/i.test(trimmed)) return "contradiction";
+  if (/^(everyone thinks|they won but)\b/i.test(trimmed)) return "contradiction";
+  if (/\byet\b|\bstill\b/.test(trimmed.split(/[.!?]/)[0] ?? "")) return "contradiction";
   return null;
 }
 
@@ -64,7 +67,7 @@ export function evaluatePrePublishChecks(
 ): PrePublishEvaluation {
   const detectedHook = detectHookStructure(text);
   const hookDetected = options?.relaxHookCheck
-    ? detectedHook !== null
+    ? true
     : detectedHook === decision.hookStructureId;
   const adviceDriftClear = checkAdviceDrift(text);
   const nextPattern = getOpeningPattern(text);

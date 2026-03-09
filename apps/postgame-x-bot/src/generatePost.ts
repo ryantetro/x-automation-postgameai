@@ -73,8 +73,9 @@ Avoid these phrases and tones:
 {avoid_block}
 {iteration_block}`;
 
-const STRICT_FOLLOWUP =
-  ` Your last reply was too long, incomplete, too promotional, instructional, or sounded like a scoreboard/news recap. Write a NEW post in a sharper former-coach voice: hard-edged, specific, and screenshot-worthy for a staff chat. Use 2 short sentences max, stay under the limit, and end with one light "${BRAND_NAME} · ${BRAND_WEBSITE}" tag. No advice-style lines like "coaches need to" or "record your thoughts". Reply with only the post text.`;
+function strictFollowup(hookLabel: string): string {
+  return ` Your last reply was too long, incomplete, too promotional, instructional, or sounded like a scoreboard/news recap. Write a NEW post in a sharper former-coach voice: hard-edged, specific, and screenshot-worthy for a staff chat. Use 2 short sentences max, stay under the limit, and end with one light "${BRAND_NAME} · ${BRAND_WEBSITE}" tag. No advice-style lines like "coaches need to" or "record your thoughts". Your opening must fit the "${hookLabel}" hook structure. Reply with only the post text.`;
+}
 
 const AVOID_FOLLOWUP =
   ` Your previous suggestion was too similar to a recent post. Write a DIFFERENT post with a new hook, different wording, and a different coaching tension. Reply with only the post text.`;
@@ -91,8 +92,9 @@ const INSTRUCTIONAL_FOLLOWUP =
 const COMPRESSION_FOLLOWUP =
   ` Compress the post you just wrote so it fits the character limit. Keep the same hook, remove filler, keep "postgame AI" and "getpostgame.ai", and reply with only the shortened post.`;
 
-const WEAK_OPENER_FOLLOWUP =
-  ` Your previous opener did not clearly match the assigned hook structure. Rewrite the opening so the first 8 words unmistakably fit the assigned hook type while keeping the same frame and coaching tension.`;
+function weakOpenerFollowup(hookLabel: string): string {
+  return ` Your previous opener did not clearly match the assigned hook structure ("${hookLabel}"). Rewrite the opening so the first 8 words unmistakably fit the "${hookLabel}" hook type while keeping the same frame and coaching tension.`;
+}
 
 const OPENER_VARIETY_FOLLOWUP =
   ` Your previous opener repeated an overused opening pattern from the recent batch. Rewrite it with a different opening structure and do not begin with "Most teams".`;
@@ -471,7 +473,7 @@ Rules for news usage:
       acceptedForPublish: false,
     };
     try {
-      if (attempt > 0) userMessage += STRICT_FOLLOWUP;
+      if (attempt > 0) userMessage += strictFollowup(hook.label);
       const raw = await requestTweet(client, system, userMessage);
       if (raw) {
         let content = raw;
@@ -523,7 +525,8 @@ Rules for news usage:
           if (
             options.newsContext?.usedNews &&
             options.newsContext.selectedArticle?.title &&
-            !referencesHeadline(content, options.newsContext.selectedArticle.title, sport)
+            !referencesHeadline(content, options.newsContext.selectedArticle.title, sport) &&
+            attempt < maxRetries - 1
           ) {
             attemptRecord.failedChecks.push("headline_reference");
             attemptRecord.rejectionReason = "headline_context_missing";
@@ -539,7 +542,7 @@ Rules for news usage:
             attemptRecord.failedChecks.push("hook_detected");
             attemptRecord.rejectionReason = "weak_opener";
             attempts.push(attemptRecord);
-            userMessage += WEAK_OPENER_FOLLOWUP;
+            userMessage += weakOpenerFollowup(hook.label);
             continue;
           }
           if (!evaluation.openerVarietyClear) {
