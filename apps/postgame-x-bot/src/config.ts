@@ -82,8 +82,11 @@ export function getSportForRun(): string {
   return ROTATION_SPORTS[index];
 }
 
-// When var is unset or empty (e.g. in GitHub Actions), default to true so we actually post
-const postEnabledRaw = getEnv("POST_ENABLED", "true").toLowerCase() || "true";
+// Prod (CI, e.g. GitHub Actions): post for real. Dev (local): dry run unless POST_ENABLED is set.
+const postEnv = getEnv("POST_ENABLED");
+const inCI = process.env.CI === "true" || process.env.GITHUB_ACTIONS === "true";
+const defaultPostEnabled = inCI;
+const postEnabledRaw = (postEnv || (defaultPostEnabled ? "true" : "false")).toLowerCase() || (defaultPostEnabled ? "true" : "false");
 export const POST_ENABLED = !["false", "0", "no"].includes(postEnabledRaw);
 
 export const PROMPTS_DIR = resolve(REPO_ROOT, "prompts");

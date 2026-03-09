@@ -79,7 +79,7 @@ Add these as **Repository secrets** (not variables):
 Under **Variables** you can set:
 
 - `TARGET_SPORT` — `auto` (default, rotates NBA/NFL/MLB/soccer by day), or `nba`, `nfl`, `mlb`, `soccer`.
-- `POST_ENABLED` — `true` (default) to actually post; `false` for dry runs from Actions.
+- Posting: in CI (GitHub Actions) the bot always posts. Locally it always dry-runs unless you set `POST_ENABLED=true`.
 
 ---
 
@@ -97,7 +97,7 @@ Under **Variables** you can set:
 
 - In the repo: **Actions** tab → select the workflow **“Post to X (6am & 6pm ET)”**.
 - Use **Run workflow** (manual run) to trigger it once.
-- Check the run logs: it should install deps, run the bot, and post one tweet (if `POST_ENABLED` is not set to `false`).
+- Check the run logs: it should install deps, run the bot, and post one tweet (CI always posts).
 
 ---
 
@@ -116,7 +116,7 @@ When everything works:
 - [ ] All 5 X + OpenAI secrets added in GitHub (Settings → Secrets and variables → Actions)  
 - [ ] Repo pushed (done if you used this workspace)  
 - [ ] One successful manual run from the Actions tab (Run workflow)  
-- [ ] `POST_ENABLED` is `true` (or unset) for live posting  
+- [ ] Manual run from Actions tab succeeds (CI posts by default)  
 
 **No Vercel or other deployment needed** — GitHub Actions runs the bot on schedule.
 

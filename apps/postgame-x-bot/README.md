@@ -26,17 +26,17 @@ Automated sports content for X and Threads: fetch data from API-Sports (with ESP
    npm install
    ```
 
-4. **Dry run (no live post)**
+4. **Dry run (default when running locally)**
    ```bash
    npm run dry-run
    ```
-   or `POST_ENABLED=false npx tsx src/main.ts`
+   or just `npx tsx src/main.ts` — local runs are dry run by default.
 
-5. **Live run**
+5. **Live run (local)** — only when you explicitly want to post from your machine:
    ```bash
-   npm run post
+   POST_ENABLED=true npx tsx src/main.ts
    ```
-   or `npx tsx src/main.ts`
+   In GitHub Actions (CI), the bot always posts for real; no repo variables needed.
 
 ## Platforms
 
@@ -126,8 +126,8 @@ Repository secrets:
 
 Repository variables:
 - Shared: `TARGET_SPORT`, `ANALYTICS_ENABLED`, `ANALYTICS_LOOKBACK_DAYS`, `ANALYTICS_MIN_AGE_MINUTES`, `ANALYTICS_MAX_REFRESH`, `NEWS_ENABLED`, `NEWS_LOOKBACK_HOURS`, `NEWS_MAX_ARTICLES`, `NEWS_LANGUAGE`, `NEWS_SORT_BY`, `NEWS_ALLOWED_DOMAINS`, `NEWS_ALLOWED_SOURCES`, `TRACKING_BASE_URL`, `CLICK_TARGET_URL`
-- X bot toggle: `X_POST_ENABLED`
-- Threads bot toggle: `THREADS_POST_ENABLED`
+
+Posting is **on** in CI (GitHub Actions) and **off** (dry run) when run locally, unless you set `POST_ENABLED=true`.
 
 If you are running from the monorepo root, use `npm run bot:dry-run` or `npm run bot:post`. The root GitHub Actions workflow already targets `apps/postgame-x-bot`.
 

@@ -39,7 +39,6 @@ jobs:
           API_SPORTS_KEY: ${{ secrets.API_SPORTS_KEY }}
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
           TARGET_SPORT: ${{ vars.TARGET_SPORT }}
-          POST_ENABLED: ${{ vars.THREADS_POST_ENABLED || 'false' }}
           POST_TARGETS: threads
           ANALYTICS_STORE_FILENAME: threads-analytics.json
           ANALYTICS_ENABLED: ${{ vars.ANALYTICS_ENABLED || 'true' }}
