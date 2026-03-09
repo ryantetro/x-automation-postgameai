@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-03-09T04:37:01.294Z",
+  "updatedAt": "2026-03-09T11:44:48.763Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -73,7 +73,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-09T04:36:47.316Z",
+        "fetchedAt": "2026-03-09T11:44:34.196Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -85,7 +85,7 @@
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T04:36:47.316Z",
+      "scoreUpdatedAt": "2026-03-09T11:44:34.196Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
@@ -401,7 +401,64 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-09T04:37:00.726Z",
+        "fetchedAt": "2026-03-09T11:44:34.054Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 13,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-09T11:44:34.196Z"
+    },
+    {
+      "runId": "f19313ee-4574-42b1-bf64-c42a28cf9f7d",
+      "threadsPostId": "17867431404585632",
+      "postedAt": "2026-03-09T11:44:33.213Z",
+      "dateContext": "2026-03-09",
+      "sport": "nfl",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "posted",
+      "text": "Good football prep looks boring right up until chaos hits. The best staffs usually win the review before they win the next game. postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Titans predicted to land three impact players in free agency",
+      "newsArticleUrl": "https://titanswire.usatoday.com/story/sports/nfl/titans/2026/03/08/tennessee-titans-free-agency-predictions/89043882007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-03-08T09:10:33Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The Conversation That Doesn't Happen to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": false,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "good_football",
+      "linkTargetUrl": "",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "17867431404585632"
+        }
+      ],
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-03-09T11:44:48.528Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -413,12 +470,12 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T04:37:00.726Z"
+      "scoreUpdatedAt": "2026-03-09T11:44:48.528Z"
     }
   ],
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-09T04:37:01.294Z",
-    "views": 1,
+    "fetchedAt": "2026-03-09T11:44:48.763Z",
+    "views": 0,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
