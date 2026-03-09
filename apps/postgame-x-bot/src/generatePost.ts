@@ -489,6 +489,11 @@ Rules for news usage:
           }
           if (content.length > MAX_POST_LEN) {
             console.warn(`LLM returned ${content.length} chars (max ${MAX_POST_LEN})`);
+            attemptRecord.failedChecks.push("length");
+            attemptRecord.rejectionReason = "over_length";
+            attempts.push(attemptRecord);
+            userMessage += COMPRESSION_FOLLOWUP;
+            continue;
           }
           if (!content.includes(BRAND_NAME)) console.warn(`LLM response missing ${BRAND_NAME}`);
           if (!content.includes(BRAND_WEBSITE)) console.warn(`LLM response missing ${BRAND_WEBSITE}`);
@@ -580,13 +585,33 @@ Rules for news usage:
   };
 }
 
+const FALLBACK_KEYS: (keyof (typeof FALLBACK_FACTS)["default"])[] = [
+  "film",
+  "feedback",
+  "preparation",
+  "efficiency",
+  "adjustments",
+  "analytics",
+];
+
+function isDuplicateOfRecent(candidate: string, recentTexts: string[]): boolean {
+  const norm = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
+  const cNorm = norm(candidate);
+  const cLead = cNorm.slice(0, 70);
+  for (const t of recentTexts) {
+    if (norm(t) === cNorm) return true;
+    if (norm(t).slice(0, 70) === cLead) return true;
+  }
+  return false;
+}
+
 export function fillFallbackTemplate(
   sport: string,
   _fetchedData: FetchedData,
-  options: { reserveChars?: number; angle?: string } = {}
+  options: { reserveChars?: number; angle?: string; factKey?: keyof (typeof FALLBACK_FACTS)["default"] } = {}
 ): string {
   const sportKey = sport.toLowerCase();
-  const factKey = chooseFallbackKey(options.angle);
+  const factKey = options.factKey ?? chooseFallbackKey(options.angle);
   const sportFacts = FALLBACK_FACTS[sportKey] ?? FALLBACK_FACTS.default;
   const hashtags = SPORT_HASHTAGS[sportKey] ?? "#CoachingTips";
   const body = `${sportFacts[factKey]} The best staffs usually win the review before they win the next game.`;
@@ -597,4 +622,18 @@ export function fillFallbackTemplate(
     text = `${sportFacts[factKey]} ${BRAND_NAME} · ${BRAND_WEBSITE} ${hashtags}`.trim();
   }
   return text.slice(0, maxLen);
+}
+
+export function pickNonDuplicateFallback(
+  sport: string,
+  fetchedData: FetchedData,
+  recentTexts: string[],
+  options: { reserveChars?: number; angle?: string } = {}
+): string {
+  const defaultText = fillFallbackTemplate(sport, fetchedData, options);
+  for (const key of FALLBACK_KEYS) {
+    const candidate = fillFallbackTemplate(sport, fetchedData, { ...options, factKey: key });
+    if (!isDuplicateOfRecent(candidate, recentTexts)) return candidate;
+  }
+  return defaultText;
 }

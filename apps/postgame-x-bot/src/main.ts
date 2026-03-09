@@ -21,7 +21,7 @@ import {
 } from "./config.js";
 import { fetchSportsData } from "./fetchData.js";
 import { fetchNewsContext } from "./fetchNews.js";
-import { generatePost, fillFallbackTemplate } from "./generatePost.js";
+import { generatePost, fillFallbackTemplate, pickNonDuplicateFallback } from "./generatePost.js";
 import { isValidTweet } from "./validate.js";
 import { getXClient, postToX } from "./postToX.js";
 import { postToThreads } from "./postToThreads.js";
@@ -310,7 +310,11 @@ async function main(): Promise<number> {
     }
     if (!reusedFromX && (!text || !isValidTweet(text))) {
       console.info("Using fallback template");
-      text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars, angle });
+      const recentTextsForFallback = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
+      text = pickNonDuplicateFallback(fetched.sport ?? "nba", fetched, recentTextsForFallback, {
+        reserveChars,
+        angle,
+      });
       generationSource = "fallback";
       openingPattern = getOpeningPattern(text);
       appendGenerationLog({
@@ -344,8 +348,16 @@ async function main(): Promise<number> {
     openingPattern = getOpeningPattern(text);
   }
 
-  if (text && isValidTweet(text) && isDuplicate(text, readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP))) {
-    console.warn("Fallback tweet is similar to a recent post; posting anyway to avoid skipping");
+  const recentTextsFinal = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
+  if (
+    generationSource === "fallback" &&
+    text &&
+    isValidTweet(text) &&
+    isDuplicate(text, recentTextsFinal)
+  ) {
+    console.info("Skipping post: fallback is duplicate of recent post (X would reject with 403)");
+    appendLog(true, null, "Skipped duplicate fallback");
+    return 0;
   }
 
   if (!isValidTweet(text)) {
