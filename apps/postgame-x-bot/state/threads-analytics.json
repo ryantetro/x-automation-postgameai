@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-03-09T11:44:48.763Z",
+  "updatedAt": "2026-03-09T15:23:55.899Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -73,19 +73,19 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-09T11:44:34.196Z",
+        "fetchedAt": "2026-03-09T15:23:29.869Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 1,
+        "impressionCount": 2,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T11:44:34.196Z",
+      "scoreUpdatedAt": "2026-03-09T15:23:29.869Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
@@ -401,19 +401,19 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-09T11:44:34.054Z",
+        "fetchedAt": "2026-03-09T15:23:29.574Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 13,
+        "impressionCount": 15,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T11:44:34.196Z"
+      "scoreUpdatedAt": "2026-03-09T15:23:29.869Z"
     },
     {
       "runId": "f19313ee-4574-42b1-bf64-c42a28cf9f7d",
@@ -458,7 +458,64 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-09T11:44:48.528Z",
+        "fetchedAt": "2026-03-09T15:23:29.252Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 45,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-09T15:23:29.869Z"
+    },
+    {
+      "runId": "5541be49-a1cf-415b-8840-636768d465c8",
+      "threadsPostId": "18006910424848479",
+      "postedAt": "2026-03-09T15:23:28.650Z",
+      "dateContext": "2026-03-09",
+      "sport": "nfl",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "posted",
+      "text": "Good football prep looks boring right up until chaos hits. The best staffs usually win the review before they win the next game. postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Cowboys, Packers among seven handcuffed teams heading into NFL free agency, draft",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/nfl/columnist/nate-davis/2026/03/08/nfl-free-agency-draft-seven-struggling-teams-cowboys-packers/89051692007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-03-08T12:36:40Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": false,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "good_football",
+      "linkTargetUrl": "",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "18006910424848479"
+        }
+      ],
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-03-09T15:23:55.507Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -470,12 +527,12 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T11:44:48.528Z"
+      "scoreUpdatedAt": "2026-03-09T15:23:55.507Z"
     }
   ],
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-09T11:44:48.763Z",
-    "views": 0,
+    "fetchedAt": "2026-03-09T15:23:55.899Z",
+    "views": 48,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
