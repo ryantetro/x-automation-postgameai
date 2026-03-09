@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "updatedAt": "2026-03-08T23:28:08.159Z",
+  "updatedAt": "2026-03-09T04:37:01.294Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -73,19 +73,19 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-08T23:09:24.958Z",
+        "fetchedAt": "2026-03-09T04:36:47.316Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 0,
+        "impressionCount": 1,
         "engagementCount": 0,
-        "engagementRate": null
+        "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-08T23:09:24.958Z",
+      "scoreUpdatedAt": "2026-03-09T04:36:47.316Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
@@ -357,11 +357,68 @@
           "status": "dry_run"
         }
       ]
+    },
+    {
+      "runId": "46322290-215a-4872-9d53-a0e92e49d39d",
+      "threadsPostId": "18113694400657691",
+      "postedAt": "2026-03-09T04:36:46.745Z",
+      "dateContext": "2026-03-09",
+      "sport": "nfl",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "posted",
+      "text": "Good football prep looks boring right up until chaos hits. The best staffs usually win the review before they win the next game. postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Browns NFL Free Agency: Which LBs should Cleveland target next week?",
+      "newsArticleUrl": "https://brownswire.usatoday.com/story/sports/nfl/browns/2026/03/07/browns-nfl-free-agency-devin-bush-lb-targets/89018105007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-03-07T16:46:17Z",
+      "contentFrameId": "scoreboard_lie",
+      "contentFrameLabel": "The Scoreboard Lie",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Scoreboard Lie to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": false,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "good_football",
+      "linkTargetUrl": "",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "18113694400657691"
+        }
+      ],
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-03-09T04:37:00.726Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 0,
+        "engagementCount": 0,
+        "engagementRate": null
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-09T04:37:00.726Z"
     }
   ],
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-08T23:28:02.991Z",
-    "views": 0,
+    "fetchedAt": "2026-03-09T04:37:01.294Z",
+    "views": 1,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
