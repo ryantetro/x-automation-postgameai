@@ -221,6 +221,74 @@ button, input, select, textarea { font: inherit; }
   color: var(--text);
 }
 
+/* Campaign selector */
+.campaign-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0 0.25rem 0.35rem;
+}
+
+.campaign-selector-label {
+  padding: 0.35rem 0.5rem 0.25rem;
+  color: var(--text-faint);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.campaign-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.campaign-pill:hover {
+  color: var(--text);
+  background: var(--glass-strong);
+}
+
+.campaign-pill.active {
+  color: var(--accent);
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.2);
+  font-weight: 600;
+}
+
+/* Campaign badges */
+.campaign-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 26px;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  background: var(--glass-strong);
+  color: var(--text-secondary);
+}
+
+.campaign-badge.postgame {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.campaign-badge.canopy {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
 /* Sidebar nav */
 .sidebar-nav {
   display: flex;

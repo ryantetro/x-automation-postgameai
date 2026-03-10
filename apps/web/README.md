@@ -13,7 +13,7 @@ Crypto-terminal style dashboard for your automated postgame X bot.
 
 By default the app reads live analytics JSON from:
 
-`https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/apps/postgame-x-bot/state/tweet-analytics.json`
+`https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/apps/social-bot-engine/state/tweet-analytics.json`
 
 Override with:
 
@@ -24,7 +24,7 @@ ANALYTICS_JSON_URL=https://your-domain-or-raw-json-url
 If remote fetch fails, it falls back to local files when present:
 
 - `apps/web/public/tweet-analytics.json`
-- `../postgame-x-bot/state/tweet-analytics.json`
+- `../social-bot-engine/state/tweet-analytics.json`
 
 ## Local Run
 

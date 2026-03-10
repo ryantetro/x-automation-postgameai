@@ -23,6 +23,17 @@ function buildPerformanceAppendix(store: ReturnType<typeof loadAnalyticsStore>):
   const withMetrics = posted.filter((tweet) => tweet.metrics);
   const lines: string[] = [];
 
+  lines.push("## Analytics health");
+  const xHealth = store.analyticsHealth?.x;
+  const threadsHealth = store.analyticsHealth?.threads;
+  lines.push(
+    `- X: ${xHealth?.status ?? "unknown"}${xHealth?.lastError ? ` (${xHealth.lastError})` : ""}`
+  );
+  lines.push(
+    `- Threads: ${threadsHealth?.status ?? "unknown"}${threadsHealth?.lastError ? ` (${threadsHealth.lastError})` : ""}`
+  );
+  lines.push("");
+
   lines.push("## Performance summary");
   lines.push(`- Posted tweets: ${posted.length}`);
   lines.push(`- Tweets with metrics: ${withMetrics.length}`);

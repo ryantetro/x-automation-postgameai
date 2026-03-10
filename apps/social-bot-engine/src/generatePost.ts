@@ -7,8 +7,11 @@ import {
   LLM_BASE_URL,
   ACTIVE_LLM_MODEL,
   PROMPTS_DIR,
+  CAMPAIGNS_DIR,
+  DATA_SOURCE,
   MAX_POST_LEN,
 } from "./config.js";
+import { loadPillarForAngle } from "./contentPillars.js";
 import type { ContentDecision, RecentContentDecision } from "./contentArchitecture.js";
 import { FRAME_DEFINITIONS, HOOK_DEFINITIONS } from "./contentArchitecture.js";
 import { evaluatePrePublishChecks, getOpeningPattern } from "./contentHeuristics.js";
@@ -297,10 +300,46 @@ function cleanResponse(raw: string): string {
   return s;
 }
 
-function loadSystemPrompt(): string {
-  const path = resolve(PROMPTS_DIR, "system_prompt.txt");
-  if (!existsSync(path)) throw new Error(`System prompt not found: ${path}`);
-  return readFileSync(path, "utf-8").trim();
+/**
+ * Load the system prompt for the current campaign with a 3-level fallback:
+ * 1. campaigns/<slug>/system_prompt.txt  (per-campaign override)
+ * 2. apps/social-bot-engine/prompts/<dataSource>_system_prompt.txt  (data-source default)
+ * 3. apps/social-bot-engine/prompts/system_prompt.txt  (global default)
+ * All loaded prompts get {brand_name} / {brand_website} replacement.
+ */
+function loadCampaignSystemPrompt(): string {
+  const slug = process.env.CAMPAIGN?.trim();
+  const dataSource = DATA_SOURCE;
+
+  // 1. Per-campaign prompt
+  if (slug) {
+    const campaignPath = resolve(CAMPAIGNS_DIR, slug, "system_prompt.txt");
+    if (existsSync(campaignPath)) {
+      return readFileSync(campaignPath, "utf-8")
+        .trim()
+        .replace(/\{brand_name\}/g, BRAND_NAME)
+        .replace(/\{brand_website\}/g, BRAND_WEBSITE);
+    }
+  }
+
+  // 2. Data-source-specific prompt (e.g. angles_only_system_prompt.txt)
+  if (dataSource !== "sports") {
+    const dsPath = resolve(PROMPTS_DIR, `${dataSource}_system_prompt.txt`);
+    if (existsSync(dsPath)) {
+      return readFileSync(dsPath, "utf-8")
+        .trim()
+        .replace(/\{brand_name\}/g, BRAND_NAME)
+        .replace(/\{brand_website\}/g, BRAND_WEBSITE);
+    }
+  }
+
+  // 3. Global default
+  const defaultPath = resolve(PROMPTS_DIR, "system_prompt.txt");
+  if (!existsSync(defaultPath)) throw new Error(`System prompt not found: ${defaultPath}`);
+  return readFileSync(defaultPath, "utf-8")
+    .trim()
+    .replace(/\{brand_name\}/g, BRAND_NAME)
+    .replace(/\{brand_website\}/g, BRAND_WEBSITE);
 }
 
 function selectArchetype(sport: string, date: string, preferNews: boolean): (typeof VIRAL_ARCHETYPES)[number] {
@@ -395,7 +434,7 @@ export async function generatePost(
   options: GeneratePostOptions = {}
 ): Promise<GeneratePostResult> {
   if (!OPENAI_API_KEY) return { text: null, attempts: [] };
-  const system = loadSystemPrompt();
+  const system = loadCampaignSystemPrompt();
   const sport = (fetchedData.sport ?? "sports").toLowerCase();
   const date = options.date ?? new Date().toISOString().slice(0, 10);
   const angle = options.angle ?? "film review, feedback, or preparation (pick one)";
@@ -606,6 +645,181 @@ function isDuplicateOfRecent(candidate: string, recentTexts: string[]): boolean 
     if (norm(t).slice(0, 70) === cLead) return true;
   }
   return false;
+}
+
+export interface GeneratePostAnglesOnlyOptions {
+  angle: string;
+  date?: string;
+  recentTweets?: string[];
+  reserveChars?: number;
+}
+
+/** Post formats for angles_only (e.g. canopy). Rotated by day to avoid same structure every time. */
+const ANGLES_ONLY_POST_FORMATS = [
+  "TENSION",
+  "MICRO-STORY",
+  "CONTRARIAN",
+  "SPECIFIC DETAIL",
+  "QUESTION",
+  "BEHIND-THE-SCENES",
+] as const;
+
+function getPostFormatForDate(date: Date): (typeof ANGLES_ONLY_POST_FORMATS)[number] {
+  const dayOfYear = Math.floor(
+    (date.getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / (24 * 60 * 60 * 1000)
+  );
+  return ANGLES_ONLY_POST_FORMATS[dayOfYear % ANGLES_ONLY_POST_FORMATS.length];
+}
+
+/** Context lines for angles_only user message; rotated by day. Covers seasonality, events, target audiences, industry. */
+const ANGLES_ONLY_CONTEXT_SNIPPETS = [
+  "Event season is ramping up. A lot of teams and vendors are realizing they need to order now for spring events.",
+  "Summer events are in full swing. Last-minute orders are coming in from people who waited too long.",
+  "Fall festival and game day season. Lead times matter when something fails right before the event.",
+  "Trade show season. Booth visibility is the game — the tent is the first thing people see from 50 feet away.",
+  "Farmers markets and outdoor vendor events are booking. Setup and sizing are top of mind for planners.",
+  "Wind and weather have been rough at a few outdoor events. Durability and frame quality are what people are asking about.",
+  "Spring games and tournaments are on the calendar. Full-color branding and quick turnaround are the main asks.",
+  "Vendors are comparing plain tents vs branded. Visibility from a distance is the conversation.",
+  "Rush orders and replacement canopies are spiking. Something failed or someone waited — either way, lead time is the constraint.",
+  "Real estate teams are prepping for open house season. Curb appeal and branded presence are top of mind.",
+  "Sports teams and leagues are ordering for game day. Sideline visibility and team branding are the main asks.",
+  "Corporate event and trade show calendars are filling. Booth design and lead capture are the conversation.",
+  "Local parades and community events are on the calendar. Stand-out visibility for small businesses matters.",
+  "Event marketing and experiential marketing are trending again. Brands that show up in person are winning.",
+  "Festival and outdoor vendor season. Full-color canopies and quick turnaround are what planners are asking about.",
+  "Car dealerships and marinas are planning tent events. Branded presence and durability are the main asks.",
+  "Nonprofits and community orgs are booking events. Affordable, durable branding that reads from a distance.",
+];
+
+function getContextForAnglesOnly(date: Date): string {
+  const dayOfYear = Math.floor(
+    (date.getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / (24 * 60 * 60 * 1000)
+  );
+  return ANGLES_ONLY_CONTEXT_SNIPPETS[dayOfYear % ANGLES_ONLY_CONTEXT_SNIPPETS.length];
+}
+
+export function getAnglesOnlyPostFormatForDate(date: Date): (typeof ANGLES_ONLY_POST_FORMATS)[number] {
+  return getPostFormatForDate(date);
+}
+
+export function getAnglesOnlyContextForDate(date: Date): string {
+  return getContextForAnglesOnly(date);
+}
+
+export interface BuildAnglesOnlyPromptOptions {
+  angle: string;
+  date?: string;
+  recentTweets?: string[];
+  reserveChars?: number;
+}
+
+export function buildAnglesOnlyPromptInput(options: BuildAnglesOnlyPromptOptions): {
+  system: string;
+  format: (typeof ANGLES_ONLY_POST_FORMATS)[number];
+  context: string;
+  pillarData: ReturnType<typeof loadPillarForAngle>;
+  userMessage: string;
+  maxBodyLength: number;
+  date: Date;
+  dateStr: string;
+} {
+  const { angle, date: dateStr = new Date().toISOString().slice(0, 10), recentTweets = [], reserveChars = 0 } = options;
+  const date = new Date(dateStr + "T12:00:00Z");
+  const maxBodyLength = Math.max(180, MAX_POST_LEN - Math.max(0, reserveChars));
+  const system = loadCampaignSystemPrompt();
+  const format = getPostFormatForDate(date);
+  const context = getContextForAnglesOnly(date);
+  const pillarData = loadPillarForAngle(angle, date);
+  const avoidBlock =
+    recentTweets.length > 0
+      ? `\nDo NOT repeat or closely mimic these recent posts:\n${recentTweets.slice(0, 10).map((t) => `- ${t}`).join("\n")}`
+      : "";
+  const pillarBlock =
+    pillarData && pillarData.postIdeas.length > 0
+      ? `\nPost ideas for this pillar (use as inspiration, do not list): ${pillarData.postIdeas.join("; ")}.\nTarget audience today: ${pillarData.targetAudience}.`
+      : "";
+  const userMessage = `Date: ${dateStr}. Focus theme: ${angle}. Post format: ${format}.
+
+Context for this post: ${context}.${pillarBlock}
+
+Write one post in the specified format. If relevant, tie to seasonality or upcoming events. Keep the body under ${maxBodyLength} characters. Output only the post text.${avoidBlock}`;
+
+  return { system, format, context, pillarData, userMessage, maxBodyLength, date, dateStr };
+}
+
+function fitAnglesOnlyPostToLimit(
+  content: string,
+  maxBodyLength: number,
+  isQuestionFormat: boolean
+): string {
+  let text = content.trim();
+  const suffix = ` — ${BRAND_NAME} · ${BRAND_WEBSITE}`;
+
+  if (!isQuestionFormat && (!text.includes(BRAND_NAME) || !text.includes(BRAND_WEBSITE))) {
+    if (text.length + suffix.length <= maxBodyLength) return `${text}${suffix}`;
+
+    const roomForBody = Math.max(0, maxBodyLength - suffix.length);
+    if (roomForBody <= 3) return suffix.trim().slice(0, maxBodyLength);
+
+    const max = roomForBody - 3;
+    const truncated = text.slice(0, max + 1);
+    const lastSentence = Math.max(
+      truncated.lastIndexOf(". "),
+      truncated.lastIndexOf("? "),
+      truncated.lastIndexOf("! ")
+    );
+    const lastSpace = truncated.lastIndexOf(" ");
+    const breakAt = lastSentence >= 0 ? lastSentence + 1 : lastSpace >= 0 ? lastSpace : max;
+    const brokeAtSentence = lastSentence >= 0;
+    text = text.slice(0, breakAt).trim();
+    if (!brokeAtSentence) text += "...";
+    return `${text}${suffix}`.slice(0, maxBodyLength).trim();
+  }
+
+  if (text.length <= maxBodyLength) return text;
+
+  const max = maxBodyLength - 3;
+  const truncated = text.slice(0, max + 1);
+  const lastSentence = Math.max(
+    truncated.lastIndexOf(". "),
+    truncated.lastIndexOf("? "),
+    truncated.lastIndexOf("! ")
+  );
+  const lastSpace = truncated.lastIndexOf(" ");
+  const breakAt = lastSentence >= 0 ? lastSentence + 1 : lastSpace >= 0 ? lastSpace : max;
+  const brokeAtSentence = lastSentence >= 0;
+  text = text.slice(0, breakAt).trim();
+  if (!brokeAtSentence) text += "...";
+  return text.slice(0, maxBodyLength).trim();
+}
+
+export function normalizeAnglesOnlyPostForLimit(
+  content: string,
+  maxBodyLength: number,
+  format: (typeof ANGLES_ONLY_POST_FORMATS)[number]
+): string {
+  return fitAnglesOnlyPostToLimit(content, maxBodyLength, format === "QUESTION");
+}
+
+/**
+ * Generate a single post for campaigns with dataSource "angles_only" (e.g. canopy).
+ * Uses campaign system prompt, rotating angle, rotating post format, and rotating context.
+ */
+export async function generatePostAnglesOnly(
+  options: GeneratePostAnglesOnlyOptions
+): Promise<{ text: string | null }> {
+  if (!OPENAI_API_KEY) return { text: null };
+  const { angle } = options;
+  const { system, format, userMessage, maxBodyLength } = buildAnglesOnlyPromptInput(options);
+
+  const clientOptions: ConstructorParameters<typeof OpenAI>[0] = { apiKey: OPENAI_API_KEY };
+  if (!USE_OPENAI_API && LLM_BASE_URL) clientOptions.baseURL = LLM_BASE_URL;
+  const client = new OpenAI(clientOptions);
+  const raw = await requestTweet(client, system, userMessage);
+  if (!raw) return { text: null };
+  const content = normalizeAnglesOnlyPostForLimit(cleanResponse(raw), maxBodyLength, format);
+  return { text: content };
 }
 
 export function fillFallbackTemplate(

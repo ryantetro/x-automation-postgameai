@@ -14,8 +14,10 @@ import Sidebar from "../components/Sidebar";
 
 export const dynamic = "force-dynamic";
 
-export default async function PostsPage() {
-  const store = await loadStore();
+export default async function PostsPage({ searchParams }: { searchParams: Promise<{ campaign?: string }> }) {
+  const params = await searchParams;
+  const campaignSlug = params.campaign;
+  const store = await loadStore({ campaignSlug });
 
   const allPosts = store.tweets
     .filter((t) => t.status === "posted")
@@ -34,13 +36,13 @@ export default async function PostsPage() {
 
   return (
     <div className="dash">
-      <Sidebar activePage="posts" />
+      <Sidebar activePage="posts" campaignSlug={campaignSlug} />
       <main className="main">
         <header className="header">
           <div className="header-left">
-            <span className="page-kicker">Publishing archive</span>
+            <span className="page-kicker">{store.activeCampaign ? store.activeCampaign.name : "All campaigns"}</span>
             <h2>Posts</h2>
-            <span>All automated posts published by the bot</span>
+            <span>{store.activeCampaign ? `${store.activeCampaign.name} posts` : "All automated posts published by the bot"}</span>
           </div>
           <div className="header-right">
             <span className="header-badge">{xPosts} on X</span>
@@ -80,6 +82,11 @@ export default async function PostsPage() {
                 return (
                   <article className="post-card" key={tweet.runId}>
                     <div className="post-card-top">
+                      {!campaignSlug && tweet.campaignSlug && (
+                        <span className={`campaign-badge ${tweet.campaignSlug}`}>
+                          {store.campaigns.find((c) => c.slug === tweet.campaignSlug)?.name ?? tweet.campaignSlug}
+                        </span>
+                      )}
                       <span className={`sport-pill ${sportClass(tweet.sport)}`}>{tweet.sport}</span>
                       <span className={`platform-pill ${platformClass(tweet)}`}>{platformLabel(tweet)}</span>
                       <span className={`frame-pill ${frameClass(tweet.contentFrameId)}`}>{frameLabel(tweet)}</span>

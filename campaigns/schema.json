@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Campaign config",
+  "description": "Config for one X/Threads bot (one business, one account)",
+  "type": "object",
+  "required": ["name", "brandName", "brandWebsite", "clickTargetUrl"],
+  "properties": {
+    "slug": { "type": "string", "description": "Id; defaults to directory name" },
+    "name": { "type": "string", "description": "Display name" },
+    "brandName": { "type": "string", "description": "Brand text in posts" },
+    "brandWebsite": { "type": "string", "description": "Domain (e.g. getpostgame.ai)" },
+    "clickTargetUrl": { "type": "string", "format": "uri", "description": "Where post links go" },
+    "postTargets": {
+      "type": "array",
+      "items": { "enum": ["x", "threads"] },
+      "default": ["x"]
+    },
+    "dataSource": {
+      "type": "string",
+      "enum": ["sports", "news", "angles_only"],
+      "default": "sports"
+    },
+    "trackingBaseUrl": { "type": "string", "format": "uri" },
+    "imageEnabled": { "type": "boolean", "description": "When true, generate and attach an AI image to posts (requires image-prompts.json in campaign dir)" },
+    "imagePrompts": { "type": "string", "description": "Path hint: scene prompts are loaded from campaigns/<slug>/image-prompts.json when imageEnabled is true" }
+  }
+}

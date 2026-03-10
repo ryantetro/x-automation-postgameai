@@ -65,13 +65,13 @@ jobs:
       - name: Persist X analytics state
         if: always()
         run: |
-          if [ ! -f apps/postgame-x-bot/state/tweet-analytics.json ]; then
+          if [ ! -f apps/social-bot-engine/state/tweet-analytics.json ]; then
             echo "No X analytics state file found; skipping commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add apps/postgame-x-bot/state/tweet-analytics.json
+          git add apps/social-bot-engine/state/tweet-analytics.json
           if git diff --cached --quiet; then
             echo "No X state changes to commit."
             exit 0

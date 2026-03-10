@@ -4,8 +4,10 @@ import InteractiveAnalyticsChart from "../components/InteractiveAnalyticsChart";
 
 export const dynamic = "force-dynamic";
 
-export default async function AnalyticsPage() {
-  const store = await loadStore();
+export default async function AnalyticsPage({ searchParams }: { searchParams: Promise<{ campaign?: string }> }) {
+  const params = await searchParams;
+  const campaignSlug = params.campaign;
+  const store = await loadStore({ campaignSlug });
 
   const posted = store.tweets.filter((t) => t.status === "posted").sort((a, b) => Date.parse(a.postedAt) - Date.parse(b.postedAt));
   const tracked = posted.filter((t) => !!t.metrics);
@@ -153,13 +155,13 @@ export default async function AnalyticsPage() {
 
   return (
     <div className="dash">
-      <Sidebar activePage="analytics" />
+      <Sidebar activePage="analytics" campaignSlug={campaignSlug} />
       <main className="main">
         <header className="header">
           <div className="header-left">
-            <span className="page-kicker">Performance intelligence</span>
+            <span className="page-kicker">{store.activeCampaign ? store.activeCampaign.name : "All campaigns"}</span>
             <h2>Analytics</h2>
-            <span>Cross-platform posting performance</span>
+            <span>{store.activeCampaign ? `${store.activeCampaign.name} performance` : "Cross-platform posting performance"}</span>
           </div>
           <div className="header-right">
             <span className="header-badge">{xPosts} X posts</span>

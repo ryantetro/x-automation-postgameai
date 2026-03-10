@@ -70,6 +70,20 @@ async function main(): Promise<number> {
       refreshedThreads.userInsightsUpdated ? ", Threads user insights updated" : ""
     }.`
   );
+  if (store.analyticsHealth?.x) {
+    console.log(
+      `X analytics health: ${store.analyticsHealth.x.status}${
+        store.analyticsHealth.x.lastError ? ` (${store.analyticsHealth.x.lastError})` : ""
+      }`
+    );
+  }
+  if (store.analyticsHealth?.threads) {
+    console.log(
+      `Threads analytics health: ${store.analyticsHealth.threads.status}${
+        store.analyticsHealth.threads.lastError ? ` (${store.analyticsHealth.threads.lastError})` : ""
+      }`
+    );
+  }
   return 0;
 }
 
