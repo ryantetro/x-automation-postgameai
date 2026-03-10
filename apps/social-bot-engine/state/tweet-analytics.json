@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "updatedAt": "2026-03-09T23:34:19.364Z",
+  "version": 4,
+  "updatedAt": "2026-03-10T11:33:35.808Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -31,26 +31,33 @@
       "text": "Coaches who review game film within 24–48 hours see a 30% improvement in player retention and performance. postgame AI helps you capture postgame insights quickly so you can maximize that window for development. postgame AI · https://t.co/nSZsKKGSOk #CoachingTips #NBA",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 26,
+        "impressionCount": 27,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "film_room_truth",
       "contentFrameLabel": "The Film Room Truth",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "loss",
       "newsMomentType": "unknown",
-      "openingPattern": "coaches_who"
+      "openingPattern": "coaches_who",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "0f67859d-1b4c-4185-8a36-2984647e0c63",
@@ -64,26 +71,33 @@
       "text": "Teams leveraging data analytics see a 15% improvement in game performance. postgame AI helps you capture your insights after each match, turning your thoughts into organized player development and tracking. postgame AI · https://t.co/nSZsKKGSOk #SoccerCoaching #DataDriven",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.390Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 26,
+        "impressionCount": 27,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "frustration",
       "newsMomentType": "unknown",
-      "openingPattern": "teams_leveraging"
+      "openingPattern": "teams_leveraging",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "b120360f-5091-4472-a2a4-01c0aeb15156",
@@ -97,26 +111,33 @@
       "text": "Teams that excel in situational awareness score 25% more in clutch moments. postgame AI captures your insights after each game, turning them into actionable development notes that enhance your team's game IQ. postgame AI · https://t.co/nSZsKKGkYM #MLB #CoachingTips",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.390Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 22,
+        "impressionCount": 23,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "frustration",
       "newsMomentType": "unknown",
-      "openingPattern": "teams_that"
+      "openingPattern": "teams_that",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "cffdd31f-365f-484d-8e54-498ae3843850",
@@ -130,26 +151,33 @@
       "text": "Elite teams adjust strategies based on situational awareness over 70% of the time. postgame AI helps you capture those crucial in-game insights, turning them into organized player development notes for future reference. postgame AI · https://t.co/nSZsKKGSOk #MLB #CoachingTips",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.390Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 24,
+        "impressionCount": 25,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "frustration",
       "newsMomentType": "unknown",
-      "openingPattern": "elite_teams"
+      "openingPattern": "elite_teams",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "5802ae0a-5eb8-4ec0-819f-a727d0c1e5eb",
@@ -163,26 +191,33 @@
       "text": "Coaches who focus on shot selection see a 30% increase in offensive efficiency. postgame AI helps you analyze decision-making and track player performance, turning your insights into organized development notes. postgame AI · https://t.co/nSZsKKGkYM #NFL #CoachingTips",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.390Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 27,
+        "impressionCount": 28,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "frustration",
       "newsMomentType": "unknown",
-      "openingPattern": "coaches_who"
+      "openingPattern": "coaches_who",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "042b86f4-8430-4d47-9bc3-54b71c9f5885",
@@ -196,26 +231,33 @@
       "text": "Teams that analyze shot selection improve scoring efficiency by 15%. postgame AI helps you capture postgame insights and track decision-making trends, turning your thoughts into actionable player development. postgame AI · https://t.co/nSZsKKGSOk #NFL #CoachingTips",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.390Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 32,
+        "impressionCount": 33,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "frustration",
       "newsMomentType": "unknown",
-      "openingPattern": "teams_that"
+      "openingPattern": "teams_that",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "a1966844-75bf-4214-b8b1-46ff2c8af33e",
@@ -246,26 +288,33 @@
       "text": "Coaches who review game film within 48 hours boost retention by 30%. postgame AI helps you quickly capture your postgame thoughts, ensuring you maximize that critical development window for your players. postgame AI · getpostgame.ai #CoachingTips #NBA",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 25,
+        "impressionCount": 26,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "film_room_truth",
       "contentFrameLabel": "The Film Room Truth",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "loss",
       "newsMomentType": "unknown",
-      "openingPattern": "coaches_who"
+      "openingPattern": "coaches_who",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "b1d2cc71-3e52-4e47-a5e8-c1fcb1ddcca9",
@@ -279,26 +328,33 @@
       "text": "Coaches who review game film within 48 hours see a 30% boost in retention. postgame AI helps you effortlessly capture your postgame insights, ensuring you make the most of that critical development period for your players. postgame AI · getpostgame.ai #CoachingTips #NBA",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 29,
+        "impressionCount": 30,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "film_room_truth",
       "contentFrameLabel": "The Film Room Truth",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "urgency",
       "newsMomentType": "unknown",
-      "openingPattern": "coaches_who"
+      "openingPattern": "coaches_who",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "081ab1d5-b829-49e7-89a4-d85acaa42c44",
@@ -312,26 +368,33 @@
       "text": "Specific feedback can improve player performance by up to 40%. postgame AI turns your postgame insights into organized development notes, ensuring your players receive the targeted guidance they need to excel. postgame AI · getpostgame.ai #CoachingTips #NFL",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 24,
+        "impressionCount": 25,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "frustration",
       "newsMomentType": "unknown",
-      "openingPattern": "specific_feedback"
+      "openingPattern": "specific_feedback",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "1790e3f2-ba94-44e6-a12b-69b5effc5a32",
@@ -391,26 +454,33 @@
       "linkTargetUrl": "",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 27,
+        "impressionCount": 28,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "film_room_truth",
       "contentFrameLabel": "The Film Room Truth",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "provocation",
       "newsMomentType": "unknown",
-      "openingPattern": "pro_teams"
+      "openingPattern": "pro_teams",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "049c57af-63bf-4653-b7ba-8996614d78a8",
@@ -428,26 +498,33 @@
       "linkTargetUrl": "",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 23,
+        "impressionCount": 24,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "film_room_truth",
       "contentFrameLabel": "The Film Room Truth",
       "hookStructureId": "contradiction",
       "hookStructureLabel": "Contradiction",
       "emotionTarget": "provocation",
       "newsMomentType": "unknown",
-      "openingPattern": "contradiction"
+      "openingPattern": "contradiction",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "7b55b2dc-0bfc-400d-82a9-fefd6705b212",
@@ -465,26 +542,33 @@
       "linkTargetUrl": "",
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 24,
+        "impressionCount": 26,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z",
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "frustration",
       "newsMomentType": "unknown",
-      "openingPattern": "focusing_on"
+      "openingPattern": "focusing_on",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "6d785eb7-688d-4daa-bf9a-fb4613163b86",
@@ -752,19 +836,26 @@
       ],
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 16,
+        "impressionCount": 18,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z"
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "bf857e53-8320-4f8c-86fa-249fe3d1f348",
@@ -821,7 +912,15 @@
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T15:26:51.803Z"
+      "scoreUpdatedAt": "2026-03-09T15:26:51.803Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "error",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "reason": "No X metrics returned for this tweet",
+          "failures": 1
+        }
+      }
     },
     {
       "runId": "ddd7ce60-4e48-4df8-8a6f-1fed9506b2f4",
@@ -908,19 +1007,26 @@
       ],
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 9,
+        "impressionCount": 13,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z"
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "6a6b6c22-c49b-4f29-b4dc-194646ab9a85",
@@ -965,19 +1071,26 @@
       ],
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:10.816Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 112,
+        "impressionCount": 118,
         "engagementCount": 0,
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:10.816Z"
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "4474ad51-1c55-40e8-baa3-02b523ea5e71",
@@ -1022,7 +1135,68 @@
       ],
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-09T23:34:19.364Z",
+        "fetchedAt": "2026-03-10T11:33:31.389Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 11,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-10T11:33:31.390Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:31.390Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "86de94c9-cb6b-4af9-b052-d5bbc7521f53",
+      "tweetId": "2031332636740767903",
+      "postedAt": "2026-03-10T11:33:31.090Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "posted",
+      "text": "The game was lost in the 7th inning when your best hitters went for high-risk swings instead of smart contact. Those moments become ghosts that haunt you; without capturing them right after, it’s just a missed opportunity on the stat sheet. postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "moment_nobody_captures",
+      "contentFrameLabel": "The Moment Nobody Captures",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Moment Nobody Captures to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "the_game",
+      "linkTargetUrl": "",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2031332636740767903"
+        }
+      ],
+      "hasImage": false,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-10T11:33:35.808Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -1034,7 +1208,21 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:34:19.364Z"
+      "scoreUpdatedAt": "2026-03-10T11:33:35.808Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:33:35.808Z",
+          "failures": 0
+        }
+      }
     }
-  ]
+  ],
+  "analyticsHealth": {
+    "x": {
+      "status": "healthy",
+      "lastAttemptAt": "2026-03-10T11:33:35.709Z",
+      "lastSuccessAt": "2026-03-10T11:33:35.808Z"
+    }
+  }
 }
