@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-10T02:48:10.811Z",
+  "updatedAt": "2026-03-10T11:30:38.687Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -37,7 +37,63 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-10T02:48:10.811Z",
+        "fetchedAt": "2026-03-10T11:30:14.373Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 3,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-10T11:30:14.373Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:30:14.373Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "26123f77-90da-4b75-a9fc-68e5cf4afa4f",
+      "tweetId": "2031331893132640377",
+      "postedAt": "2026-03-10T11:30:14.109Z",
+      "dateContext": "2026-03-10",
+      "sport": "canopy",
+      "angle": "Event Booth Mistakes",
+      "source": "llm",
+      "status": "posted",
+      "text": "Last-minute orders are pouring in as summer events heat up. But remember, a tablecloth booth screams “afterthought.” Invest in a custom canopy that stands out. You’ll be visible from 100 feet away, and that’s how you turn heads. — Vicious Shade Supply Co. · viciousshade.com",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "last-minute_orders",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2031331893132640377"
+        }
+      ],
+      "hasImage": true,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-10T11:30:38.687Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -49,11 +105,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-10T02:48:10.811Z",
+      "scoreUpdatedAt": "2026-03-10T11:30:38.687Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-10T02:48:10.811Z",
+          "updatedAt": "2026-03-10T11:30:38.687Z",
           "failures": 0
         }
       }
@@ -62,8 +118,8 @@
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-10T02:48:10.703Z",
-      "lastSuccessAt": "2026-03-10T02:48:10.811Z"
+      "lastAttemptAt": "2026-03-10T11:30:38.583Z",
+      "lastSuccessAt": "2026-03-10T11:30:38.687Z"
     }
   }
 }
