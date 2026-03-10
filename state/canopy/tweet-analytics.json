@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-10T11:30:38.687Z",
+  "updatedAt": "2026-03-10T23:20:25.238Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -37,23 +37,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-10T11:30:14.373Z",
+        "fetchedAt": "2026-03-10T23:19:59.615Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 3,
+        "impressionCount": 9,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 0,
-      "scoreUpdatedAt": "2026-03-10T11:30:14.373Z",
+      "score": 9,
+      "scoreUpdatedAt": "2026-03-10T23:19:59.615Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-10T11:30:14.373Z",
+          "updatedAt": "2026-03-10T23:19:59.615Z",
           "failures": 0
         }
       }
@@ -93,7 +93,63 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-10T11:30:38.687Z",
+        "fetchedAt": "2026-03-10T23:19:59.615Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 8,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 8,
+      "scoreUpdatedAt": "2026-03-10T23:19:59.615Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T23:19:59.615Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "ce4460ff-896d-4b9a-bb60-b5380010c8a3",
+      "tweetId": "2031510513784349125",
+      "postedAt": "2026-03-10T23:19:59.293Z",
+      "dateContext": "2026-03-10",
+      "sport": "canopy",
+      "angle": "Event Booth Mistakes",
+      "source": "llm",
+      "status": "posted",
+      "text": "16 hours. That's how long the average attendee spends at a trade show. And yet, most brands still think a tablecloth and banner will do. Visibility is key. Invest in height and design that draw them in. Stand out this summer with Vicious Shade Supply Co. · viciousshade.com",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "specific_number",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2031510513784349125"
+        }
+      ],
+      "hasImage": true,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-10T23:20:25.238Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -105,11 +161,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-10T11:30:38.687Z",
+      "scoreUpdatedAt": "2026-03-10T23:20:25.238Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-10T11:30:38.687Z",
+          "updatedAt": "2026-03-10T23:20:25.238Z",
           "failures": 0
         }
       }
@@ -118,8 +174,8 @@
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-10T11:30:38.583Z",
-      "lastSuccessAt": "2026-03-10T11:30:38.687Z"
+      "lastAttemptAt": "2026-03-10T23:20:25.135Z",
+      "lastSuccessAt": "2026-03-10T23:20:25.238Z"
     }
   }
 }
