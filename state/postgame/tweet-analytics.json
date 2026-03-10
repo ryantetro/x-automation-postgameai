@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-10T02:47:48.244Z",
+  "updatedAt": "2026-03-10T11:30:17.110Z",
   "tweets": [
     {
       "runId": "4ca93ec1-49da-42c8-8f9c-7c77fa8eab67",
@@ -42,7 +42,68 @@
       "hasImage": false,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-10T02:47:48.243Z",
+        "fetchedAt": "2026-03-10T11:30:14.137Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 2,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-10T11:30:14.137Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:30:14.137Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "7cb1f94e-4f11-4b5e-b6f4-265c36a49733",
+      "tweetId": "2031331803135619250",
+      "postedAt": "2026-03-10T11:30:13.836Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "posted",
+      "text": "72 hours is all you have before players forget. What you saw in that final inning is gone by next practice, and the window for real progress closes fast. Don't let their learning evaporate while you’re waiting for the next game. postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": false,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "specific_number",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2031331803135619250"
+        }
+      ],
+      "hasImage": false,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-10T11:30:17.110Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -54,11 +115,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-10T02:47:48.243Z",
+      "scoreUpdatedAt": "2026-03-10T11:30:17.110Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-10T02:47:48.243Z",
+          "updatedAt": "2026-03-10T11:30:17.110Z",
           "failures": 0
         }
       }
@@ -67,8 +128,8 @@
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-10T02:47:48.111Z",
-      "lastSuccessAt": "2026-03-10T02:47:48.243Z"
+      "lastAttemptAt": "2026-03-10T11:30:17.000Z",
+      "lastSuccessAt": "2026-03-10T11:30:17.110Z"
     }
   }
 }
