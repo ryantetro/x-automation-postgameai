@@ -12,6 +12,7 @@ import {
 } from "./lib/data";
 import Sidebar from "./components/Sidebar";
 import InteractiveTimelineChart from "./components/InteractiveTimelineChart";
+import RefreshDataButton from "./components/RefreshDataButton";
 
 export const dynamic = "force-dynamic";
 
@@ -75,6 +76,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
             <span>{posted.length} posts &middot; {xPosts} X &middot; {threadsPosts} Threads</span>
           </div>
           <div className="header-right">
+            <RefreshDataButton />
             <span className="header-badge">{dualPosts} dual-published</span>
             <span className="header-badge">{store.updatedAt ? `Updated ${lastUpdated}` : "Awaiting data"}</span>
           </div>

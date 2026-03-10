@@ -520,6 +520,50 @@ button, input, select, textarea { font: inherit; }
   font-weight: 600;
 }
 
+.refresh-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(16, 185, 129, 0.24);
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(16, 185, 129, 0.08));
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.refresh-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(16, 185, 129, 0.34);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(16, 185, 129, 0.12));
+  color: #dcfce7;
+}
+
+.refresh-button:disabled {
+  cursor: wait;
+  opacity: 0.85;
+}
+
+.refresh-button:focus-visible {
+  outline: 2px solid rgba(16, 185, 129, 0.45);
+  outline-offset: 2px;
+}
+
+.refresh-button-icon {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1rem;
+  font-size: 0.82rem;
+}
+
+.refresh-button.is-pending .refresh-button-icon {
+  animation: pulse-ring 1.2s infinite;
+}
+
 /* ── Content ── */
 .content {
   flex: 1;
