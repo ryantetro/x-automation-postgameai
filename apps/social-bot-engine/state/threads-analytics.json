@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "updatedAt": "2026-03-09T23:35:33.467Z",
+  "version": 4,
+  "updatedAt": "2026-03-10T11:44:27.473Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -73,7 +73,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-09T23:35:20.090Z",
+        "fetchedAt": "2026-03-10T11:44:16.302Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -85,14 +85,21 @@
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:35:20.091Z",
+      "scoreUpdatedAt": "2026-03-10T11:44:16.302Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
       "hookStructureLabel": "Universal Truth",
       "emotionTarget": "frustration",
       "newsMomentType": "star_underperformance",
-      "openingPattern": "caleb_wilson's"
+      "openingPattern": "caleb_wilson's",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:44:16.302Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "a11254e4-bb9c-4d59-b18f-81b70ef900b5",
@@ -401,7 +408,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-09T23:35:19.904Z",
+        "fetchedAt": "2026-03-10T11:44:15.946Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -413,7 +420,14 @@
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:35:20.090Z"
+      "scoreUpdatedAt": "2026-03-10T11:44:16.302Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:44:16.302Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "f19313ee-4574-42b1-bf64-c42a28cf9f7d",
@@ -470,7 +484,16 @@
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T15:23:29.869Z"
+      "scoreUpdatedAt": "2026-03-09T15:23:29.869Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "skipped",
+          "updatedAt": "2026-03-10T11:44:16.302Z",
+          "reason": "Unsupported get request. Object with ID '17867431404585632' does not exist, cannot be loaded due to missing permissions, or does not support this operation",
+          "permanent": true,
+          "failures": 1
+        }
+      }
     },
     {
       "runId": "5541be49-a1cf-415b-8840-636768d465c8",
@@ -527,7 +550,16 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T15:23:55.507Z"
+      "scoreUpdatedAt": "2026-03-09T15:23:55.507Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "skipped",
+          "updatedAt": "2026-03-10T11:44:16.302Z",
+          "reason": "Unsupported get request. Object with ID '18006910424848479' does not exist, cannot be loaded due to missing permissions, or does not support this operation",
+          "permanent": true,
+          "failures": 1
+        }
+      }
     },
     {
       "runId": "9cca864d-7df4-4096-8a2f-72d91aa274cf",
@@ -572,7 +604,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-09T23:35:19.638Z",
+        "fetchedAt": "2026-03-10T11:44:15.534Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -584,7 +616,14 @@
         "engagementRate": 0
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:35:20.090Z"
+      "scoreUpdatedAt": "2026-03-10T11:44:16.302Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:44:16.302Z",
+          "failures": 0
+        }
+      }
     },
     {
       "runId": "182bac8b-033d-477f-88f0-949c3418aed9",
@@ -629,7 +668,68 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-09T23:35:33.257Z",
+        "fetchedAt": "2026-03-10T11:44:15.278Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 9,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-10T11:44:16.302Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:44:16.302Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "7f22b157-20c7-4cbb-a173-b49e9296515d",
+      "threadsPostId": "18101806657911653",
+      "postedAt": "2026-03-10T11:44:14.850Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "posted",
+      "text": "The scoreboard can lie, especially about decision-making. You watched your hitters swing at pitches they shouldn’t have, yet they’re celebrated for “big games” while the real issues fade into box score obscurity. That’s the disconnect we deal with weekly. postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "scoreboard_lie",
+      "contentFrameLabel": "The Scoreboard Lie",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Scoreboard Lie to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "18101806657911653"
+        }
+      ],
+      "hasImage": false,
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-03-10T11:44:26.870Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -641,22 +741,36 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-09T23:35:33.257Z"
+      "scoreUpdatedAt": "2026-03-10T11:44:26.870Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T11:44:26.870Z",
+          "failures": 0
+        }
+      }
     }
   ],
+  "analyticsHealth": {
+    "threads": {
+      "status": "healthy",
+      "lastAttemptAt": "2026-03-10T11:44:26.662Z",
+      "lastSuccessAt": "2026-03-10T11:44:27.473Z"
+    }
+  },
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-09T23:35:33.467Z",
-    "views": 63,
+    "fetchedAt": "2026-03-10T11:44:27.473Z",
+    "views": 0,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
     "quotes": 0,
-    "clicks": 1,
+    "clicks": 0,
     "followersCount": 0,
     "clicksByUrl": [
       {
         "linkUrl": "https://getpostgame.ai/r/8f546dce-9f20-47cc-a975-b5a428c8debb",
-        "value": 1
+        "value": 0
       },
       {
         "linkUrl": "http://getpostgame.ai/",
