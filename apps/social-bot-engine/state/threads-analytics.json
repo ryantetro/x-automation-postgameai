@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-10T11:44:27.473Z",
+  "updatedAt": "2026-03-10T23:34:55.543Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -73,7 +73,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-10T11:44:16.302Z",
+        "fetchedAt": "2026-03-10T23:34:43.533Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -84,8 +84,8 @@
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 0,
-      "scoreUpdatedAt": "2026-03-10T11:44:16.302Z",
+      "score": 2,
+      "scoreUpdatedAt": "2026-03-10T23:34:43.533Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
@@ -96,7 +96,7 @@
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-10T11:44:16.302Z",
+          "updatedAt": "2026-03-10T23:34:43.533Z",
           "failures": 0
         }
       }
@@ -408,23 +408,23 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-10T11:44:15.946Z",
+        "fetchedAt": "2026-03-10T23:34:43.330Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 15,
+        "impressionCount": 16,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 0,
-      "scoreUpdatedAt": "2026-03-10T11:44:16.302Z",
+      "score": 16,
+      "scoreUpdatedAt": "2026-03-10T23:34:43.533Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-10T11:44:16.302Z",
+          "updatedAt": "2026-03-10T23:34:43.533Z",
           "failures": 0
         }
       }
@@ -604,23 +604,23 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-10T11:44:15.534Z",
+        "fetchedAt": "2026-03-10T23:34:43.062Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 2,
+        "impressionCount": 3,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 0,
-      "scoreUpdatedAt": "2026-03-10T11:44:16.302Z",
+      "score": 3,
+      "scoreUpdatedAt": "2026-03-10T23:34:43.533Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-10T11:44:16.302Z",
+          "updatedAt": "2026-03-10T23:34:43.533Z",
           "failures": 0
         }
       }
@@ -668,23 +668,23 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-10T11:44:15.278Z",
+        "fetchedAt": "2026-03-10T23:34:42.760Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 9,
+        "impressionCount": 11,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 0,
-      "scoreUpdatedAt": "2026-03-10T11:44:16.302Z",
+      "score": 11,
+      "scoreUpdatedAt": "2026-03-10T23:34:43.533Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-10T11:44:16.302Z",
+          "updatedAt": "2026-03-10T23:34:43.533Z",
           "failures": 0
         }
       }
@@ -729,7 +729,68 @@
       "hasImage": false,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-10T11:44:26.870Z",
+        "fetchedAt": "2026-03-10T23:34:42.552Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 1,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 1,
+      "scoreUpdatedAt": "2026-03-10T23:34:43.533Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T23:34:43.533Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "f0154bc8-b006-4503-aa7f-c951c426b342",
+      "threadsPostId": "18080669924343854",
+      "postedAt": "2026-03-10T23:34:41.616Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "posted",
+      "text": "Most top MLB pitchers are praised for efficiency, but decision-making mistakes rarely make the highlight reel. Coaches know the real story unfolds after the game when we dissect those blown opportunities that fans miss. postgame AI · getpostgame.ai #CoachingTruth #FilmRoomInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "insider_divide",
+      "hookStructureLabel": "Insider Divide",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "insider_divide",
+      "linkTargetUrl": "",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "18080669924343854"
+        }
+      ],
+      "hasImage": false,
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-03-10T23:34:55.255Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -741,11 +802,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-10T11:44:26.870Z",
+      "scoreUpdatedAt": "2026-03-10T23:34:55.255Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-10T11:44:26.870Z",
+          "updatedAt": "2026-03-10T23:34:55.255Z",
           "failures": 0
         }
       }
@@ -754,13 +815,13 @@
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-10T11:44:26.662Z",
-      "lastSuccessAt": "2026-03-10T11:44:27.473Z"
+      "lastAttemptAt": "2026-03-10T23:34:54.895Z",
+      "lastSuccessAt": "2026-03-10T23:34:55.543Z"
     }
   },
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-10T11:44:27.473Z",
-    "views": 0,
+    "fetchedAt": "2026-03-10T23:34:55.543Z",
+    "views": 5,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
