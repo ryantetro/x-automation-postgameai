@@ -1,0 +1,69 @@
+{
+  "version": 4,
+  "updatedAt": "2026-03-10T02:48:10.811Z",
+  "tweets": [
+    {
+      "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
+      "tweetId": "2031200410275348911",
+      "postedAt": "2026-03-10T02:47:45.714Z",
+      "dateContext": "2026-03-10",
+      "sport": "canopy",
+      "angle": "Event Booth Mistakes",
+      "source": "llm",
+      "status": "posted",
+      "text": "70% of brands underestimate the importance of booth visibility. If you're just slapping a tablecloth on a folding table, you're missing out. This summer, don’t get lost in the crowd. — Vicious Shade Supply Co. · viciousshade.com",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "specific_number",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2031200410275348911"
+        }
+      ],
+      "hasImage": true,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-10T02:48:10.811Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 0,
+        "engagementCount": 0,
+        "engagementRate": null
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-10T02:48:10.811Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-10T02:48:10.811Z",
+          "failures": 0
+        }
+      }
+    }
+  ],
+  "analyticsHealth": {
+    "x": {
+      "status": "healthy",
+      "lastAttemptAt": "2026-03-10T02:48:10.703Z",
+      "lastSuccessAt": "2026-03-10T02:48:10.811Z"
+    }
+  }
+}
