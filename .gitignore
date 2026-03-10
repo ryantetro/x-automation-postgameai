@@ -3,4 +3,9 @@
 .env.*.local
 
 /node_modules
+node_modules/
 /.vercel
+
+# Local/generated (avoid noisy local artifacts in status)
+.whisper-models/
+Recording*
