@@ -30,7 +30,7 @@ Post requirements:
 3. Use no more than 2 tight sentences before the brand tag.
 4. The body must stand on its own as a strong post even without the brand tag.
 5. Mention {brand_name} only once, lightly, at the end as "{brand_name} · {brand_website}".
-6. Prefer zero hashtags. Use one only if it sharpens the post.
+6. Add 1-2 relevant coaching hashtags at the end if there is room. Keep them specific to the sport and coaching community.
 7. Stay within the active platform character limit before any tracked link is appended.
 8. Archetype rule: {archetype_guidance}
 9. Do not tell the reader what to do. No instructional CTA language in the main body.
@@ -38,9 +38,17 @@ Post requirements:
 11. Describe, never prescribe. The post must describe a situation coaches recognize. It must not tell them what to do about it.
 12. Do not open with "Most teams" if that opener has already been used in the recent batch.
 
-Positive voice model:
-- Sound like this: "Most coaches know the feeling - you saw exactly what went wrong at halftime, then it's gone by Thursday. That's the whole problem."
-- Not like this: "postgame AI helps coaches turn thoughts into organized development notes."
+Voice: Write like a real coach talking to other coaches — blunt, specific, lived-in. Not a brand. Not a newsletter. Not a motivational poster. If you would not screenshot it and send it to your staff, it is not good enough.
+
+Example posts that nail the voice (study the rhythm, not the exact words):
+- "Most coaches know the feeling — you saw exactly what went wrong at halftime, then it's gone by Thursday. That is the whole problem."
+- "Three possessions decided that game. By Monday the staff will only remember the last one."
+- "Film does not lie, but it wastes your time if nobody decides what to look for before pressing play."
+- "The gap between 'we need to be tougher' and actually coaching toughness is where most staffs get stuck."
+
+Do NOT sound like this:
+- "postgame AI helps coaches turn thoughts into organized development notes."
+- "Research shows that coaches who review film within 24 hours see a 30% improvement."
 
 Frame territory:
 {frame_territory}
@@ -102,54 +110,121 @@ function weakOpenerFollowup(hookLabel: string): string {
 const OPENER_VARIETY_FOLLOWUP =
   ` Your previous opener repeated an overused opening pattern from the recent batch. Rewrite it with a different opening structure and do not begin with "Most teams".`;
 
-const SPORT_HASHTAGS: Record<string, string> = {
-  nba: "",
-  nfl: "",
-  mlb: "",
-  soccer: "",
+const SPORT_HASHTAG_POOLS: Record<string, string[]> = {
+  nba: ["#CoachingBasketball", "#HoopsFilm", "#NBACoaching", "#BasketballIQ", "#CourtVision", "#HoopsDev", "#BallerCoach"],
+  nfl: ["#CoachingFootball", "#FootballFilm", "#NFLCoaching", "#GridironIQ", "#FridayNightLights", "#FootballDev", "#XsAndOs"],
+  mlb: ["#CoachingBaseball", "#BaseballFilm", "#MLBCoaching", "#DiamondIQ", "#BaseballDev", "#DugoutTalk"],
+  soccer: ["#CoachingSoccer", "#SoccerFilm", "#FootballCoaching", "#TacticalAnalysis", "#SoccerDev", "#PitchIQ", "#BeautifulGame"],
+  default: ["#CoachingTips", "#FilmReview", "#CoachLife", "#SportsCoaching", "#GamePrep"],
 };
 
-const FALLBACK_FACTS: Record<string, Record<string, string>> = {
-  default: {
-    film: "Most postgame review fails because it tries to cover everything.",
-    feedback: "Most coaches do not need more words after games. They need cleaner teaching points.",
-    preparation: "Preparation usually breaks down in bad notes, not bad ideas.",
-    efficiency: "The biggest coaching edge is usually clarity, not volume.",
-    adjustments: "Great adjustments usually start with the right 2 moments, not 20.",
-    analytics: "Data is not the bottleneck. Turning it into coaching language is.",
-  },
-  nba: {
-    film: "Most basketball film sessions are too long to be useful.",
-    feedback: "The best basketball coaching usually comes down to one possession and one correction.",
-    preparation: "Matchup prep gets sharper when staffs stop drowning in their own notes.",
-    efficiency: "Shot quality usually tells the truth faster than the box score does.",
-    adjustments: "Momentum flips are usually visible before the final score makes them obvious.",
-    analytics: "Useful basketball analytics should change teaching, not just slides.",
-  },
-  nfl: {
-    film: "Football staffs do not need more film. They need clearer corrections.",
-    feedback: "The fastest football improvement usually comes from one rep and one coaching point.",
-    preparation: "Good football prep looks boring right up until chaos hits.",
-    efficiency: "Down, distance, and field position usually expose the real coaching problems.",
-    adjustments: "The best sideline adjustments start before the coordinator says a word.",
-    analytics: "Football analytics matter when they sharpen decisions, not when they decorate reports.",
-  },
-  mlb: {
-    film: "Baseball review gets noisy fast when every inning makes the cut.",
-    feedback: "The best baseball teaching usually starts with one sequence, not a full lecture.",
-    preparation: "Good baseball prep is usually just clean matchup thinking.",
-    efficiency: "Leverage swings usually tell you more than the final line does.",
-    adjustments: "The best baseball adjustments usually happen before panic shows up.",
-    analytics: "Baseball data is useful when it survives the trip from spreadsheet to dugout.",
-  },
-  soccer: {
-    film: "Most match review fails because it tries to coach every phase at once.",
-    feedback: "The best soccer coaching point is usually one sequence and one tactical fix.",
-    preparation: "Soccer prep gets easier when the notes are clearer than the match chaos.",
-    efficiency: "Territory and defensive balance usually matter before the scoreline catches up.",
-    adjustments: "Good match adjustments usually start with shape, not speeches.",
-    analytics: "Soccer analytics only matter if they survive contact with real coaching.",
-  },
+/** Pick 1-2 random hashtags for the given sport, respecting the character budget. */
+function pickHashtags(sport: string, remainingChars: number): string {
+  const pool = SPORT_HASHTAG_POOLS[sport.toLowerCase()] ?? SPORT_HASHTAG_POOLS.default;
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  const count = Math.random() < 0.5 ? 1 : 2;
+  const selected = shuffled.slice(0, count);
+  const hashtags = selected.join(" ");
+  // Only include if there's room (with a leading space)
+  if (hashtags.length + 1 > remainingChars) {
+    // Try just one hashtag
+    if (selected[0] && selected[0].length + 1 <= remainingChars) return selected[0];
+    return "";
+  }
+  return hashtags;
+}
+
+const FALLBACK_TEMPLATES: Record<string, string[]> = {
+  default: [
+    "Most postgame review fails because it tries to cover everything.",
+    "Most coaches do not need more words after games. They need cleaner teaching points.",
+    "Preparation usually breaks down in bad notes, not bad ideas.",
+    "The biggest coaching edge is usually clarity, not volume.",
+    "Great adjustments usually start with the right 2 moments, not 20.",
+    "Data is not the bottleneck. Turning it into coaching language is.",
+    "The real coaching happens between the whistle and the next morning. Everything after that is noise.",
+    "A good staff meeting is 3 clips and a decision, not 40 minutes of everything that happened.",
+    "The coach who says less usually fixes more. Volume is not the same as teaching.",
+    "Nobody remembers the 10 good possessions. Everyone remembers the 2 that fell apart.",
+    "Film does not lie. But it can waste your time if you let it show you everything at once.",
+    "The best corrections are specific enough to act on and short enough to remember.",
+    "When in doubt, fewer points hit harder. One clear takeaway beats a notebook full of ideas.",
+    "A development plan only works when it survives the chaos of the next game.",
+    "Every staff has a moment after the game when the real insight is obvious. Most lose it by morning.",
+    "The difference between a good staff and a great staff is usually one honest conversation.",
+  ],
+  nba: [
+    "Most basketball film sessions are too long to be useful.",
+    "The best basketball coaching usually comes down to one possession and one correction.",
+    "Matchup prep gets sharper when staffs stop drowning in their own notes.",
+    "Shot quality usually tells the truth faster than the box score does.",
+    "Momentum flips are usually visible before the final score makes them obvious.",
+    "Useful basketball analytics should change teaching, not just slides.",
+    "The difference between a rotation player and a starter is usually one read they keep missing.",
+    "A timeout is only worth calling if the message survives the next 3 possessions.",
+    "Half the fourth quarter is decided by who prepared for the other team's tendencies, not who wanted it more.",
+    "The real evaluation happens in transition. Everything else just confirms what you already saw.",
+    "If your players cannot explain the game plan back to you, the film session missed.",
+    "Every staff knows the player who looks great in warmups and disappears in the second half.",
+    "Offensive sets are only as good as the reads your guys actually make under pressure.",
+    "The best player development staffs coach the same thing 3 different ways until it sticks.",
+    "You can see a team's culture in how they execute after a bad call. That is the real film.",
+    "A roster is not a lineup. The best coaches know which 3 guys change the game when it tightens.",
+  ],
+  nfl: [
+    "Football staffs do not need more film. They need clearer corrections.",
+    "The fastest football improvement usually comes from one rep and one coaching point.",
+    "Good football prep looks boring right up until chaos hits.",
+    "Down, distance, and field position usually expose the real coaching problems.",
+    "The best sideline adjustments start before the coordinator says a word.",
+    "Football analytics matter when they sharpen decisions, not when they decorate reports.",
+    "A game plan survives until the second drive. The adjustments after that are the real coaching.",
+    "Red zone offense is not about scheme. It is about which coach taught the details that week.",
+    "The third quarter tells you more about preparation than the first half ever will.",
+    "Special teams are where coaching gaps show up first. Everyone knows it, few fix it.",
+    "Playbooks get thicker every year. The best staffs keep getting simpler.",
+    "A bad rep on Wednesday usually shows up as a bad rep on Sunday. That is not a coincidence.",
+    "Film rooms full of analysts do not help if the message to players is still unclear.",
+    "Every coordinator has a play they love. The best ones know when to stop calling it.",
+    "The sideline headset is the loneliest place in sports when the defense gives up a third and long.",
+    "Blocking assignments do not break down because of talent. They break down because of teaching.",
+  ],
+  mlb: [
+    "Baseball review gets noisy fast when every inning makes the cut.",
+    "The best baseball teaching usually starts with one sequence, not a full lecture.",
+    "Good baseball prep is usually just clean matchup thinking.",
+    "Leverage swings usually tell you more than the final line does.",
+    "The best baseball adjustments usually happen before panic shows up.",
+    "Baseball data is useful when it survives the trip from spreadsheet to dugout.",
+    "A pitching staff is only as good as the conversation between starts, not just the bullpen phone.",
+    "Lineup construction matters less than pitch sequencing in the at-bats that actually change the game.",
+    "The best baseball coaches do not overload hitters with data. They give them one thing to look for.",
+    "Defensive positioning is just math until someone misreads the ball. Then it is coaching.",
+    "Spring training tells you who prepared and who just showed up to get loose.",
+    "Bullpen management is easy on paper. It gets real when your best arm is tired and the lineup turns over.",
+    "The best base running is invisible. You only notice it when it is bad.",
+    "Scouting reports are only useful when players actually use them in the box.",
+    "A bench coach sees more than anyone in the dugout. The best managers know when to listen.",
+    "The difference between a slump and a mechanical issue is usually one honest video session.",
+  ],
+  soccer: [
+    "Most match review fails because it tries to coach every phase at once.",
+    "The best soccer coaching point is usually one sequence and one tactical fix.",
+    "Soccer prep gets easier when the notes are clearer than the match chaos.",
+    "Territory and defensive balance usually matter before the scoreline catches up.",
+    "Good match adjustments usually start with shape, not speeches.",
+    "Soccer analytics only matter if they survive contact with real coaching.",
+    "A halftime talk is 3 minutes. The best ones change the next 45. The worst ones just fill time.",
+    "Pressing is a system, not an attitude. The teams that tire in the second half usually never had one.",
+    "Set piece coaching is the easiest way to win and the last thing most staffs actually prepare.",
+    "Transition moments tell you everything about who is coached and who is just athletic.",
+    "The best defensive coaches do not scream about effort. They fix the shape before it breaks.",
+    "Possession means nothing without intent. Passing for the sake of passing is just resting on the ball.",
+    "The real tactical battle happens in the first 15 minutes. The rest is adjustments.",
+    "A substitute changes the game only when the instruction is clear. Otherwise it is just fresh legs.",
+    "Youth development is patience with a plan. Most clubs have the patience but skip the plan.",
+    "Midfield control is not about having the ball. It is about controlling where the opponent can play.",
+  ],
 };
 
 const VIRAL_ARCHETYPES = ["news_take", "contrarian_take", "coaching_truth", "trend_observation"] as const;
@@ -262,6 +337,8 @@ export interface GeneratePostOptions {
   contentDecision?: ContentDecision;
   /** Recent content decisions for opener variety and hook rotation. */
   recentContentDecisions?: RecentContentDecision[];
+  /** Top-performing post texts to use as style examples. */
+  winningPostTexts?: string[];
 }
 
 export interface GeneratePostAttempt {
@@ -390,15 +467,20 @@ function referencesHeadline(text: string, title: string, sport: string): boolean
   return terms.some((term) => normalized.includes(term));
 }
 
-function chooseFallbackKey(angle?: string): keyof (typeof FALLBACK_FACTS)["default"] {
-  const normalized = (angle ?? "").toLowerCase();
-  if (normalized.includes("film")) return "film";
-  if (normalized.includes("feedback")) return "feedback";
-  if (normalized.includes("opponent") || normalized.includes("preparation")) return "preparation";
-  if (normalized.includes("shot") || normalized.includes("efficiency")) return "efficiency";
-  if (normalized.includes("adjustment") || normalized.includes("situational")) return "adjustments";
-  if (normalized.includes("data") || normalized.includes("analytic")) return "analytics";
-  return "film";
+/** Get the current month name for time-aware fallbacks. */
+function currentMonthContext(): string {
+  const months = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+  return months[new Date().getMonth()];
+}
+
+/** Get a seasonal context string for time-aware fallback variation. */
+function seasonalContext(): string {
+  const month = new Date().getMonth();
+  if (month >= 2 && month <= 4) return "Spring season is here.";
+  if (month >= 5 && month <= 7) return "Midseason grind.";
+  if (month >= 8 && month <= 10) return "Fall ball is in full swing.";
+  return "Offseason prep matters.";
 }
 
 async function requestTweet(client: OpenAI, system: string, userMessage: string): Promise<string | null> {
@@ -408,8 +490,8 @@ async function requestTweet(client: OpenAI, system: string, userMessage: string)
       { role: "system", content: system },
       { role: "user", content: userMessage },
     ],
-    max_tokens: 120,
-    temperature: 0.8,
+    max_tokens: 90,
+    temperature: 0.92,
   });
   return cleanResponse(resp.choices?.[0]?.message?.content?.trim() ?? "");
 }
@@ -456,6 +538,9 @@ export async function generatePost(
 - Notice whether the winning post triggered recognition, frustration, or validation.
 - Follow these patterns:\n${options.iterationGuidance}`
     : "";
+  const winnerBlock = (options.winningPostTexts?.length ?? 0) > 0
+    ? `\nPosts that performed well recently — learn from their style and rhythm, but do NOT copy them:\n${options.winningPostTexts!.slice(0, 3).map((t) => `- "${t}"`).join("\n")}`
+    : "";
   const newsBlock =
     options.newsContext?.usedNews && options.newsContext.selectedArticle
       ? `\nUse this timely news angle if it helps:
@@ -487,7 +572,7 @@ Rules for news usage:
     .replace(/\{brand_website\}/g, BRAND_WEBSITE)
     .replace(/\{avoid_block\}/g, avoidBlock)
     .replace(/\{iteration_block\}/g, iterationBlock);
-  userMessage += `${newsBlock}\nReserve space for a short tracking link appended automatically. Keep the body under ${maxBodyLength} characters.`;
+  userMessage += `${newsBlock}${winnerBlock}\nReserve space for a short tracking link appended automatically. Keep the body under ${maxBodyLength} characters.`;
 
   const clientOptions: ConstructorParameters<typeof OpenAI>[0] = { apiKey: OPENAI_API_KEY };
   if (!USE_OPENAI_API && LLM_BASE_URL) clientOptions.baseURL = LLM_BASE_URL;
@@ -626,15 +711,6 @@ Rules for news usage:
       : undefined,
   };
 }
-
-const FALLBACK_KEYS: (keyof (typeof FALLBACK_FACTS)["default"])[] = [
-  "film",
-  "feedback",
-  "preparation",
-  "efficiency",
-  "adjustments",
-  "analytics",
-];
 
 function isDuplicateOfRecent(candidate: string, recentTexts: string[]): boolean {
   const norm = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
@@ -794,6 +870,88 @@ function fitAnglesOnlyPostToLimit(
   return text.slice(0, maxBodyLength).trim();
 }
 
+// ── Thread Generation ─────────────────────────────────────────────────────
+
+export interface GenerateThreadOptions {
+  sport: string;
+  angle: string;
+  date?: string;
+  recentTweets?: string[];
+  iterationGuidance?: string;
+}
+
+export interface GenerateThreadResult {
+  tweets: string[] | null;
+}
+
+const THREAD_SYSTEM_SUPPLEMENT = `You are writing a Twitter/X thread (3-4 connected tweets). Each tweet must be under 280 characters. The first tweet is the hook — it must stop the scroll. Subsequent tweets deliver the coaching insight. The last tweet should include "{brand_name} · {brand_website}". Write like a real coach talking to other coaches. No advice, no CTAs, no sales language. Output each tweet on its own line, separated by ---`;
+
+export async function generateThread(options: GenerateThreadOptions): Promise<GenerateThreadResult> {
+  if (!OPENAI_API_KEY) return { tweets: null };
+  const system = loadCampaignSystemPrompt() + "\n\n" + THREAD_SYSTEM_SUPPLEMENT
+    .replace(/\{brand_name\}/g, BRAND_NAME)
+    .replace(/\{brand_website\}/g, BRAND_WEBSITE);
+
+  const { sport, angle, date = new Date().toISOString().slice(0, 10), recentTweets = [] } = options;
+  const avoidBlock = recentTweets.length > 0
+    ? `\nDo NOT repeat these recent posts:\n${recentTweets.slice(0, 6).map((t) => `- ${t}`).join("\n")}`
+    : "";
+  const iterationBlock = options.iterationGuidance
+    ? `\nIteration guidance:\n${options.iterationGuidance}`
+    : "";
+
+  const userMessage = `Write a 3-4 tweet thread for the ${sport} coaching audience. Date: ${date}. Theme: ${angle}.
+
+Thread structure:
+1. Hook tweet: tension, hard truth, or counterintuitive observation. Must earn the scroll-stop.
+2-3. Deliver the insight with specifics. Scene-based, not generic.
+4. Close with a coaching truth and light brand mention (${BRAND_NAME} · ${BRAND_WEBSITE}).
+
+Each tweet must be under 280 characters. Separate tweets with ---${avoidBlock}${iterationBlock}`;
+
+  const clientOptions: ConstructorParameters<typeof OpenAI>[0] = { apiKey: OPENAI_API_KEY };
+  if (!USE_OPENAI_API && LLM_BASE_URL) clientOptions.baseURL = LLM_BASE_URL;
+  const client = new OpenAI(clientOptions);
+
+  try {
+    const resp = await client.chat.completions.create({
+      model: ACTIVE_LLM_MODEL,
+      messages: [
+        { role: "system", content: system },
+        { role: "user", content: userMessage },
+      ],
+      max_tokens: 400,
+      temperature: 0.92,
+    });
+
+    const raw = resp.choices?.[0]?.message?.content?.trim() ?? "";
+    if (!raw) return { tweets: null };
+
+    const tweets = raw.split(/---+/).map((t) => t.trim()).filter((t) => t.length > 0 && t.length <= 280);
+    if (tweets.length < 2) return { tweets: null };
+
+    // Ensure brand mention on last tweet
+    const last = tweets[tweets.length - 1];
+    if (!last.includes(BRAND_NAME) && !last.includes(BRAND_WEBSITE)) {
+      const suffix = ` — ${BRAND_NAME} · ${BRAND_WEBSITE}`;
+      if (last.length + suffix.length <= 280) {
+        tweets[tweets.length - 1] = last + suffix;
+      }
+    }
+
+    return { tweets: tweets.slice(0, 4) };
+  } catch (err) {
+    console.warn("Thread generation failed:", err);
+    return { tweets: null };
+  }
+}
+
+/** Determine if today is a thread day (1-2x per week: Wednesday and Saturday). */
+export function isThreadDay(date: Date = new Date()): boolean {
+  const day = date.getDay();
+  return day === 3 || day === 6; // Wednesday or Saturday
+}
+
 export function normalizeAnglesOnlyPostForLimit(
   content: string,
   maxBodyLength: number,
@@ -825,18 +983,22 @@ export async function generatePostAnglesOnly(
 export function fillFallbackTemplate(
   sport: string,
   _fetchedData: FetchedData,
-  options: { reserveChars?: number; angle?: string; factKey?: keyof (typeof FALLBACK_FACTS)["default"] } = {}
+  options: { reserveChars?: number; angle?: string; templateIndex?: number } = {}
 ): string {
   const sportKey = sport.toLowerCase();
-  const factKey = options.factKey ?? chooseFallbackKey(options.angle);
-  const sportFacts = FALLBACK_FACTS[sportKey] ?? FALLBACK_FACTS.default;
-  const hashtags = SPORT_HASHTAGS[sportKey] ?? "#CoachingTips";
-  const body = `${sportFacts[factKey]} The best staffs usually win the review before they win the next game.`;
-  let text = `${body} ${BRAND_NAME} · ${BRAND_WEBSITE} ${hashtags}`.trim();
+  const templates = FALLBACK_TEMPLATES[sportKey] ?? FALLBACK_TEMPLATES.default;
+  const index = options.templateIndex ?? Math.floor(Math.random() * templates.length);
+  const body = templates[index % templates.length];
+  const brandSuffix = ` — ${BRAND_NAME} · ${BRAND_WEBSITE}`;
   const reservedChars = Math.max(0, options.reserveChars ?? 0);
   const maxLen = Math.max(0, MAX_POST_LEN - reservedChars);
+  const base = `${body}${brandSuffix}`;
+
+  // Try to add a hashtag if there's room
+  const hashtag = pickHashtags(sport, maxLen - base.length);
+  let text = hashtag ? `${base} ${hashtag}`.trim() : base.trim();
   if (text.length > maxLen) {
-    text = `${sportFacts[factKey]} ${BRAND_NAME} · ${BRAND_WEBSITE} ${hashtags}`.trim();
+    text = base.trim().slice(0, maxLen);
   }
   return text.slice(0, maxLen);
 }
@@ -846,11 +1008,22 @@ export function pickNonDuplicateFallback(
   fetchedData: FetchedData,
   recentTexts: string[],
   options: { reserveChars?: number; angle?: string } = {}
-): string {
-  const defaultText = fillFallbackTemplate(sport, fetchedData, options);
-  for (const key of FALLBACK_KEYS) {
-    const candidate = fillFallbackTemplate(sport, fetchedData, { ...options, factKey: key });
+): string | null {
+  const sportKey = sport.toLowerCase();
+  const templates = FALLBACK_TEMPLATES[sportKey] ?? FALLBACK_TEMPLATES.default;
+
+  // Shuffle indices to try templates in random order
+  const indices = Array.from({ length: templates.length }, (_, i) => i);
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+
+  for (const index of indices) {
+    const candidate = fillFallbackTemplate(sport, fetchedData, { ...options, templateIndex: index });
     if (!isDuplicateOfRecent(candidate, recentTexts)) return candidate;
   }
-  return defaultText;
+
+  // All templates are duplicates — return null to signal skip
+  return null;
 }

@@ -43,7 +43,7 @@ export const USE_OPENAI_API = getEnv("OPENAI_API_KEY").length > 0;
 export const LLM_BASE_URL = getEnv("LLM_BASE_URL");
 export const LLM_MODEL = getEnv("LLM_MODEL", "gpt-4o-mini");
 /** Model used for generation: when using OpenAI API use an OpenAI model, else use LLM_MODEL (e.g. gemini-2.5-flash). */
-export const ACTIVE_LLM_MODEL = USE_OPENAI_API ? getEnv("OPENAI_MODEL", "gpt-4o-mini") : LLM_MODEL;
+export const ACTIVE_LLM_MODEL = USE_OPENAI_API ? getEnv("OPENAI_MODEL", "gpt-4o") : LLM_MODEL;
 
 export const API_SPORTS_KEY = getEnv("API_SPORTS_KEY");
 

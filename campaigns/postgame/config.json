@@ -5,5 +5,7 @@
   "brandWebsite": "getpostgame.ai",
   "clickTargetUrl": "https://getpostgame.ai",
   "postTargets": ["x"],
-  "dataSource": "sports"
+  "dataSource": "sports",
+  "engageKeywords": ["coaching film review", "postgame analysis", "player development", "game film", "coaching staff"],
+  "engageEnabled": false
 }

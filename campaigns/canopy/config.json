@@ -6,5 +6,7 @@
   "clickTargetUrl": "https://www.viciousshade.com",
   "postTargets": ["x"],
   "dataSource": "angles_only",
-  "imageEnabled": true
+  "imageEnabled": true,
+  "engageKeywords": ["custom canopy", "pop up tent", "trade show booth", "event branding", "outdoor vendor"],
+  "engageEnabled": false
 }

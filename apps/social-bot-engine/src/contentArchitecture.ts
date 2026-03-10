@@ -79,6 +79,7 @@ export interface SelectContentDecisionInput {
   newsArticle?: NewsArticle;
   newsUsed?: boolean;
   recentDecisions?: RecentContentDecision[];
+  retiredCombos?: RetiredCombo[];
 }
 
 export const FRAME_DEFINITIONS: Record<ContentFrameId, ContentFrameDefinition> = {
@@ -237,6 +238,10 @@ export function classifyNewsMoment(article: NewsArticle | undefined): NewsMoment
   return "unknown";
 }
 
+/** Hard-block threshold: any frame used this many times in the last RECENT_WINDOW decisions is excluded. */
+const HARD_BLOCK_THRESHOLD = 3;
+const RECENT_WINDOW = 7;
+
 function pickFrame(
   newsMomentType: NewsMomentType,
   recentDecisions: RecentContentDecision[],
@@ -245,35 +250,66 @@ function pickFrame(
   if (newsMomentType !== "unknown") return NEWS_FRAME_BY_MOMENT[newsMomentType];
 
   const preferredPlatform = targetPlatforms.includes("threads") && !targetPlatforms.includes("x") ? "threads" : "x";
+  const recent = recentDecisions.slice(0, RECENT_WINDOW);
   const counts = new Map<ContentFrameId, number>();
-  for (const recent of recentDecisions) {
-    if (!recent.frameId) continue;
-    counts.set(recent.frameId, (counts.get(recent.frameId) ?? 0) + 1);
+  for (const entry of recent) {
+    if (!entry.frameId) continue;
+    counts.set(entry.frameId, (counts.get(entry.frameId) ?? 0) + 1);
   }
 
-  const candidates = DEFAULT_FRAME_ORDER
-    .filter((frameId) => {
-      const frame = FRAME_DEFINITIONS[frameId];
-      return frame.bestPlatform === "both" || frame.bestPlatform === preferredPlatform;
-    })
-    .sort((a, b) => (counts.get(a) ?? 0) - (counts.get(b) ?? 0));
+  const platformFiltered = DEFAULT_FRAME_ORDER.filter((frameId) => {
+    const frame = FRAME_DEFINITIONS[frameId];
+    return frame.bestPlatform === "both" || frame.bestPlatform === preferredPlatform;
+  });
 
-  return candidates[0] ?? "development_gap";
+  // Hard-block any frame used HARD_BLOCK_THRESHOLD+ times in recent window
+  const candidates = platformFiltered.filter((frameId) => (counts.get(frameId) ?? 0) < HARD_BLOCK_THRESHOLD);
+  const pool = candidates.length > 0 ? candidates : platformFiltered;
+
+  // Sort by usage count (least used first), then add randomness among ties
+  pool.sort((a, b) => {
+    const diff = (counts.get(a) ?? 0) - (counts.get(b) ?? 0);
+    if (diff !== 0) return diff;
+    return Math.random() - 0.5;
+  });
+
+  // Weighted random: favor least-used but don't always pick index 0
+  if (pool.length >= 2 && Math.random() < 0.3) {
+    return pool[1];
+  }
+  return pool[0] ?? "development_gap";
 }
 
-function pickHook(frameId: ContentFrameId, recentDecisions: RecentContentDecision[]): HookStructureId {
-  const allowed = FRAME_DEFINITIONS[frameId].allowedHooks;
+function pickHook(frameId: ContentFrameId, recentDecisions: RecentContentDecision[], retiredCombos: RetiredCombo[] = []): HookStructureId {
+  const allowed = filterRetiredHooks(frameId, [...FRAME_DEFINITIONS[frameId].allowedHooks], retiredCombos);
+  const recent = recentDecisions.slice(0, RECENT_WINDOW);
   const recentHooks = new Map<HookStructureId, number>();
   let mostTeamsUses = 0;
-  for (const recent of recentDecisions.slice(0, 10)) {
-    if (recent.hookStructureId) recentHooks.set(recent.hookStructureId, (recentHooks.get(recent.hookStructureId) ?? 0) + 1);
-    if (recent.openingPattern === "most_teams") mostTeamsUses += 1;
+  for (const entry of recent) {
+    if (entry.hookStructureId) recentHooks.set(entry.hookStructureId, (recentHooks.get(entry.hookStructureId) ?? 0) + 1);
+    if (entry.openingPattern === "most_teams") mostTeamsUses += 1;
   }
 
-  const sorted = [...allowed].sort((a, b) => (recentHooks.get(a) ?? 0) - (recentHooks.get(b) ?? 0));
-  const selected = sorted[0] ?? allowed[0];
+  // Hard-block hooks used HARD_BLOCK_THRESHOLD+ times in recent window
+  const candidates = allowed.filter((hookId) => (recentHooks.get(hookId) ?? 0) < HARD_BLOCK_THRESHOLD);
+  const pool = candidates.length > 0 ? candidates : [...allowed];
+
+  // Sort by usage count with randomness among ties
+  pool.sort((a, b) => {
+    const diff = (recentHooks.get(a) ?? 0) - (recentHooks.get(b) ?? 0);
+    if (diff !== 0) return diff;
+    return Math.random() - 0.5;
+  });
+
+  let selected = pool[0] ?? allowed[0];
+
+  // Weighted random: occasionally pick the second option
+  if (pool.length >= 2 && Math.random() < 0.3) {
+    selected = pool[1];
+  }
+
   if (selected === "universal_truth" && mostTeamsUses > 0) {
-    return sorted.find((hook) => hook !== "universal_truth") ?? selected;
+    return pool.find((hook) => hook !== "universal_truth") ?? selected;
   }
   return selected;
 }
@@ -287,13 +323,42 @@ function inferOpeningPatternForHook(hookId: HookStructureId): string {
   return "universal_truth";
 }
 
+const ALL_EMOTIONS: EmotionTarget[] = [
+  "recognition",
+  "frustration",
+  "validation",
+  "insider_pride",
+  "loss",
+  "urgency",
+  "provocation",
+  "vulnerability",
+];
+
+/** Pick an emotion target with recency weighting. 60% chance to use the frame's default, 40% to rotate. */
+function pickEmotion(
+  frameDefault: EmotionTarget,
+  recentDecisions: RecentContentDecision[]
+): EmotionTarget {
+  if (Math.random() < 0.6) return frameDefault;
+
+  // Count recent emotion usage from analytics records (we only have frameId/hookId, but emotions
+  // are stored in analytics). For now, weight toward less-used emotions by shuffling.
+  const recent = recentDecisions.slice(0, RECENT_WINDOW);
+  const counts = new Map<EmotionTarget, number>();
+  // We don't have emotion in RecentContentDecision, so just shuffle all emotions
+  // and avoid repeating the frame default if it's been used a lot
+  const shuffled = [...ALL_EMOTIONS].sort(() => Math.random() - 0.5);
+  return shuffled[0] === frameDefault && shuffled.length > 1 ? shuffled[1] : shuffled[0];
+}
+
 export function selectContentDecision(input: SelectContentDecisionInput): ContentDecision {
   const recentDecisions = input.recentDecisions ?? [];
   const newsMomentType = input.newsUsed ? classifyNewsMoment(input.newsArticle) : "unknown";
   const frameId = pickFrame(newsMomentType, recentDecisions, input.targetPlatforms);
-  const hookStructureId = pickHook(frameId, recentDecisions);
+  const hookStructureId = pickHook(frameId, recentDecisions, input.retiredCombos ?? []);
   const frame = FRAME_DEFINITIONS[frameId];
   const hook = HOOK_DEFINITIONS[hookStructureId];
+  const emotionTarget = pickEmotion(frame.emotionalTarget, recentDecisions);
   const frameReason =
     newsMomentType !== "unknown"
       ? `Mapped news moment ${newsMomentType} to ${frame.label}.`
@@ -304,11 +369,81 @@ export function selectContentDecision(input: SelectContentDecisionInput): Conten
     frameLabel: frame.label,
     hookStructureId,
     hookStructureLabel: hook.label,
-    emotionTarget: frame.emotionalTarget,
+    emotionTarget,
     frameReason,
     newsMomentType,
     openingPattern: inferOpeningPatternForHook(hookStructureId),
   };
+}
+
+export interface RetiredCombo {
+  frameId: ContentFrameId;
+  hookStructureId: HookStructureId;
+  retiredAt: string;
+  avgScore: number;
+  overallAvgScore: number;
+}
+
+/**
+ * Identify frame/hook combos scoring below 50% of overall average.
+ * These should be temporarily disabled for 7 days.
+ */
+export function findRetiredCombos(
+  scoredRecords: Array<{
+    contentFrameId?: ContentFrameId;
+    hookStructureId?: HookStructureId;
+    score?: number;
+    postedAt: string;
+  }>
+): RetiredCombo[] {
+  const withScore = scoredRecords.filter(
+    (r) => typeof r.score === "number" && r.contentFrameId && r.hookStructureId
+  );
+  if (withScore.length < 20) return [];
+
+  const overallAvg = withScore.reduce((sum, r) => sum + (r.score ?? 0), 0) / withScore.length;
+  const threshold = overallAvg * 0.5;
+
+  const combos = new Map<string, { scores: number[]; frameId: ContentFrameId; hookId: HookStructureId }>();
+  for (const r of withScore) {
+    const key = `${r.contentFrameId}::${r.hookStructureId}`;
+    const entry = combos.get(key) ?? { scores: [], frameId: r.contentFrameId!, hookId: r.hookStructureId! };
+    entry.scores.push(r.score ?? 0);
+    combos.set(key, entry);
+  }
+
+  const retired: RetiredCombo[] = [];
+  for (const [, combo] of combos) {
+    if (combo.scores.length < 2) continue;
+    const avg = combo.scores.reduce((a, b) => a + b, 0) / combo.scores.length;
+    if (avg < threshold) {
+      retired.push({
+        frameId: combo.frameId,
+        hookStructureId: combo.hookId,
+        retiredAt: new Date().toISOString(),
+        avgScore: Number(avg.toFixed(2)),
+        overallAvgScore: Number(overallAvg.toFixed(2)),
+      });
+    }
+  }
+  return retired;
+}
+
+/** Filter out retired combos from allowed hooks for a frame. */
+export function filterRetiredHooks(
+  frameId: ContentFrameId,
+  allowedHooks: HookStructureId[],
+  retiredCombos: RetiredCombo[]
+): HookStructureId[] {
+  const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  const activeRetirements = retiredCombos.filter(
+    (rc) => rc.frameId === frameId && Date.parse(rc.retiredAt) > sevenDaysAgo
+  );
+  if (activeRetirements.length === 0) return allowedHooks;
+  const retiredHookIds = new Set(activeRetirements.map((rc) => rc.hookStructureId));
+  const filtered = allowedHooks.filter((h) => !retiredHookIds.has(h));
+  // If all hooks are retired, return original list (don't block everything)
+  return filtered.length > 0 ? filtered : allowedHooks;
 }
 
 export function buildRecentContentDecision(input: {

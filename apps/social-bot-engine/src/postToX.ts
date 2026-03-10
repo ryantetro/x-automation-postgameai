@@ -54,6 +54,38 @@ export function postToX(text: string): Promise<PostResult> {
 }
 
 /**
+ * Post a thread (multiple connected tweets) using the v2 API.
+ */
+export async function postThreadToX(tweets: string[]): Promise<PostResult> {
+  if (!POST_ENABLED) {
+    console.info("Dry run: would post thread:", tweets.map((t, i) => `[${i + 1}] ${t.slice(0, 60)}...`).join(" | "));
+    return { success: true };
+  }
+
+  const client = getXClient();
+  if (!client) {
+    return { success: false, error: "Missing X OAuth credentials" };
+  }
+
+  try {
+    const tweetPayloads = tweets.map((text) => ({ text }));
+    const result = await client.v2.tweetThread(tweetPayloads);
+    const firstTweetId = Array.isArray(result) && result.length > 0
+      ? (result[0] as { data?: { id?: string } })?.data?.id
+      : undefined;
+    console.info("Posted thread to X successfully", firstTweetId ? `(first_tweet_id=${firstTweetId})` : "");
+    return { success: true, tweetId: firstTweetId };
+  } catch (err: unknown) {
+    const error = err instanceof Error ? err.message : String(err);
+    console.error("Failed to post thread to X:", err);
+    const code = err && typeof err === "object" && "code" in err && typeof (err as { code?: number }).code === "number"
+      ? (err as { code: number }).code
+      : undefined;
+    return { success: false, error, statusCode: code };
+  }
+}
+
+/**
  * Post a tweet with an image attached. Uploads media via v1 API, then tweets with v2.
  */
 export async function postToXWithMedia(

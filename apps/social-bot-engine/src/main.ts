@@ -26,14 +26,15 @@ import {
 } from "./config.js";
 import { fetchSportsData } from "./fetchData.js";
 import { fetchNewsContext } from "./fetchNews.js";
-import { generatePost, generatePostAnglesOnly, fillFallbackTemplate, pickNonDuplicateFallback } from "./generatePost.js";
+import { generatePost, generatePostAnglesOnly, fillFallbackTemplate, pickNonDuplicateFallback, generateThread, isThreadDay } from "./generatePost.js";
 import { isValidTweet } from "./validate.js";
-import { getXClient, postToX, postToXWithMedia } from "./postToX.js";
+import { getXClient, postToX, postToXWithMedia, postThreadToX } from "./postToX.js";
 import { generateCampaignImage } from "./generateImage.js";
 import { postToThreads } from "./postToThreads.js";
 import {
   buildRecentContentDecision,
   selectContentDecision,
+  findRetiredCombos,
   type RecentContentDecision,
 } from "./contentArchitecture.js";
 import { getOpeningPattern } from "./contentHeuristics.js";
@@ -209,6 +210,8 @@ async function main(): Promise<number> {
     }
   }
 
+  let isThread = false;
+  let threadTweets: string[] | null = null;
   let text: string | null = null;
   let generationSource = "llm";
   let openingPattern: string | undefined;
@@ -292,6 +295,13 @@ async function main(): Promise<number> {
 
     let recentTexts = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
     const recentContentDecisions = readRecentContentDecisions(analyticsStore, RECENT_TWEETS_CAP);
+
+    // Auto-retire underperforming frame/hook combos
+    const retiredCombos = findRetiredCombos(analyticsStore.tweets);
+    if (retiredCombos.length > 0) {
+      console.info(`Auto-retired ${retiredCombos.length} underperforming combo(s): ${retiredCombos.map((rc) => `${rc.frameId}+${rc.hookStructureId} (avg ${rc.avgScore} vs overall ${rc.overallAvgScore})`).join(", ")}`);
+    }
+
     const decision = selectContentDecision({
       sport,
       date: today,
@@ -299,10 +309,41 @@ async function main(): Promise<number> {
       newsArticle: newsContext.selectedArticle,
       newsUsed: newsContext.usedNews,
       recentDecisions: recentContentDecisions,
+      retiredCombos,
     });
     contentDecision = decision;
 
-    for (let attempt = 0; attempt < MAX_GENERATE_RETRIES; attempt++) {
+    // Try thread generation on thread days (Wed/Sat) for sports campaigns
+    if (isThreadDay() && POSTS_TO_X && DATA_SOURCE === "sports") {
+      console.info("Thread day detected — attempting thread generation");
+      const threadResult = await generateThread({
+        sport,
+        angle,
+        date: today,
+        recentTweets: recentTexts.slice(0, 6),
+        iterationGuidance: insights?.promptGuidance,
+      });
+      if (threadResult.tweets && threadResult.tweets.length >= 2) {
+        threadTweets = threadResult.tweets;
+        isThread = true;
+        text = threadTweets[0]; // Use first tweet as the "text" for analytics
+        generationSource = "llm_thread";
+        console.info(`Thread generated: ${threadTweets.length} tweets`);
+      } else {
+        console.info("Thread generation failed; falling back to single post");
+      }
+    }
+
+    // Pull top-performing post texts to feed as style examples
+    const winningPostTexts = insights?.winners
+      ?.slice(0, 3)
+      .map((w) => w.text)
+      .filter((t) => t && t.length > 0) ?? [];
+
+    // Skip single-post generation if thread was already generated
+    if (isThread && threadTweets) {
+      // Thread already generated above; skip to publish
+    } else for (let attempt = 0; attempt < MAX_GENERATE_RETRIES; attempt++) {
       const generated = await generatePost(fetched, 1, {
         recentTweets: recentTexts,
         angle,
@@ -312,6 +353,7 @@ async function main(): Promise<number> {
         newsContext,
         contentDecision: decision,
         recentContentDecisions,
+        winningPostTexts,
       });
       for (const attemptLog of generated.attempts) {
         appendGenerationLog({
@@ -350,7 +392,16 @@ async function main(): Promise<number> {
 
     if (!text || !isValidTweet(text)) {
       console.info("Using fallback template");
-      text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars, angle });
+      const recentTextsFallback = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
+      const fallbackCandidate = pickNonDuplicateFallback(fetched.sport ?? "nba", fetched, recentTextsFallback, { reserveChars, angle });
+      if (!fallbackCandidate) {
+        console.info("Skipping post: all fallback templates are duplicates of recent posts");
+        appendLog(true, null, "Skipped: all fallbacks duplicate");
+        pruneStore(analyticsStore);
+        saveAnalyticsStore(analyticsStore, ANALYTICS_STORE_FILE);
+        return 0;
+      }
+      text = fallbackCandidate;
       generationSource = "fallback";
       openingPattern = getOpeningPattern(text);
       appendGenerationLog({
@@ -495,10 +546,14 @@ async function main(): Promise<number> {
 
   if (POSTS_TO_X) {
     const result = await publishWithRetry("X", async () => {
-      const xResult =
-        imageBuffer != null
-          ? await postToXWithMedia(text, imageBuffer, "image/png")
-          : await postToX(text);
+      let xResult;
+      if (isThread && threadTweets && threadTweets.length >= 2) {
+        xResult = await postThreadToX(threadTweets);
+      } else if (imageBuffer != null) {
+        xResult = await postToXWithMedia(text, imageBuffer, "image/png");
+      } else {
+        xResult = await postToX(text);
+      }
       return {
         success: xResult.success,
         error: xResult.error,

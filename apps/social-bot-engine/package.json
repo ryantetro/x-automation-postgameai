@@ -21,7 +21,8 @@
     "test:fetch": "tsx scripts/test-fetch.ts",
     "sample-tweets": "tsx scripts/generate-sample-tweets.ts",
     "sample-tweets:canopy": "node --import tsx scripts/generate-canopy-sample-tweets.ts",
-    "preflight:prod": "node --import tsx scripts/preflight-prod.ts"
+    "preflight:prod": "node --import tsx scripts/preflight-prod.ts",
+    "engage": "tsx src/runEngage.ts"
   },
   "engines": {
     "node": ">=18"

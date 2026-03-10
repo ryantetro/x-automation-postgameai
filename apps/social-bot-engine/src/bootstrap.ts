@@ -29,6 +29,8 @@ export interface CampaignConfig {
   dataSource?: "sports" | "news" | "angles_only";
   trackingBaseUrl?: string;
   imageEnabled?: boolean;
+  engageKeywords?: string[];
+  engageEnabled?: boolean;
 }
 
 function setEnv(key: string, value: string | undefined): void {
@@ -81,6 +83,12 @@ export function bootstrap(): void {
   }
   if (config.imageEnabled === true) {
     setEnv("IMAGE_ENABLED", "true");
+  }
+  if (config.engageEnabled === true) {
+    setEnv("ENGAGE_ENABLED", "true");
+  }
+  if (config.engageKeywords?.length) {
+    setEnv("ENGAGE_SEARCH_KEYWORDS", config.engageKeywords.join(","));
   }
 
   const stateDir = resolve(WORKSPACE_ROOT, "state", slug);

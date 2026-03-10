@@ -1,0 +1,100 @@
+# Engagement automation: search, like, reply, and follow in target communities.
+# Runs 4x daily staggered from post times. Requires ENGAGE_ENABLED=true and
+# at least X Basic tier ($200/mo) for search/like/follow endpoints.
+
+name: Engage (all campaigns)
+
+on:
+  schedule:
+    - cron: '0 13 * * *'   # 8am ET
+    - cron: '0 18 * * *'   # 1pm ET
+    - cron: '0 21 * * *'   # 4pm ET
+    - cron: '0 1 * * *'    # 8pm ET
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bot-engage-push
+  cancel-in-progress: false
+
+jobs:
+  list-campaigns:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - id: list
+        run: echo "slugs=$(npx tsx apps/social-bot-engine/scripts/list-campaigns.ts)" >> $GITHUB_OUTPUT
+    outputs:
+      slugs: ${{ steps.list.outputs.slugs }}
+
+  engage:
+    needs: list-campaigns
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        campaign: ${{ fromJson(needs.list-campaigns.outputs.slugs) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run engagement (${{ matrix.campaign }})
+        id: run_engage
+        continue-on-error: true
+        env:
+          CAMPAIGN: ${{ matrix.campaign }}
+          BOT_CREDENTIALS_JSON: ${{ secrets.BOT_CREDENTIALS_JSON }}
+          ENGAGE_ENABLED: ${{ vars.ENGAGE_ENABLED || 'false' }}
+          ENGAGE_SEARCH_KEYWORDS: ${{ vars.ENGAGE_SEARCH_KEYWORDS }}
+          ENGAGE_MAX_LIKES: ${{ vars.ENGAGE_MAX_LIKES }}
+          ENGAGE_MAX_REPLIES: ${{ vars.ENGAGE_MAX_REPLIES }}
+          ENGAGE_MAX_FOLLOWS: ${{ vars.ENGAGE_MAX_FOLLOWS }}
+        run: npm run bot:engage
+
+      - name: Persist engage state (${{ matrix.campaign }})
+        if: always()
+        run: |
+          STATE_DIR="state/${{ matrix.campaign }}"
+          STATE_FILE="${STATE_DIR}/engage-state.json"
+          if [ ! -f "$STATE_FILE" ]; then
+            echo "No engage state file at $STATE_FILE; skipping commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$STATE_FILE"
+          if git diff --cached --quiet; then
+            echo "No engage state changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(bot): update engage state [${{ matrix.campaign }}] [skip ci]"
+          git stash --include-untracked || true
+          for attempt in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push && break
+            if [ "${attempt}" -eq 3 ]; then
+              echo "Failed to persist engage state after ${attempt} attempts."
+              exit 1
+            fi
+            sleep $((attempt * 5))
+          done
+          git stash pop 2>/dev/null || true
+
+      - name: Fail if engage run failed
+        if: steps.run_engage.outcome == 'failure'
+        run: exit 1

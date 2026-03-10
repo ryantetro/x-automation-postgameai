@@ -22,6 +22,16 @@
     },
     "trackingBaseUrl": { "type": "string", "format": "uri" },
     "imageEnabled": { "type": "boolean", "description": "When true, generate and attach an AI image to posts (requires image-prompts.json in campaign dir)" },
-    "imagePrompts": { "type": "string", "description": "Path hint: scene prompts are loaded from campaigns/<slug>/image-prompts.json when imageEnabled is true" }
+    "imagePrompts": { "type": "string", "description": "Path hint: scene prompts are loaded from campaigns/<slug>/image-prompts.json when imageEnabled is true" },
+    "engageKeywords": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Keywords for the engagement engine to search for relevant tweets in the target community"
+    },
+    "engageEnabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, enable engagement automation (search, like, reply, follow) for this campaign. Requires X Basic tier."
+    }
   }
 }

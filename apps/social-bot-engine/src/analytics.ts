@@ -278,18 +278,23 @@ function toNumberOrZero(value: unknown): number {
 }
 
 function computeScore(metrics: TweetMetricsSnapshot): number {
-  const weighted =
-    metrics.likeCount * 1.0 +
-    metrics.retweetCount * 2.2 +
-    metrics.replyCount * 2.4 +
-    metrics.quoteCount * 2.1 +
-    metrics.bookmarkCount * 1.3 +
-    (metrics.shareCount ?? 0) * 1.6;
-  if (metrics.impressionCount && metrics.impressionCount > 0) {
-    const rate = weighted / metrics.impressionCount;
-    return Number((rate * 100 + Math.log10(1 + weighted)).toFixed(4));
-  }
-  return Number((Math.log10(1 + weighted) * 10).toFixed(4));
+  const impressions = metrics.impressionCount ?? 0;
+  const likes = metrics.likeCount;
+  const replies = metrics.replyCount;
+  const retweets = metrics.retweetCount;
+  const bookmarks = metrics.bookmarkCount;
+  const quotes = metrics.quoteCount;
+
+  // Weighted engagement formula that values impressions as a baseline signal
+  const score =
+    impressions * 1 +
+    likes * 20 +
+    replies * 30 +
+    retweets * 25 +
+    bookmarks * 15 +
+    quotes * 20;
+
+  return Number(score.toFixed(4));
 }
 
 function parseTweetMetrics(row: Record<string, unknown>): TweetMetricsSnapshot {
