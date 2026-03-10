@@ -9,6 +9,11 @@ import {
   POSTS_TO_X,
   getSportForRun,
   getAngleForDate,
+  getAngleForDateAnglesOnly,
+  DATA_SOURCE,
+  IMAGE_ENABLED,
+  BRAND_NAME,
+  BRAND_WEBSITE,
   LOGS_DIR,
   ANALYTICS_ENABLED,
   ANALYTICS_LOOKBACK_DAYS,
@@ -21,9 +26,10 @@ import {
 } from "./config.js";
 import { fetchSportsData } from "./fetchData.js";
 import { fetchNewsContext } from "./fetchNews.js";
-import { generatePost, fillFallbackTemplate, pickNonDuplicateFallback } from "./generatePost.js";
+import { generatePost, generatePostAnglesOnly, fillFallbackTemplate, pickNonDuplicateFallback } from "./generatePost.js";
 import { isValidTweet } from "./validate.js";
-import { getXClient, postToX } from "./postToX.js";
+import { getXClient, postToX, postToXWithMedia } from "./postToX.js";
+import { generateCampaignImage } from "./generateImage.js";
 import { postToThreads } from "./postToThreads.js";
 import {
   buildRecentContentDecision,
@@ -136,7 +142,23 @@ async function main(): Promise<number> {
   const sport = getSportForRun();
   const angle = getAngleForDate(new Date());
   const trackedUrl = buildTrackedUrl(runId);
-  const reserveChars = trackedUrl ? trackedUrl.length + 1 : 0;
+  let linkToAppend = trackedUrl || (CLICK_TARGET_URL || null);
+  // When CLICK_TARGET_URL points to the same domain as BRAND_WEBSITE (e.g. "viciousshade.com")
+  // the generated post body already includes the brand website, so appending the full URL
+  // would duplicate it visually (e.g. "viciousshade.com https://www.viciousshade.com").
+  // In that case, rely on the domain in the body and skip appending the explicit link.
+  if (linkToAppend && BRAND_WEBSITE) {
+    try {
+      const website = BRAND_WEBSITE.toLowerCase().replace(/^https?:\/\//, "").replace(/\/+$/, "");
+      const host = new URL(linkToAppend).host.toLowerCase();
+      if (host === website || host.endsWith(`.${website}`)) {
+        linkToAppend = null;
+      }
+    } catch {
+      // If CLICK_TARGET_URL is not a valid URL, keep linkToAppend as-is.
+    }
+  }
+  const reserveChars = linkToAppend ? linkToAppend.length + 1 : 0;
 
   const analyticsStore = loadAnalyticsStore(ANALYTICS_STORE_FILE);
   const xClient = POSTS_TO_X ? getXClient() : null;
@@ -187,39 +209,9 @@ async function main(): Promise<number> {
     }
   }
 
-  let fetched = await fetchSportsData(sport);
-  if (!fetched) {
-    console.warn("No data from API-Sports or ESPN; using minimal fallback");
-    fetched = {
-      sport,
-      source: "none",
-      date: today,
-      games: [],
-      summary: "No games today.",
-      top_game: {},
-    };
-  }
-
-  const newsContext = await fetchNewsContext(sport);
-  const contentMode = newsContext.usedNews ? "news_preferred" : "sports_only";
-  if (newsContext.selectionReason) {
-    console.info(`News selection (${contentMode}): ${newsContext.selectionReason}`);
-  }
-
-  let recentTexts = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
-  const recentContentDecisions = readRecentContentDecisions(analyticsStore, RECENT_TWEETS_CAP);
-  const contentDecision = selectContentDecision({
-    sport,
-    date: today,
-    targetPlatforms: [...POST_TARGETS],
-    newsArticle: newsContext.selectedArticle,
-    newsUsed: newsContext.usedNews,
-    recentDecisions: recentContentDecisions,
-  });
-
   let text: string | null = null;
   let generationSource = "llm";
-  let openingPattern: string | undefined = contentDecision.openingPattern;
+  let openingPattern: string | undefined;
   let prePublishChecks:
     | {
         hookDetected: boolean;
@@ -227,94 +219,138 @@ async function main(): Promise<number> {
         openerVarietyClear: boolean;
       }
     | undefined;
-  for (let attempt = 0; attempt < MAX_GENERATE_RETRIES; attempt++) {
-    const generated = await generatePost(fetched, 3, {
-      recentTweets: recentTexts,
-      angle,
-      date: today,
-      iterationGuidance: insights?.promptGuidance,
-      reserveChars,
-      newsContext,
-      contentDecision,
-      recentContentDecisions,
-    });
-    for (const attemptLog of generated.attempts) {
-      appendGenerationLog({
-        runId,
-        attemptId: attemptLog.attemptId,
-        timestamp: nowIso,
-        platformTargets: [...POST_TARGETS],
-        sport,
-        angle,
-        contentFrameId: contentDecision.frameId,
-        hookStructureId: contentDecision.hookStructureId,
-        emotionTarget: contentDecision.emotionTarget,
-        newsUsed: newsContext.usedNews,
-        newsMomentType: contentDecision.newsMomentType,
-        openingPattern: generated.openingPattern ?? contentDecision.openingPattern,
-        rawOutput: attemptLog.rawOutput,
-        cleanedOutput: attemptLog.cleanedOutput,
-        passedChecks: attemptLog.passedChecks,
-        failedChecks: attemptLog.failedChecks,
-        rejectionReason: attemptLog.rejectionReason,
-        acceptedForPublish: attemptLog.acceptedForPublish,
-        usedFallback: false,
-      });
-    }
-    text = generated.text;
-    openingPattern = generated.openingPattern ?? openingPattern;
-    prePublishChecks = generated.prePublishChecks ?? prePublishChecks;
-    if (text && isValidTweet(text)) {
-      if (!isDuplicate(text, recentTexts)) break;
-      console.info("Tweet too similar to recent; retrying with avoid list");
-      recentTexts = [text, ...recentTexts].slice(0, RECENT_TWEETS_CAP);
-    } else if (text && !isValidTweet(text)) {
-      console.info("Generated tweet invalid (length or brand), attempt", attempt + 1);
-    }
-  }
+  let sportForRecord = sport;
+  let angleForRecord = angle;
+  let contentMode: "sports_only" | "news_preferred" = "sports_only";
+  let newsContext: Awaited<ReturnType<typeof fetchNewsContext>> = {
+    usedNews: false,
+    query: "",
+    source: "newsapi",
+    articles: [],
+    selectedArticle: undefined,
+    selectionReason: undefined,
+  };
+  let contentDecision: ReturnType<typeof selectContentDecision> = {
+    frameId: "forty_eight_hour_window",
+    frameLabel: "",
+    hookStructureId: "scene_setter",
+    hookStructureLabel: "",
+    emotionTarget: "recognition",
+    frameReason: "",
+    newsMomentType: "unknown",
+    openingPattern: "",
+  };
 
-  let reusedFromX = false;
-  if (!text || !isValidTweet(text)) {
-    if (POST_TARGETS.length === 1 && POST_TARGETS[0] === "threads") {
-      const xStorePath = resolve(STATE_DIR, "tweet-analytics.json");
-      const xStore = loadAnalyticsStore(xStorePath);
-      const todayPost = xStore.tweets
-        .filter((t) => t.status === "posted" && t.dateContext === today && t.text)
-        .sort((a, b) => Date.parse(b.postedAt) - Date.parse(a.postedAt))[0];
-      if (todayPost?.text && isValidTweet(todayPost.text)) {
-        text = todayPost.text;
-        generationSource = "fallback";
-        openingPattern = getOpeningPattern(text);
-        reusedFromX = true;
+  if (DATA_SOURCE === "angles_only") {
+    // Canopy / industry path: no sports data, use rotating angles and canopy prompt
+    angleForRecord = getAngleForDateAnglesOnly(new Date());
+    sportForRecord = "canopy";
+    let recentTexts = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
+    for (let attempt = 0; attempt < MAX_GENERATE_RETRIES; attempt++) {
+      const generated = await generatePostAnglesOnly({
+        angle: angleForRecord,
+        date: today,
+        recentTweets: recentTexts,
+        reserveChars,
+      });
+      text = generated.text;
+      if (text && isValidTweet(text, { requireBrand: false })) {
+        if (!isDuplicate(text, recentTexts)) break;
+        recentTexts = [text, ...recentTexts].slice(0, RECENT_TWEETS_CAP);
+      }
+    }
+    if (!text || !isValidTweet(text, { requireBrand: false })) {
+      text = `Event season is brutal on gear. What holds up is what gets reordered. ${BRAND_NAME} · ${BRAND_WEBSITE}`.slice(
+        0,
+        MAX_POST_LEN - (reserveChars + 1)
+      ).trim();
+      if (!text.includes(BRAND_WEBSITE)) text += ` — ${BRAND_NAME} · ${BRAND_WEBSITE}`;
+      generationSource = "fallback";
+    }
+    openingPattern = text ? getOpeningPattern(text) : undefined;
+  } else {
+    // Sports path (existing)
+    let fetched = await fetchSportsData(sport);
+    if (!fetched) {
+      console.warn("No data from API-Sports or ESPN; using minimal fallback");
+      fetched = {
+        sport,
+        source: "none",
+        date: today,
+        games: [],
+        summary: "No games today.",
+        top_game: {},
+      };
+    }
+
+    const newsCtx = await fetchNewsContext(sport);
+    newsContext = newsCtx;
+    contentMode = newsContext.usedNews ? "news_preferred" : "sports_only";
+    if (newsContext.selectionReason) {
+      console.info(`News selection (${contentMode}): ${newsContext.selectionReason}`);
+    }
+
+    let recentTexts = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
+    const recentContentDecisions = readRecentContentDecisions(analyticsStore, RECENT_TWEETS_CAP);
+    const decision = selectContentDecision({
+      sport,
+      date: today,
+      targetPlatforms: [...POST_TARGETS],
+      newsArticle: newsContext.selectedArticle,
+      newsUsed: newsContext.usedNews,
+      recentDecisions: recentContentDecisions,
+    });
+    contentDecision = decision;
+
+    for (let attempt = 0; attempt < MAX_GENERATE_RETRIES; attempt++) {
+      const generated = await generatePost(fetched, 1, {
+        recentTweets: recentTexts,
+        angle,
+        date: today,
+        iterationGuidance: insights?.promptGuidance,
+        reserveChars,
+        newsContext,
+        contentDecision: decision,
+        recentContentDecisions,
+      });
+      for (const attemptLog of generated.attempts) {
         appendGenerationLog({
           runId,
-          attemptId: `${Date.now()}-fallback`,
-          timestamp: new Date().toISOString(),
+          attemptId: attemptLog.attemptId,
+          timestamp: nowIso,
           platformTargets: [...POST_TARGETS],
           sport,
           angle,
-          contentFrameId: contentDecision.frameId,
-          hookStructureId: contentDecision.hookStructureId,
-          emotionTarget: contentDecision.emotionTarget,
+          contentFrameId: decision.frameId,
+          hookStructureId: decision.hookStructureId,
+          emotionTarget: decision.emotionTarget,
           newsUsed: newsContext.usedNews,
-          newsMomentType: contentDecision.newsMomentType,
-          openingPattern,
-          cleanedOutput: text,
-          passedChecks: [],
-          failedChecks: ["fallback_used"],
-          rejectionReason: "fallback_template",
-          acceptedForPublish: true,
-          usedFallback: true,
+          newsMomentType: decision.newsMomentType,
+          openingPattern: generated.openingPattern ?? decision.openingPattern,
+          rawOutput: attemptLog.rawOutput,
+          cleanedOutput: attemptLog.cleanedOutput,
+          passedChecks: attemptLog.passedChecks,
+          failedChecks: attemptLog.failedChecks,
+          rejectionReason: attemptLog.rejectionReason,
+          acceptedForPublish: attemptLog.acceptedForPublish,
+          usedFallback: false,
         });
       }
+      text = generated.text;
+      openingPattern = generated.openingPattern ?? openingPattern;
+      prePublishChecks = generated.prePublishChecks ?? prePublishChecks;
+      if (text && isValidTweet(text)) {
+        if (!isDuplicate(text, recentTexts)) break;
+        console.info("Tweet too similar to recent; retrying with avoid list");
+        recentTexts = [text, ...recentTexts].slice(0, RECENT_TWEETS_CAP);
+      } else if (text && !isValidTweet(text)) {
+        console.info("Generated tweet invalid (length or brand), attempt", attempt + 1);
+      }
     }
-    if (!reusedFromX && (!text || !isValidTweet(text))) {
+
+    if (!text || !isValidTweet(text)) {
       console.info("Using fallback template");
-      const recentTextsForFallback = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
-      text = pickNonDuplicateFallback(fetched.sport ?? "nba", fetched, recentTextsForFallback, {
-        reserveChars,
-        angle,
-      });
+      text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars, angle });
       generationSource = "fallback";
       openingPattern = getOpeningPattern(text);
       appendGenerationLog({
@@ -324,11 +360,11 @@ async function main(): Promise<number> {
         platformTargets: [...POST_TARGETS],
         sport,
         angle,
-        contentFrameId: contentDecision.frameId,
-        hookStructureId: contentDecision.hookStructureId,
-        emotionTarget: contentDecision.emotionTarget,
+        contentFrameId: decision.frameId,
+        hookStructureId: decision.hookStructureId,
+        emotionTarget: decision.emotionTarget,
         newsUsed: newsContext.usedNews,
-        newsMomentType: contentDecision.newsMomentType,
+        newsMomentType: decision.newsMomentType,
         openingPattern,
         cleanedOutput: text,
         passedChecks: [],
@@ -340,19 +376,24 @@ async function main(): Promise<number> {
     }
   }
 
-  text = appendTrackedUrl(text, trackedUrl);
+  text = appendTrackedUrl(text, linkToAppend);
 
-  if (reusedFromX && text && !isValidTweet(text)) {
-    text = fillFallbackTemplate(fetched.sport ?? "nba", fetched, { reserveChars, angle });
-    text = appendTrackedUrl(text, trackedUrl);
-    openingPattern = getOpeningPattern(text);
+  let imageBuffer: Buffer | null = null;
+  if (DATA_SOURCE === "angles_only" && IMAGE_ENABLED) {
+    if (POST_ENABLED) {
+      imageBuffer = await generateCampaignImage(angleForRecord);
+      if (!imageBuffer) console.warn("Campaign image generation failed; posting text only.");
+    } else {
+      console.info("Dry run: would generate campaign image for angle");
+    }
   }
 
   const recentTextsFinal = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
+  const validateOpts = DATA_SOURCE === "angles_only" ? { requireBrand: false } : undefined;
   if (
     generationSource === "fallback" &&
     text &&
-    isValidTweet(text) &&
+    isValidTweet(text, validateOpts) &&
     isDuplicate(text, recentTextsFinal)
   ) {
     console.info("Skipping post: fallback is duplicate of recent post (X would reject with 403)");
@@ -360,15 +401,15 @@ async function main(): Promise<number> {
     return 0;
   }
 
-  if (!isValidTweet(text)) {
-    console.error("Final text still invalid (length or missing postgame.ai); aborting");
+  if (!isValidTweet(text, validateOpts)) {
+    console.error("Final text still invalid (length or missing brand); aborting");
     appendLog(false, text, "Validation failed");
     upsertTweetRecord(analyticsStore, {
       runId,
       postedAt: nowIso,
       dateContext: today,
-      sport,
-      angle,
+      sport: sportForRecord,
+      angle: angleForRecord,
       source: generationSource,
       status: "failed",
       text,
@@ -388,12 +429,19 @@ async function main(): Promise<number> {
       newsMomentType: contentDecision.newsMomentType,
       prePublishChecks,
       openingPattern,
-      trackedUrl: trackedUrl ?? undefined,
+      trackedUrl: linkToAppend ?? undefined,
       linkTargetUrl: CLICK_TARGET_URL,
+      hasImage: false,
     });
     pruneStore(analyticsStore);
     saveAnalyticsStore(analyticsStore, ANALYTICS_STORE_FILE);
     return 1;
+  }
+
+  const hasImageForRecord = !!imageBuffer;
+
+  if (!POST_ENABLED && text) {
+    console.info("\n--- Example tweet (full) ---\n" + text + "\n---\n");
   }
 
   const POST_RETRY_WAIT_MS = 8000;
@@ -447,7 +495,10 @@ async function main(): Promise<number> {
 
   if (POSTS_TO_X) {
     const result = await publishWithRetry("X", async () => {
-      const xResult = await postToX(text);
+      const xResult =
+        imageBuffer != null
+          ? await postToXWithMedia(text, imageBuffer, "image/png")
+          : await postToX(text);
       return {
         success: xResult.success,
         error: xResult.error,
@@ -499,8 +550,8 @@ async function main(): Promise<number> {
     threadsPostId: threadsPublishResult?.postId,
     postedAt: nowIso,
     dateContext: today,
-    sport,
-    angle,
+    sport: sportForRecord,
+    angle: angleForRecord,
     source: generationSource,
     status: POST_ENABLED ? (anySucceeded ? "posted" : "failed") : "dry_run",
     text,
@@ -520,10 +571,11 @@ async function main(): Promise<number> {
     newsMomentType: contentDecision.newsMomentType,
     prePublishChecks,
     openingPattern,
-    trackedUrl: trackedUrl ?? undefined,
+    trackedUrl: linkToAppend ?? undefined,
     linkTargetUrl: CLICK_TARGET_URL,
     publishTargets: [...POST_TARGETS],
     publishResults,
+    hasImage: hasImageForRecord,
   });
 
   if (ANALYTICS_ENABLED && xClient && xPublishResult?.postId && xPublishResult.status === "posted") {
@@ -558,7 +610,7 @@ async function main(): Promise<number> {
 }
 
 main()
-  .then((code) => process.exit(code))
+  .then((code) => process.exit(code ?? 0))
   .catch((err) => {
     console.error(err);
     appendLog(false, null, String(err));

@@ -1,7 +1,15 @@
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { getClickMetricsForSlugs, type ClickMetricsSnapshot } from "./clicks";
+
+export interface CampaignConfig {
+  slug: string;
+  name: string;
+  brandName: string;
+  brandWebsite: string;
+  dataSource: string;
+}
 
 export type TweetStatus = "posted" | "dry_run" | "failed";
 export type PublishPlatform = "x" | "threads";
@@ -84,6 +92,7 @@ export interface TweetAnalyticsRecord {
   clickMetrics?: ClickMetricsSnapshot;
   score?: number;
   scoreUpdatedAt?: string;
+  campaignSlug?: string;
 }
 
 export interface AnalyticsStore {
@@ -94,16 +103,17 @@ export interface AnalyticsStore {
   tweets: TweetAnalyticsRecord[];
 }
 
+const WORKSPACE_ROOT = resolve(process.cwd(), "..", "..");
 const BOT_STATE_FILES = [
-  resolve(process.cwd(), "..", "postgame-x-bot", "state", "tweet-analytics.json"),
-  resolve(process.cwd(), "..", "postgame-x-bot", "state", "threads-analytics.json"),
+  resolve(process.cwd(), "..", "social-bot-engine", "state", "tweet-analytics.json"),
+  resolve(process.cwd(), "..", "social-bot-engine", "state", "threads-analytics.json"),
 ];
 const REMOTE_X_STATE_URL =
   process.env.ANALYTICS_JSON_URL ??
-  "https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/apps/postgame-x-bot/state/tweet-analytics.json";
+  "https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/apps/social-bot-engine/state/tweet-analytics.json";
 const REMOTE_THREADS_STATE_URL =
   process.env.THREADS_ANALYTICS_JSON_URL ??
-  "https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/apps/postgame-x-bot/state/threads-analytics.json";
+  "https://raw.githubusercontent.com/ryantetro/x-automation-postgameai/main/apps/social-bot-engine/state/threads-analytics.json";
 const MAX_FUTURE_SKEW_MS = 5 * 60 * 1000;
 
 function parseIso(value: unknown): string | null {
@@ -296,6 +306,83 @@ function mergeStores(stores: AnalyticsStore[]): AnalyticsStore {
   };
 }
 
+export function discoverCampaigns(): CampaignConfig[] {
+  const campaignsDir = resolve(WORKSPACE_ROOT, "campaigns");
+  if (!existsSync(campaignsDir)) return [];
+  try {
+    return readdirSync(campaignsDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => {
+        const configPath = resolve(campaignsDir, d.name, "config.json");
+        if (!existsSync(configPath)) return null;
+        try {
+          const raw = JSON.parse(require("fs").readFileSync(configPath, "utf-8"));
+          return {
+            slug: raw.slug ?? d.name,
+            name: raw.name ?? d.name,
+            brandName: raw.brandName ?? raw.name ?? d.name,
+            brandWebsite: raw.brandWebsite ?? "",
+            dataSource: raw.dataSource ?? "unknown",
+          } as CampaignConfig;
+        } catch {
+          return null;
+        }
+      })
+      .filter((c): c is CampaignConfig => c !== null);
+  } catch {
+    return [];
+  }
+}
+
+async function loadCampaignStore(slug: string): Promise<AnalyticsStore> {
+  const statePaths = [
+    resolve(WORKSPACE_ROOT, "state", slug, "tweet-analytics.json"),
+    resolve(WORKSPACE_ROOT, "state", slug, "threads-analytics.json"),
+  ];
+  // Postgame also checks legacy path
+  if (slug === "postgame") {
+    statePaths.push(...BOT_STATE_FILES);
+  }
+
+  const localStores: AnalyticsStore[] = [];
+  for (const path of statePaths) {
+    if (!existsSync(path)) continue;
+    try {
+      const p = JSON.parse(await readFile(path, "utf-8")) as Partial<AnalyticsStore>;
+      if (Array.isArray(p.tweets)) localStores.push(normalizeStore(p));
+    } catch {
+      /* ignore */
+    }
+  }
+  if (localStores.length > 0) {
+    const store = mergeStores(localStores);
+    for (const tweet of store.tweets) tweet.campaignSlug = slug;
+    return store;
+  }
+
+  // Remote fallback for postgame only
+  if (slug === "postgame") {
+    const remoteStores: AnalyticsStore[] = [];
+    for (const url of [REMOTE_X_STATE_URL, REMOTE_THREADS_STATE_URL]) {
+      try {
+        const r = await fetch(url, { cache: "no-store" });
+        if (!r.ok) continue;
+        const p = (await r.json()) as Partial<AnalyticsStore>;
+        if (Array.isArray(p.tweets)) remoteStores.push(normalizeStore(p));
+      } catch {
+        /* fallback */
+      }
+    }
+    if (remoteStores.length > 0) {
+      const store = mergeStores(remoteStores);
+      for (const tweet of store.tweets) tweet.campaignSlug = slug;
+      return store;
+    }
+  }
+
+  return { version: 1, updatedAt: null, clickMetricsAvailable: false, tweets: [] };
+}
+
 async function loadBaseStore(): Promise<AnalyticsStore> {
   const localStores: AnalyticsStore[] = [];
   for (const path of BOT_STATE_FILES) {
@@ -325,26 +412,49 @@ async function loadBaseStore(): Promise<AnalyticsStore> {
   return { version: 1, updatedAt: null, clickMetricsAvailable: false, tweets: [] };
 }
 
-export async function loadStore(options: { includeClicks?: boolean } = {}): Promise<AnalyticsStore> {
-  const includeClicks = options.includeClicks ?? true;
-  const store = await loadBaseStore();
-  if (!includeClicks) return store;
+export interface LoadStoreResult extends AnalyticsStore {
+  campaigns: CampaignConfig[];
+  activeCampaign: CampaignConfig | null;
+}
 
-  const clickable = store.tweets.filter((tweet) => !!tweet.trackedUrl);
-  const clickLookup = await getClickMetricsForSlugs(clickable.map((tweet) => tweet.runId));
-  for (const tweet of store.tweets) {
-    const metrics = clickLookup.metrics.get(tweet.runId);
-    if (metrics) tweet.clickMetrics = normalizeClickMetrics(metrics);
-    else delete tweet.clickMetrics;
+export async function loadStore(options: { includeClicks?: boolean; campaignSlug?: string } = {}): Promise<LoadStoreResult> {
+  const includeClicks = options.includeClicks ?? true;
+  const campaigns = discoverCampaigns();
+
+  let store: AnalyticsStore;
+  let activeCampaign: CampaignConfig | null = null;
+
+  if (options.campaignSlug && options.campaignSlug !== "all") {
+    activeCampaign = campaigns.find((c) => c.slug === options.campaignSlug) ?? null;
+    store = await loadCampaignStore(options.campaignSlug);
+  } else {
+    // Load all campaigns and merge
+    if (campaigns.length > 0) {
+      const allStores = await Promise.all(campaigns.map((c) => loadCampaignStore(c.slug)));
+      store = mergeStores(allStores);
+    } else {
+      store = await loadBaseStore();
+    }
   }
-  store.clickMetricsAvailable = clickLookup.available;
-  store.updatedAt = latestIso([
-    store.updatedAt,
-    ...store.tweets.map((tweet) => tweet.metrics?.fetchedAt),
-    ...store.tweets.map((tweet) => tweet.clickMetrics?.fetchedAt),
-    store.threadsUserInsights?.fetchedAt,
-  ]);
-  return store;
+
+  if (includeClicks) {
+    const clickable = store.tweets.filter((tweet) => !!tweet.trackedUrl);
+    const clickLookup = await getClickMetricsForSlugs(clickable.map((tweet) => tweet.runId));
+    for (const tweet of store.tweets) {
+      const metrics = clickLookup.metrics.get(tweet.runId);
+      if (metrics) tweet.clickMetrics = normalizeClickMetrics(metrics);
+      else delete tweet.clickMetrics;
+    }
+    store.clickMetricsAvailable = clickLookup.available;
+    store.updatedAt = latestIso([
+      store.updatedAt,
+      ...store.tweets.map((tweet) => tweet.metrics?.fetchedAt),
+      ...store.tweets.map((tweet) => tweet.clickMetrics?.fetchedAt),
+      store.threadsUserInsights?.fetchedAt,
+    ]);
+  }
+
+  return { ...store, campaigns, activeCampaign };
 }
 
 export function safeDate(iso: string): string {

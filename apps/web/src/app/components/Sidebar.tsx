@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { loadStore, sportClass, shortDay, compact, lastUpdatedStr } from "../lib/data";
+import CampaignSelector from "./CampaignSelector";
 
 interface SidebarProps {
   activePage: "dashboard" | "analytics" | "posts";
+  campaignSlug?: string;
 }
 
-export default async function Sidebar({ activePage }: SidebarProps) {
-  const store = await loadStore();
+export default async function Sidebar({ activePage, campaignSlug }: SidebarProps) {
+  const store = await loadStore({ campaignSlug });
   const posted = store.tweets.filter((t) => t.status === "posted");
   const tracked = store.tweets
     .filter((t) => t.status === "posted" && !!t.metrics)
@@ -16,20 +18,28 @@ export default async function Sidebar({ activePage }: SidebarProps) {
   const threadsPosts = posted.filter((t) => !!t.threadsPostId).length;
   const lastUpdated = lastUpdatedStr(store.updatedAt);
 
+  const qs = campaignSlug ? `?campaign=${campaignSlug}` : "";
+
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
         <div className="brand-icon">
-          <span>PG</span>
+          <span>CC</span>
         </div>
         <div className="brand-text">
-          <span className="brand-kicker">Postgame</span>
+          <span className="brand-kicker">Social Bot</span>
           <h1>Control Center</h1>
         </div>
       </div>
 
+      <CampaignSelector
+        campaigns={store.campaigns}
+        activeCampaign={campaignSlug ?? null}
+        currentPath={activePage === "dashboard" ? "/" : `/${activePage}`}
+      />
+
       <nav className="sidebar-nav">
-        <Link href="/" className={activePage === "dashboard" ? "active" : ""}>
+        <Link href={`/${qs}`} className={activePage === "dashboard" ? "active" : ""}>
           <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
             <rect x="3" y="3" width="7" height="7" rx="1.5" />
             <rect x="14" y="3" width="7" height="7" rx="1.5" />
@@ -38,13 +48,13 @@ export default async function Sidebar({ activePage }: SidebarProps) {
           </svg>
           Dashboard
         </Link>
-        <Link href="/analytics" className={activePage === "analytics" ? "active" : ""}>
+        <Link href={`/analytics${qs}`} className={activePage === "analytics" ? "active" : ""}>
           <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
             <path d="M12 20V10M6 20V4M18 20v-6" strokeLinecap="round" />
           </svg>
           Analytics
         </Link>
-        <Link href="/posts" className={activePage === "posts" ? "active" : ""}>
+        <Link href={`/posts${qs}`} className={activePage === "posts" ? "active" : ""}>
           <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
             <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
           </svg>

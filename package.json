@@ -3,7 +3,7 @@
   "private": true,
   "workspaces": [
     "apps/web",
-    "apps/postgame-x-bot"
+    "apps/social-bot-engine"
   ],
   "engines": {
     "node": "20.x"
@@ -13,20 +13,21 @@
     "build": "npm run build --workspace @x-automation/web",
     "start": "npm run start --workspace @x-automation/web",
     "lint": "npm run lint --workspace @x-automation/web",
-    "bot:post": "npm run post --workspace @x-automation/postgame-x-bot",
-    "bot:post:x": "POST_TARGETS=x ANALYTICS_STORE_FILENAME=tweet-analytics.json npm run post --workspace @x-automation/postgame-x-bot",
-    "bot:post:threads": "POST_TARGETS=threads ANALYTICS_STORE_FILENAME=threads-analytics.json npm run post --workspace @x-automation/postgame-x-bot",
-    "bot:dry-run": "npm run dry-run --workspace @x-automation/postgame-x-bot",
-    "bot:dry-run:x": "POST_TARGETS=x ANALYTICS_STORE_FILENAME=tweet-analytics.json npm run dry-run --workspace @x-automation/postgame-x-bot",
-    "bot:dry-run:threads": "POST_TARGETS=threads ANALYTICS_STORE_FILENAME=threads-analytics.json npm run dry-run --workspace @x-automation/postgame-x-bot",
-    "bot:test": "npm run test --workspace @x-automation/postgame-x-bot",
-    "bot:analytics:pull": "npm run analytics:pull --workspace @x-automation/postgame-x-bot",
-    "bot:analytics:pull:x": "ANALYTICS_STORE_FILENAME=tweet-analytics.json npm run analytics:pull --workspace @x-automation/postgame-x-bot",
-    "bot:analytics:pull:threads": "ANALYTICS_STORE_FILENAME=threads-analytics.json npm run analytics:pull --workspace @x-automation/postgame-x-bot",
-    "bot:analytics:report": "npm run analytics:report --workspace @x-automation/postgame-x-bot",
-    "bot:analytics:backfill": "npm run analytics:backfill --workspace @x-automation/postgame-x-bot",
-    "bot:analytics:content-backfill": "npm run analytics:content-backfill --workspace @x-automation/postgame-x-bot",
-    "bot:threads:token:exchange": "npm run threads:token:exchange --workspace @x-automation/postgame-x-bot",
-    "bot:threads:token:refresh": "npm run threads:token:refresh --workspace @x-automation/postgame-x-bot"
+    "bot:post": "npm run post --workspace @x-automation/social-bot-engine",
+    "bot:post:x": "POST_TARGETS=x ANALYTICS_STORE_FILENAME=tweet-analytics.json npm run post --workspace @x-automation/social-bot-engine",
+    "bot:post:threads": "POST_TARGETS=threads ANALYTICS_STORE_FILENAME=threads-analytics.json npm run post --workspace @x-automation/social-bot-engine",
+    "bot:dry-run": "npm run dry-run --workspace @x-automation/social-bot-engine",
+    "bot:dry-run:x": "POST_TARGETS=x ANALYTICS_STORE_FILENAME=tweet-analytics.json npm run dry-run --workspace @x-automation/social-bot-engine",
+    "bot:dry-run:threads": "POST_TARGETS=threads ANALYTICS_STORE_FILENAME=threads-analytics.json npm run dry-run --workspace @x-automation/social-bot-engine",
+    "bot:test": "npm run test --workspace @x-automation/social-bot-engine",
+    "bot:analytics:pull": "npm run analytics:pull --workspace @x-automation/social-bot-engine",
+    "bot:analytics:pull:x": "ANALYTICS_STORE_FILENAME=tweet-analytics.json npm run analytics:pull --workspace @x-automation/social-bot-engine",
+    "bot:analytics:pull:threads": "ANALYTICS_STORE_FILENAME=threads-analytics.json npm run analytics:pull --workspace @x-automation/social-bot-engine",
+    "bot:analytics:report": "npm run analytics:report --workspace @x-automation/social-bot-engine",
+    "bot:analytics:backfill": "npm run analytics:backfill --workspace @x-automation/social-bot-engine",
+    "bot:analytics:content-backfill": "npm run analytics:content-backfill --workspace @x-automation/social-bot-engine",
+    "bot:threads:token:exchange": "npm run threads:token:exchange --workspace @x-automation/social-bot-engine",
+    "bot:threads:token:refresh": "npm run threads:token:refresh --workspace @x-automation/social-bot-engine",
+    "bot:campaigns:list": "node --import tsx apps/social-bot-engine/scripts/list-campaigns.ts"
   }
 }

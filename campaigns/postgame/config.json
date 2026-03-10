@@ -1,0 +1,9 @@
+{
+  "slug": "postgame",
+  "name": "Postgame AI",
+  "brandName": "postgame AI",
+  "brandWebsite": "getpostgame.ai",
+  "clickTargetUrl": "https://getpostgame.ai",
+  "postTargets": ["x"],
+  "dataSource": "sports"
+}

@@ -1,12 +1,12 @@
-# postgame.ai Social Bot
+# Social Bot Engine
 
-Automated sports content for X and Threads: fetch data from API-Sports (with ESPN fallback), generate posts with OpenAI, and publish twice daily via GitHub Actions. Built with **TypeScript** and Node.js.
+Multi-campaign social bot engine for X and Threads: fetch data, generate posts with OpenAI, and publish on schedule via GitHub Actions. Each campaign has its own config, prompts, and state. Built with **TypeScript** and Node.js.
 
 ## Setup
 
 1. **Clone and enter the project**
    ```bash
-   cd apps/postgame-x-bot
+   cd apps/social-bot-engine
    ```
 
 2. **Copy env template and add secrets**
@@ -129,7 +129,7 @@ Repository variables:
 
 Posting is **on** in CI (GitHub Actions) and **off** (dry run) when run locally, unless you set `POST_ENABLED=true`.
 
-If you are running from the monorepo root, use `npm run bot:dry-run` or `npm run bot:post`. The root GitHub Actions workflow already targets `apps/postgame-x-bot`.
+If you are running from the monorepo root, use `npm run bot:dry-run` or `npm run bot:post`. The root GitHub Actions workflow already targets `apps/social-bot-engine`.
 
 Additional GitHub Actions setup for news:
 - Add `NEWS_API_KEY` as a repository secret

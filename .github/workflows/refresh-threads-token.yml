@@ -36,7 +36,7 @@ jobs:
             exit 1
           fi
 
-          RAW_JSON=$(npm run threads:token:refresh --workspace @x-automation/postgame-x-bot -- --json)
+          RAW_JSON=$(npm run threads:token:refresh --workspace @x-automation/social-bot-engine -- --json)
           NEW_TOKEN=$(node -e 'const data = JSON.parse(process.argv[1]); process.stdout.write(data.accessToken);' "$RAW_JSON")
           EXPIRES_AT=$(node -e 'const data = JSON.parse(process.argv[1]); process.stdout.write(data.expiresAt);' "$RAW_JSON")
 

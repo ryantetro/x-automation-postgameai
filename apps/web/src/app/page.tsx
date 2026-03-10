@@ -15,8 +15,10 @@ import InteractiveTimelineChart from "./components/InteractiveTimelineChart";
 
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
-  const store = await loadStore();
+export default async function Home({ searchParams }: { searchParams: Promise<{ campaign?: string }> }) {
+  const params = await searchParams;
+  const campaignSlug = params.campaign;
+  const store = await loadStore({ campaignSlug });
 
   const posted = store.tweets.filter((t) => t.status === "posted").sort((a, b) => Date.parse(a.postedAt) - Date.parse(b.postedAt));
   const recent = posted.slice(-12).reverse();
@@ -64,11 +66,11 @@ export default async function Home() {
 
   return (
     <div className="dash">
-      <Sidebar activePage="dashboard" />
+      <Sidebar activePage="dashboard" campaignSlug={campaignSlug} />
       <main className="main">
         <header className="header">
           <div className="header-left">
-            <span className="page-kicker">Command center</span>
+            <span className="page-kicker">{store.activeCampaign ? store.activeCampaign.name : "All campaigns"}</span>
             <h2>Dashboard</h2>
             <span>{posted.length} posts &middot; {xPosts} X &middot; {threadsPosts} Threads</span>
           </div>
@@ -137,6 +139,7 @@ export default async function Home() {
                   <table className="posts-table">
                     <thead>
                       <tr>
+                        {!campaignSlug && <th>Campaign</th>}
                         <th>Sport</th>
                         <th>Platform</th>
                         <th>Frame</th>
@@ -158,6 +161,7 @@ export default async function Home() {
                           const clicks = tweet.clickMetrics?.totalClicks;
                           return (
                             <tr key={tweet.runId}>
+                              {!campaignSlug && <td><span className={`campaign-badge ${tweet.campaignSlug ?? ""}`}>{store.campaigns.find((c) => c.slug === tweet.campaignSlug)?.name ?? tweet.campaignSlug ?? "—"}</span></td>}
                               <td><span className={`sport-pill ${sportClass(tweet.sport)}`}>{tweet.sport}</span></td>
                               <td><span className={`platform-pill ${platformClass(tweet)}`}>{platformLabel(tweet)}</span></td>
                               <td>
@@ -194,7 +198,7 @@ export default async function Home() {
                           );
                         })
                       ) : (
-                        <tr><td colSpan={10} className="empty-state">No posts yet. Run the bot to see results here.</td></tr>
+                        <tr><td colSpan={campaignSlug ? 10 : 11} className="empty-state">No posts yet. Run the bot to see results here.</td></tr>
                       )}
                     </tbody>
                   </table>

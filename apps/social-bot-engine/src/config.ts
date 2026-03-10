@@ -1,3 +1,4 @@
+import { readFileSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
@@ -72,6 +73,44 @@ export function getAngleForDate(date: Date): string {
   return FACT_ANGLES[dayOfYear % FACT_ANGLES.length];
 }
 
+/** Angles for dataSource "angles_only" when no campaign pillars file exists. Rotated by day. */
+export const ANGLES_ONLY_ANGLES = [
+  "event seasonality and when teams/events order (spring games, fall festivals, trade shows)",
+  "durability in weather: wind, rain, sun — what actually holds up vs marketing claims",
+  "brand visibility at events: what gets seen from the sidelines or the booth",
+  "trade show vs game day vs festival: different needs for tents and flags",
+  "printed promo that survives a season vs one-and-done",
+  "sizing and setup: what event planners forget until it's too late",
+  "outdoor branding that reads from a distance",
+  "replacement and lead time when something fails right before an event",
+  "lead times and rush orders: when you need gear before the event, not after",
+] as const;
+
+/** Load angles for angles_only campaigns: from campaign content-pillars.json when CAMPAIGN=canopy and file exists, else ANGLES_ONLY_ANGLES. */
+export function getAnglesOnlyAngles(): string[] {
+  const slug = process.env.CAMPAIGN?.trim();
+  if (!slug) return [...ANGLES_ONLY_ANGLES];
+  const pillarsPath = resolve(WORKSPACE_ROOT, "campaigns", slug, "content-pillars.json");
+  if (!existsSync(pillarsPath)) return [...ANGLES_ONLY_ANGLES];
+  try {
+    const raw = readFileSync(pillarsPath, "utf-8");
+    const data = JSON.parse(raw) as { pillars?: Array<{ name: string }> };
+    const names = data.pillars?.map((p) => p.name) ?? [];
+    return names.length > 0 ? names : [...ANGLES_ONLY_ANGLES];
+  } catch {
+    return [...ANGLES_ONLY_ANGLES];
+  }
+}
+
+/** Pick an angle for angles_only campaigns (deterministic per day). Uses campaign pillars when available. */
+export function getAngleForDateAnglesOnly(date: Date): string {
+  const dayOfYear = Math.floor(
+    (date.getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / (24 * 60 * 60 * 1000)
+  );
+  const angles = getAnglesOnlyAngles();
+  return angles[dayOfYear % angles.length];
+}
+
 /** Pick sport for this run: use TARGET_SPORT unless it's "auto", then rotate by day of week. */
 export function getSportForRun(): string {
   if (targetSportRaw !== "auto" && ROTATION_SPORTS.includes(targetSportRaw as (typeof ROTATION_SPORTS)[number])) {
@@ -90,15 +129,30 @@ const postEnabledRaw = (postEnv || (defaultPostEnabled ? "true" : "false")).toLo
 export const POST_ENABLED = !["false", "0", "no"].includes(postEnabledRaw);
 
 export const PROMPTS_DIR = resolve(REPO_ROOT, "prompts");
+export const CAMPAIGNS_DIR = resolve(WORKSPACE_ROOT, "campaigns");
 export const LOGS_DIR = resolve(REPO_ROOT, "logs");
-export const STATE_DIR = resolve(REPO_ROOT, "state");
+/** Per-campaign state when CAMPAIGN is set and bootstrap ran; else bot-local state. */
+export const STATE_DIR = getEnv("CAMPAIGN_STATE_DIR") || resolve(REPO_ROOT, "state");
 export const ANALYTICS_STORE_FILENAME = getEnv("ANALYTICS_STORE_FILENAME", "tweet-analytics.json");
 export const ANALYTICS_ENABLED = !["false", "0", "no"].includes(getEnv("ANALYTICS_ENABLED", "true").toLowerCase());
 export const ANALYTICS_LOOKBACK_DAYS = Math.max(1, getIntEnv("ANALYTICS_LOOKBACK_DAYS", 21));
 export const ANALYTICS_MIN_AGE_MINUTES = Math.max(5, getIntEnv("ANALYTICS_MIN_AGE_MINUTES", 45));
 export const ANALYTICS_MAX_REFRESH = Math.max(1, getIntEnv("ANALYTICS_MAX_REFRESH", 40));
 export const TRACKING_BASE_URL = getEnv("TRACKING_BASE_URL");
+// Legacy defaults: these fall back to postgame values when CAMPAIGN is not set.
+// The bootstrap warning covers the risk; these keep post-daily-x.yml and post-daily-threads.yml working
+// without requiring CAMPAIGN= in those workflows.
 export const CLICK_TARGET_URL = getEnv("CLICK_TARGET_URL", "https://getpostgame.ai");
+/** Brand name in posts (set from campaign config or env; legacy default: "postgame AI"). */
+export const BRAND_NAME = getEnv("BRAND_NAME", "postgame AI");
+/** Brand website (set from campaign config or env; legacy default: "getpostgame.ai"). */
+export const BRAND_WEBSITE = getEnv("BRAND_WEBSITE", "getpostgame.ai");
+/** Data source for content: "sports" (default), "news", or "angles_only" (e.g. canopy). Set by campaign config. */
+export const DATA_SOURCE = (getEnv("DATA_SOURCE", "sports").toLowerCase() || "sports") as "sports" | "news" | "angles_only";
+/** When true (set by campaign config imageEnabled), generate and attach an AI image to posts. */
+export const IMAGE_ENABLED = !["false", "0", "no"].includes(getEnv("IMAGE_ENABLED", "false").toLowerCase());
+/** OpenAI image model: gpt-image-1, gpt-image-1-mini, or gpt-image-1.5. */
+export const IMAGE_MODEL = getEnv("IMAGE_MODEL", "gpt-image-1");
 export const NEWS_API_KEY = getEnv("NEWS_API_KEY");
 export const NEWS_ENABLED = !["false", "0", "no"].includes(getEnv("NEWS_ENABLED", "true").toLowerCase());
 export const NEWS_LOOKBACK_HOURS = Math.max(1, getIntEnv("NEWS_LOOKBACK_HOURS", 36));

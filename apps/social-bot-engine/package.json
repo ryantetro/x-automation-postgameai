@@ -1,14 +1,14 @@
 {
-  "name": "@x-automation/postgame-x-bot",
+  "name": "@x-automation/social-bot-engine",
   "version": "1.0.0",
-  "description": "Automated X (Twitter) bot for postgame.ai — fetch sports data, generate posts with OpenAI, publish twice daily",
+  "description": "Multi-campaign social bot engine — fetch data, generate posts with OpenAI, publish to X and Threads",
   "type": "module",
-  "main": "dist/main.js",
+  "main": "dist/run.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/main.js",
-    "post": "tsx src/main.ts",
-    "dry-run": "POST_ENABLED=false tsx src/main.ts",
+    "start": "node dist/run.js",
+    "post": "tsx src/run.ts",
+    "dry-run": "POST_ENABLED=false tsx src/run.ts",
     "analytics:pull": "node --import tsx scripts/pull-analytics.ts",
     "analytics:report": "node --import tsx scripts/analytics-report.ts",
     "analytics:backfill": "node --import tsx scripts/backfill-historical-analytics.ts",
@@ -16,9 +16,12 @@
     "threads:token:exchange": "node --import tsx scripts/threads-token.ts exchange",
     "threads:token:refresh": "node --import tsx scripts/threads-token.ts refresh",
     "test": "tsx scripts/test-validate.ts && tsx scripts/test-fetch.ts",
+    "test:canopy": "node --import tsx scripts/test-canopy.ts",
     "test:validate": "tsx scripts/test-validate.ts",
     "test:fetch": "tsx scripts/test-fetch.ts",
-    "sample-tweets": "tsx scripts/generate-sample-tweets.ts"
+    "sample-tweets": "tsx scripts/generate-sample-tweets.ts",
+    "sample-tweets:canopy": "node --import tsx scripts/generate-canopy-sample-tweets.ts",
+    "preflight:prod": "node --import tsx scripts/preflight-prod.ts"
   },
   "engines": {
     "node": ">=18"

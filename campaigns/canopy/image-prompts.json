@@ -1,0 +1,54 @@
+{
+  "mockupSuffix": " Shot on Canon EOS R5 with 50mm lens, f/4 aperture. Natural studio window light from the left side, subtle shadows on ground. Canopy fabric shows natural slight tension, realistic aluminum frame joints visible. Polyester canopy fabric with visible weave texture, anodized aluminum frame with brushed finish. Slight natural fabric creasing near frame joints. Light grey seamless paper background. Featuring a clean, professional business logo on the canopy peak panel and valance. Commercial product photography style, no harsh reflections.",
+  "lifestyleSuffix": " Shot on Sony A7III, 35mm lens, f/2.8. Natural daylight, slight overcast for even lighting. Eye-level medium shot, shallow depth of field with soft background bokeh. Candid event atmosphere, slight grass wear under tent legs, grass slightly flattened under tent footprint, realistic vendor setup with minor imperfections. A few leaves on the ground, extension cord or cooler tucked under table where appropriate. Canopy featuring a clean, professional business logo on the peak panel and valance.",
+  "negativePrompt": " No illustration, no 3D render, no CGI, no oversaturated, no perfect symmetry, no plastic texture, no oversaturated colors.",
+  "scenes": [
+    {
+      "scene": "Custom 10x10 pop-up canopy with a clean professional logo on the peak and valance at an outdoor spring festival, vendor row setting, solid navy blue fabric and white valance panel, branded tablecloth on display table, other vendor tents in background, bright blue sky, natural sunlight. Wide shot from attendee POV walking toward the booth.",
+      "style": "lifestyle"
+    },
+    {
+      "scene": "Single 10x10 custom pop-up canopy fully assembled, featuring a sample business name and logo on the peak panel and valance, solid red fabric and white valance, silver aluminum frame with visible leg crossbars, straight-on front view centered, light grey seamless studio background.",
+      "style": "mockup"
+    },
+    {
+      "scene": "Trade show booth with custom 10x10 canopy displaying a clean professional logo on the peak and valance, solid royal blue fabric, one branded booth standing out among neutral competitors on show floor, banner stand beside canopy, indoor venue lighting. Medium wide eye-level shot.",
+      "style": "lifestyle"
+    },
+    {
+      "scene": "Large 10x20 custom canopy with attached side walls and full valance, clean professional business logo on peak and valance panels, white fabric with clean panel construction, black aluminum frame, straight-on front view, side wall attachment points visible, light grey studio background. Three-quarter view showing depth.",
+      "style": "mockup"
+    },
+    {
+      "scene": "Real estate open house: custom pop-up canopy with professional logo on peak and valance at curb appeal, solid forest green fabric and white valance, branded table with brochures, sunny morning, house and lawn in background. Eye-level medium shot, shallow depth of field.",
+      "style": "lifestyle"
+    },
+    {
+      "scene": "Pop-up banner stand beside a fully assembled 10x10 custom canopy with sample business logo on peak and valance, charcoal grey fabric and white valance panel, portable retractable banner to the right, light grey background. Slightly angled three-quarter view showing depth and portability.",
+      "style": "mockup"
+    },
+    {
+      "scene": "Cycling or race event: custom 10x10 canopy with professional logo on peak and valance, bold orange fabric and white valance, feather flag beside it, crowd and event activity in background, outdoor daylight. Overhead drone-style wide shot showing branded tent standing out in busy event.",
+      "style": "lifestyle"
+    },
+    {
+      "scene": "Brewery tasting or fitness bootcamp: step-and-repeat backdrop beside custom 10x10 canopy with clean professional logo on peak and valance, solid black fabric and white valance, polished event environment, concrete or hardwood floor, even indoor lighting. Medium wide shot from customer POV approaching the booth.",
+      "style": "lifestyle"
+    },
+    {
+      "scene": "Farmers market or weekend market: custom pop-up canopy with professional logo on peak and valance, burgundy red fabric and white valance, branded tablecloth on vendor table, product display on table, early morning soft light, other vendors in background. Close-up of valance and peak branding with market scene behind.",
+      "style": "lifestyle"
+    },
+    {
+      "scene": "Local parade or community event: custom 10x10 pop-up canopy with professional logo on peak and valance, solid teal fabric and white valance, sidewalk or street setting, crowd and parade activity in background, daytime. Medium wide shot showing branded tent as focal point amid local event.",
+      "style": "lifestyle"
+    },
+    {
+      "scene": "Nonprofit or charity fundraiser booth: custom pop-up canopy with clean professional logo on peak and valance, soft blue fabric and white valance, information table with brochures, welcoming volunteer presence, park or community center setting. Eye-level shot, natural daylight.",
+      "style": "lifestyle"
+    }
+  ],
+  "size": "1536x1024",
+  "quality": "medium",
+  "referenceImage": "01-product-mockup-branded-canopy-white-bg.png"
+}

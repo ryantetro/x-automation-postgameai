@@ -11,11 +11,28 @@ import type {
 import { FRAME_DEFINITIONS, HOOK_DEFINITIONS } from "./contentArchitecture.js";
 
 export const ANALYTICS_STORE_FILE = resolve(STATE_DIR, ANALYTICS_STORE_FILENAME);
-const STORE_VERSION = 3;
+const STORE_VERSION = 4;
 
 export type TweetStatus = "posted" | "dry_run" | "failed";
 export type ContentMode = "sports_only" | "news_preferred";
 export type PublishPlatform = "x" | "threads";
+export type AnalyticsPlatformStatus = "healthy" | "degraded" | "blocked";
+
+export interface AnalyticsPlatformHealth {
+  status: AnalyticsPlatformStatus;
+  lastAttemptAt?: string;
+  lastSuccessAt?: string;
+  lastError?: string;
+  lastErrorCode?: string;
+}
+
+export interface TweetAnalyticsFetchState {
+  status: "ok" | "error" | "skipped";
+  updatedAt: string;
+  reason?: string;
+  permanent?: boolean;
+  failures?: number;
+}
 
 export interface PrePublishChecks {
   hookDetected: boolean;
@@ -103,6 +120,9 @@ export interface TweetAnalyticsRecord {
   clickMetrics?: ClickMetricsSnapshot;
   score?: number;
   scoreUpdatedAt?: string;
+  /** True when the post included an AI-generated image (e.g. canopy). */
+  hasImage?: boolean;
+  analyticsFetchState?: Partial<Record<PublishPlatform, TweetAnalyticsFetchState>>;
 }
 
 export interface AnalyticsStore {
@@ -110,6 +130,7 @@ export interface AnalyticsStore {
   updatedAt: string;
   tweets: TweetAnalyticsRecord[];
   threadsUserInsights?: ThreadsUserInsightsSnapshot;
+  analyticsHealth?: Partial<Record<PublishPlatform, AnalyticsPlatformHealth>>;
 }
 
 export interface RefreshOptions {
@@ -185,6 +206,7 @@ export function defaultStore(): AnalyticsStore {
     version: STORE_VERSION,
     updatedAt: new Date().toISOString(),
     tweets: [],
+    analyticsHealth: {},
   };
 }
 
@@ -198,6 +220,10 @@ export function loadAnalyticsStore(path = ANALYTICS_STORE_FILE): AnalyticsStore 
       version: typeof parsed.version === "number" ? parsed.version : STORE_VERSION,
       updatedAt: typeof parsed.updatedAt === "string" ? parsed.updatedAt : new Date().toISOString(),
       tweets,
+      analyticsHealth:
+        parsed.analyticsHealth && typeof parsed.analyticsHealth === "object"
+          ? (parsed.analyticsHealth as Partial<Record<PublishPlatform, AnalyticsPlatformHealth>>)
+          : {},
       threadsUserInsights:
         parsed.threadsUserInsights && typeof parsed.threadsUserInsights === "object"
           ? (parsed.threadsUserInsights as ThreadsUserInsightsSnapshot)
@@ -346,6 +372,94 @@ function numberFromUnknown(value: unknown): number {
   return typeof value === "number" && Number.isFinite(value) ? value : 0;
 }
 
+function nowIso(): string {
+  return new Date().toISOString();
+}
+
+function setStoreAnalyticsHealth(
+  store: AnalyticsStore,
+  platform: PublishPlatform,
+  patch: Partial<AnalyticsPlatformHealth> & Pick<AnalyticsPlatformHealth, "status">
+): void {
+  const current = store.analyticsHealth?.[platform] ?? {};
+  store.analyticsHealth = {
+    ...(store.analyticsHealth ?? {}),
+    [platform]: {
+      ...current,
+      ...patch,
+    },
+  };
+}
+
+function setTweetFetchState(
+  tweet: TweetAnalyticsRecord,
+  platform: PublishPlatform,
+  patch: Partial<TweetAnalyticsFetchState> & Pick<TweetAnalyticsFetchState, "status">
+): void {
+  const current = tweet.analyticsFetchState?.[platform] ?? {};
+  tweet.analyticsFetchState = {
+    ...(tweet.analyticsFetchState ?? {}),
+    [platform]: {
+      ...current,
+      ...patch,
+    },
+  };
+}
+
+function clearTweetFetchState(tweet: TweetAnalyticsRecord, platform: PublishPlatform): void {
+  tweet.analyticsFetchState = {
+    ...tweet.analyticsFetchState,
+    [platform]: {
+      status: "ok",
+      updatedAt: nowIso(),
+      failures: 0,
+    },
+  };
+}
+
+function getErrorMessage(err: unknown, fallback: string): string {
+  if (err instanceof Error && err.message.trim()) return err.message.trim();
+  return fallback;
+}
+
+function getXErrorCode(err: unknown): string | undefined {
+  if (err && typeof err === "object") {
+    if ("code" in err && typeof (err as { code?: number | string }).code !== "undefined") {
+      return String((err as { code?: number | string }).code);
+    }
+    if (
+      "data" in err &&
+      (err as { data?: { title?: unknown } }).data &&
+      typeof (err as { data?: { title?: unknown } }).data?.title === "string"
+    ) {
+      return String((err as { data?: { title?: unknown } }).data?.title);
+    }
+  }
+  return undefined;
+}
+
+function isXCreditsDepletedError(err: unknown): boolean {
+  if (!err || typeof err !== "object") return false;
+  const code = "code" in err ? (err as { code?: unknown }).code : undefined;
+  const title =
+    "data" in err && (err as { data?: { title?: unknown } }).data
+      ? (err as { data?: { title?: unknown } }).data?.title
+      : undefined;
+  return code === 402 || title === "CreditsDepleted";
+}
+
+function isPermanentThreadsInsightsError(message: string, status: number): boolean {
+  const normalized = message.toLowerCase();
+  return (
+    status === 400 ||
+    status === 403 ||
+    status === 404 ||
+    normalized.includes("unsupported get request") ||
+    normalized.includes("does not exist") ||
+    normalized.includes("missing permissions")
+  );
+}
+
 function nullableNumberFromUnknown(value: unknown): number | null {
   if (value == null) return null;
   return typeof value === "number" && Number.isFinite(value) ? value : null;
@@ -394,9 +508,13 @@ function parseThreadsMediaMetrics(rows: ThreadsInsightRow[]): TweetMetricsSnapsh
   };
 }
 
-async function fetchThreadsMetricsByPostId(ids: string[]): Promise<Map<string, TweetMetricsSnapshot>> {
-  const out = new Map<string, TweetMetricsSnapshot>();
-  if (!THREADS_ACCESS_TOKEN || ids.length === 0) return out;
+async function fetchThreadsMetricsByPostId(ids: string[]): Promise<{
+  metricsById: Map<string, TweetMetricsSnapshot>;
+  failuresById: Map<string, { message: string; status: number; permanent: boolean }>;
+}> {
+  const metricsById = new Map<string, TweetMetricsSnapshot>();
+  const failuresById = new Map<string, { message: string; status: number; permanent: boolean }>();
+  if (!THREADS_ACCESS_TOKEN || ids.length === 0) return { metricsById, failuresById };
 
   for (const id of ids) {
     const params = new URLSearchParams({
@@ -409,17 +527,21 @@ async function fetchThreadsMetricsByPostId(ids: string[]): Promise<Map<string, T
         typeof response.json.error === "object" && response.json.error && "message" in response.json.error
           ? String((response.json.error as { message?: unknown }).message ?? "")
           : `HTTP ${response.status}`;
-      console.warn(`Threads media insights fetch failed for ${id}: ${message}`);
+      failuresById.set(id, {
+        message,
+        status: response.status,
+        permanent: isPermanentThreadsInsightsError(message, response.status),
+      });
       continue;
     }
 
     const rows = Array.isArray(response.json.data)
       ? (response.json.data.filter((row) => typeof row === "object" && row != null) as ThreadsInsightRow[])
       : [];
-    out.set(id, parseThreadsMediaMetrics(rows));
+    metricsById.set(id, parseThreadsMediaMetrics(rows));
   }
 
-  return out;
+  return { metricsById, failuresById };
 }
 
 function parseThreadsUserInsights(rows: ThreadsInsightRow[]): ThreadsUserInsightsSnapshot {
@@ -526,6 +648,11 @@ export async function refreshMetricsForStore(
   client: TwitterApi,
   options: RefreshOptions
 ): Promise<{ updated: number; attempted: number }> {
+  const attemptAt = nowIso();
+  setStoreAnalyticsHealth(store, "x", {
+    status: store.analyticsHealth?.x?.status ?? "healthy",
+    lastAttemptAt: attemptAt,
+  });
   const oldestAllowed = Date.now() - options.lookbackDays * 24 * 60 * 60 * 1000;
 
   const targets = store.tweets
@@ -539,17 +666,67 @@ export async function refreshMetricsForStore(
   const ids = [...new Set(targets.map((t) => t.tweetId!).filter(Boolean))];
   if (ids.length === 0) return { updated: 0, attempted: 0 };
 
-  const byId = await fetchMetricsByTweetId(client, ids);
+  let byId: Map<string, TweetMetricsSnapshot>;
+  try {
+    byId = await fetchMetricsByTweetId(client, ids);
+  } catch (err) {
+    const message = getErrorMessage(err, "X analytics refresh failed");
+    if (isXCreditsDepletedError(err)) {
+      console.warn(`X analytics blocked: ${message}`);
+      setStoreAnalyticsHealth(store, "x", {
+        status: "blocked",
+        lastAttemptAt: attemptAt,
+        lastError: message,
+        lastErrorCode: getXErrorCode(err) ?? "CreditsDepleted",
+      });
+      return { updated: 0, attempted: ids.length };
+    }
+
+    console.warn(`X analytics refresh failed: ${message}`);
+    setStoreAnalyticsHealth(store, "x", {
+      status: "degraded",
+      lastAttemptAt: attemptAt,
+      lastError: message,
+      lastErrorCode: getXErrorCode(err),
+    });
+    return { updated: 0, attempted: ids.length };
+  }
 
   let updated = 0;
   for (const tweet of targets) {
     if (!tweet.tweetId) continue;
     const metrics = byId.get(tweet.tweetId);
-    if (!metrics) continue;
+    if (!metrics) {
+      setTweetFetchState(tweet, "x", {
+        status: "error",
+        updatedAt: nowIso(),
+        reason: "No X metrics returned for this tweet",
+        failures: (tweet.analyticsFetchState?.x?.failures ?? 0) + 1,
+      });
+      continue;
+    }
     tweet.metrics = metrics;
     tweet.score = computeScore(metrics);
-    tweet.scoreUpdatedAt = new Date().toISOString();
+    tweet.scoreUpdatedAt = nowIso();
+    clearTweetFetchState(tweet, "x");
     updated++;
+  }
+
+  if (updated === 0 && ids.length > 0) {
+    setStoreAnalyticsHealth(store, "x", {
+      status: "degraded",
+      lastAttemptAt: attemptAt,
+      lastError: "No X metrics returned for eligible tweet(s)",
+      lastErrorCode: "x_metrics_empty",
+    });
+  } else {
+    setStoreAnalyticsHealth(store, "x", {
+      status: "healthy",
+      lastAttemptAt: attemptAt,
+      lastSuccessAt: updated > 0 ? nowIso() : store.analyticsHealth?.x?.lastSuccessAt,
+      lastError: updated > 0 ? undefined : store.analyticsHealth?.x?.lastError,
+      lastErrorCode: updated > 0 ? undefined : store.analyticsHealth?.x?.lastErrorCode,
+    });
   }
 
   return { updated, attempted: ids.length };
@@ -559,10 +736,16 @@ export async function refreshThreadsMetricsForStore(
   store: AnalyticsStore,
   options: RefreshOptions
 ): Promise<{ updated: number; attempted: number; userInsightsUpdated: boolean }> {
+  const attemptAt = nowIso();
+  setStoreAnalyticsHealth(store, "threads", {
+    status: store.analyticsHealth?.threads?.status ?? "healthy",
+    lastAttemptAt: attemptAt,
+  });
   const oldestAllowed = Date.now() - options.lookbackDays * 24 * 60 * 60 * 1000;
 
   const targets = store.tweets
     .filter((t) => t.status === "posted" && !!t.threadsPostId)
+    .filter((t) => !t.analyticsFetchState?.threads?.permanent)
     .filter((t) => Date.parse(t.postedAt) >= oldestAllowed)
     .filter((t) => minutesSince(t.postedAt) >= options.minAgeMinutes)
     .filter((t) => !t.metrics || t.metrics.platform !== "threads" || minutesSince(t.metrics.fetchedAt) >= 60)
@@ -570,16 +753,29 @@ export async function refreshThreadsMetricsForStore(
     .slice(0, options.maxTweets);
 
   const ids = [...new Set(targets.map((t) => t.threadsPostId!).filter(Boolean))];
-  const byId = await fetchThreadsMetricsByPostId(ids);
+  const { metricsById, failuresById } = await fetchThreadsMetricsByPostId(ids);
 
   let updated = 0;
   for (const tweet of targets) {
     if (!tweet.threadsPostId) continue;
-    const metrics = byId.get(tweet.threadsPostId);
-    if (!metrics) continue;
+    const metrics = metricsById.get(tweet.threadsPostId);
+    if (!metrics) {
+      const failure = failuresById.get(tweet.threadsPostId);
+      if (failure) {
+        setTweetFetchState(tweet, "threads", {
+          status: failure.permanent ? "skipped" : "error",
+          updatedAt: nowIso(),
+          reason: failure.message,
+          permanent: failure.permanent,
+          failures: (tweet.analyticsFetchState?.threads?.failures ?? 0) + 1,
+        });
+      }
+      continue;
+    }
     tweet.metrics = metrics;
     tweet.score = computeScore(metrics);
-    tweet.scoreUpdatedAt = new Date().toISOString();
+    tweet.scoreUpdatedAt = nowIso();
+    clearTweetFetchState(tweet, "threads");
     updated++;
   }
 
@@ -587,6 +783,18 @@ export async function refreshThreadsMetricsForStore(
   if (userInsights) {
     store.threadsUserInsights = userInsights;
   }
+
+  const failureMessages = [...failuresById.values()].map((failure) => failure.message);
+  const hasPermanentFailures = [...failuresById.values()].some((failure) => failure.permanent);
+  const status: AnalyticsPlatformStatus =
+    updated > 0 || userInsights ? "healthy" : failureMessages.length > 0 ? "degraded" : "healthy";
+  setStoreAnalyticsHealth(store, "threads", {
+    status,
+    lastAttemptAt: attemptAt,
+    lastSuccessAt: updated > 0 || userInsights ? nowIso() : store.analyticsHealth?.threads?.lastSuccessAt,
+    lastError: failureMessages.length > 0 ? failureMessages[0] : undefined,
+    lastErrorCode: hasPermanentFailures ? "threads_media_insights_unavailable" : undefined,
+  });
 
   return {
     updated,
