@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-11T11:31:09.484Z",
+  "updatedAt": "2026-03-11T23:18:26.065Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -37,23 +37,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-11T11:30:40.850Z",
+        "fetchedAt": "2026-03-11T23:18:00.602Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 10,
+        "impressionCount": 11,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 10,
-      "scoreUpdatedAt": "2026-03-11T11:30:40.850Z",
+      "score": 11,
+      "scoreUpdatedAt": "2026-03-11T23:18:00.602Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:30:40.850Z",
+          "updatedAt": "2026-03-11T23:18:00.602Z",
           "failures": 0
         }
       }
@@ -93,23 +93,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-11T11:30:40.850Z",
+        "fetchedAt": "2026-03-11T23:18:00.602Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 9,
+        "impressionCount": 10,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 9,
-      "scoreUpdatedAt": "2026-03-11T11:30:40.850Z",
+      "score": 10,
+      "scoreUpdatedAt": "2026-03-11T23:18:00.602Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:30:40.850Z",
+          "updatedAt": "2026-03-11T23:18:00.602Z",
           "failures": 0
         }
       }
@@ -149,23 +149,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-11T11:30:40.850Z",
+        "fetchedAt": "2026-03-11T23:18:00.602Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 1,
+        "impressionCount": 3,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 1,
-      "scoreUpdatedAt": "2026-03-11T11:30:40.850Z",
+      "score": 3,
+      "scoreUpdatedAt": "2026-03-11T23:18:00.602Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:30:40.850Z",
+          "updatedAt": "2026-03-11T23:18:00.602Z",
           "failures": 0
         }
       }
@@ -205,7 +205,63 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-11T11:31:09.484Z",
+        "fetchedAt": "2026-03-11T23:18:00.601Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 2,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 2,
+      "scoreUpdatedAt": "2026-03-11T23:18:00.602Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-11T23:18:00.602Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "c45b653d-4eec-437d-84e5-06941bea2bea",
+      "tweetId": "2031872402053861648",
+      "postedAt": "2026-03-11T23:18:00.374Z",
+      "dateContext": "2026-03-11",
+      "sport": "canopy",
+      "angle": "Industry Playbooks",
+      "source": "llm",
+      "status": "posted",
+      "text": "What’s your strategy for a fall festival or game day when your construction booth needs to stand out? Share your playbook for those times when lead times and setup are non-negotiable.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2031872402053861648"
+        }
+      ],
+      "hasImage": true,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-11T23:18:26.065Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -217,11 +273,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-11T11:31:09.484Z",
+      "scoreUpdatedAt": "2026-03-11T23:18:26.065Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:31:09.484Z",
+          "updatedAt": "2026-03-11T23:18:26.065Z",
           "failures": 0
         }
       }
@@ -230,8 +286,8 @@
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-11T11:31:09.341Z",
-      "lastSuccessAt": "2026-03-11T11:31:09.484Z"
+      "lastAttemptAt": "2026-03-11T23:18:25.962Z",
+      "lastSuccessAt": "2026-03-11T23:18:26.065Z"
     }
   }
 }
