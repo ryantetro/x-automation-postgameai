@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-11T11:44:45.973Z",
+  "updatedAt": "2026-03-11T23:33:46.187Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -73,7 +73,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-11T11:44:32.646Z",
+        "fetchedAt": "2026-03-11T23:33:33.917Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -85,7 +85,7 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-03-11T11:44:32.647Z",
+      "scoreUpdatedAt": "2026-03-11T23:33:33.917Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
@@ -96,7 +96,7 @@
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:44:32.647Z",
+          "updatedAt": "2026-03-11T23:33:33.917Z",
           "failures": 0
         }
       }
@@ -408,7 +408,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-11T11:44:32.422Z",
+        "fetchedAt": "2026-03-11T23:33:33.723Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -420,11 +420,11 @@
         "engagementRate": 0
       },
       "score": 16,
-      "scoreUpdatedAt": "2026-03-11T11:44:32.647Z",
+      "scoreUpdatedAt": "2026-03-11T23:33:33.917Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:44:32.647Z",
+          "updatedAt": "2026-03-11T23:33:33.917Z",
           "failures": 0
         }
       }
@@ -604,7 +604,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-11T11:44:32.236Z",
+        "fetchedAt": "2026-03-11T23:33:33.389Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -616,11 +616,11 @@
         "engagementRate": 0
       },
       "score": 3,
-      "scoreUpdatedAt": "2026-03-11T11:44:32.647Z",
+      "scoreUpdatedAt": "2026-03-11T23:33:33.917Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:44:32.647Z",
+          "updatedAt": "2026-03-11T23:33:33.917Z",
           "failures": 0
         }
       }
@@ -668,7 +668,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-11T11:44:32.030Z",
+        "fetchedAt": "2026-03-11T23:33:33.177Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -680,11 +680,11 @@
         "engagementRate": 0
       },
       "score": 12,
-      "scoreUpdatedAt": "2026-03-11T11:44:32.647Z",
+      "scoreUpdatedAt": "2026-03-11T23:33:33.917Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:44:32.647Z",
+          "updatedAt": "2026-03-11T23:33:33.917Z",
           "failures": 0
         }
       }
@@ -729,7 +729,7 @@
       "hasImage": false,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-11T11:44:31.885Z",
+        "fetchedAt": "2026-03-11T23:33:33.036Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -741,11 +741,11 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-03-11T11:44:32.647Z",
+      "scoreUpdatedAt": "2026-03-11T23:33:33.917Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:44:32.647Z",
+          "updatedAt": "2026-03-11T23:33:33.917Z",
           "failures": 0
         }
       }
@@ -790,23 +790,23 @@
       "hasImage": false,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-11T11:44:31.521Z",
+        "fetchedAt": "2026-03-11T23:33:32.805Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 9,
+        "impressionCount": 10,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 9,
-      "scoreUpdatedAt": "2026-03-11T11:44:32.647Z",
+      "score": 10,
+      "scoreUpdatedAt": "2026-03-11T23:33:33.917Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:44:32.647Z",
+          "updatedAt": "2026-03-11T23:33:33.917Z",
           "failures": 0
         }
       }
@@ -851,7 +851,72 @@
       "hasImage": false,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-11T11:44:45.757Z",
+        "fetchedAt": "2026-03-11T23:33:32.659Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 16,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 16,
+      "scoreUpdatedAt": "2026-03-11T23:33:33.917Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-03-11T23:33:33.917Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "14e3eb8e-a820-47f1-a7c6-cc4906056cd2",
+      "threadsPostId": "17869729956570004",
+      "postedAt": "2026-03-11T23:33:32.118Z",
+      "dateContext": "2026-03-11",
+      "sport": "soccer",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "posted",
+      "text": "The Champions League hype says PSG vs. Chelsea is all about star power, but real coaches know it's the set pieces that'll break the game open. Those routines aren't just rehearsed—each misstep on the training ground costs you when it matters most. postgame AI · getpostgame.ai #CoachingTruth #SetPieceReality",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Paris Saint-Germain vs. Chelsea prediction: Expert locks best bets for Champions League Round of 16 first leg",
+      "newsArticleUrl": "https://www.cbssports.com/betting/news/paris-saint-germain-vs-chelsea-prediction-expert-locks-best-bets-for-champions-league-round-of-16-first-leg/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-03-10T14:39:38Z",
+      "contentFrameId": "scoreboard_lie",
+      "contentFrameLabel": "The Scoreboard Lie",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Scoreboard Lie to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "the_champions",
+      "linkTargetUrl": "",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "17869729956570004"
+        }
+      ],
+      "hasImage": false,
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-03-11T23:33:45.834Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -863,11 +928,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-11T11:44:45.757Z",
+      "scoreUpdatedAt": "2026-03-11T23:33:45.834Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-11T11:44:45.757Z",
+          "updatedAt": "2026-03-11T23:33:45.834Z",
           "failures": 0
         }
       }
@@ -876,13 +941,13 @@
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-11T11:44:45.474Z",
-      "lastSuccessAt": "2026-03-11T11:44:45.973Z"
+      "lastAttemptAt": "2026-03-11T23:33:45.496Z",
+      "lastSuccessAt": "2026-03-11T23:33:46.187Z"
     }
   },
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-11T11:44:45.973Z",
-    "views": 0,
+    "fetchedAt": "2026-03-11T23:33:46.186Z",
+    "views": 17,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
