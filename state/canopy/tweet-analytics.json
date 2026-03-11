@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-10T23:20:25.238Z",
+  "updatedAt": "2026-03-11T11:31:09.484Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -37,23 +37,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-10T23:19:59.615Z",
+        "fetchedAt": "2026-03-11T11:30:40.850Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 9,
+        "impressionCount": 10,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 9,
-      "scoreUpdatedAt": "2026-03-10T23:19:59.615Z",
+      "score": 10,
+      "scoreUpdatedAt": "2026-03-11T11:30:40.850Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-10T23:19:59.615Z",
+          "updatedAt": "2026-03-11T11:30:40.850Z",
           "failures": 0
         }
       }
@@ -93,23 +93,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-10T23:19:59.615Z",
+        "fetchedAt": "2026-03-11T11:30:40.850Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 8,
+        "impressionCount": 9,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 8,
-      "scoreUpdatedAt": "2026-03-10T23:19:59.615Z",
+      "score": 9,
+      "scoreUpdatedAt": "2026-03-11T11:30:40.850Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-10T23:19:59.615Z",
+          "updatedAt": "2026-03-11T11:30:40.850Z",
           "failures": 0
         }
       }
@@ -149,7 +149,63 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-10T23:20:25.238Z",
+        "fetchedAt": "2026-03-11T11:30:40.850Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 1,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 1,
+      "scoreUpdatedAt": "2026-03-11T11:30:40.850Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-11T11:30:40.850Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "bcb67a00-7c57-4765-9ee0-befcdcb00dac",
+      "tweetId": "2031694409671061554",
+      "postedAt": "2026-03-11T11:30:40.607Z",
+      "dateContext": "2026-03-11",
+      "sport": "canopy",
+      "angle": "Industry Playbooks",
+      "source": "llm",
+      "status": "posted",
+      "text": "What's your go-to setup when your construction booth needs to stand tall and apart at a festival or open house? With fall events around the corner, lead time matters. What's your playbook for last-minute booth emergencies?",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2031694409671061554"
+        }
+      ],
+      "hasImage": true,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-11T11:31:09.484Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -161,11 +217,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-10T23:20:25.238Z",
+      "scoreUpdatedAt": "2026-03-11T11:31:09.484Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-10T23:20:25.238Z",
+          "updatedAt": "2026-03-11T11:31:09.484Z",
           "failures": 0
         }
       }
@@ -174,8 +230,8 @@
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-10T23:20:25.135Z",
-      "lastSuccessAt": "2026-03-10T23:20:25.238Z"
+      "lastAttemptAt": "2026-03-11T11:31:09.341Z",
+      "lastSuccessAt": "2026-03-11T11:31:09.484Z"
     }
   }
 }
