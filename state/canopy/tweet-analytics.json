@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-12T11:30:12.956Z",
+  "updatedAt": "2026-03-12T23:20:37.893Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -37,23 +37,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-12T11:29:44.927Z",
+        "fetchedAt": "2026-03-12T23:20:11.874Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 11,
+        "impressionCount": 13,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 11,
-      "scoreUpdatedAt": "2026-03-12T11:29:44.927Z",
+      "score": 13,
+      "scoreUpdatedAt": "2026-03-12T23:20:11.874Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-12T11:29:44.927Z",
+          "updatedAt": "2026-03-12T23:20:11.874Z",
           "failures": 0
         }
       }
@@ -93,23 +93,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-12T11:29:44.927Z",
+        "fetchedAt": "2026-03-12T23:20:11.874Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 10,
+        "impressionCount": 12,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 10,
-      "scoreUpdatedAt": "2026-03-12T11:29:44.927Z",
+      "score": 12,
+      "scoreUpdatedAt": "2026-03-12T23:20:11.874Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-12T11:29:44.927Z",
+          "updatedAt": "2026-03-12T23:20:11.874Z",
           "failures": 0
         }
       }
@@ -149,23 +149,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-12T11:29:44.927Z",
+        "fetchedAt": "2026-03-12T23:20:11.874Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 3,
+        "impressionCount": 5,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 3,
-      "scoreUpdatedAt": "2026-03-12T11:29:44.927Z",
+      "score": 5,
+      "scoreUpdatedAt": "2026-03-12T23:20:11.874Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-12T11:29:44.927Z",
+          "updatedAt": "2026-03-12T23:20:11.874Z",
           "failures": 0
         }
       }
@@ -205,23 +205,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-12T11:29:44.927Z",
+        "fetchedAt": "2026-03-12T23:20:11.874Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 2,
+        "impressionCount": 4,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 2,
-      "scoreUpdatedAt": "2026-03-12T11:29:44.927Z",
+      "score": 4,
+      "scoreUpdatedAt": "2026-03-12T23:20:11.874Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-12T11:29:44.927Z",
+          "updatedAt": "2026-03-12T23:20:11.874Z",
           "failures": 0
         }
       }
@@ -261,23 +261,23 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-12T11:29:44.927Z",
+        "fetchedAt": "2026-03-12T23:20:11.874Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 7,
+        "impressionCount": 9,
         "engagementCount": 0,
         "engagementRate": 0
       },
-      "score": 7,
-      "scoreUpdatedAt": "2026-03-12T11:29:44.927Z",
+      "score": 9,
+      "scoreUpdatedAt": "2026-03-12T23:20:11.874Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-12T11:29:44.927Z",
+          "updatedAt": "2026-03-12T23:20:11.874Z",
           "failures": 0
         }
       }
@@ -317,7 +317,63 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-12T11:30:12.956Z",
+        "fetchedAt": "2026-03-12T23:20:11.874Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 4,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 4,
+      "scoreUpdatedAt": "2026-03-12T23:20:11.874Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-12T23:20:11.874Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "97454081-6f04-4976-be9c-dcaf3663f3a9",
+      "tweetId": "2032235342829420909",
+      "postedAt": "2026-03-12T23:20:11.662Z",
+      "dateContext": "2026-03-12",
+      "sport": "canopy",
+      "angle": "Real-World vs Digital Marketing",
+      "source": "llm",
+      "status": "posted",
+      "text": "At Vicious Shade Supply Co., we're stitching the future of marketing. Full-color tents that dominate trade shows. Being seen from 50 feet means more than digital clicks. It's about creating moments. — Vicious Shade Supply Co. · viciousshade.com",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "at_vicious",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2032235342829420909"
+        }
+      ],
+      "hasImage": true,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-12T23:20:37.892Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -329,11 +385,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-12T11:30:12.956Z",
+      "scoreUpdatedAt": "2026-03-12T23:20:37.892Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-12T11:30:12.956Z",
+          "updatedAt": "2026-03-12T23:20:37.892Z",
           "failures": 0
         }
       }
@@ -342,8 +398,8 @@
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-12T11:30:12.867Z",
-      "lastSuccessAt": "2026-03-12T11:30:12.956Z"
+      "lastAttemptAt": "2026-03-12T23:20:37.804Z",
+      "lastSuccessAt": "2026-03-12T23:20:37.892Z"
     }
   }
 }
