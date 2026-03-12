@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-11T23:18:26.065Z",
+  "updatedAt": "2026-03-12T11:30:12.956Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -37,7 +37,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-11T23:18:00.602Z",
+        "fetchedAt": "2026-03-12T11:29:44.927Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -49,11 +49,11 @@
         "engagementRate": 0
       },
       "score": 11,
-      "scoreUpdatedAt": "2026-03-11T23:18:00.602Z",
+      "scoreUpdatedAt": "2026-03-12T11:29:44.927Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-11T23:18:00.602Z",
+          "updatedAt": "2026-03-12T11:29:44.927Z",
           "failures": 0
         }
       }
@@ -93,7 +93,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-11T23:18:00.602Z",
+        "fetchedAt": "2026-03-12T11:29:44.927Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -105,11 +105,11 @@
         "engagementRate": 0
       },
       "score": 10,
-      "scoreUpdatedAt": "2026-03-11T23:18:00.602Z",
+      "scoreUpdatedAt": "2026-03-12T11:29:44.927Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-11T23:18:00.602Z",
+          "updatedAt": "2026-03-12T11:29:44.927Z",
           "failures": 0
         }
       }
@@ -149,7 +149,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-11T23:18:00.602Z",
+        "fetchedAt": "2026-03-12T11:29:44.927Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -161,11 +161,11 @@
         "engagementRate": 0
       },
       "score": 3,
-      "scoreUpdatedAt": "2026-03-11T23:18:00.602Z",
+      "scoreUpdatedAt": "2026-03-12T11:29:44.927Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-11T23:18:00.602Z",
+          "updatedAt": "2026-03-12T11:29:44.927Z",
           "failures": 0
         }
       }
@@ -205,7 +205,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-11T23:18:00.601Z",
+        "fetchedAt": "2026-03-12T11:29:44.927Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -217,11 +217,11 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-03-11T23:18:00.602Z",
+      "scoreUpdatedAt": "2026-03-12T11:29:44.927Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-11T23:18:00.602Z",
+          "updatedAt": "2026-03-12T11:29:44.927Z",
           "failures": 0
         }
       }
@@ -261,7 +261,63 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-11T23:18:26.065Z",
+        "fetchedAt": "2026-03-12T11:29:44.927Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 7,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 7,
+      "scoreUpdatedAt": "2026-03-12T11:29:44.927Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-12T11:29:44.927Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "a53fc933-8998-49cf-9959-a03408030c8a",
+      "tweetId": "2032056561057579092",
+      "postedAt": "2026-03-12T11:29:44.692Z",
+      "dateContext": "2026-03-12",
+      "sport": "canopy",
+      "angle": "Real-World vs Digital Marketing",
+      "source": "llm",
+      "status": "posted",
+      "text": "Trade show season is rolling in. And we're here, making sure your tent is the first and only thing seen from 50 feet. 450-denier, full-color printing. Real-world visibility beats digital noise every time. Vicious Shade Supply Co. · viciousshade.com",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "trade_show",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2032056561057579092"
+        }
+      ],
+      "hasImage": true,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-12T11:30:12.956Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -273,11 +329,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-11T23:18:26.065Z",
+      "scoreUpdatedAt": "2026-03-12T11:30:12.956Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-11T23:18:26.065Z",
+          "updatedAt": "2026-03-12T11:30:12.956Z",
           "failures": 0
         }
       }
@@ -286,8 +342,8 @@
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-11T23:18:25.962Z",
-      "lastSuccessAt": "2026-03-11T23:18:26.065Z"
+      "lastAttemptAt": "2026-03-12T11:30:12.867Z",
+      "lastSuccessAt": "2026-03-12T11:30:12.956Z"
     }
   }
 }
