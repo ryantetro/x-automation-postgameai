@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-12T23:35:44.064Z",
+  "updatedAt": "2026-03-13T11:40:52.748Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -73,7 +73,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-12T23:35:33.291Z",
+        "fetchedAt": "2026-03-13T11:40:41.883Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -85,7 +85,7 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-03-12T23:35:33.292Z",
+      "scoreUpdatedAt": "2026-03-13T11:40:41.883Z",
       "contentFrameId": "development_gap",
       "contentFrameLabel": "The Development Gap",
       "hookStructureId": "universal_truth",
@@ -96,7 +96,7 @@
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-12T23:35:33.292Z",
+          "updatedAt": "2026-03-13T11:40:41.883Z",
           "failures": 0
         }
       }
@@ -408,7 +408,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-12T23:35:33.114Z",
+        "fetchedAt": "2026-03-13T11:40:41.528Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -420,11 +420,11 @@
         "engagementRate": 0
       },
       "score": 16,
-      "scoreUpdatedAt": "2026-03-12T23:35:33.292Z",
+      "scoreUpdatedAt": "2026-03-13T11:40:41.883Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-12T23:35:33.292Z",
+          "updatedAt": "2026-03-13T11:40:41.883Z",
           "failures": 0
         }
       }
@@ -604,7 +604,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-12T23:35:32.735Z",
+        "fetchedAt": "2026-03-13T11:40:41.218Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -616,11 +616,11 @@
         "engagementRate": 0
       },
       "score": 3,
-      "scoreUpdatedAt": "2026-03-12T23:35:33.292Z",
+      "scoreUpdatedAt": "2026-03-13T11:40:41.883Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-12T23:35:33.292Z",
+          "updatedAt": "2026-03-13T11:40:41.883Z",
           "failures": 0
         }
       }
@@ -668,7 +668,7 @@
       ],
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-12T23:35:32.542Z",
+        "fetchedAt": "2026-03-13T11:40:39.363Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -680,11 +680,11 @@
         "engagementRate": 0
       },
       "score": 12,
-      "scoreUpdatedAt": "2026-03-12T23:35:33.292Z",
+      "scoreUpdatedAt": "2026-03-13T11:40:41.883Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-12T23:35:33.292Z",
+          "updatedAt": "2026-03-13T11:40:41.883Z",
           "failures": 0
         }
       }
@@ -729,7 +729,7 @@
       "hasImage": false,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-12T23:35:32.240Z",
+        "fetchedAt": "2026-03-13T11:40:38.582Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -741,11 +741,11 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-03-12T23:35:33.292Z",
+      "scoreUpdatedAt": "2026-03-13T11:40:41.883Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-12T23:35:33.292Z",
+          "updatedAt": "2026-03-13T11:40:41.883Z",
           "failures": 0
         }
       }
@@ -790,7 +790,7 @@
       "hasImage": false,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-12T23:35:32.126Z",
+        "fetchedAt": "2026-03-13T11:40:38.064Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -802,11 +802,11 @@
         "engagementRate": 0
       },
       "score": 10,
-      "scoreUpdatedAt": "2026-03-12T23:35:33.291Z",
+      "scoreUpdatedAt": "2026-03-13T11:40:41.883Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-12T23:35:33.291Z",
+          "updatedAt": "2026-03-13T11:40:41.883Z",
           "failures": 0
         }
       }
@@ -851,7 +851,7 @@
       "hasImage": false,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-12T23:35:31.988Z",
+        "fetchedAt": "2026-03-13T11:40:37.738Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -863,11 +863,11 @@
         "engagementRate": 0
       },
       "score": 16,
-      "scoreUpdatedAt": "2026-03-12T23:35:33.291Z",
+      "scoreUpdatedAt": "2026-03-13T11:40:41.883Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-12T23:35:33.291Z",
+          "updatedAt": "2026-03-13T11:40:41.883Z",
           "failures": 0
         }
       }
@@ -916,7 +916,7 @@
       "hasImage": false,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-12T23:35:31.834Z",
+        "fetchedAt": "2026-03-13T11:40:37.467Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -928,11 +928,11 @@
         "engagementRate": 0
       },
       "score": 3,
-      "scoreUpdatedAt": "2026-03-12T23:35:33.291Z",
+      "scoreUpdatedAt": "2026-03-13T11:40:41.883Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-12T23:35:33.291Z",
+          "updatedAt": "2026-03-13T11:40:41.883Z",
           "failures": 0
         }
       }
@@ -977,7 +977,7 @@
       "hasImage": false,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-12T23:35:31.602Z",
+        "fetchedAt": "2026-03-13T11:40:37.203Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -989,11 +989,11 @@
         "engagementRate": 0
       },
       "score": 83,
-      "scoreUpdatedAt": "2026-03-12T23:35:33.291Z",
+      "scoreUpdatedAt": "2026-03-13T11:40:41.883Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-12T23:35:33.291Z",
+          "updatedAt": "2026-03-13T11:40:41.883Z",
           "failures": 0
         }
       }
@@ -1038,7 +1038,72 @@
       "hasImage": false,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-12T23:35:43.757Z",
+        "fetchedAt": "2026-03-13T11:40:36.828Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 9,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 9,
+      "scoreUpdatedAt": "2026-03-13T11:40:41.883Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-03-13T11:40:41.883Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "f08081f5-5a85-4ea5-a671-f32411e9040f",
+      "threadsPostId": "18312247462282220",
+      "postedAt": "2026-03-13T11:40:36.011Z",
+      "dateContext": "2026-03-13",
+      "sport": "nfl",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "posted",
+      "text": "NFL fans see Trey Hendrickson's B+ free agency score, but coaches know the real challenge is catching what film misses 48 hours later. Those insights vanish quicker than a fourth-quarter lead, leaving a development gap that only sharp eyes can bridge. postgame AI · getpostgame.ai #CoachingTruth #FilmRoomInsights",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "2026 NFL free agency Day 3 grades: Ravens rebound with 'B+' after landing Trey Hendrickson",
+      "newsArticleUrl": "https://www.cbssports.com/nfl/news/2026-nfl-free-agency-grades-march-11/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-03-11T23:55:07Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "insider_divide",
+      "linkTargetUrl": "",
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "18312247462282220"
+        }
+      ],
+      "hasImage": false,
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-03-13T11:40:52.388Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -1050,11 +1115,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-12T23:35:43.757Z",
+      "scoreUpdatedAt": "2026-03-13T11:40:52.388Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-12T23:35:43.757Z",
+          "updatedAt": "2026-03-13T11:40:52.388Z",
           "failures": 0
         }
       }
@@ -1063,13 +1128,13 @@
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-12T23:35:43.586Z",
-      "lastSuccessAt": "2026-03-12T23:35:44.064Z"
+      "lastAttemptAt": "2026-03-13T11:40:52.045Z",
+      "lastSuccessAt": "2026-03-13T11:40:52.748Z"
     }
   },
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-12T23:35:44.064Z",
-    "views": 83,
+    "fetchedAt": "2026-03-13T11:40:52.748Z",
+    "views": 0,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
