@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-13T23:20:39.115Z",
+  "updatedAt": "2026-03-14T11:21:38.374Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -37,7 +37,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-13T23:20:12.609Z",
+        "fetchedAt": "2026-03-14T11:21:13.944Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -49,11 +49,11 @@
         "engagementRate": 0
       },
       "score": 14,
-      "scoreUpdatedAt": "2026-03-13T23:20:12.609Z",
+      "scoreUpdatedAt": "2026-03-14T11:21:13.944Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-13T23:20:12.609Z",
+          "updatedAt": "2026-03-14T11:21:13.944Z",
           "failures": 0
         }
       }
@@ -93,7 +93,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-13T23:20:12.609Z",
+        "fetchedAt": "2026-03-14T11:21:13.944Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -105,11 +105,11 @@
         "engagementRate": 0
       },
       "score": 13,
-      "scoreUpdatedAt": "2026-03-13T23:20:12.609Z",
+      "scoreUpdatedAt": "2026-03-14T11:21:13.944Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-13T23:20:12.609Z",
+          "updatedAt": "2026-03-14T11:21:13.944Z",
           "failures": 0
         }
       }
@@ -149,7 +149,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-13T23:20:12.609Z",
+        "fetchedAt": "2026-03-14T11:21:13.944Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -161,11 +161,11 @@
         "engagementRate": 0
       },
       "score": 6,
-      "scoreUpdatedAt": "2026-03-13T23:20:12.609Z",
+      "scoreUpdatedAt": "2026-03-14T11:21:13.944Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-13T23:20:12.609Z",
+          "updatedAt": "2026-03-14T11:21:13.944Z",
           "failures": 0
         }
       }
@@ -205,7 +205,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-13T23:20:12.609Z",
+        "fetchedAt": "2026-03-14T11:21:13.944Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -217,11 +217,11 @@
         "engagementRate": 0
       },
       "score": 5,
-      "scoreUpdatedAt": "2026-03-13T23:20:12.609Z",
+      "scoreUpdatedAt": "2026-03-14T11:21:13.944Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-13T23:20:12.609Z",
+          "updatedAt": "2026-03-14T11:21:13.944Z",
           "failures": 0
         }
       }
@@ -261,7 +261,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-13T23:20:12.609Z",
+        "fetchedAt": "2026-03-14T11:21:13.944Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -273,11 +273,11 @@
         "engagementRate": 0
       },
       "score": 11,
-      "scoreUpdatedAt": "2026-03-13T23:20:12.609Z",
+      "scoreUpdatedAt": "2026-03-14T11:21:13.944Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-13T23:20:12.609Z",
+          "updatedAt": "2026-03-14T11:21:13.944Z",
           "failures": 0
         }
       }
@@ -317,7 +317,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-13T23:20:12.609Z",
+        "fetchedAt": "2026-03-14T11:21:13.944Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -329,11 +329,11 @@
         "engagementRate": 0
       },
       "score": 5,
-      "scoreUpdatedAt": "2026-03-13T23:20:12.609Z",
+      "scoreUpdatedAt": "2026-03-14T11:21:13.944Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-13T23:20:12.609Z",
+          "updatedAt": "2026-03-14T11:21:13.944Z",
           "failures": 0
         }
       }
@@ -373,7 +373,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-13T23:20:12.609Z",
+        "fetchedAt": "2026-03-14T11:21:13.944Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -385,11 +385,11 @@
         "engagementRate": 0
       },
       "score": 5,
-      "scoreUpdatedAt": "2026-03-13T23:20:12.609Z",
+      "scoreUpdatedAt": "2026-03-14T11:21:13.944Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-13T23:20:12.609Z",
+          "updatedAt": "2026-03-14T11:21:13.944Z",
           "failures": 0
         }
       }
@@ -429,7 +429,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-13T23:20:12.609Z",
+        "fetchedAt": "2026-03-14T11:21:13.944Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -441,11 +441,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-13T23:20:12.609Z",
+      "scoreUpdatedAt": "2026-03-14T11:21:13.944Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-13T23:20:12.609Z",
+          "updatedAt": "2026-03-14T11:21:13.944Z",
           "failures": 0
         }
       }
@@ -485,7 +485,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-13T23:20:39.115Z",
+        "fetchedAt": "2026-03-14T11:21:13.944Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -497,11 +497,67 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-13T23:20:39.115Z",
+      "scoreUpdatedAt": "2026-03-14T11:21:13.944Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-13T23:20:39.115Z",
+          "updatedAt": "2026-03-14T11:21:13.944Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "97caac19-92c6-47a8-9f6d-ba1a64ad7d75",
+      "tweetId": "2032779178622464297",
+      "postedAt": "2026-03-14T11:21:13.745Z",
+      "dateContext": "2026-03-14",
+      "sport": "canopy",
+      "angle": "Photo Moment Marketing",
+      "source": "llm",
+      "status": "posted",
+      "text": "Last weekend, we set up a photo wall at a music festival. Wind gusts hit hard, but our canopy stood its ground. Attendees snapped photos, shared memories, and the brand got more exposure than any flyer. Because moments matter. Vicious Shade Supply Co. · viciousshade.com",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "last_weekend,",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2032779178622464297"
+        }
+      ],
+      "hasImage": true,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-14T11:21:38.374Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 0,
+        "engagementCount": 0,
+        "engagementRate": null
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-14T11:21:38.374Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-14T11:21:38.374Z",
           "failures": 0
         }
       }
@@ -510,8 +566,8 @@
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-13T23:20:38.979Z",
-      "lastSuccessAt": "2026-03-13T23:20:39.115Z"
+      "lastAttemptAt": "2026-03-14T11:21:38.278Z",
+      "lastSuccessAt": "2026-03-14T11:21:38.374Z"
     }
   }
 }
