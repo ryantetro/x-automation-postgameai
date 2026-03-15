@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": "2026-03-14T23:20:13.444Z",
+  "updatedAt": "2026-03-15T11:23:16.000Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -37,7 +37,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:19:48.035Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -49,11 +49,11 @@
         "engagementRate": 0
       },
       "score": 14,
-      "scoreUpdatedAt": "2026-03-14T23:19:48.035Z",
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:19:48.035Z",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
           "failures": 0
         }
       }
@@ -93,7 +93,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:19:48.035Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -105,11 +105,11 @@
         "engagementRate": 0
       },
       "score": 13,
-      "scoreUpdatedAt": "2026-03-14T23:19:48.035Z",
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:19:48.035Z",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
           "failures": 0
         }
       }
@@ -149,7 +149,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:19:48.035Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -161,11 +161,11 @@
         "engagementRate": 0
       },
       "score": 6,
-      "scoreUpdatedAt": "2026-03-14T23:19:48.035Z",
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:19:48.035Z",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
           "failures": 0
         }
       }
@@ -205,7 +205,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:19:48.035Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -217,11 +217,11 @@
         "engagementRate": 0
       },
       "score": 5,
-      "scoreUpdatedAt": "2026-03-14T23:19:48.035Z",
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:19:48.035Z",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
           "failures": 0
         }
       }
@@ -261,7 +261,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:19:48.035Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -273,11 +273,11 @@
         "engagementRate": 0
       },
       "score": 11,
-      "scoreUpdatedAt": "2026-03-14T23:19:48.035Z",
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:19:48.035Z",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
           "failures": 0
         }
       }
@@ -317,7 +317,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:19:48.035Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -329,11 +329,11 @@
         "engagementRate": 0
       },
       "score": 5,
-      "scoreUpdatedAt": "2026-03-14T23:19:48.035Z",
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:19:48.035Z",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
           "failures": 0
         }
       }
@@ -373,7 +373,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:19:48.035Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -385,11 +385,11 @@
         "engagementRate": 0
       },
       "score": 5,
-      "scoreUpdatedAt": "2026-03-14T23:19:48.035Z",
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:19:48.035Z",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
           "failures": 0
         }
       }
@@ -429,7 +429,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:19:48.035Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -441,11 +441,11 @@
         "engagementRate": 0
       },
       "score": 1,
-      "scoreUpdatedAt": "2026-03-14T23:19:48.035Z",
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:19:48.035Z",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
           "failures": 0
         }
       }
@@ -485,7 +485,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:19:48.035Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -497,11 +497,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-14T23:19:48.035Z",
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:19:48.035Z",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
           "failures": 0
         }
       }
@@ -541,7 +541,7 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:19:48.035Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -553,11 +553,11 @@
         "engagementRate": 0
       },
       "score": 3,
-      "scoreUpdatedAt": "2026-03-14T23:19:48.035Z",
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:19:48.035Z",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
           "failures": 0
         }
       }
@@ -597,7 +597,63 @@
       "hasImage": true,
       "metrics": {
         "platform": "x",
-        "fetchedAt": "2026-03-14T23:20:13.444Z",
+        "fetchedAt": "2026-03-15T11:22:45.694Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 3,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 3,
+      "scoreUpdatedAt": "2026-03-15T11:22:45.694Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-15T11:22:45.694Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "8001a48a-1f6c-43a9-92b5-40a678e97771",
+      "tweetId": "2033141975570866484",
+      "postedAt": "2026-03-15T11:22:45.476Z",
+      "dateContext": "2026-03-15",
+      "sport": "canopy",
+      "angle": "Build in Public",
+      "source": "llm",
+      "status": "posted",
+      "text": "Most believe vinyl is the way to go for event tents. But sublimation printing's the real MVP. Durable, vibrant, and ready for spring games. When it comes to long-lasting visibility, there's no contest. Vicious Shade Supply Co. — Vicious Shade Supply Co. · viciousshade.com",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "most_believe",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2033141975570866484"
+        }
+      ],
+      "hasImage": true,
+      "metrics": {
+        "platform": "x",
+        "fetchedAt": "2026-03-15T11:23:16.000Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -609,11 +665,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-14T23:20:13.444Z",
+      "scoreUpdatedAt": "2026-03-15T11:23:16.000Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-14T23:20:13.444Z",
+          "updatedAt": "2026-03-15T11:23:16.000Z",
           "failures": 0
         }
       }
@@ -622,8 +678,8 @@
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-14T23:20:13.351Z",
-      "lastSuccessAt": "2026-03-14T23:20:13.444Z"
+      "lastAttemptAt": "2026-03-15T11:23:15.847Z",
+      "lastSuccessAt": "2026-03-15T11:23:16.000Z"
     }
   }
 }
