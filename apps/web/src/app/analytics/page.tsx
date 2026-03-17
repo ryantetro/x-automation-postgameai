@@ -205,7 +205,6 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
                 color="#10b981"
                 gradientStart="rgba(16, 185, 129, 0.2)"
                 gradientEnd="rgba(16, 185, 129, 0)"
-                total={totalImpressions}
               />
             </div>
 
@@ -220,7 +219,6 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
                 color="#3b82f6"
                 gradientStart="rgba(59, 130, 246, 0.2)"
                 gradientEnd="rgba(59, 130, 246, 0)"
-                total={totalEngagements}
               />
             </div>
           </div>
