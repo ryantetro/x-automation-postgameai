@@ -739,6 +739,31 @@ button, input, select, textarea { font: inherit; }
   padding: 0.85rem 1.1rem 0.7rem;
 }
 
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.7rem;
+  padding: 0 0.1rem 0.55rem;
+}
+
+.chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-secondary);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.chart-legend-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
 .ichart-svg-area {
   position: relative;
   padding: 0.65rem;
@@ -914,6 +939,12 @@ button, input, select, textarea { font: inherit; }
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.timeline-badge-platform {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
 }
 
 .timeline-controls {

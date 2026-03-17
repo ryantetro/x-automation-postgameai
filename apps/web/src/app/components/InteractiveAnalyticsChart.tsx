@@ -3,7 +3,7 @@
 import { useId, useRef, useState } from "react";
 import { buildSmoothAreaPath, buildSmoothLinePath } from "../lib/chartPaths";
 
-interface ChartPost {
+export interface ChartPost {
   postedAt: string;
   sport: string;
   angle: string;
@@ -15,12 +15,18 @@ interface ChartPost {
   bookmarks: number;
 }
 
-interface InteractiveAnalyticsChartProps {
-  posts: ChartPost[];
-  metric: "impressions" | "engagements";
+export interface AnalyticsChartSeries {
+  id: "x" | "threads";
+  label: string;
   color: string;
   gradientStart: string;
   gradientEnd: string;
+  posts: ChartPost[];
+}
+
+interface InteractiveAnalyticsChartProps {
+  series: AnalyticsChartSeries[];
+  metric: "impressions" | "engagements";
 }
 
 const W = 800;
@@ -48,73 +54,113 @@ function fmtShortDate(iso: string): string {
 }
 
 export default function InteractiveAnalyticsChart({
-  posts,
+  series,
   metric,
-  color,
-  gradientStart,
-  gradientEnd,
 }: InteractiveAnalyticsChartProps) {
-  const gradId = useId();
+  const baseId = useId();
   const wrapRef = useRef<HTMLDivElement>(null);
-  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  const [hoverKey, setHoverKey] = useState<string | null>(null);
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number; flipLeft: boolean } | null>(null);
 
   const innerW = W - PAD.left - PAD.right;
   const innerH = H - PAD.top - PAD.bottom;
-
-  const values = posts.map((p) => (metric === "impressions" ? p.impressions : p.engagements));
-  const maxVal = Math.max(...values, 1);
-
-  const points = values.map((v, i) => ({
-    x: PAD.left + (posts.length === 1 ? innerW / 2 : (i / Math.max(posts.length - 1, 1)) * innerW),
-    y: PAD.top + innerH - (v / maxVal) * innerH,
-  }));
-
+  const activeSeries = series.filter((entry) => entry.posts.length > 0);
+  const allPosts = activeSeries.flatMap((entry) => entry.posts);
+  const timestamps = allPosts.map((post) => Date.parse(post.postedAt)).filter((value) => !Number.isNaN(value));
+  const minTime = timestamps.length > 0 ? Math.min(...timestamps) : 0;
+  const maxTime = timestamps.length > 0 ? Math.max(...timestamps) : 1;
+  const maxVal = Math.max(
+    ...activeSeries.flatMap((entry) => entry.posts.map((post) => (metric === "impressions" ? post.impressions : post.engagements))),
+    1
+  );
   const baselineY = PAD.top + innerH;
-  const line = buildSmoothLinePath(points);
-  const area = buildSmoothAreaPath(points, baselineY);
+
+  const seriesGeometry = activeSeries.map((entry) => {
+    const points = entry.posts.map((post, index) => {
+      const value = metric === "impressions" ? post.impressions : post.engagements;
+      const timestamp = Date.parse(post.postedAt);
+      const normalizedX =
+        entry.posts.length === 1 || maxTime === minTime || Number.isNaN(timestamp)
+          ? 0.5
+          : (timestamp - minTime) / Math.max(maxTime - minTime, 1);
+      return {
+        key: `${entry.id}-${index}-${post.postedAt}`,
+        x: PAD.left + normalizedX * innerW,
+        y: PAD.top + innerH - (value / maxVal) * innerH,
+        value,
+        post,
+      };
+    });
+
+    return {
+      ...entry,
+      gradId: `${baseId}-${entry.id}`,
+      points,
+      line: buildSmoothLinePath(points),
+      area: activeSeries.length === 1 ? buildSmoothAreaPath(points, baselineY) : "",
+    };
+  });
+
+  const allPoints = seriesGeometry.flatMap((entry) =>
+    entry.points.map((point) => ({
+      ...point,
+      seriesId: entry.id,
+      seriesLabel: entry.label,
+      color: entry.color,
+    }))
+  );
 
   const maxLabels = 6;
   const labelIndices: number[] = [];
-  if (posts.length > 0) {
-    const step = Math.max(1, Math.floor(posts.length / maxLabels));
-    for (let i = 0; i < posts.length; i += step) labelIndices.push(i);
-    if (labelIndices[labelIndices.length - 1] !== posts.length - 1) labelIndices.push(posts.length - 1);
+  if (allPosts.length > 0) {
+    const sortedPosts = [...allPosts].sort((a, b) => Date.parse(a.postedAt) - Date.parse(b.postedAt));
+    const step = Math.max(1, Math.floor(sortedPosts.length / maxLabels));
+    for (let i = 0; i < sortedPosts.length; i += step) labelIndices.push(i);
+    if (labelIndices[labelIndices.length - 1] !== sortedPosts.length - 1) labelIndices.push(sortedPosts.length - 1);
   }
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    if (!wrapRef.current || posts.length === 0) return;
+    if (!wrapRef.current || allPoints.length === 0) return;
     const rect = wrapRef.current.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const svgX = (mouseX / rect.width) * W;
 
-    let closest = 0;
+    let closest = allPoints[0];
     let closestDist = Infinity;
-    for (let i = 0; i < points.length; i++) {
-      const dist = Math.abs(points[i].x - svgX);
+    for (const point of allPoints) {
+      const dist = Math.abs(point.x - svgX);
       if (dist < closestDist) {
         closestDist = dist;
-        closest = i;
+        closest = point;
       }
     }
 
-    setHoverIdx(closest);
-    const ptScreenX = (points[closest].x / W) * rect.width;
-    const ptScreenY = (points[closest].y / H) * rect.height;
+    setHoverKey(closest.key);
+    const ptScreenX = (closest.x / W) * rect.width;
+    const ptScreenY = (closest.y / H) * rect.height;
     setTooltipPos({ x: ptScreenX, y: ptScreenY, flipLeft: ptScreenX > rect.width * 0.65 });
   }
 
   function handleMouseLeave() {
-    setHoverIdx(null);
+    setHoverKey(null);
     setTooltipPos(null);
   }
 
-  const hoveredPost = hoverIdx !== null ? posts[hoverIdx] : null;
-  const hoveredValue = hoverIdx !== null ? values[hoverIdx] : null;
-  const hoveredPoint = hoverIdx !== null ? points[hoverIdx] : null;
+  const hoveredPoint = hoverKey ? allPoints.find((point) => point.key === hoverKey) ?? null : null;
+  const sortedPosts = [...allPosts].sort((a, b) => Date.parse(a.postedAt) - Date.parse(b.postedAt));
 
   return (
     <div className="ichart-wrap">
+      {activeSeries.length > 1 && (
+        <div className="chart-legend">
+          {activeSeries.map((entry) => (
+            <span key={entry.id} className="chart-legend-item">
+              <i className="chart-legend-dot" style={{ background: entry.color, boxShadow: `0 0 12px ${entry.color}55` }} />
+              {entry.label}
+            </span>
+          ))}
+        </div>
+      )}
       <div
         ref={wrapRef}
         className="ichart-svg-area"
@@ -123,10 +169,12 @@ export default function InteractiveAnalyticsChart({
       >
         <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none">
           <defs>
-            <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={gradientStart} />
-              <stop offset="100%" stopColor={gradientEnd} />
-            </linearGradient>
+            {seriesGeometry.map((entry) => (
+              <linearGradient key={entry.gradId} id={entry.gradId} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor={entry.gradientStart} />
+                <stop offset="100%" stopColor={entry.gradientEnd} />
+              </linearGradient>
+            ))}
           </defs>
 
           {[0, 0.5, 1].map((step) => {
@@ -144,19 +192,23 @@ export default function InteractiveAnalyticsChart({
             );
           })}
 
-          {area && <path d={area} fill={`url(#${gradId})`} className="ichart-area" />}
-          {line && (
-            <path
-              d={line}
-              fill="none"
-              stroke={color}
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="ichart-line"
-              style={{ filter: `drop-shadow(0 3px 8px ${color}40)` }}
-            />
-          )}
+          {seriesGeometry.map((entry) => (
+            <g key={entry.id}>
+              {entry.area && <path d={entry.area} fill={`url(#${entry.gradId})`} className="ichart-area" />}
+              {entry.line && (
+                <path
+                  d={entry.line}
+                  fill="none"
+                  stroke={entry.color}
+                  strokeWidth={hoveredPoint?.seriesId === entry.id ? 2.6 : 2.15}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="ichart-line"
+                  style={{ filter: `drop-shadow(0 6px 16px ${entry.color}40) drop-shadow(0 0 12px ${entry.color}25)` }}
+                />
+              )}
+            </g>
+          ))}
 
           {hoveredPoint && (
             <line
@@ -170,32 +222,32 @@ export default function InteractiveAnalyticsChart({
             />
           )}
 
-          {points.map((pt, i) => {
-            const isHovered = i === hoverIdx;
+          {allPoints.map((point) => {
+            const isHovered = point.key === hoverKey;
             return (
-              <g key={i}>
+              <g key={point.key}>
                 <circle
-                  cx={pt.x}
-                  cy={pt.y}
+                  cx={point.x}
+                  cy={point.y}
                   r={isHovered ? 6 : 0}
-                  fill={`${color}20`}
-                  stroke={`${color}50`}
+                  fill={`${point.color}20`}
+                  stroke={`${point.color}50`}
                   strokeWidth="1"
-                  style={{ transition: "r 0.15s ease" }}
+                  style={{ transition: "r 0.18s ease" }}
                 />
                 <circle
-                  cx={pt.x}
-                  cy={pt.y}
-                  r={isHovered ? 3.5 : 0}
-                  fill={color}
-                  style={{ transition: "r 0.15s ease" }}
+                  cx={point.x}
+                  cy={point.y}
+                  r={isHovered ? 3.6 : 0}
+                  fill={point.color}
+                  style={{ transition: "r 0.18s ease" }}
                 />
               </g>
             );
           })}
         </svg>
 
-        {hoveredPost && tooltipPos && (
+        {hoveredPoint && tooltipPos && (
           <div
             className="ichart-tooltip"
             style={{
@@ -205,21 +257,21 @@ export default function InteractiveAnalyticsChart({
             }}
           >
             <div className="ichart-tooltip-header">
-              <span className="ichart-tooltip-date">{fmtDate(hoveredPost.postedAt)}</span>
-              <span className="ichart-tooltip-sport">{hoveredPost.sport}</span>
+              <span className="ichart-tooltip-date">{fmtDate(hoveredPoint.post.postedAt)}</span>
+              <span className="ichart-tooltip-sport">{hoveredPoint.seriesLabel}</span>
             </div>
-            <div className="ichart-tooltip-primary" style={{ color }}>
-              {fmtFull(hoveredValue!)}
+            <div className="ichart-tooltip-primary" style={{ color: hoveredPoint.color }}>
+              {fmtFull(hoveredPoint.value)}
               <span>{metric === "impressions" ? "impressions" : "engagements"}</span>
             </div>
             <div className="ichart-tooltip-grid">
-              <div><span>Likes</span><strong>{fmt(hoveredPost.likes)}</strong></div>
-              <div><span>Reposts</span><strong>{fmt(hoveredPost.retweets)}</strong></div>
-              <div><span>Replies</span><strong>{fmt(hoveredPost.replies)}</strong></div>
-              <div><span>Bookmarks</span><strong>{fmt(hoveredPost.bookmarks)}</strong></div>
+              <div><span>Likes</span><strong>{fmt(hoveredPoint.post.likes)}</strong></div>
+              <div><span>Reposts</span><strong>{fmt(hoveredPoint.post.retweets)}</strong></div>
+              <div><span>Replies</span><strong>{fmt(hoveredPoint.post.replies)}</strong></div>
+              <div><span>Bookmarks</span><strong>{fmt(hoveredPoint.post.bookmarks)}</strong></div>
             </div>
-            {hoveredPost.angle && hoveredPost.angle !== "unknown" && (
-              <div className="ichart-tooltip-angle">{hoveredPost.angle}</div>
+            {hoveredPoint.post.angle && hoveredPoint.post.angle !== "unknown" && (
+              <div className="ichart-tooltip-angle">{hoveredPoint.post.sport} · {hoveredPoint.post.angle}</div>
             )}
           </div>
         )}
@@ -229,9 +281,9 @@ export default function InteractiveAnalyticsChart({
         {labelIndices.map((idx) => (
           <span
             key={idx}
-            className={hoverIdx === idx ? "is-active" : ""}
+            className={hoveredPoint?.post.postedAt === sortedPosts[idx]?.postedAt ? "is-active" : ""}
           >
-            {fmtShortDate(posts[idx].postedAt)}
+            {sortedPosts[idx] ? fmtShortDate(sortedPosts[idx].postedAt) : "--"}
           </span>
         ))}
       </div>

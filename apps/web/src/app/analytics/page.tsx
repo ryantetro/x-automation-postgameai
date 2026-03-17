@@ -2,6 +2,17 @@ import { loadStore, compact, sportClass, lastUpdatedStr, frameLabel, hookLabel, 
 import Sidebar from "../components/Sidebar";
 import InteractiveAnalyticsChart from "../components/InteractiveAnalyticsChart";
 
+function inferPlatform(post: {
+  metrics?: { platform?: "x" | "threads" };
+  tweetId?: string;
+  threadsPostId?: string;
+}): "x" | "threads" | null {
+  if (post.metrics?.platform === "x" || post.metrics?.platform === "threads") return post.metrics.platform;
+  if (post.threadsPostId && !post.tweetId) return "threads";
+  if (post.tweetId) return "x";
+  return null;
+}
+
 export const dynamic = "force-dynamic";
 
 export default async function AnalyticsPage({ searchParams }: { searchParams: Promise<{ campaign?: string }> }) {
@@ -32,17 +43,35 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
   const threadFollowers = store.threadsUserInsights?.followersCount ?? null;
   const threadProfileViews = store.threadsUserInsights?.views ?? null;
 
-  const chartPosts = posted.slice(-30).map((t) => ({
-    postedAt: t.postedAt,
-    sport: t.sport,
-    angle: t.angle,
-    impressions: t.metrics?.impressionCount ?? 0,
-    engagements: t.metrics?.engagementCount ?? 0,
-    likes: t.metrics?.likeCount ?? 0,
-    retweets: t.metrics?.retweetCount ?? 0,
-    replies: t.metrics?.replyCount ?? 0,
-    bookmarks: t.metrics?.bookmarkCount ?? 0,
-  }));
+  const chartSeries = (["x", "threads"] as const)
+    .map((platform) => {
+      const postsForPlatform = tracked
+        .filter((t) => inferPlatform(t) === platform)
+        .slice(-30)
+        .map((t) => ({
+          postedAt: t.postedAt,
+          sport: t.sport,
+          angle: t.angle,
+          impressions: t.metrics?.impressionCount ?? 0,
+          engagements: t.metrics?.engagementCount ?? 0,
+          likes: t.metrics?.likeCount ?? 0,
+          retweets: t.metrics?.retweetCount ?? 0,
+          replies: t.metrics?.replyCount ?? 0,
+          bookmarks: t.metrics?.bookmarkCount ?? 0,
+        }));
+
+      if (postsForPlatform.length === 0) return null;
+
+      return {
+        id: platform,
+        label: platform === "x" ? "X" : "Threads",
+        color: platform === "x" ? "#19c37d" : "#60a5fa",
+        gradientStart: platform === "x" ? "rgba(25, 195, 125, 0.18)" : "rgba(96, 165, 250, 0.16)",
+        gradientEnd: platform === "x" ? "rgba(25, 195, 125, 0.01)" : "rgba(96, 165, 250, 0.01)",
+        posts: postsForPlatform,
+      };
+    })
+    .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
 
   const sportMap = new Map<string, { posts: number; impressions: number; engagements: number; likes: number; retweets: number }>();
   for (const t of posted) {
@@ -196,29 +225,23 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
           <div className="analytics-charts">
             <div className="card">
               <div className="card-header">
-                <div><h3>Impressions trend</h3><span className="card-sub">Last {chartPosts.length} posts</span></div>
+                <div><h3>Impressions trend</h3><span className="card-sub">{chartSeries.length > 1 ? "Last 30 tracked posts per platform" : "Last 30 tracked posts"}</span></div>
                 <span className="card-sub">{compact(totalImpressions)} total</span>
               </div>
               <InteractiveAnalyticsChart
-                posts={chartPosts}
+                series={chartSeries}
                 metric="impressions"
-                color="#10b981"
-                gradientStart="rgba(16, 185, 129, 0.2)"
-                gradientEnd="rgba(16, 185, 129, 0)"
               />
             </div>
 
             <div className="card">
               <div className="card-header">
-                <div><h3>Engagement trend</h3><span className="card-sub">Last {chartPosts.length} posts</span></div>
+                <div><h3>Engagement trend</h3><span className="card-sub">{chartSeries.length > 1 ? "Last 30 tracked posts per platform" : "Last 30 tracked posts"}</span></div>
                 <span className="card-sub">{compact(totalEngagements)} total</span>
               </div>
               <InteractiveAnalyticsChart
-                posts={chartPosts}
+                series={chartSeries}
                 metric="engagements"
-                color="#3b82f6"
-                gradientStart="rgba(59, 130, 246, 0.2)"
-                gradientEnd="rgba(59, 130, 246, 0)"
               />
             </div>
           </div>

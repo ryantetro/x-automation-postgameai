@@ -121,6 +121,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                   sport: tweet.sport,
                   angle: tweet.angle,
                   tweetId: tweet.tweetId,
+                  threadsPostId: tweet.threadsPostId,
+                  platform: tweet.metrics?.platform === "threads" ? "threads" : tweet.threadsPostId && !tweet.tweetId ? "threads" : "x",
                   metrics: tweet.metrics
                     ? {
                         impressionCount: tweet.metrics.impressionCount,
