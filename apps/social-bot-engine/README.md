@@ -50,8 +50,24 @@ Threads implementation notes:
 - Threads text posts allow up to 500 characters; when X is also enabled the bot still uses the stricter 280-character shared limit
 - a preflight check now queries the Threads publishing-limit endpoint before attempting to publish
 - Threads media insights and profile insights are pulled into the analytics store when the token has `threads_manage_insights`
-- existing tracked-link click analytics remain shared at the post level
+- tracked links are now generated per platform (`runId-x`, `runId-threads`) so X and Threads traffic can be attributed separately
 - Threads publish results are recorded in `state/tweet-analytics.json`
+
+## Traffic attribution
+
+When `TRACKING_BASE_URL` is set, the bot now creates a tracked redirect URL for each publish target instead of a single shared link. The analytics store keeps those records under `outboundTracking`, including:
+
+- `trackingId`
+- `platform`
+- `trackedUrl`
+- `linkTargetUrl`
+- `utmSource`
+- `utmMedium`
+- `utmCampaign`
+- `utmContent`
+- `utmTerm`
+
+This repo records click metrics at the redirect layer. Destination sites can then use the incoming `tracking_id` to emit PostHog landing and conversion events that flow back into the dashboard.
 
 ## Analytics Feedback Loop
 

@@ -11,7 +11,7 @@ import type {
 import { FRAME_DEFINITIONS, HOOK_DEFINITIONS } from "./contentArchitecture.js";
 
 export const ANALYTICS_STORE_FILE = resolve(STATE_DIR, ANALYTICS_STORE_FILENAME);
-const STORE_VERSION = 4;
+const STORE_VERSION = 5;
 
 export type TweetStatus = "posted" | "dry_run" | "failed";
 export type ContentMode = "sports_only" | "news_preferred";
@@ -81,6 +81,38 @@ export interface ClickMetricsSnapshot {
   uniqueClicks: number;
 }
 
+export interface TrafficMetricsSnapshot {
+  fetchedAt: string;
+  landingVisits: number;
+  uniqueVisitors: number;
+  sessions: number;
+  engagedSessions: number;
+  signupsStarted: number;
+  signupsCompleted: number;
+  demoBookings: number;
+  trialStarts: number;
+  purchases: number;
+}
+
+export interface OutboundTrackingRecord {
+  trackingId: string;
+  runId: string;
+  platform: PublishPlatform;
+  campaignSlug?: string;
+  trackedUrl: string;
+  linkTargetUrl: string;
+  publishedPostId?: string;
+  utmSource: string;
+  utmMedium: string;
+  utmCampaign: string;
+  utmContent: string;
+  utmTerm: string;
+  postSport?: string;
+  postSource?: string;
+  clickMetrics?: ClickMetricsSnapshot;
+  trafficMetrics?: TrafficMetricsSnapshot;
+}
+
 export interface ThreadsLinkClickValue {
   linkUrl: string;
   value: number;
@@ -127,10 +159,12 @@ export interface TweetAnalyticsRecord {
   openingPattern?: string;
   trackedUrl?: string;
   linkTargetUrl?: string;
+  outboundTracking?: OutboundTrackingRecord[];
   publishTargets?: PublishPlatform[];
   publishResults?: PlatformPublishResult[];
   metrics?: TweetMetricsSnapshot;
   clickMetrics?: ClickMetricsSnapshot;
+  trafficMetrics?: TrafficMetricsSnapshot;
   score?: number;
   scoreUpdatedAt?: string;
   /** True when the post included an AI-generated image (e.g. canopy). */

@@ -1727,6 +1727,7 @@ button, input, select, textarea { font: inherit; }
 }
 
 .pcm-val.pcm-green { color: var(--accent); }
+.pcm-val.pcm-blue { color: var(--blue); }
 .pcm-val.pcm-amber { color: var(--amber); }
 
 .pcm-label {

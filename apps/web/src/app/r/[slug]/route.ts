@@ -1,16 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { recordTrackedClick, buildVisitorFingerprint } from "../../lib/clicks";
-import { loadStore, type TweetAnalyticsRecord } from "../../lib/data";
+import { loadStore, type OutboundTrackingRecord } from "../../lib/data";
 
 export const dynamic = "force-dynamic";
-
-function slugify(value: string, maxLength = 48): string {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "_")
-    .replace(/^_+|_+$/g, "")
-    .slice(0, maxLength);
-}
 
 function normalizeDestination(url: string): string {
   if (/^https?:\/\//i.test(url)) return url;
@@ -23,24 +15,22 @@ function fallbackDestination(request: NextRequest): string {
   return request.nextUrl.origin;
 }
 
-function withUtmParams(baseUrl: string, tweet: TweetAnalyticsRecord): string {
+function withUtmParams(baseUrl: string, tracking: OutboundTrackingRecord): string {
   const destination = new URL(normalizeDestination(baseUrl));
-  const campaignPrefix = process.env.UTM_CAMPAIGN_PREFIX || "postgame_ai";
-  const utmSource = process.env.UTM_SOURCE || "x";
-  const utmMedium = process.env.UTM_MEDIUM || "social";
-  const sport = slugify(tweet.sport || "sports", 20) || "sports";
-  const date = slugify(tweet.dateContext || "unknown", 20) || "unknown";
-  const angle = slugify(tweet.angle || "general", 40) || "general";
-  const source = slugify(tweet.source || "automation", 20) || "automation";
+  const platform = tracking.platform === "threads" ? "threads" : "x";
 
-  destination.searchParams.set("utm_source", utmSource);
-  destination.searchParams.set("utm_medium", utmMedium);
-  destination.searchParams.set("utm_campaign", `${campaignPrefix}_${sport}_${date}`);
-  destination.searchParams.set("utm_content", tweet.runId);
-  destination.searchParams.set("utm_term", angle);
-  destination.searchParams.set("post_sport", sport);
-  destination.searchParams.set("post_source", source);
-  if (tweet.tweetId) destination.searchParams.set("tweet_id", tweet.tweetId);
+  destination.searchParams.set("tracking_id", tracking.trackingId);
+  destination.searchParams.set("run_id", tracking.runId);
+  destination.searchParams.set("platform", platform);
+  if (tracking.campaignSlug) destination.searchParams.set("campaign_slug", tracking.campaignSlug);
+  if (tracking.publishedPostId) destination.searchParams.set("post_id", tracking.publishedPostId);
+  destination.searchParams.set("utm_source", tracking.utmSource || platform);
+  destination.searchParams.set("utm_medium", tracking.utmMedium || "social");
+  destination.searchParams.set("utm_campaign", tracking.utmCampaign);
+  destination.searchParams.set("utm_content", tracking.utmContent || tracking.trackingId);
+  destination.searchParams.set("utm_term", tracking.utmTerm || "general");
+  if (tracking.postSport) destination.searchParams.set("post_sport", tracking.postSport);
+  if (tracking.postSource) destination.searchParams.set("post_source", tracking.postSource);
 
   return destination.toString();
 }
@@ -51,14 +41,17 @@ export async function GET(
 ): Promise<NextResponse> {
   const { slug } = await context.params;
   const store = await loadStore({ includeClicks: false });
-  const tweet = store.tweets.find((row) => row.runId === slug);
+  const tracking = store.tweets
+    .flatMap((row) => row.outboundTracking ?? [])
+    .find((row) => row.trackingId === slug);
 
-  if (!tweet?.trackedUrl || !tweet.linkTargetUrl) {
+  if (!tracking?.trackedUrl || !tracking.linkTargetUrl) {
+    console.warn("Unknown tracking redirect requested:", slug);
     return NextResponse.redirect(fallbackDestination(request), 307);
   }
 
   const visitorFingerprint = buildVisitorFingerprint(request.headers);
   await recordTrackedClick(slug, visitorFingerprint);
 
-  return NextResponse.redirect(withUtmParams(tweet.linkTargetUrl, tweet), 307);
+  return NextResponse.redirect(withUtmParams(tracking.linkTargetUrl, tracking), 307);
 }

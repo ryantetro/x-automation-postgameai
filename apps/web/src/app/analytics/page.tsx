@@ -36,8 +36,14 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
   const totalQuotes = tracked.reduce((s, t) => s + (t.metrics?.quoteCount ?? 0), 0);
   const totalShares = tracked.reduce((s, t) => s + (t.metrics?.shareCount ?? 0), 0);
   const hasClickMetrics = posted.some((t) => !!t.clickMetrics);
+  const hasTrafficMetrics = posted.some((t) => !!t.trafficMetrics);
   const totalClicks = hasClickMetrics ? posted.reduce((s, t) => s + (t.clickMetrics?.totalClicks ?? 0), 0) : null;
+  const totalLandingVisits = hasTrafficMetrics ? posted.reduce((s, t) => s + (t.trafficMetrics?.landingVisits ?? 0), 0) : null;
+  const totalSignupsCompleted = hasTrafficMetrics ? posted.reduce((s, t) => s + (t.trafficMetrics?.signupsCompleted ?? 0), 0) : null;
+  const totalDemoBookings = hasTrafficMetrics ? posted.reduce((s, t) => s + (t.trafficMetrics?.demoBookings ?? 0), 0) : null;
   const clickThroughRate = totalImpressions > 0 && totalClicks !== null ? (totalClicks / totalImpressions) * 100 : null;
+  const visitRate = totalClicks && totalClicks > 0 && totalLandingVisits !== null ? (totalLandingVisits / totalClicks) * 100 : null;
+  const signupRate = totalLandingVisits && totalLandingVisits > 0 && totalSignupsCompleted !== null ? (totalSignupsCompleted / totalLandingVisits) * 100 : null;
   const avgImpPerPost = tracked.length > 0 ? totalImpressions / tracked.length : 0;
   const avgEngPerPost = tracked.length > 0 ? totalEngagements / tracked.length : 0;
   const threadFollowers = store.threadsUserInsights?.followersCount ?? null;
@@ -180,6 +186,18 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
       };
     });
   }).sort((a, b) => b.avgScore - a.avgScore);
+  const topTrafficPosts = [...posted]
+    .filter((tweet) => (tweet.trafficMetrics?.landingVisits ?? 0) > 0)
+    .sort((a, b) => (b.trafficMetrics?.landingVisits ?? 0) - (a.trafficMetrics?.landingVisits ?? 0))
+    .slice(0, 5);
+  const topConversionPosts = [...posted]
+    .filter((tweet) => (tweet.trafficMetrics?.signupsCompleted ?? 0) > 0 || (tweet.trafficMetrics?.demoBookings ?? 0) > 0)
+    .sort(
+      (a, b) =>
+        (b.trafficMetrics?.signupsCompleted ?? 0) + (b.trafficMetrics?.demoBookings ?? 0) -
+        ((a.trafficMetrics?.signupsCompleted ?? 0) + (a.trafficMetrics?.demoBookings ?? 0))
+    )
+    .slice(0, 5);
 
   return (
     <div className="dash">
@@ -216,9 +234,15 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
               <div className="stat-sub">{threadProfileViews === null ? "No profile views yet" : `${compact(threadProfileViews)} profile views`}</div>
             </div>
             <div className="stat-card red">
-              <div className="stat-label">Click-through rate</div>
-              <div className="stat-value">{clickThroughRate === null ? "—" : `${clickThroughRate.toFixed(2)}%`}</div>
-              <div className="stat-sub">{compact(totalLikes)} likes &middot; {compact(totalShares)} shares &middot; {compact(totalQuotes)} quotes &middot; {compact(totalBookmarks)} bookmarks</div>
+              <div className="stat-label">Traffic efficiency</div>
+              <div className="stat-value">
+                {visitRate !== null ? `${visitRate.toFixed(1)}%` : clickThroughRate !== null ? `${clickThroughRate.toFixed(2)}%` : "—"}
+              </div>
+              <div className="stat-sub">
+                {hasTrafficMetrics
+                  ? `${compact(totalLandingVisits ?? 0)} visits · ${compact(totalSignupsCompleted ?? 0)} signups · ${compact(totalDemoBookings ?? 0)} demos`
+                  : `${compact(totalLikes)} likes · ${compact(totalShares)} shares · ${compact(totalQuotes)} quotes · ${compact(totalBookmarks)} bookmarks`}
+              </div>
             </div>
           </div>
 
@@ -334,7 +358,7 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
               </div>
 
               <div className="card">
-                <div className="card-header"><h3>Platform x frame</h3><span className="card-sub">Shared architecture, separate weighting</span></div>
+              <div className="card-header"><h3>Platform x frame</h3><span className="card-sub">Shared architecture, separate weighting</span></div>
                 <div style={{ overflowX: "auto" }}>
                   <table className="posts-table">
                     <thead>
@@ -359,6 +383,52 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
                       )}
                     </tbody>
                   </table>
+                </div>
+              </div>
+
+              <div className="card">
+                <div className="card-header"><h3>Traffic funnel</h3><span className="card-sub">Clicks to conversions</span></div>
+                <div className="summary-list">
+                  <div className="summary-row"><span className="summary-label">Clicks</span><span className="summary-val amber">{totalClicks === null ? "—" : compact(totalClicks)}</span></div>
+                  <div className="summary-row"><span className="summary-label">Landing visits</span><span className="summary-val green">{totalLandingVisits === null ? "—" : compact(totalLandingVisits)}</span></div>
+                  <div className="summary-row"><span className="summary-label">Signups completed</span><span className="summary-val blue">{totalSignupsCompleted === null ? "—" : compact(totalSignupsCompleted)}</span></div>
+                  <div className="summary-row"><span className="summary-label">Demo bookings</span><span className="summary-val">{totalDemoBookings === null ? "—" : compact(totalDemoBookings)}</span></div>
+                  <div className="summary-row"><span className="summary-label">Visit rate</span><span className="summary-val">{visitRate === null ? "—" : `${visitRate.toFixed(1)}%`}</span></div>
+                  <div className="summary-row"><span className="summary-label">Signup rate</span><span className="summary-val">{signupRate === null ? "—" : `${signupRate.toFixed(1)}%`}</span></div>
+                </div>
+              </div>
+
+              <div className="card">
+                <div className="card-header"><h3>Top posts by visits</h3><span className="card-sub">Landing visits</span></div>
+                <div className="angle-list">
+                  {topTrafficPosts.map((tweet, index) => (
+                    <div className="angle-row" key={`${tweet.runId}-visits`}>
+                      <span className="angle-rank">#{index + 1}</span>
+                      <div className="angle-info">
+                        <span className="angle-name">{tweet.sport} · {tweet.angle}</span>
+                        <span className="angle-sub">{frameLabel(tweet)} · {tweet.trafficMetrics?.landingVisits ?? 0} visits</span>
+                      </div>
+                    </div>
+                  ))}
+                  {topTrafficPosts.length === 0 && <div className="empty-state">No landing-visit data yet</div>}
+                </div>
+              </div>
+
+              <div className="card">
+                <div className="card-header"><h3>Top posts by conversions</h3><span className="card-sub">Signups + demos</span></div>
+                <div className="angle-list">
+                  {topConversionPosts.map((tweet, index) => (
+                    <div className="angle-row" key={`${tweet.runId}-conversions`}>
+                      <span className="angle-rank">#{index + 1}</span>
+                      <div className="angle-info">
+                        <span className="angle-name">{tweet.sport} · {tweet.angle}</span>
+                        <span className="angle-sub">
+                          {(tweet.trafficMetrics?.signupsCompleted ?? 0)} signups &middot; {(tweet.trafficMetrics?.demoBookings ?? 0)} demos
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                  {topConversionPosts.length === 0 && <div className="empty-state">No conversion data yet</div>}
                 </div>
               </div>
 

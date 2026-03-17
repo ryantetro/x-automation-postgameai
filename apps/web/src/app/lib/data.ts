@@ -2,7 +2,8 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { buildSmoothAreaPath, buildSmoothLinePath } from "./chartPaths";
-import { getClickMetricsForSlugs, type ClickMetricsSnapshot } from "./clicks";
+import { getClickMetricsForTrackingIds, type ClickMetricsSnapshot } from "./clicks";
+import { getTrafficMetricsForTrackingIds, type TrafficMetricsSnapshot } from "./posthog";
 
 export interface CampaignConfig {
   slug: string;
@@ -89,17 +90,39 @@ export interface TweetAnalyticsRecord {
   openingPattern?: string;
   trackedUrl?: string;
   linkTargetUrl?: string;
+  outboundTracking?: OutboundTrackingRecord[];
   metrics?: TweetMetricsSnapshot;
   clickMetrics?: ClickMetricsSnapshot;
+  trafficMetrics?: TrafficMetricsSnapshot;
   score?: number;
   scoreUpdatedAt?: string;
   campaignSlug?: string;
+}
+
+export interface OutboundTrackingRecord {
+  trackingId: string;
+  runId: string;
+  platform: PublishPlatform;
+  campaignSlug?: string;
+  trackedUrl: string;
+  linkTargetUrl: string;
+  publishedPostId?: string;
+  utmSource: string;
+  utmMedium: string;
+  utmCampaign: string;
+  utmContent: string;
+  utmTerm: string;
+  postSport?: string;
+  postSource?: string;
+  clickMetrics?: ClickMetricsSnapshot;
+  trafficMetrics?: TrafficMetricsSnapshot;
 }
 
 export interface AnalyticsStore {
   version: number;
   updatedAt: string | null;
   clickMetricsAvailable: boolean;
+  trafficMetricsAvailable: boolean;
   threadsUserInsights?: ThreadsUserInsightsSnapshot;
   tweets: TweetAnalyticsRecord[];
 }
@@ -183,11 +206,150 @@ function normalizeClickMetrics(metrics: Partial<ClickMetricsSnapshot> | undefine
   };
 }
 
+function normalizeTrafficMetrics(metrics: Partial<TrafficMetricsSnapshot> | undefined): TrafficMetricsSnapshot | undefined {
+  const fetchedAt = parseIso(metrics?.fetchedAt);
+  if (!fetchedAt) return undefined;
+  return {
+    fetchedAt,
+    landingVisits: nonNegativeNumber(metrics?.landingVisits),
+    uniqueVisitors: nonNegativeNumber(metrics?.uniqueVisitors),
+    sessions: nonNegativeNumber(metrics?.sessions),
+    engagedSessions: nonNegativeNumber(metrics?.engagedSessions),
+    signupsStarted: nonNegativeNumber(metrics?.signupsStarted),
+    signupsCompleted: nonNegativeNumber(metrics?.signupsCompleted),
+    demoBookings: nonNegativeNumber(metrics?.demoBookings),
+    trialStarts: nonNegativeNumber(metrics?.trialStarts),
+    purchases: nonNegativeNumber(metrics?.purchases),
+  };
+}
+
+function inferTrackingPlatform(record: Partial<TweetAnalyticsRecord>): PublishPlatform {
+  if (record.metrics?.platform === "threads") return "threads";
+  if (record.metrics?.platform === "x") return "x";
+  if (record.threadsPostId && !record.tweetId) return "threads";
+  return "x";
+}
+
+function normalizeOutboundTracking(
+  tracking: Partial<OutboundTrackingRecord> | undefined,
+  fallback: {
+    runId: string;
+    trackingId: string;
+    platform: PublishPlatform;
+    campaignSlug?: string;
+    trackedUrl: string;
+    linkTargetUrl: string;
+    publishedPostId?: string;
+    utmSource: string;
+    utmMedium: string;
+    utmCampaign: string;
+    utmContent: string;
+    utmTerm: string;
+    postSport?: string;
+    postSource?: string;
+  }
+): OutboundTrackingRecord {
+  return {
+    trackingId: nonEmptyString(tracking?.trackingId) ?? fallback.trackingId,
+    runId: nonEmptyString(tracking?.runId) ?? fallback.runId,
+    platform: tracking?.platform === "threads" ? "threads" : tracking?.platform === "x" ? "x" : fallback.platform,
+    campaignSlug: nonEmptyString(tracking?.campaignSlug) ?? fallback.campaignSlug,
+    trackedUrl: nonEmptyString(tracking?.trackedUrl) ?? fallback.trackedUrl,
+    linkTargetUrl: nonEmptyString(tracking?.linkTargetUrl) ?? fallback.linkTargetUrl,
+    publishedPostId: nonEmptyString(tracking?.publishedPostId) ?? fallback.publishedPostId,
+    utmSource: nonEmptyString(tracking?.utmSource) ?? fallback.utmSource,
+    utmMedium: nonEmptyString(tracking?.utmMedium) ?? fallback.utmMedium,
+    utmCampaign: nonEmptyString(tracking?.utmCampaign) ?? fallback.utmCampaign,
+    utmContent: nonEmptyString(tracking?.utmContent) ?? fallback.utmContent,
+    utmTerm: nonEmptyString(tracking?.utmTerm) ?? fallback.utmTerm,
+    postSport: nonEmptyString(tracking?.postSport) ?? fallback.postSport,
+    postSource: nonEmptyString(tracking?.postSource) ?? fallback.postSource,
+    clickMetrics: normalizeClickMetrics(tracking?.clickMetrics),
+    trafficMetrics: normalizeTrafficMetrics(tracking?.trafficMetrics),
+  };
+}
+
+function aggregateClickMetrics(records: OutboundTrackingRecord[]): ClickMetricsSnapshot | undefined {
+  const metrics = records.map((record) => record.clickMetrics).filter((value): value is ClickMetricsSnapshot => !!value);
+  if (metrics.length === 0) return undefined;
+  return {
+    fetchedAt: latestIso(metrics.map((metric) => metric.fetchedAt)) ?? metrics[0].fetchedAt,
+    totalClicks: metrics.reduce((sum, metric) => sum + metric.totalClicks, 0),
+    uniqueClicks: metrics.reduce((sum, metric) => sum + metric.uniqueClicks, 0),
+  };
+}
+
+function aggregateTrafficMetrics(records: OutboundTrackingRecord[]): TrafficMetricsSnapshot | undefined {
+  const metrics = records.map((record) => record.trafficMetrics).filter((value): value is TrafficMetricsSnapshot => !!value);
+  if (metrics.length === 0) return undefined;
+  return {
+    fetchedAt: latestIso(metrics.map((metric) => metric.fetchedAt)) ?? metrics[0].fetchedAt,
+    landingVisits: metrics.reduce((sum, metric) => sum + metric.landingVisits, 0),
+    uniqueVisitors: metrics.reduce((sum, metric) => sum + metric.uniqueVisitors, 0),
+    sessions: metrics.reduce((sum, metric) => sum + metric.sessions, 0),
+    engagedSessions: metrics.reduce((sum, metric) => sum + metric.engagedSessions, 0),
+    signupsStarted: metrics.reduce((sum, metric) => sum + metric.signupsStarted, 0),
+    signupsCompleted: metrics.reduce((sum, metric) => sum + metric.signupsCompleted, 0),
+    demoBookings: metrics.reduce((sum, metric) => sum + metric.demoBookings, 0),
+    trialStarts: metrics.reduce((sum, metric) => sum + metric.trialStarts, 0),
+    purchases: metrics.reduce((sum, metric) => sum + metric.purchases, 0),
+  };
+}
+
 function normalizeTweet(record: Partial<TweetAnalyticsRecord>): TweetAnalyticsRecord | null {
   const runId = nonEmptyString(record.runId);
   const postedAt = parseIso(record.postedAt);
   const status = record.status;
   if (!runId || !postedAt || (status !== "posted" && status !== "dry_run" && status !== "failed")) return null;
+
+  const fallbackPlatform = inferTrackingPlatform(record);
+  const fallbackTrackedUrl = nonEmptyString(record.trackedUrl);
+  const fallbackLinkTargetUrl = nonEmptyString(record.linkTargetUrl);
+  const outboundTracking = Array.isArray(record.outboundTracking)
+    ? record.outboundTracking
+        .filter((tracking) => !!tracking && typeof tracking === "object")
+        .map((tracking) =>
+          normalizeOutboundTracking(tracking as Partial<OutboundTrackingRecord>, {
+            runId,
+            trackingId: nonEmptyString(tracking.trackingId) ?? runId,
+            platform: tracking.platform === "threads" ? "threads" : tracking.platform === "x" ? "x" : fallbackPlatform,
+            campaignSlug: nonEmptyString(record.campaignSlug),
+            trackedUrl: nonEmptyString(tracking.trackedUrl) ?? fallbackTrackedUrl ?? "",
+            linkTargetUrl: nonEmptyString(tracking.linkTargetUrl) ?? fallbackLinkTargetUrl ?? "",
+            publishedPostId:
+              tracking.platform === "threads"
+                ? nonEmptyString(record.threadsPostId)
+                : nonEmptyString(record.tweetId),
+            utmSource: tracking.platform === "threads" ? "threads" : "x",
+            utmMedium: "social",
+            utmCampaign: nonEmptyString(tracking.utmCampaign) ?? "postgame_ai_default_unknown_unknown",
+            utmContent: nonEmptyString(tracking.utmContent) ?? (nonEmptyString(tracking.trackingId) ?? runId),
+            utmTerm: nonEmptyString(tracking.utmTerm) ?? slugify(nonEmptyString(record.angle) ?? "general", 40),
+            postSport: slugify(nonEmptyString(record.sport) ?? "sports", 20),
+            postSource: slugify(nonEmptyString(record.source) ?? "automation", 20),
+          })
+        )
+        .filter((tracking) => tracking.trackedUrl.length > 0 && tracking.linkTargetUrl.length > 0)
+    : fallbackTrackedUrl && fallbackLinkTargetUrl
+      ? [
+          normalizeOutboundTracking(undefined, {
+            runId,
+            trackingId: runId,
+            platform: fallbackPlatform,
+            campaignSlug: nonEmptyString(record.campaignSlug),
+            trackedUrl: fallbackTrackedUrl,
+            linkTargetUrl: fallbackLinkTargetUrl,
+            publishedPostId: fallbackPlatform === "threads" ? nonEmptyString(record.threadsPostId) : nonEmptyString(record.tweetId),
+            utmSource: fallbackPlatform,
+            utmMedium: "social",
+            utmCampaign: `postgame_ai_${nonEmptyString(record.campaignSlug) ?? "default"}_${slugify(nonEmptyString(record.sport) ?? "sports", 20)}_${slugify(nonEmptyString(record.dateContext) ?? postedAt.slice(0, 10), 20)}`,
+            utmContent: runId,
+            utmTerm: slugify(nonEmptyString(record.angle) ?? "general", 40),
+            postSport: slugify(nonEmptyString(record.sport) ?? "sports", 20),
+            postSource: slugify(nonEmptyString(record.source) ?? "automation", 20),
+          }),
+        ]
+      : [];
 
   return {
     runId,
@@ -233,12 +395,15 @@ function normalizeTweet(record: Partial<TweetAnalyticsRecord>): TweetAnalyticsRe
         : undefined,
     frameReason: nonEmptyString(record.frameReason),
     openingPattern: nonEmptyString(record.openingPattern),
-    trackedUrl: nonEmptyString(record.trackedUrl),
-    linkTargetUrl: nonEmptyString(record.linkTargetUrl),
+    trackedUrl: outboundTracking[0]?.trackedUrl ?? fallbackTrackedUrl,
+    linkTargetUrl: outboundTracking[0]?.linkTargetUrl ?? fallbackLinkTargetUrl,
+    outboundTracking,
     metrics: normalizeMetrics(record.metrics),
-    clickMetrics: normalizeClickMetrics(record.clickMetrics),
+    clickMetrics: normalizeClickMetrics(record.clickMetrics) ?? aggregateClickMetrics(outboundTracking),
+    trafficMetrics: normalizeTrafficMetrics(record.trafficMetrics) ?? aggregateTrafficMetrics(outboundTracking),
     score: typeof record.score === "number" && Number.isFinite(record.score) ? record.score : undefined,
     scoreUpdatedAt: parseIso(record.scoreUpdatedAt) ?? undefined,
+    campaignSlug: nonEmptyString(record.campaignSlug),
   };
 }
 
@@ -275,8 +440,32 @@ function normalizeStore(payload: Partial<AnalyticsStore>): AnalyticsStore {
     version: typeof payload.version === "number" ? payload.version : 1,
     updatedAt,
     clickMetricsAvailable: false,
+    trafficMetricsAvailable: false,
     threadsUserInsights,
     tweets,
+  };
+}
+
+function mergeOutboundTracking(existing: OutboundTrackingRecord[] = [], incoming: OutboundTrackingRecord[] = []): OutboundTrackingRecord[] {
+  const merged = new Map<string, OutboundTrackingRecord>();
+  for (const record of [...existing, ...incoming]) {
+    const current = merged.get(record.trackingId);
+    merged.set(record.trackingId, current ? { ...current, ...record } : record);
+  }
+  return [...merged.values()].sort((a, b) => a.platform.localeCompare(b.platform));
+}
+
+function mergeTweetRecords(existing: TweetAnalyticsRecord, incoming: TweetAnalyticsRecord): TweetAnalyticsRecord {
+  const mergedTracking = mergeOutboundTracking(existing.outboundTracking, incoming.outboundTracking);
+  return {
+    ...existing,
+    ...incoming,
+    trackedUrl: incoming.trackedUrl ?? existing.trackedUrl,
+    linkTargetUrl: incoming.linkTargetUrl ?? existing.linkTargetUrl,
+    outboundTracking: mergedTracking,
+    clickMetrics: incoming.clickMetrics ?? existing.clickMetrics ?? aggregateClickMetrics(mergedTracking),
+    trafficMetrics: incoming.trafficMetrics ?? existing.trafficMetrics ?? aggregateTrafficMetrics(mergedTracking),
+    campaignSlug: incoming.campaignSlug ?? existing.campaignSlug,
   };
 }
 
@@ -285,7 +474,7 @@ function dedupeTweets(tweets: TweetAnalyticsRecord[]): TweetAnalyticsRecord[] {
   for (const tweet of tweets) {
     const key = tweet.tweetId ?? tweet.threadsPostId ?? tweet.runId;
     const existing = byKey.get(key);
-    byKey.set(key, existing ? { ...existing, ...tweet } : tweet);
+    byKey.set(key, existing ? mergeTweetRecords(existing, tweet) : tweet);
   }
   return [...byKey.values()].sort((a, b) => Date.parse(b.postedAt) - Date.parse(a.postedAt));
 }
@@ -302,6 +491,7 @@ function mergeStores(stores: AnalyticsStore[]): AnalyticsStore {
     version: Math.max(1, ...stores.map((store) => store.version)),
     updatedAt,
     clickMetricsAvailable: false,
+    trafficMetricsAvailable: false,
     threadsUserInsights,
     tweets,
   };
@@ -381,7 +571,7 @@ async function loadCampaignStore(slug: string): Promise<AnalyticsStore> {
     }
   }
 
-  return { version: 1, updatedAt: null, clickMetricsAvailable: false, tweets: [] };
+  return { version: 1, updatedAt: null, clickMetricsAvailable: false, trafficMetricsAvailable: false, tweets: [] };
 }
 
 async function loadBaseStore(): Promise<AnalyticsStore> {
@@ -410,7 +600,7 @@ async function loadBaseStore(): Promise<AnalyticsStore> {
   }
   if (remoteStores.length > 0) return mergeStores(remoteStores);
 
-  return { version: 1, updatedAt: null, clickMetricsAvailable: false, tweets: [] };
+  return { version: 1, updatedAt: null, clickMetricsAvailable: false, trafficMetricsAvailable: false, tweets: [] };
 }
 
 export interface LoadStoreResult extends AnalyticsStore {
@@ -439,18 +629,32 @@ export async function loadStore(options: { includeClicks?: boolean; campaignSlug
   }
 
   if (includeClicks) {
-    const clickable = store.tweets.filter((tweet) => !!tweet.trackedUrl);
-    const clickLookup = await getClickMetricsForSlugs(clickable.map((tweet) => tweet.runId));
+    const trackingIds = [...new Set(
+      store.tweets.flatMap((tweet) => tweet.outboundTracking?.map((tracking) => tracking.trackingId) ?? [])
+    )];
+    const [clickLookup, trafficLookup] = await Promise.all([
+      getClickMetricsForTrackingIds(trackingIds),
+      getTrafficMetricsForTrackingIds(trackingIds),
+    ]);
     for (const tweet of store.tweets) {
-      const metrics = clickLookup.metrics.get(tweet.runId);
-      if (metrics) tweet.clickMetrics = normalizeClickMetrics(metrics);
-      else delete tweet.clickMetrics;
+      const outboundTracking = (tweet.outboundTracking ?? []).map((tracking) => ({
+        ...tracking,
+        clickMetrics: normalizeClickMetrics(clickLookup.metrics.get(tracking.trackingId)),
+        trafficMetrics: normalizeTrafficMetrics(trafficLookup.metrics.get(tracking.trackingId)),
+      }));
+      tweet.outboundTracking = outboundTracking;
+      tweet.trackedUrl = outboundTracking[0]?.trackedUrl ?? tweet.trackedUrl;
+      tweet.linkTargetUrl = outboundTracking[0]?.linkTargetUrl ?? tweet.linkTargetUrl;
+      tweet.clickMetrics = aggregateClickMetrics(outboundTracking) ?? normalizeClickMetrics(tweet.clickMetrics);
+      tweet.trafficMetrics = aggregateTrafficMetrics(outboundTracking) ?? normalizeTrafficMetrics(tweet.trafficMetrics);
     }
     store.clickMetricsAvailable = clickLookup.available;
+    store.trafficMetricsAvailable = trafficLookup.available;
     store.updatedAt = latestIso([
       store.updatedAt,
       ...store.tweets.map((tweet) => tweet.metrics?.fetchedAt),
       ...store.tweets.map((tweet) => tweet.clickMetrics?.fetchedAt),
+      ...store.tweets.map((tweet) => tweet.trafficMetrics?.fetchedAt),
       store.threadsUserInsights?.fetchedAt,
     ]);
   }
@@ -493,6 +697,14 @@ export function chartAxisLabels(records: Array<{ postedAt: string }>, maxLabels 
 
 export function compact(n: number): string {
   return new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(n);
+}
+
+function slugify(value: string, maxLength = 48): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .slice(0, maxLength);
 }
 
 export function linePath(values: number[], w: number, h: number): { line: string; area: string } {

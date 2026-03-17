@@ -41,16 +41,16 @@ function getRestConfig(): { url: string; token: string } | null {
   return { url: url.replace(/\/+$/, ""), token };
 }
 
-function totalKey(slug: string): string {
-  return `${CLICK_KEY_PREFIX}:${slug}:total`;
+function totalKey(trackingId: string): string {
+  return `${CLICK_KEY_PREFIX}:${trackingId}:total`;
 }
 
-function uniqueKey(slug: string): string {
-  return `${CLICK_KEY_PREFIX}:${slug}:unique`;
+function uniqueKey(trackingId: string): string {
+  return `${CLICK_KEY_PREFIX}:${trackingId}:unique`;
 }
 
-function visitorSetKey(slug: string): string {
-  return `${CLICK_KEY_PREFIX}:${slug}:visitors`;
+function visitorSetKey(trackingId: string): string {
+  return `${CLICK_KEY_PREFIX}:${trackingId}:visitors`;
 }
 
 function toCount(value: unknown): number {
@@ -104,21 +104,21 @@ export function buildVisitorFingerprint(headers: Headers): string | null {
   return createHash("sha256").update(basis).digest("hex");
 }
 
-export async function getClickMetricsForSlugs(slugs: string[]): Promise<ClickMetricsLookup> {
-  const uniqueSlugs = [...new Set(slugs.filter(Boolean))];
+export async function getClickMetricsForTrackingIds(trackingIds: string[]): Promise<ClickMetricsLookup> {
+  const uniqueTrackingIds = [...new Set(trackingIds.filter(Boolean))];
   const fetchedAt = new Date().toISOString();
   const metrics = new Map<string, ClickMetricsSnapshot>();
 
-  if (uniqueSlugs.length === 0) return { available: false, metrics };
+  if (uniqueTrackingIds.length === 0) return { available: false, metrics };
 
   if (getRestConfig()) {
     const [totals, uniques] = await Promise.all([
-      restCommand<Array<number | string | null>>("mget", ...uniqueSlugs.map(totalKey)),
-      restCommand<Array<number | string | null>>("mget", ...uniqueSlugs.map(uniqueKey)),
+      restCommand<Array<number | string | null>>("mget", ...uniqueTrackingIds.map(totalKey)),
+      restCommand<Array<number | string | null>>("mget", ...uniqueTrackingIds.map(uniqueKey)),
     ]);
 
-    uniqueSlugs.forEach((slug, index) => {
-      metrics.set(slug, {
+    uniqueTrackingIds.forEach((trackingId, index) => {
+      metrics.set(trackingId, {
         fetchedAt,
         totalClicks: toCount(totals?.[index]),
         uniqueClicks: toCount(uniques?.[index]),
@@ -130,9 +130,9 @@ export async function getClickMetricsForSlugs(slugs: string[]): Promise<ClickMet
   if (process.env.NODE_ENV === "production") return { available: false, metrics };
 
   const store = await readLocalStore();
-  uniqueSlugs.forEach((slug) => {
-    const row = store[slug];
-    metrics.set(slug, {
+  uniqueTrackingIds.forEach((trackingId) => {
+    const row = store[trackingId];
+    metrics.set(trackingId, {
       fetchedAt,
       totalClicks: row?.totalClicks ?? 0,
       uniqueClicks: row?.uniqueClicks ?? 0,
@@ -142,21 +142,21 @@ export async function getClickMetricsForSlugs(slugs: string[]): Promise<ClickMet
 }
 
 export async function recordTrackedClick(
-  slug: string,
+  trackingId: string,
   visitorFingerprint: string | null
 ): Promise<ClickMetricsSnapshot | null> {
   const fetchedAt = new Date().toISOString();
 
   if (getRestConfig()) {
-    await restCommand("incr", totalKey(slug));
+    await restCommand("incr", totalKey(trackingId));
     if (visitorFingerprint) {
-      const added = toCount(await restCommand<number | string>("sadd", visitorSetKey(slug), visitorFingerprint));
-      if (added > 0) await restCommand("incr", uniqueKey(slug));
+      const added = toCount(await restCommand<number | string>("sadd", visitorSetKey(trackingId), visitorFingerprint));
+      if (added > 0) await restCommand("incr", uniqueKey(trackingId));
     }
 
     const [totalClicks, uniqueClicks] = await Promise.all([
-      restCommand<number | string>("get", totalKey(slug)),
-      restCommand<number | string>("get", uniqueKey(slug)),
+      restCommand<number | string>("get", totalKey(trackingId)),
+      restCommand<number | string>("get", uniqueKey(trackingId)),
     ]);
 
     return {
@@ -169,7 +169,7 @@ export async function recordTrackedClick(
   if (process.env.NODE_ENV === "production") return null;
 
   const store = await readLocalStore();
-  const current = store[slug] ?? {
+  const current = store[trackingId] ?? {
     totalClicks: 0,
     uniqueClicks: 0,
     updatedAt: fetchedAt,
@@ -182,7 +182,7 @@ export async function recordTrackedClick(
     current.uniqueClicks += 1;
   }
   current.updatedAt = fetchedAt;
-  store[slug] = current;
+  store[trackingId] = current;
   await writeLocalStore(store);
 
   return {
@@ -190,4 +190,8 @@ export async function recordTrackedClick(
     totalClicks: current.totalClicks,
     uniqueClicks: current.uniqueClicks,
   };
+}
+
+export async function getClickMetricsForSlugs(slugs: string[]): Promise<ClickMetricsLookup> {
+  return getClickMetricsForTrackingIds(slugs);
 }

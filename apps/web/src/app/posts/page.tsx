@@ -26,11 +26,11 @@ export default async function PostsPage({ searchParams }: { searchParams: Promis
   const totalPosts = allPosts.length;
   const withMetrics = allPosts.filter((t) => !!t.metrics).length;
   const published = allPosts.filter((t) => !!t.tweetId || !!t.threadsPostId).length;
-  const trackedLinks = allPosts.filter((t) => !!t.trackedUrl).length;
+  const trackedLinks = allPosts.reduce((sum, tweet) => sum + (tweet.outboundTracking?.length ?? (tweet.trackedUrl ? 1 : 0)), 0);
   const xPosts = allPosts.filter((t) => !!t.tweetId).length;
   const threadsPosts = allPosts.filter((t) => !!t.threadsPostId).length;
-
-  const sports = [...new Set(allPosts.map((t) => t.sport.toLowerCase()))];
+  const totalLandingVisits = allPosts.reduce((sum, tweet) => sum + (tweet.trafficMetrics?.landingVisits ?? 0), 0);
+  const totalSignupsCompleted = allPosts.reduce((sum, tweet) => sum + (tweet.trafficMetrics?.signupsCompleted ?? 0), 0);
 
   const lastUpdated = lastUpdatedStr(store.updatedAt);
 
@@ -66,7 +66,7 @@ export default async function PostsPage({ searchParams }: { searchParams: Promis
             <div className="stat-card amber">
               <div className="stat-label">Coverage</div>
               <div className="stat-value">{withMetrics}</div>
-              <div className="stat-sub">{trackedLinks} tracked links &middot; {sports.join(", ") || "—"}</div>
+              <div className="stat-sub">{trackedLinks} tracking links &middot; {compact(totalLandingVisits)} visits &middot; {compact(totalSignupsCompleted)} signups</div>
             </div>
           </div>
 
@@ -78,6 +78,8 @@ export default async function PostsPage({ searchParams }: { searchParams: Promis
                 const engRate = m?.engagementRate ?? (imp > 0 && m ? (m.engagementCount / imp) * 100 : 0);
                 const clicks = tweet.clickMetrics?.totalClicks;
                 const uniqueClicks = tweet.clickMetrics?.uniqueClicks;
+                const landingVisits = tweet.trafficMetrics?.landingVisits;
+                const signupsCompleted = tweet.trafficMetrics?.signupsCompleted;
 
                 return (
                   <article className="post-card" key={tweet.runId}>
@@ -108,7 +110,18 @@ export default async function PostsPage({ searchParams }: { searchParams: Promis
                           Threads
                         </span>
                       )}
-                      {tweet.trackedUrl && (
+                      {(tweet.outboundTracking ?? []).map((tracking) => (
+                        <a
+                          key={tracking.trackingId}
+                          className="view-link post-card-link"
+                          href={tracking.trackedUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {tracking.platform === "threads" ? "Threads link" : "X link"} &#8599;
+                        </a>
+                      ))}
+                      {!tweet.outboundTracking?.length && tweet.trackedUrl && (
                         <a
                           className="view-link post-card-link"
                           href={tweet.trackedUrl}
@@ -153,6 +166,14 @@ export default async function PostsPage({ searchParams }: { searchParams: Promis
                           <span className="pcm-label">Clicks</span>
                         </div>
                         <div className="pcm">
+                          <span className="pcm-val pcm-green">{typeof landingVisits === "number" ? compact(landingVisits) : "—"}</span>
+                          <span className="pcm-label">Visits</span>
+                        </div>
+                        <div className="pcm">
+                          <span className="pcm-val pcm-blue">{typeof signupsCompleted === "number" ? compact(signupsCompleted) : "—"}</span>
+                          <span className="pcm-label">Signups</span>
+                        </div>
+                        <div className="pcm">
                           <span className={`pcm-val ${engRate > 0 ? "pcm-green" : ""}`}>{engRate.toFixed(2)}%</span>
                           <span className="pcm-label">Eng. rate</span>
                         </div>
@@ -163,7 +184,7 @@ export default async function PostsPage({ searchParams }: { searchParams: Promis
                       <div className="post-card-no-metrics">
                         {tweet.trackedUrl
                           ? typeof clicks === "number" && typeof uniqueClicks === "number"
-                            ? `${compact(clicks)} clicks · ${compact(uniqueClicks)} unique visitors`
+                            ? `${compact(clicks)} clicks · ${compact(uniqueClicks)} unique clickers · ${compact(landingVisits ?? 0)} visits`
                             : "Click analytics unavailable"
                           : "No metrics collected yet"}
                       </div>

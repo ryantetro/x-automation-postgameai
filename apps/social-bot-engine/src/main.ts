@@ -59,6 +59,7 @@ import {
   formatInsightsReport,
   type PlatformPublishResult,
   type AnalyticsStore,
+  type OutboundTrackingRecord,
 } from "./analytics.js";
 
 const MAX_GENERATE_RETRIES = 3;
@@ -67,10 +68,10 @@ const ITERATION_REPORT_FILE = resolve(LOGS_DIR, "iteration-report.md");
 const CANOPY_AGENT_REPORT_FILE = resolve(LOGS_DIR, "canopy-agent-report.md");
 const RECENT_TWEETS_CAP = 60;
 
-function buildTrackedUrl(runId: string): string | null {
+function buildTrackedUrl(trackingId: string): string | null {
   if (!TRACKING_BASE_URL) return null;
   const base = TRACKING_BASE_URL.replace(/\/+$/, "");
-  return `${base}/r/${encodeURIComponent(runId)}`;
+  return `${base}/r/${encodeURIComponent(trackingId)}`;
 }
 
 function appendTrackedUrl(text: string, trackedUrl: string | null): string {
@@ -79,6 +80,58 @@ function appendTrackedUrl(text: string, trackedUrl: string | null): string {
   if (next.length <= MAX_POST_LEN) return next;
   console.warn("Tracked link omitted because post body used the full character budget");
   return text;
+}
+
+function appendTrackedUrlToThread(tweets: string[], trackedUrl: string | null): string[] {
+  if (!trackedUrl || tweets.length === 0) return tweets;
+  return tweets.map((tweet, index) => (index === 0 ? appendTrackedUrl(tweet, trackedUrl) : tweet));
+}
+
+function slugify(value: string, maxLength = 48): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .slice(0, maxLength);
+}
+
+function buildOutboundTrackingRecords(options: {
+  runId: string;
+  campaignSlug?: string;
+  platforms: ("x" | "threads")[];
+  dateContext: string;
+  sport: string;
+  angle: string;
+  source: string;
+  linkTargetUrl: string;
+}): OutboundTrackingRecord[] {
+  if (!TRACKING_BASE_URL || !options.linkTargetUrl) return [];
+
+  const campaignSlug = options.campaignSlug?.trim() || "default";
+  const campaignPrefix = (process.env.UTM_CAMPAIGN_PREFIX || "postgame_ai").trim() || "postgame_ai";
+  const sportSlug = slugify(options.sport || "sports", 20) || "sports";
+  const dateSlug = slugify(options.dateContext || "unknown", 20) || "unknown";
+  const angleSlug = slugify(options.angle || "general", 40) || "general";
+  const sourceSlug = slugify(options.source || "automation", 20) || "automation";
+
+  return options.platforms.map((platform) => {
+    const trackingId = `${options.runId}-${platform}`;
+    return {
+      trackingId,
+      runId: options.runId,
+      platform,
+      campaignSlug: options.campaignSlug?.trim() || undefined,
+      trackedUrl: buildTrackedUrl(trackingId)!,
+      linkTargetUrl: options.linkTargetUrl,
+      utmSource: platform,
+      utmMedium: (process.env.UTM_MEDIUM || "social").trim() || "social",
+      utmCampaign: `${campaignPrefix}_${campaignSlug}_${sportSlug}_${dateSlug}`,
+      utmContent: trackingId,
+      utmTerm: angleSlug,
+      postSport: sportSlug,
+      postSource: sourceSlug,
+    };
+  });
 }
 
 /** Read last N posted tweet texts from persistent analytics state (newest first). */
@@ -151,8 +204,8 @@ async function main(): Promise<number> {
   const today = nowIso.slice(0, 10);
   const sport = getSportForRun();
   const angle = getAngleForDate(new Date());
-  const trackedUrl = buildTrackedUrl(runId);
-  let linkToAppend = trackedUrl || (CLICK_TARGET_URL || null);
+  const trackedUrlPreview = buildTrackedUrl(`${runId}-threads`);
+  let linkToAppend = trackedUrlPreview || (CLICK_TARGET_URL || null);
   // When CLICK_TARGET_URL points to the same domain as BRAND_WEBSITE (e.g. "viciousshade.com")
   // the generated post body already includes the brand website, so appending the full URL
   // would duplicate it visually (e.g. "viciousshade.com https://www.viciousshade.com").
@@ -523,7 +576,22 @@ async function main(): Promise<number> {
     }
   }
 
-  text = appendTrackedUrl(text, linkToAppend);
+  const campaignSlug = process.env.CAMPAIGN?.trim() || undefined;
+  const outboundTracking = buildOutboundTrackingRecords({
+    runId,
+    campaignSlug,
+    platforms: [...POST_TARGETS],
+    dateContext: today,
+    sport: sportForRecord,
+    angle: angleForRecord,
+    source: generationSource,
+    linkTargetUrl: CLICK_TARGET_URL,
+  });
+  const trackingByPlatform = new Map(outboundTracking.map((record) => [record.platform, record] as const));
+  const xText = POSTS_TO_X ? appendTrackedUrl(text, trackingByPlatform.get("x")?.trackedUrl ?? linkToAppend) : null;
+  const threadsText = POSTS_TO_THREADS ? appendTrackedUrl(text, trackingByPlatform.get("threads")?.trackedUrl ?? linkToAppend) : null;
+  const xThreadTweets = isThread && threadTweets ? appendTrackedUrlToThread(threadTweets, trackingByPlatform.get("x")?.trackedUrl ?? linkToAppend) : null;
+  text = xText ?? threadsText ?? appendTrackedUrl(text, linkToAppend);
 
   let imageBuffer: Buffer | null = null;
   if (DATA_SOURCE === "angles_only" && IMAGE_ENABLED) {
@@ -617,8 +685,9 @@ async function main(): Promise<number> {
       newsMomentType: contentDecision.newsMomentType,
       prePublishChecks,
       openingPattern,
-      trackedUrl: linkToAppend ?? undefined,
+      trackedUrl: outboundTracking[0]?.trackedUrl ?? linkToAppend ?? undefined,
       linkTargetUrl: CLICK_TARGET_URL,
+      outboundTracking,
       hasImage: false,
       campaignStrategyId: canopyStrategy?.pillarId,
       voiceFamily: canopyStrategy?.voiceFamily,
@@ -707,11 +776,11 @@ async function main(): Promise<number> {
     const result = await publishWithRetry("X", async () => {
       let xResult;
       if (isThread && threadTweets && threadTweets.length >= 2) {
-        xResult = await postThreadToX(threadTweets);
+        xResult = await postThreadToX(xThreadTweets ?? threadTweets);
       } else if (imageBuffer != null) {
-        xResult = await postToXWithMedia(text, imageBuffer, "image/png");
+        xResult = await postToXWithMedia(xText ?? text, imageBuffer, "image/png");
       } else {
-        xResult = await postToX(text);
+        xResult = await postToX(xText ?? text);
       }
       return {
         success: xResult.success,
@@ -731,7 +800,7 @@ async function main(): Promise<number> {
 
   if (POSTS_TO_THREADS) {
     const result = await publishWithRetry("Threads", async () => {
-      const threadsResult = await postToThreads(text);
+      const threadsResult = await postToThreads(threadsText ?? text);
       return {
         success: threadsResult.success,
         error: threadsResult.error,
@@ -750,6 +819,15 @@ async function main(): Promise<number> {
 
   const xPublishResult = publishResults.find((result) => result.platform === "x");
   const threadsPublishResult = publishResults.find((result) => result.platform === "threads");
+  const outboundTrackingWithPostIds = outboundTracking.map((record) => ({
+    ...record,
+    publishedPostId:
+      record.platform === "x"
+        ? xPublishResult?.postId
+        : record.platform === "threads"
+          ? threadsPublishResult?.postId
+          : undefined,
+  }));
   const allSucceeded = publishResults.every((result) => result.status !== "failed");
   const anySucceeded = publishResults.some((result) => result.status !== "failed");
   const failureSummary = publishResults
@@ -785,8 +863,9 @@ async function main(): Promise<number> {
     newsMomentType: contentDecision.newsMomentType,
     prePublishChecks,
     openingPattern,
-    trackedUrl: linkToAppend ?? undefined,
+    trackedUrl: outboundTrackingWithPostIds[0]?.trackedUrl ?? linkToAppend ?? undefined,
     linkTargetUrl: CLICK_TARGET_URL,
+    outboundTracking: outboundTrackingWithPostIds,
     publishTargets: [...POST_TARGETS],
     publishResults,
     hasImage: hasImageForRecord,

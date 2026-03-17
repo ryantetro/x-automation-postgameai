@@ -48,9 +48,15 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   const totalShares = tracked.reduce((s, t) => s + (t.metrics?.shareCount ?? 0), 0);
   const hasTrackedLinks = posted.some((t) => !!t.trackedUrl);
   const hasClickMetrics = posted.some((t) => !!t.clickMetrics);
+  const hasTrafficMetrics = posted.some((t) => !!t.trafficMetrics);
   const totalClicks = hasClickMetrics ? posted.reduce((s, t) => s + (t.clickMetrics?.totalClicks ?? 0), 0) : null;
   const totalUniqueClicks = hasClickMetrics ? posted.reduce((s, t) => s + (t.clickMetrics?.uniqueClicks ?? 0), 0) : null;
+  const totalLandingVisits = hasTrafficMetrics ? posted.reduce((s, t) => s + (t.trafficMetrics?.landingVisits ?? 0), 0) : null;
+  const totalSignupsCompleted = hasTrafficMetrics ? posted.reduce((s, t) => s + (t.trafficMetrics?.signupsCompleted ?? 0), 0) : null;
+  const totalDemoBookings = hasTrafficMetrics ? posted.reduce((s, t) => s + (t.trafficMetrics?.demoBookings ?? 0), 0) : null;
   const avgRate = totalImpressions > 0 ? (totalEngagements / totalImpressions) * 100 : 0;
+  const visitRate = totalClicks && totalClicks > 0 && totalLandingVisits !== null ? (totalLandingVisits / totalClicks) * 100 : null;
+  const signupRate = totalLandingVisits && totalLandingVisits > 0 && totalSignupsCompleted !== null ? (totalSignupsCompleted / totalLandingVisits) * 100 : null;
   const threadFollowers = store.threadsUserInsights?.followersCount ?? null;
   const threadProfileViews = store.threadsUserInsights?.views ?? null;
 
@@ -103,7 +109,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               <div className="stat-label">Engagement rate</div>
               <div className="stat-value">{avgRate.toFixed(2)}%</div>
               <div className="stat-sub">
-                {!hasTrackedLinks
+                {hasTrafficMetrics
+                  ? `${compact(totalLandingVisits ?? 0)} visits · ${compact(totalSignupsCompleted ?? 0)} signups · ${compact(totalDemoBookings ?? 0)} demos`
+                  : !hasTrackedLinks
                   ? "No tracked links"
                   : totalClicks === null || totalUniqueClicks === null
                     ? "Click analytics unavailable"
@@ -232,6 +240,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                   <div className="summary-row"><span className="summary-label">Total engagement</span><span className="summary-val blue">{compact(totalEngagements)}</span></div>
                   <div className="summary-row"><span className="summary-label">Engagement rate</span><span className="summary-val">{avgRate.toFixed(2)}%</span></div>
                   <div className="summary-row"><span className="summary-label">X posts</span><span className="summary-val">{compact(xPosts)}</span></div>
+                  <div className="summary-row"><span className="summary-label">Landing visits</span><span className="summary-val green">{totalLandingVisits === null ? "—" : compact(totalLandingVisits)}</span></div>
+                  <div className="summary-row"><span className="summary-label">Signup completions</span><span className="summary-val blue">{totalSignupsCompleted === null ? "—" : compact(totalSignupsCompleted)}</span></div>
+                  <div className="summary-row"><span className="summary-label">Visit rate</span><span className="summary-val">{visitRate === null ? "—" : `${visitRate.toFixed(1)}%`}</span></div>
+                  <div className="summary-row"><span className="summary-label">Signup rate</span><span className="summary-val">{signupRate === null ? "—" : `${signupRate.toFixed(1)}%`}</span></div>
                   <div className="summary-row"><span className="summary-label">Threads followers</span><span className="summary-val amber">{threadFollowers === null ? "—" : compact(threadFollowers)}</span></div>
                   <div className="summary-row"><span className="summary-label">Threads posts</span><span className="summary-val">{compact(threadsPosts)}</span></div>
                   <div className="summary-row"><span className="summary-label">Link clicks</span><span className="summary-val amber">{totalClicks === null ? "—" : compact(totalClicks)}</span></div>
