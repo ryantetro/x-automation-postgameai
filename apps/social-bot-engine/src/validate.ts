@@ -13,6 +13,7 @@ export function isValidTweet(
 ): boolean {
   if (text == null || typeof text !== "string") return false;
   const t = text.trim();
+  if (t.length < 12) return false;
   if (t.length > MAX_POST_LEN) return false;
   const { requireBrand = true } = options;
   if (requireBrand) {

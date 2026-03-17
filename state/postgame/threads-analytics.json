@@ -1,0 +1,419 @@
+{
+  "version": 4,
+  "updatedAt": "2026-03-10T19:22:36.064Z",
+  "tweets": [
+    {
+      "runId": "d362bf7e-c6b1-48cf-a2b6-4df2ec3476d5",
+      "postedAt": "2026-03-10T19:19:56.531Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "The problem is not knowing what makes a good pitch; it's knowing the difference between a swing coach and a decision coach. Your hardest hitters can still sabotage efficiency if they don't see that gap. #BaseballTruth #CoachingLife postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "the_problem",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "c39011b8-7c7e-43df-b199-1ffefb1c49d9",
+      "postedAt": "2026-03-10T19:21:12.588Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Bet on the wrong hitter, and the inning dies before the ball leaves the infield. A decision nobody noted in the box score but every coach felt in the gut. Nothing's worse than a missed moment that only lives in memory. postgame AI · getpostgame.ai #BaseballMindset #CoachingTruths",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "moment_nobody_captures",
+      "contentFrameLabel": "The Moment Nobody Captures",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Moment Nobody Captures to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "b0848c86-02c2-4027-abce-cf90b4abcbbf",
+      "postedAt": "2026-03-10T19:21:15.553Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "The problem is not missed swings, it's forgetting why they missed. That understanding dissolves faster than a postgame Gatorade. By practice, only raw stats remain, the story lost in the dugout chatter. #BaseballTruths #CoachLife postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "the_problem",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "f3aab492-7f9a-4cda-8a7e-59b1057a3984",
+      "postedAt": "2026-03-10T19:21:18.165Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Only 30% of swings connect in key moments. Potential evaporates because decision-making crumbles under pressure. Talent or execution? The discomfort is in those late-game numbers burned in coaches’ minds. postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "only_30%",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "8d151d9c-51c0-4705-b5cd-dfe6b6797ddb",
+      "postedAt": "2026-03-10T19:21:23.090Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Efficiency stats are a mirage when your lineup is swinging at anything that moves. The 48-hour window closes faster than a fastball, and by the next practice, all you remember are those ugly swings. #BaseballCoaching #DecisionMaking postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "efficiency_stats",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "33d91877-17f3-4955-abbb-6e47fdef19c0",
+      "postedAt": "2026-03-10T19:21:25.896Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "It's not the efficiency stats, it's the one pitch you didn't question. Postgame details fading into \"what-ifs\" is like letting gold slip through your fingers. Don't lose the edge. \n\npostgame AI · getpostgame.ai #BaseballCoaching #PitchingDecisions",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "moment_nobody_captures",
+      "contentFrameLabel": "The Moment Nobody Captures",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Moment Nobody Captures to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "18b66bd9-fd89-45f9-851a-ced535b8ea89",
+      "postedAt": "2026-03-10T19:22:19.220Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Nobody captures the moment a batter hesitates on a meatball down the middle. That’s when plate discipline clashes with instinct, and by Monday, nobody remembers why he held back. #MLB #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "moment_nobody_captures",
+      "contentFrameLabel": "The Moment Nobody Captures",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Moment Nobody Captures to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "nobody_captures",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "1db93a6f-bbee-454d-9ef5-20fd5b4f5148",
+      "postedAt": "2026-03-10T19:22:21.789Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Real insights die in 48 hours. By Wednesday, gut reactions are ghosts buried under numbers and noise. Capture clarity before it fades or practice begins. That's another lost opportunity. postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "real_insights",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "55383c98-b9df-48c3-af50-8a961b7f344a",
+      "postedAt": "2026-03-10T19:22:26.389Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Most coaches miss it—shot selection's the killer, not talent. Numbers don’t explain why a guy freezes or swings at air in crunch time. That’s the gap between stats and judgment. postgame AI · getpostgame.ai #BaseballCoaching #EfficientDecisionMaking",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "most_coaches",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "91900834-f799-41af-9f2f-226dcff29a92",
+      "postedAt": "2026-03-10T19:22:30.656Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Spring Training feels endless until rookies show the real issue isn't talent—it's decision-making under pressure. No stat captures a player freezing instead of swinging. That gap's the killer. #MLBCoaching #DecisionMaking postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "spring_training",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "e566cf1b-6317-4911-a1cb-f744bd9d5efe",
+      "postedAt": "2026-03-10T19:22:33.865Z",
+      "dateContext": "2026-03-10",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Efficiency stats are a mirage without context. The real decisions? They vanish into thin air 48 hours after that last pitch. If you don’t capture them fast, you’re coaching blind for next game prep. #MLBCoaching #BaseballMindset postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "efficiency_stats",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    }
+  ],
+  "analyticsHealth": {
+    "x": {
+      "status": "healthy",
+      "lastAttemptAt": "2026-03-10T19:22:33.866Z"
+    }
+  }
+}

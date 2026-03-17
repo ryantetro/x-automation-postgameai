@@ -5,10 +5,12 @@ import {
   ANALYTICS_STORE_FILE,
   buildIterationInsights,
   buildGenerationInsights,
+  type AnalyticsStore,
   loadAnalyticsStore,
   formatInsightsReport,
   type TweetAnalyticsRecord,
 } from "../src/analytics.js";
+import { buildCanopyAgentMemory, formatCanopyAgentReport } from "../src/canopyAgent.js";
 
 const REPORT_FILE = resolve(LOGS_DIR, "iteration-report.md");
 const GENERATION_LOG_FILE = resolve(STATE_DIR, "generation-log.jsonl");
@@ -135,6 +137,14 @@ function buildPerformanceAppendix(store: ReturnType<typeof loadAnalyticsStore>):
   return lines.join("\n");
 }
 
+function buildCanopyAgentAppendix(store: AnalyticsStore): string {
+  const canopyPosts = store.tweets.filter((tweet) => tweet.sport === "canopy" && tweet.status === "posted");
+  if (canopyPosts.length === 0) {
+    return "## Canopy agent\n- No posted canopy tweets yet.";
+  }
+  return formatCanopyAgentReport(buildCanopyAgentMemory(store));
+}
+
 function buildGenerationAppendix(): string {
   const lines: string[] = [];
   lines.push("## Generation failure summary");
@@ -196,6 +206,8 @@ function main(): number {
   }
   sections.push("");
   sections.push(buildPerformanceAppendix(store));
+  sections.push("");
+  sections.push(buildCanopyAgentAppendix(store));
   sections.push("");
   sections.push(buildGenerationAppendix());
   const report = sections.join("\n");

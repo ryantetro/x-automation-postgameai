@@ -9,7 +9,6 @@ import {
   POSTS_TO_X,
   getSportForRun,
   getAngleForDate,
-  getAngleForDateAnglesOnly,
   DATA_SOURCE,
   IMAGE_ENABLED,
   BRAND_NAME,
@@ -26,11 +25,20 @@ import {
 } from "./config.js";
 import { fetchSportsData } from "./fetchData.js";
 import { fetchNewsContext } from "./fetchNews.js";
-import { generatePost, generatePostAnglesOnly, fillFallbackTemplate, pickNonDuplicateFallback, generateThread, isThreadDay } from "./generatePost.js";
+import { generatePost, generatePostAnglesOnly, generateCanopyCandidateBatch, judgeCanopyCandidates, fillFallbackTemplate, pickNonDuplicateFallback, generateThread, isThreadDay } from "./generatePost.js";
 import { isValidTweet } from "./validate.js";
 import { getXClient, postToX, postToXWithMedia, postThreadToX } from "./postToX.js";
-import { generateCampaignImage } from "./generateImage.js";
+import { buildCampaignImagePromptForAngle, generateCampaignImage } from "./generateImage.js";
 import { postToThreads } from "./postToThreads.js";
+import {
+  buildCanopyAgentLesson,
+  buildCanopyAgentMemory,
+  chooseCanopyAgentStrategy,
+  chooseCanopyImageDirection,
+  formatCanopyAgentReport,
+  rankCanopyCandidates,
+  type CanopyStrategyEnvelope,
+} from "./canopyAgent.js";
 import {
   buildRecentContentDecision,
   selectContentDecision,
@@ -56,6 +64,7 @@ import {
 const MAX_GENERATE_RETRIES = 3;
 const LOG_FILE = resolve(LOGS_DIR, "posts.log");
 const ITERATION_REPORT_FILE = resolve(LOGS_DIR, "iteration-report.md");
+const CANOPY_AGENT_REPORT_FILE = resolve(LOGS_DIR, "canopy-agent-report.md");
 const RECENT_TWEETS_CAP = 60;
 
 function buildTrackedUrl(runId: string): string | null {
@@ -209,6 +218,14 @@ async function main(): Promise<number> {
       // ignore report write issues
     }
   }
+  if (DATA_SOURCE === "angles_only") {
+    try {
+      mkdirSync(LOGS_DIR, { recursive: true });
+      writeFileSync(CANOPY_AGENT_REPORT_FILE, `${formatCanopyAgentReport(buildCanopyAgentMemory(analyticsStore, new Date()))}\n`, "utf-8");
+    } catch {
+      // ignore report write issues
+    }
+  }
 
   let isThread = false;
   let threadTweets: string[] | null = null;
@@ -243,25 +260,66 @@ async function main(): Promise<number> {
     newsMomentType: "unknown",
     openingPattern: "",
   };
+  let canopyStrategy: CanopyStrategyEnvelope | undefined;
+  let canopyIterationGuidance: string | undefined;
+  let canopyCandidateBatchId: string | undefined;
+  let canopySelectedCandidate:
+    | {
+        candidateId: string;
+        candidateScore: number;
+        candidateRank: number;
+      }
+    | undefined;
+  let canopyImageSelectionReason: string | undefined;
+  let canopyImageDetails:
+    | {
+        variantId: string;
+        style: "lifestyle" | "mockup";
+        shotType: "close_up" | "medium" | "wide";
+        useCaseVertical?: string;
+        productFocus?: string;
+      }
+    | undefined;
 
   if (DATA_SOURCE === "angles_only") {
-    // Canopy / industry path: no sports data, use rotating angles and canopy prompt
-    angleForRecord = getAngleForDateAnglesOnly(new Date());
+    // Canopy / industry path: X-analytics-driven agent loop
     sportForRecord = "canopy";
-    let recentTexts = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
-    for (let attempt = 0; attempt < MAX_GENERATE_RETRIES; attempt++) {
-      const generated = await generatePostAnglesOnly({
-        angle: angleForRecord,
-        date: today,
-        recentTweets: recentTexts,
-        reserveChars,
-      });
-      text = generated.text;
-      if (text && isValidTweet(text, { requireBrand: false })) {
-        if (!isDuplicate(text, recentTexts)) break;
-        recentTexts = [text, ...recentTexts].slice(0, RECENT_TWEETS_CAP);
-      }
-    }
+    const canopyMemory = buildCanopyAgentMemory(analyticsStore, new Date());
+    canopyStrategy = chooseCanopyAgentStrategy(analyticsStore, new Date());
+    canopyIterationGuidance = buildCanopyAgentLesson(canopyMemory) || undefined;
+    angleForRecord = canopyStrategy.angle;
+    canopyCandidateBatchId = `${runId}:canopy-batch`;
+    const recentTexts = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
+    const rawCandidates = await generateCanopyCandidateBatch({
+      angle: angleForRecord,
+      date: today,
+      recentTweets: recentTexts,
+      reserveChars,
+      iterationGuidance: canopyIterationGuidance,
+      strategy: canopyStrategy,
+      count: 5,
+    });
+    const ranked = rankCanopyCandidates(rawCandidates, canopyStrategy);
+    const finalists = ranked.slice(0, 3);
+    const judged = await judgeCanopyCandidates(canopyStrategy, finalists);
+    const judgedMap = new Map(judged.map((row) => [row.candidateId, row.judgeScore]));
+    const finalRanked = ranked
+      .map((row) => ({
+        ...row,
+        judgeScore: judgedMap.get(row.candidateId) ?? 0,
+        totalScore: row.totalScore + (judgedMap.get(row.candidateId) ?? 0) * 0.6,
+      }))
+      .sort((a, b) => b.totalScore - a.totalScore || a.rank - b.rank)
+      .map((row, index) => ({ ...row, rank: index + 1 }));
+    const selected = finalRanked.find((row) => !isDuplicate(row.text, recentTexts)) ?? finalRanked[0];
+    text = selected?.text ?? null;
+    canopySelectedCandidate = selected
+      ? {
+          candidateId: selected.candidateId,
+          candidateScore: Number(selected.totalScore.toFixed(2)),
+          candidateRank: selected.rank,
+        }
+      : undefined;
     if (!text || !isValidTweet(text, { requireBrand: false })) {
       text = `Event season is brutal on gear. What holds up is what gets reordered. ${BRAND_NAME} · ${BRAND_WEBSITE}`.slice(
         0,
@@ -271,6 +329,44 @@ async function main(): Promise<number> {
       generationSource = "fallback";
     }
     openingPattern = text ? getOpeningPattern(text) : undefined;
+    for (const candidate of (text ? finalRanked : [])) {
+      appendGenerationLog({
+        runId,
+        attemptId: `${Date.now()}-${candidate.candidateId}`,
+        timestamp: nowIso,
+        platformTargets: [...POST_TARGETS],
+        sport: sportForRecord,
+        angle: angleForRecord,
+        newsUsed: false,
+        openingPattern: getOpeningPattern(candidate.text),
+        cleanedOutput: candidate.text,
+        passedChecks: candidate.rank <= 3 ? ["candidate_finalist"] : [],
+        failedChecks: candidate.rank <= 3 ? [] : ["candidate_not_selected"],
+        rejectionReason: candidate.rank <= 3 ? undefined : "candidate_ranked_below_threshold",
+        acceptedForPublish: canopySelectedCandidate?.candidateId === candidate.candidateId,
+        usedFallback: generationSource === "fallback",
+        campaignStrategyId: canopyStrategy?.pillarId,
+        voiceFamily: canopyStrategy?.voiceFamily,
+        buyerIntentLevel: canopyStrategy?.buyerIntentLevel,
+        useCaseVertical: canopyStrategy?.useCaseVertical,
+        productFocus: canopyStrategy?.productFocus,
+        urgencyMode: canopyStrategy?.urgencyMode,
+        ctaMode: canopyStrategy?.ctaMode,
+        creativeDirection: canopyStrategy?.creativeDirection,
+        optimizerVersion: canopyStrategy?.optimizerVersion,
+        selectionReason: canopyStrategy?.selectionReason,
+        candidateId: candidate.candidateId,
+        candidateBatchId: canopyCandidateBatchId,
+        candidateScore: Number(candidate.totalScore.toFixed(2)),
+        candidateRank: candidate.rank,
+        candidateRejectionReason: canopySelectedCandidate?.candidateId === candidate.candidateId ? undefined : "ranked_lower_than_winner",
+        selectedForPublish: canopySelectedCandidate?.candidateId === candidate.candidateId,
+        agentMode: canopyStrategy?.agentMode,
+        strategyEnvelopeId: canopyStrategy?.id,
+        agentReasoningSummary: canopyStrategy?.agentReasoningSummary,
+        performanceWindowLabel: canopyStrategy?.performanceWindowLabel,
+      });
+    }
   } else {
     // Sports path (existing)
     let fetched = await fetchSportsData(sport);
@@ -431,11 +527,52 @@ async function main(): Promise<number> {
 
   let imageBuffer: Buffer | null = null;
   if (DATA_SOURCE === "angles_only" && IMAGE_ENABLED) {
+    const preferredImage = canopyStrategy ? chooseCanopyImageDirection(analyticsStore, canopyStrategy, new Date()) : null;
     if (POST_ENABLED) {
-      imageBuffer = await generateCampaignImage(angleForRecord);
+      const generatedImage = await generateCampaignImage(angleForRecord, {
+        store: analyticsStore,
+        date: new Date(),
+        pillarId: canopyStrategy?.pillarId,
+        preferredVariantId: preferredImage?.variantId,
+        preferredStyle: preferredImage?.style,
+        preferredShotType: preferredImage?.shotType,
+        preferredUseCaseVertical: canopyStrategy?.useCaseVertical,
+        preferredProductFocus: canopyStrategy?.productFocus,
+      });
+      imageBuffer = generatedImage.buffer;
+      canopyImageSelectionReason = generatedImage.details?.selectionReason;
+      canopyImageDetails = generatedImage.details
+        ? {
+            variantId: generatedImage.details.variantId,
+            style: generatedImage.details.style,
+            shotType: generatedImage.details.shotType,
+            useCaseVertical: generatedImage.details.useCaseVertical,
+            productFocus: generatedImage.details.productFocus,
+          }
+        : undefined;
       if (!imageBuffer) console.warn("Campaign image generation failed; posting text only.");
     } else {
       console.info("Dry run: would generate campaign image for angle");
+      const promptDetails = buildCampaignImagePromptForAngle(angleForRecord, {
+        store: analyticsStore,
+        date: new Date(),
+        pillarId: canopyStrategy?.pillarId,
+        preferredVariantId: preferredImage?.variantId,
+        preferredStyle: preferredImage?.style,
+        preferredShotType: preferredImage?.shotType,
+        preferredUseCaseVertical: canopyStrategy?.useCaseVertical,
+        preferredProductFocus: canopyStrategy?.productFocus,
+      });
+      canopyImageSelectionReason = promptDetails?.selectionReason;
+      canopyImageDetails = promptDetails
+        ? {
+            variantId: promptDetails.variantId,
+            style: promptDetails.style,
+            shotType: promptDetails.shotType,
+            useCaseVertical: promptDetails.useCaseVertical,
+            productFocus: promptDetails.productFocus,
+          }
+        : undefined;
     }
   }
 
@@ -483,6 +620,28 @@ async function main(): Promise<number> {
       trackedUrl: linkToAppend ?? undefined,
       linkTargetUrl: CLICK_TARGET_URL,
       hasImage: false,
+      campaignStrategyId: canopyStrategy?.pillarId,
+      voiceFamily: canopyStrategy?.voiceFamily,
+      buyerIntentLevel: canopyStrategy?.buyerIntentLevel,
+      useCaseVertical: canopyStrategy?.useCaseVertical,
+      productFocus: canopyStrategy?.productFocus,
+      urgencyMode: canopyStrategy?.urgencyMode,
+      ctaMode: canopyStrategy?.ctaMode,
+      creativeDirection: canopyStrategy?.creativeDirection,
+      imageConceptId: canopyImageDetails?.variantId,
+      imageStyleFamily: canopyImageDetails?.style,
+      imageShotType: canopyImageDetails?.shotType,
+      optimizerVersion: canopyStrategy?.optimizerVersion,
+      selectionReason: [canopyStrategy?.selectionReason, canopyImageSelectionReason].filter(Boolean).join("; ") || undefined,
+      candidateId: canopySelectedCandidate?.candidateId,
+      candidateBatchId: canopyCandidateBatchId,
+      candidateScore: canopySelectedCandidate?.candidateScore,
+      candidateRank: canopySelectedCandidate?.candidateRank,
+      selectedForPublish: true,
+      agentMode: canopyStrategy?.agentMode,
+      strategyEnvelopeId: canopyStrategy?.id,
+      agentReasoningSummary: canopyStrategy?.agentReasoningSummary,
+      performanceWindowLabel: canopyStrategy?.performanceWindowLabel,
     });
     pruneStore(analyticsStore);
     saveAnalyticsStore(analyticsStore, ANALYTICS_STORE_FILE);
@@ -631,6 +790,28 @@ async function main(): Promise<number> {
     publishTargets: [...POST_TARGETS],
     publishResults,
     hasImage: hasImageForRecord,
+    campaignStrategyId: canopyStrategy?.pillarId,
+    voiceFamily: canopyStrategy?.voiceFamily,
+    buyerIntentLevel: canopyStrategy?.buyerIntentLevel,
+    useCaseVertical: canopyStrategy?.useCaseVertical ?? canopyImageDetails?.useCaseVertical,
+    productFocus: canopyStrategy?.productFocus ?? canopyImageDetails?.productFocus,
+    urgencyMode: canopyStrategy?.urgencyMode,
+    ctaMode: canopyStrategy?.ctaMode,
+    creativeDirection: canopyStrategy?.creativeDirection,
+    imageConceptId: canopyImageDetails?.variantId,
+    imageStyleFamily: canopyImageDetails?.style,
+    imageShotType: canopyImageDetails?.shotType,
+    optimizerVersion: canopyStrategy?.optimizerVersion,
+    selectionReason: [canopyStrategy?.selectionReason, canopyImageSelectionReason].filter(Boolean).join("; ") || undefined,
+    candidateId: canopySelectedCandidate?.candidateId,
+    candidateBatchId: canopyCandidateBatchId,
+    candidateScore: canopySelectedCandidate?.candidateScore,
+    candidateRank: canopySelectedCandidate?.candidateRank,
+    selectedForPublish: true,
+    agentMode: canopyStrategy?.agentMode,
+    strategyEnvelopeId: canopyStrategy?.id,
+    agentReasoningSummary: canopyStrategy?.agentReasoningSummary,
+    performanceWindowLabel: canopyStrategy?.performanceWindowLabel,
   });
 
   if (ANALYTICS_ENABLED && xClient && xPublishResult?.postId && xPublishResult.status === "posted") {

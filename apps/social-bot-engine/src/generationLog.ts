@@ -7,7 +7,16 @@ import type {
   HookStructureId,
   NewsMomentType,
 } from "./contentArchitecture.js";
-import type { PublishPlatform } from "./analytics.js";
+import type {
+  CanopyAgentMode,
+  CanopyBuyerIntentLevel,
+  CanopyCtaMode,
+  CanopyImageShotType,
+  CanopyImageStyleFamily,
+  CanopyUrgencyMode,
+  CanopyVoiceFamily,
+  PublishPlatform,
+} from "./analytics.js";
 
 export interface GenerationLogEntry {
   runId: string;
@@ -29,6 +38,29 @@ export interface GenerationLogEntry {
   rejectionReason?: string;
   acceptedForPublish: boolean;
   usedFallback: boolean;
+  campaignStrategyId?: string;
+  voiceFamily?: CanopyVoiceFamily;
+  buyerIntentLevel?: CanopyBuyerIntentLevel;
+  useCaseVertical?: string;
+  productFocus?: string;
+  urgencyMode?: CanopyUrgencyMode;
+  ctaMode?: CanopyCtaMode;
+  imageConceptId?: string;
+  imageStyleFamily?: CanopyImageStyleFamily;
+  imageShotType?: CanopyImageShotType;
+  optimizerVersion?: string;
+  selectionReason?: string;
+  creativeDirection?: string;
+  candidateId?: string;
+  candidateBatchId?: string;
+  candidateScore?: number;
+  candidateRank?: number;
+  candidateRejectionReason?: string;
+  selectedForPublish?: boolean;
+  agentMode?: CanopyAgentMode;
+  strategyEnvelopeId?: string;
+  agentReasoningSummary?: string;
+  performanceWindowLabel?: string;
 }
 
 export const GENERATION_LOG_FILE = resolve(STATE_DIR, "generation-log.jsonl");

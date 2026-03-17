@@ -1,54 +1,164 @@
 {
-  "mockupSuffix": " Shot on Canon EOS R5 with 50mm lens, f/4 aperture. Natural studio window light from the left side, subtle shadows on ground. Canopy fabric shows natural slight tension, realistic aluminum frame joints visible. Polyester canopy fabric with visible weave texture, anodized aluminum frame with brushed finish. Slight natural fabric creasing near frame joints. Light grey seamless paper background. Featuring a clean, professional business logo on the canopy peak panel and valance. Commercial product photography style, no harsh reflections.",
-  "lifestyleSuffix": " Shot on Sony A7III, 35mm lens, f/2.8. Natural daylight, slight overcast for even lighting. Eye-level medium shot, shallow depth of field with soft background bokeh. Candid event atmosphere, slight grass wear under tent legs, grass slightly flattened under tent footprint, realistic vendor setup with minor imperfections. A few leaves on the ground, extension cord or cooler tucked under table where appropriate. Canopy featuring a clean, professional business logo on the peak panel and valance.",
-  "negativePrompt": " No illustration, no 3D render, no CGI, no oversaturated, no perfect symmetry, no plastic texture, no oversaturated colors.",
-  "scenes": [
-    {
-      "scene": "Custom 10x10 pop-up canopy with a clean professional logo on the peak and valance at an outdoor spring festival, vendor row setting, solid navy blue fabric and white valance panel, branded tablecloth on display table, other vendor tents in background, bright blue sky, natural sunlight. Wide shot from attendee POV walking toward the booth.",
-      "style": "lifestyle"
-    },
-    {
-      "scene": "Single 10x10 custom pop-up canopy fully assembled, featuring a sample business name and logo on the peak panel and valance, solid red fabric and white valance, silver aluminum frame with visible leg crossbars, straight-on front view centered, light grey seamless studio background.",
-      "style": "mockup"
-    },
-    {
-      "scene": "Trade show booth with custom 10x10 canopy displaying a clean professional logo on the peak and valance, solid royal blue fabric, one branded booth standing out among neutral competitors on show floor, banner stand beside canopy, indoor venue lighting. Medium wide eye-level shot.",
-      "style": "lifestyle"
-    },
-    {
-      "scene": "Large 10x20 custom canopy with attached side walls and full valance, clean professional business logo on peak and valance panels, white fabric with clean panel construction, black aluminum frame, straight-on front view, side wall attachment points visible, light grey studio background. Three-quarter view showing depth.",
-      "style": "mockup"
-    },
-    {
-      "scene": "Real estate open house: custom pop-up canopy with professional logo on peak and valance at curb appeal, solid forest green fabric and white valance, branded table with brochures, sunny morning, house and lawn in background. Eye-level medium shot, shallow depth of field.",
-      "style": "lifestyle"
-    },
-    {
-      "scene": "Pop-up banner stand beside a fully assembled 10x10 custom canopy with sample business logo on peak and valance, charcoal grey fabric and white valance panel, portable retractable banner to the right, light grey background. Slightly angled three-quarter view showing depth and portability.",
-      "style": "mockup"
-    },
-    {
-      "scene": "Cycling or race event: custom 10x10 canopy with professional logo on peak and valance, bold orange fabric and white valance, feather flag beside it, crowd and event activity in background, outdoor daylight. Overhead drone-style wide shot showing branded tent standing out in busy event.",
-      "style": "lifestyle"
-    },
-    {
-      "scene": "Brewery tasting or fitness bootcamp: step-and-repeat backdrop beside custom 10x10 canopy with clean professional logo on peak and valance, solid black fabric and white valance, polished event environment, concrete or hardwood floor, even indoor lighting. Medium wide shot from customer POV approaching the booth.",
-      "style": "lifestyle"
-    },
-    {
-      "scene": "Farmers market or weekend market: custom pop-up canopy with professional logo on peak and valance, burgundy red fabric and white valance, branded tablecloth on vendor table, product display on table, early morning soft light, other vendors in background. Close-up of valance and peak branding with market scene behind.",
-      "style": "lifestyle"
-    },
-    {
-      "scene": "Local parade or community event: custom 10x10 pop-up canopy with professional logo on peak and valance, solid teal fabric and white valance, sidewalk or street setting, crowd and parade activity in background, daytime. Medium wide shot showing branded tent as focal point amid local event.",
-      "style": "lifestyle"
-    },
-    {
-      "scene": "Nonprofit or charity fundraiser booth: custom pop-up canopy with clean professional logo on peak and valance, soft blue fabric and white valance, information table with brochures, welcoming volunteer presence, park or community center setting. Eye-level shot, natural daylight.",
-      "style": "lifestyle"
-    }
-  ],
+  "mockupSuffix": "Shot on Canon EOS R5 with 50mm lens, f/4 aperture. Controlled natural studio light, realistic aluminum frame joints, visible fabric weave, slight natural creasing, believable shadows, premium commercial product photography.",
+  "lifestyleSuffix": "Shot on Sony A7III with 35mm lens, f/2.8. Natural daylight, lived-in event atmosphere, realistic booth wear, shallow depth of field, believable people and props, authentic event-documentary photography.",
+  "negativePrompt": "No illustration, no CGI, no 3D render, no plastic texture, no warped logos, no oversaturated colors, no impossible geometry, no fake glossy surfaces.",
   "size": "1536x1024",
   "quality": "medium",
-  "referenceImage": "01-product-mockup-branded-canopy-white-bg.png"
+  "explorationRate": 0.25,
+  "variants": [
+    {
+      "id": "buyer-canopy-tradeshow-wide",
+      "pillarId": "buyer_intent_products",
+      "prompt": "Custom 10x10 canopy with bold logo and clean valance branding anchoring a trade show booth, visible from the aisle before neighboring booths, polished event floor, banner stand and branded table in frame, medium crowd in background",
+      "style": "lifestyle",
+      "shotType": "wide",
+      "useCaseVertical": "trade shows",
+      "productFocus": "custom canopies",
+      "aesthetic": "premium but believable event-floor realism"
+    },
+    {
+      "id": "buyer-flags-product-close",
+      "pillarId": "buyer_intent_products",
+      "prompt": "Close-up product-focused scene of feather flags, event banner hardware, and canopy valance print quality, crisp logo edges, fabric detail, aluminum hardware, showroom-ready but realistic",
+      "style": "mockup",
+      "shotType": "close_up",
+      "useCaseVertical": "corporate activations",
+      "productFocus": "feather flags",
+      "aesthetic": "clean premium detail shot",
+      "referenceImage": "01-product-mockup-branded-canopy-white-bg.png"
+    },
+    {
+      "id": "buyer-steprepeat-medium",
+      "pillarId": "buyer_intent_products",
+      "prompt": "Branded step-and-repeat wall beside a custom canopy at an activation, attendees taking photos, logo repeated cleanly, event atmosphere feels valuable and social without looking staged",
+      "style": "lifestyle",
+      "shotType": "medium",
+      "useCaseVertical": "corporate activations",
+      "productFocus": "step-and-repeat walls",
+      "aesthetic": "social proof and photo-moment energy"
+    },
+    {
+      "id": "usecase-foodtruck-wide",
+      "pillarId": "use_case_moments",
+      "prompt": "Food truck setup at a local festival with a custom branded canopy, busy lunch rush, menu board and branded feather flag, practical event-day realism and strong visibility from foot traffic lanes",
+      "style": "lifestyle",
+      "shotType": "wide",
+      "useCaseVertical": "food trucks",
+      "productFocus": "custom canopies",
+      "aesthetic": "candid festival realism"
+    },
+    {
+      "id": "usecase-openhouse-medium",
+      "pillarId": "use_case_moments",
+      "prompt": "Real estate open house canopy setup in front of a clean suburban home, branded canopy and flag visible from the curb, brochures and signage ready, morning light, believable neighborhood context",
+      "style": "lifestyle",
+      "shotType": "medium",
+      "useCaseVertical": "open houses",
+      "productFocus": "custom canopies",
+      "aesthetic": "clean curb-appeal professionalism"
+    },
+    {
+      "id": "usecase-market-close",
+      "pillarId": "use_case_moments",
+      "prompt": "Farmers market vendor booth close-up focusing on canopy valance branding, branded tablecloth, product display, customer hands in frame, early morning setup energy",
+      "style": "lifestyle",
+      "shotType": "close_up",
+      "useCaseVertical": "farmers markets",
+      "productFocus": "event banners",
+      "aesthetic": "warm market-day authenticity"
+    },
+    {
+      "id": "speed-rush-packout-medium",
+      "pillarId": "speed_and_deadlines",
+      "prompt": "Behind-the-scenes rush-order packout for a custom canopy, partially boxed frame, printed canopy top folded for shipment, production floor realism, deadline energy without chaos",
+      "style": "lifestyle",
+      "shotType": "medium",
+      "useCaseVertical": "trade shows",
+      "productFocus": "rush graphics",
+      "aesthetic": "deadline pressure with professional control"
+    },
+    {
+      "id": "speed-replacement-festival-wide",
+      "pillarId": "speed_and_deadlines",
+      "prompt": "Replacement canopy arriving for a festival-style vendor booth after a prior setup failure, fresh branded tent stands out while neighboring booth gear looks tired, outdoor event context",
+      "style": "lifestyle",
+      "shotType": "wide",
+      "useCaseVertical": "festivals",
+      "productFocus": "replacement canopies",
+      "aesthetic": "turnaround and rescue-story feel"
+    },
+    {
+      "id": "speed-rush-product-close",
+      "pillarId": "speed_and_deadlines",
+      "prompt": "Close-up on crisp rush-produced canopy print and packed hardware ready to ship, premium detail on fabric and frame components, realistic ecommerce-meets-operations look",
+      "style": "mockup",
+      "shotType": "close_up",
+      "useCaseVertical": "community events",
+      "productFocus": "rush graphics",
+      "aesthetic": "fast-turn production proof",
+      "referenceImage": "02-product-mockup-10x20-canopy-walls-valance.png"
+    },
+    {
+      "id": "durability-frame-close",
+      "pillarId": "durability_and_product_proof",
+      "prompt": "Close-up of canopy frame joints, fabric weave, stitching, and tension points that signal durability, technical product detail without looking sterile, believable light and material finish",
+      "style": "mockup",
+      "shotType": "close_up",
+      "useCaseVertical": "outdoor festivals",
+      "productFocus": "frame quality",
+      "aesthetic": "technical premium proof shot",
+      "referenceImage": "01-product-mockup-branded-canopy-white-bg.png"
+    },
+    {
+      "id": "durability-wind-sideline-wide",
+      "pillarId": "durability_and_product_proof",
+      "prompt": "Sports sideline canopy setup in breezy conditions, tent remains stable and professional, branded valance visible, real tournament environment, wind and weather feel credible",
+      "style": "lifestyle",
+      "shotType": "wide",
+      "useCaseVertical": "sports sidelines",
+      "productFocus": "visibility",
+      "aesthetic": "weather-tested realism"
+    },
+    {
+      "id": "durability-dye-sub-medium",
+      "pillarId": "durability_and_product_proof",
+      "prompt": "Medium product shot showing rich dye-sublimated graphics across canopy valance and banner panel, strong color fidelity, no peeling or cheap vinyl look, studio-real hybrid scene",
+      "style": "mockup",
+      "shotType": "medium",
+      "useCaseVertical": "trade shows",
+      "productFocus": "dye sublimation",
+      "aesthetic": "print-quality proof"
+    },
+    {
+      "id": "value-localbiz-wide",
+      "pillarId": "competitive_value_framing",
+      "prompt": "Local business event booth with custom canopy and feather flag looking polished and credible without an oversized footprint, neighboring setup feels generic by comparison, community-event context",
+      "style": "lifestyle",
+      "shotType": "wide",
+      "useCaseVertical": "local business events",
+      "productFocus": "full booth packages",
+      "aesthetic": "smart-spend professional presence"
+    },
+    {
+      "id": "value-comparison-medium",
+      "pillarId": "competitive_value_framing",
+      "prompt": "Side-by-side style scene where one branded canopy booth looks sharp and intentional while another plain setup looks forgettable, subtle contrast, no cheesy before-and-after effect",
+      "style": "lifestyle",
+      "shotType": "medium",
+      "useCaseVertical": "trade shows",
+      "productFocus": "custom canopies",
+      "aesthetic": "value-through-contrast"
+    },
+    {
+      "id": "value-premium-detail-close",
+      "pillarId": "competitive_value_framing",
+      "prompt": "Premium-looking close-up of canopy print quality, flag hardware, and banner finish that communicates value without luxury excess, clean brand presentation, believable materials",
+      "style": "mockup",
+      "shotType": "close_up",
+      "useCaseVertical": "retail promotions",
+      "productFocus": "flags and banners",
+      "aesthetic": "premium look without inflated feel",
+      "referenceImage": "03-lifestyle-feather-flags-event-context.png"
+    }
+  ]
 }

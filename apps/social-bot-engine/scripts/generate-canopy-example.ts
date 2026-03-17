@@ -45,8 +45,8 @@ async function main(): Promise<void> {
   }
 
   console.info("Generating image...");
-  const imageBuffer = await generateCampaignImage(angle);
-  if (!imageBuffer) {
+  const image = await generateCampaignImage(angle);
+  if (!image.buffer) {
     console.error("Failed to generate image.");
     process.exit(1);
   }
@@ -54,7 +54,7 @@ async function main(): Promise<void> {
   const outDir = resolve(WORKSPACE_ROOT, "state", "canopy");
   mkdirSync(outDir, { recursive: true });
   const imagePath = resolve(outDir, "example-tweet.png");
-  writeFileSync(imagePath, imageBuffer);
+  writeFileSync(imagePath, image.buffer);
 
   console.info("\n--- Full example tweet ---\n");
   console.info(text);

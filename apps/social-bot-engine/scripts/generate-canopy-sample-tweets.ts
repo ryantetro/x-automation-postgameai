@@ -120,9 +120,9 @@ async function main(): Promise<void> {
       let imagePath: string | undefined;
       if (includeImages) {
         const image = await generateCampaignImage(pillar.name);
-        if (image) {
+        if (image.buffer) {
           imagePath = resolve(outDir, `sample-${String(samples.length + 1).padStart(2, "0")}.png`);
-          writeFileSync(imagePath, image);
+          writeFileSync(imagePath, image.buffer);
         }
       }
 

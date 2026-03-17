@@ -1,141 +1,124 @@
 {
   "pillars": [
     {
-      "id": "event_marketing_strategy",
-      "name": "Event Marketing Strategy",
+      "id": "buyer_intent_products",
+      "name": "Buyer-Intent Products",
       "postIdeas": [
-        "5 things every booth should have if you want people to stop",
-        "Why most event booths fail in the first 10 seconds",
-        "The psychology of foot traffic at events",
-        "How to turn a 10x10 booth into a lead machine",
-        "What makes people walk toward a booth instead of past it",
-        "The difference between a booth and a brand experience"
+        "custom 10x10 canopy with logo for spring events",
+        "custom printed pop up tent vs generic white tent",
+        "feather flags and banners that actually get seen from the parking lot",
+        "step-and-repeat wall for photo moments at activations",
+        "what buyers are really comparing when they shop custom canopy tents"
       ],
-      "examplePost": "Most event booths fail before the event even starts. Why? Because they look like tables with banners. Winning booths do three things: Create height (flags, canopy, vertical visuals). Create a photo moment. Make your brand visible from 50 feet away. If people can't see you, they can't stop.",
-      "targetAudiences": ["event planners", "corporate events", "trade show exhibitors", "vendors"]
+      "examplePost": "The search usually starts with custom canopy tent. The real buying decision happens when somebody compares visibility, lead time, and whether the frame survives the second event.",
+      "targetAudiences": ["marketing managers", "brand managers", "business owners", "event coordinators"],
+      "voiceFamilies": ["buyer_intent_detail", "soft_commercial", "observational_thought_leadership"],
+      "buyerIntentLevels": ["consideration", "purchase_intent"],
+      "productFocuses": ["custom canopies", "pop up tents", "feather flags", "event banners", "step-and-repeat walls"],
+      "useCaseVerticals": ["trade shows", "corporate activations", "retail pop-ups"],
+      "urgencyModes": ["none", "seasonal", "rush_order"],
+      "ctaModes": ["soft_commercial", "question_led"],
+      "creativeDirections": ["customer_showcase", "educational_breakdown", "social_proof"],
+      "contextHints": [
+        "Use the language of someone already shopping, comparing options, or asking for a quote.",
+        "Tie the post to branded visibility, setup quality, or speed to event readiness."
+      ]
     },
     {
-      "id": "brand_visibility_psychology",
-      "name": "Brand Visibility Psychology",
+      "id": "use_case_moments",
+      "name": "Use-Case Moments",
       "postIdeas": [
-        "Why height is the most underrated marketing tool",
-        "Your brand should be visible from 100 feet",
-        "The 3-second rule of brand recognition",
-        "How visual repetition builds trust at events",
-        "Why people take photos with step-and-repeats",
-        "The science behind branded environments"
+        "food truck owner prepping for festival season",
+        "sideline setup for a weekend tournament",
+        "real estate team using a canopy at an open house",
+        "farmers market booth that stands out before the first customer walks in",
+        "nonprofit booth that needs to look credible on a tight budget"
       ],
-      "examplePost": "The best marketing isn't loud. It's visible. If your brand can't be seen from across the venue… You don't exist.",
-      "targetAudiences": ["marketing teams", "brand managers", "event planners", "corporate events"]
+      "examplePost": "The canopy somebody needs for a Saturday tournament is not the same build they need for a trade show. Same product family. Totally different visibility problem.",
+      "targetAudiences": ["food truck operators", "athletic directors", "real estate teams", "farmers market vendors", "nonprofit organizers"],
+      "voiceFamilies": ["micro_story", "observational_thought_leadership", "buyer_intent_detail"],
+      "buyerIntentLevels": ["awareness", "consideration"],
+      "productFocuses": ["custom canopies", "feather flags", "event banners"],
+      "useCaseVerticals": ["food trucks", "sports tournaments", "open houses", "farmers markets", "community events"],
+      "urgencyModes": ["none", "seasonal"],
+      "ctaModes": ["none", "question_led"],
+      "creativeDirections": ["customer_showcase", "before_after_transformation", "social_proof"],
+      "contextHints": [
+        "Ground the post in a real event-day scenario buyers recognize immediately.",
+        "Make the product feel like part of the setup, not a generic promo item."
+      ]
     },
     {
-      "id": "before_after_transformations",
-      "name": "Before/After Brand Transformations",
+      "id": "speed_and_deadlines",
+      "name": "Speed and Deadlines",
       "postIdeas": [
-        "Before vs after: turning a basic booth into a brand",
-        "How this company went from invisible to the busiest booth",
-        "Small brand → big presence in 24 hours",
-        "The power of a step-and-repeat wall"
+        "rush order before a trade show",
+        "replacement canopy when wind destroys the old one",
+        "what last-minute event buyers get wrong",
+        "spring event calendar panic and branded gear deadlines",
+        "why waiting until the week of the event creates expensive problems"
       ],
-      "examplePost": "Before: table with a banner. After: full-color canopy, feather flags, step-and-repeat. Same 10x10 footprint. Completely different line at the booth.",
-      "targetAudiences": ["small business owners", "event exhibitors", "real estate teams", "vendors"]
+      "examplePost": "Rush orders are rarely about impatience. Usually somebody finally looked at the event calendar and realized the plain tent is not making the trip this year.",
+      "targetAudiences": ["event coordinators", "operations managers", "small business owners", "marketing teams"],
+      "voiceFamilies": ["deadline_urgency", "contrarian_take", "micro_story"],
+      "buyerIntentLevels": ["consideration", "purchase_intent"],
+      "productFocuses": ["custom canopies", "replacement canopies", "rush graphics"],
+      "useCaseVerticals": ["trade shows", "festivals", "sports events", "community events"],
+      "urgencyModes": ["seasonal", "rush_order", "replacement"],
+      "ctaModes": ["soft_commercial", "question_led"],
+      "creativeDirections": ["seasonal_urgency", "before_after_transformation", "behind_the_scenes"],
+      "contextHints": [
+        "Use time pressure, event deadlines, or gear failure as the emotional driver.",
+        "Make urgency feel real and field-tested, not salesy panic."
+      ]
     },
     {
-      "id": "event_booth_mistakes",
-      "name": "Event Booth Mistakes",
+      "id": "durability_and_product_proof",
+      "name": "Durability and Product Proof",
       "postIdeas": [
-        "7 event booth mistakes brands make",
-        "Why tablecloth booths fail",
-        "The biggest trade show mistake companies make",
-        "Your booth shouldn't look like a garage sale"
+        "what wind reveals about frame quality",
+        "why dye sublimation beats cheap vinyl graphics",
+        "visibility from 100 feet matters more than a pretty tablecloth",
+        "the difference between gear that survives a season and gear that looks tired after one event",
+        "product details buyers only notice after setup starts"
       ],
-      "examplePost": "The biggest trade show mistake? Looking like everyone else. One branded canopy in a sea of pipe-and-drape and you're the only one people remember.",
-      "targetAudiences": ["trade show exhibitors", "corporate events", "small business owners", "vendors"]
+      "examplePost": "Sun, wind, and bad setup crews expose every weak tent in the lot. Product quality only sounds abstract until the frame flexes in front of customers.",
+      "targetAudiences": ["brand managers", "event marketers", "operations leads", "repeat event buyers"],
+      "voiceFamilies": ["buyer_intent_detail", "contrarian_take", "observational_thought_leadership"],
+      "buyerIntentLevels": ["consideration", "purchase_intent"],
+      "productFocuses": ["frame quality", "fabric durability", "dye sublimation", "visibility"],
+      "useCaseVerticals": ["outdoor festivals", "sports sidelines", "trade shows"],
+      "urgencyModes": ["none", "replacement"],
+      "ctaModes": ["none", "soft_commercial"],
+      "creativeDirections": ["educational_breakdown", "behind_the_scenes", "customer_showcase"],
+      "contextHints": [
+        "Lead with proof, failure modes, or technical details buyers care about.",
+        "Keep the tone grounded in event reality instead of marketing adjectives."
+      ]
     },
     {
-      "id": "industry_playbooks",
-      "name": "Industry Playbooks",
+      "id": "competitive_value_framing",
+      "name": "Competitive Value Framing",
       "postIdeas": [
-        "The perfect setup for a real estate open house event",
-        "How dealerships win local events",
-        "What every festival vendor booth needs",
-        "The best booth setup for sports tournaments",
-        "How marinas and boat dealers dominate boat shows"
+        "premium-looking booth without premium-agency pricing",
+        "what buyers actually mean when they say they want the cheapest tent",
+        "the difference between low-cost and low-value event branding",
+        "how serious brands avoid looking DIY on event day",
+        "why the smart buy is not always the most expensive booth setup"
       ],
-      "examplePost": "Real estate open house, car dealership tent event, sports tournament — same rule: if they can't see your name from the parking lot, you're already behind.",
-      "targetAudiences": ["real estate teams", "car dealerships", "boat dealers", "sports teams", "festivals", "gyms", "nonprofits", "construction", "political campaigns"]
-    },
-    {
-      "id": "real_world_vs_digital",
-      "name": "Real-World vs Digital Marketing",
-      "postIdeas": [
-        "Why physical marketing is coming back",
-        "Real world attention vs digital impressions",
-        "The return of experiential marketing",
-        "Why brands that show up in person win"
-      ],
-      "examplePost": "Digital marketing gets clicks. Real-world marketing gets memories. And people buy from brands they remember.",
-      "targetAudiences": ["marketing teams", "small business owners", "event planners", "brand managers"]
-    },
-    {
-      "id": "event_roi_education",
-      "name": "Event ROI Education",
-      "postIdeas": [
-        "How to turn event traffic into real leads",
-        "The 4 things every event booth needs to collect leads",
-        "Your booth should generate leads, not just attention",
-        "How to measure ROI at events"
-      ],
-      "examplePost": "Your booth isn't there to look pretty. It's there to get seen, get stopped, and get leads. Visibility is step one.",
-      "targetAudiences": ["event planners", "corporate events", "trade show exhibitors", "small business owners"]
-    },
-    {
-      "id": "photo_moment_marketing",
-      "name": "Photo Moment Marketing",
-      "postIdeas": [
-        "Why every brand needs a photo wall",
-        "The marketing power of user photos",
-        "Events are content factories",
-        "Turn your booth into a social media machine"
-      ],
-      "examplePost": "Every event is a content opportunity. A step-and-repeat wall turns every attendee into a marketer for your brand.",
-      "targetAudiences": ["event planners", "brand managers", "corporate events", "festivals", "sports teams"]
-    },
-    {
-      "id": "build_in_public",
-      "name": "Build in Public",
-      "postIdeas": [
-        "How sublimation printing actually works",
-        "Why dye-sublimation lasts longer than vinyl",
-        "Behind the scenes: printing a 20ft canopy",
-        "How we make colors match brand guidelines"
-      ],
-      "examplePost": "Sublimation isn't a sticker. The color is in the fabric. That's why it doesn't peel, crack, or fade when the sun and wind show up.",
-      "targetAudiences": ["event planners", "brand managers", "vendors", "small business owners"]
-    },
-    {
-      "id": "authority_positioning",
-      "name": "Authority Positioning",
-      "postIdeas": [
-        "What we've learned from 5,000 event booths",
-        "The future of event marketing",
-        "Why experiential marketing is growing again",
-        "What the best booths have in common"
-      ],
-      "examplePost": "The best booths have three things in common: height, full-color branding, and something people want to stand in front of for a photo.",
-      "targetAudiences": ["event planners", "marketing teams", "corporate events", "trade show exhibitors"]
-    },
-    {
-      "id": "local_business_marketing",
-      "name": "Local Business Marketing",
-      "postIdeas": [
-        "How local brands can dominate community events",
-        "The most underrated marketing channel for small businesses",
-        "Why farmers markets are marketing gold",
-        "How to make your booth the busiest at any event"
-      ],
-      "examplePost": "Farmers market, parade, block party — if you're there, you might as well be the one people see first. One branded canopy changes the whole game.",
-      "targetAudiences": ["small business owners", "farmers market vendors", "parades", "local events", "community organizations"]
+      "examplePost": "Cheap and low-value are not the same thing. Buyers usually figure that out when the budget tent makes the brand look like an afterthought.",
+      "targetAudiences": ["small business owners", "marketing managers", "procurement-minded buyers", "franchise operators"],
+      "voiceFamilies": ["contrarian_take", "soft_commercial", "buyer_intent_detail"],
+      "buyerIntentLevels": ["awareness", "consideration", "purchase_intent"],
+      "productFocuses": ["custom canopies", "full booth packages", "flags and banners"],
+      "useCaseVerticals": ["trade shows", "local business events", "retail promotions"],
+      "urgencyModes": ["none", "seasonal"],
+      "ctaModes": ["soft_commercial", "none"],
+      "creativeDirections": ["social_proof", "educational_breakdown", "customer_showcase"],
+      "contextHints": [
+        "Reinforce value without sounding discount-bin or desperate.",
+        "Contrast professional presence against obvious DIY or low-end alternatives."
+      ]
     }
   ]
 }

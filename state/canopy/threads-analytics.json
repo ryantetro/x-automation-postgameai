@@ -1,0 +1,98 @@
+{
+  "version": 4,
+  "updatedAt": "2026-03-16T17:32:47.376Z",
+  "tweets": [
+    {
+      "runId": "775d86a5-e12e-4f86-8c09-f9a224738711",
+      "postedAt": "2026-03-10T19:20:39.153Z",
+      "dateContext": "2026-03-10",
+      "sport": "canopy",
+      "angle": "Event Booth Mistakes",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "72% of booths that look like garage sales are passed by without a glance. Tablecloth drapes don't cut it at summer trade shows. Stand out with height and visibility, not a cluttered table. Vicious Shade Supply Co. · viciousshade.com",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "specific_number",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false
+    },
+    {
+      "runId": "f78b9a9e-8d13-48f8-9673-9e8e64d181d5",
+      "postedAt": "2026-03-16T17:32:13.923Z",
+      "dateContext": "2026-03-16",
+      "sport": "canopy",
+      "angle": "Durability and Product Proof",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "From 100 feet, drooping vinyl looks invisible. Ever seen dye-sub graphics hold their ground in the wind? That's the real proof of a booth meant for the long haul. — Vicious Shade Supply Co. · viciousshade.com",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "from_100",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "durability_and_product_proof",
+      "voiceFamily": "observational_thought_leadership",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "trade shows",
+      "productFocus": "fabric durability",
+      "urgencyMode": "replacement",
+      "ctaMode": "none",
+      "creativeDirection": "customer_showcase",
+      "imageConceptId": "durability-wind-sideline-wide",
+      "imageStyleFamily": "lifestyle",
+      "imageShotType": "wide",
+      "optimizerVersion": "canopy_agent_v1",
+      "selectionReason": "exploration selected durability_and_product_proof; exploration selected observational_thought_leadership; exploration selected customer_showcase; exploration selected fabric durability; agent mode explore. ; explicit variant override selected",
+      "candidateId": "durability_and_product_proof|observational_thought_leadership|customer_showcase|consideration|fabric durability|trade shows|replacement|none:candidate:2",
+      "candidateBatchId": "f78b9a9e-8d13-48f8-9673-9e8e64d181d5:canopy-batch",
+      "candidateScore": 134,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "durability_and_product_proof|observational_thought_leadership|customer_showcase|consideration|fabric durability|trade shows|replacement|none",
+      "agentReasoningSummary": "exploration selected durability_and_product_proof; exploration selected observational_thought_leadership; exploration selected customer_showcase; exploration selected fabric durability; agent mode explore",
+      "performanceWindowLabel": "last_45_days"
+    }
+  ],
+  "analyticsHealth": {
+    "x": {
+      "status": "healthy",
+      "lastAttemptAt": "2026-03-16T17:32:13.924Z"
+    }
+  }
+}

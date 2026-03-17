@@ -116,13 +116,13 @@ async function checkImageGeneration(): Promise<CheckResult | null> {
   const { generateCampaignImage } = await import("../src/generateImage.js");
   const angle = config.getAngleForDateAnglesOnly(new Date());
   const image = await generateCampaignImage(angle);
-  if (!image || image.length === 0) {
+  if (!image.buffer || image.buffer.length === 0) {
     return { name: "Image generation", status: "fail", details: `no image buffer returned for "${angle}"` };
   }
   return {
     name: "Image generation",
     status: "pass",
-    details: `campaign image generated for "${angle}" (${image.length} bytes)`,
+    details: `campaign image generated for "${angle}" (${image.buffer.length} bytes)`,
   };
 }
 

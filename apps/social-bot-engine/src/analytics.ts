@@ -17,6 +17,19 @@ export type TweetStatus = "posted" | "dry_run" | "failed";
 export type ContentMode = "sports_only" | "news_preferred";
 export type PublishPlatform = "x" | "threads";
 export type AnalyticsPlatformStatus = "healthy" | "degraded" | "blocked";
+export type CanopyVoiceFamily =
+  | "observational_thought_leadership"
+  | "contrarian_take"
+  | "buyer_intent_detail"
+  | "micro_story"
+  | "deadline_urgency"
+  | "soft_commercial";
+export type CanopyBuyerIntentLevel = "awareness" | "consideration" | "purchase_intent";
+export type CanopyUrgencyMode = "none" | "seasonal" | "rush_order" | "replacement";
+export type CanopyCtaMode = "none" | "soft_commercial" | "question_led";
+export type CanopyImageStyleFamily = "lifestyle" | "mockup";
+export type CanopyImageShotType = "close_up" | "medium" | "wide";
+export type CanopyAgentMode = "exploit" | "explore";
 
 export interface AnalyticsPlatformHealth {
   status: AnalyticsPlatformStatus;
@@ -123,6 +136,29 @@ export interface TweetAnalyticsRecord {
   /** True when the post included an AI-generated image (e.g. canopy). */
   hasImage?: boolean;
   analyticsFetchState?: Partial<Record<PublishPlatform, TweetAnalyticsFetchState>>;
+  campaignStrategyId?: string;
+  voiceFamily?: CanopyVoiceFamily;
+  buyerIntentLevel?: CanopyBuyerIntentLevel;
+  useCaseVertical?: string;
+  productFocus?: string;
+  urgencyMode?: CanopyUrgencyMode;
+  ctaMode?: CanopyCtaMode;
+  imageConceptId?: string;
+  imageStyleFamily?: CanopyImageStyleFamily;
+  imageShotType?: CanopyImageShotType;
+  optimizerVersion?: string;
+  selectionReason?: string;
+  creativeDirection?: string;
+  candidateId?: string;
+  candidateBatchId?: string;
+  candidateScore?: number;
+  candidateRank?: number;
+  candidateRejectionReason?: string;
+  selectedForPublish?: boolean;
+  agentMode?: CanopyAgentMode;
+  strategyEnvelopeId?: string;
+  agentReasoningSummary?: string;
+  performanceWindowLabel?: string;
 }
 
 export interface AnalyticsStore {

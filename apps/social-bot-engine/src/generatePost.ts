@@ -11,6 +11,7 @@ import {
   DATA_SOURCE,
   MAX_POST_LEN,
 } from "./config.js";
+import type { CanopyStrategyEnvelope, CanopyRankedCandidate } from "./canopyAgent.js";
 import { loadPillarForAngle } from "./contentPillars.js";
 import type { ContentDecision, RecentContentDecision } from "./contentArchitecture.js";
 import { FRAME_DEFINITIONS, HOOK_DEFINITIONS } from "./contentArchitecture.js";
@@ -728,6 +729,9 @@ export interface GeneratePostAnglesOnlyOptions {
   date?: string;
   recentTweets?: string[];
   reserveChars?: number;
+  iterationGuidance?: string;
+  strategy?: CanopyStrategyEnvelope;
+  candidateDirective?: string;
 }
 
 /** Post formats for angles_only (e.g. canopy). Rotated by day to avoid same structure every time. */
@@ -736,7 +740,6 @@ const ANGLES_ONLY_POST_FORMATS = [
   "MICRO-STORY",
   "CONTRARIAN",
   "SPECIFIC DETAIL",
-  "QUESTION",
   "BEHIND-THE-SCENES",
 ] as const;
 
@@ -745,6 +748,18 @@ function getPostFormatForDate(date: Date): (typeof ANGLES_ONLY_POST_FORMATS)[num
     (date.getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / (24 * 60 * 60 * 1000)
   );
   return ANGLES_ONLY_POST_FORMATS[dayOfYear % ANGLES_ONLY_POST_FORMATS.length];
+}
+
+function getAnglesOnlyPostFormat(
+  date: Date,
+  strategy?: CanopyStrategyEnvelope
+): (typeof ANGLES_ONLY_POST_FORMATS)[number] {
+  if (strategy?.voiceFamily === "buyer_intent_detail") return "SPECIFIC DETAIL";
+  if (strategy?.voiceFamily === "micro_story") return "MICRO-STORY";
+  if (strategy?.voiceFamily === "contrarian_take") return "CONTRARIAN";
+  if (strategy?.voiceFamily === "deadline_urgency") return "TENSION";
+  if (strategy?.voiceFamily === "soft_commercial") return "SPECIFIC DETAIL";
+  return getPostFormatForDate(date);
 }
 
 /** Context lines for angles_only user message; rotated by day. Covers seasonality, events, target audiences, industry. */
@@ -788,6 +803,9 @@ export interface BuildAnglesOnlyPromptOptions {
   date?: string;
   recentTweets?: string[];
   reserveChars?: number;
+  iterationGuidance?: string;
+  strategy?: CanopyStrategyEnvelope;
+  candidateDirective?: string;
 }
 
 export function buildAnglesOnlyPromptInput(options: BuildAnglesOnlyPromptOptions): {
@@ -804,9 +822,10 @@ export function buildAnglesOnlyPromptInput(options: BuildAnglesOnlyPromptOptions
   const date = new Date(dateStr + "T12:00:00Z");
   const maxBodyLength = Math.max(180, MAX_POST_LEN - Math.max(0, reserveChars));
   const system = loadCampaignSystemPrompt();
-  const format = getPostFormatForDate(date);
+  const format = getAnglesOnlyPostFormat(date, options.strategy);
   const context = getContextForAnglesOnly(date);
   const pillarData = loadPillarForAngle(angle, date);
+  const strategy = options.strategy;
   const avoidBlock =
     recentTweets.length > 0
       ? `\nDo NOT repeat or closely mimic these recent posts:\n${recentTweets.slice(0, 10).map((t) => `- ${t}`).join("\n")}`
@@ -815,11 +834,40 @@ export function buildAnglesOnlyPromptInput(options: BuildAnglesOnlyPromptOptions
     pillarData && pillarData.postIdeas.length > 0
       ? `\nPost ideas for this pillar (use as inspiration, do not list): ${pillarData.postIdeas.join("; ")}.\nTarget audience today: ${pillarData.targetAudience}.`
       : "";
+  const strategyBlock = strategy
+    ? `\nCampaign optimizer picked this strategy:
+- Voice family: ${strategy.voiceFamily.replaceAll("_", " ")}
+- Buyer intent level: ${strategy.buyerIntentLevel.replaceAll("_", " ")}
+- Use-case vertical: ${strategy.useCaseVertical}
+- Product focus: ${strategy.productFocus}
+- Urgency mode: ${strategy.urgencyMode.replaceAll("_", " ")}
+- CTA mode: ${strategy.ctaMode.replaceAll("_", " ")}
+- Creative direction: ${strategy.creativeDirection.replaceAll("_", " ")}
+- Context hint: ${strategy.contextHint}
+- Reason selected: ${strategy.selectionReason}`
+    : "";
+  const iterationBlock = options.iterationGuidance
+    ? `\nIteration guidance from analytics:\n${options.iterationGuidance}`
+    : "";
+  const candidateBlock = options.candidateDirective?.trim()
+    ? `\nCandidate directive for this attempt: ${options.candidateDirective.trim()}`
+    : "";
   const userMessage = `Date: ${dateStr}. Focus theme: ${angle}. Post format: ${format}.
 
-Context for this post: ${context}.${pillarBlock}
+Context for this post: ${context}.${pillarBlock}${strategyBlock}${iterationBlock}${candidateBlock}
 
-Write one post in the specified format. If relevant, tie to seasonality or upcoming events. Keep the body under ${maxBodyLength} characters. Output only the post text.${avoidBlock}`;
+Write one post in the specified format. If relevant, tie to seasonality or upcoming events. Keep the body under ${maxBodyLength} characters.
+
+Hard canopy quality rules:
+- Prefer statements over questions. Only use a question if the strategy clearly supports it, and never use more than one.
+- Avoid filler like "stand out", "make an impact", "inviting and sturdy", "premium quality", "ready to", "don't scrimp", "the whole conversation", "turn heads", "everyone talks about", "grab attention", "catch the eye", or "not a myth".
+- Do not sound like ad copy, a caption writer, or a motivational brand.
+- Specific beats generic. Name the booth problem, the buyer tension, the deadline, or the product detail.
+- Trade show / market / event context should feel real, not generic event-marketing language.
+- Prefer physical event details: frame, wind, aisle, parking lot, valance, setup window, paid booth, replacement order, drooping vinyl, curbside visibility.
+- Use the assigned creative direction as a guideline, not a template. Stay original.
+
+Output only the post text.${avoidBlock}`;
 
   return { system, format, context, pillarData, userMessage, maxBodyLength, date, dateStr };
 }
@@ -868,6 +916,135 @@ function fitAnglesOnlyPostToLimit(
   text = text.slice(0, breakAt).trim();
   if (!brokeAtSentence) text += "...";
   return text.slice(0, maxBodyLength).trim();
+}
+
+const CANOPY_GENERIC_PHRASES = [
+  /\bstand out\b/i,
+  /\bmake an impact\b/i,
+  /\binviting and sturdy\b/i,
+  /\bpremium quality\b/i,
+  /\bready to\b/i,
+  /\bdon'?t scrimp\b/i,
+  /\bturn heads\b/i,
+  /\beveryone talks about\b/i,
+  /\bthe whole conversation\b/i,
+  /\bwork as hard as you do\b/i,
+  /\bwhy blend in\b/i,
+  /\bgrab(?:bing)? all the attention\b/i,
+  /\bgrab attention\b/i,
+  /\bcatch the eye\b/i,
+  /\bcatch the eye\b/i,
+  /\bmake your message visible\b/i,
+  /\bnot a myth\b/i,
+  /\bsmart buying\b/i,
+  /\bactual feet stopping\b/i,
+  /\bthe booth everyone remembers\b/i,
+  /\bright attention\b/i,
+  /\bripple dance\b/i,
+  /\breal mvps?\b/i,
+  /\bpanic early\b/i,
+];
+
+const CANOPY_FIELD_TERMS = [
+  /\baisle\b/i,
+  /\bparking lot\b/i,
+  /\bpaid spot\b/i,
+  /\bvalance\b/i,
+  /\bframe\b/i,
+  /\bdrooping vinyl\b/i,
+  /\brush order\b/i,
+  /\breplacement order\b/i,
+  /\bsetup window\b/i,
+  /\bcurb\b/i,
+  /\bcurbside\b/i,
+  /\bwind\b/i,
+  /\bbooth\b/i,
+  /\btent\b/i,
+  /\bfeather flag\b/i,
+  /\bbanner\b/i,
+  /\bprint\b/i,
+];
+
+function canopySentenceCount(text: string): number {
+  return text
+    .split(/[.!?]+/)
+    .map((part) => part.trim())
+    .filter(Boolean).length;
+}
+
+function canopyQuestionCount(text: string): number {
+  return (text.match(/\?/g) ?? []).length;
+}
+
+function soundsGenericCanopyCopy(text: string): boolean {
+  return CANOPY_GENERIC_PHRASES.some((pattern) => pattern.test(text));
+}
+
+function hasConcreteCanopySignal(text: string): boolean {
+  return /\btrade show\b|\bfarmers market\b|\bopen house\b|\bfestival\b|\btournament\b|\bfood truck\b|\bcanopy\b|\bfeather flag\b|\bvalance\b|\bframe\b|\brush\b|\blead time\b|\bparking lot\b|\bbooth\b/i.test(text);
+}
+
+function hasFieldDetail(text: string): boolean {
+  return CANOPY_FIELD_TERMS.some((pattern) => pattern.test(text));
+}
+
+function validateAnglesOnlyDraft(
+  text: string,
+  strategy: CanopyStrategyEnvelope | undefined,
+  format: (typeof ANGLES_ONLY_POST_FORMATS)[number]
+): { ok: boolean; failedChecks: string[]; rejectionReason?: string } {
+  const failedChecks: string[] = [];
+  if (soundsLikeAd(text)) failedChecks.push("ad_tone");
+  if (soundsGenericCanopyCopy(text)) failedChecks.push("generic_canopy_copy");
+  if (!hasConcreteCanopySignal(text)) failedChecks.push("missing_concrete_signal");
+  if (!hasFieldDetail(text)) failedChecks.push("missing_field_detail");
+  if (canopySentenceCount(text) > 3) failedChecks.push("too_many_sentences");
+  const questions = canopyQuestionCount(text);
+  if (questions > 1) failedChecks.push("too_many_questions");
+  if (questions === 1 && strategy?.ctaMode !== "question_led") failedChecks.push("question_when_not_allowed");
+  if (/^[^.!?]{0,35}\?/.test(text.trim())) failedChecks.push("question_lead");
+
+  if (failedChecks.length === 0) return { ok: true, failedChecks };
+
+  const rejectionReason =
+    failedChecks[0] === "generic_canopy_copy"
+      ? "generic_canopy_copy"
+      : failedChecks[0] === "missing_concrete_signal"
+        ? "missing_concrete_signal"
+        : failedChecks[0] === "missing_field_detail"
+          ? "missing_field_detail"
+        : failedChecks[0] === "too_many_questions" || failedChecks[0] === "question_when_not_allowed" || failedChecks[0] === "question_lead"
+          ? "question_heavy"
+          : failedChecks[0];
+  return { ok: false, failedChecks, rejectionReason };
+}
+
+function canopyCandidateDirective(ordinal: number, strategy: CanopyStrategyEnvelope): string {
+  const directions: string[] = [];
+  if (strategy.creativeDirection === "customer_showcase") {
+    directions.push("Write like you are describing a real customer setup or real booth moment in the wild.");
+  } else if (strategy.creativeDirection === "before_after_transformation") {
+    directions.push("Hint at a transformation from forgettable setup to credible branded presence without sounding like a reel caption.");
+  } else if (strategy.creativeDirection === "educational_breakdown") {
+    directions.push("Center the post on one practical buying or setup insight, not a listicle.");
+  } else if (strategy.creativeDirection === "behind_the_scenes") {
+    directions.push("Make it feel like a behind-the-scenes observation from production, packing, printing, or setup.");
+  } else if (strategy.creativeDirection === "seasonal_urgency") {
+    directions.push("Ground the post in event-calendar pressure, rush timing, or replacement urgency.");
+  } else if (strategy.creativeDirection === "social_proof") {
+    directions.push("Make it feel like a buyer lesson learned from real customers or repeated reorder behavior.");
+  }
+  const variants = [
+    "Lead with a blunt observation.",
+    "Lead with a concrete field detail.",
+    "Lead with a micro-story from event day.",
+    "Lead with a contrarian buying truth.",
+    "Lead with a product-proof statement tied to a real booth problem.",
+    "Lead with a pressure moment tied to setup, lead time, or replacement.",
+  ];
+  directions.push(variants[(ordinal - 1) % variants.length]!);
+  directions.push(`This is candidate ${ordinal}; keep it meaningfully different from other drafts while staying inside the same strategy envelope.`);
+  return directions.join(" ");
 }
 
 // ── Thread Generation ─────────────────────────────────────────────────────
@@ -957,7 +1134,7 @@ export function normalizeAnglesOnlyPostForLimit(
   maxBodyLength: number,
   format: (typeof ANGLES_ONLY_POST_FORMATS)[number]
 ): string {
-  return fitAnglesOnlyPostToLimit(content, maxBodyLength, format === "QUESTION");
+  return fitAnglesOnlyPostToLimit(content, maxBodyLength, false);
 }
 
 /**
@@ -974,10 +1151,105 @@ export async function generatePostAnglesOnly(
   const clientOptions: ConstructorParameters<typeof OpenAI>[0] = { apiKey: OPENAI_API_KEY };
   if (!USE_OPENAI_API && LLM_BASE_URL) clientOptions.baseURL = LLM_BASE_URL;
   const client = new OpenAI(clientOptions);
-  const raw = await requestTweet(client, system, userMessage);
-  if (!raw) return { text: null };
-  const content = normalizeAnglesOnlyPostForLimit(cleanResponse(raw), maxBodyLength, format);
-  return { text: content };
+  let bestCandidate: string | null = null;
+  let prompt = userMessage;
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const raw = await requestTweet(client, system, prompt);
+    if (!raw) continue;
+    const content = normalizeAnglesOnlyPostForLimit(cleanResponse(raw), maxBodyLength, format);
+    if (!bestCandidate && content.trim().length >= 12) bestCandidate = content;
+    const evaluation = validateAnglesOnlyDraft(content, options.strategy, format);
+    if (evaluation.ok) return { text: content };
+    if (evaluation.rejectionReason === "generic_canopy_copy") {
+      prompt += "\nRewrite it with sharper booth reality, less generic brand language, and no phrases like 'stand out' or 'make an impact'.";
+      continue;
+    }
+    if (evaluation.rejectionReason === "missing_concrete_signal") {
+      prompt += "\nRewrite it with a real canopy-world signal: booth, trade show, parking lot, frame, valance, rush order, market, tournament, or lead time.";
+      continue;
+    }
+    if (evaluation.rejectionReason === "missing_field_detail") {
+      prompt += "\nRewrite it with a physical field detail, not abstract marketing language. Use something tangible like aisle, paid booth, wind, frame, valance, drooping vinyl, curbside setup, or replacement order.";
+      continue;
+    }
+    if (evaluation.rejectionReason === "question_heavy") {
+      prompt += "\nRewrite it as a statement, not a question-led post. No rhetorical opener. If you keep a question at all, it must be a single short closer.";
+      continue;
+    }
+    prompt += "\nRewrite it shorter, sharper, and more specific to event-buyer reality.";
+  }
+  if (bestCandidate && hasConcreteCanopySignal(bestCandidate) && !soundsLikeAd(bestCandidate)) {
+    return { text: bestCandidate };
+  }
+  return { text: null };
+}
+
+export interface GenerateCanopyCandidateBatchOptions {
+  angle: string;
+  date?: string;
+  recentTweets?: string[];
+  reserveChars?: number;
+  iterationGuidance?: string;
+  strategy: CanopyStrategyEnvelope;
+  count: number;
+}
+
+export async function generateCanopyCandidateBatch(
+  options: GenerateCanopyCandidateBatchOptions
+): Promise<string[]> {
+  const results: string[] = [];
+  for (let i = 0; i < options.count; i++) {
+    const generated = await generatePostAnglesOnly({
+      angle: options.angle,
+      date: options.date,
+      recentTweets: [...(options.recentTweets ?? []), ...results].slice(0, 12),
+      reserveChars: options.reserveChars,
+      iterationGuidance: options.iterationGuidance,
+      strategy: options.strategy,
+      candidateDirective: canopyCandidateDirective(i + 1, options.strategy),
+    });
+    if (generated.text) results.push(generated.text);
+  }
+  return [...new Set(results)];
+}
+
+function extractJudgeScore(raw: string): number {
+  const match = raw.match(/score\s*[:=]\s*(\d{1,3})/i) ?? raw.match(/\b(\d{1,3})\b/);
+  const parsed = match ? Number.parseInt(match[1] ?? "0", 10) : 0;
+  return Number.isFinite(parsed) ? Math.max(0, Math.min(100, parsed)) : 0;
+}
+
+export async function judgeCanopyCandidates(
+  strategy: CanopyStrategyEnvelope,
+  finalists: CanopyRankedCandidate[]
+): Promise<Array<{ candidateId: string; judgeScore: number }>> {
+  if (!OPENAI_API_KEY || finalists.length === 0) return finalists.map((row) => ({ candidateId: row.candidateId, judgeScore: 0 }));
+  const clientOptions: ConstructorParameters<typeof OpenAI>[0] = { apiKey: OPENAI_API_KEY };
+  if (!USE_OPENAI_API && LLM_BASE_URL) clientOptions.baseURL = LLM_BASE_URL;
+  const client = new OpenAI(clientOptions);
+  const judgeSystem = `You are ranking canopy social post drafts for a bot that must learn from actual X performance. Reward specificity, booth-world realism, originality, and buyer-intent clarity. Penalize ad copy, slogans, generic visibility language, and vague event marketing tone. Reply with only "score: N" where N is 0-100.`;
+  const outputs: Array<{ candidateId: string; judgeScore: number }> = [];
+  for (const finalist of finalists) {
+    try {
+      const resp = await client.chat.completions.create({
+        model: ACTIVE_LLM_MODEL,
+        messages: [
+          { role: "system", content: judgeSystem },
+          {
+            role: "user",
+            content: `Strategy envelope: ${strategy.id}\nCreative direction: ${strategy.creativeDirection}\nVoice family: ${strategy.voiceFamily}\nDraft:\n${finalist.text}`,
+          },
+        ],
+        max_tokens: 12,
+        temperature: 0,
+      });
+      const raw = resp.choices?.[0]?.message?.content?.trim() ?? "";
+      outputs.push({ candidateId: finalist.candidateId, judgeScore: extractJudgeScore(raw) });
+    } catch {
+      outputs.push({ candidateId: finalist.candidateId, judgeScore: 0 });
+    }
+  }
+  return outputs;
 }
 
 export function fillFallbackTemplate(
