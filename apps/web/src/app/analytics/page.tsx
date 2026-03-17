@@ -24,7 +24,6 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
   const totalBookmarks = tracked.reduce((s, t) => s + (t.metrics?.bookmarkCount ?? 0), 0);
   const totalQuotes = tracked.reduce((s, t) => s + (t.metrics?.quoteCount ?? 0), 0);
   const totalShares = tracked.reduce((s, t) => s + (t.metrics?.shareCount ?? 0), 0);
-  const hasTrackedLinks = posted.some((t) => !!t.trackedUrl);
   const hasClickMetrics = posted.some((t) => !!t.clickMetrics);
   const totalClicks = hasClickMetrics ? posted.reduce((s, t) => s + (t.clickMetrics?.totalClicks ?? 0), 0) : null;
   const clickThroughRate = totalImpressions > 0 && totalClicks !== null ? (totalClicks / totalImpressions) * 100 : null;

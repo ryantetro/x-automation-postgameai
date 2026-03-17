@@ -1,6 +1,7 @@
 "use client";
 
-import { useId, useRef, useState, useCallback } from "react";
+import { useId, useRef, useState } from "react";
+import { buildSmoothAreaPath, buildSmoothLinePath } from "../lib/chartPaths";
 
 interface ChartPost {
   postedAt: string;
@@ -20,7 +21,6 @@ interface InteractiveAnalyticsChartProps {
   color: string;
   gradientStart: string;
   gradientEnd: string;
-  total: number;
 }
 
 const W = 800;
@@ -53,12 +53,11 @@ export default function InteractiveAnalyticsChart({
   color,
   gradientStart,
   gradientEnd,
-  total,
 }: InteractiveAnalyticsChartProps) {
   const gradId = useId();
   const wrapRef = useRef<HTMLDivElement>(null);
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
-  const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null);
+  const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number; flipLeft: boolean } | null>(null);
 
   const innerW = W - PAD.left - PAD.right;
   const innerH = H - PAD.top - PAD.bottom;
@@ -71,10 +70,9 @@ export default function InteractiveAnalyticsChart({
     y: PAD.top + innerH - (v / maxVal) * innerH,
   }));
 
-  const line = points.map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
-  const area = points.length > 0
-    ? `${line} L${points[points.length - 1].x.toFixed(1)},${(PAD.top + innerH).toFixed(1)} L${points[0].x.toFixed(1)},${(PAD.top + innerH).toFixed(1)}Z`
-    : "";
+  const baselineY = PAD.top + innerH;
+  const line = buildSmoothLinePath(points);
+  const area = buildSmoothAreaPath(points, baselineY);
 
   const maxLabels = 6;
   const labelIndices: number[] = [];
@@ -84,35 +82,32 @@ export default function InteractiveAnalyticsChart({
     if (labelIndices[labelIndices.length - 1] !== posts.length - 1) labelIndices.push(posts.length - 1);
   }
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!wrapRef.current || posts.length === 0) return;
-      const rect = wrapRef.current.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const svgX = (mouseX / rect.width) * W;
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (!wrapRef.current || posts.length === 0) return;
+    const rect = wrapRef.current.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const svgX = (mouseX / rect.width) * W;
 
-      let closest = 0;
-      let closestDist = Infinity;
-      for (let i = 0; i < points.length; i++) {
-        const dist = Math.abs(points[i].x - svgX);
-        if (dist < closestDist) {
-          closestDist = dist;
-          closest = i;
-        }
+    let closest = 0;
+    let closestDist = Infinity;
+    for (let i = 0; i < points.length; i++) {
+      const dist = Math.abs(points[i].x - svgX);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closest = i;
       }
+    }
 
-      setHoverIdx(closest);
-      const ptScreenX = (points[closest].x / W) * rect.width;
-      const ptScreenY = (points[closest].y / H) * rect.height;
-      setTooltipPos({ x: ptScreenX, y: ptScreenY });
-    },
-    [posts.length, points],
-  );
+    setHoverIdx(closest);
+    const ptScreenX = (points[closest].x / W) * rect.width;
+    const ptScreenY = (points[closest].y / H) * rect.height;
+    setTooltipPos({ x: ptScreenX, y: ptScreenY, flipLeft: ptScreenX > rect.width * 0.65 });
+  }
 
-  const handleMouseLeave = useCallback(() => {
+  function handleMouseLeave() {
     setHoverIdx(null);
     setTooltipPos(null);
-  }, []);
+  }
 
   const hoveredPost = hoverIdx !== null ? posts[hoverIdx] : null;
   const hoveredValue = hoverIdx !== null ? values[hoverIdx] : null;
@@ -206,7 +201,7 @@ export default function InteractiveAnalyticsChart({
             style={{
               left: tooltipPos.x,
               top: tooltipPos.y,
-              transform: `translate(${tooltipPos.x > (wrapRef.current?.getBoundingClientRect().width ?? 400) * 0.65 ? "calc(-100% - 14px)" : "14px"}, -50%)`,
+              transform: `translate(${tooltipPos.flipLeft ? "calc(-100% - 14px)" : "14px"}, -50%)`,
             }}
           >
             <div className="ichart-tooltip-header">

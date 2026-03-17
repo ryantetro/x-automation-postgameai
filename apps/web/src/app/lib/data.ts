@@ -1,6 +1,7 @@
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { buildSmoothAreaPath, buildSmoothLinePath } from "./chartPaths";
 import { getClickMetricsForSlugs, type ClickMetricsSnapshot } from "./clicks";
 
 export interface CampaignConfig {
@@ -316,7 +317,7 @@ export function discoverCampaigns(): CampaignConfig[] {
         const configPath = resolve(campaignsDir, d.name, "config.json");
         if (!existsSync(configPath)) return null;
         try {
-          const raw = JSON.parse(require("fs").readFileSync(configPath, "utf-8"));
+          const raw = JSON.parse(readFileSync(configPath, "utf-8"));
           return {
             slug: raw.slug ?? d.name,
             name: raw.name ?? d.name,
@@ -503,8 +504,8 @@ export function linePath(values: number[], w: number, h: number): { line: string
     x: (i / Math.max(values.length - 1, 1)) * w,
     y: h - ((v - min) / span) * h,
   }));
-  const line = pts.map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
-  return { line, area: `${line} L${w},${h} L0,${h}Z` };
+  const line = buildSmoothLinePath(pts);
+  return { line, area: buildSmoothAreaPath(pts, h) };
 }
 
 export function sportClass(sport: string): string {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
+import { buildSmoothAreaPath, buildSmoothLinePath } from "../lib/chartPaths";
 
 type ChartMetric = "impressions" | "engagements" | "likes" | "retweets";
 type ChartRange = "10_posts" | "72h" | "7d" | "30d" | "all";
@@ -341,10 +342,9 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
     setTooltipPos(null);
   }
 
-  const line = geometry.map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(2)},${point.y.toFixed(2)}`).join(" ");
-  const area = geometry.length > 0
-    ? `${line} L${geometry[geometry.length - 1].x.toFixed(2)},${(CHART_PADDING.top + innerHeight).toFixed(2)} L${geometry[0].x.toFixed(2)},${(CHART_PADDING.top + innerHeight).toFixed(2)} Z`
-    : "";
+  const baselineY = CHART_PADDING.top + innerHeight;
+  const line = buildSmoothLinePath(geometry);
+  const area = buildSmoothAreaPath(geometry, baselineY);
   const activeGeometry = geometry.find((point) => point.key === activePoint?.key) ?? null;
   const ticks = buildAxisTicks(geometry, view);
   const filteredTotals = filtered.reduce(
