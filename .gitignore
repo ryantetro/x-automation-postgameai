@@ -9,3 +9,10 @@ node_modules/
 # Local/generated (avoid noisy local artifacts in status)
 .whisper-models/
 Recording*
+
+# Canopy sample and audit artifacts
+/state/canopy/sample-*.png
+/state/canopy/sample-tweets-*.json
+/state/canopy/sample-tweets-*.md
+/state/canopy/launch-audit-*.json
+/state/canopy/launch-audit-*.md
