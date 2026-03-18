@@ -6,9 +6,12 @@ import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { CAMPAIGNS_DIR } from "./config.js";
 import type {
+  CanopyBrandTagPolicy,
   AnalyticsStore,
   CanopyBuyerIntentLevel,
+  CanopyContentBucket,
   CanopyCtaMode,
+  CanopySeriesId,
   CanopyUrgencyMode,
   CanopyVoiceFamily,
   TweetAnalyticsRecord,
@@ -17,6 +20,9 @@ import type {
 export interface ContentPillar {
   id: string;
   name: string;
+  seriesId: CanopySeriesId;
+  contentBuckets: CanopyContentBucket[];
+  brandTagPolicy?: CanopyBrandTagPolicy;
   postIdeas: string[];
   examplePost?: string;
   targetAudiences: string[];
@@ -55,6 +61,9 @@ export interface CanopyStrategySelection {
   creativeDirection: string;
   optimizerVersion: string;
   selectionReason: string;
+  seriesId: CanopySeriesId;
+  contentBucket: CanopyContentBucket;
+  brandTagPolicy: CanopyBrandTagPolicy;
 }
 
 const OPTIMIZER_VERSION = "canopy_optimizer_v1";
@@ -272,6 +281,9 @@ export function chooseCanopyStrategy(store: AnalyticsStore, date: Date): CanopyS
   return {
     angle: pillar.name,
     pillarId: pillar.id,
+    seriesId: pillar.seriesId,
+    contentBucket: pillar.contentBuckets?.[0] ?? "culture",
+    brandTagPolicy: pillar.brandTagPolicy ?? (pillar.seriesId === "booth_identity" || pillar.seriesId === "proof_in_the_wild" ? "optional" : "none"),
     targetAudience: loaded.targetAudience,
     postIdeas: loaded.postIdeas,
     voiceFamily: voice.value,

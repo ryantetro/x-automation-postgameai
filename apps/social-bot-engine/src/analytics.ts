@@ -27,6 +27,14 @@ export type CanopyVoiceFamily =
 export type CanopyBuyerIntentLevel = "awareness" | "consideration" | "purchase_intent";
 export type CanopyUrgencyMode = "none" | "seasonal" | "rush_order" | "replacement";
 export type CanopyCtaMode = "none" | "soft_commercial" | "question_led";
+export type CanopySeriesId =
+  | "vendor_life"
+  | "booth_hot_take"
+  | "booth_identity"
+  | "proof_in_the_wild"
+  | "utah_event_radar";
+export type CanopyContentBucket = "culture" | "education" | "community" | "promo";
+export type CanopyBrandTagPolicy = "none" | "optional" | "soft_commercial";
 export type CanopyImageStyleFamily = "lifestyle" | "mockup";
 export type CanopyImageShotType = "close_up" | "medium" | "wide";
 export type CanopyAgentMode = "exploit" | "explore";
@@ -193,6 +201,9 @@ export interface TweetAnalyticsRecord {
   strategyEnvelopeId?: string;
   agentReasoningSummary?: string;
   performanceWindowLabel?: string;
+  seriesId?: CanopySeriesId;
+  contentBucket?: CanopyContentBucket;
+  brandTagIncluded?: boolean;
 }
 
 export interface AnalyticsStore {

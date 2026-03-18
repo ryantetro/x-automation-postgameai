@@ -35,6 +35,7 @@ import {
   buildCanopyAgentMemory,
   chooseCanopyAgentStrategy,
   chooseCanopyImageDirection,
+  chooseCanopyImagePlan,
   formatCanopyAgentReport,
   rankCanopyCandidates,
   type CanopyStrategyEnvelope,
@@ -350,10 +351,10 @@ async function main(): Promise<number> {
       reserveChars,
       iterationGuidance: canopyIterationGuidance,
       strategy: canopyStrategy,
-      count: 5,
+      count: 7,
     });
     const ranked = rankCanopyCandidates(rawCandidates, canopyStrategy);
-    const finalists = ranked.slice(0, 3);
+    const finalists = ranked.slice(0, 4);
     const judged = await judgeCanopyCandidates(canopyStrategy, finalists);
     const judgedMap = new Map(judged.map((row) => [row.candidateId, row.judgeScore]));
     const finalRanked = ranked
@@ -408,6 +409,10 @@ async function main(): Promise<number> {
         creativeDirection: canopyStrategy?.creativeDirection,
         optimizerVersion: canopyStrategy?.optimizerVersion,
         selectionReason: canopyStrategy?.selectionReason,
+        seriesId: canopyStrategy?.seriesId,
+        contentBucket: canopyStrategy?.contentBucket,
+        brandTagIncluded: candidate.text.includes(BRAND_NAME) || candidate.text.includes(BRAND_WEBSITE),
+        brandTagPolicy: canopyStrategy?.brandTagPolicy,
         candidateId: candidate.candidateId,
         candidateBatchId: canopyCandidateBatchId,
         candidateScore: Number(candidate.totalScore.toFixed(2)),
@@ -595,8 +600,10 @@ async function main(): Promise<number> {
 
   let imageBuffer: Buffer | null = null;
   if (DATA_SOURCE === "angles_only" && IMAGE_ENABLED) {
-    const preferredImage = canopyStrategy ? chooseCanopyImageDirection(analyticsStore, canopyStrategy, new Date()) : null;
-    if (POST_ENABLED) {
+    const imagePlan = canopyStrategy ? chooseCanopyImagePlan(analyticsStore, canopyStrategy, new Date()) : { enabled: true, reason: "No canopy strategy available, so defaulting to image-on." };
+    canopyImageSelectionReason = imagePlan.reason;
+    const preferredImage = canopyStrategy && imagePlan.enabled ? chooseCanopyImageDirection(analyticsStore, canopyStrategy, new Date()) : null;
+    if (POST_ENABLED && imagePlan.enabled) {
       const generatedImage = await generateCampaignImage(angleForRecord, {
         store: analyticsStore,
         date: new Date(),
@@ -608,7 +615,7 @@ async function main(): Promise<number> {
         preferredProductFocus: canopyStrategy?.productFocus,
       });
       imageBuffer = generatedImage.buffer;
-      canopyImageSelectionReason = generatedImage.details?.selectionReason;
+      canopyImageSelectionReason = [canopyImageSelectionReason, generatedImage.details?.selectionReason].filter(Boolean).join("; ") || undefined;
       canopyImageDetails = generatedImage.details
         ? {
             variantId: generatedImage.details.variantId,
@@ -619,7 +626,7 @@ async function main(): Promise<number> {
           }
         : undefined;
       if (!imageBuffer) console.warn("Campaign image generation failed; posting text only.");
-    } else {
+    } else if (!POST_ENABLED && imagePlan.enabled) {
       console.info("Dry run: would generate campaign image for angle");
       const promptDetails = buildCampaignImagePromptForAngle(angleForRecord, {
         store: analyticsStore,
@@ -631,7 +638,7 @@ async function main(): Promise<number> {
         preferredUseCaseVertical: canopyStrategy?.useCaseVertical,
         preferredProductFocus: canopyStrategy?.productFocus,
       });
-      canopyImageSelectionReason = promptDetails?.selectionReason;
+      canopyImageSelectionReason = [canopyImageSelectionReason, promptDetails?.selectionReason].filter(Boolean).join("; ") || undefined;
       canopyImageDetails = promptDetails
         ? {
             variantId: promptDetails.variantId,
@@ -641,6 +648,8 @@ async function main(): Promise<number> {
             productFocus: promptDetails.productFocus,
           }
         : undefined;
+    } else {
+      console.info(`Canopy image skipped: ${imagePlan.reason}`);
     }
   }
 
@@ -702,6 +711,9 @@ async function main(): Promise<number> {
       imageShotType: canopyImageDetails?.shotType,
       optimizerVersion: canopyStrategy?.optimizerVersion,
       selectionReason: [canopyStrategy?.selectionReason, canopyImageSelectionReason].filter(Boolean).join("; ") || undefined,
+      seriesId: canopyStrategy?.seriesId,
+      contentBucket: canopyStrategy?.contentBucket,
+      brandTagIncluded: !!text && (text.includes(BRAND_NAME) || text.includes(BRAND_WEBSITE)),
       candidateId: canopySelectedCandidate?.candidateId,
       candidateBatchId: canopyCandidateBatchId,
       candidateScore: canopySelectedCandidate?.candidateScore,
@@ -882,6 +894,9 @@ async function main(): Promise<number> {
     imageShotType: canopyImageDetails?.shotType,
     optimizerVersion: canopyStrategy?.optimizerVersion,
     selectionReason: [canopyStrategy?.selectionReason, canopyImageSelectionReason].filter(Boolean).join("; ") || undefined,
+    seriesId: canopyStrategy?.seriesId,
+    contentBucket: canopyStrategy?.contentBucket,
+    brandTagIncluded: !!text && (text.includes(BRAND_NAME) || text.includes(BRAND_WEBSITE)),
     candidateId: canopySelectedCandidate?.candidateId,
     candidateBatchId: canopyCandidateBatchId,
     candidateScore: canopySelectedCandidate?.candidateScore,

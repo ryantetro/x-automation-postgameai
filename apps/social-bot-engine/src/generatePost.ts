@@ -13,6 +13,7 @@ import {
 } from "./config.js";
 import type { CanopyStrategyEnvelope, CanopyRankedCandidate } from "./canopyAgent.js";
 import { loadPillarForAngle } from "./contentPillars.js";
+import { buildCanopyCustomerProfilePromptBlock } from "./canopyCustomerProfile.js";
 import type { ContentDecision, RecentContentDecision } from "./contentArchitecture.js";
 import { FRAME_DEFINITIONS, HOOK_DEFINITIONS } from "./contentArchitecture.js";
 import { evaluatePrePublishChecks, getOpeningPattern } from "./contentHeuristics.js";
@@ -764,23 +765,23 @@ function getAnglesOnlyPostFormat(
 
 /** Context lines for angles_only user message; rotated by day. Covers seasonality, events, target audiences, industry. */
 const ANGLES_ONLY_CONTEXT_SNIPPETS = [
-  "Event season is ramping up. A lot of teams and vendors are realizing they need to order now for spring events.",
-  "Summer events are in full swing. Last-minute orders are coming in from people who waited too long.",
-  "Fall festival and game day season. Lead times matter when something fails right before the event.",
-  "Trade show season. Booth visibility is the game — the tent is the first thing people see from 50 feet away.",
-  "Farmers markets and outdoor vendor events are booking. Setup and sizing are top of mind for planners.",
-  "Wind and weather have been rough at a few outdoor events. Durability and frame quality are what people are asking about.",
-  "Spring games and tournaments are on the calendar. Full-color branding and quick turnaround are the main asks.",
-  "Vendors are comparing plain tents vs branded. Visibility from a distance is the conversation.",
-  "Rush orders and replacement canopies are spiking. Something failed or someone waited — either way, lead time is the constraint.",
-  "Real estate teams are prepping for open house season. Curb appeal and branded presence are top of mind.",
-  "Sports teams and leagues are ordering for game day. Sideline visibility and team branding are the main asks.",
-  "Corporate event and trade show calendars are filling. Booth design and lead capture are the conversation.",
-  "Local parades and community events are on the calendar. Stand-out visibility for small businesses matters.",
-  "Event marketing and experiential marketing are trending again. Brands that show up in person are winning.",
-  "Festival and outdoor vendor season. Full-color canopies and quick turnaround are what planners are asking about.",
-  "Car dealerships and marinas are planning tent events. Branded presence and durability are the main asks.",
-  "Nonprofits and community orgs are booking events. Affordable, durable branding that reads from a distance.",
+  "Utah event season is waking up. Vendors are figuring out which setups still feel current and which ones still look like last year.",
+  "Saturday market people can spot a serious booth before they are close enough to read the sign.",
+  "Spring and summer event rows always expose the same thing: some booths look intentional and some look improvised.",
+  "The first hour before an event opens says a lot about how the whole day is going to go.",
+  "Farmers markets, maker markets, and community festivals are as much about vibe as they are about product.",
+  "Wind is back in the conversation. Outdoor events are the fastest way to find out whether a setup actually looks solid.",
+  "Utah fairs, vendor markets, and pop-up events create the same scramble every season: everyone remembers their booth matters at once.",
+  "In expo halls and outdoor rows alike, people decide whether a booth feels legit long before they start asking questions.",
+  "Local event culture matters. The account should sound like it knows the scene, not like it is selling into it from the outside.",
+  "A lot of booth feedback is silent. People do not explain why one setup feels sharper. They just feel it.",
+  "Community events reward brands that look like they belong there, not brands that feel dropped in from nowhere.",
+  "The best event content sounds like a vendor friend with taste, not a company trying to close.",
+  "Some setup problems are budget problems. A surprising number are just editing problems.",
+  "Trade show aisles and market rows have one thing in common: first impressions happen fast and they are mostly visual.",
+  "A booth can feel expensive without feeling thoughtful, and thoughtful without feeling expensive. That tension is interesting.",
+  "Good event brands do not just show products. They create a little world people want to step into.",
+  "Outdoor event season always creates stories: rushed setups, weather pivots, lucky saves, and the booth that somehow looked dialed anyway.",
 ];
 
 function getContextForAnglesOnly(date: Date): string {
@@ -836,6 +837,8 @@ export function buildAnglesOnlyPromptInput(options: BuildAnglesOnlyPromptOptions
       : "";
   const strategyBlock = strategy
     ? `\nCampaign optimizer picked this strategy:
+- Series: ${strategy.seriesId.replaceAll("_", " ")}
+- Content bucket: ${strategy.contentBucket}
 - Voice family: ${strategy.voiceFamily.replaceAll("_", " ")}
 - Buyer intent level: ${strategy.buyerIntentLevel.replaceAll("_", " ")}
 - Use-case vertical: ${strategy.useCaseVertical}
@@ -843,9 +846,11 @@ export function buildAnglesOnlyPromptInput(options: BuildAnglesOnlyPromptOptions
 - Urgency mode: ${strategy.urgencyMode.replaceAll("_", " ")}
 - CTA mode: ${strategy.ctaMode.replaceAll("_", " ")}
 - Creative direction: ${strategy.creativeDirection.replaceAll("_", " ")}
+- Brand tag policy: ${strategy.brandTagPolicy.replaceAll("_", " ")}
 - Context hint: ${strategy.contextHint}
 - Reason selected: ${strategy.selectionReason}`
-    : "";
+      : "";
+  const customerProfileBlock = buildCanopyCustomerProfilePromptBlock(strategy);
   const iterationBlock = options.iterationGuidance
     ? `\nIteration guidance from analytics:\n${options.iterationGuidance}`
     : "";
@@ -854,14 +859,23 @@ export function buildAnglesOnlyPromptInput(options: BuildAnglesOnlyPromptOptions
     : "";
   const userMessage = `Date: ${dateStr}. Focus theme: ${angle}. Post format: ${format}.
 
-Context for this post: ${context}.${pillarBlock}${strategyBlock}${iterationBlock}${candidateBlock}
+Context for this post: ${context}.${pillarBlock}${strategyBlock}${iterationBlock}${candidateBlock}${customerProfileBlock ? `\n\n${customerProfileBlock}` : ""}
 
 Write one post in the specified format. If relevant, tie to seasonality or upcoming events. Keep the body under ${maxBodyLength} characters.
 
 Hard canopy quality rules:
 - Prefer statements over questions. Only use a question if the strategy clearly supports it, and never use more than one.
 - Avoid filler like "stand out", "make an impact", "inviting and sturdy", "premium quality", "ready to", "don't scrimp", "the whole conversation", "turn heads", "everyone talks about", "grab attention", "catch the eye", or "not a myth".
+- Avoid caption-writer language like "vibe check", "first impression", "tells a story", "does the talking", or "before you even say a word".
 - Do not sound like ad copy, a caption writer, or a motivational brand.
+- The post should be follow-worthy even for someone who is not buying right now.
+- Local event culture, vendor life, and booth identity are stronger than obvious selling.
+- It is okay if the canopy is implied, in the scene, or secondary to the observation.
+- Observational takes beat explanations.
+- One strong idea beats polished caption language.
+- If the series is Utah Event Radar, the post must feel local and should mention Utah or a Utah-region event context.
+- If the brand tag policy is none, do not include the brand name or website.
+- If the brand tag policy is optional, only use it if the post still reads organic without it.
 - Specific beats generic. Name the booth problem, the buyer tension, the deadline, or the product detail.
 - Trade show / market / event context should feel real, not generic event-marketing language.
 - Prefer physical event details: frame, wind, aisle, parking lot, valance, setup window, paid booth, replacement order, drooping vinyl, curbside visibility.
@@ -875,12 +889,14 @@ Output only the post text.${avoidBlock}`;
 function fitAnglesOnlyPostToLimit(
   content: string,
   maxBodyLength: number,
-  isQuestionFormat: boolean
+  includeBrandTag: boolean
 ): string {
   let text = content.trim();
   const suffix = ` — ${BRAND_NAME} · ${BRAND_WEBSITE}`;
+  const brandTagPattern = /\s*[—-]?\s*Vicious Shade Supply Co\.\s*·\s*viciousshade\.com\s*$/i;
+  text = text.replace(brandTagPattern, "").trim();
 
-  if (!isQuestionFormat && (!text.includes(BRAND_NAME) || !text.includes(BRAND_WEBSITE))) {
+  if (includeBrandTag && (!text.includes(BRAND_NAME) || !text.includes(BRAND_WEBSITE))) {
     if (text.length + suffix.length <= maxBodyLength) return `${text}${suffix}`;
 
     const roomForBody = Math.max(0, maxBodyLength - suffix.length);
@@ -918,6 +934,27 @@ function fitAnglesOnlyPostToLimit(
   return text.slice(0, maxBodyLength).trim();
 }
 
+function anglesOnlyDeterministicIndex(seed: string, length: number): number {
+  if (length <= 0) return 0;
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+  return hash % length;
+}
+
+function shouldIncludeCanopyBrandTag(strategy: CanopyStrategyEnvelope | undefined, date: Date): boolean {
+  if (!strategy) return true;
+  if (strategy.brandTagPolicy === "none") return false;
+  if (strategy.brandTagPolicy === "soft_commercial") {
+    return strategy.ctaMode === "soft_commercial" || strategy.contentBucket === "promo";
+  }
+  if (strategy.ctaMode === "soft_commercial" || strategy.contentBucket === "promo") return true;
+  const optionalRate =
+    strategy.seriesId === "proof_in_the_wild" ? 18
+    : strategy.seriesId === "booth_identity" ? 14
+    : 10;
+  return anglesOnlyDeterministicIndex(`${date.toISOString().slice(0, 10)}:${strategy.seriesId}:brand-tag`, 100) < optionalRate;
+}
+
 const CANOPY_GENERIC_PHRASES = [
   /\bstand out\b/i,
   /\bmake an impact\b/i,
@@ -943,6 +980,51 @@ const CANOPY_GENERIC_PHRASES = [
   /\bripple dance\b/i,
   /\breal mvps?\b/i,
   /\bpanic early\b/i,
+  /\bmake it count\b/i,
+  /\byour first impression\b/i,
+  /\btells a story\b/i,
+  /\bdeserves better\b/i,
+  /\bbooth impression hack\b/i,
+  /\bbefore you even say a word\b/i,
+  /\bdoes the talking\b/i,
+  /\bvibe check\b/i,
+  /\bvibes\b/i,
+  /\bwinging it\b/i,
+  /\bremember,\b/i,
+  /\bsilent reviewer\b/i,
+  /\bstory at a glance\b/i,
+  /\btells everyone your story\b/i,
+  /\bfirst impression\b/i,
+  /\bisn't a checklist\b/i,
+  /\bwhether you notice it or not\b/i,
+];
+
+const CANOPY_HARD_CTA_PATTERNS = [
+  /\bdm us\b/i,
+  /\bmessage us\b/i,
+  /\bget a quote\b/i,
+  /\bshop now\b/i,
+  /\blink in bio\b/i,
+  /\bcontact us\b/i,
+];
+
+const CANOPY_MOTIVATIONAL_PATTERNS = [
+  /\bmake it count\b/i,
+  /\bkeep going\b/i,
+  /\byou built a whole business\b/i,
+  /\bready for your next event\b/i,
+  /\bthis is what standing out looks like\b/i,
+];
+
+const CANOPY_CORPORATE_PATTERNS = [
+  /\bpremium commercial\b/i,
+  /\bbrand presence\b/i,
+  /\bmaximize\b/i,
+  /\bvisibility problem\b/i,
+  /\bideal for\b/i,
+  /\bsolution\b/i,
+  /\bcurated expertise\b/i,
+  /\bfluently\b/i,
 ];
 
 const CANOPY_FIELD_TERMS = [
@@ -988,39 +1070,94 @@ function hasFieldDetail(text: string): boolean {
   return CANOPY_FIELD_TERMS.some((pattern) => pattern.test(text));
 }
 
+function canopyBrandTagCount(text: string): number {
+  let count = 0;
+  if (text.includes(BRAND_NAME)) count += 1;
+  if (text.includes(BRAND_WEBSITE)) count += 1;
+  return count;
+}
+
+function hasSeriesSpecificSignal(text: string, strategy: CanopyStrategyEnvelope | undefined): boolean {
+  if (!strategy) return true;
+  const normalized = text.toLowerCase();
+  if (strategy.seriesId === "vendor_life") {
+    return /\b5 a\.?m\b|\bload-?in\b|\bsetup\b|\bparking lot\b|\bvan\b|\bmarket\b|\bwind\b/.test(normalized);
+  }
+  if (strategy.seriesId === "booth_hot_take") {
+    return /\bhot take\b|\bbooth\b|\bsetup\b|\bfolding table\b|\bgarage sale\b|\bmismatched\b|\btaste\b/.test(normalized);
+  }
+  if (strategy.seriesId === "booth_identity") {
+    return /\bbrand\b|\bbooth\b|\bsetup\b|\bsign\b|\bdetails\b|\bvisual\b|\bintentional\b/.test(normalized);
+  }
+  if (strategy.seriesId === "proof_in_the_wild") {
+    return /\bwind\b|\bframe\b|\bvalance\b|\bfabric\b|\bprint\b|\bfield\b|\bweather\b/.test(normalized);
+  }
+  if (strategy.seriesId === "utah_event_radar") {
+    return /\butah\b|\bsalt lake\b|\butah county\b|\bprovo\b|\bogden\b|\bst\.?\s*george\b|\bfair\b|\bfestival\b|\bexpo\b|\bmarket\b/.test(normalized);
+  }
+  return true;
+}
+
 function validateAnglesOnlyDraft(
   text: string,
   strategy: CanopyStrategyEnvelope | undefined,
-  format: (typeof ANGLES_ONLY_POST_FORMATS)[number]
+  format: (typeof ANGLES_ONLY_POST_FORMATS)[number],
+  date: Date
 ): { ok: boolean; failedChecks: string[]; rejectionReason?: string } {
   const failedChecks: string[] = [];
+  const includeBrandTag = shouldIncludeCanopyBrandTag(strategy, date);
   if (soundsLikeAd(text)) failedChecks.push("ad_tone");
   if (soundsGenericCanopyCopy(text)) failedChecks.push("generic_canopy_copy");
+  if (CANOPY_HARD_CTA_PATTERNS.some((pattern) => pattern.test(text))) failedChecks.push("hard_cta");
+  if (CANOPY_MOTIVATIONAL_PATTERNS.some((pattern) => pattern.test(text))) failedChecks.push("motivational_tone");
+  if (CANOPY_CORPORATE_PATTERNS.some((pattern) => pattern.test(text))) failedChecks.push("corporate_tone");
   if (!hasConcreteCanopySignal(text)) failedChecks.push("missing_concrete_signal");
   if (!hasFieldDetail(text)) failedChecks.push("missing_field_detail");
+  if (!hasSeriesSpecificSignal(text, strategy)) failedChecks.push("missing_series_signal");
   if (canopySentenceCount(text) > 3) failedChecks.push("too_many_sentences");
   const questions = canopyQuestionCount(text);
   if (questions > 1) failedChecks.push("too_many_questions");
   if (questions === 1 && strategy?.ctaMode !== "question_led") failedChecks.push("question_when_not_allowed");
   if (/^[^.!?]{0,35}\?/.test(text.trim())) failedChecks.push("question_lead");
+  if (canopyBrandTagCount(text) > 2) failedChecks.push("brand_tag_repeated");
+  if (!includeBrandTag && (text.includes(BRAND_NAME) || text.includes(BRAND_WEBSITE))) failedChecks.push("brand_tag_when_not_allowed");
 
   if (failedChecks.length === 0) return { ok: true, failedChecks };
 
   const rejectionReason =
-    failedChecks[0] === "generic_canopy_copy"
+    failedChecks[0] === "hard_cta"
+      ? "hard_cta"
+      : failedChecks[0] === "motivational_tone" || failedChecks[0] === "corporate_tone"
+        ? "generic_canopy_copy"
+        : failedChecks[0] === "generic_canopy_copy"
       ? "generic_canopy_copy"
       : failedChecks[0] === "missing_concrete_signal"
         ? "missing_concrete_signal"
         : failedChecks[0] === "missing_field_detail"
           ? "missing_field_detail"
-        : failedChecks[0] === "too_many_questions" || failedChecks[0] === "question_when_not_allowed" || failedChecks[0] === "question_lead"
-          ? "question_heavy"
-          : failedChecks[0];
+          : failedChecks[0] === "missing_series_signal"
+            ? "missing_series_signal"
+          : failedChecks[0] === "brand_tag_repeated" || failedChecks[0] === "brand_tag_when_not_allowed"
+            ? "brand_tag_problem"
+          : failedChecks[0] === "too_many_questions" || failedChecks[0] === "question_when_not_allowed" || failedChecks[0] === "question_lead"
+            ? "question_heavy"
+            : failedChecks[0];
   return { ok: false, failedChecks, rejectionReason };
 }
 
 function canopyCandidateDirective(ordinal: number, strategy: CanopyStrategyEnvelope): string {
   const directions: string[] = [];
+  if (strategy.seriesId === "vendor_life") {
+    directions.push("Make it feel like event-day life: load-in, setup, weather, van, parking lot, or market routine.");
+  } else if (strategy.seriesId === "booth_hot_take") {
+    directions.push("Make it feel like a shareable booth opinion or mild roast with real taste, not random snark.");
+  } else if (strategy.seriesId === "booth_identity") {
+    directions.push("Center the difference between a booth that feels like a brand and one that feels generic.");
+  } else if (strategy.seriesId === "proof_in_the_wild") {
+    directions.push("Ground the post in real-world product proof: weather, wear, frame, fabric, print, or field reality.");
+  } else if (strategy.seriesId === "utah_event_radar") {
+    directions.push("Keep it local and useful. Mention Utah or a Utah-region event context without sounding like a flyer caption.");
+  }
   if (strategy.creativeDirection === "customer_showcase") {
     directions.push("Write like you are describing a real customer setup or real booth moment in the wild.");
   } else if (strategy.creativeDirection === "before_after_transformation") {
@@ -1132,9 +1269,11 @@ export function isThreadDay(date: Date = new Date()): boolean {
 export function normalizeAnglesOnlyPostForLimit(
   content: string,
   maxBodyLength: number,
-  format: (typeof ANGLES_ONLY_POST_FORMATS)[number]
+  format: (typeof ANGLES_ONLY_POST_FORMATS)[number],
+  strategy?: CanopyStrategyEnvelope,
+  date?: Date
 ): string {
-  return fitAnglesOnlyPostToLimit(content, maxBodyLength, false);
+  return fitAnglesOnlyPostToLimit(content, maxBodyLength, shouldIncludeCanopyBrandTag(strategy, date ?? new Date()));
 }
 
 /**
@@ -1156,10 +1295,14 @@ export async function generatePostAnglesOnly(
   for (let attempt = 0; attempt < 4; attempt++) {
     const raw = await requestTweet(client, system, prompt);
     if (!raw) continue;
-    const content = normalizeAnglesOnlyPostForLimit(cleanResponse(raw), maxBodyLength, format);
+    const content = normalizeAnglesOnlyPostForLimit(cleanResponse(raw), maxBodyLength, format, options.strategy, new Date(`${options.date ?? new Date().toISOString().slice(0, 10)}T12:00:00Z`));
     if (!bestCandidate && content.trim().length >= 12) bestCandidate = content;
-    const evaluation = validateAnglesOnlyDraft(content, options.strategy, format);
+    const evaluation = validateAnglesOnlyDraft(content, options.strategy, format, new Date(`${options.date ?? new Date().toISOString().slice(0, 10)}T12:00:00Z`));
     if (evaluation.ok) return { text: content };
+    if (evaluation.rejectionReason === "hard_cta") {
+      prompt += "\nRewrite it with zero call-to-action language. No quote requests, no DM language, no link in bio energy.";
+      continue;
+    }
     if (evaluation.rejectionReason === "generic_canopy_copy") {
       prompt += "\nRewrite it with sharper booth reality, less generic brand language, and no phrases like 'stand out' or 'make an impact'.";
       continue;
@@ -1170,6 +1313,14 @@ export async function generatePostAnglesOnly(
     }
     if (evaluation.rejectionReason === "missing_field_detail") {
       prompt += "\nRewrite it with a physical field detail, not abstract marketing language. Use something tangible like aisle, paid booth, wind, frame, valance, drooping vinyl, curbside setup, or replacement order.";
+      continue;
+    }
+    if (evaluation.rejectionReason === "missing_series_signal") {
+      prompt += "\nRewrite it so it unmistakably fits the assigned recurring series instead of sounding like generic canopy copy.";
+      continue;
+    }
+    if (evaluation.rejectionReason === "brand_tag_problem") {
+      prompt += "\nRewrite it with the correct brand-tag behavior for this series. Do not force the brand name into the body.";
       continue;
     }
     if (evaluation.rejectionReason === "question_heavy") {
@@ -1227,7 +1378,7 @@ export async function judgeCanopyCandidates(
   const clientOptions: ConstructorParameters<typeof OpenAI>[0] = { apiKey: OPENAI_API_KEY };
   if (!USE_OPENAI_API && LLM_BASE_URL) clientOptions.baseURL = LLM_BASE_URL;
   const client = new OpenAI(clientOptions);
-  const judgeSystem = `You are ranking canopy social post drafts for a bot that must learn from actual X performance. Reward specificity, booth-world realism, originality, and buyer-intent clarity. Penalize ad copy, slogans, generic visibility language, and vague event marketing tone. Reply with only "score: N" where N is 0-100.`;
+  const judgeSystem = `You are ranking canopy social post drafts for a bot that must learn from actual X performance. Reward specificity, booth-world realism, screenshot-worthiness, vendor relatability, local/event relevance, and non-commercial tone. Penalize ad copy, slogans, generic motivational endings, vague event-marketing language, and obvious brand-tagging. Reply with only "score: N" where N is 0-100.`;
   const outputs: Array<{ candidateId: string; judgeScore: number }> = [];
   for (const finalist of finalists) {
     try {
@@ -1237,7 +1388,7 @@ export async function judgeCanopyCandidates(
           { role: "system", content: judgeSystem },
           {
             role: "user",
-            content: `Strategy envelope: ${strategy.id}\nCreative direction: ${strategy.creativeDirection}\nVoice family: ${strategy.voiceFamily}\nDraft:\n${finalist.text}`,
+            content: `Strategy envelope: ${strategy.id}\nSeries: ${strategy.seriesId}\nContent bucket: ${strategy.contentBucket}\nCreative direction: ${strategy.creativeDirection}\nVoice family: ${strategy.voiceFamily}\nDraft:\n${finalist.text}`,
           },
         ],
         max_tokens: 12,

@@ -10,6 +10,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { bootstrap } from "../src/bootstrap.js";
+import type { CanopyStrategyEnvelope } from "../src/canopyAgent.js";
 
 process.env.CAMPAIGN = process.env.CAMPAIGN?.trim() || "canopy";
 bootstrap();
@@ -21,8 +22,19 @@ const WORKSPACE_ROOT = resolve(REPO_ROOT, "..", "..");
 interface PillarRecord {
   id: string;
   name: string;
+  seriesId: "vendor_life" | "booth_hot_take" | "booth_identity" | "proof_in_the_wild" | "utah_event_radar";
+  contentBuckets: Array<"culture" | "education" | "community" | "promo">;
+  brandTagPolicy?: "none" | "optional" | "soft_commercial";
   postIdeas: string[];
   targetAudiences: string[];
+  voiceFamilies?: string[];
+  buyerIntentLevels?: string[];
+  productFocuses?: string[];
+  useCaseVerticals?: string[];
+  urgencyModes?: string[];
+  ctaModes?: string[];
+  contextHints?: string[];
+  creativeDirections?: string[];
 }
 
 interface PillarsFile {
@@ -101,11 +113,35 @@ async function main(): Promise<void> {
       let text = "";
 
       for (let attempt = 0; attempt < 3; attempt++) {
+        const strategy: CanopyStrategyEnvelope = {
+          id: `${pillar.id}|${pillar.seriesId}|${pillar.contentBuckets[0] ?? "culture"}|sample`,
+          pillarId: pillar.id,
+          seriesId: pillar.seriesId,
+          contentBucket: pillar.contentBuckets[0] ?? "culture",
+          brandTagPolicy: pillar.brandTagPolicy ?? (pillar.seriesId === "booth_identity" || pillar.seriesId === "proof_in_the_wild" ? "optional" : "none"),
+          angle: pillar.name,
+          voiceFamily: (pillar.voiceFamilies?.[0] as CanopyStrategyEnvelope["voiceFamily"]) ?? "observational_thought_leadership",
+          creativeDirection: pillar.creativeDirections?.[0] ?? "social_proof",
+          buyerIntentLevel: (pillar.buyerIntentLevels?.[0] as CanopyStrategyEnvelope["buyerIntentLevel"]) ?? "awareness",
+          productFocus: pillar.productFocuses?.[0] ?? "custom canopies",
+          useCaseVertical: pillar.useCaseVerticals?.[0] ?? "community events",
+          urgencyMode: (pillar.urgencyModes?.[0] as CanopyStrategyEnvelope["urgencyMode"]) ?? "none",
+          ctaMode: (pillar.ctaModes?.[0] as CanopyStrategyEnvelope["ctaMode"]) ?? "none",
+          targetAudience: pillarData?.targetAudience ?? pillar.targetAudiences[0] ?? "event planners and vendors",
+          postIdeas: pillar.postIdeas.slice(0, 3),
+          contextHint: pillar.contextHints?.[0] ?? "Keep it grounded in real vendor and event culture.",
+          optimizerVersion: "sample_generator",
+          agentMode: "explore",
+          performanceWindowLabel: "sample_generation",
+          agentReasoningSummary: "Generated from the canopy sample script using a pillar-aligned strategy envelope.",
+          selectionReason: "Sample script aligned the strategy to the selected pillar so the output reflects real canopy voice rules.",
+        };
         const result = await generatePostAnglesOnly({
           angle: pillar.name,
           date,
           reserveChars,
           recentTweets,
+          strategy,
         });
         text = result.text?.trim() ?? "";
         if (isValidTweet(text, { requireBrand: false }) && !recentTweets.includes(text)) break;

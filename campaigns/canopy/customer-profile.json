@@ -1,0 +1,102 @@
+{
+  "jobTitles": [
+    "marketing manager",
+    "marketing director",
+    "event coordinator",
+    "event manager",
+    "brand manager",
+    "promotions manager",
+    "small business owner",
+    "founder",
+    "franchise owner",
+    "sales manager",
+    "operations manager"
+  ],
+  "companyTypes": [
+    {
+      "id": "event_driven_businesses",
+      "label": "Event-driven businesses",
+      "examples": [
+        "food and beverage brands",
+        "beverage distributors",
+        "farmers market vendors",
+        "pop-up retail brands",
+        "craft brands",
+        "product launch teams"
+      ]
+    },
+    {
+      "id": "sports_and_community",
+      "label": "Sports and community organizations",
+      "examples": [
+        "youth sports leagues",
+        "school athletic departments",
+        "sports teams",
+        "fitness brands",
+        "outdoor recreation companies"
+      ]
+    },
+    {
+      "id": "promotional_and_marketing",
+      "label": "Promotional and marketing teams",
+      "examples": [
+        "tech startups",
+        "real estate agencies",
+        "car dealerships",
+        "telecom providers",
+        "insurance companies"
+      ]
+    },
+    {
+      "id": "local_service_businesses",
+      "label": "Local service businesses",
+      "examples": [
+        "roofing companies",
+        "HVAC companies",
+        "landscaping businesses",
+        "pest control companies",
+        "home improvement companies"
+      ]
+    }
+  ],
+  "companySizes": [
+    "small businesses (1-20 employees)",
+    "growing SMBs (20-200 employees)",
+    "enterprise and national brands (200+ employees)"
+  ],
+  "decisionMakerProfile": {
+    "ageRange": "28-55",
+    "education": "college educated, especially marketing or business",
+    "incomeRange": "$60K-$150K+",
+    "location": "urban and suburban areas with frequent events",
+    "techComfort": "moderate to high"
+  },
+  "motivations": [
+    "brand visibility",
+    "standing out at crowded events",
+    "professional appearance",
+    "easy setup",
+    "durability for outdoor use",
+    "quick turnaround"
+  ],
+  "mindset": "I need our booth to look professional and attract attention.",
+  "highIntentTriggers": [
+    "upcoming trade shows",
+    "farmers market season",
+    "sports tournaments",
+    "grand openings",
+    "product launches",
+    "outdoor promotions",
+    "sponsorship activations"
+  ],
+  "timingWindow": "Buying urgency is often 2-4 weeks before the event.",
+  "purchaseBundle": [
+    "custom printed canopy tent",
+    "feather flags and teardrop flags",
+    "table covers",
+    "backdrop banners",
+    "side walls",
+    "weights and accessories"
+  ],
+  "averageOrderValue": "$300-$2,500+"
+}

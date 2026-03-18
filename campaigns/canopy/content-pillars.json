@@ -2,122 +2,137 @@
   "pillars": [
     {
       "id": "buyer_intent_products",
-      "name": "Buyer-Intent Products",
+      "name": "Booth Identity and Setup Taste",
+      "seriesId": "booth_identity",
+      "contentBuckets": ["culture", "education", "promo"],
+      "brandTagPolicy": "optional",
       "postIdeas": [
-        "custom 10x10 canopy with logo for spring events",
-        "custom printed pop up tent vs generic white tent",
-        "feather flags and banners that actually get seen from the parking lot",
-        "step-and-repeat wall for photo moments at activations",
-        "what buyers are really comparing when they shop custom canopy tents"
+        "generic white tent vs a booth that actually looks like a brand",
+        "what your canopy setup says before anyone reads the sign",
+        "why polished branding feels more trustworthy at a market or expo",
+        "the first thing people judge when they walk an event row",
+        "taste matters more than most booth owners want to admit"
       ],
-      "examplePost": "The search usually starts with custom canopy tent. The real buying decision happens when somebody compares visibility, lead time, and whether the frame survives the second event.",
-      "targetAudiences": ["marketing managers", "brand managers", "business owners", "event coordinators"],
-      "voiceFamilies": ["buyer_intent_detail", "soft_commercial", "observational_thought_leadership"],
-      "buyerIntentLevels": ["consideration", "purchase_intent"],
-      "productFocuses": ["custom canopies", "pop up tents", "feather flags", "event banners", "step-and-repeat walls"],
-      "useCaseVerticals": ["trade shows", "corporate activations", "retail pop-ups"],
-      "urgencyModes": ["none", "seasonal", "rush_order"],
-      "ctaModes": ["soft_commercial", "question_led"],
-      "creativeDirections": ["customer_showcase", "educational_breakdown", "social_proof"],
+      "examplePost": "People say they are judging the product. Half the time they are judging the setup first and deciding whether the brand looks serious enough to stop for.",
+      "targetAudiences": ["small business owners", "farmers market vendors", "event vendors", "brand managers"],
+      "voiceFamilies": ["observational_thought_leadership", "contrarian_take", "soft_commercial"],
+      "buyerIntentLevels": ["awareness", "consideration"],
+      "productFocuses": ["custom canopies", "pop up tents", "feather flags", "event banners"],
+      "useCaseVerticals": ["trade shows", "retail pop-ups", "local business events"],
+      "urgencyModes": ["none", "seasonal"],
+      "ctaModes": ["none", "soft_commercial"],
+      "creativeDirections": ["social_proof", "before_after_transformation", "customer_showcase"],
       "contextHints": [
-        "Use the language of someone already shopping, comparing options, or asking for a quote.",
-        "Tie the post to branded visibility, setup quality, or speed to event readiness."
+        "Lead with identity, taste, and first impressions instead of shopping language.",
+        "The post should feel like a booth opinion from someone who has seen a lot of bad setups."
       ]
     },
     {
       "id": "use_case_moments",
-      "name": "Use-Case Moments",
+      "name": "Vendor Life and Event Culture",
+      "seriesId": "vendor_life",
+      "contentBuckets": ["culture", "community"],
+      "brandTagPolicy": "none",
       "postIdeas": [
-        "food truck owner prepping for festival season",
-        "sideline setup for a weekend tournament",
-        "real estate team using a canopy at an open house",
-        "farmers market booth that stands out before the first customer walks in",
-        "nonprofit booth that needs to look credible on a tight budget"
+        "5 a.m. load-in energy before a market opens",
+        "the chaos of setup when wind shows up before the customers do",
+        "how real vendors think about booth flow during a packed event",
+        "the little event-day rituals only market people understand",
+        "why some booths feel alive before the first customer even arrives"
       ],
-      "examplePost": "The canopy somebody needs for a Saturday tournament is not the same build they need for a trade show. Same product family. Totally different visibility problem.",
-      "targetAudiences": ["food truck operators", "athletic directors", "real estate teams", "farmers market vendors", "nonprofit organizers"],
-      "voiceFamilies": ["micro_story", "observational_thought_leadership", "buyer_intent_detail"],
+      "examplePost": "Vendor life is loading the van before sunrise, fixing one weird problem in the parking lot, then acting normal by 9 a.m. like none of that happened.",
+      "targetAudiences": ["farmers market vendors", "food truck operators", "festival vendors", "community event organizers"],
+      "voiceFamilies": ["micro_story", "observational_thought_leadership", "contrarian_take"],
       "buyerIntentLevels": ["awareness", "consideration"],
-      "productFocuses": ["custom canopies", "feather flags", "event banners"],
-      "useCaseVerticals": ["food trucks", "sports tournaments", "open houses", "farmers markets", "community events"],
+      "productFocuses": ["custom canopies", "event banners", "feather flags"],
+      "useCaseVerticals": ["farmers markets", "food trucks", "community events", "festivals"],
       "urgencyModes": ["none", "seasonal"],
       "ctaModes": ["none", "question_led"],
-      "creativeDirections": ["customer_showcase", "before_after_transformation", "social_proof"],
+      "creativeDirections": ["customer_showcase", "behind_the_scenes", "social_proof"],
       "contextHints": [
-        "Ground the post in a real event-day scenario buyers recognize immediately.",
-        "Make the product feel like part of the setup, not a generic promo item."
+        "Write like someone who has actually set up in a parking lot, market row, or festival field.",
+        "Make the post relatable enough that a vendor would send it to another vendor."
       ]
     },
     {
       "id": "speed_and_deadlines",
-      "name": "Speed and Deadlines",
+      "name": "Utah Event Radar",
+      "seriesId": "utah_event_radar",
+      "contentBuckets": ["culture", "education"],
+      "brandTagPolicy": "none",
       "postIdeas": [
-        "rush order before a trade show",
-        "replacement canopy when wind destroys the old one",
-        "what last-minute event buyers get wrong",
-        "spring event calendar panic and branded gear deadlines",
-        "why waiting until the week of the event creates expensive problems"
+        "upcoming Utah markets, fairs, trade shows, and festivals worth watching",
+        "what kinds of booth setups fit spring, summer, and fall events in Utah",
+        "outdoor event season in Salt Lake, Utah County, and southern Utah",
+        "how event calendars create last-minute booth panic without saying buy now",
+        "the difference between indoor expo energy and outdoor festival energy"
       ],
-      "examplePost": "Rush orders are rarely about impatience. Usually somebody finally looked at the event calendar and realized the plain tent is not making the trip this year.",
-      "targetAudiences": ["event coordinators", "operations managers", "small business owners", "marketing teams"],
-      "voiceFamilies": ["deadline_urgency", "contrarian_take", "micro_story"],
-      "buyerIntentLevels": ["consideration", "purchase_intent"],
+      "examplePost": "Utah event season sneaks up the same way every year. One week everybody is talking spring, the next week half the vendor world is realizing their setup still looks like last season.",
+      "targetAudiences": ["Utah small business owners", "Utah vendors", "event organizers", "local marketers"],
+      "voiceFamilies": ["observational_thought_leadership", "micro_story", "deadline_urgency"],
+      "buyerIntentLevels": ["awareness", "consideration"],
       "productFocuses": ["custom canopies", "replacement canopies", "rush graphics"],
-      "useCaseVerticals": ["trade shows", "festivals", "sports events", "community events"],
-      "urgencyModes": ["seasonal", "rush_order", "replacement"],
-      "ctaModes": ["soft_commercial", "question_led"],
-      "creativeDirections": ["seasonal_urgency", "before_after_transformation", "behind_the_scenes"],
+      "useCaseVerticals": ["community events", "festivals", "trade shows", "sports events"],
+      "urgencyModes": ["none", "seasonal", "rush_order"],
+      "ctaModes": ["none", "question_led"],
+      "creativeDirections": ["seasonal_urgency", "customer_showcase", "social_proof"],
       "contextHints": [
-        "Use time pressure, event deadlines, or gear failure as the emotional driver.",
-        "Make urgency feel real and field-tested, not salesy panic."
+        "Be useful to people who care about upcoming local events, not just products.",
+        "Treat the event itself as the main story and the booth setup as the subtext."
       ]
     },
     {
       "id": "durability_and_product_proof",
-      "name": "Durability and Product Proof",
+      "name": "Booth Proof in the Wild",
+      "seriesId": "proof_in_the_wild",
+      "contentBuckets": ["education", "community", "promo"],
+      "brandTagPolicy": "optional",
       "postIdeas": [
-        "what wind reveals about frame quality",
-        "why dye sublimation beats cheap vinyl graphics",
-        "visibility from 100 feet matters more than a pretty tablecloth",
-        "the difference between gear that survives a season and gear that looks tired after one event",
-        "product details buyers only notice after setup starts"
+        "what wind, sun, and repeated setup reveal in real life",
+        "why some booths still look sharp at hour eight and others look exhausted by noon",
+        "details that quietly make a booth feel legit",
+        "what event people notice about frames, fabric, and print quality without naming it",
+        "proof that the setup matters without sounding like a spec sheet"
       ],
-      "examplePost": "Sun, wind, and bad setup crews expose every weak tent in the lot. Product quality only sounds abstract until the frame flexes in front of customers.",
-      "targetAudiences": ["brand managers", "event marketers", "operations leads", "repeat event buyers"],
-      "voiceFamilies": ["buyer_intent_detail", "contrarian_take", "observational_thought_leadership"],
-      "buyerIntentLevels": ["consideration", "purchase_intent"],
+      "examplePost": "Nobody at an event says nice frame joints. They just notice which booth still looks put together after weather, foot traffic, and three bad setup decisions.",
+      "targetAudiences": ["repeat event buyers", "event marketers", "operations leads", "sports teams"],
+      "voiceFamilies": ["observational_thought_leadership", "buyer_intent_detail", "micro_story"],
+      "buyerIntentLevels": ["awareness", "consideration"],
       "productFocuses": ["frame quality", "fabric durability", "dye sublimation", "visibility"],
       "useCaseVerticals": ["outdoor festivals", "sports sidelines", "trade shows"],
       "urgencyModes": ["none", "replacement"],
       "ctaModes": ["none", "soft_commercial"],
-      "creativeDirections": ["educational_breakdown", "behind_the_scenes", "customer_showcase"],
+      "creativeDirections": ["behind_the_scenes", "educational_breakdown", "customer_showcase"],
       "contextHints": [
-        "Lead with proof, failure modes, or technical details buyers care about.",
-        "Keep the tone grounded in event reality instead of marketing adjectives."
+        "Use proof and event reality, not spec-sheet bragging.",
+        "The canopy can be visible in the scene without becoming a hard pitch."
       ]
     },
     {
       "id": "competitive_value_framing",
-      "name": "Competitive Value Framing",
+      "name": "Hot Takes and Booth Glow-Ups",
+      "seriesId": "booth_hot_take",
+      "contentBuckets": ["culture", "community"],
+      "brandTagPolicy": "none",
       "postIdeas": [
-        "premium-looking booth without premium-agency pricing",
-        "what buyers actually mean when they say they want the cheapest tent",
-        "the difference between low-cost and low-value event branding",
-        "how serious brands avoid looking DIY on event day",
-        "why the smart buy is not always the most expensive booth setup"
+        "hot take: your booth setup is the first review your business gets",
+        "before and after booth identity without saying before and after",
+        "why some booths look handmade in a good way and others look random",
+        "opinions about tablecloth booths, droopy banners, and visual clutter",
+        "customer setup features that feel aspirational instead of promotional"
       ],
-      "examplePost": "Cheap and low-value are not the same thing. Buyers usually figure that out when the budget tent makes the brand look like an afterthought.",
-      "targetAudiences": ["small business owners", "marketing managers", "procurement-minded buyers", "franchise operators"],
-      "voiceFamilies": ["contrarian_take", "soft_commercial", "buyer_intent_detail"],
-      "buyerIntentLevels": ["awareness", "consideration", "purchase_intent"],
+      "examplePost": "Hot take. A lot of booth problems are not product problems. They are taste problems wearing a folding table and three conflicting signs.",
+      "targetAudiences": ["small business owners", "event vendors", "marketing managers", "franchise operators"],
+      "voiceFamilies": ["contrarian_take", "observational_thought_leadership", "micro_story"],
+      "buyerIntentLevels": ["awareness", "consideration"],
       "productFocuses": ["custom canopies", "full booth packages", "flags and banners"],
-      "useCaseVerticals": ["trade shows", "local business events", "retail promotions"],
+      "useCaseVerticals": ["local business events", "trade shows", "retail promotions"],
       "urgencyModes": ["none", "seasonal"],
-      "ctaModes": ["soft_commercial", "none"],
-      "creativeDirections": ["social_proof", "educational_breakdown", "customer_showcase"],
+      "ctaModes": ["none", "question_led"],
+      "creativeDirections": ["before_after_transformation", "customer_showcase", "social_proof"],
       "contextHints": [
-        "Reinforce value without sounding discount-bin or desperate.",
-        "Contrast professional presence against obvious DIY or low-end alternatives."
+        "Let the post have a real opinion. Bland never gets shared.",
+        "Aim for screenshot-worthy booth commentary, not sales copy."
       ]
     }
   ]

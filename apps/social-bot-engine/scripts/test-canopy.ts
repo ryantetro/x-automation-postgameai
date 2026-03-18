@@ -27,6 +27,7 @@ const {
   buildCanopyAgentMemory,
   chooseCanopyAgentStrategy,
   chooseCanopyImageDirection,
+  chooseCanopyImagePlan,
   formatCanopyAgentReport,
   rankCanopyCandidates,
 } = await import("../src/canopyAgent.js");
@@ -42,6 +43,9 @@ type PillarsFile = {
   pillars: Array<{
     id: string;
     name: string;
+    seriesId: string;
+    contentBuckets: string[];
+    brandTagPolicy?: string;
     postIdeas: string[];
     targetAudiences: string[];
     voiceFamilies?: string[];
@@ -87,7 +91,7 @@ function makeSyntheticStore() {
     postedAt: new Date(now.getTime() - index * 86_400_000).toISOString(),
     dateContext: "2026-03-16",
     sport: "canopy",
-    angle: index < 5 ? "Buyer-Intent Products" : "Speed and Deadlines",
+    angle: index < 5 ? "Booth Identity and Setup Taste" : "Utah Event Radar",
     source: "llm",
     status: "posted" as const,
     text: `Sample canopy post ${index}`,
@@ -105,6 +109,10 @@ function makeSyntheticStore() {
       engagementRate: null,
     },
     score: index < 5 ? 60 + index * 8 : 8 + index,
+    hasImage: index < 5,
+    seriesId: index < 5 ? "booth_identity" : "utah_event_radar",
+    contentBucket: index < 5 ? "culture" : "education",
+    brandTagIncluded: index % 2 === 0,
     voiceFamily: index < 5 ? "buyer_intent_detail" : "observational_thought_leadership",
     buyerIntentLevel: index < 5 ? "purchase_intent" : "awareness",
     useCaseVertical: index < 5 ? "trade shows" : "community events",
@@ -154,11 +162,23 @@ ok("content pillars use the new compressed commercial-intent set", () => {
       "competitive_value_framing",
     ]
   );
+  assert.deepEqual(
+    pillarsFile.pillars.map((pillar) => pillar.seriesId),
+    [
+      "booth_identity",
+      "vendor_life",
+      "utah_event_radar",
+      "proof_in_the_wild",
+      "booth_hot_take",
+    ]
+  );
 });
 ok("each pillar exposes strategy metadata for optimizer use", () => {
   const loaded = loadContentPillars();
   assert.ok(loaded);
   for (const pillar of loaded ?? []) {
+    assert.ok(pillar.seriesId.length > 0);
+    assert.ok((pillar.contentBuckets?.length ?? 0) > 0);
     assert.ok((pillar.voiceFamilies?.length ?? 0) > 0);
     assert.ok((pillar.buyerIntentLevels?.length ?? 0) > 0);
     assert.ok((pillar.productFocuses?.length ?? 0) > 0);
@@ -183,37 +203,44 @@ const memory = buildCanopyAgentMemory(syntheticStore, new Date("2026-03-16T12:00
 const strategy = chooseCanopyAgentStrategy(syntheticStore, new Date("2026-03-16T12:00:00Z"));
 const buyerIntentStrategy = {
   ...strategy,
-  angle: "Buyer-Intent Products",
+  angle: "Booth Identity and Setup Taste",
   pillarId: "buyer_intent_products",
+  seriesId: "booth_identity" as const,
+  contentBucket: "culture" as const,
+  brandTagPolicy: "optional" as const,
   voiceFamily: "buyer_intent_detail" as const,
-  buyerIntentLevel: "purchase_intent" as const,
+  buyerIntentLevel: "consideration" as const,
   useCaseVertical: "trade shows",
   productFocus: "custom canopies",
-  urgencyMode: "rush_order" as const,
+  urgencyMode: "seasonal" as const,
   ctaMode: "soft_commercial" as const,
-  creativeDirection: "customer_showcase",
-  contextHint: "Use the language of someone already comparing canopy suppliers for an upcoming event.",
-  selectionReason: "buyer intent detail is currently outperforming peers",
+  creativeDirection: "social_proof",
+  contextHint: "Lead with setup identity and first impressions instead of shopping language.",
+  selectionReason: "setup identity posts are currently outperforming peers",
 };
 ok("agent memory summarizes canopy winners from posted X analytics only", () => {
-  assert.equal(memory.optimizerVersion, "canopy_agent_v1");
+  assert.equal(memory.optimizerVersion, "canopy_agent_v2");
   assert.equal(memory.performanceWindowLabel, "last_45_days");
   assert.equal(memory.totalPostsConsidered, 8);
   assert.ok(memory.averageHybridScore > 0);
   assert.equal(memory.dimensions.pillar[0]?.value, "buyer_intent_products");
+  assert.equal(memory.dimensions.seriesId[0]?.value, "booth_identity");
+  assert.equal(memory.dimensions.contentBucket[0]?.value, "culture");
   assert.equal(memory.dimensions.voiceFamily[0]?.value, "buyer_intent_detail");
   assert.ok(memory.winnerClusters.length > 0);
 });
 ok("agent chooses a valid canopy strategy with real-X reasoning metadata", () => {
   assert.ok(pillarsFile.pillars.some((pillar) => pillar.id === strategy.pillarId));
+  assert.ok(["vendor_life", "booth_hot_take", "booth_identity", "proof_in_the_wild", "utah_event_radar"].includes(strategy.seriesId));
+  assert.ok(["culture", "education", "community", "promo"].includes(strategy.contentBucket));
   assert.ok(["buyer_intent_detail", "deadline_urgency", "soft_commercial", "observational_thought_leadership", "contrarian_take", "micro_story"].includes(strategy.voiceFamily));
   assert.ok(["awareness", "consideration", "purchase_intent"].includes(strategy.buyerIntentLevel));
   assert.ok(strategy.productFocus.length > 0);
   assert.ok(strategy.creativeDirection.length > 0);
-  assert.equal(strategy.optimizerVersion, "canopy_agent_v1");
+  assert.equal(strategy.optimizerVersion, "canopy_agent_v2");
   assert.ok(["exploit", "explore"].includes(strategy.agentMode));
-  assert.match(strategy.id, /buyer_intent_products|speed_and_deadlines/);
-  assert.match(strategy.selectionReason, /outperforming|exploration|Top canopy pillar/i);
+  assert.match(strategy.id, /buyer_intent_products|speed_and_deadlines|durability_and_product_proof|use_case_moments|competitive_value_framing/);
+  assert.match(strategy.selectionReason, /outperforming|exploration|Top canopy pillar|content is due/i);
   assert.match(strategy.agentReasoningSummary, /agent mode/i);
 });
 ok("agent lesson summarizes winners, weak patterns, and exploration targets", () => {
@@ -225,6 +252,7 @@ ok("agent lesson summarizes winners, weak patterns, and exploration targets", ()
 });
 ok("agent report exposes what it believes is working and what it is testing", () => {
   const report = formatCanopyAgentReport(memory);
+  assert.match(report, /Launch pacing/i);
   assert.match(report, /What the agent believes is working/i);
   assert.match(report, /What the agent is avoiding/i);
   assert.match(report, /What the agent is testing next/i);
@@ -245,11 +273,22 @@ ok("angles_only prompt includes canopy strategy and iteration guidance", () => {
   assert.equal(promptInput.context, getAnglesOnlyContextForDate(new Date("2026-03-09T12:00:00Z")));
   assert.equal(promptInput.format, getAnglesOnlyPostFormatForDate(new Date("2026-03-09T12:00:00Z")));
   assert.match(promptInput.userMessage, /Campaign optimizer picked this strategy:/);
+  assert.match(promptInput.userMessage, /Series: booth identity/i);
+  assert.match(promptInput.userMessage, /Content bucket: culture/i);
   assert.match(promptInput.userMessage, /Voice family: buyer intent detail/i);
-  assert.match(promptInput.userMessage, /Buyer intent level: purchase intent/i);
-  assert.match(promptInput.userMessage, /Creative direction: customer showcase/i);
+  assert.match(promptInput.userMessage, /Buyer intent level: consideration/i);
+  assert.match(promptInput.userMessage, /Creative direction: social proof/i);
+  assert.match(promptInput.userMessage, /Brand tag policy: optional/i);
   assert.match(promptInput.userMessage, /Iteration guidance from analytics:/);
   assert.match(promptInput.userMessage, /Do NOT repeat or closely mimic these recent posts:/);
+});
+ok("angles_only prompt includes the canopy customer profile block", () => {
+  assert.match(promptInput.userMessage, /Ideal customer profile for this campaign:/i);
+  assert.match(promptInput.userMessage, /Primary decision makers: marketing manager, marketing director, event coordinator/i);
+  assert.match(promptInput.userMessage, /Most relevant buyer segments: Promotional and marketing teams: tech startups, real estate agencies, car dealerships/i);
+  assert.match(promptInput.userMessage, /Company sizes in play: small businesses \(1-20 employees\), growing SMBs \(20-200 employees\), enterprise and national brands \(200\+ employees\)/i);
+  assert.match(promptInput.userMessage, /What they care about: brand visibility, standing out at crowded events, professional appearance, easy setup/i);
+  assert.match(promptInput.userMessage, /High-intent triggers: upcoming trade shows, farmers market season, sports tournaments, grand openings/i);
 });
 ok("golden buyer-intent prompt contains commercial canopy context", () => {
   assert.match(promptInput.userMessage, /Use-case vertical: trade shows/i);
@@ -258,11 +297,11 @@ ok("golden buyer-intent prompt contains commercial canopy context", () => {
 });
 ok("golden thought-leadership prompt can still be built from another voice family", () => {
   const altPrompt = buildAnglesOnlyPromptInput({
-    angle: "Use-Case Moments",
+    angle: "Vendor Life and Event Culture",
     date: promptDate,
     strategy: {
       ...buyerIntentStrategy,
-      angle: "Use-Case Moments",
+      angle: "Vendor Life and Event Culture",
       pillarId: "use_case_moments",
       voiceFamily: "observational_thought_leadership",
       buyerIntentLevel: "awareness",
@@ -278,6 +317,7 @@ ok("golden thought-leadership prompt can still be built from another voice famil
   assert.match(altPrompt.userMessage, /Voice family: observational thought leadership/i);
   assert.match(altPrompt.userMessage, /Use-case vertical: farmers markets/i);
   assert.match(altPrompt.userMessage, /Creative direction: educational breakdown/i);
+  assert.match(altPrompt.userMessage, /Most relevant buyer segments: Event-driven businesses: food and beverage brands, beverage distributors, farmers market vendors/i);
 });
 ok("angles_only normalization keeps branded posts within limit", () => {
   const long = "Rush orders usually mean somebody waited too long or somebody's old tent embarrassed the brand at the last event. Either way, visibility and lead time suddenly become the whole conversation on a Wednesday afternoon.";
@@ -317,7 +357,7 @@ ok("each pillar has multiple image variants", () => {
   }
 });
 ok("preferred mockup variant can be selected explicitly", () => {
-  const details = buildCampaignImagePromptForAngle("Buyer-Intent Products", {
+  const details = buildCampaignImagePromptForAngle("Booth Identity and Setup Taste", {
     pillarId: "buyer_intent_products",
     preferredVariantId: "buyer-flags-product-close",
   });
@@ -327,7 +367,7 @@ ok("preferred mockup variant can be selected explicitly", () => {
   assert.equal(details!.shotType, "close_up");
 });
 ok("preferred lifestyle variant can be selected explicitly", () => {
-  const details = buildCampaignImagePromptForAngle("Use-Case Moments", {
+  const details = buildCampaignImagePromptForAngle("Vendor Life and Event Culture", {
     pillarId: "use_case_moments",
     preferredVariantId: "usecase-foodtruck-wide",
   });
@@ -347,6 +387,29 @@ ok("automatic image selection can reflect winning image families", () => {
   assert.equal(details!.style, "lifestyle");
   assert.equal(details!.shotType, "wide");
   assert.match(details!.selectionReason, /outperforming|exploration|preferred|highest/i);
+});
+ok("launch image plan keeps utah-event posts text-first before event-feed automation", () => {
+  const plan = chooseCanopyImagePlan(syntheticStore, {
+    ...buyerIntentStrategy,
+    angle: "Utah Event Radar",
+    pillarId: "speed_and_deadlines",
+    seriesId: "utah_event_radar",
+    contentBucket: "education",
+    brandTagPolicy: "none",
+    voiceFamily: "observational_thought_leadership",
+    creativeDirection: "seasonal_urgency",
+    buyerIntentLevel: "awareness",
+    productFocus: "replacement canopies",
+    useCaseVertical: "community events",
+    urgencyMode: "seasonal",
+    ctaMode: "none",
+  }, new Date("2026-03-16T12:00:00Z"));
+  assert.equal(plan.enabled, false);
+  assert.match(plan.reason, /text-only|event feed/i);
+});
+ok("launch image plan keeps booth-identity visuals enabled", () => {
+  const plan = chooseCanopyImagePlan(syntheticStore, buyerIntentStrategy, new Date("2026-03-16T12:00:00Z"));
+  assert.equal(plan.enabled, true);
 });
 
 console.log(`\n${passed} canopy checks passed`);

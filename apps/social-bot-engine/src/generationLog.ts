@@ -9,10 +9,13 @@ import type {
 } from "./contentArchitecture.js";
 import type {
   CanopyAgentMode,
+  CanopyBrandTagPolicy,
   CanopyBuyerIntentLevel,
+  CanopyContentBucket,
   CanopyCtaMode,
   CanopyImageShotType,
   CanopyImageStyleFamily,
+  CanopySeriesId,
   CanopyUrgencyMode,
   CanopyVoiceFamily,
   PublishPlatform,
@@ -61,6 +64,10 @@ export interface GenerationLogEntry {
   strategyEnvelopeId?: string;
   agentReasoningSummary?: string;
   performanceWindowLabel?: string;
+  seriesId?: CanopySeriesId;
+  contentBucket?: CanopyContentBucket;
+  brandTagIncluded?: boolean;
+  brandTagPolicy?: CanopyBrandTagPolicy;
 }
 
 export const GENERATION_LOG_FILE = resolve(STATE_DIR, "generation-log.jsonl");

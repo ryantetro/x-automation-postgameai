@@ -3,7 +3,7 @@
 **Slug:** `canopy`
 **Status:** In development
 **Platforms:** X (Twitter)
-**Data Source:** `angles_only` (no sports data; rotates through industry-specific content angles)
+**Data Source:** `angles_only` (no sports data; rotates through personality-first content angles)
 
 ---
 
@@ -15,43 +15,101 @@ Vicious Shade Supply Co. sells premium custom canopies, pop-up banners, feather 
 
 ## Goal
 
-Build an organic X presence that positions Vicious Shade as the go-to source for durable, professional event branding. Posts should attract event planners, small business owners, sports teams, and anyone who needs outdoor branding that holds up and stands out.
+Build an organic brand account people follow because it feels plugged into vendor life, event culture, booth taste, and local Utah happenings.
 
-The account should feel like a knowledgeable industry insider — someone who's been on the lot and knows what works — not a generic brand account pushing product.
+The account should feel like:
+- a sharp booth critic
+- a real vendor-world personality
+- a local event insider
+- a brand with taste, not a company begging for quotes
+
+Direct selling is not the main goal. The main goal is attention, recognition, and personality. The products should show up as proof along the way.
 
 ## Content Strategy
 
 ### Voice
-- Direct and practical. Say what people in the events/outdoor branding industry already know.
-- Specific. Reference real situations: trade show setup, rain and wind, lead times, rush orders, game day tents.
-- Earned authority. Sound like experience, not a marketing team.
-- Light touch. One or two tight sentences. No lists, no "tips," no hard CTAs.
-- Lead-gen framing: create interest and recognition, not ads. No hard CTAs like "reach out" or "get a quote."
+- Real, direct, a little opinionated
+- Feels like vendor-world group chat energy, not brand copy
+- Locally aware when useful, especially around Utah events and event season
+- Funny sometimes, but never try-hard
+- Proud of good setups and willing to call out bad ones
 
-### Content Pillars (11, rotated daily)
+### Customer Profile Source
+
+Audience assumptions for this campaign live in `campaigns/canopy/customer-profile.json`.
+
+That file stores the current ideal-customer profile for:
+- job titles and decision makers
+- most likely company types
+- company-size mix
+- motivations and buying triggers
+- common bundles and buying window
+
+The posting bot pulls that data into the canopy prompt so the account writes with the right buyer worldview in mind, even when the post itself is culture-first instead of sales-first.
+
+### Content Pillars (5, rotated daily)
 
 Angles are loaded from `campaigns/canopy/content-pillars.json` when present. Each pillar has a name, post ideas, example post, and target audiences. The bot rotates through pillars by day and injects 2–3 post ideas plus a target audience into the prompt.
 
-1. **Event Marketing Strategy** — Booth tips, foot traffic, why booths fail, booth vs brand experience
-2. **Brand Visibility Psychology** — Height, 3-second rule, visible from 100 feet, step-and-repeats
-3. **Before/After Brand Transformations** — Visual case studies, invisible to busiest booth
-4. **Event Booth Mistakes** — Tablecloth booths fail, garage sale look, trade show mistakes
-5. **Industry Playbooks** — Real estate, dealerships, festivals, sports tournaments, boat shows, gyms, nonprofits
-6. **Real-World vs Digital Marketing** — Experiential marketing comeback, show up in person
-7. **Event ROI Education** — Turn event traffic into leads, measure ROI
-8. **Photo Moment Marketing** — Photo walls, events as content factories
-9. **Build in Public** — Sublimation, durability, behind-the-scenes printing
-10. **Authority Positioning** — What we've learned, future of event marketing
-11. **Local Business Marketing** — Farmers markets, community events, busiest booth
+1. **Booth Identity and Setup Taste** — visual taste, first impressions, the difference between generic and intentional
+2. **Vendor Life and Event Culture** — market mornings, setup chaos, weather, real event-day moments
+3. **Utah Event Radar** — local events, seasonal calendars, fair and market energy, useful local awareness
+4. **Booth Proof in the Wild** — product credibility shown through real use, not sales claims
+5. **Hot Takes and Booth Glow-Ups** — booth opinions, contrast posts, customer setup features, shareable commentary
 
-Target audiences (rotated and pillar-specific): corporate events, sports teams, small business owners, farmers market vendors, parades, real estate, festivals, gyms, nonprofits, and more.
+### Recurring Series
+
+This campaign should behave like a repeatable media brand, not a rotating ad machine.
+
+- **Vendor Life**: early load-in, parking lot chaos, event-day truths
+- **Booth Hot Takes**: opinionated setup commentary and booth culture observations
+- **Utah Event Radar**: upcoming fairs, expos, markets, and festivals worth attention
+- **Booth Glow-Up**: customer features, before/after identity shifts, standout setups
+- **Proof in the Wild**: wind, wear, real setup quality, small details people notice
+
+### Content Mix
+
+- 50-60% culture and personality
+- 20-25% local and seasonal event content
+- 10-15% community features and customer spotlights
+- 10% or less overtly commercial content
+
+The account should earn attention first, then remind people that Vicious Shade makes the kind of setups worth noticing.
 
 ### Post Structure
-- 2 short sentences max before the brand tag
-- Every post ends with: `Vicious Shade Supply Co. · viciousshade.com`
-- No hashtag spam (zero or one max)
-- No instructional tone ("Make sure you...", "You need to...")
-- No generic brand speak ("premium quality", "best in class")
+- 1-3 short sentences
+- Brand tag is optional on conversational posts and should feel light when used
+- Zero hashtags is fine; one is okay if it truly belongs
+- No hard CTA language
+- No generic marketing phrasing
+- It is okay if the canopy is implied more than it is explained
+
+### Platform Direction
+
+- **X**: hot takes, local event observations, short vendor-life posts, booth commentary
+- **Instagram**: carousels should become the main growth format
+- **Carousel themes**:
+  - "Types of booths at every market"
+  - "What your booth setup says about your business"
+  - "Best Utah events for vendors this month"
+  - "Booth glow-up"
+  - "White tent mistakes"
+  - "Saturday market energy"
+
+### Utah Event Content Workflow
+
+The right way to use local events is as community value, not a disguised ad.
+
+1. Find relevant Utah events for vendors, makers, festivals, expos, fairs, races, and community events
+2. Save structured event data: title, date, city, category, source URL, flyer image if available
+3. Draft one of three outputs:
+   - local event radar post
+   - event roundup carousel
+   - booth-readiness or setup-angle post tied to that event type
+4. Keep the event as the main story
+5. Let Vicious Shade's taste and event expertise show up in the commentary
+
+This should eventually run as a curated ingestion pipeline, not a blind flyer spammer.
 
 ### Image Generation
 Enabled. Each post includes an AI-generated image showing canopy/banner products in either:
@@ -69,9 +127,9 @@ See `reference-images/README.md` for prompt guidelines and reference photos.
 ### How It Works
 1. `CAMPAIGN=canopy` triggers `bootstrap.ts` which loads `campaigns/canopy/config.json`
 2. Config sets brand name, website, data source (`angles_only`), and enables image generation
-3. Angles are loaded from `campaigns/canopy/content-pillars.json` (11 pillars); each day gets one pillar by rotation
+3. Angles are loaded from `campaigns/canopy/content-pillars.json` (5 pillars); each day gets one pillar by rotation
 4. `main.ts` detects `DATA_SOURCE === "angles_only"` and uses the canopy generation path
-5. `generatePostAnglesOnly()` uses the campaign system prompt (`campaigns/canopy/system_prompt.txt`) with the day's pillar, 2–3 post ideas, target audience, and a rotating context snippet (seasonality, events, audiences)
+5. `generatePostAnglesOnly()` uses the campaign system prompt (`campaigns/canopy/system_prompt.txt`) with the day's pillar, 2–3 post ideas, target audience, rotating context snippets, and the buyer profile from `campaigns/canopy/customer-profile.json`
 6. `generateCampaignImage()` loads `campaigns/canopy/image-prompts.json` and picks a scene by angle index (11 scenes for 11 pillars)
 7. Post is published to X with the image attached
 
@@ -94,6 +152,9 @@ No `API_SPORTS_KEY` or `NEWS_API_KEY` needed.
 ```bash
 # Dry run (no post sent)
 CAMPAIGN=canopy npm run bot:dry-run
+
+# Generate a launch-audit batch and review the agent's planned mix
+CAMPAIGN=canopy node --import tsx apps/social-bot-engine/scripts/canopy-launch-audit.ts
 
 # Post for real
 POST_ENABLED=true CAMPAIGN=canopy npm run bot:post:x
