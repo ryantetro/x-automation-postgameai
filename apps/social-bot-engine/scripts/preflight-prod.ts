@@ -203,10 +203,10 @@ async function checkXTimelineAccess(): Promise<CheckResult | null> {
 
 async function checkThreadsAnalytics(): Promise<CheckResult | null> {
   const config = await import("../src/config.js");
-  const { loadAnalyticsStore, refreshThreadsMetricsForStore } = await import("../src/analytics.js");
+  const { ANALYTICS_STORE_FILE, loadAnalyticsStore, refreshThreadsMetricsForStore } = await import("../src/analytics.js");
   if (!config.THREADS_ACCESS_TOKEN) return null;
 
-  const store = loadAnalyticsStore(resolve(config.STATE_DIR, "threads-analytics.json"));
+  const store = loadAnalyticsStore(ANALYTICS_STORE_FILE);
   const hasThreadsPosts = store.tweets.some((tweet) => !!tweet.threadsPostId);
   if (!hasThreadsPosts) return null;
 

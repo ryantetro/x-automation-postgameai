@@ -26,7 +26,8 @@ campaigns/
 
 1. **Create** `campaigns/<slug>/config.json` (e.g. `campaigns/canopy/config.json`). Use `schema.json` or copy an existing config.
 2. **Add credentials** for that campaign (see [Credentials](#credentials)).
-3. **Run** the bot with `CAMPAIGN=<slug>` (and `BOT_CREDENTIALS_JSON` if using the JSON secret). CI uses a matrix over all campaigns in `campaigns/`.
+3. **Set `postTargets`** in the campaign config to `["x"]`, `["threads"]`, or `["x","threads"]`.
+4. **Run** the bot with `CAMPAIGN=<slug>` (and `BOT_CREDENTIALS_JSON` if using the JSON secret). CI uses a matrix over all campaigns in `campaigns/`.
 
 No code changes required — the engine reads `config.json` and uses the slug for state and credentials.
 
@@ -69,12 +70,13 @@ Store one GitHub (or other) secret, e.g. `BOT_CREDENTIALS_JSON`, as a JSON objec
     "X_APP_SECRET": "...",
     "X_ACCESS_TOKEN": "...",
     "X_ACCESS_SECRET": "...",
-    "OPENAI_API_KEY": "..."
+    "OPENAI_API_KEY": "...",
+    "THREADS_ACCESS_TOKEN": "..."
   }
 }
 ```
 
-At run time, set `CAMPAIGN=canopy` and `BOT_CREDENTIALS_JSON=<the whole JSON>`. The bootstrap code will pick `canopy` and set `process.env` from that object.
+At run time, set `CAMPAIGN=canopy` and `BOT_CREDENTIALS_JSON=<the whole JSON>`. The bootstrap code will pick `canopy` and set `process.env` from that object, including `THREADS_ACCESS_TOKEN` when the campaign uses Threads.
 
 ### Option B: Vault (recommended for 100+ bots)
 
@@ -86,64 +88,24 @@ Use Doppler, Infisical, or similar: one config per campaign (e.g. `project/x-bot
 
 No `BOT_CREDENTIALS_JSON` needed; each job gets only its campaign’s credentials.
 
-### Option C: One secret set per campaign (few bots)
-
-For a small number of campaigns you can use convention-based secret names, e.g. `X_ACCESS_TOKEN_POSTGAME`, `X_ACCESS_TOKEN_CANOPY`, and have the workflow pass the right suffix. This doesn’t scale to hundreds.
-
 ## State and analytics
 
 - **State directory:** `state/<slug>/` (e.g. `state/postgame/`, `state/canopy/`).
-- **Files:** `tweet-analytics.json`, `threads-analytics.json` (if used), `generation-log.jsonl`, etc., live under that directory.
-- CI should persist and push only the state for the campaign that ran (e.g. `state/${{ matrix.campaign }}/tweet-analytics.json`).
+- **Files:** campaign-managed bots persist one analytics store file per run (default: `tweet-analytics.json`) plus `generation-log.jsonl`, etc., under that directory.
+- Dual-platform campaigns store both `tweetId` and `threadsPostId` in the same campaign analytics store for that run.
+- CI should persist and push only the analytics file for the campaign that ran (e.g. `state/${{ matrix.campaign }}/${ANALYTICS_STORE_FILENAME}`).
 
 ## Scheduling (CI)
 
 Use one workflow with a **matrix** over campaigns so one run can post for many bots (e.g. 6am and 6pm ET for each):
 
 - **Discover campaigns:** List `campaigns/*/` (or a `registry.json`) and pass the list into the matrix.
-- **Per job:** Set `CAMPAIGN=${{ matrix.campaign }}`, provide credentials (JSON secret or vault), run the bot, then commit only `state/${{ matrix.campaign }}/...`.
+- **Per job:** Set `CAMPAIGN=${{ matrix.campaign }}`, provide credentials (JSON secret or vault), let the campaign config decide `postTargets`, run the bot once, then commit only `state/${{ matrix.campaign }}/...`.
 
 See `.github/workflows/` for the shared matrix workflow.
 
 ### Per-Campaign Scheduling
 
-By default, all campaigns share the same cron schedule defined in `post-daily-campaigns.yml` (6am & 6pm ET). When different campaigns need different schedules, there are two approaches:
+By default, all campaign-managed bots share the same cron schedule defined in `post-daily-campaigns.yml`. This is the default scaling path for new campaigns.
 
-**Option 1: Filter in the matrix workflow**
-
-Add a `schedule` field to `config.json` and filter in the workflow so only matching campaigns run at each cron trigger:
-
-```yaml
-schedule:
-  - cron: '0 11 * * *'   # 6am ET — all campaigns
-  - cron: '0 15 * * *'   # 10am ET — canopy only
-strategy:
-  matrix:
-    campaign: ${{ fromJson(needs.list-campaigns.outputs.slugs) }}
-    exclude:
-      - campaign: postgame  # skip postgame at 10am
-```
-
-**Option 2: Dedicated workflow per campaign**
-
-Create a separate workflow file (e.g. `.github/workflows/post-canopy.yml`) with its own schedule and hardcoded `CAMPAIGN=canopy`. This is simpler when one campaign has very different timing needs:
-
-```yaml
-name: Post Canopy
-on:
-  schedule:
-    - cron: '0 14 * * 1-5'  # weekdays 9am ET
-  workflow_dispatch:
-jobs:
-  post:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      # ... setup steps ...
-      - run: npm run bot:post
-        env:
-          CAMPAIGN: canopy
-          BOT_CREDENTIALS_JSON: ${{ secrets.BOT_CREDENTIALS_JSON }}
-```
-
-For most setups, the shared matrix workflow is sufficient. Use a dedicated workflow only when a campaign needs a schedule that doesn't fit the shared cron triggers.
+If a campaign eventually needs a different schedule, treat that as an exception and add it later. Do not create a dedicated workflow just to enable Threads for a new campaign.

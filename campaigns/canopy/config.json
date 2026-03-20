@@ -4,7 +4,7 @@
   "brandName": "Vicious Shade Supply Co.",
   "brandWebsite": "viciousshade.com",
   "clickTargetUrl": "https://www.viciousshade.com",
-  "postTargets": ["x"],
+  "postTargets": ["x", "threads"],
   "dataSource": "angles_only",
   "imageEnabled": true,
   "engageKeywords": ["custom canopy", "pop up tent", "trade show booth", "event branding", "outdoor vendor"],

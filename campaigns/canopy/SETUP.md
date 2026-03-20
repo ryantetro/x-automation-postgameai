@@ -15,7 +15,10 @@ Edit **`campaigns/canopy/config.json`** with real values:
 | `brandWebsite` | Domain only, no https (e.g. `yourcanopy.com`). |
 | `clickTargetUrl` | Full URL where post links should go (e.g. `https://yourcanopy.com` or a one-pager). |
 
-Leave `postTargets` and `dataSource` as-is unless you want Threads too or a different content source.
+Leave `dataSource` as-is. Set `postTargets` to:
+- `["x"]` for X only
+- `["threads"]` for Threads only
+- `["x","threads"]` to generate once and publish to both
 
 ---
 
@@ -73,7 +76,7 @@ When the dry-run output looks good:
 POST_ENABLED=true CAMPAIGN=canopy npm run bot:post:x
 ```
 
-This posts **one** tweet to the account whose credentials are in env (or in `BOT_CREDENTIALS_JSON` for `canopy`).
+This posts one canopy post to the platforms configured for the current run. If `postTargets` is `["x","threads"]`, the same generated post is reused for both.
 
 ---
 
@@ -90,13 +93,14 @@ To run the canopy bot on the same schedule as other campaigns (e.g. 6am & 6pm ET
        "X_APP_SECRET": "...",
        "X_ACCESS_TOKEN": "...",
        "X_ACCESS_SECRET": "...",
-       "OPENAI_API_KEY": "..."
+       "OPENAI_API_KEY": "...",
+       "THREADS_ACCESS_TOKEN": "..."
      }
    }
    ```
-   (Canopy doesn’t need `API_SPORTS_KEY` or `NEWS_API_KEY`.)
+   (Canopy doesn’t need `API_SPORTS_KEY` or `NEWS_API_KEY`. `THREADS_ACCESS_TOKEN` is only needed if `postTargets` includes `threads`.)
 
-2. The workflow **Post to X (all campaigns)** (`.github/workflows/post-daily-campaigns.yml`) discovers all campaigns under `campaigns/` and runs the bot for each. So once `canopy` is in that JSON, it will run on the same schedule and post from the canopy account.
+2. The shared workflow (`.github/workflows/post-daily-campaigns.yml`) discovers all campaigns under `campaigns/` and runs the bot for each. It now honors `postTargets` from `campaigns/canopy/config.json`, so once `canopy` is in `BOT_CREDENTIALS_JSON`, it will post to X, Threads, or both based on the campaign config.
 
 3. State for canopy is stored in **`state/canopy/tweet-analytics.json`** and is committed by that workflow.
 
@@ -108,9 +112,9 @@ To run the canopy bot on the same schedule as other campaigns (e.g. 6am & 6pm ET
 |------|-------------|
 | 1 | Edit `campaigns/canopy/config.json` with real business name, website, and link URL. |
 | 2 | Get X API keys for the **canopy business account**. |
-| 3 | Have an OpenAI API key. |
+| 3 | Have an OpenAI API key, and add `THREADS_ACCESS_TOKEN` too if `postTargets` includes Threads. |
 | 4 | Run `CAMPAIGN=canopy npm run bot:dry-run` with those credentials in `.env.local` (or in `BOT_CREDENTIALS_JSON`). |
 | 5 | Run `POST_ENABLED=true CAMPAIGN=canopy npm run bot:post:x` to post once. |
-| 6 | Add `canopy` to the `BOT_CREDENTIALS_JSON` GitHub secret and rely on **Post to X (all campaigns)** for the schedule. |
+| 6 | Add `canopy` to the `BOT_CREDENTIALS_JSON` GitHub secret and rely on the shared campaign workflow for the schedule. |
 
 If something fails (e.g. "Missing required env vars" or "Validation failed"), check that the env (or the `canopy` block in `BOT_CREDENTIALS_JSON`) has all four X keys plus `OPENAI_API_KEY`, and that `brandName` and `brandWebsite` in config match what you want in the posts (validation requires both to appear in every post).

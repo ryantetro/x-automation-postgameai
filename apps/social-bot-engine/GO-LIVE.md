@@ -135,10 +135,10 @@ If you want Threads posting and Threads insights to keep working automatically, 
    ```
 3. Copy the returned long-lived token into:
    - local `.env.local` as `THREADS_ACCESS_TOKEN`
-   - GitHub Actions secret `THREADS_ACCESS_TOKEN`
+   - the right campaign block inside GitHub Actions secret `BOT_CREDENTIALS_JSON`
 4. Create one more GitHub Actions secret:
    - `THREADS_SECRET_ADMIN_TOKEN`
    - this should be a fine-grained GitHub PAT for this repo with repository `Secrets: Read and write`
 5. Push the workflow at [refresh-threads-token.yml](../../.github/workflows/refresh-threads-token.yml).
 
-After that, GitHub Actions will refresh the Threads token every Monday and overwrite the `THREADS_ACCESS_TOKEN` secret automatically.
+After that, GitHub Actions will refresh every campaign `THREADS_ACCESS_TOKEN` found inside `BOT_CREDENTIALS_JSON` every Monday and overwrite the shared secret automatically.

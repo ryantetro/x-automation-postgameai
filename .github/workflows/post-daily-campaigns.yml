@@ -1,9 +1,9 @@
-# Post to X (and optionally Threads) for every campaign in campaigns/.
+# Post to X and/or Threads for every campaign in campaigns/.
 # Each campaign uses its own config (campaigns/<slug>/config.json) and credentials
 # from the BOT_CREDENTIALS_JSON secret (keyed by slug).
 # Add a new bot by adding campaigns/<slug>/config.json and an entry in BOT_CREDENTIALS_JSON.
 
-name: Post to X (all campaigns)
+name: Post campaigns
 
 on:
   schedule:
@@ -59,7 +59,6 @@ jobs:
         env:
           CAMPAIGN: ${{ matrix.campaign }}
           BOT_CREDENTIALS_JSON: ${{ secrets.BOT_CREDENTIALS_JSON }}
-          POST_TARGETS: ${{ vars.POST_TARGETS || 'x' }}
           POST_ENABLED: true
           ANALYTICS_STORE_FILENAME: tweet-analytics.json
           ANALYTICS_ENABLED: ${{ vars.ANALYTICS_ENABLED || 'true' }}
@@ -81,9 +80,11 @@ jobs:
 
       - name: Persist state (${{ matrix.campaign }})
         if: always()
+        env:
+          ANALYTICS_STORE_FILENAME: tweet-analytics.json
         run: |
           STATE_DIR="state/${{ matrix.campaign }}"
-          STATE_FILE="${STATE_DIR}/tweet-analytics.json"
+          STATE_FILE="${STATE_DIR}/${ANALYTICS_STORE_FILENAME}"
           if [ ! -f "$STATE_FILE" ]; then
             echo "No state file at $STATE_FILE; skipping commit."
             exit 0

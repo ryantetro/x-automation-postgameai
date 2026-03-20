@@ -1,4 +1,4 @@
-name: Refresh Threads Token
+name: Refresh Campaign Threads Tokens
 
 on:
   schedule:
@@ -22,13 +22,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Refresh Threads token and update repo secret
+      - name: Refresh campaign Threads tokens and update repo secret
         env:
-          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          BOT_CREDENTIALS_JSON: ${{ secrets.BOT_CREDENTIALS_JSON }}
           GH_TOKEN: ${{ secrets.THREADS_SECRET_ADMIN_TOKEN }}
         run: |
-          if [ -z "${THREADS_ACCESS_TOKEN}" ]; then
-            echo "Missing THREADS_ACCESS_TOKEN secret."
+          if [ -z "${BOT_CREDENTIALS_JSON}" ]; then
+            echo "Missing BOT_CREDENTIALS_JSON secret."
             exit 1
           fi
           if [ -z "${GH_TOKEN}" ]; then
@@ -36,15 +36,20 @@ jobs:
             exit 1
           fi
 
-          RAW_JSON=$(npm run threads:token:refresh --workspace @x-automation/social-bot-engine -- --json)
-          NEW_TOKEN=$(node -e 'const data = JSON.parse(process.argv[1]); process.stdout.write(data.accessToken);' "$RAW_JSON")
-          EXPIRES_AT=$(node -e 'const data = JSON.parse(process.argv[1]); process.stdout.write(data.expiresAt);' "$RAW_JSON")
+          RAW_JSON=$(npm run threads:token:refresh:campaigns --workspace @x-automation/social-bot-engine -- --json)
+          UPDATED_JSON=$(node -e 'const data = JSON.parse(process.argv[1]); process.stdout.write(data.updatedCredentialsJson);' "$RAW_JSON")
+          REFRESHED=$(node -e 'const data = JSON.parse(process.argv[1]); process.stdout.write((data.refreshedCampaigns || []).map((row) => `${row.campaign}:${row.expiresAt}`).join(","));' "$RAW_JSON")
 
-          if [ -z "${NEW_TOKEN}" ]; then
-            echo "Refresh returned an empty token."
+          if [ -z "${UPDATED_JSON}" ]; then
+            echo "Refresh returned empty campaign credentials."
             exit 1
           fi
 
-          echo "::add-mask::${NEW_TOKEN}"
-          gh secret set THREADS_ACCESS_TOKEN --repo "${GITHUB_REPOSITORY}" --body "${NEW_TOKEN}"
-          echo "Threads token refreshed successfully. New expiry: ${EXPIRES_AT}"
+          if [ -z "${REFRESHED}" ]; then
+            echo "No campaign Threads tokens found; skipping secret update."
+            exit 0
+          fi
+
+          echo "::add-mask::${UPDATED_JSON}"
+          gh secret set BOT_CREDENTIALS_JSON --repo "${GITHUB_REPOSITORY}" --body "${UPDATED_JSON}"
+          echo "Campaign Threads tokens refreshed successfully: ${REFRESHED}"

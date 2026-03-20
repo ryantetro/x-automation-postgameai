@@ -43,7 +43,7 @@ Multi-campaign social bot engine for X and Threads: fetch data, generate posts w
 - `POST_TARGETS=x` keeps the current X-only flow
 - `POST_TARGETS=threads` publishes only to Threads
 - `POST_TARGETS=x,threads` cross-posts the same generated text to both platforms
-- `ANALYTICS_STORE_FILENAME=tweet-analytics.json` or `threads-analytics.json` lets each platform persist its own analytics state
+- campaign-managed bots typically keep one analytics store file for the run, even when dual-publishing
 
 Threads implementation notes:
 - publishing uses the Threads Graph API text-post flow
@@ -51,7 +51,7 @@ Threads implementation notes:
 - a preflight check now queries the Threads publishing-limit endpoint before attempting to publish
 - Threads media insights and profile insights are pulled into the analytics store when the token has `threads_manage_insights`
 - tracked links are now generated per platform (`runId-x`, `runId-threads`) so X and Threads traffic can be attributed separately
-- Threads publish results are recorded in `state/tweet-analytics.json`
+- dual-platform campaign runs record both X and Threads publish results in the same campaign analytics store
 
 ## Traffic attribution
 
@@ -129,11 +129,9 @@ Default allowlist domains:
 
 ## GitHub Actions
 
-There are now two scheduled workflows:
-- `.github/workflows/post-daily-x.yml` runs the X bot with `POST_TARGETS=x` and stores analytics in `state/tweet-analytics.json`
-- `.github/workflows/post-daily-threads.yml` runs the Threads bot with `POST_TARGETS=threads` and stores analytics in `state/threads-analytics.json`
-
-Both workflows run at **6am and 6pm ET** and support manual `workflow_dispatch`.
+There are two workflow models in the repo:
+- `.github/workflows/post-daily-campaigns.yml` is the shared campaign workflow and is the default pattern for new campaigns; it honors each campaign’s `postTargets`
+- the legacy postgame workflows (`post-daily-x.yml` and `post-daily-threads.yml`) remain for postgame only during the migration period
 
 Repository secrets:
 - X bot: `X_CONSUMER_KEY`, `X_CONSUMER_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`
@@ -163,7 +161,7 @@ Threads app setup:
 - ensure the token has `threads_basic` and `threads_content_publish`
 - add `threads_manage_insights` if you want Threads metrics and follower/profile insights in the dashboard
 - exchange the short-lived Explorer token for a long-lived token before storing it as `THREADS_ACCESS_TOKEN`
-- set `POST_TARGETS=x,threads` once the token is ready
+- for campaign-managed bots, put that token inside the campaign’s `BOT_CREDENTIALS_JSON` block
 
 ## Threads token lifecycle
 
@@ -177,16 +175,16 @@ THREADS_SHORT_LIVED_ACCESS_TOKEN=your_short_lived_threads_token \
 npm run bot:threads:token:exchange
 ```
 
-Automatic refresh uses the current long-lived `THREADS_ACCESS_TOKEN`:
+Automatic refresh uses the current long-lived campaign `THREADS_ACCESS_TOKEN` values stored in `BOT_CREDENTIALS_JSON`:
 
 ```bash
 npm run bot:threads:token:refresh
 ```
 
-The repo includes a scheduled workflow at [.github/workflows/refresh-threads-token.yml](../../.github/workflows/refresh-threads-token.yml) that refreshes the token every Monday and updates the `THREADS_ACCESS_TOKEN` GitHub Actions secret automatically.
+The repo includes a scheduled workflow at [.github/workflows/refresh-threads-token.yml](../../.github/workflows/refresh-threads-token.yml) that refreshes all campaign Threads tokens found inside `BOT_CREDENTIALS_JSON` and writes the updated JSON back to the repo secret automatically.
 
 Required GitHub secrets for auto-refresh:
-- `THREADS_ACCESS_TOKEN` — your current long-lived Threads token
+- `BOT_CREDENTIALS_JSON` — campaign-keyed credential JSON that may include `THREADS_ACCESS_TOKEN`
 - `THREADS_SECRET_ADMIN_TOKEN` — a GitHub token that can update repository Actions secrets
 
 Recommended GitHub token permissions for `THREADS_SECRET_ADMIN_TOKEN`:

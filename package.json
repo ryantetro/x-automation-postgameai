@@ -28,7 +28,9 @@
     "bot:analytics:content-backfill": "npm run analytics:content-backfill --workspace @x-automation/social-bot-engine",
     "bot:threads:token:exchange": "npm run threads:token:exchange --workspace @x-automation/social-bot-engine",
     "bot:threads:token:refresh": "npm run threads:token:refresh --workspace @x-automation/social-bot-engine",
+    "bot:threads:token:refresh:campaigns": "npm run threads:token:refresh:campaigns --workspace @x-automation/social-bot-engine",
     "bot:campaigns:list": "node --import tsx apps/social-bot-engine/scripts/list-campaigns.ts",
-    "bot:engage": "npm run engage --workspace @x-automation/social-bot-engine"
+    "bot:engage": "npm run engage --workspace @x-automation/social-bot-engine",
+    "bot:test:campaigns": "npm run test:campaigns --workspace @x-automation/social-bot-engine"
   }
 }
