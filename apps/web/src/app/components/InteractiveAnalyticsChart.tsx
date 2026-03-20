@@ -16,7 +16,7 @@ export interface ChartPost {
 }
 
 export interface AnalyticsChartSeries {
-  id: "x" | "threads";
+  id: string;
   label: string;
   color: string;
   gradientStart: string;
@@ -30,8 +30,8 @@ interface InteractiveAnalyticsChartProps {
 }
 
 const W = 800;
-const H = 200;
-const PAD = { top: 12, right: 12, bottom: 12, left: 12 };
+const H = 260;
+const PAD = { top: 16, right: 16, bottom: 16, left: 54 };
 
 function fmt(n: number): string {
   return new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(n);
@@ -97,7 +97,7 @@ export default function InteractiveAnalyticsChart({
       gradId: `${baseId}-${entry.id}`,
       points,
       line: buildSmoothLinePath(points),
-      area: activeSeries.length === 1 ? buildSmoothAreaPath(points, baselineY) : "",
+      area: buildSmoothAreaPath(points, baselineY),
     };
   });
 
@@ -177,18 +177,28 @@ export default function InteractiveAnalyticsChart({
             ))}
           </defs>
 
-          {[0, 0.5, 1].map((step) => {
+          {[0, 0.25, 0.5, 0.75, 1].map((step) => {
             const y = PAD.top + innerH - innerH * step;
             return (
-              <line
-                key={step}
-                x1={PAD.left}
-                x2={W - PAD.right}
-                y1={y}
-                y2={y}
-                stroke="rgba(255,255,255,0.04)"
-                strokeWidth="1"
-              />
+              <g key={step}>
+                <line
+                  x1={PAD.left}
+                  x2={W - PAD.right}
+                  y1={y}
+                  y2={y}
+                  stroke={step === 0 ? "rgba(255,255,255,0.10)" : "rgba(255,255,255,0.05)"}
+                  strokeWidth="1"
+                  strokeDasharray={step === 0 ? "none" : "4 6"}
+                />
+                <text
+                  x={PAD.left - 8}
+                  y={y + 3.5}
+                  textAnchor="end"
+                  className="ichart-grid-value"
+                >
+                  {fmt(Math.round(maxVal * step))}
+                </text>
+              </g>
             );
           })}
 
@@ -200,7 +210,7 @@ export default function InteractiveAnalyticsChart({
                   d={entry.line}
                   fill="none"
                   stroke={entry.color}
-                  strokeWidth={hoveredPoint?.seriesId === entry.id ? 2.6 : 2.15}
+                  strokeWidth={hoveredPoint?.seriesId === entry.id ? 3 : 2.5}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className="ichart-line"
@@ -229,18 +239,18 @@ export default function InteractiveAnalyticsChart({
                 <circle
                   cx={point.x}
                   cy={point.y}
-                  r={isHovered ? 6 : 0}
-                  fill={`${point.color}20`}
-                  stroke={`${point.color}50`}
+                  r={isHovered ? 7 : 4}
+                  fill={isHovered ? `${point.color}20` : `${point.color}10`}
+                  stroke={isHovered ? `${point.color}50` : `${point.color}30`}
                   strokeWidth="1"
-                  style={{ transition: "r 0.18s ease" }}
+                  className="ichart-point-ring"
                 />
                 <circle
                   cx={point.x}
                   cy={point.y}
-                  r={isHovered ? 3.6 : 0}
+                  r={isHovered ? 3.8 : 2.5}
                   fill={point.color}
-                  style={{ transition: "r 0.18s ease" }}
+                  className="ichart-point"
                 />
               </g>
             );
@@ -254,6 +264,7 @@ export default function InteractiveAnalyticsChart({
               left: tooltipPos.x,
               top: tooltipPos.y,
               transform: `translate(${tooltipPos.flipLeft ? "calc(-100% - 14px)" : "14px"}, -50%)`,
+              borderLeftColor: hoveredPoint.color,
             }}
           >
             <div className="ichart-tooltip-header">

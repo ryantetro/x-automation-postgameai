@@ -49,10 +49,36 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
   const threadFollowers = store.threadsUserInsights?.followersCount ?? null;
   const threadProfileViews = store.threadsUserInsights?.views ?? null;
 
-  const chartSeries = (["x", "threads"] as const)
-    .map((platform) => {
-      const postsForPlatform = tracked
-        .filter((t) => inferPlatform(t) === platform)
+  const CHART_SERIES_COLORS = [
+    { color: "#19c37d", gradientStart: "rgba(25, 195, 125, 0.18)", gradientEnd: "rgba(25, 195, 125, 0.01)" },
+    { color: "#60a5fa", gradientStart: "rgba(96, 165, 250, 0.16)", gradientEnd: "rgba(96, 165, 250, 0.01)" },
+    { color: "#f59e0b", gradientStart: "rgba(245, 158, 11, 0.16)", gradientEnd: "rgba(245, 158, 11, 0.01)" },
+    { color: "#a78bfa", gradientStart: "rgba(168, 139, 250, 0.16)", gradientEnd: "rgba(168, 139, 250, 0.01)" },
+    { color: "#ef4444", gradientStart: "rgba(239, 68, 68, 0.14)", gradientEnd: "rgba(239, 68, 68, 0.01)" },
+    { color: "#06b6d4", gradientStart: "rgba(6, 182, 212, 0.16)", gradientEnd: "rgba(6, 182, 212, 0.01)" },
+  ];
+
+  // Build unique campaign+platform combinations from tracked posts
+  const seriesGroups = new Map<string, { campaignSlug?: string; platform: "x" | "threads"; posts: typeof tracked }>();
+  for (const t of tracked) {
+    const platform = inferPlatform(t);
+    if (!platform) continue;
+    const seriesKey = t.campaignSlug ? `${t.campaignSlug}:${platform}` : platform;
+    const existing = seriesGroups.get(seriesKey);
+    if (existing) {
+      existing.posts.push(t);
+    } else {
+      seriesGroups.set(seriesKey, { campaignSlug: t.campaignSlug, platform, posts: [t] });
+    }
+  }
+
+  const hasCampaigns = [...seriesGroups.values()].some((g) => g.campaignSlug);
+  const sortedSeriesKeys = [...seriesGroups.keys()].sort();
+
+  const chartSeries = sortedSeriesKeys
+    .map((seriesKey, idx) => {
+      const group = seriesGroups.get(seriesKey)!;
+      const postsForSeries = group.posts
         .slice(-30)
         .map((t) => ({
           postedAt: t.postedAt,
@@ -66,15 +92,22 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
           bookmarks: t.metrics?.bookmarkCount ?? 0,
         }));
 
-      if (postsForPlatform.length === 0) return null;
+      if (postsForSeries.length === 0) return null;
+
+      const platformLabel = group.platform === "x" ? "X" : "Threads";
+      const campaignName = group.campaignSlug
+        ? store.campaigns.find((c) => c.slug === group.campaignSlug)?.name ?? group.campaignSlug
+        : null;
+      const label = hasCampaigns && campaignName ? `${campaignName} · ${platformLabel}` : platformLabel;
+      const colors = CHART_SERIES_COLORS[idx % CHART_SERIES_COLORS.length];
 
       return {
-        id: platform,
-        label: platform === "x" ? "X" : "Threads",
-        color: platform === "x" ? "#19c37d" : "#60a5fa",
-        gradientStart: platform === "x" ? "rgba(25, 195, 125, 0.18)" : "rgba(96, 165, 250, 0.16)",
-        gradientEnd: platform === "x" ? "rgba(25, 195, 125, 0.01)" : "rgba(96, 165, 250, 0.01)",
-        posts: postsForPlatform,
+        id: seriesKey,
+        label,
+        color: colors.color,
+        gradientStart: colors.gradientStart,
+        gradientEnd: colors.gradientEnd,
+        posts: postsForSeries,
       };
     })
     .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
@@ -249,7 +282,7 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
           <div className="analytics-charts">
             <div className="card">
               <div className="card-header">
-                <div><h3>Impressions trend</h3><span className="card-sub">{chartSeries.length > 1 ? "Last 30 tracked posts per platform" : "Last 30 tracked posts"}</span></div>
+                <div><h3>Impressions trend</h3><span className="card-sub">{chartSeries.length > 1 ? `Last 30 tracked posts · ${chartSeries.length} series` : "Last 30 tracked posts"}</span></div>
                 <span className="card-sub">{compact(totalImpressions)} total</span>
               </div>
               <InteractiveAnalyticsChart
@@ -260,7 +293,7 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
 
             <div className="card">
               <div className="card-header">
-                <div><h3>Engagement trend</h3><span className="card-sub">{chartSeries.length > 1 ? "Last 30 tracked posts per platform" : "Last 30 tracked posts"}</span></div>
+                <div><h3>Engagement trend</h3><span className="card-sub">{chartSeries.length > 1 ? `Last 30 tracked posts · ${chartSeries.length} series` : "Last 30 tracked posts"}</span></div>
                 <span className="card-sub">{compact(totalEngagements)} total</span>
               </div>
               <InteractiveAnalyticsChart

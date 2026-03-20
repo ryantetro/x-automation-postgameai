@@ -16,6 +16,8 @@ interface TimelineRecord {
   tweetId?: string;
   threadsPostId?: string;
   platform: PlatformKey;
+  campaignSlug?: string;
+  campaignName?: string;
   metrics?: {
     impressionCount: number | null;
     engagementCount: number;
@@ -30,6 +32,9 @@ interface DisplayPoint {
   label: string;
   sport: string;
   platform: PlatformKey;
+  seriesKey: string;
+  campaignSlug?: string;
+  campaignName?: string;
   posts: number;
   metricValue: number;
   impressions: number;
@@ -53,12 +58,16 @@ type AxisTick = {
   secondary?: string;
 };
 
-type SeriesGeometry = {
+type SeriesMeta = {
+  seriesKey: string;
   platform: PlatformKey;
   label: string;
   color: string;
   gradientStart: string;
   gradientEnd: string;
+};
+
+type SeriesGeometry = SeriesMeta & {
   points: GeometryPoint[];
   line: string;
   area: string;
@@ -85,22 +94,46 @@ const METRIC_OPTIONS: Array<{ value: ChartMetric; label: string; tone: string }>
 ];
 
 const CHART_WIDTH = 960;
-const CHART_HEIGHT = 320;
-const CHART_PADDING = { top: 18, right: 18, bottom: 34, left: 18 };
-const PLATFORM_META: Record<PlatformKey, { label: string; color: string; gradientStart: string; gradientEnd: string }> = {
-  x: {
-    label: "X",
-    color: "#19c37d",
-    gradientStart: "rgba(25, 195, 125, 0.16)",
-    gradientEnd: "rgba(25, 195, 125, 0.01)",
-  },
-  threads: {
-    label: "Threads",
-    color: "#60a5fa",
-    gradientStart: "rgba(96, 165, 250, 0.15)",
-    gradientEnd: "rgba(96, 165, 250, 0.01)",
-  },
-};
+const CHART_HEIGHT = 360;
+const CHART_PADDING = { top: 20, right: 20, bottom: 38, left: 56 };
+
+const SERIES_COLORS: Array<{ color: string; gradientStart: string; gradientEnd: string }> = [
+  { color: "#19c37d", gradientStart: "rgba(25, 195, 125, 0.16)", gradientEnd: "rgba(25, 195, 125, 0.01)" },
+  { color: "#60a5fa", gradientStart: "rgba(96, 165, 250, 0.15)", gradientEnd: "rgba(96, 165, 250, 0.01)" },
+  { color: "#f59e0b", gradientStart: "rgba(245, 158, 11, 0.15)", gradientEnd: "rgba(245, 158, 11, 0.01)" },
+  { color: "#a78bfa", gradientStart: "rgba(168, 139, 250, 0.15)", gradientEnd: "rgba(168, 139, 250, 0.01)" },
+  { color: "#ef4444", gradientStart: "rgba(239, 68, 68, 0.14)", gradientEnd: "rgba(239, 68, 68, 0.01)" },
+  { color: "#06b6d4", gradientStart: "rgba(6, 182, 212, 0.15)", gradientEnd: "rgba(6, 182, 212, 0.01)" },
+  { color: "#ec4899", gradientStart: "rgba(236, 72, 153, 0.14)", gradientEnd: "rgba(236, 72, 153, 0.01)" },
+  { color: "#84cc16", gradientStart: "rgba(132, 204, 22, 0.14)", gradientEnd: "rgba(132, 204, 22, 0.01)" },
+];
+
+function deriveSeriesKey(record: { platform: PlatformKey; campaignSlug?: string }): string {
+  return record.campaignSlug ? `${record.campaignSlug}:${record.platform}` : record.platform;
+}
+
+function buildSeriesMeta(records: TimelineRecord[]): SeriesMeta[] {
+  const seen = new Map<string, { platform: PlatformKey; campaignSlug?: string; campaignName?: string }>();
+  for (const record of records) {
+    const key = deriveSeriesKey(record);
+    if (!seen.has(key)) {
+      seen.set(key, { platform: record.platform, campaignSlug: record.campaignSlug, campaignName: record.campaignName });
+    }
+  }
+
+  const hasCampaigns = [...seen.values()].some((s) => s.campaignSlug);
+  const entries = [...seen.entries()].sort(([a], [b]) => a.localeCompare(b));
+
+  return entries.map(([seriesKey, info], idx) => {
+    const colors = SERIES_COLORS[idx % SERIES_COLORS.length];
+    const platformLabel = info.platform === "x" ? "X" : "Threads";
+    const label = hasCampaigns && info.campaignName
+      ? `${info.campaignName} · ${platformLabel}`
+      : platformLabel;
+
+    return { seriesKey, platform: info.platform, label, ...colors };
+  });
+}
 
 function formatRangeLabel(range: ChartRange, count: number): string {
   if (range === "10_posts") return `Last ${count} posts`;
@@ -172,6 +205,9 @@ function buildDisplayPoints(records: TimelineRecord[], metric: ChartMetric, view
       label: formatDetailLabel(record.postedAt, view),
       sport: record.sport,
       platform: record.platform,
+      seriesKey: deriveSeriesKey(record),
+      campaignSlug: record.campaignSlug,
+      campaignName: record.campaignName,
       posts: 1,
       metricValue: metricValueFor(record, metric),
       impressions: record.metrics?.impressionCount ?? 0,
@@ -185,7 +221,8 @@ function buildDisplayPoints(records: TimelineRecord[], metric: ChartMetric, view
 
   const grouped = new Map<string, DisplayPoint>();
   for (const record of records) {
-    const key = `${record.platform}:${localDayKey(record.postedAt)}`;
+    const sKey = deriveSeriesKey(record);
+    const key = `${sKey}:${localDayKey(record.postedAt)}`;
     const current = grouped.get(key);
     const impressions = record.metrics?.impressionCount ?? 0;
     const engagements = record.metrics?.engagementCount ?? 0;
@@ -199,6 +236,9 @@ function buildDisplayPoints(records: TimelineRecord[], metric: ChartMetric, view
         label: formatDetailLabel(record.postedAt, view),
         sport: record.sport,
         platform: record.platform,
+        seriesKey: sKey,
+        campaignSlug: record.campaignSlug,
+        campaignName: record.campaignName,
         posts: 1,
         metricValue: metricValueFor(record, metric),
         impressions,
@@ -329,6 +369,9 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
   if (range === "7d") filtered = filteredBySport.filter((record) => Date.parse(record.postedAt) >= latestTimestamp - 7 * 24 * 60 * 60 * 1000);
   if (range === "30d") filtered = filteredBySport.filter((record) => Date.parse(record.postedAt) >= latestTimestamp - 30 * 24 * 60 * 60 * 1000);
 
+  const allSeriesMeta = buildSeriesMeta(filtered);
+  const seriesLookup = new Map<string, SeriesMeta>(allSeriesMeta.map((m) => [m.seriesKey, m]));
+
   const displayPoints = buildDisplayPoints(filtered, metric, view);
   const activePoint = displayPoints.find((point) => point.key === activeKey) ?? displayPoints[displayPoints.length - 1] ?? null;
 
@@ -346,22 +389,16 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
     const y = CHART_PADDING.top + innerHeight - (point.metricValue / maxValue) * innerHeight;
     return { ...point, index, x, y };
   });
-  const seriesGeometry: SeriesGeometry[] = (["x", "threads"] as const)
-    .map((platform) => {
-      const points = geometry.filter((point) => point.platform === platform);
+
+  const seriesGeometry: SeriesGeometry[] = allSeriesMeta
+    .map((meta) => {
+      const points = geometry.filter((point) => point.seriesKey === meta.seriesKey);
       if (points.length === 0) return null;
-      const meta = PLATFORM_META[platform];
       return {
-        platform,
-        label: meta.label,
-        color: meta.color,
-        gradientStart: meta.gradientStart,
-        gradientEnd: meta.gradientEnd,
+        ...meta,
         points,
         line: buildSmoothLinePath(points),
-        area: geometry.filter((point) => point.platform === platform).length > 0 && geometry.every((point) => point.platform === platform)
-          ? buildSmoothAreaPath(points, CHART_PADDING.top + innerHeight)
-          : "",
+        area: buildSmoothAreaPath(points, CHART_PADDING.top + innerHeight),
       };
     })
     .filter((entry): entry is SeriesGeometry => entry !== null);
@@ -399,6 +436,7 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
   }
 
   const activeGeometry = geometry.find((point) => point.key === activePoint?.key) ?? null;
+  const activeSeriesMeta = activePoint ? seriesLookup.get(activePoint.seriesKey) : null;
   const ticks = buildAxisTicks(geometry, view);
   const filteredTotals = filtered.reduce(
     (acc, record) => {
@@ -432,7 +470,7 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
         <div className="timeline-header-badges">
           <span className="timeline-badge">{view === "daily" ? "Daily rollup" : "Per-post"}</span>
           {seriesGeometry.map((entry) => (
-            <span key={entry.platform} className="timeline-badge timeline-badge-platform">
+            <span key={entry.seriesKey} className="timeline-badge timeline-badge-platform">
               <i className="chart-legend-dot" style={{ background: entry.color, boxShadow: `0 0 12px ${entry.color}55` }} />
               {entry.label}
             </span>
@@ -515,21 +553,6 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
       {displayPoints.length > 0 ? (
         <div key={animationSeed} className="timeline-stage-shell timeline-stage-shell-ready">
           <div className="timeline-stage">
-            <div className="timeline-chart-meta">
-              <div>
-                <span className="timeline-meta-label">{METRIC_OPTIONS.find((option) => option.value === metric)?.label}</span>
-                <strong>{formatMetricValue(windowTotal)}</strong>
-              </div>
-              <div>
-                <span className="timeline-meta-label">Range</span>
-                <strong>{formatRangeLabel(range, filtered.length)}</strong>
-              </div>
-              <div>
-                <span className="timeline-meta-label">Selection</span>
-                <strong>{activePoint?.label ?? "—"}</strong>
-              </div>
-            </div>
-
             <div
               className="timeline-chart-wrap"
               ref={chartWrapRef}
@@ -543,7 +566,7 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                     <path d="M120 0H0V60" fill="none" stroke="rgba(255, 255, 255, 0.02)" strokeWidth="1" />
                   </pattern>
                   {seriesGeometry.map((entry) => (
-                    <linearGradient key={entry.platform} id={`${baseId}-${entry.platform}`} x1="0" y1="0" x2="0" y2="1">
+                    <linearGradient key={entry.seriesKey} id={`${baseId}-${entry.seriesKey}`} x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor={entry.gradientStart} />
                       <stop offset="100%" stopColor={entry.gradientEnd} />
                     </linearGradient>
@@ -556,8 +579,16 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                   const y = CHART_PADDING.top + innerHeight - innerHeight * step;
                   return (
                     <g key={step}>
-                      <line x1={CHART_PADDING.left} x2={CHART_WIDTH - CHART_PADDING.right} y1={y} y2={y} className="timeline-grid-line" />
-                      <text x={CHART_WIDTH - CHART_PADDING.right} y={y - 6} textAnchor="end" className="timeline-grid-value">
+                      <line
+                        x1={CHART_PADDING.left}
+                        x2={CHART_WIDTH - CHART_PADDING.right}
+                        y1={y}
+                        y2={y}
+                        className="timeline-grid-line"
+                        style={{ stroke: step === 0 ? "rgba(255,255,255,0.10)" : undefined }}
+                        strokeDasharray={step === 0 ? "none" : "4 6"}
+                      />
+                      <text x={CHART_PADDING.left - 10} y={y + 3.5} textAnchor="end" className="timeline-grid-value">
                         {formatMetricValue(Math.round(maxValue * step))}
                       </text>
                     </g>
@@ -565,8 +596,8 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                 })}
 
                 {seriesGeometry.map((entry) => (
-                  <g key={entry.platform}>
-                    {entry.area ? <path d={entry.area} className="timeline-area" fill={`url(#${baseId}-${entry.platform})`} /> : null}
+                  <g key={entry.seriesKey}>
+                    {entry.area ? <path d={entry.area} className="timeline-area" fill={`url(#${baseId}-${entry.seriesKey})`} /> : null}
                     {entry.line ? (
                       <path
                         d={entry.line}
@@ -575,7 +606,7 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                         style={{
                           stroke: entry.color,
                           filter: `drop-shadow(0 6px 16px ${entry.color}40) drop-shadow(0 0 14px ${entry.color}25)`,
-                          strokeWidth: activePoint?.platform === entry.platform ? 2.8 : 2.35,
+                          strokeWidth: activePoint?.seriesKey === entry.seriesKey ? 3 : 2.5,
                         }}
                       />
                     ) : null}
@@ -592,43 +623,48 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                   />
                 ) : null}
 
-                {geometry.map((point) => (
-                  <g key={point.key}>
-                    <circle
-                      cx={point.x}
-                      cy={point.y}
-                      r={activePoint?.key === point.key ? 7 : 4.5}
-                      className={`timeline-point-ring ${activePoint?.key === point.key ? "is-active" : ""}`}
-                      style={{
-                        fill: activePoint?.key === point.key ? `${PLATFORM_META[point.platform].color}24` : `${PLATFORM_META[point.platform].color}12`,
-                        stroke: activePoint?.key === point.key ? `${PLATFORM_META[point.platform].color}66` : `${PLATFORM_META[point.platform].color}33`,
-                      }}
-                    />
-                    <circle
-                      cx={point.x}
-                      cy={point.y}
-                      r={activePoint?.key === point.key ? 4 : 3}
-                      className={`timeline-point ${activePoint?.key === point.key ? "is-active" : ""}`}
-                      style={{ fill: PLATFORM_META[point.platform].color }}
-                    />
-                  </g>
-                ))}
+                {geometry.map((point) => {
+                  const isActive = activePoint?.key === point.key;
+                  const color = seriesLookup.get(point.seriesKey)?.color ?? "#19c37d";
+                  return (
+                    <g key={point.key}>
+                      <circle
+                        cx={point.x}
+                        cy={point.y}
+                        r={isActive ? 8 : 5}
+                        className={`timeline-point-ring ${isActive ? "is-active" : ""}`}
+                        style={{
+                          fill: isActive ? `${color}20` : `${color}10`,
+                          stroke: isActive ? `${color}55` : `${color}28`,
+                        }}
+                      />
+                      <circle
+                        cx={point.x}
+                        cy={point.y}
+                        r={isActive ? 4.5 : 3.2}
+                        className={`timeline-point ${isActive ? "is-active" : ""}`}
+                        style={{ fill: color }}
+                      />
+                    </g>
+                  );
+                })}
               </svg>
 
-              {activePoint && tooltipPos && (
+              {activePoint && tooltipPos && activeSeriesMeta && (
                 <div
                   className="ichart-tooltip"
                   style={{
                     left: tooltipPos.x,
                     top: tooltipPos.y,
                     transform: `translate(${tooltipPos.flipLeft ? "calc(-100% - 16px)" : "16px"}, -50%)`,
+                    borderLeftColor: activeSeriesMeta.color,
                   }}
                 >
                   <div className="ichart-tooltip-header">
                     <span className="ichart-tooltip-date">{activePoint.label}</span>
-                    <span className="ichart-tooltip-sport">{PLATFORM_META[activePoint.platform].label}</span>
+                    <span className="ichart-tooltip-sport">{activeSeriesMeta.label}</span>
                   </div>
-                  <div className="ichart-tooltip-primary" style={{ color: PLATFORM_META[activePoint.platform].color }}>
+                  <div className="ichart-tooltip-primary" style={{ color: activeSeriesMeta.color }}>
                     {new Intl.NumberFormat("en-US").format(activePoint.metricValue)}
                     <span>{METRIC_OPTIONS.find((o) => o.value === metric)?.label}</span>
                   </div>
@@ -666,7 +702,7 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                   <span className="timeline-active-kicker">Active point</span>
                   <h4>{activePoint?.label ?? "—"}</h4>
                 </div>
-                <span className="timeline-active-sport">{activePoint ? `${PLATFORM_META[activePoint.platform].label} · ${activePoint.sport.toUpperCase()}` : "—"}</span>
+                <span className="timeline-active-sport">{activeSeriesMeta ? `${activeSeriesMeta.label} · ${activePoint?.sport.toUpperCase()}` : "—"}</span>
               </div>
 
               <div className="timeline-active-grid">
