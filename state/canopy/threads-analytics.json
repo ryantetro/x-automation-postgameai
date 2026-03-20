@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-03-20T18:25:44.764Z",
+  "updatedAt": "2026-03-20T18:36:07.948Z",
   "tweets": [
     {
       "runId": "775d86a5-e12e-4f86-8c09-f9a224738711",
@@ -433,21 +433,113 @@
       "strategyEnvelopeId": "speed_and_deadlines|utah_event_radar|education|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led",
       "agentReasoningSummary": "exploration selected education to rebalance the canopy mix; exploration selected utah_event_radar to keep the canopy series mix balanced; speed_and_deadlines selected inside education; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore",
       "performanceWindowLabel": "last_45_days"
+    },
+    {
+      "runId": "f3277e64-bb87-4de3-8eaf-9dfe8bcbe6ea",
+      "tweetId": "2035062819209847193",
+      "threadsPostId": "18539181637067994",
+      "postedAt": "2026-03-20T18:35:25.183Z",
+      "dateContext": "2026-03-20",
+      "sport": "canopy",
+      "angle": "Utah Event Radar",
+      "source": "llm",
+      "status": "posted",
+      "text": "Utah's spring markets can feel like a surprise wind storm in the parking lot. Have you actually checked your canopy's frame lately, or are you hoping it survives the Salt Lake gusts? That frame might have seen better days.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2035062819209847193"
+        },
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "18539181637067994"
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "speed_and_deadlines",
+      "voiceFamily": "deadline_urgency",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "festivals",
+      "productFocus": "replacement canopies",
+      "urgencyMode": "none",
+      "ctaMode": "question_led",
+      "creativeDirection": "seasonal_urgency",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected education to rebalance the canopy mix; exploration selected utah_event_radar to keep the canopy series mix balanced; speed_and_deadlines selected inside education; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; Launch gate prefers text-only for Utah Event Radar until a real event feed exists.",
+      "seriesId": "utah_event_radar",
+      "contentBucket": "education",
+      "brandTagIncluded": false,
+      "candidateId": "speed_and_deadlines|utah_event_radar|education|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led:candidate:5",
+      "candidateBatchId": "f3277e64-bb87-4de3-8eaf-9dfe8bcbe6ea:canopy-batch",
+      "candidateScore": 158,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "speed_and_deadlines|utah_event_radar|education|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led",
+      "agentReasoningSummary": "exploration selected education to rebalance the canopy mix; exploration selected utah_event_radar to keep the canopy series mix balanced; speed_and_deadlines selected inside education; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-03-20T18:36:06.984Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 0,
+        "engagementCount": 0,
+        "engagementRate": null
+      },
+      "score": 0,
+      "scoreUpdatedAt": "2026-03-20T18:36:06.984Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-20T18:36:06.144Z",
+          "failures": 0
+        },
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-03-20T18:36:06.984Z",
+          "failures": 0
+        }
+      }
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-20T18:25:17.994Z"
+      "lastAttemptAt": "2026-03-20T18:36:06.000Z",
+      "lastSuccessAt": "2026-03-20T18:36:06.144Z"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-20T18:25:17.994Z",
-      "lastSuccessAt": "2026-03-20T18:25:18.458Z"
+      "lastAttemptAt": "2026-03-20T18:36:06.144Z",
+      "lastSuccessAt": "2026-03-20T18:36:07.948Z"
     }
   },
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-20T18:25:18.458Z",
+    "fetchedAt": "2026-03-20T18:36:07.948Z",
     "views": 0,
     "likes": 0,
     "replies": 0,
