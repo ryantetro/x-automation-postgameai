@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-03-20T18:36:07.948Z",
+  "updatedAt": "2026-03-21T16:32:18.073Z",
   "tweets": [
     {
       "runId": "775d86a5-e12e-4f86-8c09-f9a224738711",
@@ -499,7 +499,101 @@
       "performanceWindowLabel": "last_45_days",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-20T18:36:06.984Z",
+        "fetchedAt": "2026-03-21T16:29:09.747Z",
+        "likeCount": 2,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 29,
+        "engagementCount": 2,
+        "engagementRate": 0.068966
+      },
+      "score": 69,
+      "scoreUpdatedAt": "2026-03-21T16:29:09.747Z",
+      "analyticsFetchState": {
+        "x": {
+          "status": "ok",
+          "updatedAt": "2026-03-21T16:29:09.249Z",
+          "failures": 0
+        },
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-03-21T16:29:09.747Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "4e695971-a031-44a9-86d6-ceaae57aed71",
+      "tweetId": "2035393454210228234",
+      "threadsPostId": "17980815365996838",
+      "postedAt": "2026-03-21T16:29:09.066Z",
+      "dateContext": "2026-03-21",
+      "sport": "canopy",
+      "angle": "Booth Proof in the Wild",
+      "source": "llm",
+      "status": "posted",
+      "text": "Spring in Utah is part-time festival, full-time frame stress test. If your canopy's tired by brunch, blame the frame, not the forecast. Replacement time before the next gust?",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "spring_in",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "posted",
+          "postId": "2035393454210228234"
+        },
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "17980815365996838"
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "durability_and_product_proof",
+      "voiceFamily": "deadline_urgency",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "festivals",
+      "productFocus": "replacement canopies",
+      "urgencyMode": "none",
+      "ctaMode": "question_led",
+      "creativeDirection": "seasonal_urgency",
+      "imageConceptId": "durability-dye-sub-medium",
+      "imageStyleFamily": "mockup",
+      "imageShotType": "medium",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected community to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside community; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore. Top canopy pillar on X lately: speed_and_deadlines. Best recurring series lately: utah_event_radar. Most effective content bucket lately: education. Best voice family: deadline_urgency. Best creative lane: seasonal_urgency. Brand tags showed up in 0% of recent canopy posts. Weak opening patterns: scene_setter. Explore next: pillar:speed_and_deadlines, seriesId:utah_event_radar, contentBucket:education.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "proof_in_the_wild",
+      "contentBucket": "community",
+      "brandTagIncluded": false,
+      "candidateId": "durability_and_product_proof|proof_in_the_wild|community|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led:candidate:5",
+      "candidateBatchId": "4e695971-a031-44a9-86d6-ceaae57aed71:canopy-batch",
+      "candidateScore": 148,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "durability_and_product_proof|proof_in_the_wild|community|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led",
+      "agentReasoningSummary": "exploration selected community to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside community; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-03-21T16:29:56.654Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -511,36 +605,99 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-03-20T18:36:06.984Z",
+      "scoreUpdatedAt": "2026-03-21T16:29:56.654Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-20T18:36:06.144Z",
+          "updatedAt": "2026-03-21T16:29:56.458Z",
           "failures": 0
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-20T18:36:06.984Z",
+          "updatedAt": "2026-03-21T16:29:56.654Z",
           "failures": 0
         }
       }
+    },
+    {
+      "runId": "aed6d39e-093d-484b-9d34-316a4b9745c6",
+      "postedAt": "2026-03-21T16:32:03.948Z",
+      "dateContext": "2026-03-21",
+      "sport": "canopy",
+      "angle": "Booth Identity and Setup Taste",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Seen at today's Utah market: one brand blooming with color next to a booth in hiding under a tired white tent. Not all setup woes need a bigger budget—sometimes they just need a sharper eye. March isn't sticking around, but your booth could.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        },
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "buyer_intent_products",
+      "voiceFamily": "deadline_urgency",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "festivals",
+      "productFocus": "replacement canopies",
+      "urgencyMode": "none",
+      "ctaMode": "question_led",
+      "creativeDirection": "seasonal_urgency",
+      "imageConceptId": "buyer-steprepeat-medium",
+      "imageStyleFamily": "lifestyle",
+      "imageShotType": "medium",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected culture to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore. Top canopy pillar on X lately: speed_and_deadlines. Best recurring series lately: utah_event_radar. Most effective content bucket lately: education. Best voice family: deadline_urgency. Best creative lane: seasonal_urgency. Brand tags showed up in 0% of recent canopy posts. Weak opening patterns: scene_setter, spring_in. Explore next: pillar:speed_and_deadlines, pillar:durability_and_product_proof, seriesId:utah_event_radar.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "booth_identity",
+      "contentBucket": "culture",
+      "brandTagIncluded": false,
+      "candidateId": "buyer_intent_products|booth_identity|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led:candidate:3",
+      "candidateBatchId": "aed6d39e-093d-484b-9d34-316a4b9745c6:canopy-batch",
+      "candidateScore": 144,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "buyer_intent_products|booth_identity|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led",
+      "agentReasoningSummary": "exploration selected culture to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-20T18:36:06.000Z",
-      "lastSuccessAt": "2026-03-20T18:36:06.144Z"
+      "lastAttemptAt": "2026-03-21T16:32:03.949Z",
+      "lastSuccessAt": "2026-03-21T16:29:56.458Z"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-20T18:36:06.144Z",
-      "lastSuccessAt": "2026-03-20T18:36:07.948Z"
+      "lastAttemptAt": "2026-03-21T16:32:03.949Z",
+      "lastSuccessAt": "2026-03-21T16:32:04.412Z"
     }
   },
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-20T18:36:07.948Z",
-    "views": 0,
+    "fetchedAt": "2026-03-21T16:32:04.412Z",
+    "views": 1,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
