@@ -16,3 +16,14 @@ Recording*
 /state/canopy/sample-tweets-*.md
 /state/canopy/launch-audit-*.json
 /state/canopy/launch-audit-*.md
+
+# Codex local configuration
+.codex/
+
+# RuFlo / Claude Code — local only (re-run `npx ruflo@latest init` on a fresh clone)
+/.claude/
+/.agents/
+/.mcp.json
+/CLAUDE.md
+/AGENTS.md
+**/.claude-flow/

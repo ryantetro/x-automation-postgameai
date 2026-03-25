@@ -1,6 +1,6 @@
 {
-  "version": 4,
-  "updatedAt": "2026-03-10T19:22:36.064Z",
+  "version": 5,
+  "updatedAt": "2026-03-25T19:40:26.340Z",
   "tweets": [
     {
       "runId": "d362bf7e-c6b1-48cf-a2b6-4df2ec3476d5",
@@ -408,12 +408,198 @@
         }
       ],
       "hasImage": false
+    },
+    {
+      "runId": "7c82b2d4-96a2-40ca-838a-7734b6a9122b",
+      "postedAt": "2026-03-25T19:35:26.182Z",
+      "dateContext": "2026-03-25",
+      "sport": "soccer",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Territory and defensive balance usually matter before the scoreline catches up. #FootballCoaching #CoachingSoccer",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "moment_nobody_captures",
+      "contentFrameLabel": "The Moment Nobody Captures",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Moment Nobody Captures to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "territory_and",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "outboundTracking": [],
+      "hasImage": false,
+      "brandTagIncluded": false,
+      "selectedForPublish": true,
+      "personaId": "sideline_observer",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-03-25"
+    },
+    {
+      "runId": "8ab0e10b-664e-4287-809e-08778b4ff12e",
+      "postedAt": "2026-03-25T19:36:34.585Z",
+      "dateContext": "2026-03-25",
+      "sport": "soccer",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "dry_run",
+      "text": "A substitute changes the game only when the instruction is clear. Otherwise it is just fresh legs. #PitchIQ #FootballCoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "validation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_substitute",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": false,
+      "selectedForPublish": true,
+      "personaId": "sideline_observer",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-03-25"
+    },
+    {
+      "runId": "25044199-e78c-4027-9f10-e4f917ca3a2f",
+      "postedAt": "2026-03-25T19:40:05.182Z",
+      "dateContext": "2026-03-25",
+      "sport": "soccer",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "dry_run",
+      "text": "The best defensive coaches do not scream about effort. They fix the shape before it breaks. #TacticalAnalysis #CoachingSoccer",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "moment_nobody_captures",
+      "contentFrameLabel": "The Moment Nobody Captures",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The Moment Nobody Captures to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_best",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": false,
+      "selectedForPublish": true,
+      "personaId": "staff_chat_leaker",
+      "contentType": "hot_take",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-03-25"
+    },
+    {
+      "runId": "5c6d0c14-fec3-4364-9f1a-e4a63763a127",
+      "postedAt": "2026-03-25T19:40:10.451Z",
+      "dateContext": "2026-03-25",
+      "sport": "soccer",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "dry_run",
+      "text": "The real tactical battle happens in the first 15 minutes. The rest is adjustments. #TacticalAnalysis #SoccerFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_real",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": false,
+      "selectedForPublish": true,
+      "personaId": "friday_night_narrator",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-03-25"
+    },
+    {
+      "runId": "1378d204-fd3e-4e77-b2c3-225d1dde58f2",
+      "postedAt": "2026-03-25T19:40:15.584Z",
+      "dateContext": "2026-03-25",
+      "sport": "soccer",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "dry_run",
+      "text": "Possession means nothing without intent. Passing for the sake of passing is just resting on the ball. #CoachingSoccer",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "moment_nobody_captures",
+      "contentFrameLabel": "The Moment Nobody Captures",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Moment Nobody Captures to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "possession_means",
+      "linkTargetUrl": "https://getpostgame.ai",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": false,
+      "selectedForPublish": true,
+      "personaId": "friday_night_narrator",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-03-25"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-10T19:22:33.866Z"
+      "lastAttemptAt": "2026-03-25T19:40:15.585Z"
     }
   }
 }

@@ -32,6 +32,11 @@
       "type": "boolean",
       "default": false,
       "description": "When true, enable engagement automation (search, like, reply, follow) for this campaign. Requires X Basic tier."
+    },
+    "personasFile": {
+      "type": "string",
+      "default": "personas.json",
+      "description": "Path to personas definition file (relative to campaign directory). Default: personas.json"
     }
   }
 }

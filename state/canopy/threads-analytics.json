@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-03-21T16:32:18.073Z",
+  "updatedAt": "2026-03-25T19:39:58.495Z",
   "tweets": [
     {
       "runId": "775d86a5-e12e-4f86-8c09-f9a224738711",
@@ -499,28 +499,28 @@
       "performanceWindowLabel": "last_45_days",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-21T16:29:09.747Z",
+        "fetchedAt": "2026-03-25T19:12:48.769Z",
         "likeCount": 2,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 29,
+        "impressionCount": 30,
         "engagementCount": 2,
-        "engagementRate": 0.068966
+        "engagementRate": 0.066667
       },
-      "score": 69,
-      "scoreUpdatedAt": "2026-03-21T16:29:09.747Z",
+      "score": 70,
+      "scoreUpdatedAt": "2026-03-25T19:12:48.769Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-21T16:29:09.249Z",
+          "updatedAt": "2026-03-25T19:12:47.866Z",
           "failures": 0
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-21T16:29:09.747Z",
+          "updatedAt": "2026-03-25T19:12:48.769Z",
           "failures": 0
         }
       }
@@ -593,28 +593,28 @@
       "performanceWindowLabel": "last_45_days",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-03-21T16:29:56.654Z",
+        "fetchedAt": "2026-03-25T19:12:48.513Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
         "quoteCount": 0,
         "bookmarkCount": 0,
         "shareCount": 0,
-        "impressionCount": 0,
+        "impressionCount": 28,
         "engagementCount": 0,
-        "engagementRate": null
+        "engagementRate": 0
       },
-      "score": 0,
-      "scoreUpdatedAt": "2026-03-21T16:29:56.654Z",
+      "score": 28,
+      "scoreUpdatedAt": "2026-03-25T19:12:48.769Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
-          "updatedAt": "2026-03-21T16:29:56.458Z",
+          "updatedAt": "2026-03-25T19:12:47.866Z",
           "failures": 0
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-03-21T16:29:56.654Z",
+          "updatedAt": "2026-03-25T19:12:48.769Z",
           "failures": 0
         }
       }
@@ -681,29 +681,290 @@
       "strategyEnvelopeId": "buyer_intent_products|booth_identity|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led",
       "agentReasoningSummary": "exploration selected culture to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore",
       "performanceWindowLabel": "last_45_days"
+    },
+    {
+      "runId": "0928716c-0b3d-4b3a-b14e-dc168e4efbfc",
+      "postedAt": "2026-03-25T19:12:47.649Z",
+      "dateContext": "2026-03-25",
+      "sport": "canopy",
+      "angle": "Hot Takes and Booth Glow-Ups",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Three types of festival booths:\n\n1. The \"weather forecast denier\" with sagging canopies.\n2. The \"DIY-but-not-in-a-good-way\" look.\n3. The \"ready for anything\" setup that somehow looks effortless even at 7 a.m.\n\nGuess which one draws the crowd?",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "three_types",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        },
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "competitive_value_framing",
+      "voiceFamily": "deadline_urgency",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "festivals",
+      "productFocus": "replacement canopies",
+      "urgencyMode": "none",
+      "ctaMode": "question_led",
+      "creativeDirection": "seasonal_urgency",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore. Top canopy pillar on X lately: speed_and_deadlines. Best recurring series lately: utah_event_radar. Most effective content bucket lately: education. Best voice family: deadline_urgency. Best creative lane: seasonal_urgency. Brand tags showed up in 0% of recent canopy posts. Weak opening patterns: scene_setter, spring_in. Explore next: pillar:speed_and_deadlines, pillar:durability_and_product_proof, seriesId:utah_event_radar.; Launch gate prefers text-first hot takes unless image performance clearly beats text-only.",
+      "seriesId": "booth_hot_take",
+      "contentBucket": "culture",
+      "brandTagIncluded": false,
+      "candidateId": "competitive_value_framing|booth_hot_take|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led:candidate:3",
+      "candidateBatchId": "0928716c-0b3d-4b3a-b14e-dc168e4efbfc:canopy-batch",
+      "candidateScore": 132,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "competitive_value_framing|booth_hot_take|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led",
+      "agentReasoningSummary": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "booth_critic",
+      "contentType": "list_post",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-03-25"
+    },
+    {
+      "runId": "886b31d2-0f76-4ff3-bb02-25bb592c8cc7",
+      "postedAt": "2026-03-25T19:38:25.858Z",
+      "dateContext": "2026-03-25",
+      "sport": "canopy",
+      "angle": "Hot Takes and Booth Glow-Ups",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Spring festivals are where Utah vendors learn the truth about their canopies. It's a stress test, not a setup. If your booth looks like last season's leftovers, it's probably time for an upgrade before the next festival weekend comes around.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "spring_festivals",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        },
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "competitive_value_framing",
+      "voiceFamily": "deadline_urgency",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "festivals",
+      "productFocus": "replacement canopies",
+      "urgencyMode": "none",
+      "ctaMode": "question_led",
+      "creativeDirection": "seasonal_urgency",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore. Top canopy pillar on X lately: speed_and_deadlines. Best recurring series lately: utah_event_radar. Most effective content bucket lately: education. Best voice family: deadline_urgency. Best creative lane: seasonal_urgency. Brand tags showed up in 0% of recent canopy posts. Weak opening patterns: scene_setter, spring_in. Explore next: pillar:speed_and_deadlines, pillar:durability_and_product_proof, seriesId:utah_event_radar.; Launch gate prefers text-first hot takes unless image performance clearly beats text-only.",
+      "seriesId": "booth_hot_take",
+      "contentBucket": "culture",
+      "brandTagIncluded": false,
+      "candidateId": "competitive_value_framing|booth_hot_take|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led:candidate:1",
+      "candidateBatchId": "886b31d2-0f76-4ff3-bb02-25bb592c8cc7:canopy-batch",
+      "candidateScore": 146,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "competitive_value_framing|booth_hot_take|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led",
+      "agentReasoningSummary": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "setup_nerd",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-03-25"
+    },
+    {
+      "runId": "9c7153ea-2188-4f40-a6e5-a88bbf9bbb91",
+      "postedAt": "2026-03-25T19:38:48.118Z",
+      "dateContext": "2026-03-25",
+      "sport": "canopy",
+      "angle": "Hot Takes and Booth Glow-Ups",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Two kinds of canopies in Utah's spring festivals:  \n1. The survivor—frame's solid, ready for anything.  \n2. The sagging nostalgia piece—still around, but just.  \n\nWho's planned for more than a sunny day?",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "two_kinds",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        },
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "competitive_value_framing",
+      "voiceFamily": "deadline_urgency",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "festivals",
+      "productFocus": "replacement canopies",
+      "urgencyMode": "none",
+      "ctaMode": "question_led",
+      "creativeDirection": "seasonal_urgency",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore. Top canopy pillar on X lately: speed_and_deadlines. Best recurring series lately: utah_event_radar. Most effective content bucket lately: education. Best voice family: deadline_urgency. Best creative lane: seasonal_urgency. Brand tags showed up in 0% of recent canopy posts. Weak opening patterns: scene_setter, spring_in. Explore next: pillar:speed_and_deadlines, pillar:durability_and_product_proof, seriesId:utah_event_radar.; Launch gate prefers text-first hot takes unless image performance clearly beats text-only.",
+      "seriesId": "booth_hot_take",
+      "contentBucket": "culture",
+      "brandTagIncluded": false,
+      "candidateId": "competitive_value_framing|booth_hot_take|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led:candidate:5",
+      "candidateBatchId": "9c7153ea-2188-4f40-a6e5-a88bbf9bbb91:canopy-batch",
+      "candidateScore": 142,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "competitive_value_framing|booth_hot_take|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led",
+      "agentReasoningSummary": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "booth_critic",
+      "contentType": "list_post",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-03-25"
+    },
+    {
+      "runId": "07b9e41d-ec87-4b40-8a96-0782f2a1da29",
+      "postedAt": "2026-03-25T19:39:40.874Z",
+      "dateContext": "2026-03-25",
+      "sport": "canopy",
+      "angle": "Hot Takes and Booth Glow-Ups",
+      "source": "llm",
+      "status": "dry_run",
+      "text": "Hot take: if your booth setup looks like a yard sale by noon, it's not the weather holding you back—it's that outdated canopy. Utah's festival season waits for no one.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take:",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "dry_run"
+        },
+        {
+          "platform": "threads",
+          "status": "dry_run"
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "competitive_value_framing",
+      "voiceFamily": "deadline_urgency",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "festivals",
+      "productFocus": "replacement canopies",
+      "urgencyMode": "none",
+      "ctaMode": "question_led",
+      "creativeDirection": "seasonal_urgency",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore. Top canopy pillar on X lately: speed_and_deadlines. Best recurring series lately: utah_event_radar. Most effective content bucket lately: education. Best voice family: deadline_urgency. Best creative lane: seasonal_urgency. Brand tags showed up in 0% of recent canopy posts. Weak opening patterns: scene_setter, spring_in. Explore next: pillar:speed_and_deadlines, pillar:durability_and_product_proof, seriesId:utah_event_radar.; Launch gate prefers text-first hot takes unless image performance clearly beats text-only.",
+      "seriesId": "booth_hot_take",
+      "contentBucket": "culture",
+      "brandTagIncluded": false,
+      "candidateId": "competitive_value_framing|booth_hot_take|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led:candidate:4",
+      "candidateBatchId": "07b9e41d-ec87-4b40-8a96-0782f2a1da29:canopy-batch",
+      "candidateScore": 160,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "competitive_value_framing|booth_hot_take|culture|deadline_urgency|seasonal_urgency|consideration|replacement canopies|festivals|none|question_led",
+      "agentReasoningSummary": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected deadline_urgency; exploration selected seasonal_urgency; exploration selected replacement canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "hot_take_machine",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-03-25"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-21T16:32:03.949Z",
-      "lastSuccessAt": "2026-03-21T16:29:56.458Z"
+      "lastAttemptAt": "2026-03-25T19:39:40.875Z",
+      "lastSuccessAt": "2026-03-25T19:12:47.866Z"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-03-21T16:32:03.949Z",
-      "lastSuccessAt": "2026-03-21T16:32:04.412Z"
+      "lastAttemptAt": "2026-03-25T19:39:40.876Z",
+      "lastSuccessAt": "2026-03-25T19:39:41.490Z"
     }
   },
   "threadsUserInsights": {
-    "fetchedAt": "2026-03-21T16:32:04.412Z",
-    "views": 1,
+    "fetchedAt": "2026-03-25T19:39:41.490Z",
+    "views": 0,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
     "quotes": 0,
     "clicks": 0,
     "followersCount": 0,
-    "clicksByUrl": []
+    "clicksByUrl": [
+      {
+        "linkUrl": "http://viciousshade.com/",
+        "value": 0
+      }
+    ]
   }
 }

@@ -68,6 +68,11 @@ export interface GenerationLogEntry {
   contentBucket?: CanopyContentBucket;
   brandTagIncluded?: boolean;
   brandTagPolicy?: CanopyBrandTagPolicy;
+  personaId?: string;
+  contentType?: string;
+  brandMentioned?: boolean;
+  lessonVersion?: string;
+  lessonText?: string;
 }
 
 export const GENERATION_LOG_FILE = resolve(STATE_DIR, "generation-log.jsonl");

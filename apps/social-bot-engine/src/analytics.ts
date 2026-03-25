@@ -204,6 +204,11 @@ export interface TweetAnalyticsRecord {
   seriesId?: CanopySeriesId;
   contentBucket?: CanopyContentBucket;
   brandTagIncluded?: boolean;
+  // Persona system fields
+  personaId?: string;
+  contentType?: string;
+  brandMentioned?: boolean;
+  lessonVersion?: string;
 }
 
 export interface AnalyticsStore {

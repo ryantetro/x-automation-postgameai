@@ -48,6 +48,10 @@ import {
 } from "./contentArchitecture.js";
 import { getOpeningPattern } from "./contentHeuristics.js";
 import { appendGenerationLog } from "./generationLog.js";
+import { loadPersonas, selectPersona, type Persona, type WeightAdjustment } from "./personaEngine.js";
+import { enforceBrandMix, selectContentType } from "./contentMixer.js";
+import { generateLesson, type LessonResult } from "./learningLoop.js";
+import type { ContentTypeId } from "./contentTypeTemplates.js";
 import {
   ANALYTICS_STORE_FILE,
   loadAnalyticsStore,
@@ -335,6 +339,48 @@ async function main(): Promise<number> {
       }
     | undefined;
 
+  let personaId: string | undefined;
+  let selectedContentType: ContentTypeId | undefined;
+  let brandMentionAllowed: boolean | undefined;
+  let lessonVersion: string | undefined;
+  let selectedPersona: Persona | undefined;
+
+  // ── Campaign Slug (used by persona system and outbound tracking) ──
+  const campaignSlug = process.env.CAMPAIGN?.trim() || undefined;
+
+  // ── Persona System ──
+  let lesson: LessonResult | undefined;
+  let weightAdjustments: WeightAdjustment[] = [];
+  const personasFile = campaignSlug ? loadPersonas(campaignSlug) : null;
+
+  if (personasFile) {
+    // Generate lesson from analytics
+    const currentWeights = new Map(personasFile.personas.map((p) => [p.id, p.weight]));
+    lesson = generateLesson(campaignSlug!, analyticsStore, currentWeights);
+    weightAdjustments = lesson.weightAdjustments;
+    lessonVersion = lesson.lessonVersion;
+    console.info(`Learning loop: ${lesson.isColdStart ? "cold start" : "lesson generated"}`);
+    if (lesson.weightAdjustments.length > 0) {
+      console.info(`Weight adjustments: ${lesson.weightAdjustments.map((a) => `${a.personaId}: ${(a.oldWeight * 100).toFixed(0)}% -> ${(a.newWeight * 100).toFixed(0)}%`).join(", ")}`);
+    }
+
+    // Select persona
+    const selection = selectPersona(personasFile, weightAdjustments);
+    selectedPersona = selection.persona;
+    personaId = selectedPersona.id;
+    console.info(`Persona selected: ${selectedPersona.name} (${selectedPersona.id}, weight: ${(selection.adjustedWeight * 100).toFixed(0)}%)`);
+
+    // Select content type
+    const ctSelection = selectContentType(selectedPersona, [...POST_TARGETS], analyticsStore.tweets);
+    selectedContentType = ctSelection.contentType;
+    console.info(`Content type: ${selectedContentType} (${ctSelection.reason})`);
+
+    // Enforce brand mix
+    const brandDecision = enforceBrandMix(selectedPersona, analyticsStore.tweets);
+    brandMentionAllowed = brandDecision.brandMentionAllowed;
+    console.info(`Brand mention: ${brandMentionAllowed ? "allowed" : "suppressed"} (${brandDecision.reason})`);
+  }
+
   if (DATA_SOURCE === "angles_only") {
     // Canopy / industry path: X-analytics-driven agent loop
     sportForRecord = "canopy";
@@ -349,9 +395,14 @@ async function main(): Promise<number> {
       date: today,
       recentTweets: recentTexts,
       reserveChars,
-      iterationGuidance: canopyIterationGuidance,
+      iterationGuidance: canopyIterationGuidance
+        ? `${canopyIterationGuidance}${lesson ? `\n\n${lesson.lessonText}` : ""}`
+        : lesson?.lessonText,
       strategy: canopyStrategy,
       count: 7,
+      persona: selectedPersona,
+      contentTypeId: selectedContentType,
+      brandMentionAllowed,
     });
     const ranked = rankCanopyCandidates(rawCandidates, canopyStrategy);
     const finalists = ranked.slice(0, 4);
@@ -381,6 +432,13 @@ async function main(): Promise<number> {
       ).trim();
       if (!text.includes(BRAND_WEBSITE)) text += ` — ${BRAND_NAME} · ${BRAND_WEBSITE}`;
       generationSource = "fallback";
+    }
+    // Strip brand from fallback if persona/80-20 says no brand
+    if (brandMentionAllowed === false && text) {
+      text = text
+        .replace(` — ${BRAND_NAME} · ${BRAND_WEBSITE}`, "")
+        .replace(`${BRAND_NAME} · ${BRAND_WEBSITE}`, "")
+        .trim();
     }
     openingPattern = text ? getOpeningPattern(text) : undefined;
     for (const candidate of (text ? finalRanked : [])) {
@@ -423,6 +481,11 @@ async function main(): Promise<number> {
         strategyEnvelopeId: canopyStrategy?.id,
         agentReasoningSummary: canopyStrategy?.agentReasoningSummary,
         performanceWindowLabel: canopyStrategy?.performanceWindowLabel,
+        personaId,
+        contentType: selectedContentType,
+        brandMentioned: !!candidate.text && (candidate.text.includes(BRAND_NAME) || candidate.text.includes(BRAND_WEBSITE)),
+        lessonVersion,
+        lessonText: lesson?.lessonText,
       });
     }
   } else {
@@ -502,12 +565,17 @@ async function main(): Promise<number> {
         recentTweets: recentTexts,
         angle,
         date: today,
-        iterationGuidance: insights?.promptGuidance,
+        iterationGuidance: insights?.promptGuidance
+          ? `${insights.promptGuidance}${lesson ? `\n\n${lesson.lessonText}` : ""}`
+          : lesson?.lessonText,
         reserveChars,
         newsContext,
         contentDecision: decision,
         recentContentDecisions,
         winningPostTexts,
+        persona: selectedPersona,
+        contentTypeId: selectedContentType,
+        brandMentionAllowed,
       });
       for (const attemptLog of generated.attempts) {
         appendGenerationLog({
@@ -530,6 +598,11 @@ async function main(): Promise<number> {
           rejectionReason: attemptLog.rejectionReason,
           acceptedForPublish: attemptLog.acceptedForPublish,
           usedFallback: false,
+          personaId,
+          contentType: selectedContentType,
+          brandMentioned: !!attemptLog.cleanedOutput && (attemptLog.cleanedOutput.includes(BRAND_NAME) || attemptLog.cleanedOutput.includes(BRAND_WEBSITE)),
+          lessonVersion,
+          lessonText: lesson?.lessonText,
         });
       }
       text = generated.text;
@@ -557,6 +630,13 @@ async function main(): Promise<number> {
       }
       text = fallbackCandidate;
       generationSource = "fallback";
+      // Strip brand from fallback if persona/80-20 says no brand
+      if (brandMentionAllowed === false && text) {
+        text = text
+          .replace(` — ${BRAND_NAME} · ${BRAND_WEBSITE}`, "")
+          .replace(`${BRAND_NAME} · ${BRAND_WEBSITE}`, "")
+          .trim();
+      }
       openingPattern = getOpeningPattern(text);
       appendGenerationLog({
         runId,
@@ -577,11 +657,14 @@ async function main(): Promise<number> {
         rejectionReason: "fallback_template",
         acceptedForPublish: true,
         usedFallback: true,
+        personaId,
+        contentType: selectedContentType,
+        brandMentioned: !!text && (text.includes(BRAND_NAME) || text.includes(BRAND_WEBSITE)),
+        lessonVersion,
       });
     }
   }
 
-  const campaignSlug = process.env.CAMPAIGN?.trim() || undefined;
   const outboundTracking = buildOutboundTrackingRecords({
     runId,
     campaignSlug,
@@ -654,7 +737,9 @@ async function main(): Promise<number> {
   }
 
   const recentTextsFinal = readRecentTweetTexts(analyticsStore, RECENT_TWEETS_CAP);
-  const validateOpts = DATA_SOURCE === "angles_only" ? { requireBrand: false } : undefined;
+  const validateOpts = DATA_SOURCE === "angles_only" || brandMentionAllowed === false
+    ? { requireBrand: false }
+    : undefined;
   if (
     generationSource === "fallback" &&
     text &&
@@ -723,6 +808,10 @@ async function main(): Promise<number> {
       strategyEnvelopeId: canopyStrategy?.id,
       agentReasoningSummary: canopyStrategy?.agentReasoningSummary,
       performanceWindowLabel: canopyStrategy?.performanceWindowLabel,
+      personaId,
+      contentType: selectedContentType,
+      brandMentioned: !!text && (text.includes(BRAND_NAME) || text.includes(BRAND_WEBSITE)),
+      lessonVersion,
     });
     pruneStore(analyticsStore);
     saveAnalyticsStore(analyticsStore, ANALYTICS_STORE_FILE);
@@ -906,6 +995,10 @@ async function main(): Promise<number> {
     strategyEnvelopeId: canopyStrategy?.id,
     agentReasoningSummary: canopyStrategy?.agentReasoningSummary,
     performanceWindowLabel: canopyStrategy?.performanceWindowLabel,
+    personaId,
+    contentType: selectedContentType,
+    brandMentioned: !!text && (text.includes(BRAND_NAME) || text.includes(BRAND_WEBSITE)),
+    lessonVersion,
   });
 
   if (ANALYTICS_ENABLED && xClient && xPublishResult?.postId && xPublishResult.status === "posted") {
