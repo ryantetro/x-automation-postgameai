@@ -160,27 +160,36 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
           <div className="section-label">Performance</div>
 
           <InteractiveTimelineChart
-            records={posted.map((tweet) => ({
-              runId: tweet.runId,
-              postedAt: tweet.postedAt,
-              sport: tweet.sport,
-              angle: tweet.angle,
-              tweetId: tweet.tweetId,
-              threadsPostId: tweet.threadsPostId,
-              platform: tweet.metrics?.platform === "threads" ? "threads" : tweet.threadsPostId && !tweet.tweetId ? "threads" : "x",
-              campaignSlug: tweet.campaignSlug,
-              campaignName: tweet.campaignSlug
-                ? store.campaigns.find((c) => c.slug === tweet.campaignSlug)?.name ?? tweet.campaignSlug
-                : undefined,
-              metrics: tweet.metrics
-                ? {
-                    impressionCount: tweet.metrics.impressionCount,
-                    engagementCount: tweet.metrics.engagementCount,
-                    likeCount: tweet.metrics.likeCount,
-                    retweetCount: tweet.metrics.retweetCount,
-                  }
-                : undefined,
-            }))}
+            records={posted.flatMap((tweet) => {
+              const platforms: Array<"x" | "threads"> = [];
+              if (tweet.tweetId) platforms.push("x");
+              if (tweet.threadsPostId) platforms.push("threads");
+              if (platforms.length === 0 && tweet.metrics?.platform) {
+                platforms.push(tweet.metrics.platform as "x" | "threads");
+              }
+
+              return platforms.map((platform) => ({
+                runId: tweet.runId,
+                postedAt: tweet.postedAt,
+                sport: tweet.sport,
+                angle: tweet.angle,
+                tweetId: tweet.tweetId,
+                threadsPostId: tweet.threadsPostId,
+                platform,
+                campaignSlug: tweet.campaignSlug,
+                campaignName: tweet.campaignSlug
+                  ? store.campaigns.find((c) => c.slug === tweet.campaignSlug)?.name ?? tweet.campaignSlug
+                  : undefined,
+                metrics: tweet.metrics
+                  ? {
+                      impressionCount: tweet.metrics.impressionCount,
+                      engagementCount: tweet.metrics.engagementCount,
+                      likeCount: tweet.metrics.likeCount,
+                      retweetCount: tweet.metrics.retweetCount,
+                    }
+                  : undefined,
+              }));
+            })}
           />
 
           <div className="section-label">Activity &amp; Insights</div>

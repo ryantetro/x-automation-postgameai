@@ -775,6 +775,22 @@ button, input, select, textarea { font: inherit; }
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.03em;
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chart-legend-item:hover {
+  background: var(--glass-strong);
+  color: var(--text);
+}
+
+.chart-legend-item.is-hidden {
+  opacity: 0.5;
+  filter: grayscale(1);
 }
 
 .chart-legend-dot {
@@ -785,6 +801,7 @@ button, input, select, textarea { font: inherit; }
   flex: 0 0 auto;
   outline: 2px solid rgba(255, 255, 255, 0.06);
   outline-offset: 2px;
+  box-sizing: border-box;
 }
 
 .ichart-svg-area {
@@ -984,6 +1001,19 @@ button, input, select, textarea { font: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 0.42rem;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.timeline-badge-platform:hover {
+  background: var(--glass-strong);
+  color: var(--text);
+}
+
+.timeline-badge-platform.is-hidden {
+  opacity: 0.5;
+  filter: grayscale(1);
 }
 
 .timeline-controls {

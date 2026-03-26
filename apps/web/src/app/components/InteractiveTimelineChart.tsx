@@ -326,10 +326,22 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
   const [range, setRange] = useState<ChartRange>("10_posts");
   const [view, setView] = useState<ChartView>("per_post");
   const [sport, setSport] = useState<string>("all");
+  const [hiddenSeries, setHiddenSeries] = useState<Set<string>>(new Set());
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [animationSeed, setAnimationSeed] = useState(0);
   const chartWrapRef = useRef<HTMLDivElement>(null);
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number; flipLeft: boolean } | null>(null);
+  const [focusSeriesKey, setFocusSeriesKey] = useState<string | null>(null);
+
+  function toggleSeries(id: string) {
+    setHiddenSeries((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+    refreshChart();
+  }
 
   function refreshChart() {
     setAnimationSeed((value) => value + 1);
@@ -372,7 +384,8 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
   const allSeriesMeta = buildSeriesMeta(filtered);
   const seriesLookup = new Map<string, SeriesMeta>(allSeriesMeta.map((m) => [m.seriesKey, m]));
 
-  const displayPoints = buildDisplayPoints(filtered, metric, view);
+  const allDisplayPoints = buildDisplayPoints(filtered, metric, view);
+  const displayPoints = allDisplayPoints.filter((point) => !hiddenSeries.has(point.seriesKey));
   const activePoint = displayPoints.find((point) => point.key === activeKey) ?? displayPoints[displayPoints.length - 1] ?? null;
 
   const innerWidth = CHART_WIDTH - CHART_PADDING.left - CHART_PADDING.right;
@@ -391,6 +404,8 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
   });
 
   const seriesGeometry: SeriesGeometry[] = allSeriesMeta
+    .filter((meta) => !hiddenSeries.has(meta.seriesKey))
+
     .map((meta) => {
       const points = geometry.filter((point) => point.seriesKey === meta.seriesKey);
       if (points.length === 0) return null;
@@ -416,9 +431,16 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
     const svgWidth = rect.width - padLeft - padRight;
     const svgX = ((mouseX - padLeft) / svgWidth) * CHART_WIDTH;
 
-    let nearest = geometry[0];
+    const selectableGeometry = focusSeriesKey ? geometry.filter(pt => pt.seriesKey === focusSeriesKey) : geometry;
+    if (selectableGeometry.length === 0) {
+      setActiveKey(null);
+      setTooltipPos(null);
+      return;
+    }
+
+    let nearest = selectableGeometry[0];
     let nearestDist = Infinity;
-    for (const pt of geometry) {
+    for (const pt of selectableGeometry) {
       const dist = Math.abs(pt.x - svgX);
       if (dist < nearestDist) {
         nearestDist = dist;
@@ -435,19 +457,29 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
     setTooltipPos(null);
   }
 
+  function handleChartClick() {
+    if (focusSeriesKey) {
+      setFocusSeriesKey(null);
+    } else if (activePoint) {
+      setFocusSeriesKey(activePoint.seriesKey);
+    }
+  }
+
   const activeGeometry = geometry.find((point) => point.key === activePoint?.key) ?? null;
   const activeSeriesMeta = activePoint ? seriesLookup.get(activePoint.seriesKey) : null;
   const ticks = buildAxisTicks(geometry, view);
-  const filteredTotals = filtered.reduce(
-    (acc, record) => {
-      acc.impressions += record.metrics?.impressionCount ?? 0;
-      acc.engagements += record.metrics?.engagementCount ?? 0;
-      acc.likes += record.metrics?.likeCount ?? 0;
-      acc.retweets += record.metrics?.retweetCount ?? 0;
-      return acc;
-    },
-    { impressions: 0, engagements: 0, likes: 0, retweets: 0 }
-  );
+  const filteredTotals = filtered
+    .filter((record) => !hiddenSeries.has(deriveSeriesKey(record)))
+    .reduce(
+      (acc, record) => {
+        acc.impressions += record.metrics?.impressionCount ?? 0;
+        acc.engagements += record.metrics?.engagementCount ?? 0;
+        acc.likes += record.metrics?.likeCount ?? 0;
+        acc.retweets += record.metrics?.retweetCount ?? 0;
+        return acc;
+      },
+      { impressions: 0, engagements: 0, likes: 0, retweets: 0 }
+    );
   const metricTone = METRIC_OPTIONS.find((option) => option.value === metric)?.tone ?? "green";
   const windowTotal = metric === "impressions"
     ? filteredTotals.impressions
@@ -469,12 +501,29 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
         </div>
         <div className="timeline-header-badges">
           <span className="timeline-badge">{view === "daily" ? "Daily rollup" : "Per-post"}</span>
-          {seriesGeometry.map((entry) => (
-            <span key={entry.seriesKey} className="timeline-badge timeline-badge-platform">
-              <i className="chart-legend-dot" style={{ background: entry.color, boxShadow: `0 0 12px ${entry.color}55` }} />
-              {entry.label}
-            </span>
-          ))}
+          {allSeriesMeta.map((entry) => {
+            const isHidden = hiddenSeries.has(entry.seriesKey);
+            return (
+              <button
+                key={entry.seriesKey}
+                type="button"
+                onClick={() => toggleSeries(entry.seriesKey)}
+                className={`timeline-badge timeline-badge-platform ${isHidden ? "is-hidden" : ""}`}
+              >
+                <i
+                  className="chart-legend-dot"
+                  style={{
+                    background: isHidden ? "transparent" : entry.color,
+                    boxShadow: isHidden ? "none" : `0 0 12px ${entry.color}55`,
+                    borderColor: entry.color,
+                    borderWidth: isHidden ? "2px" : "0",
+                    borderStyle: "solid",
+                  }}
+                />
+                {entry.label}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -558,6 +607,7 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
               ref={chartWrapRef}
               onMouseMove={handleChartMouseMove}
               onMouseLeave={handleChartMouseLeave}
+              onClick={handleChartClick}
               style={{ cursor: "crosshair" }}
             >
               <svg viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`} preserveAspectRatio="none" aria-hidden="true">
@@ -595,23 +645,27 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                   );
                 })}
 
-                {seriesGeometry.map((entry) => (
-                  <g key={entry.seriesKey}>
-                    {entry.area ? <path d={entry.area} className="timeline-area" fill={`url(#${baseId}-${entry.seriesKey})`} /> : null}
-                    {entry.line ? (
-                      <path
-                        d={entry.line}
-                        className="timeline-line"
-                        pathLength={1}
-                        style={{
-                          stroke: entry.color,
-                          filter: `drop-shadow(0 6px 16px ${entry.color}40) drop-shadow(0 0 14px ${entry.color}25)`,
-                          strokeWidth: activePoint?.seriesKey === entry.seriesKey ? 3 : 2.5,
-                        }}
-                      />
-                    ) : null}
-                  </g>
-                ))}
+                {seriesGeometry.map((entry) => {
+                  const isOtherFocused = focusSeriesKey !== null && focusSeriesKey !== entry.seriesKey;
+                  const opacity = isOtherFocused ? 0.15 : 1;
+                  return (
+                    <g key={entry.seriesKey} style={{ opacity, transition: "opacity 0.2s ease" }}>
+                      {entry.area ? <path d={entry.area} className="timeline-area" fill={`url(#${baseId}-${entry.seriesKey})`} /> : null}
+                      {entry.line ? (
+                        <path
+                          d={entry.line}
+                          className="timeline-line"
+                          pathLength={1}
+                          style={{
+                            stroke: entry.color,
+                            filter: `drop-shadow(0 6px 16px ${entry.color}40) drop-shadow(0 0 14px ${entry.color}25)`,
+                            strokeWidth: activePoint?.seriesKey === entry.seriesKey ? 3 : 2.5,
+                          }}
+                        />
+                      ) : null}
+                    </g>
+                  );
+                })}
 
                 {activeGeometry ? (
                   <line
@@ -625,9 +679,11 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
 
                 {geometry.map((point) => {
                   const isActive = activePoint?.key === point.key;
+                  const isOtherFocused = focusSeriesKey !== null && focusSeriesKey !== point.seriesKey;
+                  const opacity = isOtherFocused ? 0.15 : 1;
                   const color = seriesLookup.get(point.seriesKey)?.color ?? "#19c37d";
                   return (
-                    <g key={point.key}>
+                    <g key={point.key} style={{ opacity, transition: "opacity 0.2s ease" }}>
                       <circle
                         cx={point.x}
                         cy={point.y}
@@ -725,9 +781,11 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
               </div>
 
               <p className="timeline-footnote">
-                {view === "daily"
-                  ? `${activePoint?.posts ?? 0} posts rolled into this day.`
-                  : "Timeline uses actual publish timestamps."}
+                {focusSeriesKey && activeSeriesMeta
+                  ? `Focusing on ${activeSeriesMeta.label}. Click anywhere to reset.`
+                  : view === "daily"
+                  ? `${activePoint?.posts ?? 0} posts rolled into this day. Click a line to isolate it.`
+                  : "Timeline uses actual publish timestamps. Click a line to isolate it."}
               </p>
             </div>
 

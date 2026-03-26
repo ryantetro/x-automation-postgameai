@@ -2,16 +2,7 @@ import { loadStore, compact, sportClass, lastUpdatedStr, frameLabel, hookLabel, 
 import Sidebar from "../components/Sidebar";
 import InteractiveAnalyticsChart from "../components/InteractiveAnalyticsChart";
 
-function inferPlatform(post: {
-  metrics?: { platform?: "x" | "threads" };
-  tweetId?: string;
-  threadsPostId?: string;
-}): "x" | "threads" | null {
-  if (post.metrics?.platform === "x" || post.metrics?.platform === "threads") return post.metrics.platform;
-  if (post.threadsPostId && !post.tweetId) return "threads";
-  if (post.tweetId) return "x";
-  return null;
-}
+
 
 export const dynamic = "force-dynamic";
 
@@ -61,14 +52,21 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
   // Build unique campaign+platform combinations from tracked posts
   const seriesGroups = new Map<string, { campaignSlug?: string; platform: "x" | "threads"; posts: typeof tracked }>();
   for (const t of tracked) {
-    const platform = inferPlatform(t);
-    if (!platform) continue;
-    const seriesKey = t.campaignSlug ? `${t.campaignSlug}:${platform}` : platform;
-    const existing = seriesGroups.get(seriesKey);
-    if (existing) {
-      existing.posts.push(t);
-    } else {
-      seriesGroups.set(seriesKey, { campaignSlug: t.campaignSlug, platform, posts: [t] });
+    const platforms: Array<"x" | "threads"> = [];
+    if (t.tweetId) platforms.push("x");
+    if (t.threadsPostId) platforms.push("threads");
+    if (platforms.length === 0 && t.metrics?.platform) {
+      platforms.push(t.metrics.platform as "x" | "threads");
+    }
+
+    for (const platform of platforms) {
+      const seriesKey = t.campaignSlug ? `${t.campaignSlug}:${platform}` : platform;
+      const existing = seriesGroups.get(seriesKey);
+      if (existing) {
+        existing.posts.push(t);
+      } else {
+        seriesGroups.set(seriesKey, { campaignSlug: t.campaignSlug, platform, posts: [t] });
+      }
     }
   }
 

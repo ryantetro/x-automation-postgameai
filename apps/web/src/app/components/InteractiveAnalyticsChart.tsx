@@ -61,21 +61,37 @@ export default function InteractiveAnalyticsChart({
   const wrapRef = useRef<HTMLDivElement>(null);
   const [hoverKey, setHoverKey] = useState<string | null>(null);
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number; flipLeft: boolean } | null>(null);
+  const [hiddenSeries, setHiddenSeries] = useState<Set<string>>(new Set());
+  const [focusSeriesId, setFocusSeriesId] = useState<string | null>(null);
+
+  function toggleSeries(id: string) {
+    setHiddenSeries((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+    setHoverKey(null);
+    setTooltipPos(null);
+  }
+
 
   const innerW = W - PAD.left - PAD.right;
   const innerH = H - PAD.top - PAD.bottom;
   const activeSeries = series.filter((entry) => entry.posts.length > 0);
-  const allPosts = activeSeries.flatMap((entry) => entry.posts);
+  const visibleSeries = activeSeries.filter((entry) => !hiddenSeries.has(entry.id));
+
+  const allPosts = visibleSeries.flatMap((entry) => entry.posts);
   const timestamps = allPosts.map((post) => Date.parse(post.postedAt)).filter((value) => !Number.isNaN(value));
   const minTime = timestamps.length > 0 ? Math.min(...timestamps) : 0;
   const maxTime = timestamps.length > 0 ? Math.max(...timestamps) : 1;
   const maxVal = Math.max(
-    ...activeSeries.flatMap((entry) => entry.posts.map((post) => (metric === "impressions" ? post.impressions : post.engagements))),
+    ...visibleSeries.flatMap((entry) => entry.posts.map((post) => (metric === "impressions" ? post.impressions : post.engagements))),
     1
   );
   const baselineY = PAD.top + innerH;
 
-  const seriesGeometry = activeSeries.map((entry) => {
+  const seriesGeometry = visibleSeries.map((entry) => {
     const points = entry.posts.map((post, index) => {
       const value = metric === "impressions" ? post.impressions : post.engagements;
       const timestamp = Date.parse(post.postedAt);
@@ -125,9 +141,16 @@ export default function InteractiveAnalyticsChart({
     const mouseX = e.clientX - rect.left;
     const svgX = (mouseX / rect.width) * W;
 
-    let closest = allPoints[0];
+    const selectablePoints = focusSeriesId ? allPoints.filter(pt => pt.seriesId === focusSeriesId) : allPoints;
+    if (selectablePoints.length === 0) {
+      setHoverKey(null);
+      setTooltipPos(null);
+      return;
+    }
+
+    let closest = selectablePoints[0];
     let closestDist = Infinity;
-    for (const point of allPoints) {
+    for (const point of selectablePoints) {
       const dist = Math.abs(point.x - svgX);
       if (dist < closestDist) {
         closestDist = dist;
@@ -146,6 +169,15 @@ export default function InteractiveAnalyticsChart({
     setTooltipPos(null);
   }
 
+  function handleChartClick() {
+    if (focusSeriesId) {
+      setFocusSeriesId(null);
+    } else if (hoverKey) {
+      const pt = allPoints.find(p => p.key === hoverKey);
+      if (pt) setFocusSeriesId(pt.seriesId);
+    }
+  }
+
   const hoveredPoint = hoverKey ? allPoints.find((point) => point.key === hoverKey) ?? null : null;
   const sortedPosts = [...allPosts].sort((a, b) => Date.parse(a.postedAt) - Date.parse(b.postedAt));
 
@@ -153,12 +185,29 @@ export default function InteractiveAnalyticsChart({
     <div className="ichart-wrap">
       {activeSeries.length > 1 && (
         <div className="chart-legend">
-          {activeSeries.map((entry) => (
-            <span key={entry.id} className="chart-legend-item">
-              <i className="chart-legend-dot" style={{ background: entry.color, boxShadow: `0 0 12px ${entry.color}55` }} />
-              {entry.label}
-            </span>
-          ))}
+          {activeSeries.map((entry) => {
+            const isHidden = hiddenSeries.has(entry.id);
+            return (
+              <button
+                key={entry.id}
+                type="button"
+                onClick={() => toggleSeries(entry.id)}
+                className={`chart-legend-item ${isHidden ? "is-hidden" : ""}`}
+              >
+                <i
+                  className="chart-legend-dot"
+                  style={{
+                    background: isHidden ? "transparent" : entry.color,
+                    boxShadow: isHidden ? "none" : `0 0 12px ${entry.color}55`,
+                    borderColor: entry.color,
+                    borderWidth: isHidden ? "2px" : "0",
+                    borderStyle: "solid",
+                  }}
+                />
+                {entry.label}
+              </button>
+            );
+          })}
         </div>
       )}
       <div
@@ -166,6 +215,8 @@ export default function InteractiveAnalyticsChart({
         className="ichart-svg-area"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        onClick={handleChartClick}
+        style={{ cursor: "crosshair" }}
       >
         <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none">
           <defs>
@@ -202,23 +253,27 @@ export default function InteractiveAnalyticsChart({
             );
           })}
 
-          {seriesGeometry.map((entry) => (
-            <g key={entry.id}>
-              {entry.area && <path d={entry.area} fill={`url(#${entry.gradId})`} className="ichart-area" />}
-              {entry.line && (
-                <path
-                  d={entry.line}
-                  fill="none"
-                  stroke={entry.color}
-                  strokeWidth={hoveredPoint?.seriesId === entry.id ? 3 : 2.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="ichart-line"
-                  style={{ filter: `drop-shadow(0 6px 16px ${entry.color}40) drop-shadow(0 0 12px ${entry.color}25)` }}
-                />
-              )}
-            </g>
-          ))}
+          {seriesGeometry.map((entry) => {
+            const isOtherFocused = focusSeriesId !== null && focusSeriesId !== entry.id;
+            const opacity = isOtherFocused ? 0.15 : 1;
+            return (
+              <g key={entry.id} style={{ opacity, transition: "opacity 0.2s ease" }}>
+                {entry.area && <path d={entry.area} fill={`url(#${entry.gradId})`} className="ichart-area" />}
+                {entry.line && (
+                  <path
+                    d={entry.line}
+                    fill="none"
+                    stroke={entry.color}
+                    strokeWidth={hoveredPoint?.seriesId === entry.id ? 3 : 2.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="ichart-line"
+                    style={{ filter: `drop-shadow(0 6px 16px ${entry.color}40) drop-shadow(0 0 12px ${entry.color}25)` }}
+                  />
+                )}
+              </g>
+            );
+          })}
 
           {hoveredPoint && (
             <line
@@ -234,8 +289,10 @@ export default function InteractiveAnalyticsChart({
 
           {allPoints.map((point) => {
             const isHovered = point.key === hoverKey;
+            const isOtherFocused = focusSeriesId !== null && focusSeriesId !== point.seriesId;
+            const opacity = isOtherFocused ? 0.15 : 1;
             return (
-              <g key={point.key}>
+              <g key={point.key} style={{ opacity, transition: "opacity 0.2s ease" }}>
                 <circle
                   cx={point.x}
                   cy={point.y}
@@ -288,7 +345,12 @@ export default function InteractiveAnalyticsChart({
         )}
       </div>
 
-      <div className="ichart-axis">
+      <div className="ichart-axis" style={{ position: "relative" }}>
+        {focusSeriesId && (
+          <div style={{ position: "absolute", left: 0, bottom: -24, fontSize: "0.75rem", color: "var(--text-faint)" }}>
+            Focus mode active. Click anywhere to reset.
+          </div>
+        )}
         {labelIndices.map((idx) => (
           <span
             key={idx}
