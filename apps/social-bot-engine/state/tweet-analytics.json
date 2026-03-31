@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-03-31T11:50:39.083Z",
+  "updatedAt": "2026-03-31T23:39:31.473Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -3839,13 +3839,62 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "e1c7e105-2782-48ea-8097-ebc212d76f26",
+      "postedAt": "2026-03-31T23:39:29.202Z",
+      "dateContext": "2026-03-31",
+      "sport": "mlb",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Joe Girardi's daughter enters the transfer portal, but coaching lessons from her father will fade faster than a double play if not captured immediately. 48 hours postgame, and those insights are already ghosts on a chalkboard. #dugouttalk postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Lena Girardi, daughter of Joe Girardi, enters transfer portal",
+      "newsArticleUrl": "https://collegesportswire.usatoday.com/story/sports/college/college-basketball/2026/03/30/transfer-portal-lena-girardi-joe-oklahoma-state-basketball/89391996007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-03-30T20:31:15Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
-      "status": "healthy",
-      "lastAttemptAt": "2026-03-31T11:50:36.743Z",
-      "lastSuccessAt": "2026-03-31T11:50:37.136Z"
+      "status": "blocked",
+      "lastAttemptAt": "2026-03-31T23:39:29.204Z",
+      "lastSuccessAt": "2026-03-31T11:50:37.136Z",
+      "lastError": "Request failed with code 402",
+      "lastErrorCode": "402"
     }
   }
 }
