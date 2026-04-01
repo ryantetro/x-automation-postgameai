@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-03-31T23:39:31.473Z",
+  "updatedAt": "2026-04-01T11:53:45.525Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -3886,12 +3886,50 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "6b18f616-fef7-49cb-b836-e8322d553a33",
+      "postedAt": "2026-04-01T11:53:41.241Z",
+      "dateContext": "2026-04-01",
+      "sport": "soccer",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Set piece coaching is the easiest way to win and the last thing most staffs actually prepare. — postgame AI · getpostgame.ai #BeautifulGame",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "set_piece",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-03-31T23:39:29.204Z",
+      "lastAttemptAt": "2026-04-01T11:53:41.243Z",
       "lastSuccessAt": "2026-03-31T11:50:37.136Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
