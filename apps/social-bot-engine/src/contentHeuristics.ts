@@ -38,6 +38,11 @@ export function detectHookStructure(text: string): HookStructureId | null {
   if (/^[A-Z][a-z]+(?:\s[A-Z][a-z]+)*[^a-zA-Z0-9\s]s\b/.test(trimmed)) return "scene_setter";
   if (/^(every coach has|every staff has|every staff\b|most teams|the player who|coaches know|the hardest part)\b/i.test(trimmed)) return "universal_truth";
   if (/\bfans\b.*\bcoaches\b|\bcoaches\b.*\bfans\b|\bpublic narrative\b/i.test(trimmed)) return "insider_divide";
+  // Hot Take Dare: bold declarative claims, often absolutist
+  if (/^(if you|any coach who|the worst|the best|nobody|no coach|stop)\b/i.test(trimmed)) return "hot_take_dare";
+  if (/\boverrated\b|\bwaste of time\b|\bdoes not work\b|\bdoesn'?t work\b/i.test(trimmed.split(/[.!?]/)[0] ?? "")) return "hot_take_dare";
+  // Unfinished Thought: ends with tension, ellipsis, or open question
+  if (/[.]\s*$/.test(trimmed) && !/[!?]/.test(trimmed) && /\bbut\b|\band yet\b|\bstill\b/i.test(trimmed.split(/[.]/).slice(-2).join("."))) return "unfinished_thought";
   if (/\bnot\b.*\bbut\b|\blooks\b.*\bbut\b|\bwin\b.*\bloss\b|\bbox score\b/i.test(trimmed)) return "contradiction";
   if (/^(everyone thinks|they won but)\b/i.test(trimmed)) return "contradiction";
   if (/\byet\b|\bstill\b/.test(trimmed.split(/[.!?]/)[0] ?? "")) return "contradiction";

@@ -209,6 +209,8 @@ export interface TweetAnalyticsRecord {
   contentType?: string;
   brandMentioned?: boolean;
   lessonVersion?: string;
+  /** Hour of day (0-23 UTC) when the post was published. */
+  postedHour?: number;
 }
 
 export interface AnalyticsStore {
@@ -233,6 +235,24 @@ export interface IterationInsights {
   avoidPatterns: string[];
   topWinnerHashtags: string[];
   promptGuidance: string;
+  replyInsights: {
+    avgRepliesWinners: number;
+    avgRepliesLosers: number;
+    highReplyHooks: string[];
+    highReplyFrames: string[];
+    replyGuidance: string;
+  };
+  timingInsights: {
+    bestHours: number[];
+    worstHours: number[];
+    timingGuidance: string;
+  };
+  /** Per-hook average score for bandit-style hook selection. */
+  hookScores: Array<{
+    hookStructureId: HookStructureId;
+    avgScore: number;
+    count: number;
+  }>;
   contentModeStats: Array<{
     contentMode: ContentMode;
     count: number;
@@ -1160,6 +1180,108 @@ export function buildIterationInsights(store: AnalyticsStore): IterationInsights
     emotionTarget: row.emotionTarget,
   }));
 
+  // ── Reply-specific analysis ──
+  const avgRepliesWinners = avgMetric(winners, (r) => r.metrics?.replyCount ?? 0);
+  const avgRepliesLosers = avgMetric(losers, (r) => r.metrics?.replyCount ?? 0);
+
+  // Find hooks and frames that drive the most replies
+  const hookReplyMap = new Map<HookStructureId, { replies: number; count: number }>();
+  const frameReplyMap = new Map<ContentFrameId, { replies: number; count: number }>();
+  for (const record of scored) {
+    if (record.hookStructureId && record.metrics) {
+      const entry = hookReplyMap.get(record.hookStructureId) ?? { replies: 0, count: 0 };
+      entry.replies += record.metrics.replyCount;
+      entry.count += 1;
+      hookReplyMap.set(record.hookStructureId, entry);
+    }
+    if (record.contentFrameId && record.metrics) {
+      const entry = frameReplyMap.get(record.contentFrameId) ?? { replies: 0, count: 0 };
+      entry.replies += record.metrics.replyCount;
+      entry.count += 1;
+      frameReplyMap.set(record.contentFrameId, entry);
+    }
+  }
+
+  const highReplyHooks = [...hookReplyMap.entries()]
+    .filter(([, v]) => v.count >= 2)
+    .sort((a, b) => (b[1].replies / b[1].count) - (a[1].replies / a[1].count))
+    .slice(0, 2)
+    .map(([hookId]) => HOOK_DEFINITIONS[hookId]?.label ?? hookId);
+
+  const highReplyFrames = [...frameReplyMap.entries()]
+    .filter(([, v]) => v.count >= 2)
+    .sort((a, b) => (b[1].replies / b[1].count) - (a[1].replies / a[1].count))
+    .slice(0, 2)
+    .map(([frameId]) => FRAME_DEFINITIONS[frameId]?.label ?? frameId);
+
+  const replyGuidanceLines: string[] = [];
+  if (avgRepliesWinners > avgRepliesLosers * 1.5 && avgRepliesWinners > 0) {
+    replyGuidanceLines.push("Top posts get significantly more replies — write to provoke responses.");
+  }
+  if (highReplyHooks.length > 0) {
+    replyGuidanceLines.push(`Hooks driving the most replies: ${highReplyHooks.join(", ")}.`);
+  }
+  if (highReplyFrames.length > 0) {
+    replyGuidanceLines.push(`Frames driving the most replies: ${highReplyFrames.join(", ")}.`);
+  }
+
+  const replyInsights = {
+    avgRepliesWinners,
+    avgRepliesLosers,
+    highReplyHooks,
+    highReplyFrames,
+    replyGuidance: replyGuidanceLines.join(" "),
+  };
+
+  // ── Timing analysis ──
+  const hourBuckets = new Map<number, { totalScore: number; count: number }>();
+  for (const record of scored) {
+    const hour = record.postedHour ?? (record.postedAt ? new Date(record.postedAt).getUTCHours() : null);
+    if (hour == null) continue;
+    const bucket = hourBuckets.get(hour) ?? { totalScore: 0, count: 0 };
+    bucket.totalScore += record.score ?? 0;
+    bucket.count += 1;
+    hourBuckets.set(hour, bucket);
+  }
+  const hourPerformance = [...hourBuckets.entries()]
+    .filter(([, v]) => v.count >= 2)
+    .map(([hour, v]) => ({ hour, avgScore: v.totalScore / v.count, count: v.count }))
+    .sort((a, b) => b.avgScore - a.avgScore);
+  const bestHours = hourPerformance.slice(0, 3).map((h) => h.hour);
+  const worstHours = hourPerformance.length >= 4
+    ? hourPerformance.slice(-2).map((h) => h.hour)
+    : [];
+  const timingGuidanceLines: string[] = [];
+  if (bestHours.length > 0) {
+    timingGuidanceLines.push(`Best posting hours (UTC): ${bestHours.map((h) => `${h}:00`).join(", ")}.`);
+  }
+  if (worstHours.length > 0) {
+    timingGuidanceLines.push(`Avoid posting at (UTC): ${worstHours.map((h) => `${h}:00`).join(", ")}.`);
+  }
+  const timingInsights = {
+    bestHours,
+    worstHours,
+    timingGuidance: timingGuidanceLines.join(" "),
+  };
+
+  // ── Hook scores for bandit selection ──
+  const hookScoreMap = new Map<HookStructureId, { totalScore: number; count: number }>();
+  for (const record of scored) {
+    if (!record.hookStructureId || record.score == null) continue;
+    const entry = hookScoreMap.get(record.hookStructureId) ?? { totalScore: 0, count: 0 };
+    entry.totalScore += record.score;
+    entry.count += 1;
+    hookScoreMap.set(record.hookStructureId, entry);
+  }
+  const hookScores = [...hookScoreMap.entries()]
+    .map(([hookStructureId, v]) => ({
+      hookStructureId,
+      avgScore: Number((v.totalScore / v.count).toFixed(2)),
+      count: v.count,
+    }))
+    .sort((a, b) => b.avgScore - a.avgScore);
+
+  // ── Build prompt guidance ──
   if (topFramesByPlatform.length > 0) {
     promptGuidanceLines.push(
       ...topFramesByPlatform.map((row) => `Platform ${row.platform.toUpperCase()} is responding best to the ${row.frameLabel} frame.`)
@@ -1175,10 +1297,12 @@ export function buildIterationInsights(store: AnalyticsStore): IterationInsights
       ...preferredEmotionByPlatform.map((row) => `Lean toward ${row.emotionTarget} on ${row.platform.toUpperCase()}.`)
     );
   }
+  if (replyGuidanceLines.length > 0) promptGuidanceLines.push(...replyGuidanceLines.slice(0, 2));
+  if (timingGuidanceLines.length > 0) promptGuidanceLines.push(timingGuidanceLines[0]);
   if (winnerPatterns.length > 0) promptGuidanceLines.push(...winnerPatterns.slice(0, 2));
   if (avoidPatterns.length > 0) promptGuidanceLines.push(...avoidPatterns.slice(0, 2));
 
-  const promptGuidance = promptGuidanceLines.join(" ").slice(0, 900);
+  const promptGuidance = promptGuidanceLines.join(" ").slice(0, 1200);
 
   return {
     sampleSize: scored.length,
@@ -1188,6 +1312,9 @@ export function buildIterationInsights(store: AnalyticsStore): IterationInsights
     avoidPatterns,
     topWinnerHashtags,
     promptGuidance,
+    replyInsights,
+    timingInsights,
+    hookScores,
     contentModeStats,
     newsSourceStats,
     topFramesByPlatform,

@@ -527,6 +527,7 @@ async function main(): Promise<number> {
       newsUsed: newsContext.usedNews,
       recentDecisions: recentContentDecisions,
       retiredCombos,
+      hookScores: insights?.hookScores,
     });
     contentDecision = decision;
 
@@ -757,6 +758,7 @@ async function main(): Promise<number> {
     upsertTweetRecord(analyticsStore, {
       runId,
       postedAt: nowIso,
+      postedHour: new Date(nowIso).getUTCHours(),
       dateContext: today,
       sport: sportForRecord,
       angle: angleForRecord,
@@ -942,6 +944,7 @@ async function main(): Promise<number> {
     tweetId: xPublishResult?.postId,
     threadsPostId: threadsPublishResult?.postId,
     postedAt: nowIso,
+    postedHour: new Date(nowIso).getUTCHours(),
     dateContext: today,
     sport: sportForRecord,
     angle: angleForRecord,

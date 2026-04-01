@@ -14,7 +14,9 @@ export type HookStructureId =
   | "scene_setter"
   | "universal_truth"
   | "insider_divide"
-  | "named_moment";
+  | "named_moment"
+  | "hot_take_dare"
+  | "unfinished_thought";
 
 export type EmotionTarget =
   | "recognition"
@@ -72,6 +74,12 @@ export interface RecentContentDecision {
   postedAt: string;
 }
 
+export interface HookPerformanceScore {
+  hookStructureId: HookStructureId;
+  avgScore: number;
+  count: number;
+}
+
 export interface SelectContentDecisionInput {
   sport: string;
   date: string;
@@ -80,6 +88,8 @@ export interface SelectContentDecisionInput {
   newsUsed?: boolean;
   recentDecisions?: RecentContentDecision[];
   retiredCombos?: RetiredCombo[];
+  /** Per-hook performance scores for bandit-style hook selection. */
+  hookScores?: HookPerformanceScore[];
 }
 
 export const FRAME_DEFINITIONS: Record<ContentFrameId, ContentFrameDefinition> = {
@@ -89,7 +99,7 @@ export const FRAME_DEFINITIONS: Record<ContentFrameId, ContentFrameDefinition> =
     territory: "The coaching intel that exists right after the game and decays by the next practice cycle.",
     emotionalTarget: "urgency",
     bestPlatform: "x",
-    allowedHooks: ["specific_number", "contradiction", "scene_setter"],
+    allowedHooks: ["specific_number", "contradiction", "scene_setter", "unfinished_thought"],
     avoidRules: ["Do not mention note-taking or tell coaches how to fix the problem."],
     instructionBlock:
       "Context is The 48-Hour Window frame. Write about the specific time window between the final whistle and the next practice when real coaching intel exists and then disappears. Make the reader feel the loss of that window. Describe the situation only.",
@@ -101,7 +111,7 @@ export const FRAME_DEFINITIONS: Record<ContentFrameId, ContentFrameDefinition> =
     territory: "The gap between watching film and actually extracting development signal from it.",
     emotionalTarget: "provocation",
     bestPlatform: "threads",
-    allowedHooks: ["contradiction", "insider_divide", "universal_truth"],
+    allowedHooks: ["contradiction", "insider_divide", "universal_truth", "hot_take_dare"],
     avoidRules: ["Do not lecture about how to watch film."],
     instructionBlock:
       "Context is The Film Room Truth frame. Write about the gap between watching film and actually extracting development signal from it. Surface an uncomfortable truth that coaches recognize but rarely say out loud. Do not offer a solution.",
@@ -113,7 +123,7 @@ export const FRAME_DEFINITIONS: Record<ContentFrameId, ContentFrameDefinition> =
     territory: "The gap between talent and execution that coaches feel but rarely explain cleanly.",
     emotionalTarget: "frustration",
     bestPlatform: "both",
-    allowedHooks: ["universal_truth", "scene_setter", "specific_number"],
+    allowedHooks: ["universal_truth", "scene_setter", "specific_number", "hot_take_dare"],
     avoidRules: ["Do not use generic player development slogans."],
     instructionBlock:
       "Context is The Development Gap frame. Write about the specific unnamed space between a player's talent and their execution. Make coaches recognize a player, a season, or a recurring frustration in what you describe. Do not prescribe a fix.",
@@ -125,7 +135,7 @@ export const FRAME_DEFINITIONS: Record<ContentFrameId, ContentFrameDefinition> =
     territory: "Specific in-game moments that contain the real coaching intel and disappear by Monday.",
     emotionalTarget: "loss",
     bestPlatform: "x",
-    allowedHooks: ["named_moment", "scene_setter", "specific_number"],
+    allowedHooks: ["named_moment", "scene_setter", "specific_number", "unfinished_thought"],
     avoidRules: ["Be specific about the moment; do not generalize into advice."],
     instructionBlock:
       "Context is The Moment Nobody Captures frame. Write about a specific in-game situation, adjustment, timeout, or possession that held real coaching intel and disappeared before anyone captured it. This frame should feel immediate and scene-based.",
@@ -137,7 +147,7 @@ export const FRAME_DEFINITIONS: Record<ContentFrameId, ContentFrameDefinition> =
     territory: "The gap between what the box score says and what coaches actually see.",
     emotionalTarget: "insider_pride",
     bestPlatform: "threads",
-    allowedHooks: ["contradiction", "insider_divide", "named_moment"],
+    allowedHooks: ["contradiction", "insider_divide", "named_moment", "hot_take_dare"],
     avoidRules: ["Do not condescend to fans or explain what coaches should do."],
     instructionBlock:
       "Context is The Scoreboard Lie frame. Write about the gap between the public narrative and what coaches actually see. Make coaches feel seen as insiders with knowledge fans do not have. Do not turn it into advice.",
@@ -149,7 +159,7 @@ export const FRAME_DEFINITIONS: Record<ContentFrameId, ContentFrameDefinition> =
     territory: "The gap between what coaches mean to say right after games and what actually gets said.",
     emotionalTarget: "vulnerability",
     bestPlatform: "threads",
-    allowedHooks: ["scene_setter", "named_moment", "universal_truth"],
+    allowedHooks: ["scene_setter", "named_moment", "universal_truth", "unfinished_thought"],
     avoidRules: ["Do not tell coaches to communicate better or mention feedback."],
     instructionBlock:
       "Context is The Conversation That Doesn't Happen frame. Write about the gap between the coaching insight that exists right after a game and what actually gets communicated to players. Be specific, human, and non-preachy.",
@@ -193,6 +203,18 @@ export const HOOK_DEFINITIONS: Record<HookStructureId, HookStructureDefinition> 
     label: "Named Moment",
     description: "Lead with a specific timeout, halftime, rep, or moment.",
     openingGuidance: "Open by naming the specific moment that carried the real coaching intel.",
+  },
+  hot_take_dare: {
+    id: "hot_take_dare",
+    label: "Hot Take Dare",
+    description: "Lead with a bold, debatable coaching claim that begs someone to push back.",
+    openingGuidance: "Open with a sharp, debatable coaching opinion stated as fact. It should feel strong enough that a coach either nods hard or wants to argue. No hedging, no 'I think' — state it like gospel.",
+  },
+  unfinished_thought: {
+    id: "unfinished_thought",
+    label: "Unfinished Thought",
+    description: "Surface an uncomfortable coaching tension and leave it deliberately unresolved.",
+    openingGuidance: "Open with a coaching tension or dilemma that has no clean answer. End the post on the tension, not a resolution. The reader should feel compelled to weigh in because you did not close the loop.",
   },
 };
 
@@ -280,7 +302,12 @@ function pickFrame(
   return pool[0] ?? "development_gap";
 }
 
-function pickHook(frameId: ContentFrameId, recentDecisions: RecentContentDecision[], retiredCombos: RetiredCombo[] = []): HookStructureId {
+function pickHook(
+  frameId: ContentFrameId,
+  recentDecisions: RecentContentDecision[],
+  retiredCombos: RetiredCombo[] = [],
+  hookScores: HookPerformanceScore[] = []
+): HookStructureId {
   const allowed = filterRetiredHooks(frameId, [...FRAME_DEFINITIONS[frameId].allowedHooks], retiredCombos);
   const recent = recentDecisions.slice(0, RECENT_WINDOW);
   const recentHooks = new Map<HookStructureId, number>();
@@ -294,18 +321,54 @@ function pickHook(frameId: ContentFrameId, recentDecisions: RecentContentDecisio
   const candidates = allowed.filter((hookId) => (recentHooks.get(hookId) ?? 0) < HARD_BLOCK_THRESHOLD);
   const pool = candidates.length > 0 ? candidates : [...allowed];
 
-  // Sort by usage count with randomness among ties
-  pool.sort((a, b) => {
-    const diff = (recentHooks.get(a) ?? 0) - (recentHooks.get(b) ?? 0);
-    if (diff !== 0) return diff;
-    return Math.random() - 0.5;
-  });
+  // ── Bandit-style selection: 80% exploit, 20% explore ──
+  const scoreMap = new Map(hookScores.map((h) => [h.hookStructureId, h]));
+  const hasScoreData = pool.some((hookId) => (scoreMap.get(hookId)?.count ?? 0) >= 2);
 
-  let selected = pool[0] ?? allowed[0];
+  let selected: HookStructureId;
 
-  // Weighted random: occasionally pick the second option
-  if (pool.length >= 2 && Math.random() < 0.3) {
-    selected = pool[1];
+  if (hasScoreData && Math.random() < 0.8) {
+    // EXPLOIT: pick from pool weighted by performance score
+    const scored = pool.map((hookId) => {
+      const perf = scoreMap.get(hookId);
+      // Hooks with no data get a small baseline score so they aren't permanently ignored
+      const score = perf && perf.count >= 2 ? perf.avgScore : 0;
+      return { hookId, score };
+    });
+    // Softmax-style weighting: normalize scores to [0,1] range, then weight
+    const maxScore = Math.max(...scored.map((s) => s.score), 1);
+    const weights = scored.map((s) => ({
+      hookId: s.hookId,
+      weight: Math.max(s.score / maxScore, 0.05), // floor at 5% so no hook is fully zeroed
+    }));
+    const totalWeight = weights.reduce((sum, w) => sum + w.weight, 0);
+    let roll = Math.random() * totalWeight;
+    selected = weights[weights.length - 1].hookId;
+    for (const w of weights) {
+      roll -= w.weight;
+      if (roll <= 0) {
+        selected = w.hookId;
+        break;
+      }
+    }
+  } else {
+    // EXPLORE: pick the least-used hook (rotation), or random among ties
+    pool.sort((a, b) => {
+      const diff = (recentHooks.get(a) ?? 0) - (recentHooks.get(b) ?? 0);
+      if (diff !== 0) return diff;
+      return Math.random() - 0.5;
+    });
+
+    // Also favor undersampled hooks (fewer than 2 scored records)
+    const undersampled = pool.filter((hookId) => (scoreMap.get(hookId)?.count ?? 0) < 2);
+    if (undersampled.length > 0 && Math.random() < 0.5) {
+      selected = undersampled[Math.floor(Math.random() * undersampled.length)];
+    } else {
+      selected = pool[0] ?? allowed[0];
+      if (pool.length >= 2 && Math.random() < 0.3) {
+        selected = pool[1];
+      }
+    }
   }
 
   if (selected === "universal_truth" && mostTeamsUses > 0) {
@@ -320,6 +383,8 @@ function inferOpeningPatternForHook(hookId: HookStructureId): string {
   if (hookId === "scene_setter") return "scene_setter";
   if (hookId === "insider_divide") return "insider_divide";
   if (hookId === "named_moment") return "named_moment";
+  if (hookId === "hot_take_dare") return "hot_take_dare";
+  if (hookId === "unfinished_thought") return "unfinished_thought";
   return "universal_truth";
 }
 
@@ -355,7 +420,7 @@ export function selectContentDecision(input: SelectContentDecisionInput): Conten
   const recentDecisions = input.recentDecisions ?? [];
   const newsMomentType = input.newsUsed ? classifyNewsMoment(input.newsArticle) : "unknown";
   const frameId = pickFrame(newsMomentType, recentDecisions, input.targetPlatforms);
-  const hookStructureId = pickHook(frameId, recentDecisions, input.retiredCombos ?? []);
+  const hookStructureId = pickHook(frameId, recentDecisions, input.retiredCombos ?? [], input.hookScores ?? []);
   const frame = FRAME_DEFINITIONS[frameId];
   const hook = HOOK_DEFINITIONS[hookStructureId];
   const emotionTarget = pickEmotion(frame.emotionalTarget, recentDecisions);

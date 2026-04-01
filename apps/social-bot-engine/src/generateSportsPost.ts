@@ -152,10 +152,12 @@ export async function generatePost(
       : "";
   const iterationBlock = options.iterationGuidance
     ? `\nIteration guidance from recent post analytics:
-- Learn from why strong posts worked, not just what they said.
-- Weight toward hooks that surface tension, uncomfortable truths, or strong coach recognition.
-- Notice whether the winning post triggered recognition, frustration, or validation.
-- Follow these patterns:\n${options.iterationGuidance}`
+- REPLIES are the highest-value engagement. Posts that provoke coaches to respond outperform everything else.
+- Write posts that make coaches want to add their own experience, disagree, or tag their staff.
+- Tension > agreement. A post coaches argue about reaches 10x more people than one they silently like.
+- Leave room for the reader to finish the thought — unresolved tension invites replies.
+- The best-performing posts feel like the start of a coaches' group chat argument, not the end of one.
+- Follow these data-driven patterns:\n${options.iterationGuidance}`
     : "";
   const winnerBlock = (options.winningPostTexts?.length ?? 0) > 0
     ? `\nPosts that performed well recently — learn from their style and rhythm, but do NOT copy them:\n${options.winningPostTexts!.slice(0, 3).map((t) => `- "${t}"`).join("\n")}`
@@ -365,9 +367,11 @@ export async function generateThread(options: GenerateThreadOptions): Promise<Ge
   const userMessage = `Write a 3-4 tweet thread for the ${sport} coaching audience. Date: ${date}. Theme: ${angle}.
 
 Thread structure:
-1. Hook tweet: tension, hard truth, or counterintuitive observation. Must earn the scroll-stop.
-2-3. Deliver the insight with specifics. Scene-based, not generic.
+1. Hook tweet: tension, hard truth, or counterintuitive observation. Must earn the scroll-stop. Ideally debatable enough that coaches want to reply.
+2-3. Deliver the insight with specifics. Scene-based, not generic. At least one tweet should surface an unresolved tension that invites coaches to weigh in.
 4. Close with a coaching truth and light brand mention (${BRAND_NAME} · ${BRAND_WEBSITE}).
+
+Optimize for replies: the thread should feel like the start of a coaches' argument, not the end of one. Leave at least one tension unresolved so coaches feel compelled to add their take.
 
 Each tweet must be under 280 characters. Separate tweets with ---${avoidBlock}${iterationBlock}`;
 

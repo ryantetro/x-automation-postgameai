@@ -98,14 +98,14 @@ const CHART_HEIGHT = 360;
 const CHART_PADDING = { top: 20, right: 20, bottom: 38, left: 56 };
 
 const SERIES_COLORS: Array<{ color: string; gradientStart: string; gradientEnd: string }> = [
-  { color: "#19c37d", gradientStart: "rgba(25, 195, 125, 0.16)", gradientEnd: "rgba(25, 195, 125, 0.01)" },
-  { color: "#60a5fa", gradientStart: "rgba(96, 165, 250, 0.15)", gradientEnd: "rgba(96, 165, 250, 0.01)" },
-  { color: "#f59e0b", gradientStart: "rgba(245, 158, 11, 0.15)", gradientEnd: "rgba(245, 158, 11, 0.01)" },
-  { color: "#a78bfa", gradientStart: "rgba(168, 139, 250, 0.15)", gradientEnd: "rgba(168, 139, 250, 0.01)" },
-  { color: "#ef4444", gradientStart: "rgba(239, 68, 68, 0.14)", gradientEnd: "rgba(239, 68, 68, 0.01)" },
-  { color: "#06b6d4", gradientStart: "rgba(6, 182, 212, 0.15)", gradientEnd: "rgba(6, 182, 212, 0.01)" },
-  { color: "#ec4899", gradientStart: "rgba(236, 72, 153, 0.14)", gradientEnd: "rgba(236, 72, 153, 0.01)" },
-  { color: "#84cc16", gradientStart: "rgba(132, 204, 22, 0.14)", gradientEnd: "rgba(132, 204, 22, 0.01)" },
+  { color: "#19c37d", gradientStart: "rgba(25, 195, 125, 0.25)", gradientEnd: "rgba(25, 195, 125, 0.02)" },
+  { color: "#06b6d4", gradientStart: "rgba(6, 182, 212, 0.25)", gradientEnd: "rgba(6, 182, 212, 0.02)" },
+  { color: "#f59e0b", gradientStart: "rgba(245, 158, 11, 0.25)", gradientEnd: "rgba(245, 158, 11, 0.02)" },
+  { color: "#f43f5e", gradientStart: "rgba(244, 63, 94, 0.25)", gradientEnd: "rgba(244, 63, 94, 0.02)" },
+  { color: "#a78bfa", gradientStart: "rgba(168, 139, 250, 0.25)", gradientEnd: "rgba(168, 139, 250, 0.02)" },
+  { color: "#ef4444", gradientStart: "rgba(239, 68, 68, 0.25)", gradientEnd: "rgba(239, 68, 68, 0.02)" },
+  { color: "#ec4899", gradientStart: "rgba(236, 72, 153, 0.25)", gradientEnd: "rgba(236, 72, 153, 0.02)" },
+  { color: "#84cc16", gradientStart: "rgba(132, 204, 22, 0.25)", gradientEnd: "rgba(132, 204, 22, 0.02)" },
 ];
 
 function deriveSeriesKey(record: { platform: PlatformKey; campaignSlug?: string }): string {
@@ -520,6 +520,9 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                     borderStyle: "solid",
                   }}
                 />
+                <span className={`timeline-platform-tag timeline-platform-tag-${entry.platform}`}>
+                  {entry.platform === "x" ? "X" : "T"}
+                </span>
                 {entry.label}
               </button>
             );
@@ -648,18 +651,19 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                 {seriesGeometry.map((entry) => {
                   const isOtherFocused = focusSeriesKey !== null && focusSeriesKey !== entry.seriesKey;
                   const opacity = isOtherFocused ? 0.15 : 1;
+                  const isXPlatform = entry.platform === "x";
                   return (
                     <g key={entry.seriesKey} style={{ opacity, transition: "opacity 0.2s ease" }}>
                       {entry.area ? <path d={entry.area} className="timeline-area" fill={`url(#${baseId}-${entry.seriesKey})`} /> : null}
                       {entry.line ? (
                         <path
                           d={entry.line}
-                          className="timeline-line"
-                          pathLength={1}
+                          className={`timeline-line ${isXPlatform ? "timeline-line-dashed" : ""}`}
+                          pathLength={isXPlatform ? undefined : 1}
                           style={{
                             stroke: entry.color,
                             filter: `drop-shadow(0 6px 16px ${entry.color}40) drop-shadow(0 0 14px ${entry.color}25)`,
-                            strokeWidth: activePoint?.seriesKey === entry.seriesKey ? 3 : 2.5,
+                            strokeWidth: activePoint?.seriesKey === entry.seriesKey ? 3.5 : 3,
                           }}
                         />
                       ) : null}
@@ -687,17 +691,17 @@ export default function InteractiveTimelineChart({ records }: InteractiveTimelin
                       <circle
                         cx={point.x}
                         cy={point.y}
-                        r={isActive ? 8 : 5}
+                        r={isActive ? 9 : 6}
                         className={`timeline-point-ring ${isActive ? "is-active" : ""}`}
                         style={{
-                          fill: isActive ? `${color}20` : `${color}10`,
-                          stroke: isActive ? `${color}55` : `${color}28`,
+                          fill: isActive ? `${color}30` : `${color}18`,
+                          stroke: isActive ? `${color}65` : `${color}40`,
                         }}
                       />
                       <circle
                         cx={point.x}
                         cy={point.y}
-                        r={isActive ? 4.5 : 3.2}
+                        r={isActive ? 5.5 : 4}
                         className={`timeline-point ${isActive ? "is-active" : ""}`}
                         style={{ fill: color }}
                       />
