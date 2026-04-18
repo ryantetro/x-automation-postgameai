@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-04-17T23:32:44.234Z",
+  "updatedAt": "2026-04-18T11:32:07.242Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -2877,7 +2877,7 @@
       "lessonVersion": "lesson-2026-03-28",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:06.133Z",
+        "fetchedAt": "2026-04-18T11:31:45.863Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -2889,7 +2889,7 @@
         "engagementRate": 0
       },
       "score": 10,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -2898,7 +2898,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -2972,7 +2972,7 @@
       "lessonVersion": "lesson-2026-03-29",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:05.909Z",
+        "fetchedAt": "2026-04-18T11:31:45.684Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -2984,7 +2984,7 @@
         "engagementRate": 0
       },
       "score": 9,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -2993,7 +2993,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -3070,7 +3070,7 @@
       "lessonVersion": "lesson-2026-03-29",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:05.718Z",
+        "fetchedAt": "2026-04-18T11:31:45.480Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3082,7 +3082,7 @@
         "engagementRate": 0
       },
       "score": 1,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -3091,7 +3091,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -3168,7 +3168,7 @@
       "lessonVersion": "lesson-2026-03-30",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:05.503Z",
+        "fetchedAt": "2026-04-18T11:31:45.328Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3180,7 +3180,7 @@
         "engagementRate": 0
       },
       "score": 15,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -3189,7 +3189,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -3263,7 +3263,7 @@
       "lessonVersion": "lesson-2026-03-30",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:05.298Z",
+        "fetchedAt": "2026-04-18T11:31:45.144Z",
         "likeCount": 3,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3275,7 +3275,7 @@
         "engagementRate": 0.090909
       },
       "score": 93,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -3284,7 +3284,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -3358,7 +3358,7 @@
       "lessonVersion": "lesson-2026-03-31",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:05.093Z",
+        "fetchedAt": "2026-04-18T11:31:44.911Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3370,7 +3370,7 @@
         "engagementRate": 0
       },
       "score": 8,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -3379,7 +3379,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -3456,7 +3456,7 @@
       "lessonVersion": "lesson-2026-03-31",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:04.890Z",
+        "fetchedAt": "2026-04-18T11:31:44.756Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3468,7 +3468,7 @@
         "engagementRate": 0
       },
       "score": 4,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -3477,7 +3477,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -3551,7 +3551,7 @@
       "lessonVersion": "lesson-2026-04-01",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:04.702Z",
+        "fetchedAt": "2026-04-18T11:31:44.604Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3563,7 +3563,7 @@
         "engagementRate": 0
       },
       "score": 15,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -3572,7 +3572,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -3647,7 +3647,7 @@
       "lessonVersion": "lesson-2026-04-01",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:04.523Z",
+        "fetchedAt": "2026-04-18T11:31:44.357Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3659,7 +3659,7 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -3668,7 +3668,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -3746,7 +3746,7 @@
       "lessonVersion": "lesson-2026-04-02",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:04.266Z",
+        "fetchedAt": "2026-04-18T11:31:44.196Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3758,7 +3758,7 @@
         "engagementRate": 0
       },
       "score": 7,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -3767,7 +3767,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -3842,7 +3842,7 @@
       "lessonVersion": "lesson-2026-04-02",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:04.050Z",
+        "fetchedAt": "2026-04-18T11:31:43.975Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3854,7 +3854,7 @@
         "engagementRate": 0
       },
       "score": 10,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -3863,7 +3863,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -3941,7 +3941,7 @@
       "lessonVersion": "lesson-2026-04-03",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:03.804Z",
+        "fetchedAt": "2026-04-18T11:31:43.744Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3953,7 +3953,7 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -3962,7 +3962,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -4040,7 +4040,7 @@
       "lessonVersion": "lesson-2026-04-03",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:03.586Z",
+        "fetchedAt": "2026-04-18T11:31:43.492Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4052,7 +4052,7 @@
         "engagementRate": 0
       },
       "score": 3,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -4061,7 +4061,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -4136,7 +4136,7 @@
       "lessonVersion": "lesson-2026-04-04",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:03.339Z",
+        "fetchedAt": "2026-04-18T11:31:43.348Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4148,7 +4148,7 @@
         "engagementRate": 0
       },
       "score": 19,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -4157,7 +4157,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -4232,7 +4232,7 @@
       "lessonVersion": "lesson-2026-04-04",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:03.134Z",
+        "fetchedAt": "2026-04-18T11:31:43.178Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4244,7 +4244,7 @@
         "engagementRate": 0
       },
       "score": 1,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -4253,7 +4253,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -4328,7 +4328,7 @@
       "lessonVersion": "lesson-2026-04-05",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:02.929Z",
+        "fetchedAt": "2026-04-18T11:31:43.012Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4340,7 +4340,7 @@
         "engagementRate": 0
       },
       "score": 23,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -4349,7 +4349,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -4427,7 +4427,7 @@
       "lessonVersion": "lesson-2026-04-05",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:02.646Z",
+        "fetchedAt": "2026-04-18T11:31:42.797Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4439,7 +4439,7 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -4448,7 +4448,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -4523,7 +4523,7 @@
       "lessonVersion": "lesson-2026-04-06",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:02.395Z",
+        "fetchedAt": "2026-04-18T11:31:42.379Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4535,7 +4535,7 @@
         "engagementRate": 0
       },
       "score": 53,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -4544,7 +4544,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -4619,7 +4619,7 @@
       "lessonVersion": "lesson-2026-04-06",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:02.152Z",
+        "fetchedAt": "2026-04-18T11:31:42.175Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4631,7 +4631,7 @@
         "engagementRate": 0
       },
       "score": 5,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -4640,7 +4640,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -4718,7 +4718,7 @@
       "lessonVersion": "lesson-2026-04-07",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:01.956Z",
+        "fetchedAt": "2026-04-18T11:31:41.986Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4730,7 +4730,7 @@
         "engagementRate": 0
       },
       "score": 10,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -4739,7 +4739,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -4814,7 +4814,7 @@
       "lessonVersion": "lesson-2026-04-07",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:01.690Z",
+        "fetchedAt": "2026-04-18T11:31:41.792Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4826,7 +4826,7 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -4835,7 +4835,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -4910,7 +4910,7 @@
       "lessonVersion": "lesson-2026-04-08",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:01.486Z",
+        "fetchedAt": "2026-04-18T11:31:41.605Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4922,7 +4922,7 @@
         "engagementRate": 0
       },
       "score": 7,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -4931,7 +4931,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5006,7 +5006,7 @@
       "lessonVersion": "lesson-2026-04-08",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:01.262Z",
+        "fetchedAt": "2026-04-18T11:31:41.443Z",
         "likeCount": 1,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5018,7 +5018,7 @@
         "engagementRate": 0.01
       },
       "score": 120,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "x": {
           "status": "ok",
@@ -5027,7 +5027,7 @@
         },
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5102,7 +5102,7 @@
       "lessonVersion": "lesson-2026-04-09",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:01.024Z",
+        "fetchedAt": "2026-04-18T11:31:41.242Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5114,11 +5114,11 @@
         "engagementRate": 0
       },
       "score": 9,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5193,7 +5193,7 @@
       "lessonVersion": "lesson-2026-04-09",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:00.807Z",
+        "fetchedAt": "2026-04-18T11:31:41.021Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5205,11 +5205,11 @@
         "engagementRate": 0
       },
       "score": 3,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5284,7 +5284,7 @@
       "lessonVersion": "lesson-2026-04-10",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:00.570Z",
+        "fetchedAt": "2026-04-18T11:31:40.874Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5296,11 +5296,11 @@
         "engagementRate": 0
       },
       "score": 10,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5375,7 +5375,7 @@
       "lessonVersion": "lesson-2026-04-10",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:00.343Z",
+        "fetchedAt": "2026-04-18T11:31:40.718Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5387,11 +5387,11 @@
         "engagementRate": 0
       },
       "score": 16,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5466,7 +5466,7 @@
       "lessonVersion": "lesson-2026-04-11",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:00.098Z",
+        "fetchedAt": "2026-04-18T11:31:40.461Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5478,11 +5478,11 @@
         "engagementRate": 0
       },
       "score": 73,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5557,7 +5557,7 @@
       "lessonVersion": "lesson-2026-04-11",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:59.912Z",
+        "fetchedAt": "2026-04-18T11:31:40.332Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5569,11 +5569,11 @@
         "engagementRate": 0
       },
       "score": 18,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5648,7 +5648,7 @@
       "lessonVersion": "lesson-2026-04-12",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:59.717Z",
+        "fetchedAt": "2026-04-18T11:31:40.184Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5660,11 +5660,11 @@
         "engagementRate": 0
       },
       "score": 6,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5739,7 +5739,7 @@
       "lessonVersion": "lesson-2026-04-12",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:59.527Z",
+        "fetchedAt": "2026-04-18T11:31:40.021Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5751,11 +5751,11 @@
         "engagementRate": 0
       },
       "score": 6,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5830,7 +5830,7 @@
       "lessonVersion": "lesson-2026-04-13",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:59.342Z",
+        "fetchedAt": "2026-04-18T11:31:39.815Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5842,11 +5842,11 @@
         "engagementRate": 0
       },
       "score": 3,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -5921,7 +5921,7 @@
       "lessonVersion": "lesson-2026-04-13",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:59.117Z",
+        "fetchedAt": "2026-04-18T11:31:39.649Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5933,11 +5933,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -6012,7 +6012,7 @@
       "lessonVersion": "lesson-2026-04-14",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:58.906Z",
+        "fetchedAt": "2026-04-18T11:31:39.418Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6024,11 +6024,11 @@
         "engagementRate": 0
       },
       "score": 1,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -6172,7 +6172,7 @@
       "lessonVersion": "lesson-2026-04-15",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:58.710Z",
+        "fetchedAt": "2026-04-18T11:31:39.253Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6184,11 +6184,11 @@
         "engagementRate": 0
       },
       "score": 8,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -6263,7 +6263,7 @@
       "lessonVersion": "lesson-2026-04-15",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:58.507Z",
+        "fetchedAt": "2026-04-18T11:31:39.098Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6275,11 +6275,11 @@
         "engagementRate": 0
       },
       "score": 13,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -6354,7 +6354,7 @@
       "lessonVersion": "lesson-2026-04-16",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:58.319Z",
+        "fetchedAt": "2026-04-18T11:31:38.939Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6366,11 +6366,11 @@
         "engagementRate": 0
       },
       "score": 1,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -6445,7 +6445,7 @@
       "lessonVersion": "lesson-2026-04-16",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:58.145Z",
+        "fetchedAt": "2026-04-18T11:31:38.794Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6457,11 +6457,11 @@
         "engagementRate": 0
       },
       "score": 3,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -6536,7 +6536,7 @@
       "lessonVersion": "lesson-2026-04-17",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:31:57.959Z",
+        "fetchedAt": "2026-04-18T11:31:38.573Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6548,11 +6548,11 @@
         "engagementRate": 0
       },
       "score": 9,
-      "scoreUpdatedAt": "2026-04-17T23:32:06.358Z",
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:06.358Z",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
           "failures": 0
         }
       }
@@ -6627,7 +6627,98 @@
       "lessonVersion": "lesson-2026-04-17",
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-17T23:32:44.024Z",
+        "fetchedAt": "2026-04-18T11:31:38.422Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 6,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 6,
+      "scoreUpdatedAt": "2026-04-18T11:31:45.863Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-04-18T11:31:45.863Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "96024e57-df10-4ea2-b0ab-a936829d23d7",
+      "threadsPostId": "18065928242692267",
+      "postedAt": "2026-04-18T11:31:37.748Z",
+      "postedHour": 11,
+      "dateContext": "2026-04-18",
+      "sport": "canopy",
+      "angle": "Vendor Life and Event Culture",
+      "source": "llm",
+      "status": "posted",
+      "text": "Utah market mornings: where the real game isn't selling, but taming the wind before your first customer arrives. Vinyl flapping tells more stories than any booth sign ever could.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "utah_market",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "18065928242692267"
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "use_case_moments",
+      "voiceFamily": "buyer_intent_detail",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "trade shows",
+      "productFocus": "custom canopies",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "customer_showcase",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "culture content is due based on the 60/20/10/10 canopy mix; vendor_life is due based on cadence, performance, and launch pacing; use_case_moments selected inside culture; buyer_intent_detail is outperforming peers on X; customer_showcase is outperforming peers on X; custom canopies is outperforming peers on X; agent mode exploit. Top canopy pillar on X lately: competitive_value_framing. Best recurring series lately: booth_hot_take. Most effective content bucket lately: education. Best voice family: buyer_intent_detail. Best creative lane: customer_showcase. Brand tags showed up in 7% of recent canopy posts. Weak opening patterns: three_booth, packed_farmers. Explore next: openingPattern:curbside_setups, openingPattern:two_booth, openingPattern:not_every.; Vendor-life posts stay text-first unless canopy images materially outperform text-only posts.",
+      "seriesId": "vendor_life",
+      "contentBucket": "culture",
+      "brandTagIncluded": false,
+      "candidateId": "use_case_moments|vendor_life|culture|buyer_intent_detail|customer_showcase|consideration|custom canopies|trade shows|none|soft_commercial:candidate:4",
+      "candidateBatchId": "96024e57-df10-4ea2-b0ab-a936829d23d7:canopy-batch",
+      "candidateScore": 152,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "exploit",
+      "strategyEnvelopeId": "use_case_moments|vendor_life|culture|buyer_intent_detail|customer_showcase|consideration|custom canopies|trade shows|none|soft_commercial",
+      "agentReasoningSummary": "culture content is due based on the 60/20/10/10 canopy mix; vendor_life is due based on cadence, performance, and launch pacing; use_case_moments selected inside culture; buyer_intent_detail is outperforming peers on X; customer_showcase is outperforming peers on X; custom canopies is outperforming peers on X; agent mode exploit",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "event_insider",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-04-18",
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-04-18T11:32:07.015Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6639,11 +6730,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-04-17T23:32:44.024Z",
+      "scoreUpdatedAt": "2026-04-18T11:32:07.015Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-17T23:32:44.024Z",
+          "updatedAt": "2026-04-18T11:32:07.015Z",
           "failures": 0
         }
       }
@@ -6652,20 +6743,20 @@
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-04-17T23:31:57.222Z",
+      "lastAttemptAt": "2026-04-18T11:31:37.751Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-04-17T23:32:43.811Z",
-      "lastSuccessAt": "2026-04-17T23:32:44.234Z"
+      "lastAttemptAt": "2026-04-18T11:32:06.863Z",
+      "lastSuccessAt": "2026-04-18T11:32:07.242Z"
     }
   },
   "threadsUserInsights": {
-    "fetchedAt": "2026-04-17T23:32:44.234Z",
-    "views": 9,
+    "fetchedAt": "2026-04-18T11:32:07.242Z",
+    "views": 0,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
