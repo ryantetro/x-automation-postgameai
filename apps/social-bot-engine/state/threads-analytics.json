@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-04-22T12:06:11.058Z",
+  "updatedAt": "2026-04-22T23:53:39.645Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -3701,7 +3701,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:06:00.485Z",
+        "fetchedAt": "2026-04-22T23:53:21.206Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3713,11 +3713,11 @@
         "engagementRate": 0
       },
       "score": 16,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -3771,7 +3771,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:06:00.284Z",
+        "fetchedAt": "2026-04-22T23:53:20.412Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3783,11 +3783,11 @@
         "engagementRate": 0
       },
       "score": 6,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -3841,7 +3841,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:06:00.097Z",
+        "fetchedAt": "2026-04-22T23:53:19.696Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3853,11 +3853,11 @@
         "engagementRate": 0
       },
       "score": 277,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -3911,7 +3911,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:59.848Z",
+        "fetchedAt": "2026-04-22T23:53:19.064Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3923,11 +3923,11 @@
         "engagementRate": 0
       },
       "score": 4,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -3977,7 +3977,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:59.642Z",
+        "fetchedAt": "2026-04-22T23:53:18.568Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -3989,11 +3989,11 @@
         "engagementRate": 0
       },
       "score": 45,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4043,7 +4043,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:59.454Z",
+        "fetchedAt": "2026-04-22T23:53:17.913Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4055,11 +4055,11 @@
         "engagementRate": 0
       },
       "score": 20,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4113,7 +4113,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:59.219Z",
+        "fetchedAt": "2026-04-22T23:53:17.319Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4125,11 +4125,11 @@
         "engagementRate": 0
       },
       "score": 101,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4183,7 +4183,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:59.009Z",
+        "fetchedAt": "2026-04-22T23:53:16.625Z",
         "likeCount": 1,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4195,11 +4195,11 @@
         "engagementRate": 0.005556
       },
       "score": 200,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4253,7 +4253,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:58.789Z",
+        "fetchedAt": "2026-04-22T23:53:15.916Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4265,11 +4265,11 @@
         "engagementRate": 0
       },
       "score": 38,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4323,7 +4323,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:58.562Z",
+        "fetchedAt": "2026-04-22T23:53:15.446Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4335,11 +4335,11 @@
         "engagementRate": 0
       },
       "score": 13,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4389,7 +4389,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:58.316Z",
+        "fetchedAt": "2026-04-22T23:53:14.972Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4401,11 +4401,11 @@
         "engagementRate": 0
       },
       "score": 109,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4459,7 +4459,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:58.082Z",
+        "fetchedAt": "2026-04-22T23:53:14.410Z",
         "likeCount": 1,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4471,11 +4471,11 @@
         "engagementRate": 0.25
       },
       "score": 24,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4525,7 +4525,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:57.798Z",
+        "fetchedAt": "2026-04-22T23:53:13.637Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4537,11 +4537,11 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4591,7 +4591,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:57.565Z",
+        "fetchedAt": "2026-04-22T23:53:13.184Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4603,11 +4603,11 @@
         "engagementRate": 0
       },
       "score": 5,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4661,7 +4661,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:57.338Z",
+        "fetchedAt": "2026-04-22T23:53:12.685Z",
         "likeCount": 2,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4673,11 +4673,11 @@
         "engagementRate": 0.010989
       },
       "score": 222,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4731,7 +4731,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:57.154Z",
+        "fetchedAt": "2026-04-22T23:53:12.339Z",
         "likeCount": 1,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4743,11 +4743,11 @@
         "engagementRate": 0.005464
       },
       "score": 203,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4801,7 +4801,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:56.959Z",
+        "fetchedAt": "2026-04-22T23:53:11.905Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4813,11 +4813,11 @@
         "engagementRate": 0
       },
       "score": 87,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4867,7 +4867,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:56.725Z",
+        "fetchedAt": "2026-04-22T23:53:11.361Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4879,11 +4879,11 @@
         "engagementRate": 0
       },
       "score": 10,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -4933,7 +4933,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:56.470Z",
+        "fetchedAt": "2026-04-22T23:53:10.735Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -4945,11 +4945,11 @@
         "engagementRate": 0
       },
       "score": 117,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5003,7 +5003,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:56.187Z",
+        "fetchedAt": "2026-04-22T23:53:09.880Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5015,11 +5015,11 @@
         "engagementRate": 0
       },
       "score": 9,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5073,7 +5073,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:55.922Z",
+        "fetchedAt": "2026-04-22T23:53:09.299Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5085,11 +5085,11 @@
         "engagementRate": 0
       },
       "score": 69,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5143,7 +5143,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:55.710Z",
+        "fetchedAt": "2026-04-22T23:53:08.488Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5155,11 +5155,11 @@
         "engagementRate": 0
       },
       "score": 17,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5209,7 +5209,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:55.505Z",
+        "fetchedAt": "2026-04-22T23:53:07.727Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5221,11 +5221,11 @@
         "engagementRate": 0
       },
       "score": 1,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5275,7 +5275,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:55.309Z",
+        "fetchedAt": "2026-04-22T23:53:07.374Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5287,11 +5287,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5341,7 +5341,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:55.073Z",
+        "fetchedAt": "2026-04-22T23:53:06.593Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5353,11 +5353,11 @@
         "engagementRate": 0
       },
       "score": 35,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5407,7 +5407,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:54.846Z",
+        "fetchedAt": "2026-04-22T23:53:06.162Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5419,11 +5419,11 @@
         "engagementRate": 0
       },
       "score": 9,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5473,7 +5473,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:54.656Z",
+        "fetchedAt": "2026-04-22T23:53:05.749Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5485,11 +5485,11 @@
         "engagementRate": 0
       },
       "score": 3,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5543,7 +5543,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:54.474Z",
+        "fetchedAt": "2026-04-22T23:53:05.175Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5555,11 +5555,11 @@
         "engagementRate": 0
       },
       "score": 18,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5613,7 +5613,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:54.244Z",
+        "fetchedAt": "2026-04-22T23:53:04.816Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5625,11 +5625,11 @@
         "engagementRate": 0
       },
       "score": 127,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5683,7 +5683,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:54.043Z",
+        "fetchedAt": "2026-04-22T23:53:04.432Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5695,11 +5695,11 @@
         "engagementRate": 0
       },
       "score": 92,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5749,7 +5749,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:53.811Z",
+        "fetchedAt": "2026-04-22T23:53:03.825Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5761,11 +5761,11 @@
         "engagementRate": 0
       },
       "score": 27,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5819,7 +5819,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:53.594Z",
+        "fetchedAt": "2026-04-22T23:53:03.475Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5831,11 +5831,11 @@
         "engagementRate": 0
       },
       "score": 14,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5889,7 +5889,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:53.381Z",
+        "fetchedAt": "2026-04-22T23:53:02.715Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5901,11 +5901,11 @@
         "engagementRate": 0
       },
       "score": 44,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -5959,7 +5959,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:53.189Z",
+        "fetchedAt": "2026-04-22T23:53:02.364Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -5971,11 +5971,11 @@
         "engagementRate": 0
       },
       "score": 2,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -6029,7 +6029,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:52.968Z",
+        "fetchedAt": "2026-04-22T23:53:01.811Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6041,11 +6041,11 @@
         "engagementRate": 0
       },
       "score": 105,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -6099,7 +6099,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:52.772Z",
+        "fetchedAt": "2026-04-22T23:53:01.461Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6111,11 +6111,11 @@
         "engagementRate": 0
       },
       "score": 34,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.207Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.207Z",
           "failures": 0
         }
       }
@@ -6165,7 +6165,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:52.552Z",
+        "fetchedAt": "2026-04-22T23:53:01.095Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6177,11 +6177,11 @@
         "engagementRate": 0
       },
       "score": 61,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.206Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.206Z",
           "failures": 0
         }
       }
@@ -6231,7 +6231,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:52.287Z",
+        "fetchedAt": "2026-04-22T23:53:00.721Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6243,11 +6243,11 @@
         "engagementRate": 0
       },
       "score": 8,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.206Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.206Z",
           "failures": 0
         }
       }
@@ -6297,7 +6297,7 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:05:52.089Z",
+        "fetchedAt": "2026-04-22T23:53:00.171Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6309,11 +6309,11 @@
         "engagementRate": 0
       },
       "score": 63,
-      "scoreUpdatedAt": "2026-04-22T12:06:00.681Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:21.206Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:00.681Z",
+          "updatedAt": "2026-04-22T23:53:21.206Z",
           "failures": 0
         }
       }
@@ -6407,7 +6407,73 @@
       "brandMentioned": true,
       "metrics": {
         "platform": "threads",
-        "fetchedAt": "2026-04-22T12:06:10.837Z",
+        "fetchedAt": "2026-04-22T23:52:59.610Z",
+        "likeCount": 0,
+        "replyCount": 0,
+        "retweetCount": 0,
+        "quoteCount": 0,
+        "bookmarkCount": 0,
+        "shareCount": 0,
+        "impressionCount": 28,
+        "engagementCount": 0,
+        "engagementRate": 0
+      },
+      "score": 28,
+      "scoreUpdatedAt": "2026-04-22T23:53:21.206Z",
+      "analyticsFetchState": {
+        "threads": {
+          "status": "ok",
+          "updatedAt": "2026-04-22T23:53:21.206Z",
+          "failures": 0
+        }
+      }
+    },
+    {
+      "runId": "0ba22293-2a19-4b3f-9b45-62c18f182578",
+      "threadsPostId": "18523349044073530",
+      "postedAt": "2026-04-22T23:52:57.670Z",
+      "postedHour": 23,
+      "dateContext": "2026-04-22",
+      "sport": "soccer",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "posted",
+      "text": "The problem isn't Man City's stumble against Arsenal. It's the way crucial defensive lapses vanish between final whistle and Monday's session. Every coach has watched key insights slip away while the team pretends they've fixed it. postgame AI · getpostgame.ai #CoachingTruth #SoccerInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Conversation That Doesn't Happen to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "the_problem",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "posted",
+          "postId": "18523349044073530"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true,
+      "metrics": {
+        "platform": "threads",
+        "fetchedAt": "2026-04-22T23:53:39.213Z",
         "likeCount": 0,
         "replyCount": 0,
         "retweetCount": 0,
@@ -6419,11 +6485,11 @@
         "engagementRate": null
       },
       "score": 0,
-      "scoreUpdatedAt": "2026-04-22T12:06:10.837Z",
+      "scoreUpdatedAt": "2026-04-22T23:53:39.213Z",
       "analyticsFetchState": {
         "threads": {
           "status": "ok",
-          "updatedAt": "2026-04-22T12:06:10.837Z",
+          "updatedAt": "2026-04-22T23:53:39.213Z",
           "failures": 0
         }
       }
@@ -6432,13 +6498,13 @@
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-04-22T12:06:10.633Z",
-      "lastSuccessAt": "2026-04-22T12:06:11.058Z"
+      "lastAttemptAt": "2026-04-22T23:53:38.597Z",
+      "lastSuccessAt": "2026-04-22T23:53:39.644Z"
     }
   },
   "threadsUserInsights": {
-    "fetchedAt": "2026-04-22T12:06:11.058Z",
-    "views": 1,
+    "fetchedAt": "2026-04-22T23:53:39.644Z",
+    "views": 29,
     "likes": 0,
     "replies": 0,
     "reposts": 0,
