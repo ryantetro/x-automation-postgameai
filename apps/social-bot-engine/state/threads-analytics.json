@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-07T23:59:27.855Z",
+  "updatedAt": "2026-05-08T12:16:38.415Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -8535,15 +8535,57 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4968c50d-5132-4449-985e-c749515dfbff",
+      "postedAt": "2026-05-08T12:16:36.068Z",
+      "postedHour": 12,
+      "dateContext": "2026-05-08",
+      "sport": "nfl",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Every coach dreads Monday for one reason: forgotten film takeaways punish harder than a blitz. The gap between talent and execution reveals itself late Sunday—a misread here, a hesitation there, gone in 48 hours if you're not on it. postgame AI · getpostgame.ai #CoachingTruth #NFLInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "validation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "every_coach",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 08-May-26 05:16:38 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
-      "status": "degraded",
-      "lastAttemptAt": "2026-05-07T23:59:23.550Z",
-      "lastSuccessAt": "2026-05-07T13:02:06.206Z",
-      "lastError": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 07-May-26 16:59:23 PDT.",
-      "lastErrorCode": "threads_media_insights_unavailable"
+      "status": "healthy",
+      "lastAttemptAt": "2026-05-08T12:16:36.071Z",
+      "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
   "threadsUserInsights": {
