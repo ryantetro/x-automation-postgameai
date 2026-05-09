@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-09T11:57:53.782Z",
+  "updatedAt": "2026-05-09T23:56:07.743Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -8671,12 +8671,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "e0a784b7-9421-4432-adff-b25ec209a3b5",
+      "postedAt": "2026-05-09T23:56:04.488Z",
+      "postedHour": 23,
+      "dateContext": "2026-05-09",
+      "sport": "mlb",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "MLB's obsession with launch angles skips a dirty little secret: coaches know the real battleground is the at-bat decision-making, not the home run trots. When insights into pitch recognition vanish by the next series, you've got the real reason talent stagnates. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "mlb's_obsession",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 09-May-26 16:56:07 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-09T11:57:50.709Z",
+      "lastAttemptAt": "2026-05-09T23:56:04.491Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
