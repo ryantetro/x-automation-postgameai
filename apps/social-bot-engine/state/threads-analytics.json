@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-08T12:16:38.415Z",
+  "updatedAt": "2026-05-09T00:01:05.528Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -8579,12 +8579,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "f1a72c21-5278-46cc-98c8-13003d130f95",
+      "postedAt": "2026-05-09T00:01:02.178Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-09",
+      "sport": "mlb",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Jasson Dominguez's latest injury has Yankee fans worried, but coaches know where the real pain lies. The gap between undeniable talent and shaky execution often vanishes into thin air by the time the next batter steps up. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Is Jasson Dominguez OK? Why Yankees injury is concerning to MLB fans",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/new-york-yankees/news/jasson-dominguez-ok-why-yankees-injury-concerning-mlb-fans/6a61f82da09f0c1441d8bae9",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-05-07T17:02:10Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "loss",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 08-May-26 17:01:05 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-08T12:16:36.071Z",
+      "lastAttemptAt": "2026-05-09T00:01:02.181Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
