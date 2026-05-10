@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-10T12:00:03.904Z",
+  "updatedAt": "2026-05-10T23:59:03.314Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -8763,12 +8763,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "768ccf55-cdfe-477c-b4d1-39fd462b83fd",
+      "postedAt": "2026-05-10T23:59:01.426Z",
+      "postedHour": 23,
+      "dateContext": "2026-05-10",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Pro coaching isn't about endless film, it's about knowing which five minutes matter. The gap between what you review and what actually transfers to the next game is why teams still underperform despite hours logged. That's where the frustration lives. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "pro_coaching",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Sunday, 10-May-26 16:59:03 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-10T12:00:00.768Z",
+      "lastAttemptAt": "2026-05-10T23:59:01.428Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
