@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-14T00:08:36.643Z",
+  "updatedAt": "2026-05-14T13:00:57.455Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -9079,12 +9079,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "85caf0b3-b056-48ab-99f4-f1e14d0fb007",
+      "postedAt": "2026-05-14T13:00:53.568Z",
+      "postedHour": 13,
+      "dateContext": "2026-05-14",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Coaches know: when your star nails that buzzer-beater, it's not the shot but the busted coverage beforehand where games really slip away. By Thursday, those defensive rotations vanish, glossed over by highlight reels. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "universal_truth",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 14-May-26 06:00:57 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-14T00:08:33.837Z",
+      "lastAttemptAt": "2026-05-14T13:00:53.571Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
