@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-13T13:24:33.056Z",
+  "updatedAt": "2026-05-14T00:08:36.643Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -9031,12 +9031,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "093ac911-16a4-4ec0-9da3-d79e4d3ce242",
+      "postedAt": "2026-05-14T00:08:33.834Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-14",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Thunder facing LeBron isn't about iconic matchups; it's survival under a microscope. Coaches see the game-changing on-ball switches that vanish in film by Thursday's deadline—moments that hang on a thread, never making the highlight reel. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "OKC Thunder react to facing LeBron James in NBA playoff series",
+      "newsArticleUrl": "https://okcthunderwire.usatoday.com/story/sports/nba/thunder/2026/05/12/okc-thunder-react-to-facing-lebron-james-in-nba-playoff-series/90042066007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-05-12T15:00:40Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "validation",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "thunder_facing",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 13-May-26 17:08:36 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-13T13:24:30.763Z",
+      "lastAttemptAt": "2026-05-14T00:08:33.837Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
