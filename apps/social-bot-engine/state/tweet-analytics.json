@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-15T00:01:20.548Z",
+  "updatedAt": "2026-05-15T12:53:37.590Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -9494,13 +9494,59 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "7ef3d18f-28fe-4307-bcf3-283a71f3bd49",
+      "postedAt": "2026-05-15T12:53:35.261Z",
+      "postedHour": 12,
+      "dateContext": "2026-05-15",
+      "sport": "nfl",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "The problem is not analytics—it's the gap between the data and execution on Sunday. We know the truth: those patterns on paper vanish under live play pressure. That's where the real coaching happens, not behind stats. #NFLCoaching #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "the_problem",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
-      "status": "healthy",
-      "lastAttemptAt": "2026-05-15T00:01:17.819Z",
-      "lastSuccessAt": "2026-05-15T00:01:18.192Z"
+      "status": "blocked",
+      "lastAttemptAt": "2026-05-15T12:53:35.264Z",
+      "lastSuccessAt": "2026-05-15T00:01:18.192Z",
+      "lastError": "Request failed with code 402",
+      "lastErrorCode": "402"
     }
   }
 }
