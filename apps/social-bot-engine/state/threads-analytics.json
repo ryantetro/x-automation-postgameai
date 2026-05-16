@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-15T23:59:02.006Z",
+  "updatedAt": "2026-05-16T12:00:45.141Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -9255,12 +9255,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d973f0fc-5aa1-496f-8409-da0ba2472c48",
+      "postedAt": "2026-05-16T12:00:42.944Z",
+      "postedHour": 12,
+      "dateContext": "2026-05-16",
+      "sport": "mlb",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Most clubhouses churn out stats, not solutions. Coaches notice how the critical adjustments in the 6th inning turn into ghosts by Thursday's film review, leaving a gap wider than any outfield error. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "most_clubhouses",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 16-May-26 05:00:45 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-15T23:59:00.062Z",
+      "lastAttemptAt": "2026-05-16T12:00:42.947Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
