@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-16T23:59:13.492Z",
+  "updatedAt": "2026-05-17T12:03:50.346Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -9343,12 +9343,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "c223fdeb-ca39-4264-a86b-19766c32ca67",
+      "postedAt": "2026-05-17T12:03:48.633Z",
+      "postedHour": 12,
+      "dateContext": "2026-05-17",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Coaches know: Pistons' playoff punch over Cavaliers doesn't tell the whole tale. That shot-making savagery hides the real nightmare—defensive rotations evaporate by midweek film study. The gap between player potential and on-court choices is what torments real coaching sessions. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Pistons pound Cavaliers to force Game 7: NBA playoff analysis, takeaways",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/nba/playoffs/2026/05/15/pistons-cavaliers-spurs-timberwolves-game-6-playoffs/90110014007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-05-16T02:08:11Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "universal_truth",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Sunday, 17-May-26 05:03:50 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-16T23:59:11.170Z",
+      "lastAttemptAt": "2026-05-17T12:03:48.636Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
