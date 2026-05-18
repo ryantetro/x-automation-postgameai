@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-17T11:59:40.311Z",
+  "updatedAt": "2026-05-18T00:01:28.153Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -9708,12 +9708,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "3669c5d4-6847-46d7-8929-b33585e3b8cd",
+      "postedAt": "2026-05-18T00:01:22.139Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-18",
+      "sport": "nfl",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Most recall those three 4th-down conversions over Lamar's jukes. Soon, they'll blur into incomplete analysis unless seized immediately. This isn't just a time gap; it's the heart of missed decisions. #NFLCoaching #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "most_recall",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-17T11:59:38.848Z",
+      "lastAttemptAt": "2026-05-18T00:01:22.145Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
