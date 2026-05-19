@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-19T13:55:49.929Z",
+  "updatedAt": "2026-05-19T23:56:19.877Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -8691,9 +8691,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.784Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:35 PDT.",
+          "permanent": true
         }
       }
     },
@@ -8851,9 +8853,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.784Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:35 PDT.",
+          "permanent": true
         }
       }
     },
@@ -8942,9 +8946,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.784Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:35 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9033,9 +9039,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.784Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:35 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9124,9 +9132,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.784Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:35 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9215,9 +9225,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.784Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:35 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9306,9 +9318,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.784Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:34 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9397,9 +9411,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.784Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:34 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9488,9 +9504,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.784Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:34 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9579,9 +9597,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:34 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9670,9 +9690,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:34 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9761,9 +9783,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:34 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9852,9 +9876,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:34 PDT.",
+          "permanent": true
         }
       }
     },
@@ -9943,9 +9969,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:34 PDT.",
+          "permanent": true
         }
       }
     },
@@ -10034,9 +10062,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:34 PDT.",
+          "permanent": true
         }
       }
     },
@@ -10125,9 +10155,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:34 PDT.",
+          "permanent": true
         }
       }
     },
@@ -10285,9 +10317,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:33 PDT.",
+          "permanent": true
         }
       }
     },
@@ -10376,9 +10410,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:33 PDT.",
+          "permanent": true
         }
       }
     },
@@ -10467,9 +10503,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:33 PDT.",
+          "permanent": true
         }
       }
     },
@@ -10558,9 +10596,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:33 PDT.",
+          "permanent": true
         }
       }
     },
@@ -10649,9 +10689,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:33 PDT.",
+          "permanent": true
         }
       }
     },
@@ -10740,9 +10782,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:33 PDT.",
+          "permanent": true
         }
       }
     },
@@ -10831,9 +10875,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:33 PDT.",
+          "permanent": true
         }
       }
     },
@@ -10922,9 +10968,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:33 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11013,9 +11061,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:33 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11104,9 +11154,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:33 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11195,9 +11247,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:32 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11286,9 +11340,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:32 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11377,9 +11433,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:32 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11537,9 +11595,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:32 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11628,9 +11688,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:32 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11719,9 +11781,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:32 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11810,9 +11874,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:32 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11901,9 +11967,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:32 PDT.",
+          "permanent": true
         }
       }
     },
@@ -11992,9 +12060,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:32 PDT.",
+          "permanent": true
         }
       }
     },
@@ -12083,9 +12153,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:31 PDT.",
+          "permanent": true
         }
       }
     },
@@ -12174,9 +12246,11 @@
       "scoreUpdatedAt": "2026-05-19T13:54:56.191Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:54:56.191Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:31 PDT.",
+          "permanent": true
         }
       }
     },
@@ -12268,25 +12342,101 @@
       "scoreUpdatedAt": "2026-05-19T13:55:49.537Z",
       "analyticsFetchState": {
         "threads": {
-          "status": "ok",
-          "updatedAt": "2026-05-19T13:55:49.537Z",
-          "failures": 0
+          "status": "skipped",
+          "updatedAt": "2026-05-19T23:55:35.783Z",
+          "failures": 1,
+          "reason": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:31 PDT.",
+          "permanent": true
         }
       }
+    },
+    {
+      "runId": "7262278a-116f-4664-b0e5-cb3b7909f154",
+      "postedAt": "2026-05-19T23:55:31.424Z",
+      "postedHour": 23,
+      "dateContext": "2026-05-19",
+      "sport": "canopy",
+      "angle": "Booth Proof in the Wild",
+      "source": "llm",
+      "status": "failed",
+      "text": "Hot take: If your canopy can't face the early wind test at a morning market, it's not a booth—it's a liability. Veteran vendors know: before the crowd comes, the frame already had its first showdown.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take:",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:56:19 PDT."
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "durability_and_product_proof",
+      "voiceFamily": "buyer_intent_detail",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "trade shows",
+      "productFocus": "custom canopies",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "customer_showcase",
+      "imageConceptId": "durability-wind-sideline-wide",
+      "imageStyleFamily": "lifestyle",
+      "imageShotType": "wide",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected education to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside education; exploration selected buyer_intent_detail; exploration selected customer_showcase; exploration selected custom canopies; agent mode explore. Top canopy pillar on X lately: competitive_value_framing. Best recurring series lately: booth_hot_take. Most effective content bucket lately: culture. Best voice family: buyer_intent_detail. Best creative lane: customer_showcase. Brand tags showed up in 0% of recent canopy posts. Weak opening patterns: contradiction, two_setups. Explore next: pillar:durability_and_product_proof, pillar:speed_and_deadlines, pillar:buyer_intent_products.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "proof_in_the_wild",
+      "contentBucket": "education",
+      "brandTagIncluded": false,
+      "candidateId": "durability_and_product_proof|proof_in_the_wild|education|buyer_intent_detail|customer_showcase|consideration|custom canopies|trade shows|none|soft_commercial:candidate:3",
+      "candidateBatchId": "7262278a-116f-4664-b0e5-cb3b7909f154:canopy-batch",
+      "candidateScore": 148,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "durability_and_product_proof|proof_in_the_wild|education|buyer_intent_detail|customer_showcase|consideration|custom canopies|trade shows|none|soft_commercial",
+      "agentReasoningSummary": "exploration selected education to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside education; exploration selected buyer_intent_detail; exploration selected customer_showcase; exploration selected custom canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "hot_take_machine",
+      "contentType": "hot_take",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-05-19"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-19T13:54:40.428Z",
+      "lastAttemptAt": "2026-05-19T23:55:31.429Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
-      "status": "healthy",
-      "lastAttemptAt": "2026-05-19T13:55:49.230Z",
-      "lastSuccessAt": "2026-05-19T13:55:49.929Z"
+      "status": "degraded",
+      "lastAttemptAt": "2026-05-19T23:55:31.430Z",
+      "lastSuccessAt": "2026-05-19T13:55:49.929Z",
+      "lastError": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 19-May-26 16:55:31 PDT.",
+      "lastErrorCode": "threads_media_insights_unavailable"
     }
   },
   "threadsUserInsights": {
