@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-20T00:13:05.820Z",
+  "updatedAt": "2026-05-20T13:45:25.258Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -9615,12 +9615,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "eb743b6d-c000-475a-ae8e-aa8a53fc9a92",
+      "postedAt": "2026-05-20T13:45:21.445Z",
+      "postedHour": 13,
+      "dateContext": "2026-05-20",
+      "sport": "soccer",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Man City's dominance over Sheffield made the headlines, but coaches know what highlights miss: opponents' tendencies that fade from memory come Thursday's film room. Those unaddressed moments are where real opportunities slip away. postgame AI · getpostgame.ai #CoachingTruth #SoccerCoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 20-May-26 06:45:25 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-20T00:13:02.725Z",
+      "lastAttemptAt": "2026-05-20T13:45:21.448Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
