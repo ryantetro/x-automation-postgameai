@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-20T13:37:38.911Z",
+  "updatedAt": "2026-05-21T00:12:15.200Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -9966,12 +9966,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "c8819410-ec65-47c8-9a21-e69d54c1f669",
+      "postedAt": "2026-05-21T00:12:09.966Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-21",
+      "sport": "nba",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "failed",
+      "text": "Cavs vs. Knicks isn't a scoreboard issue—it’s mental chess real-time. By Thursday film sessions, raw coaching insights get glossed over. Miss that window, miss the real game. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Knicks vs. Cavaliers live score, updates, highlights from Game 1 2026 NBA Eastern Conference Finals playoff series",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/new-york-knicks/news/knicks-vs-cavaliers-live-score-updates-highlights-game-1-2026-nba-eastern-conference-finals-playoff-series/fa87ef5bf4165a9b3c51166c",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-05-19T23:51:47Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "cavs_vs.",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-20T13:37:33.229Z",
+      "lastAttemptAt": "2026-05-21T00:12:09.970Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
