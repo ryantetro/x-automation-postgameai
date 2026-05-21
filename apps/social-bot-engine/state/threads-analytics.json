@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-20T13:45:25.258Z",
+  "updatedAt": "2026-05-21T00:13:09.807Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -9659,12 +9659,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "ccf8813c-d014-43eb-8479-8cd26c2dab9b",
+      "postedAt": "2026-05-21T00:13:08.050Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-21",
+      "sport": "nba",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "failed",
+      "text": "Knicks and Cavaliers kicked off the Eastern Finals, but it's not the box score that haunts coaches. Every late-game shot selection we dissect tonight can get lost by Tuesday if efficiency stats sugarcoat the real breakdowns. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Knicks vs. Cavaliers live score, updates, highlights from Game 1 2026 NBA Eastern Conference Finals playoff series",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/new-york-knicks/news/knicks-vs-cavaliers-live-score-updates-highlights-game-1-2026-nba-eastern-conference-finals-playoff-series/fa87ef5bf4165a9b3c51166c",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-05-19T23:51:47Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 20-May-26 17:13:09 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-20T13:45:21.448Z",
+      "lastAttemptAt": "2026-05-21T00:13:08.053Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
