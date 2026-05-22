@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-22T13:29:53.611Z",
+  "updatedAt": "2026-05-22T23:59:47.395Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -12775,19 +12775,88 @@
       "contentType": "list_post",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-05-22"
+    },
+    {
+      "runId": "98fe2966-4bc0-43f2-a371-65ea88a44a25",
+      "postedAt": "2026-05-22T23:58:54.694Z",
+      "postedHour": 23,
+      "dateContext": "2026-05-22",
+      "sport": "canopy",
+      "angle": "Vendor Life and Event Culture",
+      "source": "llm",
+      "status": "failed",
+      "text": "Three truths about Utah market mornings:\n\n1. It's not coffee, it's a frame bond that holds the booth.\n2. Wind tests the setup before customers do.\n3. A reliable frame is the real opener, not just the banner.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "three_truths",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Friday, 22-May-26 16:59:47 PDT."
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "use_case_moments",
+      "voiceFamily": "buyer_intent_detail",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "trade shows",
+      "productFocus": "custom canopies",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "customer_showcase",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected community to rebalance the canopy mix; exploration selected vendor_life to keep the canopy series mix balanced; use_case_moments selected inside community; exploration selected buyer_intent_detail; exploration selected customer_showcase; exploration selected custom canopies; agent mode explore. Top canopy pillar on X lately: competitive_value_framing. Best recurring series lately: booth_hot_take. Most effective content bucket lately: culture. Best voice family: buyer_intent_detail. Best creative lane: customer_showcase. Brand tags showed up in 0% of recent canopy posts. Weak opening patterns: curbside_setups, scene_setter. Explore next: pillar:competitive_value_framing, pillar:speed_and_deadlines, seriesId:booth_hot_take.; Vendor-life posts stay text-first unless canopy images materially outperform text-only posts.",
+      "seriesId": "vendor_life",
+      "contentBucket": "community",
+      "brandTagIncluded": false,
+      "candidateId": "use_case_moments|vendor_life|community|buyer_intent_detail|customer_showcase|consideration|custom canopies|trade shows|none|soft_commercial:candidate:5",
+      "candidateBatchId": "98fe2966-4bc0-43f2-a371-65ea88a44a25:canopy-batch",
+      "candidateScore": 164,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "use_case_moments|vendor_life|community|buyer_intent_detail|customer_showcase|consideration|custom canopies|trade shows|none|soft_commercial",
+      "agentReasoningSummary": "exploration selected community to rebalance the canopy mix; exploration selected vendor_life to keep the canopy series mix balanced; use_case_moments selected inside community; exploration selected buyer_intent_detail; exploration selected customer_showcase; exploration selected custom canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "event_insider",
+      "contentType": "list_post",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-05-22"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-22T13:28:34.753Z",
+      "lastAttemptAt": "2026-05-22T23:58:54.702Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-22T13:28:34.753Z",
+      "lastAttemptAt": "2026-05-22T23:58:54.703Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
