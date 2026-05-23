@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-23T00:12:40.804Z",
+  "updatedAt": "2026-05-23T12:04:54.159Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -9883,12 +9883,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "87fdeb8b-49b6-4e44-b600-9a4efc6715de",
+      "postedAt": "2026-05-23T12:04:51.676Z",
+      "postedHour": 12,
+      "dateContext": "2026-05-23",
+      "sport": "mlb",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Your shiny new data set won't close the execution gap. Coaches recognize real-time adjustments vanish by Wednesday, buried under 'percent improvement' spreadsheets. That's the frustration lurking in analytics-heavy preps. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "your_shiny",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 23-May-26 05:04:54 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-23T00:12:36.520Z",
+      "lastAttemptAt": "2026-05-23T12:04:51.679Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
