@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-23T00:11:55.710Z",
+  "updatedAt": "2026-05-23T11:59:59.572Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -10185,12 +10185,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "6c5c4d46-b68d-4bd7-b22b-67d64c6188b1",
+      "postedAt": "2026-05-23T11:59:50.749Z",
+      "postedHour": 11,
+      "dateContext": "2026-05-23",
+      "sport": "mlb",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Baseball data is useful when it survives the trip from spreadsheet to dugout. — postgame AI · getpostgame.ai #DiamondIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "baseball_data",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-23T00:11:48.936Z",
+      "lastAttemptAt": "2026-05-23T11:59:50.753Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
