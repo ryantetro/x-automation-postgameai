@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-23T23:50:45.654Z",
+  "updatedAt": "2026-05-24T12:00:07.841Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -12988,19 +12988,91 @@
       "contentType": "observation",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-05-23"
+    },
+    {
+      "runId": "d3063ee1-16f5-4310-8ce4-296ef0c4c1c2",
+      "postedAt": "2026-05-24T11:59:31.703Z",
+      "postedHour": 11,
+      "dateContext": "2026-05-24",
+      "sport": "canopy",
+      "angle": "Booth Identity and Setup Taste",
+      "source": "llm",
+      "status": "failed",
+      "text": "Not every booth that looks good in a catalog holds up in the real vendor world. Utah wind doesn't care about your color scheme if your frame can't stand up straight.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "not_every",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Sunday, 24-May-26 05:00:07 PDT."
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "buyer_intent_products",
+      "voiceFamily": "contrarian_take",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "retail pop-ups",
+      "productFocus": "feather flags",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "before_after_transformation",
+      "imageConceptId": "buyer-canopy-tradeshow-wide",
+      "imageStyleFamily": "lifestyle",
+      "imageShotType": "wide",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected promo to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside promo; exploration selected contrarian_take; exploration selected before_after_transformation; exploration selected feather flags; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "booth_identity",
+      "contentBucket": "promo",
+      "brandTagIncluded": false,
+      "candidateId": "buyer_intent_products|booth_identity|promo|contrarian_take|before_after_transformation|consideration|feather flags|retail pop-ups|none|soft_commercial:candidate:3",
+      "candidateBatchId": "d3063ee1-16f5-4310-8ce4-296ef0c4c1c2:canopy-batch",
+      "candidateScore": 144,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "buyer_intent_products|booth_identity|promo|contrarian_take|before_after_transformation|consideration|feather flags|retail pop-ups|none|soft_commercial",
+      "agentReasoningSummary": "exploration selected promo to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside promo; exploration selected contrarian_take; exploration selected before_after_transformation; exploration selected feather flags; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "vendor_friend",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-05-24"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-23T23:50:04.588Z",
+      "lastAttemptAt": "2026-05-24T11:59:31.708Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-23T23:50:04.588Z",
+      "lastAttemptAt": "2026-05-24T11:59:31.709Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
