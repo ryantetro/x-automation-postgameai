@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-23T11:59:59.572Z",
+  "updatedAt": "2026-05-24T00:01:27.699Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -10224,12 +10224,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "e70e9f22-c19e-407f-bfdf-8b0e8c636812",
+      "postedAt": "2026-05-24T00:01:24.684Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-24",
+      "sport": "nba",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Barkley's right: Thunder exposed Spurs’ gaps, not Wembanyama's toughness. By Monday's meetings, those reads vanish—coaching lost post-hype. The 48-hour trap strikes again. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "NBA Hall of Famer brutally mocks claims OKC bullied Victor Wembanyama — here’s why",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/san-antonio-spurs/news/charles-barkley-calls-out-victor-wembanyama-treatment-truth/0756ce4a4ec8a92e2bf12a84",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-05-22T13:27:54Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-23T11:59:50.753Z",
+      "lastAttemptAt": "2026-05-24T00:01:24.688Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
