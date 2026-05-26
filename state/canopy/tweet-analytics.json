@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-26T13:52:20.202Z",
+  "updatedAt": "2026-05-26T23:58:22.383Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -13339,19 +13339,88 @@
       "contentType": "list_post",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-05-26"
+    },
+    {
+      "runId": "38888a89-2f21-458c-8626-b42b5ccde317",
+      "postedAt": "2026-05-26T23:58:01.140Z",
+      "postedHour": 23,
+      "dateContext": "2026-05-26",
+      "sport": "canopy",
+      "angle": "Utah Event Radar",
+      "source": "llm",
+      "status": "failed",
+      "text": "Utah's real festival test isn't the crowd—it's the morning wind that decides if your booth is just another setup or a seasoned contender. It's not the flashy graphics but the frame that earns quiet respect when the gusts roll in.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 26-May-26 16:58:22 PDT."
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "speed_and_deadlines",
+      "voiceFamily": "deadline_urgency",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "festivals",
+      "productFocus": "rush graphics",
+      "urgencyMode": "seasonal",
+      "ctaMode": "question_led",
+      "creativeDirection": "customer_showcase",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected education to rebalance the canopy mix; exploration selected utah_event_radar to keep the canopy series mix balanced; speed_and_deadlines selected inside education; exploration selected deadline_urgency; exploration selected customer_showcase; exploration selected rush graphics; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; Launch gate prefers text-only for Utah Event Radar until a real event feed exists.",
+      "seriesId": "utah_event_radar",
+      "contentBucket": "education",
+      "brandTagIncluded": false,
+      "candidateId": "speed_and_deadlines|utah_event_radar|education|deadline_urgency|customer_showcase|consideration|rush graphics|festivals|seasonal|question_led:candidate:7",
+      "candidateBatchId": "38888a89-2f21-458c-8626-b42b5ccde317:canopy-batch",
+      "candidateScore": 160,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "speed_and_deadlines|utah_event_radar|education|deadline_urgency|customer_showcase|consideration|rush graphics|festivals|seasonal|question_led",
+      "agentReasoningSummary": "exploration selected education to rebalance the canopy mix; exploration selected utah_event_radar to keep the canopy series mix balanced; speed_and_deadlines selected inside education; exploration selected deadline_urgency; exploration selected customer_showcase; exploration selected rush graphics; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "vendor_friend",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-05-26"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-26T13:51:37.483Z",
+      "lastAttemptAt": "2026-05-26T23:58:01.146Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-26T13:51:37.483Z",
+      "lastAttemptAt": "2026-05-26T23:58:01.146Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
