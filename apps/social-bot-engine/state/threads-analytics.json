@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-25T14:15:39.824Z",
+  "updatedAt": "2026-05-26T00:12:03.573Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -10111,12 +10111,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "74593880-7248-4b3c-993d-4e9bbbd3fbd6",
+      "postedAt": "2026-05-26T00:12:00.753Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-26",
+      "sport": "mlb",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Spending countless hours in the film room doesn't guarantee a damn thing if coaches aren't staring the real issues in the eye. By the next week, those crucial in-game breakdowns are often MIA, leaving coaches fighting ghosts instead of fixing problems. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "spending_countless",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Monday, 25-May-26 17:12:03 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-25T14:15:35.681Z",
+      "lastAttemptAt": "2026-05-26T00:12:00.756Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
