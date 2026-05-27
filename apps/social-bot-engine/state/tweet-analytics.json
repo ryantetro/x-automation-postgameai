@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-26T13:53:47.276Z",
+  "updatedAt": "2026-05-27T00:13:05.786Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -10496,12 +10496,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "86287bb3-0cfe-4f3f-8b60-fb08b3443201",
+      "postedAt": "2026-05-27T00:13:00.929Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-27",
+      "sport": "soccer",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The real tactical battle happens in the first 15 minutes. The rest is adjustments. — postgame AI · getpostgame.ai #CoachingSoccer #SoccerFilm",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Lionel Messi injury update: Soccer star exited Inter Miami match ahead of World Cup",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/soccer/mls/2026/05/25/lionel-messi-injury-update-exiting-inter-miami-match/90254792007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-05-25T23:25:10Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "the_real",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-26T13:53:44.439Z",
+      "lastAttemptAt": "2026-05-27T00:13:00.933Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
