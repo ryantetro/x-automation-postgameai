@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-27T00:14:39.066Z",
+  "updatedAt": "2026-05-27T14:37:04.280Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -10247,12 +10247,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "28b926c8-7fbe-455a-8669-cb20175e766e",
+      "postedAt": "2026-05-27T14:32:41.124Z",
+      "postedHour": 14,
+      "dateContext": "2026-05-27",
+      "sport": "soccer",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "failed",
+      "text": "3 minutes of brilliance won't fix the 87 minutes of wandering your winger did today, even if the highlight fans rave about it. Coaches know those key lapses slide into the abyss by the next training session, leaving a gap between potential and reality unaddressed. postgame AI · getpostgame.ai #CoachingTruth #SoccerCoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "specific_number",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 27-May-26 07:37:04 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-27T00:14:37.286Z",
+      "lastAttemptAt": "2026-05-27T14:32:41.128Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
