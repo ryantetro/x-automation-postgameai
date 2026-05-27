@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-27T14:36:44.056Z",
+  "updatedAt": "2026-05-27T23:55:45.222Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -13480,19 +13480,91 @@
       "contentType": "list_post",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-05-27"
+    },
+    {
+      "runId": "e4937340-ee12-4286-a37c-348b4dae0c69",
+      "postedAt": "2026-05-27T23:55:04.846Z",
+      "postedHour": 23,
+      "dateContext": "2026-05-27",
+      "sport": "canopy",
+      "angle": "Booth Proof in the Wild",
+      "source": "llm",
+      "status": "failed",
+      "text": "Setting up and realizing your toughest competition isn't the booth next door—it's the wind. At outdoor festivals, a booth’s true proof isn't in the colors, but in how it holds when the gusts challenge it.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "unfinished_thought",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Wednesday, 27-May-26 16:55:45 PDT."
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "durability_and_product_proof",
+      "voiceFamily": "micro_story",
+      "buyerIntentLevel": "awareness",
+      "useCaseVertical": "outdoor festivals",
+      "productFocus": "fabric durability",
+      "urgencyMode": "replacement",
+      "ctaMode": "none",
+      "creativeDirection": "educational_breakdown",
+      "imageConceptId": "durability-frame-close",
+      "imageStyleFamily": "mockup",
+      "imageShotType": "close_up",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected community to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside community; exploration selected micro_story; exploration selected educational_breakdown; exploration selected fabric durability; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "proof_in_the_wild",
+      "contentBucket": "community",
+      "brandTagIncluded": false,
+      "candidateId": "durability_and_product_proof|proof_in_the_wild|community|micro_story|educational_breakdown|awareness|fabric durability|outdoor festivals|replacement|none:candidate:6",
+      "candidateBatchId": "e4937340-ee12-4286-a37c-348b4dae0c69:canopy-batch",
+      "candidateScore": 146,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "durability_and_product_proof|proof_in_the_wild|community|micro_story|educational_breakdown|awareness|fabric durability|outdoor festivals|replacement|none",
+      "agentReasoningSummary": "exploration selected community to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside community; exploration selected micro_story; exploration selected educational_breakdown; exploration selected fabric durability; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "vendor_friend",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-05-27"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-27T14:24:47.165Z",
+      "lastAttemptAt": "2026-05-27T23:55:04.851Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-27T14:24:47.166Z",
+      "lastAttemptAt": "2026-05-27T23:55:04.851Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
