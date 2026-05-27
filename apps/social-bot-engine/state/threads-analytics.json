@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-26T14:09:36.555Z",
+  "updatedAt": "2026-05-27T00:14:39.066Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -10199,12 +10199,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "f7a0761b-1ec1-4904-b9c9-c2b5aed4e9ec",
+      "postedAt": "2026-05-27T00:14:37.283Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-27",
+      "sport": "soccer",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "failed",
+      "text": "Messi's muscle fatigue isn't the headline that matters to coaches. It's those two missed transitions before he asked to come off, the moments that blur into oblivion by Monday's session. postgame AI · getpostgame.ai #CoachingTruth #SoccerCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Lionel Messi injury update: Soccer star exited Inter Miami match ahead of World Cup",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/soccer/mls/2026/05/25/lionel-messi-injury-update-exiting-inter-miami-match/90254792007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-05-25T23:25:10Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Tuesday, 26-May-26 17:14:39 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-26T14:09:33.452Z",
+      "lastAttemptAt": "2026-05-27T00:14:37.286Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
