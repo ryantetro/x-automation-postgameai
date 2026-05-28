@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-27T14:26:52.068Z",
+  "updatedAt": "2026-05-28T00:04:19.604Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -10578,12 +10578,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "03a8875e-1ed0-4eb0-a4a7-ac8410f26d01",
+      "postedAt": "2026-05-28T00:04:15.445Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-28",
+      "sport": "nba",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Celtics' Mazzulla wins Coach of the Year, but his real edge? Mastering opponent tendencies missed by casual fans. The postgame whispers not shared in press conferences separate the title from true coaching mastery. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Celtics coach Joe Mazzulla named 2025-26 NBA Coach of the Year",
+      "newsArticleUrl": "https://celticswire.usatoday.com/story/sports/nba/celtics/2026/05/26/joe-mazzulla-becomes-first-celtics-coach-to-win-coach-of-the-year-since-1980/90269022007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-05-26T23:38:11Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "celtics'_mazzulla",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-27T14:26:47.488Z",
+      "lastAttemptAt": "2026-05-28T00:04:15.451Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
