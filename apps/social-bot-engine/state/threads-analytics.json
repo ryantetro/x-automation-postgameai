@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-27T14:37:04.280Z",
+  "updatedAt": "2026-05-28T00:05:03.447Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -10291,12 +10291,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "ad115d3f-aaf7-4aa6-907c-a15b8788ff00",
+      "postedAt": "2026-05-28T00:04:59.921Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-28",
+      "sport": "nba",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Joe Mazzulla's Coach of the Year nod isn't what sticks. Coaches know the real test never makes headlines—it's those unseen adjustments that don't make the postgame cut but haunt us by the next film breakdown. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Celtics coach Joe Mazzulla named 2025-26 NBA Coach of the Year",
+      "newsArticleUrl": "https://celticswire.usatoday.com/story/sports/nba/celtics/2026/05/26/joe-mazzulla-becomes-first-celtics-coach-to-win-coach-of-the-year-since-1980/90269022007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-05-26T23:38:11Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "loss",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 27-May-26 17:05:03 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-27T14:32:41.128Z",
+      "lastAttemptAt": "2026-05-28T00:04:59.925Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
