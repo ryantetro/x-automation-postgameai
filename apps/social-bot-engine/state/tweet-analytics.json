@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-28T00:04:19.604Z",
+  "updatedAt": "2026-05-28T14:37:43.898Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -10626,12 +10626,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "bdfd0a07-b22e-46c0-bbb6-02b51f59662f",
+      "postedAt": "2026-05-28T14:37:40.857Z",
+      "postedHour": 14,
+      "dateContext": "2026-05-28",
+      "sport": "nba",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Wembanyama's fix isn't about talent—it's conversations disappearing postgame. Coaches know what's said in the locker room rarely becomes what's practiced Monday. Wait too long, and those crucial insights slip away. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Wembanyama needs to fix this to keep Thunder from NBA Finals; Our annual college football coach rankings",
+      "newsArticleUrl": "https://www.cbssports.com/nba/news/wembanyama-needs-to-fix-this-to-keep-thunder-from-nba-finals-our-annual-college-football-coach-rankings/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-05-27T13:05:29Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-28T00:04:15.451Z",
+      "lastAttemptAt": "2026-05-28T14:37:40.861Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
