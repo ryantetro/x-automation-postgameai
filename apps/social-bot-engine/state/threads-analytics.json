@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-29T00:16:02.139Z",
+  "updatedAt": "2026-05-29T14:14:07.964Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -10431,12 +10431,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "7b862c86-1d18-4734-8101-de6c86e3333e",
+      "postedAt": "2026-05-29T14:14:05.830Z",
+      "postedHour": 14,
+      "dateContext": "2026-05-29",
+      "sport": "nfl",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "failed",
+      "text": "The conversation no one has after a game: your QB loves airing it out, but nobody talks about those wasted 2nd-and-long shots that kill drives. Coaches know the decision-making gap between what's obvious post-game and what’s addressed before the next snap. postgame AI · getpostgame.ai #CoachingTruth #NFLInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The Conversation That Doesn't Happen to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "named_moment",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 29-May-26 07:14:07 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-29T00:15:59.669Z",
+      "lastAttemptAt": "2026-05-29T14:14:05.833Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
