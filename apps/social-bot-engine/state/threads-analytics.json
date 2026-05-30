@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-29T14:14:07.964Z",
+  "updatedAt": "2026-05-30T00:14:08.250Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -10475,12 +10475,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "fe9ed67a-f99c-484e-a789-7909827af0cc",
+      "postedAt": "2026-05-30T00:14:06.116Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-30",
+      "sport": "mlb",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "John Smoltz's praise for Braves' dominance is just noise if you ignore the real challenge: turning all that talent into execution when chaos hits. Every coach sees those in-game adjustments—unmade, unknown to fans—become the silent killers in postgame silence by Monday. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "John Smoltz reveals the only way Braves’ dominance continues, talks MLB analytics, pro golf career, Banana Ball, NIL, and more",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/atlanta-braves/news/john-smoltz-reveals-only-way-braves-dominance-continues-talks-mlb-analytics-pro-golf-career-banana-ball-nil-more/2664ea7afa272791f23ddd05",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-05-28T23:17:26Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "urgency",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 29-May-26 17:14:08 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-29T14:14:05.833Z",
+      "lastAttemptAt": "2026-05-30T00:14:06.119Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
