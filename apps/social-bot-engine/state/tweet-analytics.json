@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-29T14:01:17.599Z",
+  "updatedAt": "2026-05-30T00:12:31.377Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -10762,12 +10762,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "8d619961-1a5f-4e60-9e3a-566387aae06e",
+      "postedAt": "2026-05-30T00:12:28.126Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-30",
+      "sport": "mlb",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bench coach sees more than anyone in the dugout. The best managers know when to listen. — postgame AI · getpostgame.ai #CoachingBaseball #MLBCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "John Smoltz reveals the only way Braves’ dominance continues, talks MLB analytics, pro golf career, Banana Ball, NIL, and more",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/atlanta-braves/news/john-smoltz-reveals-only-way-braves-dominance-continues-talks-mlb-analytics-pro-golf-career-banana-ball-nil-more/2664ea7afa272791f23ddd05",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-05-28T23:17:26Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "a_bench",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-29T14:01:13.234Z",
+      "lastAttemptAt": "2026-05-30T00:12:28.130Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
