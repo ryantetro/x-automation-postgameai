@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-31T00:05:09.989Z",
+  "updatedAt": "2026-05-31T12:11:05.899Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -10892,12 +10892,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "ff4fc714-5039-4648-a6df-ff3f3118c1e5",
+      "postedAt": "2026-05-31T12:10:59.644Z",
+      "postedHour": 12,
+      "dateContext": "2026-05-31",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Coaches waste the 48-hour window post-game. Jalen Green's 20 missed shots aren't the real problem; missed defensive rotations are. But urgency fades, and true teaching moments slip away by next practice. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "coaches_waste",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-31T00:05:07.472Z",
+      "lastAttemptAt": "2026-05-31T12:10:59.648Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
