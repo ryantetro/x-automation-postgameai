@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-31T00:06:16.475Z",
+  "updatedAt": "2026-05-31T12:18:06.035Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -10615,12 +10615,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "9aa9d8b1-f6f7-4dc0-800d-8a097ae1abc0",
+      "postedAt": "2026-05-31T12:18:03.984Z",
+      "postedHour": 12,
+      "dateContext": "2026-05-31",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Most fans missed Jabari Smith's quiet domination against Boston, but coaches see it. The real story isn't just his on-paper improvement—it's those missed defensive rotations that slip into memory's void by Wednesday, the true gap that data can't bridge. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "insider_divide",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Sunday, 31-May-26 05:18:06 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-31T00:06:14.543Z",
+      "lastAttemptAt": "2026-05-31T12:18:03.988Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
