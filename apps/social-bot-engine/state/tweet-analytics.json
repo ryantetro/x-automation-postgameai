@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-30T12:04:19.807Z",
+  "updatedAt": "2026-05-31T00:05:09.989Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -10844,12 +10844,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d91154e0-4f92-42b0-841f-199e33ca7865",
+      "postedAt": "2026-05-31T00:05:07.469Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-31",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Mitchell Robinson playing in the Finals post-surgery isn’t the real challenge. It's seizing that fleeting moment when talent and execution blur together—coaches know the urgency and frustration in those gaps better than any fan. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Knicks' Mitchell Robinson plots NBA Finals return despite surgery",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/nba/knicks/2026/05/29/mitchell-robinson-injury-update-knicks-nba-finals/90311861007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-05-29T14:34:30Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "mitchell_robinson",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-05-30T12:04:16.169Z",
+      "lastAttemptAt": "2026-05-31T00:05:07.472Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
