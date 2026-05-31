@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-05-30T12:12:12.137Z",
+  "updatedAt": "2026-05-31T00:06:16.475Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -10567,12 +10567,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "85baf88a-8696-4c8e-aff5-a1a1a2404513",
+      "postedAt": "2026-05-31T00:06:14.539Z",
+      "postedHour": 0,
+      "dateContext": "2026-05-31",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Mitchell Robinson's rushed NBA Finals return isn't the full story. Coaches feel the frustration when media hype overshadows the gap left by defensive rotations, disappearing in film sessions by Friday. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Knicks' Mitchell Robinson plots NBA Finals return despite surgery",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/nba/knicks/2026/05/29/mitchell-robinson-injury-update-knicks-nba-finals/90311861007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-05-29T14:34:30Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 30-May-26 17:06:16 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-05-30T12:12:09.748Z",
+      "lastAttemptAt": "2026-05-31T00:06:14.543Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
