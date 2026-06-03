@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-03T00:24:56.276Z",
+  "updatedAt": "2026-06-03T15:27:54.993Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -14395,19 +14395,91 @@
       "contentType": "list_post",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-06-03"
+    },
+    {
+      "runId": "0c3bac42-8238-445f-8636-02d295c015d1",
+      "postedAt": "2026-06-03T15:26:41.706Z",
+      "postedHour": 15,
+      "dateContext": "2026-06-03",
+      "sport": "canopy",
+      "angle": "Booth Proof in the Wild",
+      "source": "llm",
+      "status": "failed",
+      "text": "1. Wind's first question: \"Can your frame stand with confidence or just swagger?\"\n2. Sunscreen won't stop the fade, but a good fabric fights it for you.\n3. Real market MVP? — Vicious Shade Supply Co. · viciousshade.com",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "specific_number",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Wednesday, 03-Jun-26 08:27:54 PDT."
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "durability_and_product_proof",
+      "voiceFamily": "buyer_intent_detail",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "outdoor festivals",
+      "productFocus": "frame quality",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "behind_the_scenes",
+      "imageConceptId": "durability-frame-close",
+      "imageStyleFamily": "mockup",
+      "imageShotType": "close_up",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected education to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside education; exploration selected buyer_intent_detail; exploration selected behind_the_scenes; exploration selected frame quality; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "proof_in_the_wild",
+      "contentBucket": "education",
+      "brandTagIncluded": true,
+      "candidateId": "durability_and_product_proof|proof_in_the_wild|education|buyer_intent_detail|behind_the_scenes|consideration|frame quality|outdoor festivals|none|soft_commercial:candidate:3",
+      "candidateBatchId": "0c3bac42-8238-445f-8636-02d295c015d1:canopy-batch",
+      "candidateScore": 112,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "durability_and_product_proof|proof_in_the_wild|education|buyer_intent_detail|behind_the_scenes|consideration|frame quality|outdoor festivals|none|soft_commercial",
+      "agentReasoningSummary": "exploration selected education to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside education; exploration selected buyer_intent_detail; exploration selected behind_the_scenes; exploration selected frame quality; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "setup_nerd",
+      "contentType": "list_post",
+      "brandMentioned": true,
+      "lessonVersion": "lesson-2026-06-03"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-03T00:24:05.931Z",
+      "lastAttemptAt": "2026-06-03T15:26:41.712Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-03T00:24:05.931Z",
+      "lastAttemptAt": "2026-06-03T15:26:41.712Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
