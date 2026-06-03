@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-03T01:43:47.512Z",
+  "updatedAt": "2026-06-03T15:52:04.538Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -10883,12 +10883,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "aaeb0904-a6b6-4332-9ca4-5619bed9d069",
+      "postedAt": "2026-06-03T15:52:01.425Z",
+      "postedHour": 15,
+      "dateContext": "2026-06-03",
+      "sport": "soccer",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Your film room is a mirage of clarity. Coaches at every level feel it: hours on tape can still leave crucial development gaps between what you see and what you teach. postgame AI · getpostgame.ai #CoachingTruth #SoccerCoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "your_film",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 03-Jun-26 08:52:04 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-03T01:43:45.664Z",
+      "lastAttemptAt": "2026-06-03T15:52:01.429Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
