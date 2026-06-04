@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-03T15:27:47.266Z",
+  "updatedAt": "2026-06-04T01:44:53.412Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -11194,12 +11194,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b9205091-d525-4b3e-9ca0-f1990a8e122d",
+      "postedAt": "2026-06-04T01:44:49.701Z",
+      "postedHour": 1,
+      "dateContext": "2026-06-04",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "failed",
+      "text": "Mitch Johnson's update on De’Aaron Fox's injury steals focus, but the real game lives in 3 crucial shifts unnoticed. Coaches know—Saturday's edge slips away by Monday's film session. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Spurs receive crucial De’Aaron Fox injury update ahead of Game 1",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/san-antonio-spurs/news/spurs-receive-crucial-deaaron-fox-injury-update-ahead-game-1/21e4877fe2e762e5c506bd20",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-02T21:16:00Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-03T15:27:42.727Z",
+      "lastAttemptAt": "2026-06-04T01:44:49.708Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
