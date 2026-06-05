@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-04T14:09:17.232Z",
+  "updatedAt": "2026-06-05T00:15:37.712Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -11023,12 +11023,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "7682145c-b8d4-4b8b-ad78-b628d26f7f5a",
+      "postedAt": "2026-06-05T00:15:34.750Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-05",
+      "sport": "nfl",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Rams’ win over the Niners was pure scoreboard fiction. Coaches know that beneath that victory are two untracked coverage busts that vanished from memory by Wednesday. It's these unseen flaws, not the final score, that haunt film nights. postgame AI · getpostgame.ai #CoachingTruth #NFLInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "scoreboard_lie",
+      "contentFrameLabel": "The Scoreboard Lie",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Scoreboard Lie to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "rams’_win",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 04-Jun-26 17:15:37 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-04T14:09:12.845Z",
+      "lastAttemptAt": "2026-06-05T00:15:34.758Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
