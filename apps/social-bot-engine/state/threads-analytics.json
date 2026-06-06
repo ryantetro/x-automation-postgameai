@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-05T14:00:17.239Z",
+  "updatedAt": "2026-06-06T00:14:37.271Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -11115,12 +11115,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d91f09f9-1bc2-4a30-ae9b-bceae2d72d69",
+      "postedAt": "2026-06-06T00:14:35.151Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-06",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "failed",
+      "text": "Blaming the baseballs for Ober's injury is a diversion. Coaches know throwing mechanics and decision-making get sidelined until those bad habits become invisible by Tuesday's video review. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Twins pitcher alleges condition of baseballs caused injury in formal complaint to MLB",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/minnesota-twins/news/twins-pitcher-baseballs-caused-injury-formal-complaint-mlb/2765f06b7f45d3ae6435545e",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-04T22:26:48Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "blaming_the",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 05-Jun-26 17:14:37 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-05T14:00:15.166Z",
+      "lastAttemptAt": "2026-06-06T00:14:35.154Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
