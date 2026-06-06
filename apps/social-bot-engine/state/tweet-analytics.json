@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-06T00:12:49.638Z",
+  "updatedAt": "2026-06-06T12:05:33.922Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -11421,12 +11421,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "6a328910-08a3-4941-b87d-bc1e59aa2f15",
+      "postedAt": "2026-06-06T12:05:29.919Z",
+      "postedHour": 12,
+      "dateContext": "2026-06-06",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bench coach sees more than anyone in the dugout. The best managers know when to listen. — postgame AI · getpostgame.ai #DiamondIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Is Aaron Judge out for the season? Yankees' superstar injury return timeline revealed by MLB insider",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/new-york-yankees/news/aaron-judge-out-season-yankees-superstar-injury-return-timeline-revealed-mlb-insider/d7498324e515596174d00ba9",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-05T11:01:36Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "a_bench",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-06T00:12:44.765Z",
+      "lastAttemptAt": "2026-06-06T12:05:29.923Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
