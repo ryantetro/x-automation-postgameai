@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-05T13:52:16.573Z",
+  "updatedAt": "2026-06-06T00:12:49.638Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -11378,12 +11378,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d3f96b60-2e31-4a81-9180-52255657e883",
+      "postedAt": "2026-06-06T00:12:44.762Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-06",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bench coach sees more than anyone in the dugout. The best managers know when to listen. — postgame AI · getpostgame.ai #CoachingBaseball #BaseballFilm",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Twins pitcher alleges condition of baseballs caused injury in formal complaint to MLB",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/minnesota-twins/news/twins-pitcher-baseballs-caused-injury-formal-complaint-mlb/2765f06b7f45d3ae6435545e",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-04T22:26:48Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "a_bench",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-05T13:52:13.448Z",
+      "lastAttemptAt": "2026-06-06T00:12:44.765Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
