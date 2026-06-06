@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-06T00:14:37.271Z",
+  "updatedAt": "2026-06-06T12:13:48.438Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -11163,12 +11163,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "2227b41f-360a-4657-814b-7f456ae8a7a9",
+      "postedAt": "2026-06-06T12:13:45.606Z",
+      "postedHour": 12,
+      "dateContext": "2026-06-06",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "failed",
+      "text": "Aaron Judge's absence is just an injury headline, but coaches know that's not the real loss. It's the gap in decision-making left behind—efficiency stats can't cover for poor shot selection when your slugger's instinct is benched. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Is Aaron Judge out for the season? Yankees' superstar injury return timeline revealed by MLB insider",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/new-york-yankees/news/aaron-judge-out-season-yankees-superstar-injury-return-timeline-revealed-mlb-insider/d7498324e515596174d00ba9",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-05T11:01:36Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 06-Jun-26 05:13:48 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-06T00:14:35.154Z",
+      "lastAttemptAt": "2026-06-06T12:13:45.610Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
