@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-06T00:00:39.230Z",
+  "updatedAt": "2026-06-06T12:05:27.382Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -14821,19 +14821,88 @@
       "contentType": "observation",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-06-05"
+    },
+    {
+      "runId": "26d3d542-9a44-4033-8608-e490a2f9ba27",
+      "postedAt": "2026-06-06T12:04:45.373Z",
+      "postedHour": 12,
+      "dateContext": "2026-06-06",
+      "sport": "canopy",
+      "angle": "Hot Takes and Booth Glow-Ups",
+      "source": "llm",
+      "status": "failed",
+      "text": "Market day initiation: 90-degree angles and zero sagging fabric. One booth screamed handpicked curation; the next one barely whispered garage sale leftovers. After one good gust, only one of them still told its story.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "unfinished_thought",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Saturday, 06-Jun-26 05:05:27 PDT."
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "competitive_value_framing",
+      "voiceFamily": "micro_story",
+      "buyerIntentLevel": "awareness",
+      "useCaseVertical": "retail promotions",
+      "productFocus": "full booth packages",
+      "urgencyMode": "seasonal",
+      "ctaMode": "none",
+      "creativeDirection": "before_after_transformation",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected micro_story; exploration selected before_after_transformation; exploration selected full booth packages; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; Launch gate prefers text-first hot takes unless image performance clearly beats text-only.",
+      "seriesId": "booth_hot_take",
+      "contentBucket": "culture",
+      "brandTagIncluded": false,
+      "candidateId": "competitive_value_framing|booth_hot_take|culture|micro_story|before_after_transformation|awareness|full booth packages|retail promotions|seasonal|none:candidate:3",
+      "candidateBatchId": "26d3d542-9a44-4033-8608-e490a2f9ba27:canopy-batch",
+      "candidateScore": 138,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "competitive_value_framing|booth_hot_take|culture|micro_story|before_after_transformation|awareness|full booth packages|retail promotions|seasonal|none",
+      "agentReasoningSummary": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected micro_story; exploration selected before_after_transformation; exploration selected full booth packages; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "booth_critic",
+      "contentType": "list_post",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-06-06"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-05T23:59:50.538Z",
+      "lastAttemptAt": "2026-06-06T12:04:45.379Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-05T23:59:50.538Z",
+      "lastAttemptAt": "2026-06-06T12:04:45.379Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
