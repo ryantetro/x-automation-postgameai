@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-06T12:05:33.922Z",
+  "updatedAt": "2026-06-07T00:09:26.420Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -11464,12 +11464,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "fadfba33-6b2f-43d3-a429-7d88cae12617",
+      "postedAt": "2026-06-07T00:09:23.595Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-07",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Jalen Brunson's defense fooled fans in Game 1, but coaches see a trap: day-old film turns false positives into gospel. If your staff doesn't dissect the nuance before it's lost, Spurs miss their real opportunity. #NBA #CoachingLife postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Jalen Brunson's defense looked good in NBA Finals Game 1, but the Spurs need to hunt him more in Game 2",
+      "newsArticleUrl": "https://www.cbssports.com/nba/news/jalen-brunson-defense-nba-finals-spurs-knicks/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-06-05T13:52:51Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-06T12:05:29.923Z",
+      "lastAttemptAt": "2026-06-07T00:09:23.600Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
