@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-06T12:13:48.438Z",
+  "updatedAt": "2026-06-07T00:11:29.097Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -11211,12 +11211,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b192a53a-42a4-410a-9104-f6d3a043f36e",
+      "postedAt": "2026-06-07T00:11:26.660Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-07",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Jalen Brunson's NBA Finals defense won't hold up if the Spurs exploit him better in Game 2. Coaches recognize that those defensive reads look solid on film, but one misstep vanishes the truth by Tuesday night, leaving a gap in execution that stats can't explain. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Jalen Brunson's defense looked good in NBA Finals Game 1, but the Spurs need to hunt him more in Game 2",
+      "newsArticleUrl": "https://www.cbssports.com/nba/news/jalen-brunson-defense-nba-finals-spurs-knicks/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-06-05T13:52:51Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 06-Jun-26 17:11:29 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-06T12:13:45.610Z",
+      "lastAttemptAt": "2026-06-07T00:11:26.664Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
