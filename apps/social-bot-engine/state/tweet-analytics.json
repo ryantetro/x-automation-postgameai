@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-07T00:09:26.420Z",
+  "updatedAt": "2026-06-07T12:21:24.813Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -11512,12 +11512,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "a24c4536-7d2a-4eba-afe0-aa6aea3990e5",
+      "postedAt": "2026-06-07T12:21:21.151Z",
+      "postedHour": 12,
+      "dateContext": "2026-06-07",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Westhead knew when players needed silence over speeches. Postgames often skip the hard discussions due to locker room tension. Mastering silence gives you the real edge, not just filling it with noise. #NBA #CoachingLife postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Former Lakers coach Paul Westhead gets lifetime achievement award",
+      "newsArticleUrl": "https://lebronwire.usatoday.com/story/sports/nba/2026/06/05/former-lakers-coach-paul-westhead-gets-lifetime-achievement-award/90432779007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-06-06T04:27:27Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "westhead_knew",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-07T00:09:23.600Z",
+      "lastAttemptAt": "2026-06-07T12:21:21.155Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
