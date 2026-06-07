@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-07T00:11:29.097Z",
+  "updatedAt": "2026-06-07T12:24:47.333Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -11259,12 +11259,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b80f54d8-68bc-4a07-8fb7-f7c57cb63b75",
+      "postedAt": "2026-06-07T12:24:45.040Z",
+      "postedHour": 12,
+      "dateContext": "2026-06-07",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Paul Westhead's lifetime achievement award nod is well deserved, but here's what coaches know: his game-day adjustments weren't about genius; they were about noticing the subtle shifts that go unspoken postgame. Those micro-moments disappear before Monday's film sessions, leaving fans clueless but haunting staff chats. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Former Lakers coach Paul Westhead gets lifetime achievement award",
+      "newsArticleUrl": "https://lebronwire.usatoday.com/story/sports/nba/2026/06/05/former-lakers-coach-paul-westhead-gets-lifetime-achievement-award/90432779007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-06-06T04:27:27Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Sunday, 07-Jun-26 05:24:47 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-07T00:11:26.664Z",
+      "lastAttemptAt": "2026-06-07T12:24:45.043Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
