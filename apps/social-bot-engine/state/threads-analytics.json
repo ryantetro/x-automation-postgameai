@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-10T00:19:59.428Z",
+  "updatedAt": "2026-06-10T14:28:17.921Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -11527,12 +11527,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "c3970378-7e7a-428f-b335-f2cbea4442be",
+      "postedAt": "2026-06-10T14:28:14.768Z",
+      "postedHour": 14,
+      "dateContext": "2026-06-10",
+      "sport": "soccer",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "USA facing Paraguay in the World Cup isn't about pre-match excitement—it's about what vanishes from memory by Monday. Coaches know last-minute defensive lapses will slip through the cracks of fan conversations, leaving real teaching moments lost until it's too late. postgame AI · getpostgame.ai #CoachingTruth #SoccerCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "USA next World Cup match: Schedule, start time, draw bracket and results as USMNT face Paraguay to open 2026",
+      "newsArticleUrl": "https://www.sportingnews.com/us/soccer/news/usa-next-world-cup-match-schedule-time-bracket-results-usmnt/bae696ff1adbf4dde02e57ba",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-09T11:00:02Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "usa_facing",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 10-Jun-26 07:28:17 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-10T00:19:55.948Z",
+      "lastAttemptAt": "2026-06-10T14:28:14.772Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
