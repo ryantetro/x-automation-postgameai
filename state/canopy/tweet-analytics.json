@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-09T13:42:58.932Z",
+  "updatedAt": "2026-06-10T00:06:36.530Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -15310,19 +15310,91 @@
       "contentType": "hot_take",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-06-09"
+    },
+    {
+      "runId": "f2b37231-72e1-478b-bb5e-d1b91ab82442",
+      "postedAt": "2026-06-10T00:05:50.842Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-10",
+      "sport": "canopy",
+      "angle": "Booth Identity and Setup Taste",
+      "source": "llm",
+      "status": "failed",
+      "text": "There's a special kind of booth blindness when every tent is a white rectangle with a folding table. Add a valance with real branding and suddenly your booth feels like a welcome mat, not a parking spot.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Tuesday, 09-Jun-26 17:06:36 PDT."
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "buyer_intent_products",
+      "voiceFamily": "soft_commercial",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "trade shows",
+      "productFocus": "feather flags",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "before_after_transformation",
+      "imageConceptId": "buyer-canopy-tradeshow-wide",
+      "imageStyleFamily": "lifestyle",
+      "imageShotType": "wide",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected promo to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside promo; exploration selected soft_commercial; exploration selected before_after_transformation; exploration selected feather flags; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "booth_identity",
+      "contentBucket": "promo",
+      "brandTagIncluded": false,
+      "candidateId": "buyer_intent_products|booth_identity|promo|soft_commercial|before_after_transformation|consideration|feather flags|trade shows|none|soft_commercial:candidate:4",
+      "candidateBatchId": "f2b37231-72e1-478b-bb5e-d1b91ab82442:canopy-batch",
+      "candidateScore": 132,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "buyer_intent_products|booth_identity|promo|soft_commercial|before_after_transformation|consideration|feather flags|trade shows|none|soft_commercial",
+      "agentReasoningSummary": "exploration selected promo to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside promo; exploration selected soft_commercial; exploration selected before_after_transformation; exploration selected feather flags; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "vendor_friend",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-06-10"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-09T13:42:10.508Z",
+      "lastAttemptAt": "2026-06-10T00:05:50.848Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-09T13:42:10.508Z",
+      "lastAttemptAt": "2026-06-10T00:05:50.848Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
