@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-10T00:19:17.141Z",
+  "updatedAt": "2026-06-10T14:22:10.990Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -11775,12 +11775,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "a0f922ae-aa74-4371-8c02-ffe7c7738a6f",
+      "postedAt": "2026-06-10T14:22:07.129Z",
+      "postedHour": 14,
+      "dateContext": "2026-06-10",
+      "sport": "soccer",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Most match review fails because it tries to coach every phase at once. — postgame AI · getpostgame.ai #SoccerFilm #BeautifulGame",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "USA next World Cup match: Schedule, start time, draw bracket and results as USMNT face Paraguay to open 2026",
+      "newsArticleUrl": "https://www.sportingnews.com/us/soccer/news/usa-next-world-cup-match-schedule-time-bracket-results-usmnt/bae696ff1adbf4dde02e57ba",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-09T11:00:02Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "most_match",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-10T00:19:14.602Z",
+      "lastAttemptAt": "2026-06-10T14:22:07.133Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
