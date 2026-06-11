@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-10T14:28:17.921Z",
+  "updatedAt": "2026-06-11T00:22:11.681Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -11575,12 +11575,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "79006a51-670e-4d77-b232-147ab0ed6d6a",
+      "postedAt": "2026-06-11T00:22:09.066Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-11",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Ron Harper Jr. landing with the Celtics is more than hype. Coaches understand those touted scoring titles won't expose the gaps in defensive schemes that vanish from memory by Wednesday. That's the conversation that never happens. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Ron Harper Jr. Rutgers coach on potential with Boston Celtics, in NBA",
+      "newsArticleUrl": "https://celticswire.usatoday.com/story/sports/nba/celtics/2026/06/09/ron-harper-jr-college-coach-on-potential-with-celtics-in-nba/90459281007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-06-09T14:00:45Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "ron_harper",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 10-Jun-26 17:22:11 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-10T14:28:14.772Z",
+      "lastAttemptAt": "2026-06-11T00:22:09.070Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
