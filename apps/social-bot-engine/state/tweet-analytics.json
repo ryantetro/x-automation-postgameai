@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-10T14:22:10.990Z",
+  "updatedAt": "2026-06-11T00:20:54.575Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -11818,12 +11818,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b00ed79e-df4b-4645-bc11-65c42ef71526",
+      "postedAt": "2026-06-11T00:20:52.386Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-11",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Ron Harper Jr.'s NBA talk hides the sticky trap—scoring talent distracts from the real postgame reckoning: what coaching intel fades before review starts. Wait too long, the raw insights turn into stale tape. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Ron Harper Jr. Rutgers coach on potential with Boston Celtics, in NBA",
+      "newsArticleUrl": "https://celticswire.usatoday.com/story/sports/nba/celtics/2026/06/09/ron-harper-jr-college-coach-on-potential-with-celtics-in-nba/90459281007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-06-09T14:00:45Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "ron_harper",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-10T14:22:07.133Z",
+      "lastAttemptAt": "2026-06-11T00:20:52.390Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
