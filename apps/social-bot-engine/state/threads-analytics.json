@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-13T00:23:24.890Z",
+  "updatedAt": "2026-06-13T12:55:58.781Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -11783,12 +11783,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "84ff11ff-8bec-4b77-892c-84f0ed5a90ba",
+      "postedAt": "2026-06-13T12:55:51.899Z",
+      "postedHour": 12,
+      "dateContext": "2026-06-13",
+      "sport": "mlb",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Bullpen management is easy on paper. It gets real when your best arm is tired and the lineup turns over. — postgame AI · getpostgame.ai #BaseballDev #CoachingBaseball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Braves' Tyler Kinley details why Atlanta has best bullpen, led by Robert Suarez, Raisel Iglesias",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/atlanta-braves/news/braves-tyler-kinley-details-why-atlanta-has-best-bullpen-led-robert-suarez-raisel-iglesias/1f9c18217b1685d1acc2bca9",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-12T07:53:11Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "bullpen_management",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 13-Jun-26 05:55:58 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-13T00:23:19.225Z",
+      "lastAttemptAt": "2026-06-13T12:55:51.903Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
