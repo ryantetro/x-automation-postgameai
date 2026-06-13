@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-13T00:22:40.408Z",
+  "updatedAt": "2026-06-13T12:25:22.386Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -12026,12 +12026,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4989a3a3-7dc9-4f0d-b2ff-a702e77ca2c7",
+      "postedAt": "2026-06-13T12:25:14.517Z",
+      "postedHour": 12,
+      "dateContext": "2026-06-13",
+      "sport": "mlb",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The difference between a slump and a mechanical issue is usually one honest video session. — postgame AI · getpostgame.ai #DugoutTalk #CoachingBaseball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Braves' Tyler Kinley details why Atlanta has best bullpen, led by Robert Suarez, Raisel Iglesias",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/atlanta-braves/news/braves-tyler-kinley-details-why-atlanta-has-best-bullpen-led-robert-suarez-raisel-iglesias/1f9c18217b1685d1acc2bca9",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-12T07:53:11Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "the_difference",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-13T00:22:32.021Z",
+      "lastAttemptAt": "2026-06-13T12:25:14.521Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
