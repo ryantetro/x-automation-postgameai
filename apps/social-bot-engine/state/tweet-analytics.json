@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-12T14:09:47.067Z",
+  "updatedAt": "2026-06-13T00:22:40.408Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -11983,12 +11983,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "cb5c6f97-95c9-4ac6-a81d-8a150ac6ce83",
+      "postedAt": "2026-06-13T00:22:32.013Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-13",
+      "sport": "mlb",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best baseball teaching usually starts with one sequence, not a full lecture. — postgame AI · getpostgame.ai #DiamondIQ #DugoutTalk",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "MLB Rookie Rankings: Kevin McGonigle maintains No. 1 spot, Payton Tolle cracks the list",
+      "newsArticleUrl": "https://www.cbssports.com/mlb/news/mlb-rookie-rankings-kevin-mcgonigle-payton-tolle-parker-messick-munetaka-murakami-jj-wetherholt/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-06-11T13:44:01Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-12T14:09:40.116Z",
+      "lastAttemptAt": "2026-06-13T00:22:32.021Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
