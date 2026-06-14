@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-14T00:13:48.690Z",
+  "updatedAt": "2026-06-14T12:59:48.261Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -12112,12 +12112,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d3815f3c-e53d-4469-b6c8-d175b76f85d0",
+      "postedAt": "2026-06-14T12:59:40.928Z",
+      "postedHour": 12,
+      "dateContext": "2026-06-14",
+      "sport": "nba",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Shot quality usually tells the truth faster than the box score does. — postgame AI · getpostgame.ai #CoachingBasketball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Longest NBA championship droughts: How Knicks can snap lengthy streak and who is next up on list",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/new-york-knicks/news/longest-nba-championship-drought-list/0b19f3a56ef6ea0a66ce5ebe",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-13T08:30:02Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-14T00:13:42.503Z",
+      "lastAttemptAt": "2026-06-14T12:59:40.932Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
