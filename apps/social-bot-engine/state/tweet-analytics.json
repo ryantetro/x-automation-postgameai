@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-13T12:25:22.386Z",
+  "updatedAt": "2026-06-14T00:13:48.690Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -12069,12 +12069,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "825df244-8049-4713-9e49-e3397becd688",
+      "postedAt": "2026-06-14T00:13:42.499Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-14",
+      "sport": "nba",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "If your players cannot explain the game plan back to you, the film session missed. — postgame AI · getpostgame.ai #BasketballIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Mike Brown was a victim of the NBA's coach-firing trend, and then he became its greatest success story",
+      "newsArticleUrl": "https://www.cbssports.com/nba/news/knicks-mike-brown-coaching-success-story/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-06-12T13:44:34Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "if_your",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-13T12:25:14.521Z",
+      "lastAttemptAt": "2026-06-14T00:13:42.503Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
