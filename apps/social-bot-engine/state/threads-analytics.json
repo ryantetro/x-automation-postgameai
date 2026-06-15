@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-15T00:19:09.304Z",
+  "updatedAt": "2026-06-15T16:22:31.060Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -11955,12 +11955,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "c7471391-d277-4986-8476-19313d336540",
+      "postedAt": "2026-06-15T16:22:23.210Z",
+      "postedHour": 16,
+      "dateContext": "2026-06-15",
+      "sport": "nfl",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Football analytics matter when they sharpen decisions, not when they decorate reports. — postgame AI · getpostgame.ai #FridayNightLights #CoachingFootball",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "football_analytics",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Monday, 15-Jun-26 09:22:31 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-15T00:19:01.332Z",
+      "lastAttemptAt": "2026-06-15T16:22:23.213Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
