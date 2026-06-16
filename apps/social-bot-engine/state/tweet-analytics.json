@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-15T16:17:47.193Z",
+  "updatedAt": "2026-06-16T01:44:23.092Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -12237,12 +12237,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "3357488e-98c9-43d5-be7e-383e69ad4783",
+      "postedAt": "2026-06-16T01:44:15.329Z",
+      "postedHour": 1,
+      "dateContext": "2026-06-16",
+      "sport": "mlb",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Baseball data is useful when it survives the trip from spreadsheet to dugout. — postgame AI · getpostgame.ai #DugoutTalk",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "'No one' in MLB believes Red Sox defense of Craig Breslow's job security",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/boston-red-sox/news/no-one-believes-red-sox-defense-craig-breslows-job-security/7e1304af3a640ea901fc86bc",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-14T18:40:06Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "baseball_data",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-15T16:17:41.822Z",
+      "lastAttemptAt": "2026-06-16T01:44:15.334Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
