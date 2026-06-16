@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-15T16:22:31.060Z",
+  "updatedAt": "2026-06-16T01:43:20.608Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -11994,12 +11994,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "cd889ccf-0b40-47b4-b142-a3225df40b7f",
+      "postedAt": "2026-06-16T01:43:13.658Z",
+      "postedHour": 1,
+      "dateContext": "2026-06-16",
+      "sport": "mlb",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Lineup construction matters less than pitch sequencing in the at-bats that actually change the game. — postgame AI · getpostgame.ai #DiamondIQ #MLBCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "'No one' in MLB believes Red Sox defense of Craig Breslow's job security",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/boston-red-sox/news/no-one-believes-red-sox-defense-craig-breslows-job-security/7e1304af3a640ea901fc86bc",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-14T18:40:06Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "lineup_construction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Monday, 15-Jun-26 18:43:20 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-15T16:22:23.213Z",
+      "lastAttemptAt": "2026-06-16T01:43:13.662Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
