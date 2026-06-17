@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-17T00:23:21.825Z",
+  "updatedAt": "2026-06-17T14:28:37.317Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -12115,12 +12115,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "038be323-50b6-44b2-916f-606db7a5b963",
+      "postedAt": "2026-06-17T14:28:29.991Z",
+      "postedHour": 14,
+      "dateContext": "2026-06-17",
+      "sport": "soccer",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best soccer coaching point is usually one sequence and one tactical fix. — postgame AI · getpostgame.ai #CoachingSoccer #TacticalAnalysis",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Iran coach after opening draw with New Zealand: 'Our team is the most oppressed in the whole World Cup'",
+      "newsArticleUrl": "https://www.sportingnews.com/us/soccer/news/iran-coach-after-opening-draw-new-zealand-our-team-most-oppressed-whole-world-cup/f001653f1113650de85f2fb1",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-16T05:50:54Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "provocation",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 17-Jun-26 07:28:37 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-17T00:23:14.347Z",
+      "lastAttemptAt": "2026-06-17T14:28:29.994Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
