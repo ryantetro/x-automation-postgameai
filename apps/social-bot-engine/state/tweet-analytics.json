@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-16T15:53:46.340Z",
+  "updatedAt": "2026-06-17T00:22:22.076Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -12319,12 +12319,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "93d1658c-dacd-4a88-b97a-8ce88cd1968a",
+      "postedAt": "2026-06-17T00:22:13.878Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-17",
+      "sport": "soccer",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Possession means nothing without intent. Passing for the sake of passing is just resting on the ball. — postgame AI · getpostgame.ai #PitchIQ #CoachingSoccer",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "possession_means",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-16T15:53:39.474Z",
+      "lastAttemptAt": "2026-06-17T00:22:13.882Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
