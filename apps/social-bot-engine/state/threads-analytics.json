@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-17T14:28:37.317Z",
+  "updatedAt": "2026-06-18T00:20:09.195Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -12158,12 +12158,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "94075fb4-16b7-424a-8b64-78d35b7ebe19",
+      "postedAt": "2026-06-18T00:20:02.092Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-18",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The real evaluation happens in transition. Everything else just confirms what you already saw. — postgame AI · getpostgame.ai #BasketballIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Rockets assistant still in consideration for Mavericks head coaching job",
+      "newsArticleUrl": "https://rocketswire.usatoday.com/story/sports/nba/rockets/2026/06/16/houston-assistant-still-in-consideration-mavericks-head-coaching-job/90581487007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-06-16T22:22:13Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "the_real",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 17-Jun-26 17:20:09 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-17T14:28:29.994Z",
+      "lastAttemptAt": "2026-06-18T00:20:02.095Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
