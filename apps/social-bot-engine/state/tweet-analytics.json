@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-18T00:19:03.845Z",
+  "updatedAt": "2026-06-18T14:10:19.582Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -12444,12 +12444,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "61a8f5de-8922-4fdd-ade6-0b4a9b408dd0",
+      "postedAt": "2026-06-18T14:10:12.015Z",
+      "postedHour": 14,
+      "dateContext": "2026-06-18",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Most basketball film sessions are too long to be useful. — postgame AI · getpostgame.ai #CoachingBasketball #HoopsDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Mavericks missed out on Sean Sweeney, but this fan-favorite 68-year-old might be the next best thing",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/dallas-mavericks/news/dallas-mavericks-miss-sean-sweeney-terry-stotts-head-coach-search/388cf7672ba9461c65d9ac64",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-17T02:41:22Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "most_basketball",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-18T00:18:57.763Z",
+      "lastAttemptAt": "2026-06-18T14:10:12.019Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
