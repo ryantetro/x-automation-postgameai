@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-19T01:46:23.601Z",
+  "updatedAt": "2026-06-19T14:12:45.857Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -12526,12 +12526,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "54027ca1-2048-4a56-bad0-d3be0961bec5",
+      "postedAt": "2026-06-19T14:12:39.075Z",
+      "postedHour": 14,
+      "dateContext": "2026-06-19",
+      "sport": "nfl",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Football analytics matter when they sharpen decisions, not when they decorate reports. — postgame AI · getpostgame.ai #CoachingFootball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Jaguars rank near bottom of NFL in free agency spending this offseason",
+      "newsArticleUrl": "https://jaguarswire.usatoday.com/story/sports/nfl/jaguars/2026/06/18/where-did-jaguars-rank-2026-free-agency-spending/90603262007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-06-18T13:26:44Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "football_analytics",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-19T01:46:16.827Z",
+      "lastAttemptAt": "2026-06-19T14:12:39.079Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
