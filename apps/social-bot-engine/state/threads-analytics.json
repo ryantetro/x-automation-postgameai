@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-18T14:18:37.237Z",
+  "updatedAt": "2026-06-19T01:47:08.530Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -12244,12 +12244,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "254c58de-81f5-492c-86d3-2eeae28baad6",
+      "postedAt": "2026-06-19T01:47:02.928Z",
+      "postedHour": 1,
+      "dateContext": "2026-06-19",
+      "sport": "nfl",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Football staffs do not need more film. They need clearer corrections. — postgame AI · getpostgame.ai #GridironIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "football_staffs",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 18-Jun-26 18:47:08 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-18T14:18:30.282Z",
+      "lastAttemptAt": "2026-06-19T01:47:02.931Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
