@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-19T14:18:32.405Z",
+  "updatedAt": "2026-06-20T00:15:51.410Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -12326,12 +12326,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "aa531ce0-0cf5-4889-9d7f-3c90e409486a",
+      "postedAt": "2026-06-20T00:15:43.458Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-20",
+      "sport": "mlb",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The difference between a slump and a mechanical issue is usually one honest video session. — postgame AI · getpostgame.ai #DiamondIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Phillies add two new pitchers to MLB roster after Andrew Painter decision",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/philadelphia-phillies/news/phillies-add-two-new-pitchers-roster-andrew-painter-decision/db3814049da3627a94ed8689",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-18T19:03:59Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_difference",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 19-Jun-26 17:15:51 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-19T14:18:25.303Z",
+      "lastAttemptAt": "2026-06-20T00:15:43.462Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
