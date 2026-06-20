@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-19T14:12:45.857Z",
+  "updatedAt": "2026-06-20T00:14:41.518Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -12569,12 +12569,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "e56a64a4-403b-42f0-b56e-3bef418ae622",
+      "postedAt": "2026-06-20T00:14:32.841Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-20",
+      "sport": "mlb",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Baseball review gets noisy fast when every inning makes the cut. — postgame AI · getpostgame.ai #BaseballDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Phillies add two new pitchers to MLB roster after Andrew Painter decision",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/philadelphia-phillies/news/phillies-add-two-new-pitchers-roster-andrew-painter-decision/db3814049da3627a94ed8689",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-18T19:03:59Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "baseball_review",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-19T14:12:39.079Z",
+      "lastAttemptAt": "2026-06-20T00:14:32.845Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
