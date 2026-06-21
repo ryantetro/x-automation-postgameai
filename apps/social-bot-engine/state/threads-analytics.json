@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-21T00:14:58.413Z",
+  "updatedAt": "2026-06-21T13:16:34.462Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -12451,12 +12451,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "10bddfa2-0bb0-4c6d-b1e7-dcea3c1f2d16",
+      "postedAt": "2026-06-21T13:16:27.364Z",
+      "postedHour": 13,
+      "dateContext": "2026-06-21",
+      "sport": "nba",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Shot quality usually tells the truth faster than the box score does. — postgame AI · getpostgame.ai #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Paul Pierce comes to Victor Wembanyama's defense after walking off without shaking hands",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/san-antonio-spurs/news/paul-pierce-victor-wembanyama-defense-without-shaking-hands/6db27585194c94037953dfe2",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-20T02:57:43Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Sunday, 21-Jun-26 06:16:34 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-21T00:14:50.543Z",
+      "lastAttemptAt": "2026-06-21T13:16:27.370Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
