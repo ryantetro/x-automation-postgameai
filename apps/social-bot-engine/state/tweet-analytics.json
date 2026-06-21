@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-20T12:26:02.398Z",
+  "updatedAt": "2026-06-21T00:13:41.443Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -12651,12 +12651,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "1af8ede0-77d1-4bcb-8813-1830ee9100f3",
+      "postedAt": "2026-06-21T00:13:34.267Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-21",
+      "sport": "nba",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The real evaluation happens in transition. Everything else just confirms what you already saw. — postgame AI · getpostgame.ai #BallerCoach",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Victor Wembanyama’s playoff controversies aren’t driving the backlash — this hidden factor is",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/san-antonio-spurs/news/victor-wembanyama-playoff-controversies-not-driving-backlash-hidden-factor/9a70af888db0f9f4034c873a",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-19T14:34:05Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_real",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-20T12:25:55.571Z",
+      "lastAttemptAt": "2026-06-21T00:13:34.270Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
