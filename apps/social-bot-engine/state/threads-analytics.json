@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-22T00:18:06.470Z",
+  "updatedAt": "2026-06-22T15:58:41.626Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -12533,12 +12533,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "e84d4b7e-c810-42f2-b425-1bdcfa06e76a",
+      "postedAt": "2026-06-22T15:58:34.308Z",
+      "postedHour": 15,
+      "dateContext": "2026-06-22",
+      "sport": "nfl",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best sideline adjustments start before the coordinator says a word. — postgame AI · getpostgame.ai #CoachingFootball #FootballFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Monday, 22-Jun-26 08:58:41 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-22T00:17:59.217Z",
+      "lastAttemptAt": "2026-06-22T15:58:34.312Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
