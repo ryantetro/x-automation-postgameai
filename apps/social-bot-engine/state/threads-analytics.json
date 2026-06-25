@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-25T00:18:34.801Z",
+  "updatedAt": "2026-06-25T13:24:11.821Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -12771,12 +12771,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "916c4430-5f48-4189-afe6-707c8c059e50",
+      "postedAt": "2026-06-25T13:24:04.985Z",
+      "postedHour": 13,
+      "dateContext": "2026-06-25",
+      "sport": "nba",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The real evaluation happens in transition. Everything else just confirms what you already saw. — postgame AI · getpostgame.ai #BallerCoach #HoopsDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "2026 NBA Draft winners and losers: Mavericks fail to help Cooper Flagg with low-upside Morez Johnson Jr. pick",
+      "newsArticleUrl": "https://www.cbssports.com/nba/news/2026-nba-draft-winners-and-losers-mavericks-morez-johnson-aj-dybantsa-keaton-wagler-darius-acuff/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-06-24T05:39:13Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "the_real",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 25-Jun-26 06:24:11 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-25T00:18:29.227Z",
+      "lastAttemptAt": "2026-06-25T13:24:04.989Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
