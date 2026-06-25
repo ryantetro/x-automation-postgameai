@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-24T13:22:30.873Z",
+  "updatedAt": "2026-06-25T00:17:45.186Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -12971,12 +12971,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "1ffd3c72-90f2-4d58-b5e1-965fa7788a63",
+      "postedAt": "2026-06-25T00:17:37.763Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-25",
+      "sport": "nba",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Momentum flips are usually visible before the final score makes them obvious. — postgame AI · getpostgame.ai #CourtVision #BallerCoach",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What Jalen Brunson's NBA title run did (and didn't do) to Becky Hammon's take",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/wnba/2026/06/23/becky-hammon-jalen-brunson-comments-knicks-title/90665654007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-06-23T21:18:15Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "momentum_flips",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-24T13:22:21.266Z",
+      "lastAttemptAt": "2026-06-25T00:17:37.767Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
