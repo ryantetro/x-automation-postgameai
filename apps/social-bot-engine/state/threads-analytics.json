@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-24T13:26:55.949Z",
+  "updatedAt": "2026-06-25T00:18:34.801Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -12728,12 +12728,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "cbe483ca-f98b-4292-be29-0227621173d1",
+      "postedAt": "2026-06-25T00:18:29.223Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-25",
+      "sport": "nba",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "You can see a team's culture in how they execute after a bad call. That is the real film. — postgame AI · getpostgame.ai #HoopsDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What Jalen Brunson's NBA title run did (and didn't do) to Becky Hammon's take",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/wnba/2026/06/23/becky-hammon-jalen-brunson-comments-knicks-title/90665654007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-06-23T21:18:15Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "loss",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "you_can",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 24-Jun-26 17:18:34 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-24T13:26:49.123Z",
+      "lastAttemptAt": "2026-06-25T00:18:29.227Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
