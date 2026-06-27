@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-27T00:14:59.098Z",
+  "updatedAt": "2026-06-27T12:14:56.184Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -12935,12 +12935,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "bbb6b3cd-7192-4f80-bc15-9ac24d3e4f1e",
+      "postedAt": "2026-06-27T12:14:51.119Z",
+      "postedHour": 12,
+      "dateContext": "2026-06-27",
+      "sport": "mlb",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A pitching staff is only as good as the conversation between starts, not just the bullpen phone. — postgame AI · getpostgame.ai #BaseballFilm #BaseballDev",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_pitching",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 27-Jun-26 05:14:56 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-27T00:14:50.401Z",
+      "lastAttemptAt": "2026-06-27T12:14:51.123Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
