@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-26T13:18:30.846Z",
+  "updatedAt": "2026-06-27T00:14:59.098Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -12892,12 +12892,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "188dd586-d5e1-4b56-8084-c4adc9450a3c",
+      "postedAt": "2026-06-27T00:14:50.396Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-27",
+      "sport": "mlb",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Leverage swings usually tell you more than the final line does. — postgame AI · getpostgame.ai #BaseballDev #DiamondIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Yankees linked to 2.13 ERA breakout reliever as another Rockies trade target",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/new-york-yankees/news/yankees-linked-213-era-reliever-another-rockies-trade-target/088c1fc19fe368cecbbf1e98",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-25T20:07:15Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "leverage_swings",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 26-Jun-26 17:14:59 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-26T13:18:22.925Z",
+      "lastAttemptAt": "2026-06-27T00:14:50.401Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
