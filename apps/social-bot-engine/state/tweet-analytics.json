@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-26T13:11:27.766Z",
+  "updatedAt": "2026-06-27T00:13:34.489Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -13135,12 +13135,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "43d4716e-008a-46bf-a59a-2695d9312e46",
+      "postedAt": "2026-06-27T00:13:25.504Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-27",
+      "sport": "mlb",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Baseball review gets noisy fast when every inning makes the cut. — postgame AI · getpostgame.ai #CoachingBaseball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Yankees linked to 2.13 ERA breakout reliever as another Rockies trade target",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/new-york-yankees/news/yankees-linked-213-era-reliever-another-rockies-trade-target/088c1fc19fe368cecbbf1e98",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-25T20:07:15Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "baseball_review",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-26T13:11:20.320Z",
+      "lastAttemptAt": "2026-06-27T00:13:25.508Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
