@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-28T00:07:21.968Z",
+  "updatedAt": "2026-06-28T12:17:23.573Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -13256,12 +13256,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d28b1b30-1589-4897-a3c3-78eccf68cbf9",
+      "postedAt": "2026-06-28T12:17:15.994Z",
+      "postedHour": 12,
+      "dateContext": "2026-06-28",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Shot quality usually tells the truth faster than the box score does. — postgame AI · getpostgame.ai #BallerCoach #HoopsDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "First round pick makes bold claim about potential role with Golden State Warriors",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/golden-state-warriors/news/first-round-pick-makes-bold-claim-about-potential-role-golden-state-warriors/bfa5094ff2a9193533ee43ab",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-27T03:27:46Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-28T00:07:15.496Z",
+      "lastAttemptAt": "2026-06-28T12:17:15.999Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
