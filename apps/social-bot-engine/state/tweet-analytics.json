@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-29T14:47:56.820Z",
+  "updatedAt": "2026-06-30T00:10:42.798Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -13377,12 +13377,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "30e43ad7-f065-4d76-838c-98069763582f",
+      "postedAt": "2026-06-30T00:10:35.711Z",
+      "postedHour": 0,
+      "dateContext": "2026-06-30",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Baseball data is useful when it survives the trip from spreadsheet to dugout. — postgame AI · getpostgame.ai #DugoutTalk #DiamondIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Anthony Seigler is quickly becoming one of the Red Sox's best surprise stories",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/boston-red-sox/news/anthony-seigler-quickly-becoming-one-red-soxs-best-surprise-stories/e1ae2aaee956ad48eebd9b02",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-28T19:10:42Z",
+      "contentFrameId": "scoreboard_lie",
+      "contentFrameLabel": "The Scoreboard Lie",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment upset to The Scoreboard Lie.",
+      "newsMomentType": "upset",
+      "openingPattern": "baseball_data",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-29T14:47:48.445Z",
+      "lastAttemptAt": "2026-06-30T00:10:35.715Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
