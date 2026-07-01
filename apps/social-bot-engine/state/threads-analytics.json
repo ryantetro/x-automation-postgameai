@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-01T00:14:28.342Z",
+  "updatedAt": "2026-07-01T13:39:01.547Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13255,12 +13255,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "03d24eb3-f6af-4dd7-bd53-ef103569749a",
+      "postedAt": "2026-07-01T13:38:55.841Z",
+      "postedHour": 13,
+      "dateContext": "2026-07-01",
+      "sport": "soccer",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Territory and defensive balance usually matter before the scoreline catches up. — postgame AI · getpostgame.ai #BeautifulGame #TacticalAnalysis",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "territory_and",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 01-Jul-26 06:39:01 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-01T00:14:20.834Z",
+      "lastAttemptAt": "2026-07-01T13:38:55.845Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
