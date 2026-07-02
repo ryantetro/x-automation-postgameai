@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-02T00:14:07.295Z",
+  "updatedAt": "2026-07-02T12:58:25.330Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -13580,12 +13580,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "ab50f207-0d08-4766-bcab-1cee692cbd0e",
+      "postedAt": "2026-07-02T12:58:17.703Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-02",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Useful basketball analytics should change teaching, not just slides. — postgame AI · getpostgame.ai #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Kawhi Leonard's strange, failed era with Clippers ends with Raptors trade as NBA investigation still looms",
+      "newsArticleUrl": "https://www.cbssports.com/nba/news/kawhi-leonard-trade-clippers-legacy-nba-aspiration-investigation/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-07-01T02:49:31Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "useful_basketball",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-02T00:14:00.331Z",
+      "lastAttemptAt": "2026-07-02T12:58:17.706Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
