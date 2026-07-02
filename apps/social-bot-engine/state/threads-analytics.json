@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-01T13:39:01.547Z",
+  "updatedAt": "2026-07-02T00:15:32.442Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13294,12 +13294,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "001dc0d4-4f24-4f53-9982-e8d8ce8e4142",
+      "postedAt": "2026-07-02T00:15:24.540Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-02",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Shot quality usually tells the truth faster than the box score does. — postgame AI · getpostgame.ai #BasketballIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What Clippers lineup projection looks like without Kawhi Leonard after Raptors trade",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/los-angeles-clippers/news/clippers-lineup-projection-kawhi-leonard-raptors-trade/e5fd73b0645296b8a6f38b18",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-30T21:30:53Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 01-Jul-26 17:15:32 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-01T13:38:55.845Z",
+      "lastAttemptAt": "2026-07-02T00:15:24.544Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
