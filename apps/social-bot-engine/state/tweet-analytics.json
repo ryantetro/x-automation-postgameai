@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-01T13:33:58.224Z",
+  "updatedAt": "2026-07-02T00:14:07.295Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -13537,12 +13537,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "f6b117cb-b449-4114-8ac5-56688003beac",
+      "postedAt": "2026-07-02T00:14:00.326Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-02",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Momentum flips are usually visible before the final score makes them obvious. — postgame AI · getpostgame.ai #BasketballIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "What Clippers lineup projection looks like without Kawhi Leonard after Raptors trade",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/los-angeles-clippers/news/clippers-lineup-projection-kawhi-leonard-raptors-trade/e5fd73b0645296b8a6f38b18",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-06-30T21:30:53Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "validation",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "momentum_flips",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-01T13:33:47.620Z",
+      "lastAttemptAt": "2026-07-02T00:14:00.331Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
