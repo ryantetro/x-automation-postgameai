@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-04T00:11:38.898Z",
+  "updatedAt": "2026-07-04T12:13:39.032Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13497,12 +13497,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "7080f455-4491-4347-967f-eba00a205389",
+      "postedAt": "2026-07-04T12:13:24.772Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-04",
+      "sport": "mlb",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Leverage swings usually tell you more than the final line does. — postgame AI · getpostgame.ai #CoachingBaseball",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "leverage_swings",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-04T00:11:23.426Z",
+      "lastAttemptAt": "2026-07-04T12:13:24.776Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
