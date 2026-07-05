@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-04T12:13:39.032Z",
+  "updatedAt": "2026-07-05T00:06:30.832Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13536,12 +13536,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "fc8ca25b-9363-4357-89e5-0bd06b5c8dee",
+      "postedAt": "2026-07-05T00:06:16.575Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-05",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The real evaluation happens in transition. Everything else just confirms what you already saw. — postgame AI · getpostgame.ai #HoopsDev #BasketballIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_real",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-04T12:13:24.776Z",
+      "lastAttemptAt": "2026-07-05T00:06:16.580Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
