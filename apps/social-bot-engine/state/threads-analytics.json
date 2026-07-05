@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-05T00:06:30.832Z",
+  "updatedAt": "2026-07-05T12:23:09.420Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13575,12 +13575,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "5aa3cb69-9e13-49bb-be7c-e437bedfe973",
+      "postedAt": "2026-07-05T12:22:55.995Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-05",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A roster is not a lineup. The best coaches know which 3 guys change the game when it tightens. — postgame AI · getpostgame.ai #HoopsDev",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "validation",
+      "frameReason": "Selected The Conversation That Doesn't Happen to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_roster",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-05T00:06:16.580Z",
+      "lastAttemptAt": "2026-07-05T12:22:55.999Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
