@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-06T00:13:39.157Z",
+  "updatedAt": "2026-07-06T14:33:47.116Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13653,12 +13653,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4bcbed21-1c87-43d6-945c-c365a3879a12",
+      "postedAt": "2026-07-06T14:33:30.935Z",
+      "postedHour": 14,
+      "dateContext": "2026-07-06",
+      "sport": "nfl",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bad rep on Wednesday usually shows up as a bad rep on Sunday. That is not a coincidence. — postgame AI · getpostgame.ai #FootballFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_bad",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-06T00:13:22.025Z",
+      "lastAttemptAt": "2026-07-06T14:33:30.939Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
