@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-05T12:23:09.420Z",
+  "updatedAt": "2026-07-06T00:13:39.157Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13614,12 +13614,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "98d6387e-c51f-42f7-a81e-7079828e933d",
+      "postedAt": "2026-07-06T00:13:22.021Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-06",
+      "sport": "nfl",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best sideline adjustments start before the coordinator says a word. — postgame AI · getpostgame.ai #NFLCoaching #FootballFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-05T12:22:55.999Z",
+      "lastAttemptAt": "2026-07-06T00:13:22.025Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
