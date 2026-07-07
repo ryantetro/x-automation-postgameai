@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-07T00:15:21.810Z",
+  "updatedAt": "2026-07-07T13:25:01.234Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13731,12 +13731,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "30c47cf6-1a11-499c-889d-91334343f40a",
+      "postedAt": "2026-07-07T13:24:46.912Z",
+      "postedHour": 13,
+      "dateContext": "2026-07-07",
+      "sport": "mlb",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The difference between a slump and a mechanical issue is usually one honest video session. — postgame AI · getpostgame.ai #DugoutTalk",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "MLB power rankings: As Red Sox dig out of big hole, another big loss looms",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/mlb/2026/07/06/mlb-power-rankings-red-sox-standings-connelly-early/90815543007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-06T09:30:54Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "the_difference",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-07T00:15:04.305Z",
+      "lastAttemptAt": "2026-07-07T13:24:46.917Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
