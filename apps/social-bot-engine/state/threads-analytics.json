@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-06T14:33:47.116Z",
+  "updatedAt": "2026-07-07T00:15:21.810Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13692,12 +13692,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "5cd0b2d8-cc89-43b2-bf56-eb8a675e5c81",
+      "postedAt": "2026-07-07T00:15:04.301Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-07",
+      "sport": "mlb",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Scouting reports are only useful when players actually use them in the box. — postgame AI · getpostgame.ai #CoachingBaseball",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "scouting_reports",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-06T14:33:30.939Z",
+      "lastAttemptAt": "2026-07-07T00:15:04.305Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
