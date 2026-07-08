@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-07T13:25:01.234Z",
+  "updatedAt": "2026-07-08T00:04:14.114Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13774,12 +13774,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "2976b121-7b7c-4231-a102-ddb1fa31d088",
+      "postedAt": "2026-07-08T00:03:59.509Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-08",
+      "sport": "soccer",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best defensive coaches do not scream about effort. They fix the shape before it breaks. — postgame AI · getpostgame.ai #FootballCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Report: Belgium allowed to appeal Folarin Balogun's reversed suspension",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/soccer/worldcup/2026/07/06/folarin-balogun-belgium-appeals-suspension-reversal/90818691007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-06T13:17:28Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-07T13:24:46.917Z",
+      "lastAttemptAt": "2026-07-08T00:03:59.516Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
