@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-07T13:21:29.151Z",
+  "updatedAt": "2026-07-08T00:02:10.078Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -14017,12 +14017,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "0b7d5b48-e76d-48a5-be7d-b7a8825af5f4",
+      "postedAt": "2026-07-08T00:02:00.764Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-08",
+      "sport": "soccer",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Soccer analytics only matter if they survive contact with real coaching. — postgame AI · getpostgame.ai #CoachingSoccer",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Report: Belgium allowed to appeal Folarin Balogun's reversed suspension",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/soccer/worldcup/2026/07/06/folarin-balogun-belgium-appeals-suspension-reversal/90818691007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-06T13:17:28Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "soccer_analytics",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-07T13:21:21.762Z",
+      "lastAttemptAt": "2026-07-08T00:02:00.772Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
