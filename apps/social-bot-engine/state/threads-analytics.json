@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-08T00:04:14.114Z",
+  "updatedAt": "2026-07-08T12:49:01.001Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13817,12 +13817,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "01a82aa5-fdde-4a8c-9e6b-054014dfad81",
+      "postedAt": "2026-07-08T12:48:45.644Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-08",
+      "sport": "soccer",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A halftime talk is 3 minutes. The best ones change the next 45. The worst ones just fill time. — postgame AI · getpostgame.ai #CoachingSoccer",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Ugly World Cup loss to Belgium will make it hard to believe in the future of USMNT, no matter who's in charge",
+      "newsArticleUrl": "https://www.sportingnews.com/us/soccer/news/ugly-world-cup-loss-belgium-will-make-it-hard-believe-future-usmnt-no-matter-whos-charge/9cb6ee82155f18f18f0ee625",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-07-07T04:12:24Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "a_halftime",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-08T00:03:59.516Z",
+      "lastAttemptAt": "2026-07-08T12:48:45.648Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
