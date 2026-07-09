@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-08T12:49:01.001Z",
+  "updatedAt": "2026-07-09T00:17:29.251Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13860,12 +13860,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b8e7b49e-9ca0-4580-9da0-77aa207e1f54",
+      "postedAt": "2026-07-09T00:17:14.593Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-09",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Useful basketball analytics should change teaching, not just slides. — postgame AI · getpostgame.ai #BasketballIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "NBA Finals MVP Jalen Brunson played through an arm injury in the Finals that required surgery",
+      "newsArticleUrl": "https://www.nbcsports.com/nba/news/nba-finals-mvp-jalen-brunson-played-through-an-arm-injury-in-the-finals-that-required-surgery",
+      "newsSourceName": "NBCSports.com",
+      "newsPublishedAt": "2026-07-07T16:15:33Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "provocation",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "useful_basketball",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-08T12:48:45.648Z",
+      "lastAttemptAt": "2026-07-09T00:17:14.598Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
