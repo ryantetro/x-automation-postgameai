@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-08T12:21:26.218Z",
+  "updatedAt": "2026-07-09T00:16:12.732Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -14103,12 +14103,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "fa290d36-3e23-4adf-af01-13dc0652a7a9",
+      "postedAt": "2026-07-09T00:16:04.519Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-09",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Every staff knows the player who looks great in warmups and disappears in the second half. — postgame AI · getpostgame.ai #CoachingBasketball #CourtVision",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "NBA Finals MVP Jalen Brunson played through an arm injury in the Finals that required surgery",
+      "newsArticleUrl": "https://www.nbcsports.com/nba/news/nba-finals-mvp-jalen-brunson-played-through-an-arm-injury-in-the-finals-that-required-surgery",
+      "newsSourceName": "NBCSports.com",
+      "newsPublishedAt": "2026-07-07T16:15:33Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "universal_truth",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-08T12:21:17.503Z",
+      "lastAttemptAt": "2026-07-09T00:16:04.524Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
