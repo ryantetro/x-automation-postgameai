@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-10T00:11:58.789Z",
+  "updatedAt": "2026-07-10T13:18:19.469Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13981,12 +13981,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "bd25a309-662e-4d2f-b40e-71823037b40c",
+      "postedAt": "2026-07-10T13:18:02.413Z",
+      "postedHour": 13,
+      "dateContext": "2026-07-10",
+      "sport": "nfl",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Football analytics matter when they sharpen decisions, not when they decorate reports. — postgame AI · getpostgame.ai #CoachingFootball #NFLCoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "football_analytics",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-10T00:11:42.141Z",
+      "lastAttemptAt": "2026-07-10T13:18:02.417Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
