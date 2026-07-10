@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-09T13:53:00.075Z",
+  "updatedAt": "2026-07-10T00:11:58.789Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -13942,12 +13942,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "75e6ba62-eea6-49b6-b8f5-a4e1a6dbaa60",
+      "postedAt": "2026-07-10T00:11:42.137Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-10",
+      "sport": "nfl",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bad rep on Wednesday usually shows up as a bad rep on Sunday. That is not a coincidence. — postgame AI · getpostgame.ai #FootballFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "validation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_bad",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-09T13:52:46.123Z",
+      "lastAttemptAt": "2026-07-10T00:11:42.141Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
