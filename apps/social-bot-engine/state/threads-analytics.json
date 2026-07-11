@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-11T00:04:44.041Z",
+  "updatedAt": "2026-07-11T12:01:03.447Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14059,12 +14059,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "5fe13ee1-f653-4f4b-a4df-6c7032dd059d",
+      "postedAt": "2026-07-11T12:00:48.268Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-11",
+      "sport": "mlb",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best baseball coaches do not overload hitters with data. They give them one thing to look for. — postgame AI · getpostgame.ai #MLBCoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-11T00:04:29.653Z",
+      "lastAttemptAt": "2026-07-11T12:00:48.272Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
