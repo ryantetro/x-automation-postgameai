@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-11T11:51:58.520Z",
+  "updatedAt": "2026-07-12T00:00:56.759Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -14341,12 +14341,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "92242e58-11e0-448b-b17f-7e3d4648bd16",
+      "postedAt": "2026-07-12T00:00:50.258Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-12",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A roster is not a lineup. The best coaches know which 3 guys change the game when it tightens. — postgame AI · getpostgame.ai #CoachingBasketball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Mike Boynton named full-time coach at Michigan after May leaves for NBA",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/ncaab/bigten/2026/07/10/michigan-basketball-mike-boynton-full-time-coach/90878717007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-10T18:27:25Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "a_roster",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-11T11:51:49.473Z",
+      "lastAttemptAt": "2026-07-12T00:00:50.263Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
