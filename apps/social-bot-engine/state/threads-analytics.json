@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-11T12:01:03.447Z",
+  "updatedAt": "2026-07-12T00:02:39.677Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14098,12 +14098,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4078803d-aab8-477d-aa7b-a7a22c8dda85",
+      "postedAt": "2026-07-12T00:02:26.029Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-12",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Useful basketball analytics should change teaching, not just slides. — postgame AI · getpostgame.ai #CourtVision",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Mike Boynton named full-time coach at Michigan after May leaves for NBA",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/ncaab/bigten/2026/07/10/michigan-basketball-mike-boynton-full-time-coach/90878717007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-10T18:27:25Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "useful_basketball",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-11T12:00:48.272Z",
+      "lastAttemptAt": "2026-07-12T00:02:26.033Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
