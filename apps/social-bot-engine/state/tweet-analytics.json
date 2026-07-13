@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-12T11:59:53.850Z",
+  "updatedAt": "2026-07-13T00:00:03.254Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -14423,12 +14423,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "1db33ca8-8ac6-47ee-bfa6-7523eb2df5bf",
+      "postedAt": "2026-07-12T23:59:56.026Z",
+      "postedHour": 23,
+      "dateContext": "2026-07-12",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Every staff knows the player who looks great in warmups and disappears in the second half. — postgame AI · getpostgame.ai #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Lakers officially cut ties with Luka Doncic's 41-year-old former Mavericks coach, NBA champion",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/los-angeles-lakers/news/lakers-officially-cut-ties-luka-doncics-41-year-old-former-mavericks-coach-nba-champion/98307cfb2a2b0986aea60cf7",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-07-11T18:00:02Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "universal_truth",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-12T11:59:45.018Z",
+      "lastAttemptAt": "2026-07-12T23:59:56.030Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
