@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-14T12:12:30.043Z",
+  "updatedAt": "2026-07-14T23:56:10.119Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -14587,12 +14587,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "776eabd8-fb96-4ae1-b092-c98af7ba5a30",
+      "postedAt": "2026-07-14T23:56:03.435Z",
+      "postedHour": 23,
+      "dateContext": "2026-07-14",
+      "sport": "mlb",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Baseball data is useful when it survives the trip from spreadsheet to dugout. — postgame AI · getpostgame.ai #DiamondIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "MLB All-Star rosters released. Where did National League starters go to high school?",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/high-school/baseball/2026/07/13/mlb-all-star-game-lineups-high-school/90902551007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-13T20:01:04Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "baseball_data",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-14T12:12:24.277Z",
+      "lastAttemptAt": "2026-07-14T23:56:03.443Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
