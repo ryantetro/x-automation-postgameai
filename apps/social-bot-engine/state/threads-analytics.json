@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-13T23:58:31.454Z",
+  "updatedAt": "2026-07-14T12:20:45.907Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14297,12 +14297,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "901b4f3a-e5b9-4e68-8a03-71b387730d9e",
+      "postedAt": "2026-07-14T12:20:30.893Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-14",
+      "sport": "mlb",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Spring training tells you who prepared and who just showed up to get loose. — postgame AI · getpostgame.ai #BaseballDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Michigan State closer selected in fifth round of MLB Draft",
+      "newsArticleUrl": "https://spartanswire.usatoday.com/story/sports/college/spartans/baseball/2026/07/13/michigan-state-closer-selected-in-fifth-round-of-mlb-draft/90898843007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-13T11:48:36Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "spring_training",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-13T23:58:15.097Z",
+      "lastAttemptAt": "2026-07-14T12:20:30.898Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
