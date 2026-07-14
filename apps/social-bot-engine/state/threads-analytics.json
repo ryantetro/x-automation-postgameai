@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-14T12:20:45.907Z",
+  "updatedAt": "2026-07-14T23:57:49.578Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14340,12 +14340,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "5fe1fbba-6bde-42f6-b54e-fc8429fedf59",
+      "postedAt": "2026-07-14T23:57:32.627Z",
+      "postedHour": 23,
+      "dateContext": "2026-07-14",
+      "sport": "mlb",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Leverage swings usually tell you more than the final line does. — postgame AI · getpostgame.ai #DiamondIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "MLB All-Star rosters released. Where did National League starters go to high school?",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/high-school/baseball/2026/07/13/mlb-all-star-game-lineups-high-school/90902551007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-13T20:01:04Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "leverage_swings",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-14T12:20:30.898Z",
+      "lastAttemptAt": "2026-07-14T23:57:32.632Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
