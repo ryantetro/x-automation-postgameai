@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-13T23:57:34.975Z",
+  "updatedAt": "2026-07-14T12:12:30.043Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -14544,12 +14544,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "e0f0ca64-b3e1-4137-9729-cb398823c028",
+      "postedAt": "2026-07-14T12:12:24.272Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-14",
+      "sport": "mlb",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The difference between a slump and a mechanical issue is usually one honest video session. — postgame AI · getpostgame.ai #BaseballDev #DiamondIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Michigan State closer selected in fifth round of MLB Draft",
+      "newsArticleUrl": "https://spartanswire.usatoday.com/story/sports/college/spartans/baseball/2026/07/13/michigan-state-closer-selected-in-fifth-round-of-mlb-draft/90898843007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-13T11:48:36Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_difference",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-13T23:57:28.175Z",
+      "lastAttemptAt": "2026-07-14T12:12:24.277Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
