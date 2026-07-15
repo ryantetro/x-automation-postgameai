@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-14T23:57:49.578Z",
+  "updatedAt": "2026-07-15T12:22:41.792Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14383,12 +14383,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "5536baab-3774-4ea4-9e1f-8abe575c1d0b",
+      "postedAt": "2026-07-15T12:22:26.054Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-15",
+      "sport": "soccer",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best soccer coaching point is usually one sequence and one tactical fix. — postgame AI · getpostgame.ai #BeautifulGame #CoachingSoccer",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "2026 World Cup parlay, best bets: Top picks for France vs. Spain in Tuesday's semifinal match",
+      "newsArticleUrl": "https://www.cbssports.com/soccer/news/2026-world-cup-parlay-best-bets-top-picks-for-france-vs-spain-in-tuesdays-semifinal-match/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-07-14T11:15:35Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-14T23:57:32.632Z",
+      "lastAttemptAt": "2026-07-15T12:22:26.058Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
