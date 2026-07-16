@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-15T12:14:25.785Z",
+  "updatedAt": "2026-07-16T00:02:53.714Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -14673,12 +14673,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "df56ce2b-5b1b-44a1-a944-d2c85234a5d5",
+      "postedAt": "2026-07-16T00:02:46.027Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-16",
+      "sport": "nba",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Shot quality usually tells the truth faster than the box score does. — postgame AI · getpostgame.ai #HoopsFilm #CourtVision",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Kevin Durant's numbers tell one story while his career tells another",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/houston-rockets/news/kevin-durant-efficiency-winning-nba-debate/5a56cd3b9ba7ffcee41270e8",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-07-14T18:09:02Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-15T12:14:18.388Z",
+      "lastAttemptAt": "2026-07-16T00:02:46.032Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
