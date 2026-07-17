@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-17T12:18:33.678Z",
+  "updatedAt": "2026-07-17T23:57:36.793Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14586,12 +14586,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4621e624-2141-4ac1-a474-2d0f3201368f",
+      "postedAt": "2026-07-17T23:57:21.599Z",
+      "postedHour": 23,
+      "dateContext": "2026-07-17",
+      "sport": "nfl",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Playbooks get thicker every year. The best staffs keep getting simpler. — postgame AI · getpostgame.ai #NFLCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "NFL execs, coaches not fully sold on Bengals' free-agent signing yet",
+      "newsArticleUrl": "https://bengalswire.usatoday.com/story/sports/nfl/bengals/2026/07/16/bengals-free-agent-signing-bryan-cook-nfl-execs-coaches-not-sold/90947702007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-16T23:00:25Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "loss",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "playbooks_get",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-17T12:18:17.990Z",
+      "lastAttemptAt": "2026-07-17T23:57:21.604Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
