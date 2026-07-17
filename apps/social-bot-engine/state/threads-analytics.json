@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-17T00:03:50.042Z",
+  "updatedAt": "2026-07-17T12:18:33.678Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14547,12 +14547,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "f64a183d-5d8e-4b9d-9300-49d201fc84f9",
+      "postedAt": "2026-07-17T12:18:17.986Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-17",
+      "sport": "nfl",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bad rep on Wednesday usually shows up as a bad rep on Sunday. That is not a coincidence. — postgame AI · getpostgame.ai #FootballDev #FridayNightLights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_bad",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-17T00:03:34.934Z",
+      "lastAttemptAt": "2026-07-17T12:18:17.990Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
