@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-18T12:00:58.035Z",
+  "updatedAt": "2026-07-18T23:59:22.833Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14668,12 +14668,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "0b065f9b-340a-4223-9c51-f31d9fbd441f",
+      "postedAt": "2026-07-18T23:59:07.092Z",
+      "postedHour": 23,
+      "dateContext": "2026-07-18",
+      "sport": "mlb",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Defensive positioning is just math until someone misreads the ball. Then it is coaching. — postgame AI · getpostgame.ai #BaseballFilm",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Ranking MLB's top 50 players of 2026: Shohei Ohtani fends off PCA at No. 1, breakout surprise in top five",
+      "newsArticleUrl": "https://www.cbssports.com/mlb/news/ranking-mlb-top-50-players-2026-all-star-break/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-07-17T15:01:35Z",
+      "contentFrameId": "scoreboard_lie",
+      "contentFrameLabel": "The Scoreboard Lie",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment upset to The Scoreboard Lie.",
+      "newsMomentType": "upset",
+      "openingPattern": "defensive_positioning",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-18T12:00:42.759Z",
+      "lastAttemptAt": "2026-07-18T23:59:07.096Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
