@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-17T23:57:36.793Z",
+  "updatedAt": "2026-07-18T12:00:58.035Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14629,12 +14629,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "3c857cc6-85d6-476d-95fc-334893d65588",
+      "postedAt": "2026-07-18T12:00:42.754Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-18",
+      "sport": "mlb",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best base running is invisible. You only notice it when it is bad. — postgame AI · getpostgame.ai #DiamondIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-17T23:57:21.604Z",
+      "lastAttemptAt": "2026-07-18T12:00:42.759Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
