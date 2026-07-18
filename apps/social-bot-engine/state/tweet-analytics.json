@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-18T11:52:28.892Z",
+  "updatedAt": "2026-07-18T23:58:24.509Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -14915,12 +14915,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "a1c8b20e-909c-4ac8-92f1-2e9faaa365d6",
+      "postedAt": "2026-07-18T23:58:16.485Z",
+      "postedHour": 23,
+      "dateContext": "2026-07-18",
+      "sport": "mlb",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bench coach sees more than anyone in the dugout. The best managers know when to listen. — postgame AI · getpostgame.ai #DiamondIQ #CoachingBaseball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Ranking MLB's top 50 players of 2026: Shohei Ohtani fends off PCA at No. 1, breakout surprise in top five",
+      "newsArticleUrl": "https://www.cbssports.com/mlb/news/ranking-mlb-top-50-players-2026-all-star-break/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-07-17T15:01:35Z",
+      "contentFrameId": "scoreboard_lie",
+      "contentFrameLabel": "The Scoreboard Lie",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment upset to The Scoreboard Lie.",
+      "newsMomentType": "upset",
+      "openingPattern": "a_bench",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-18T11:52:22.299Z",
+      "lastAttemptAt": "2026-07-18T23:58:16.490Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
