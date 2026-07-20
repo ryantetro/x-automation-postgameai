@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-19T11:58:11.344Z",
+  "updatedAt": "2026-07-20T00:01:33.305Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -14997,12 +14997,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "641cc2db-d2f5-4b66-bfb4-bea70f8d99a9",
+      "postedAt": "2026-07-20T00:01:26.167Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-20",
+      "sport": "nfl",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best sideline adjustments start before the coordinator says a word. — postgame AI · getpostgame.ai #NFLCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Bengals might've made right call on Trey Hendrickson amid critique from NFL exec",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nfl/cincinnati-bengals/news/bengals-might-right-call-trey-hendrickson-critique-nfl-exec/017ad716de51525a778f9f3d",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-07-18T19:56:34Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-19T11:58:04.936Z",
+      "lastAttemptAt": "2026-07-20T00:01:26.172Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
