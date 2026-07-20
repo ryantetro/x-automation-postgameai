@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-19T12:04:31.222Z",
+  "updatedAt": "2026-07-20T00:02:29.542Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14750,12 +14750,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b4e78078-c0f7-4abf-90a8-60528fcd008f",
+      "postedAt": "2026-07-20T00:02:14.910Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-20",
+      "sport": "nfl",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Down, distance, and field position usually expose the real coaching problems. — postgame AI · getpostgame.ai #FootballFilm #NFLCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Bengals might've made right call on Trey Hendrickson amid critique from NFL exec",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nfl/cincinnati-bengals/news/bengals-might-right-call-trey-hendrickson-critique-nfl-exec/017ad716de51525a778f9f3d",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-07-18T19:56:34Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "down,_distance,",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-19T12:04:18.088Z",
+      "lastAttemptAt": "2026-07-20T00:02:14.913Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
