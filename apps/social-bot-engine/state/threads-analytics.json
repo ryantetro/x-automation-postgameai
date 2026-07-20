@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-20T00:02:29.542Z",
+  "updatedAt": "2026-07-20T13:13:19.001Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14793,12 +14793,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "cfb56394-0ebf-4d95-ae17-7b3ba4f61004",
+      "postedAt": "2026-07-20T13:13:03.850Z",
+      "postedHour": 13,
+      "dateContext": "2026-07-20",
+      "sport": "nfl",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best sideline adjustments start before the coordinator says a word. — postgame AI · getpostgame.ai #CoachingFootball",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-20T00:02:14.913Z",
+      "lastAttemptAt": "2026-07-20T13:13:03.855Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
