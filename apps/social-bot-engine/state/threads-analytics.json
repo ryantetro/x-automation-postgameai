@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-21T00:02:18.952Z",
+  "updatedAt": "2026-07-21T12:42:12.198Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14871,12 +14871,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "ee70c1c1-570d-4f60-bead-2c9516fe6751",
+      "postedAt": "2026-07-21T12:41:56.987Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-21",
+      "sport": "mlb",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Lineup construction matters less than pitch sequencing in the at-bats that actually change the game. — postgame AI · getpostgame.ai #CoachingBaseball #BaseballFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Conversation That Doesn't Happen to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "lineup_construction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-21T00:02:03.865Z",
+      "lastAttemptAt": "2026-07-21T12:41:56.992Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
