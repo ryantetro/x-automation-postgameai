@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-21T12:42:12.198Z",
+  "updatedAt": "2026-07-22T00:00:26.718Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14910,12 +14910,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "a519c18d-5666-47e3-ac6d-433862c7b31d",
+      "postedAt": "2026-07-22T00:00:11.814Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-22",
+      "sport": "soccer",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Pressing is a system, not an attitude. The teams that tire in the second half usually never had one. — postgame AI · getpostgame.ai #PitchIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "pressing_is",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-21T12:41:56.992Z",
+      "lastAttemptAt": "2026-07-22T00:00:11.819Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
