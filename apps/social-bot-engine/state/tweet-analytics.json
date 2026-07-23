@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-22T12:24:51.522Z",
+  "updatedAt": "2026-07-23T00:04:30.366Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -15235,12 +15235,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "0aab00d2-81e5-4da2-9808-96e3eea548a9",
+      "postedAt": "2026-07-23T00:04:22.829Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-23",
+      "sport": "nba",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "You can see a team's culture in how they execute after a bad call. That is the real film. — postgame AI · getpostgame.ai #CourtVision #HoopsDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Kirby Smart reveals Georgia studied NBA team to prep for season",
+      "newsArticleUrl": "https://collegesportswire.usatoday.com/story/sports/college/college-football/2026/07/21/georgia-football-kirby-smart-studied-oklahoma-city-thunder-nba/90997843007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-21T18:30:53Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "you_can",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-22T12:24:43.217Z",
+      "lastAttemptAt": "2026-07-23T00:04:22.836Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
