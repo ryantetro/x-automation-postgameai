@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-22T12:44:27.350Z",
+  "updatedAt": "2026-07-23T00:06:13.941Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -14988,12 +14988,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "62e9ffa9-6249-4a55-af24-3a40b21737da",
+      "postedAt": "2026-07-23T00:05:59.082Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-23",
+      "sport": "nba",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "If your players cannot explain the game plan back to you, the film session missed. — postgame AI · getpostgame.ai #BallerCoach #CourtVision",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Kirby Smart reveals Georgia studied NBA team to prep for season",
+      "newsArticleUrl": "https://collegesportswire.usatoday.com/story/sports/college/college-football/2026/07/21/georgia-football-kirby-smart-studied-oklahoma-city-thunder-nba/90997843007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-21T18:30:53Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "if_your",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-22T12:44:12.620Z",
+      "lastAttemptAt": "2026-07-23T00:05:59.087Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
