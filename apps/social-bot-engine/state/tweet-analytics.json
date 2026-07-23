@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-23T00:04:30.366Z",
+  "updatedAt": "2026-07-23T12:23:37.935Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -15278,12 +15278,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "abc8f4c8-0a16-4c0d-9f5f-31d0b03910e6",
+      "postedAt": "2026-07-23T12:23:32.671Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-23",
+      "sport": "nba",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The real evaluation happens in transition. Everything else just confirms what you already saw. — postgame AI · getpostgame.ai #NBACoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_real",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-23T00:04:22.836Z",
+      "lastAttemptAt": "2026-07-23T12:23:32.677Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
