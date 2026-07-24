@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-24T00:06:09.631Z",
+  "updatedAt": "2026-07-24T12:25:12.864Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15109,12 +15109,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "22fbd0ac-52f6-48c0-927c-438fa05ce98c",
+      "postedAt": "2026-07-24T12:24:58.465Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-24",
+      "sport": "nfl",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A game plan survives until the second drive. The adjustments after that are the real coaching. — postgame AI · getpostgame.ai #XsAndOs #GridironIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_game",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-24T00:05:53.978Z",
+      "lastAttemptAt": "2026-07-24T12:24:58.470Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
