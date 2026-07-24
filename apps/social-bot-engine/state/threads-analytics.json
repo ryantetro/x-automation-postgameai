@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-23T12:46:05.423Z",
+  "updatedAt": "2026-07-24T00:06:09.631Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15070,12 +15070,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "7b2fd5f0-c8e7-41d2-9b90-c4cefef1be53",
+      "postedAt": "2026-07-24T00:05:53.974Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-24",
+      "sport": "nfl",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A game plan survives until the second drive. The adjustments after that are the real coaching. — postgame AI · getpostgame.ai #XsAndOs",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_game",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-23T12:45:49.718Z",
+      "lastAttemptAt": "2026-07-24T00:05:53.978Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
