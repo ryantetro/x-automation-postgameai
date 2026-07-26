@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-25T12:07:33.781Z",
+  "updatedAt": "2026-07-26T00:05:28.708Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15226,12 +15226,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4a46ff3d-ac46-4367-91a0-7365fdb9b8c6",
+      "postedAt": "2026-07-26T00:05:12.666Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-26",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The real evaluation happens in transition. Everything else just confirms what you already saw. — postgame AI · getpostgame.ai #CoachingBasketball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Most talented NBA starting lineup ever? LeBron James fits perfectly on 76ers ... if everything goes right",
+      "newsArticleUrl": "https://www.cbssports.com/nba/news/talented-lineup-lebron-james-fits-perfectly-76ers/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-07-24T20:43:53Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_real",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-25T12:07:19.476Z",
+      "lastAttemptAt": "2026-07-26T00:05:12.671Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
