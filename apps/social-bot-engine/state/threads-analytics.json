@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-26T00:05:28.708Z",
+  "updatedAt": "2026-07-26T12:12:03.110Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15269,12 +15269,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "5675c9b4-4eae-4dd8-ae40-ec0e0f080717",
+      "postedAt": "2026-07-26T12:11:48.182Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-26",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Half the fourth quarter is decided by who prepared for the other team's tendencies, not who wanted it more. — postgame AI · getpostgame.ai #BasketballIQ #CourtVision",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "scoreboard_lie",
+      "contentFrameLabel": "The Scoreboard Lie",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The Scoreboard Lie to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "half_the",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-26T00:05:12.671Z",
+      "lastAttemptAt": "2026-07-26T12:11:48.186Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
