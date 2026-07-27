@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-26T12:12:03.110Z",
+  "updatedAt": "2026-07-27T00:06:16.829Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15308,12 +15308,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "49e1e5e0-c2c1-49c1-9f69-dffcdaba32d0",
+      "postedAt": "2026-07-27T00:06:01.315Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-27",
+      "sport": "nfl",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Film rooms full of analysts do not help if the message to players is still unclear. — postgame AI · getpostgame.ai #CoachingFootball #FootballDev",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-26T12:11:48.186Z",
+      "lastAttemptAt": "2026-07-27T00:06:01.320Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
