@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-27T13:44:01.133Z",
+  "updatedAt": "2026-07-28T00:06:58.375Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15386,12 +15386,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "32e46cc3-6b09-4bae-aedd-b925f3daa5c9",
+      "postedAt": "2026-07-28T00:06:44.047Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-28",
+      "sport": "mlb",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Baseball review gets noisy fast when every inning makes the cut. — postgame AI · getpostgame.ai #DugoutTalk #BaseballFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "baseball_review",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-27T13:43:47.472Z",
+      "lastAttemptAt": "2026-07-28T00:06:44.052Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
