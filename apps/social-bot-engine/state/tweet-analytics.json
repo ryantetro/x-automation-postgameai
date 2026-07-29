@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-28T12:53:31.322Z",
+  "updatedAt": "2026-07-29T00:01:45.777Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -15711,12 +15711,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "79ad69af-344b-41b6-83a2-d4ab3171c7f2",
+      "postedAt": "2026-07-29T00:01:34.951Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-29",
+      "sport": "soccer",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Most match review fails because it tries to coach every phase at once. — postgame AI · getpostgame.ai #PitchIQ #SoccerFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "most_match",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-28T12:53:24.562Z",
+      "lastAttemptAt": "2026-07-29T00:01:34.955Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
