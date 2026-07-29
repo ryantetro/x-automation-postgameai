@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-28T12:59:31.293Z",
+  "updatedAt": "2026-07-29T00:03:10.015Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15464,12 +15464,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "a6885c60-6e5d-457d-872f-d32e607f9703",
+      "postedAt": "2026-07-29T00:02:55.167Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-29",
+      "sport": "soccer",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Pressing is a system, not an attitude. The teams that tire in the second half usually never had one. — postgame AI · getpostgame.ai #PitchIQ #SoccerDev",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Conversation That Doesn't Happen to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "pressing_is",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-28T12:59:17.142Z",
+      "lastAttemptAt": "2026-07-29T00:02:55.172Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
