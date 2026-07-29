@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-29T00:03:10.015Z",
+  "updatedAt": "2026-07-29T13:06:15.465Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15503,12 +15503,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "9dd3bafd-af98-43b3-a23b-0e6e0f7cf4a0",
+      "postedAt": "2026-07-29T13:05:59.830Z",
+      "postedHour": 13,
+      "dateContext": "2026-07-29",
+      "sport": "soccer",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Pressing is a system, not an attitude. The teams that tire in the second half usually never had one. — postgame AI · getpostgame.ai #BeautifulGame #FootballCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Is Lionel Messi playing MLS All-Star game? Inter Miami forward's status for 2026 Charlotte match vs. Liga MX XI",
+      "newsArticleUrl": "https://www.sportingnews.com/us/soccer/news/lionel-messi-playing-mls-all-star-game-inter-miami-2026/2273ee39910ebd36a6659eb4",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-07-28T07:30:01Z",
+      "contentFrameId": "scoreboard_lie",
+      "contentFrameLabel": "The Scoreboard Lie",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Scoreboard Lie to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "pressing_is",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-29T00:02:55.172Z",
+      "lastAttemptAt": "2026-07-29T13:05:59.836Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
