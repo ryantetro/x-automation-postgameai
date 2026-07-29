@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-29T00:01:45.777Z",
+  "updatedAt": "2026-07-29T12:59:55.937Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -15750,12 +15750,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4339e5e6-c908-4290-be0a-fb4398c58539",
+      "postedAt": "2026-07-29T12:59:49.849Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-29",
+      "sport": "soccer",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Territory and defensive balance usually matter before the scoreline catches up. — postgame AI · getpostgame.ai #CoachingSoccer #SoccerFilm",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Is Lionel Messi playing MLS All-Star game? Inter Miami forward's status for 2026 Charlotte match vs. Liga MX XI",
+      "newsArticleUrl": "https://www.sportingnews.com/us/soccer/news/lionel-messi-playing-mls-all-star-game-inter-miami-2026/2273ee39910ebd36a6659eb4",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-07-28T07:30:01Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "territory_and",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-29T00:01:34.955Z",
+      "lastAttemptAt": "2026-07-29T12:59:49.854Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
