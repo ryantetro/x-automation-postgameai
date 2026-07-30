@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-30T00:05:06.740Z",
+  "updatedAt": "2026-07-30T12:51:18.309Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15589,12 +15589,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "db61ef11-3075-4ca6-b128-f5ef8745a8be",
+      "postedAt": "2026-07-30T12:51:02.939Z",
+      "postedHour": 12,
+      "dateContext": "2026-07-30",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "You can see a team's culture in how they execute after a bad call. That is the real film. — postgame AI · getpostgame.ai #CoachingBasketball",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "you_can",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-30T00:04:50.329Z",
+      "lastAttemptAt": "2026-07-30T12:51:02.942Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
