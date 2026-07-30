@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-29T12:59:55.937Z",
+  "updatedAt": "2026-07-30T00:04:07.932Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -15793,12 +15793,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "013828af-5cc8-409f-ae2a-79f50e52b480",
+      "postedAt": "2026-07-30T00:03:59.679Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-30",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A roster is not a lineup. The best coaches know which 3 guys change the game when it tightens. — postgame AI · getpostgame.ai #CoachingBasketball #HoopsFilm",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "NBA insider reveals former Duke star is fully recovered from injury",
+      "newsArticleUrl": "https://dukewire.usatoday.com/story/sports/college/duke/mens-basketball/2026/07/28/nba-insider-reveals-duke-star-fully-recovered-from-acl-tear/91073072007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-28T18:10:23Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "a_roster",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-29T12:59:49.854Z",
+      "lastAttemptAt": "2026-07-30T00:03:59.687Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
