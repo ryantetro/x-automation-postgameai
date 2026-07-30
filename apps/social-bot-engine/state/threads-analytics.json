@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-29T13:06:15.465Z",
+  "updatedAt": "2026-07-30T00:05:06.740Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15546,12 +15546,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "aec4552a-1f6a-40c6-8d4b-cc173444d571",
+      "postedAt": "2026-07-30T00:04:50.325Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-30",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The real evaluation happens in transition. Everything else just confirms what you already saw. — postgame AI · getpostgame.ai #NBACoaching #CourtVision",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "NBA insider reveals former Duke star is fully recovered from injury",
+      "newsArticleUrl": "https://dukewire.usatoday.com/story/sports/college/duke/mens-basketball/2026/07/28/nba-insider-reveals-duke-star-fully-recovered-from-acl-tear/91073072007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-28T18:10:23Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "the_real",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-29T13:05:59.836Z",
+      "lastAttemptAt": "2026-07-30T00:04:50.329Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
