@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-31T00:08:43.786Z",
+  "updatedAt": "2026-07-31T13:03:56.638Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15667,12 +15667,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "5e75f759-eead-462b-b7b6-9d54181d5ffc",
+      "postedAt": "2026-07-31T13:03:40.901Z",
+      "postedHour": 13,
+      "dateContext": "2026-07-31",
+      "sport": "nfl",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The third quarter tells you more about preparation than the first half ever will. — postgame AI · getpostgame.ai #FridayNightLights #GridironIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Familiar faces in new places: Refresher on all the biggest NFL offseason moves in 2026",
+      "newsArticleUrl": "https://www.cbssports.com/nfl/news/familiar-faces-new-places-biggest-nfl-offseason-moves-2026/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-07-30T11:33:10Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "named_moment",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-31T00:08:28.032Z",
+      "lastAttemptAt": "2026-07-31T13:03:40.906Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
