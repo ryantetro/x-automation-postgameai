@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-30T12:51:18.309Z",
+  "updatedAt": "2026-07-31T00:08:43.786Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15628,12 +15628,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "2e435e6a-379d-4088-947c-4cf6a5f4c832",
+      "postedAt": "2026-07-31T00:08:28.027Z",
+      "postedHour": 0,
+      "dateContext": "2026-07-31",
+      "sport": "nfl",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bad rep on Wednesday usually shows up as a bad rep on Sunday. That is not a coincidence. — postgame AI · getpostgame.ai #FootballFilm #NFLCoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_bad",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-30T12:51:02.942Z",
+      "lastAttemptAt": "2026-07-31T00:08:28.032Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
