@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-01T00:05:44.547Z",
+  "updatedAt": "2026-08-01T12:09:13.409Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15753,12 +15753,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "62967c23-34dd-4ad5-b4ba-e011d436234c",
+      "postedAt": "2026-08-01T12:08:57.051Z",
+      "postedHour": 12,
+      "dateContext": "2026-08-01",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bench coach sees more than anyone in the dugout. The best managers know when to listen. — postgame AI · getpostgame.ai #MLBCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Harrison Bader ends season with left foot injury, post-scooter crash",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/mlb/giants/2026/07/30/giants-shut-down-harrison-bader/91117180007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-31T01:57:46Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "a_bench",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-01T00:05:30.099Z",
+      "lastAttemptAt": "2026-08-01T12:08:57.056Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
