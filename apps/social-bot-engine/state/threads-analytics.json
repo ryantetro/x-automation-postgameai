@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-31T13:03:56.638Z",
+  "updatedAt": "2026-08-01T00:05:44.547Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15710,12 +15710,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "58b4e321-ff3e-4001-86c2-fd2d7d4dfa90",
+      "postedAt": "2026-08-01T00:05:30.095Z",
+      "postedHour": 0,
+      "dateContext": "2026-08-01",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best baseball teaching usually starts with one sequence, not a full lecture. — postgame AI · getpostgame.ai #BaseballDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Tigers porous bullpen may have sealed Tarik Skubal's MLB trade deadline fate",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/detroit-tigers/news/tigers-porous-bullpen-sealed-tarik-skubal-mlb-trade-fate/59085d6c161ef0b2a07414e5",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-07-30T16:11:14Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-07-31T13:03:40.906Z",
+      "lastAttemptAt": "2026-08-01T00:05:30.099Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
