@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-01T00:04:47.351Z",
+  "updatedAt": "2026-08-01T12:02:13.580Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -16000,12 +16000,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "0e2cc611-4777-4a88-a689-835635c71185",
+      "postedAt": "2026-08-01T12:02:06.269Z",
+      "postedHour": 12,
+      "dateContext": "2026-08-01",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bench coach sees more than anyone in the dugout. The best managers know when to listen. — postgame AI · getpostgame.ai #DiamondIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Harrison Bader ends season with left foot injury, post-scooter crash",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/mlb/giants/2026/07/30/giants-shut-down-harrison-bader/91117180007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-07-31T01:57:46Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "urgency",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "a_bench",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-01T00:04:38.378Z",
+      "lastAttemptAt": "2026-08-01T12:02:06.275Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
