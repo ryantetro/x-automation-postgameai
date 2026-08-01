@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-07-31T12:55:22.598Z",
+  "updatedAt": "2026-08-01T00:04:47.351Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -15957,12 +15957,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4716bc8b-2037-46a2-a57a-08b0b6b25c50",
+      "postedAt": "2026-08-01T00:04:38.372Z",
+      "postedHour": 0,
+      "dateContext": "2026-08-01",
+      "sport": "mlb",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Baseball data is useful when it survives the trip from spreadsheet to dugout. — postgame AI · getpostgame.ai #MLBCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Tigers porous bullpen may have sealed Tarik Skubal's MLB trade deadline fate",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/detroit-tigers/news/tigers-porous-bullpen-sealed-tarik-skubal-mlb-trade-fate/59085d6c161ef0b2a07414e5",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-07-30T16:11:14Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "baseball_data",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-07-31T12:55:15.128Z",
+      "lastAttemptAt": "2026-08-01T00:04:38.378Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
