@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-01T12:09:13.409Z",
+  "updatedAt": "2026-08-02T00:02:17.449Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15796,12 +15796,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "c99bfe70-9f79-47c8-b130-c9f8a37555c1",
+      "postedAt": "2026-08-02T00:02:03.309Z",
+      "postedHour": 0,
+      "dateContext": "2026-08-02",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best player development staffs coach the same thing 3 different ways until it sticks. — postgame AI · getpostgame.ai #NBACoaching #HoopsFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-01T12:08:57.056Z",
+      "lastAttemptAt": "2026-08-02T00:02:03.314Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
