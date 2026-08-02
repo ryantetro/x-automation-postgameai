@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-02T00:00:50.086Z",
+  "updatedAt": "2026-08-02T12:02:37.616Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -16082,12 +16082,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "c8fc70c5-266d-410f-9c86-d27b9412f7dc",
+      "postedAt": "2026-08-02T12:02:29.929Z",
+      "postedHour": 12,
+      "dateContext": "2026-08-02",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A timeout is only worth calling if the message survives the next 3 possessions. — postgame AI · getpostgame.ai #BasketballIQ #CourtVision",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_timeout",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-02T00:00:44.006Z",
+      "lastAttemptAt": "2026-08-02T12:02:29.934Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
