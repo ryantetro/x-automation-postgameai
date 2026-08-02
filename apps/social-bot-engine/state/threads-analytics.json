@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-02T00:02:17.449Z",
+  "updatedAt": "2026-08-02T12:11:26.034Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15835,12 +15835,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "34d62ac0-2ee9-437c-a751-acf328db090d",
+      "postedAt": "2026-08-02T12:11:09.392Z",
+      "postedHour": 12,
+      "dateContext": "2026-08-02",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Offensive sets are only as good as the reads your guys actually make under pressure. — postgame AI · getpostgame.ai #HoopsFilm #BasketballIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "offensive_sets",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-02T00:02:03.314Z",
+      "lastAttemptAt": "2026-08-02T12:11:09.398Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
