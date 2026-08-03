@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-03T00:03:21.883Z",
+  "updatedAt": "2026-08-03T13:47:12.089Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15913,12 +15913,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4965a2c9-34c0-4205-bd4d-c5453c7a72b6",
+      "postedAt": "2026-08-03T13:46:57.093Z",
+      "postedHour": 13,
+      "dateContext": "2026-08-03",
+      "sport": "nfl",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A game plan survives until the second drive. The adjustments after that are the real coaching. — postgame AI · getpostgame.ai #CoachingFootball #FootballFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "scoreboard_lie",
+      "contentFrameLabel": "The Scoreboard Lie",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Scoreboard Lie to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_game",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-03T00:03:07.067Z",
+      "lastAttemptAt": "2026-08-03T13:46:57.098Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
