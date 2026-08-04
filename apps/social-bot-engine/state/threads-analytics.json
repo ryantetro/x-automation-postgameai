@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-04T00:13:19.145Z",
+  "updatedAt": "2026-08-04T13:07:15.883Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -15991,12 +15991,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "a49cea76-63e1-41d5-9cae-2f3bea0f46e2",
+      "postedAt": "2026-08-04T13:07:00.811Z",
+      "postedHour": 13,
+      "dateContext": "2026-08-04",
+      "sport": "mlb",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Good baseball prep is usually just clean matchup thinking. — postgame AI · getpostgame.ai #CoachingBaseball",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "good_baseball",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-04T00:13:04.607Z",
+      "lastAttemptAt": "2026-08-04T13:07:00.816Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
