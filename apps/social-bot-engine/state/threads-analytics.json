@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-05T00:10:11.749Z",
+  "updatedAt": "2026-08-05T13:00:29.498Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16073,12 +16073,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "e15305eb-6f7d-4b15-87fe-0e7ba98713b2",
+      "postedAt": "2026-08-05T13:00:14.330Z",
+      "postedHour": 13,
+      "dateContext": "2026-08-05",
+      "sport": "soccer",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Good match adjustments usually start with shape, not speeches. — postgame AI · getpostgame.ai #CoachingSoccer #TacticalAnalysis",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "good_match",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-05T00:09:57.049Z",
+      "lastAttemptAt": "2026-08-05T13:00:14.335Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
