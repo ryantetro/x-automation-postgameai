@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-04T13:07:15.883Z",
+  "updatedAt": "2026-08-05T00:10:11.749Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16030,12 +16030,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "27a42a4b-9ab3-43f3-9e81-53da92cf669a",
+      "postedAt": "2026-08-05T00:09:57.045Z",
+      "postedHour": 0,
+      "dateContext": "2026-08-05",
+      "sport": "soccer",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Pressing is a system, not an attitude. The teams that tire in the second half usually never had one. — postgame AI · getpostgame.ai #FootballCoaching #SoccerDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Mauricio Pochettino new USMNT contract winners and losers: Diego Luna to thrive, Ricardo Pepi may be frozen out",
+      "newsArticleUrl": "https://www.sportingnews.com/us/soccer/news/mauricio-pochettino-new-contract-winners-losers-usmnt/f1794dc41d306883c3cb9725",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-08-03T14:56:00Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "pressing_is",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-04T13:07:00.816Z",
+      "lastAttemptAt": "2026-08-05T00:09:57.049Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
