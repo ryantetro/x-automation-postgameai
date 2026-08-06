@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-05T13:00:29.498Z",
+  "updatedAt": "2026-08-06T00:04:20.804Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16112,12 +16112,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "6f225c34-ff79-41eb-bb00-22ec966b8ee9",
+      "postedAt": "2026-08-06T00:04:06.693Z",
+      "postedHour": 0,
+      "dateContext": "2026-08-06",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Matchup prep gets sharper when staffs stop drowning in their own notes. — postgame AI · getpostgame.ai #HoopsFilm",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Kevin Durant gets rare all-time nod from ex-teammate Devin Booker with Michael Jordan left out",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/houston-rockets/news/devin-booker-all-time-nba-lineup-kevin-durant-michael-jordan-snub/3f0dfa579ad649b7f07858f9",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-08-04T18:18:45Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "matchup_prep",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-05T13:00:14.335Z",
+      "lastAttemptAt": "2026-08-06T00:04:06.698Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
