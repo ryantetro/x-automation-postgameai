@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-05T12:52:06.513Z",
+  "updatedAt": "2026-08-06T00:03:02.233Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -16359,12 +16359,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "cf913aef-9473-4f6f-8d61-9da9f5026e8c",
+      "postedAt": "2026-08-06T00:02:55.980Z",
+      "postedHour": 0,
+      "dateContext": "2026-08-06",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Momentum flips are usually visible before the final score makes them obvious. — postgame AI · getpostgame.ai #NBACoaching #HoopsFilm",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Kevin Durant gets rare all-time nod from ex-teammate Devin Booker with Michael Jordan left out",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/houston-rockets/news/devin-booker-all-time-nba-lineup-kevin-durant-michael-jordan-snub/3f0dfa579ad649b7f07858f9",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-08-04T18:18:45Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "loss",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "momentum_flips",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-05T12:51:58.262Z",
+      "lastAttemptAt": "2026-08-06T00:02:55.986Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
