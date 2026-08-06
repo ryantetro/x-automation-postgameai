@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-06T00:04:20.804Z",
+  "updatedAt": "2026-08-06T13:01:33.500Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16155,12 +16155,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "19c48ca1-6c55-412d-afc3-ca3e8da5d69b",
+      "postedAt": "2026-08-06T13:01:19.414Z",
+      "postedHour": 13,
+      "dateContext": "2026-08-06",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A timeout is only worth calling if the message survives the next 3 possessions. — postgame AI · getpostgame.ai #BasketballIQ #NBACoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_timeout",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-06T00:04:06.698Z",
+      "lastAttemptAt": "2026-08-06T13:01:19.419Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
