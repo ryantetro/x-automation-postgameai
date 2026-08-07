@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-06T12:55:58.375Z",
+  "updatedAt": "2026-08-07T01:42:37.390Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -16441,12 +16441,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "9323387f-ab15-4b03-b984-7b6b5fc9bad2",
+      "postedAt": "2026-08-07T01:42:32.222Z",
+      "postedHour": 1,
+      "dateContext": "2026-08-07",
+      "sport": "nfl",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Red zone offense is not about scheme. It is about which coach taught the details that week. — postgame AI · getpostgame.ai #CoachingFootball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Stefon Diggs, Commanders agree to terms in free agency. Here's how he fits",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/nfl/2026/08/05/stefon-diggs-contract-details-commanders/89088057007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-08-05T18:01:20Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "red_zone",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-06T12:55:52.924Z",
+      "lastAttemptAt": "2026-08-07T01:42:32.227Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
