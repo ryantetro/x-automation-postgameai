@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-07T01:43:30.374Z",
+  "updatedAt": "2026-08-07T11:53:16.143Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16237,12 +16237,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "c3c3d1fc-cbf3-447f-b4f3-4724b1ed975b",
+      "postedAt": "2026-08-07T11:52:59.727Z",
+      "postedHour": 11,
+      "dateContext": "2026-08-07",
+      "sport": "nfl",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Special teams are where coaching gaps show up first. Everyone knows it, few fix it. — postgame AI · getpostgame.ai #FootballFilm #GridironIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "special_teams",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "An unknown error occurred"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-07T01:43:16.688Z",
+      "lastAttemptAt": "2026-08-07T11:52:59.734Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
