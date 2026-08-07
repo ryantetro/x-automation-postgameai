@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-06T13:01:33.500Z",
+  "updatedAt": "2026-08-07T01:43:30.374Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16194,12 +16194,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "e58a6a48-48d6-4c72-8365-645e7634195c",
+      "postedAt": "2026-08-07T01:43:16.683Z",
+      "postedHour": 1,
+      "dateContext": "2026-08-07",
+      "sport": "nfl",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Football staffs do not need more film. They need clearer corrections. — postgame AI · getpostgame.ai #NFLCoaching #FootballFilm",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Stefon Diggs, Commanders agree to terms in free agency. Here's how he fits",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/nfl/2026/08/05/stefon-diggs-contract-details-commanders/89088057007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-08-05T18:01:20Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "football_staffs",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 500,
+          "error": "Failed to create Threads post container"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-06T13:01:19.419Z",
+      "lastAttemptAt": "2026-08-07T01:43:16.688Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
