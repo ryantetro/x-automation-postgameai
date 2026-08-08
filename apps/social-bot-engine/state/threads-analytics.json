@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-08T11:37:32.829Z",
+  "updatedAt": "2026-08-08T23:34:27.507Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16354,12 +16354,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d0a11406-2afc-4f73-be5c-f40a8862a1a2",
+      "postedAt": "2026-08-08T23:34:20.306Z",
+      "postedHour": 23,
+      "dateContext": "2026-08-08",
+      "sport": "mlb",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best baseball adjustments usually happen before panic shows up. — postgame AI · getpostgame.ai #DugoutTalk #BaseballFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 08-Aug-26 16:34:27 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-08T11:37:24.887Z",
+      "lastAttemptAt": "2026-08-08T23:34:20.313Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
