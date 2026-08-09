@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-09T11:28:33.271Z",
+  "updatedAt": "2026-08-09T23:36:09.066Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -16679,12 +16679,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b02ba821-e8ee-4ae0-960f-a3df6678a1cf",
+      "postedAt": "2026-08-09T23:36:02.176Z",
+      "postedHour": 23,
+      "dateContext": "2026-08-09",
+      "sport": "nba",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Every staff knows the player who looks great in warmups and disappears in the second half. — postgame AI · getpostgame.ai #BallerCoach",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "NBA coach criticizes Lakers for letting Jaxson Hayes leave",
+      "newsArticleUrl": "https://lebronwire.usatoday.com/story/sports/nba/2026/08/08/nba-coach-criticizes-lakers-for-letting-jaxson-hayes-leave/91224705007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-08-08T14:01:16Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "universal_truth",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-09T11:28:27.848Z",
+      "lastAttemptAt": "2026-08-09T23:36:02.181Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
