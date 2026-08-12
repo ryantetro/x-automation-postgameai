@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-11T23:49:12.896Z",
+  "updatedAt": "2026-08-12T11:55:05.904Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16631,12 +16631,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b9608bd7-9e5f-4738-8cee-f1f3abb4196c",
+      "postedAt": "2026-08-12T11:54:59.770Z",
+      "postedHour": 11,
+      "dateContext": "2026-08-12",
+      "sport": "soccer",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The real tactical battle happens in the first 15 minutes. The rest is adjustments. — postgame AI · getpostgame.ai #PitchIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_real",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 12-Aug-26 04:55:05 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-11T23:49:06.391Z",
+      "lastAttemptAt": "2026-08-12T11:54:59.775Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
