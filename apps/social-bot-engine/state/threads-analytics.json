@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-12T23:49:00.692Z",
+  "updatedAt": "2026-08-13T11:55:42.731Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16709,12 +16709,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "61103c0c-f322-46dd-9ea4-cb3371138b5d",
+      "postedAt": "2026-08-13T11:55:37.416Z",
+      "postedHour": 11,
+      "dateContext": "2026-08-13",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Most basketball film sessions are too long to be useful. — postgame AI · getpostgame.ai #BallerCoach #HoopsDev",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "most_basketball",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 13-Aug-26 04:55:42 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-12T23:48:54.648Z",
+      "lastAttemptAt": "2026-08-13T11:55:37.422Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
