@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-14T11:52:55.000Z",
+  "updatedAt": "2026-08-14T23:27:30.201Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16826,12 +16826,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "5a697e1a-96bb-464c-b5b5-7dde40ace008",
+      "postedAt": "2026-08-14T23:27:24.130Z",
+      "postedHour": 23,
+      "dateContext": "2026-08-14",
+      "sport": "nfl",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Special teams are where coaching gaps show up first. Everyone knows it, few fix it. — postgame AI · getpostgame.ai #CoachingFootball",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "special_teams",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 14-Aug-26 16:27:30 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-14T11:52:48.954Z",
+      "lastAttemptAt": "2026-08-14T23:27:24.135Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
