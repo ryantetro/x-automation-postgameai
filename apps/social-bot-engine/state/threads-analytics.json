@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-14T23:27:30.201Z",
+  "updatedAt": "2026-08-15T11:30:00.427Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -16865,12 +16865,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "0aef5d69-d8cd-4768-9b6f-d239c0dda694",
+      "postedAt": "2026-08-15T11:29:54.165Z",
+      "postedHour": 11,
+      "dateContext": "2026-08-15",
+      "sport": "mlb",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best baseball adjustments usually happen before panic shows up. — postgame AI · getpostgame.ai #DugoutTalk #MLBCoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 15-Aug-26 04:30:00 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-14T23:27:24.135Z",
+      "lastAttemptAt": "2026-08-15T11:29:54.169Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
