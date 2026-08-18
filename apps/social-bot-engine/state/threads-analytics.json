@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-18T11:34:57.869Z",
+  "updatedAt": "2026-08-18T23:27:53.611Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -17138,12 +17138,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "8bbe8d54-bf4e-40cb-9a36-debd15d12a04",
+      "postedAt": "2026-08-18T23:27:46.202Z",
+      "postedHour": 23,
+      "dateContext": "2026-08-18",
+      "sport": "mlb",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Lineup construction matters less than pitch sequencing in the at-bats that actually change the game. — postgame AI · getpostgame.ai #CoachingBaseball #DugoutTalk",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "lineup_construction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Tuesday, 18-Aug-26 16:27:53 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-18T11:34:51.611Z",
+      "lastAttemptAt": "2026-08-18T23:27:46.210Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
