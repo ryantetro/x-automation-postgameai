@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-18T11:24:42.880Z",
+  "updatedAt": "2026-08-18T23:27:01.388Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -17385,12 +17385,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "8c8f0845-7940-4ee9-9f33-5217fd66d432",
+      "postedAt": "2026-08-18T23:26:53.761Z",
+      "postedHour": 23,
+      "dateContext": "2026-08-18",
+      "sport": "mlb",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best baseball teaching usually starts with one sequence, not a full lecture. — postgame AI · getpostgame.ai #DugoutTalk",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-18T11:24:36.510Z",
+      "lastAttemptAt": "2026-08-18T23:26:53.766Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
