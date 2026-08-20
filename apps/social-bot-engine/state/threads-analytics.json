@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-19T23:28:04.236Z",
+  "updatedAt": "2026-08-20T11:36:30.957Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -17255,12 +17255,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "9ddc7438-d060-40e4-8c20-20753f953894",
+      "postedAt": "2026-08-20T11:36:23.564Z",
+      "postedHour": 11,
+      "dateContext": "2026-08-20",
+      "sport": "nba",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Momentum flips are usually visible before the final score makes them obvious. — postgame AI · getpostgame.ai #HoopsDev",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "momentum_flips",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 20-Aug-26 04:36:30 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-19T23:27:55.998Z",
+      "lastAttemptAt": "2026-08-20T11:36:23.569Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
