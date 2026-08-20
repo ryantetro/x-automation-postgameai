@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-20T11:36:30.957Z",
+  "updatedAt": "2026-08-20T23:31:08.185Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -17294,12 +17294,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "bb51f99c-7229-43a1-b20e-757bedf34a63",
+      "postedAt": "2026-08-20T23:31:01.920Z",
+      "postedHour": 23,
+      "dateContext": "2026-08-20",
+      "sport": "nba",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A roster is not a lineup. The best coaches know which 3 guys change the game when it tightens. — postgame AI · getpostgame.ai #BasketballIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_roster",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 20-Aug-26 16:31:08 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-20T11:36:23.569Z",
+      "lastAttemptAt": "2026-08-20T23:31:01.925Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
