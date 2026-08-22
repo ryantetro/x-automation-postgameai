@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-22T11:20:21.071Z",
+  "updatedAt": "2026-08-22T23:25:34.453Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -17697,12 +17697,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d28dc31f-661f-41df-b864-daa9b98f61aa",
+      "postedAt": "2026-08-22T23:25:25.133Z",
+      "postedHour": 23,
+      "dateContext": "2026-08-22",
+      "sport": "mlb",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The best baseball teaching usually starts with one sequence, not a full lecture. — postgame AI · getpostgame.ai #CoachingBaseball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "MLB analyst urges the Yankees to promote their No. 3 prospect",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/new-york-yankees/news/mlb-analyst-urges-yankees-promote-their-no-3-prospect/e04a7ca345d2088b82c1ef04",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-08-21T20:22:55Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take_dare",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-22T11:20:12.151Z",
+      "lastAttemptAt": "2026-08-22T23:25:25.138Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
