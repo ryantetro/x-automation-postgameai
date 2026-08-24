@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-24T11:38:08.382Z",
+  "updatedAt": "2026-08-24T23:27:10.776Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -17610,12 +17610,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "f36a421b-b5eb-4035-b641-d9f14a56aa85",
+      "postedAt": "2026-08-24T23:27:00.086Z",
+      "postedHour": 23,
+      "dateContext": "2026-08-24",
+      "sport": "nfl",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A game plan survives until the second drive. The adjustments after that are the real coaching. — postgame AI · getpostgame.ai #FootballFilm",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_game",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Monday, 24-Aug-26 16:27:10 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-24T11:38:03.131Z",
+      "lastAttemptAt": "2026-08-24T23:27:00.091Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
