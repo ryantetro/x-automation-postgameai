@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-26T11:29:15.376Z",
+  "updatedAt": "2026-08-27T04:26:40.390Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -18013,12 +18013,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "8f8d3504-622d-498b-a51e-33735713282b",
+      "postedAt": "2026-08-27T04:26:32.767Z",
+      "postedHour": 4,
+      "dateContext": "2026-08-27",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Most basketball film sessions are too long to be useful. — postgame AI · getpostgame.ai #CoachingBasketball #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Rich Paul speaks on holding Peyton Watson out of the NBA playoffs",
+      "newsArticleUrl": "https://uclawire.usatoday.com/story/sports/college/ucla/mens-basketball/2026/08/25/rich-paul-speaks-on-protecting-peyton-watson-from-himself-last-year-nba-nuggets-ucla-bruins/91462505007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-08-25T19:54:30Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "most_basketball",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-26T11:29:04.741Z",
+      "lastAttemptAt": "2026-08-27T04:26:32.773Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
