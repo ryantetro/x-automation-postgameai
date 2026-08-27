@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-26T11:38:54.744Z",
+  "updatedAt": "2026-08-27T04:27:37.361Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -17766,12 +17766,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "2c4b3efd-7564-4e05-8bdd-818026e8cb40",
+      "postedAt": "2026-08-27T04:27:28.384Z",
+      "postedHour": 4,
+      "dateContext": "2026-08-27",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Every staff knows the player who looks great in warmups and disappears in the second half. — postgame AI · getpostgame.ai #CourtVision",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Rich Paul speaks on holding Peyton Watson out of the NBA playoffs",
+      "newsArticleUrl": "https://uclawire.usatoday.com/story/sports/college/ucla/mens-basketball/2026/08/25/rich-paul-speaks-on-protecting-peyton-watson-from-himself-last-year-nba-nuggets-ucla-bruins/91462505007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-08-25T19:54:30Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "universal_truth",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 26-Aug-26 21:27:37 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-26T11:38:45.675Z",
+      "lastAttemptAt": "2026-08-27T04:27:28.390Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
