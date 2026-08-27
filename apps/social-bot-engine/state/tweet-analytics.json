@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-27T04:26:40.390Z",
+  "updatedAt": "2026-08-27T20:55:10.582Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -18056,12 +18056,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "722a1800-0f2f-4150-b9b6-a50339ad7208",
+      "postedAt": "2026-08-27T20:55:02.146Z",
+      "postedHour": 20,
+      "dateContext": "2026-08-27",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "If your players cannot explain the game plan back to you, the film session missed. — postgame AI · getpostgame.ai #CoachingBasketball #BasketballIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Kyle Singler takes aim at Mike Krzyzewski, asks for help in concerning videos",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/ncaab/2026/08/26/kyle-singler-mike-krzyzewski-coach-k-instagram-videos/91471876007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-08-26T13:52:39Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "if_your",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-27T04:26:32.773Z",
+      "lastAttemptAt": "2026-08-27T20:55:02.151Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
