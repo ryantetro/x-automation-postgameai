@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-27T04:27:37.361Z",
+  "updatedAt": "2026-08-27T21:00:03.872Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -17809,12 +17809,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "e7e44478-2c0c-4ede-a372-85fffe49cd46",
+      "postedAt": "2026-08-27T20:59:55.454Z",
+      "postedHour": 20,
+      "dateContext": "2026-08-27",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A roster is not a lineup. The best coaches know which 3 guys change the game when it tightens. — postgame AI · getpostgame.ai #BasketballIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Kyle Singler takes aim at Mike Krzyzewski, asks for help in concerning videos",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/ncaab/2026/08/26/kyle-singler-mike-krzyzewski-coach-k-instagram-videos/91471876007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-08-26T13:52:39Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "a_roster",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 27-Aug-26 14:00:03 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-27T04:27:28.390Z",
+      "lastAttemptAt": "2026-08-27T20:59:55.460Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
