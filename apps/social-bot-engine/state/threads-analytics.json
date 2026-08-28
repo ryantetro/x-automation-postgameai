@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-27T21:00:03.872Z",
+  "updatedAt": "2026-08-28T06:50:50.193Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -17852,12 +17852,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "78c9abce-59d4-4985-82dc-33f35f6067f3",
+      "postedAt": "2026-08-28T06:50:42.700Z",
+      "postedHour": 6,
+      "dateContext": "2026-08-28",
+      "sport": "nfl",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The fastest football improvement usually comes from one rep and one coaching point. — postgame AI · getpostgame.ai #GridironIQ",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_fastest",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 27-Aug-26 23:50:50 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-27T20:59:55.460Z",
+      "lastAttemptAt": "2026-08-28T06:50:42.706Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
