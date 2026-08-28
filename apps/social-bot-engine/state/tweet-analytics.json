@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-28T06:50:01.169Z",
+  "updatedAt": "2026-08-28T21:19:14.354Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -18138,12 +18138,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "604ac7d9-823b-4102-8f11-b974bf831885",
+      "postedAt": "2026-08-28T21:19:07.220Z",
+      "postedHour": 21,
+      "dateContext": "2026-08-28",
+      "sport": "nfl",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Red zone offense is not about scheme. It is about which coach taught the details that week. — postgame AI · getpostgame.ai #NFLCoaching #FridayNightLights",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Packers signing former Pro Bowl tight end in NFL free agency",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nfl/green-bay-packers/news/packers-signing-former-pro-bowl-tight-end-nfl-free-agency/ba7156ad288f046af049cf6e",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-08-27T16:05:01Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "red_zone",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-28T06:49:53.333Z",
+      "lastAttemptAt": "2026-08-28T21:19:07.226Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
