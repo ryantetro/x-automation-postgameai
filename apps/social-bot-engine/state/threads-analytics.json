@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-28T21:21:08.541Z",
+  "updatedAt": "2026-08-29T04:05:53.897Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -17934,12 +17934,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "11b0d4af-bf3d-41f0-94b3-8e5f6f0f4a0e",
+      "postedAt": "2026-08-29T04:05:47.556Z",
+      "postedHour": 4,
+      "dateContext": "2026-08-29",
+      "sport": "mlb",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Lineup construction matters less than pitch sequencing in the at-bats that actually change the game. — postgame AI · getpostgame.ai #CoachingBaseball",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Red Sox manager Chad Tracy predicted to be snubbed for MLB award",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/boston-red-sox/news/red-sox-manager-chad-tracy-predicted-be-snubbed-mlb-award/06d295f1f918bade411d2729",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-08-27T18:25:03Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "lineup_construction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 28-Aug-26 21:05:53 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-28T21:21:03.199Z",
+      "lastAttemptAt": "2026-08-29T04:05:47.562Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
