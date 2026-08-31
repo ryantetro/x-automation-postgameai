@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-30T15:18:55.623Z",
+  "updatedAt": "2026-08-31T01:18:07.561Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -18094,12 +18094,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "99f21e3c-23fa-4fd8-b698-87f53b4fada5",
+      "postedAt": "2026-08-31T01:18:02.117Z",
+      "postedHour": 1,
+      "dateContext": "2026-08-31",
+      "sport": "nfl",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Down, distance, and field position usually expose the real coaching problems. — postgame AI · getpostgame.ai #FootballFilm #CoachingFootball",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "openingPattern": "down,_distance,",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Sunday, 30-Aug-26 18:18:07 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-08-30T15:18:48.835Z",
+      "lastAttemptAt": "2026-08-31T01:18:02.122Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
