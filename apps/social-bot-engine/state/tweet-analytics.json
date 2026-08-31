@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-08-31T01:15:29.424Z",
+  "updatedAt": "2026-08-31T17:55:27.687Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -18380,12 +18380,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "ff8e0bd6-3d63-497a-b460-3cbd4b3a862f",
+      "postedAt": "2026-08-31T17:55:20.507Z",
+      "postedHour": 17,
+      "dateContext": "2026-08-31",
+      "sport": "nfl",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The fastest football improvement usually comes from one rep and one coaching point. — postgame AI · getpostgame.ai #NFLCoaching #GridironIQ",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Former Bengals starter already cut by new team",
+      "newsArticleUrl": "https://bengalswire.usatoday.com/story/sports/nfl/bengals/2026/08/30/bengals-starter-already-cut-new-team-bills-geno-stone/91536790007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-08-30T14:42:19Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "the_fastest",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-08-31T01:15:21.006Z",
+      "lastAttemptAt": "2026-08-31T17:55:20.513Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
