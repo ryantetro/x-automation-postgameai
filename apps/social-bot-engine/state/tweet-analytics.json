@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-01T15:23:55.074Z",
+  "updatedAt": "2026-09-02T00:54:58.106Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -18501,12 +18501,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "68cb0157-8df9-4e15-a0fd-21e7177a69e9",
+      "postedAt": "2026-09-02T00:54:48.732Z",
+      "postedHour": 0,
+      "dateContext": "2026-09-02",
+      "sport": "soccer",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Most match review fails because it tries to coach every phase at once. — postgame AI · getpostgame.ai #TacticalAnalysis #BeautifulGame",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Auburn soccer draws Georgia State in tough match",
+      "newsArticleUrl": "https://auburnwire.usatoday.com/story/sports/college/auburn/2026/08/31/auburn-soccer-georgia-state-recap-sec/91547684007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-08-31T16:41:56Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "most_match",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-01T15:23:46.870Z",
+      "lastAttemptAt": "2026-09-02T00:54:48.738Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
