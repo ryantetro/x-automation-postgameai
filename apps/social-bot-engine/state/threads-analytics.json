@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-02T00:56:28.442Z",
+  "updatedAt": "2026-09-02T15:04:08.310Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -18297,12 +18297,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "55efadd9-ef71-409c-9f78-a04032dc1f66",
+      "postedAt": "2026-09-02T15:03:59.384Z",
+      "postedHour": 15,
+      "dateContext": "2026-09-02",
+      "sport": "soccer",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Most match review fails because it tries to coach every phase at once. — postgame AI · getpostgame.ai #SoccerFilm #TacticalAnalysis",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "most_match",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 02-Sep-26 08:04:08 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-02T00:56:19.024Z",
+      "lastAttemptAt": "2026-09-02T15:03:59.390Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
