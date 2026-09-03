@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-02T14:59:02.105Z",
+  "updatedAt": "2026-09-03T01:01:36.398Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -18583,12 +18583,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4763db7c-520c-4925-8af7-f65473da7f4b",
+      "postedAt": "2026-09-03T01:01:27.747Z",
+      "postedHour": 1,
+      "dateContext": "2026-09-03",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A timeout is only worth calling if the message survives the next 3 possessions. — postgame AI · getpostgame.ai #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Top Michigan freshman guard Brandon McCoy Jr. will miss season with ACL injury",
+      "newsArticleUrl": "https://www.nbcsports.com/ncaa/news/top-michigan-freshman-guard-brandon-mccoy-jr-will-miss-season-with-acl-injury",
+      "newsSourceName": "NBCSports.com",
+      "newsPublishedAt": "2026-09-01T23:01:36Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "a_timeout",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-02T14:58:52.153Z",
+      "lastAttemptAt": "2026-09-03T01:01:27.753Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
