@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-04T14:49:17.206Z",
+  "updatedAt": "2026-09-05T00:46:00.186Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -18743,12 +18743,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "086bac3d-598d-41a0-91fd-d83485921646",
+      "postedAt": "2026-09-05T00:45:50.255Z",
+      "postedHour": 0,
+      "dateContext": "2026-09-05",
+      "sport": "mlb",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Baseball data is useful when it survives the trip from spreadsheet to dugout. — postgame AI · getpostgame.ai #DugoutTalk",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Last Night In Baseball: Yankees Rally Late, Brewers' Lineup Save Miz",
+      "newsArticleUrl": "https://www.foxsports.com/stories/mlb/yankees-brewers-dodgers-braves-ronald-acuna-200-home-runs",
+      "newsSourceName": "Fox Sports",
+      "newsPublishedAt": "2026-09-03T14:21:40Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "openingPattern": "baseball_data",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-04T14:49:09.120Z",
+      "lastAttemptAt": "2026-09-05T00:45:50.261Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
