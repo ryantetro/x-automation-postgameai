@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-05T13:50:18.147Z",
+  "updatedAt": "2026-09-06T00:46:07.811Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -18578,12 +18578,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "8f6390e3-4216-403e-b1e9-e76aa4a8eadf",
+      "postedAt": "2026-09-06T00:46:01.255Z",
+      "postedHour": 0,
+      "dateContext": "2026-09-06",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Every staff knows the player who looks great in warmups and disappears in the second half. — postgame AI · getpostgame.ai #HoopsDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Dallas Mavericks coach raves about Kyrie Irving amid NBA offseason",
+      "newsArticleUrl": "https://dukewire.usatoday.com/story/sports/college/duke/mens-basketball/2026/09/04/dusty-may-has-nothing-but-praise-for-kyrie-irving/91605757007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-09-04T15:03:19Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "universal_truth",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 05-Sep-26 17:46:07 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-05T13:50:11.171Z",
+      "lastAttemptAt": "2026-09-06T00:46:01.260Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
