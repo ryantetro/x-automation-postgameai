@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-09T01:07:36.108Z",
+  "updatedAt": "2026-09-09T15:01:30.170Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -19102,12 +19102,51 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "1bba87d1-2eec-4e5a-9bbd-746e8e7c96eb",
+      "postedAt": "2026-09-09T15:01:20.495Z",
+      "postedHour": 15,
+      "dateContext": "2026-09-09",
+      "sport": "soccer",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Soccer analytics only matter if they survive contact with real coaching. — postgame AI · getpostgame.ai #CoachingSoccer",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "soccer_analytics",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-09T01:07:25.179Z",
+      "lastAttemptAt": "2026-09-09T15:01:20.501Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
