@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-06-11T00:09:56.745Z",
+  "updatedAt": "2026-09-10T14:45:05.678Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -15523,19 +15523,88 @@
       "contentType": "observation",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-06-11"
+    },
+    {
+      "runId": "78b5e077-46a3-475b-97d5-10b9bfd544b3",
+      "postedAt": "2026-09-10T14:44:45.948Z",
+      "postedHour": 14,
+      "dateContext": "2026-09-10",
+      "sport": "canopy",
+      "angle": "Hot Takes and Booth Glow-Ups",
+      "source": "llm",
+      "status": "failed",
+      "text": "Hot take: The booth's real glow-up isn't new graphics. It's when you show up with a space people want to step into. Some setups just get it—a little world in a crowded room pulls you in without screaming for attention.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take:",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Thursday, 10-Sep-26 07:45:05 PDT."
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "competitive_value_framing",
+      "voiceFamily": "micro_story",
+      "buyerIntentLevel": "awareness",
+      "useCaseVertical": "trade shows",
+      "productFocus": "full booth packages",
+      "urgencyMode": "seasonal",
+      "ctaMode": "none",
+      "creativeDirection": "social_proof",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected community to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside community; exploration selected micro_story; exploration selected social_proof; exploration selected full booth packages; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; Launch gate prefers text-first hot takes unless image performance clearly beats text-only.",
+      "seriesId": "booth_hot_take",
+      "contentBucket": "community",
+      "brandTagIncluded": false,
+      "candidateId": "competitive_value_framing|booth_hot_take|community|micro_story|social_proof|awareness|full booth packages|trade shows|seasonal|none:candidate:7",
+      "candidateBatchId": "78b5e077-46a3-475b-97d5-10b9bfd544b3:canopy-batch",
+      "candidateScore": 138,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "competitive_value_framing|booth_hot_take|community|micro_story|social_proof|awareness|full booth packages|trade shows|seasonal|none",
+      "agentReasoningSummary": "exploration selected community to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside community; exploration selected micro_story; exploration selected social_proof; exploration selected full booth packages; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "vendor_friend",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-09-10"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-06-11T00:09:38.312Z",
+      "lastAttemptAt": "2026-09-10T14:44:45.957Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-06-11T00:09:38.313Z",
+      "lastAttemptAt": "2026-09-10T14:44:45.957Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
