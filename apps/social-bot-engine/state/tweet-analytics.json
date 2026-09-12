@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-11T14:51:00.990Z",
+  "updatedAt": "2026-09-12T00:58:46.805Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -19312,12 +19312,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "55376a32-8e64-4090-a458-3f3caf1cace4",
+      "postedAt": "2026-09-12T00:58:42.139Z",
+      "postedHour": 0,
+      "dateContext": "2026-09-12",
+      "sport": "mlb",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "The difference between a slump and a mechanical issue is usually one honest video session. — postgame AI · getpostgame.ai #DugoutTalk",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Why Nationals might trade away CJ Abrams after 2026 MLB season",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/washington-nationals/news/why-nationals-might-trade-cj-abrams-after-2026-mlb-season/984b2cfdbb6f9172b24bdeb5",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-09-10T20:14:25Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "the_difference",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-11T14:50:58.170Z",
+      "lastAttemptAt": "2026-09-12T00:58:42.144Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
