@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-11T14:57:54.340Z",
+  "updatedAt": "2026-09-12T00:59:33.260Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -19065,12 +19065,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "47f2a374-6092-486a-8e52-6252f18d803f",
+      "postedAt": "2026-09-12T00:59:31.426Z",
+      "postedHour": 0,
+      "dateContext": "2026-09-12",
+      "sport": "mlb",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "15% of CJ Abrams’ error count is misjudgments that turn into mystery slips come Monday's tape review. Coaches recognize the void left by fans’ love for highlight reels—the gap between potential and reality that slips by in analytics and into thin air. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Why Nationals might trade away CJ Abrams after 2026 MLB season",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/washington-nationals/news/why-nationals-might-trade-cj-abrams-after-2026-mlb-season/984b2cfdbb6f9172b24bdeb5",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-09-10T20:14:25Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "specific_number",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 11-Sep-26 17:59:33 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-11T14:57:50.695Z",
+      "lastAttemptAt": "2026-09-12T00:59:31.436Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
