@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-12T13:50:59.259Z",
+  "updatedAt": "2026-09-13T00:31:06.202Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -15874,19 +15874,91 @@
       "contentType": "observation",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-09-12"
+    },
+    {
+      "runId": "a120f378-4236-401b-9988-7553b89cabbc",
+      "postedAt": "2026-09-13T00:30:30.581Z",
+      "postedHour": 0,
+      "dateContext": "2026-09-13",
+      "sport": "canopy",
+      "angle": "Booth Proof in the Wild",
+      "source": "llm",
+      "status": "failed",
+      "text": "Utah's market mornings don't just wake you up—they judge your booth. It's not just the products on display; it's that quiet moment when the frame stays rock-solid while others dance with the wind.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Saturday, 12-Sep-26 17:31:06 PDT."
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "durability_and_product_proof",
+      "voiceFamily": "observational_thought_leadership",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "sports sidelines",
+      "productFocus": "frame quality",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "educational_breakdown",
+      "imageConceptId": "durability-wind-sideline-wide",
+      "imageStyleFamily": "lifestyle",
+      "imageShotType": "wide",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected education to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside education; exploration selected observational_thought_leadership; exploration selected educational_breakdown; exploration selected frame quality; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "proof_in_the_wild",
+      "contentBucket": "education",
+      "brandTagIncluded": false,
+      "candidateId": "durability_and_product_proof|proof_in_the_wild|education|observational_thought_leadership|educational_breakdown|consideration|frame quality|sports sidelines|none|soft_commercial:candidate:7",
+      "candidateBatchId": "a120f378-4236-401b-9988-7553b89cabbc:canopy-batch",
+      "candidateScore": 144,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "durability_and_product_proof|proof_in_the_wild|education|observational_thought_leadership|educational_breakdown|consideration|frame quality|sports sidelines|none|soft_commercial",
+      "agentReasoningSummary": "exploration selected education to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside education; exploration selected observational_thought_leadership; exploration selected educational_breakdown; exploration selected frame quality; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "vendor_friend",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-09-13"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-12T13:50:35.641Z",
+      "lastAttemptAt": "2026-09-13T00:30:30.587Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-12T13:50:35.641Z",
+      "lastAttemptAt": "2026-09-13T00:30:30.587Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
