@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-14T00:33:56.304Z",
+  "updatedAt": "2026-09-14T16:46:40.065Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -16087,19 +16087,88 @@
       "contentType": "list_post",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-09-14"
+    },
+    {
+      "runId": "82b99c48-ea95-43ac-a5a1-3d6ae0442ca8",
+      "postedAt": "2026-09-14T16:45:27.967Z",
+      "postedHour": 16,
+      "dateContext": "2026-09-14",
+      "sport": "canopy",
+      "angle": "Vendor Life and Event Culture",
+      "source": "llm",
+      "status": "failed",
+      "text": "Utah's market mornings are like an unspoken audition. It's the wind's way of sizing up who's prepared and who's about to be humbled by a sideways banner. Real vendors get it—booth survival is a skill, not just setup.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Monday, 14-Sep-26 09:46:40 PDT."
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "use_case_moments",
+      "voiceFamily": "observational_thought_leadership",
+      "buyerIntentLevel": "awareness",
+      "useCaseVertical": "community events",
+      "productFocus": "event banners",
+      "urgencyMode": "seasonal",
+      "ctaMode": "none",
+      "creativeDirection": "behind_the_scenes",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected community to rebalance the canopy mix; exploration selected vendor_life to keep the canopy series mix balanced; use_case_moments selected inside community; exploration selected observational_thought_leadership; exploration selected behind_the_scenes; exploration selected event banners; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; Vendor-life posts stay text-first unless canopy images materially outperform text-only posts.",
+      "seriesId": "vendor_life",
+      "contentBucket": "community",
+      "brandTagIncluded": false,
+      "candidateId": "use_case_moments|vendor_life|community|observational_thought_leadership|behind_the_scenes|awareness|event banners|community events|seasonal|none:candidate:4",
+      "candidateBatchId": "82b99c48-ea95-43ac-a5a1-3d6ae0442ca8:canopy-batch",
+      "candidateScore": 156,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "use_case_moments|vendor_life|community|observational_thought_leadership|behind_the_scenes|awareness|event banners|community events|seasonal|none",
+      "agentReasoningSummary": "exploration selected community to rebalance the canopy mix; exploration selected vendor_life to keep the canopy series mix balanced; use_case_moments selected inside community; exploration selected observational_thought_leadership; exploration selected behind_the_scenes; exploration selected event banners; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "vendor_friend",
+      "contentType": "observation",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-09-14"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-14T00:33:21.019Z",
+      "lastAttemptAt": "2026-09-14T16:45:27.972Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-14T00:33:21.019Z",
+      "lastAttemptAt": "2026-09-14T16:45:27.973Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
