@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-17T00:59:17.458Z",
+  "updatedAt": "2026-09-17T15:26:11.245Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -16510,19 +16510,91 @@
       "contentType": "observation",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-09-17"
+    },
+    {
+      "runId": "70986191-ade6-4517-8238-d0c163b2f9d4",
+      "postedAt": "2026-09-17T15:25:32.048Z",
+      "postedHour": 15,
+      "dateContext": "2026-09-17",
+      "sport": "canopy",
+      "angle": "Booth Identity and Setup Taste",
+      "source": "llm",
+      "status": "failed",
+      "text": "Hot take: Your booth isn't a brand if it still looks like a pop-up sale in the wind. Intentional design isn't optional, it's identity. Look the part before the weather calls your bluff.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Thursday, 17-Sep-26 08:26:11 PDT."
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "buyer_intent_products",
+      "voiceFamily": "soft_commercial",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "retail pop-ups",
+      "productFocus": "custom canopies",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "before_after_transformation",
+      "imageConceptId": "buyer-canopy-tradeshow-wide",
+      "imageStyleFamily": "lifestyle",
+      "imageShotType": "wide",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected education to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside education; exploration selected soft_commercial; exploration selected before_after_transformation; exploration selected custom canopies; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "booth_identity",
+      "contentBucket": "education",
+      "brandTagIncluded": false,
+      "candidateId": "buyer_intent_products|booth_identity|education|soft_commercial|before_after_transformation|consideration|custom canopies|retail pop-ups|none|soft_commercial:candidate:7",
+      "candidateBatchId": "70986191-ade6-4517-8238-d0c163b2f9d4:canopy-batch",
+      "candidateScore": 132,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "buyer_intent_products|booth_identity|education|soft_commercial|before_after_transformation|consideration|custom canopies|retail pop-ups|none|soft_commercial",
+      "agentReasoningSummary": "exploration selected education to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside education; exploration selected soft_commercial; exploration selected before_after_transformation; exploration selected custom canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "booth_critic",
+      "contentType": "hot_take",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-09-17"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-17T00:58:43.965Z",
+      "lastAttemptAt": "2026-09-17T15:25:32.056Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-17T00:58:43.966Z",
+      "lastAttemptAt": "2026-09-17T15:25:32.057Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
