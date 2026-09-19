@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-18T14:48:04.089Z",
+  "updatedAt": "2026-09-19T01:02:58.305Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -19912,12 +19912,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "6655ef96-4bb6-4d50-ba54-7922076cebb0",
+      "postedAt": "2026-09-19T01:02:54.209Z",
+      "postedHour": 1,
+      "dateContext": "2026-09-19",
+      "sport": "mlb",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bench coach sees more than anyone in the dugout. The best managers know when to listen. — postgame AI · getpostgame.ai #BaseballDev #DugoutTalk",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Why Cubs have massive bullpen problem before MLB postseason",
+      "newsArticleUrl": "https://www.sportingnews.com/us/mlb/chicago-cubs/news/why-cubs-have-massive-bullpen-problem-mlb-postseason/e2274fe4744fb12da76dee76",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-09-17T15:17:37Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_bench",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-18T14:48:00.246Z",
+      "lastAttemptAt": "2026-09-19T01:02:54.214Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
