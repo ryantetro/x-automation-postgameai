@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-19T01:02:58.305Z",
+  "updatedAt": "2026-09-19T14:11:59.006Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -19955,12 +19955,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b30970be-144d-4d1a-b4b9-0c0337e33d17",
+      "postedAt": "2026-09-19T14:11:55.079Z",
+      "postedHour": 14,
+      "dateContext": "2026-09-19",
+      "sport": "mlb",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "fallback",
+      "status": "failed",
+      "text": "A bench coach sees more than anyone in the dugout. The best managers know when to listen. — postgame AI · getpostgame.ai #DugoutTalk",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Josh Allen, Bills trample Lions' hapless defense; college football Week 3 picks; UFC 331 preview",
+      "newsArticleUrl": "https://www.cbssports.com/nfl/news/josh-allen-bills-lions-defense-college-football-picks-ufc-331-preview/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-09-18T12:55:35Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "openingPattern": "a_bench",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-19T01:02:54.214Z",
+      "lastAttemptAt": "2026-09-19T14:11:55.085Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
