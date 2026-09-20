@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-19T14:20:18.867Z",
+  "updatedAt": "2026-09-20T00:53:49.877Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -19781,12 +19781,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4899911c-e70e-433b-a391-ca516a7dda93",
+      "postedAt": "2026-09-20T00:53:47.532Z",
+      "postedHour": 0,
+      "dateContext": "2026-09-20",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "18% shooting improvement won't fix Egor Demin's real hurdle. Coaches know the gap between his potential and execution is hidden in those missed rotations that won't make Monday's review. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Will Nets' Egor Demin be the breakout candidate this NBA season?",
+      "newsArticleUrl": "https://netswire.usatoday.com/story/sports/nba/nets/2026/09/18/will-nets-egor-demin-be-the-breakout-candidate-this-nba-season/91828766007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-09-18T19:32:27Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "specific_number",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 19-Sep-26 17:53:49 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-19T14:20:14.340Z",
+      "lastAttemptAt": "2026-09-20T00:53:47.537Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
