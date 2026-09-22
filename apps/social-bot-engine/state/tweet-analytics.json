@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-22T01:31:21.251Z",
+  "updatedAt": "2026-09-22T15:26:05.680Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -20222,12 +20222,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "5fdc8120-0596-4395-89df-ff0586f1eff2",
+      "postedAt": "2026-09-22T15:26:03.557Z",
+      "postedHour": 15,
+      "dateContext": "2026-09-22",
+      "sport": "mlb",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Every contender has a flaw fans obsess over, but coaches know the truth: flaws aren't the issue; it's how quickly they're forgotten by the next game. That 48-hour window holds everything that matters. Make it or miss it. #MLBCoaching #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "One fatal flaw on each MLB contender that could derail long playoff run",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/mlb/2026/09/21/mlb-2026-playof-contenders-fatal-flaw/91861359007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-09-21T11:03:05Z",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "insider_divide",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-22T01:31:18.600Z",
+      "lastAttemptAt": "2026-09-22T15:26:03.563Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
