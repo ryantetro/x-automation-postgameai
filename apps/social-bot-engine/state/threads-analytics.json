@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-22T01:32:20.509Z",
+  "updatedAt": "2026-09-22T15:29:35.910Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -20005,12 +20005,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "48576f91-700b-4f12-8dfc-c473375e7fca",
+      "postedAt": "2026-09-22T15:29:31.586Z",
+      "postedHour": 15,
+      "dateContext": "2026-09-22",
+      "sport": "mlb",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Five RBIs don't mask a bullpen collapse, Dodgers. Coaches see the gap between those thrilling cracks of the bat and the unnerving silence when relievers forget fundamentals—they're the forgotten truths lurking as playoff hopes hang by a thread. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "One fatal flaw on each MLB contender that could derail long playoff run",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/mlb/2026/09/21/mlb-2026-playof-contenders-fatal-flaw/91861359007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-09-21T11:03:05Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "five_rbis",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Tuesday, 22-Sep-26 08:29:35 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-22T01:32:17.769Z",
+      "lastAttemptAt": "2026-09-22T15:29:31.591Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
