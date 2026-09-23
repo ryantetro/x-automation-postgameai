@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-23T01:20:59.453Z",
+  "updatedAt": "2026-09-23T15:19:02.062Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -20313,12 +20313,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "752b2a9d-d98b-4660-9649-ca3202ef1427",
+      "postedAt": "2026-09-23T15:18:56.604Z",
+      "postedHour": 15,
+      "dateContext": "2026-09-23",
+      "sport": "soccer",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Possession means nothing without intent. Passing for the sake of passing is just resting on the ball. — postgame AI · getpostgame.ai #PitchIQ #SoccerDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Ireland soccer coach criticized for 'stupidity' by Israel FA after comments",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/soccer/2026/09/22/ireland-heimir-hallgrimsson-criticized-for-stupidity-by-israel-fa/91883093007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-09-22T04:17:26Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "openingPattern": "possession_means",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-23T01:20:56.348Z",
+      "lastAttemptAt": "2026-09-23T15:18:56.612Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
