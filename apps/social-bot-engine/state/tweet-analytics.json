@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-24T01:15:28.064Z",
+  "updatedAt": "2026-09-24T15:43:25.003Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -20404,12 +20404,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "6c70ee57-f828-413c-a282-8f704605577d",
+      "postedAt": "2026-09-24T15:43:21.158Z",
+      "postedHour": 15,
+      "dateContext": "2026-09-24",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "failed",
+      "text": "The Pelicans' lineup isn't their riddle—it's the gaps between 3 crucial moments fans miss. Coaches see it: talent stalls without execution, and by Monday, the lesson in those few plays is blurred in the review room fog. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "New Orleans Pelicans season preview: Lineup, roster and prediction",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/nba/pelicans/2026/09/23/new-orleans-pelicans-roster-projected-lineup-rotation-season-prediction/91685947007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-09-23T09:40:29Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "insider_divide",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-24T01:15:25.349Z",
+      "lastAttemptAt": "2026-09-24T15:43:21.164Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
