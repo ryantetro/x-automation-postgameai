@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-23T15:19:02.062Z",
+  "updatedAt": "2026-09-24T01:15:28.064Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -20356,12 +20356,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "35a398e2-0d51-4917-8530-4e7b6603d62f",
+      "postedAt": "2026-09-24T01:15:25.344Z",
+      "postedHour": 1,
+      "dateContext": "2026-09-24",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "failed",
+      "text": "Doc Rivers retires to broadcast, but he leaves an unspoken truth: those two-game-shifting calls never make the Monday recap. Stories hidden in the noise of a season vanish unless seized immediately. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Former Boston Celtics head coach Doc Rivers to reportedly retire from coaching",
+      "newsArticleUrl": "https://celticswire.usatoday.com/story/sports/nba/celtics/2026/09/22/former-celtics-coach-doc-rivers-to-reportedly-retire-from-coaching/91892243007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-09-22T19:07:03Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "doc_rivers",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-23T15:18:56.612Z",
+      "lastAttemptAt": "2026-09-24T01:15:25.349Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
