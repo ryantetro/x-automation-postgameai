@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-24T15:47:58.011Z",
+  "updatedAt": "2026-09-25T01:19:44.777Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -20245,12 +20245,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "fab2d1be-fd4d-4180-bc61-f7096c659f86",
+      "postedAt": "2026-09-25T01:19:41.169Z",
+      "postedHour": 1,
+      "dateContext": "2026-09-25",
+      "sport": "nfl",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Most NFL coaches miss the brutal reality: opponent tendencies don't mean squat if game week prep doesn’t hammer it home. Those whispers of “we’ll remember this” dissolve by Sunday night, leaving should’ve-beens off the field and stuck in meeting rooms. postgame AI · getpostgame.ai #CoachingTruth #NFLInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "loss",
+      "frameReason": "Selected The Conversation That Doesn't Happen to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "most_nfl",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 24-Sep-26 18:19:44 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-24T15:47:54.685Z",
+      "lastAttemptAt": "2026-09-25T01:19:41.174Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
