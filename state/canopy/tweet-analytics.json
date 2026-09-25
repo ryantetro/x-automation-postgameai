@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-24T15:42:27.893Z",
+  "updatedAt": "2026-09-25T01:02:33.081Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -17572,19 +17572,88 @@
       "contentType": "hot_take",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-09-24"
+    },
+    {
+      "runId": "6da463c2-7c7e-4d7b-bd85-17a8d29144da",
+      "postedAt": "2026-09-25T01:01:52.363Z",
+      "postedHour": 1,
+      "dateContext": "2026-09-25",
+      "sport": "canopy",
+      "angle": "Hot Takes and Booth Glow-Ups",
+      "source": "llm",
+      "status": "failed",
+      "text": "Two kinds of vendors: Ones who think frame strength is optional until Utah's morning wind says hello. Others who test their setup like they're training for it. Only one group enjoys packing up without needing a replacement order.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "two_kinds",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Thursday, 24-Sep-26 18:02:33 PDT."
+        }
+      ],
+      "hasImage": false,
+      "campaignStrategyId": "competitive_value_framing",
+      "voiceFamily": "observational_thought_leadership",
+      "buyerIntentLevel": "awareness",
+      "useCaseVertical": "trade shows",
+      "productFocus": "custom canopies",
+      "urgencyMode": "seasonal",
+      "ctaMode": "none",
+      "creativeDirection": "customer_showcase",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected observational_thought_leadership; exploration selected customer_showcase; exploration selected custom canopies; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; Launch gate prefers text-first hot takes unless image performance clearly beats text-only.",
+      "seriesId": "booth_hot_take",
+      "contentBucket": "culture",
+      "brandTagIncluded": false,
+      "candidateId": "competitive_value_framing|booth_hot_take|culture|observational_thought_leadership|customer_showcase|awareness|custom canopies|trade shows|seasonal|none:candidate:2",
+      "candidateBatchId": "6da463c2-7c7e-4d7b-bd85-17a8d29144da:canopy-batch",
+      "candidateScore": 138,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "competitive_value_framing|booth_hot_take|culture|observational_thought_leadership|customer_showcase|awareness|custom canopies|trade shows|seasonal|none",
+      "agentReasoningSummary": "exploration selected culture to rebalance the canopy mix; exploration selected booth_hot_take to keep the canopy series mix balanced; competitive_value_framing selected inside culture; exploration selected observational_thought_leadership; exploration selected customer_showcase; exploration selected custom canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "setup_nerd",
+      "contentType": "list_post",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-09-25"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-24T15:41:33.497Z",
+      "lastAttemptAt": "2026-09-25T01:01:52.367Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-24T15:41:33.498Z",
+      "lastAttemptAt": "2026-09-25T01:01:52.368Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
