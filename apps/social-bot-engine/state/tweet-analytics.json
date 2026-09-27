@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-26T14:53:28.389Z",
+  "updatedAt": "2026-09-27T01:14:08.972Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -20618,12 +20618,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d5d64002-25cd-4a6d-a96e-35a829ecd9b0",
+      "postedAt": "2026-09-27T01:14:03.860Z",
+      "postedHour": 1,
+      "dateContext": "2026-09-27",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Payton Pritchard’s spark means zip if the Celtics can’t channel it into team execution. Talent ignored is potential misfired. Spot the gap now, not after practice wipes it clean. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Boston Celtics guard Payton Pritchard is the most obvious breakout candidate in the NBA",
+      "newsArticleUrl": "https://celticswire.usatoday.com/story/sports/nba/celtics/2026/09/25/celtics-guard-payton-pritchard-most-obvious-breakout-candidate-in-nba/91942729007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-09-25T20:17:52Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-26T14:53:24.312Z",
+      "lastAttemptAt": "2026-09-27T01:14:03.866Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
