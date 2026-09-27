@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-26T14:58:19.976Z",
+  "updatedAt": "2026-09-27T01:16:17.636Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -20421,12 +20421,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "ab47109c-5960-4b26-843f-00d772a1e3e9",
+      "postedAt": "2026-09-27T01:16:14.445Z",
+      "postedHour": 1,
+      "dateContext": "2026-09-27",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Four minutes of Payton Pritchard on fire won't cover for the execution gaps. Coaches see past the highlights to the unmade reads—all disappearing from memory banks by Thursday. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Boston Celtics guard Payton Pritchard is the most obvious breakout candidate in the NBA",
+      "newsArticleUrl": "https://celticswire.usatoday.com/story/sports/nba/celtics/2026/09/25/celtics-guard-payton-pritchard-most-obvious-breakout-candidate-in-nba/91942729007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-09-25T20:17:52Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "validation",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "four_minutes",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 26-Sep-26 18:16:17 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-26T14:58:18.032Z",
+      "lastAttemptAt": "2026-09-27T01:16:14.451Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
