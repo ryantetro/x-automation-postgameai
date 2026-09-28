@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-27T15:37:27.180Z",
+  "updatedAt": "2026-09-28T01:29:43.250Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -20513,12 +20513,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "55ede1c7-a08f-45eb-b05f-39c60c2553fb",
+      "postedAt": "2026-09-28T01:29:41.472Z",
+      "postedHour": 1,
+      "dateContext": "2026-09-28",
+      "sport": "nfl",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "30% of your prep goes straight to waste. The problem is not the data but the gap between analysis and real execution adjustments—buried under endless metrics and not felt until it's too late. postgame AI · getpostgame.ai #CoachingTruth #NFLInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "specific_number",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Sunday, 27-Sep-26 18:29:43 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-27T15:37:23.123Z",
+      "lastAttemptAt": "2026-09-28T01:29:41.477Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
