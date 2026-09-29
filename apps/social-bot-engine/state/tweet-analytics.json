@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-29T02:31:53.536Z",
+  "updatedAt": "2026-09-29T16:48:12.970Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -20842,12 +20842,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "1d6b7c26-1403-40d4-a6f6-768c1ae82f04",
+      "postedAt": "2026-09-29T16:48:09.313Z",
+      "postedHour": 16,
+      "dateContext": "2026-09-29",
+      "sport": "mlb",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Playoff rotations seem untouchable until you're two days late reviewing. Delay and you miss the adjustments that show if the Yankees' rotation is solid or just masking flaws. #MLBCoaching #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Ranking the pitching staffs of all 12 MLB playoff teams: Yankees rotation looks unbeatable",
+      "newsArticleUrl": "https://www.cbssports.com/mlb/news/2026-mlb-playoffs-ranking-pitching-staffs/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-09-28T16:00:16Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "playoff_rotations",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-29T02:31:49.372Z",
+      "lastAttemptAt": "2026-09-29T16:48:09.317Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
