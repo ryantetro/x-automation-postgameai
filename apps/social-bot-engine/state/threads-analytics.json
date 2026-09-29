@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-29T02:32:40.163Z",
+  "updatedAt": "2026-09-29T16:52:22.446Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -20645,12 +20645,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "4e0e90a0-77c8-4c87-a12d-99ce1599bb2c",
+      "postedAt": "2026-09-29T16:52:17.003Z",
+      "postedHour": 16,
+      "dateContext": "2026-09-29",
+      "sport": "mlb",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Yankees' playoff pitching staff looks invincible on paper, but every coach knows the real game is played between the lines—where tactical blunders get buried faster than a Friday scouting report. Those missed decisions in split innings vanish from memory before the next sun breaks on practice, leaving a gap stats can't fill. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Ranking the pitching staffs of all 12 MLB playoff teams: Yankees rotation looks unbeatable",
+      "newsArticleUrl": "https://www.cbssports.com/mlb/news/2026-mlb-playoffs-ranking-pitching-staffs/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-09-28T16:00:16Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Tuesday, 29-Sep-26 09:52:22 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-29T02:32:37.019Z",
+      "lastAttemptAt": "2026-09-29T16:52:17.009Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
