@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-29T16:52:22.446Z",
+  "updatedAt": "2026-09-30T01:55:55.582Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -20693,12 +20693,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "52ad6a81-db69-436f-894c-45947e37a201",
+      "postedAt": "2026-09-30T01:55:52.121Z",
+      "postedHour": 1,
+      "dateContext": "2026-09-30",
+      "sport": "soccer",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "The problem isn’t your team's talent—it's the yawning gap in how you deal with pressure passes in transition. Coaches know those lapses get lost in translation between Sunday morning analysis and Monday's mundane drills when no one decides what's worth fixing first. postgame AI · getpostgame.ai #CoachingTruth #SoccerCoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "the_problem",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Tuesday, 29-Sep-26 18:55:55 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-29T16:52:17.009Z",
+      "lastAttemptAt": "2026-09-30T01:55:52.127Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
