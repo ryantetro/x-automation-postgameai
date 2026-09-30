@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-30T01:55:55.582Z",
+  "updatedAt": "2026-09-30T16:48:09.357Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -20737,12 +20737,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d6107edd-50d0-4c33-8ca5-dffb78db3df9",
+      "postedAt": "2026-09-30T16:48:06.818Z",
+      "postedHour": 16,
+      "dateContext": "2026-09-30",
+      "sport": "soccer",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "The problem is not the blown saves or missed goals; it's the crucial feedback that fades faster than a counter-attack postgame. Coaches see lapses vanish in locker room silence—words unsaid by halftime melt away before Monday's session reveals them. postgame AI · getpostgame.ai #CoachingTruth #SoccerCoaching",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Conversation That Doesn't Happen to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "the_problem",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 30-Sep-26 09:48:09 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-09-30T01:55:52.127Z",
+      "lastAttemptAt": "2026-09-30T16:48:06.824Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
