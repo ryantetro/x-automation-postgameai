@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-09-30T16:40:57.042Z",
+  "updatedAt": "2026-10-01T01:55:17.863Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -20968,12 +20968,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "22b05ea7-2983-41c3-b2d2-781aaa8dac59",
+      "postedAt": "2026-10-01T01:55:13.916Z",
+      "postedHour": 1,
+      "dateContext": "2026-10-01",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "J.R. Smith's trouble won't have coaches surprised—locker room tension's a constant reality. In truth, the real gap in development isn't talent but how chaos in film study outlasts the drama. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Two-time NBA champion, former Knick J.R. Smith arrested on assault charge in Texas",
+      "newsArticleUrl": "https://www.nbcsports.com/nba/news/two-time-nba-champion-former-knick-j-r-smith-arrested-on-assault-charge-in-texas",
+      "newsSourceName": "NBCSports.com",
+      "newsPublishedAt": "2026-09-29T17:07:49Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "j.r._smith's",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-09-30T16:40:53.073Z",
+      "lastAttemptAt": "2026-10-01T01:55:13.923Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
