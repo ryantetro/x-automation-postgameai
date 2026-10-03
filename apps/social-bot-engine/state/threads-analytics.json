@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-02T16:36:17.649Z",
+  "updatedAt": "2026-10-03T01:50:30.800Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -20965,12 +20965,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "510f377b-eef0-44c5-aa73-d54c1d2a54b7",
+      "postedAt": "2026-10-03T01:50:28.454Z",
+      "postedHour": 1,
+      "dateContext": "2026-10-03",
+      "sport": "mlb",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Coaching spreadsheets won't fix the gap between knowing an opponent's tendencies and actual game execution. That's the frustration coaches feel—hours of prep vanish the moment a batter hesitates on a pitch no one saw coming. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "coaching_spreadsheets",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 02-Oct-26 18:50:30 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-02T16:36:13.799Z",
+      "lastAttemptAt": "2026-10-03T01:50:28.460Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
