@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-03T15:03:38.784Z",
+  "updatedAt": "2026-10-04T02:29:00.069Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -21230,12 +21230,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "58e95b18-e8dd-4e3f-9813-4bcd8fc749d2",
+      "postedAt": "2026-10-04T02:28:55.757Z",
+      "postedHour": 2,
+      "dateContext": "2026-10-04",
+      "sport": "nba",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "failed",
+      "text": "Lillard's 39-point night hides the real story: blown rotations and forced hero shots left unchecked. The gap between talent and execution destroys seasons. Coaches, address it now or face it in the playoffs. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-03T15:03:34.012Z",
+      "lastAttemptAt": "2026-10-04T02:28:55.763Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
