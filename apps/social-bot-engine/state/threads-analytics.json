@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-04T15:46:22.070Z",
+  "updatedAt": "2026-10-05T01:46:56.357Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -21141,12 +21141,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "2b016702-d871-4d1e-8634-2e7c43a77c20",
+      "postedAt": "2026-10-05T01:46:53.161Z",
+      "postedHour": 1,
+      "dateContext": "2026-10-05",
+      "sport": "nfl",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Four blown third downs in the Jets-Bills game said it all. Coaches feel that tightness when fine-tuning breaks down under pressure while talent alone never fills the execution gap. postgame AI · getpostgame.ai #CoachingTruth #NFLInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "four_blown",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Sunday, 04-Oct-26 18:46:56 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-04T15:46:18.711Z",
+      "lastAttemptAt": "2026-10-05T01:46:53.166Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
