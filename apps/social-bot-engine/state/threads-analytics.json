@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-05T01:46:56.357Z",
+  "updatedAt": "2026-10-05T19:51:37.368Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -21185,12 +21185,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d5013a3c-a574-4df7-ad62-492fff476e97",
+      "postedAt": "2026-10-05T19:51:32.320Z",
+      "postedHour": 19,
+      "dateContext": "2026-10-05",
+      "sport": "nfl",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Aaron Rodgers' recent Hail Mary isn't fooling any coach. The gap isn't that miraculous end—it’s those blown assignments pre-snap that vanish by Thursday, lost in the noise of postgame chatter. postgame AI · getpostgame.ai #CoachingTruth #NFLInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "aaron_rodgers'",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Monday, 05-Oct-26 12:51:37 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-05T01:46:53.166Z",
+      "lastAttemptAt": "2026-10-05T19:51:32.324Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
