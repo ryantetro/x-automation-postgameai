@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-06T02:48:08.911Z",
+  "updatedAt": "2026-10-06T17:03:27.527Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -21406,12 +21406,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "6d75a2ae-ba16-4e3f-a2fe-6d700301a77a",
+      "postedAt": "2026-10-06T17:03:23.292Z",
+      "postedHour": 17,
+      "dateContext": "2026-10-06",
+      "sport": "mlb",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Alabama and Florida’s CFP paths diverge not on talent but on the setup gap between plan and reality. Coaches know: data’s just a part; the real story’s in what film misses. #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "newsArticleTitle": "Superstar injury updates from NFL Week 4; Alabama, Florida CFP paths diverge",
+      "newsArticleUrl": "https://www.cbssports.com/nfl/news/superstar-injury-updates-from-nfl-week-4-alabama-florida-cfp-paths-diverge/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-10-05T13:04:16Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "contradiction",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-06T02:48:06.893Z",
+      "lastAttemptAt": "2026-10-06T17:03:23.299Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
