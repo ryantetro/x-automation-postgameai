@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-07T02:11:23.139Z",
+  "updatedAt": "2026-10-07T17:41:14.692Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -21497,12 +21497,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "833ca994-a044-43d6-9d54-6d32ee56457a",
+      "postedAt": "2026-10-07T17:41:10.661Z",
+      "postedHour": 17,
+      "dateContext": "2026-10-07",
+      "sport": "soccer",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Most match review fails because it tries to coach every phase at once. — postgame AI · getpostgame.ai #SoccerDev",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "SN's all-time international soccer XI: Do Lionel Messi, Cristiano Ronaldo make our one-per-country lineup?",
+      "newsArticleUrl": "https://www.sportingnews.com/us/soccer/news/sporting-news-all-time-international-soccer-xi-messi-ronaldo/fc4bd15d5e9db2cc7916d8a8",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-10-06T11:03:02Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "most_match",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-07T02:11:18.192Z",
+      "lastAttemptAt": "2026-10-07T17:41:10.667Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
