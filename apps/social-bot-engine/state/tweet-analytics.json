@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-06T17:03:27.527Z",
+  "updatedAt": "2026-10-07T02:11:23.139Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -21454,12 +21454,55 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "3d4c6b8b-2676-4c74-8c96-465c739a1238",
+      "postedAt": "2026-10-07T02:11:18.186Z",
+      "postedHour": 2,
+      "dateContext": "2026-10-07",
+      "sport": "soccer",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "fallback",
+      "status": "failed",
+      "text": "Soccer analytics only matter if they survive contact with real coaching. — postgame AI · getpostgame.ai #BeautifulGame #FootballCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Sam Coffey withdraws from USWNT roster vs. Spain with injury",
+      "newsArticleUrl": "https://www.usatoday.com/story/sports/soccer/uswnt/2026/10/05/sam-coffey-injury-uswnt-vs-spain-jaelin-howell/92109038007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-05T20:28:48Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "openingPattern": "soccer_analytics",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-06T17:03:23.299Z",
+      "lastAttemptAt": "2026-10-07T02:11:18.192Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
