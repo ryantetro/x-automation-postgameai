@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-07T02:12:50.046Z",
+  "updatedAt": "2026-10-07T17:46:36.250Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -21369,12 +21369,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "6db9b8e3-0cb2-4aa2-aee8-b39f31153c7a",
+      "postedAt": "2026-10-07T17:46:32.176Z",
+      "postedHour": 17,
+      "dateContext": "2026-10-07",
+      "sport": "soccer",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Lionel Messi's farewell match may fill stadiums, but coaches see past the farewell glamor. The real struggle isn't who made an all-time XI; it's how quickly unaddressed weaknesses in a player's game fade from memory by the next training session. postgame AI · getpostgame.ai #CoachingTruth #SoccerCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "SN's all-time international soccer XI: Do Lionel Messi, Cristiano Ronaldo make our one-per-country lineup?",
+      "newsArticleUrl": "https://www.sportingnews.com/us/soccer/news/sporting-news-all-time-international-soccer-xi-messi-ronaldo/fc4bd15d5e9db2cc7916d8a8",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-10-06T11:03:02Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "urgency",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 07-Oct-26 10:46:36 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-07T02:12:47.360Z",
+      "lastAttemptAt": "2026-10-07T17:46:32.183Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
