@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-08T02:37:53.123Z",
+  "updatedAt": "2026-10-08T17:50:41.513Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -21465,12 +21465,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "c4be007b-2774-4ffe-b834-61a57ae33502",
+      "postedAt": "2026-10-08T17:50:39.422Z",
+      "postedHour": 17,
+      "dateContext": "2026-10-08",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Top of the NBA coach rankings sounds great, right? But coaches know ranking means squat if your team’s defensive switch communication disappears in practice talks by Tuesday. That's the choke point where development stalls before the season even gets hot. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Dodgers take NLDS lead, Padres extend series vs. Brewers; Pete Prisco's Week 5 NFL Power Rankings",
+      "newsArticleUrl": "https://www.cbssports.com/mlb/news/dodgers-take-nlds-lead-padres-extend-series-vs-brewers-pete-priscos-week-5-nfl-power-rankings/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-10-07T12:58:25Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "top_of",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 08-Oct-26 10:50:41 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-08T02:37:50.485Z",
+      "lastAttemptAt": "2026-10-08T17:50:39.427Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
