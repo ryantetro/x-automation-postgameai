@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-08T02:37:01.609Z",
+  "updatedAt": "2026-10-08T17:45:14.463Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -21588,12 +21588,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "401d4ba6-d6b6-4f3a-92ac-7bc1d2d7d9dc",
+      "postedAt": "2026-10-08T17:45:12.453Z",
+      "postedHour": 17,
+      "dateContext": "2026-10-08",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "NBA coach rankings are out, but the hidden plot? Most coaching evals miss the sideline adjustments that change games. Real intel vanishes by Thursday—film can't see it all. #NBA #CoachingLife postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Dodgers take NLDS lead, Padres extend series vs. Brewers; Pete Prisco's Week 5 NFL Power Rankings",
+      "newsArticleUrl": "https://www.cbssports.com/mlb/news/dodgers-take-nlds-lead-padres-extend-series-vs-brewers-pete-priscos-week-5-nfl-power-rankings/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-10-07T12:58:25Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "named_moment",
+      "hookStructureLabel": "Named Moment",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "nba_coach",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-08T02:36:58.583Z",
+      "lastAttemptAt": "2026-10-08T17:45:12.459Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
