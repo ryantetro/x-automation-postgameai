@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-07T17:41:14.692Z",
+  "updatedAt": "2026-10-08T02:37:01.609Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -21540,12 +21540,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d034bc49-3c71-4c2a-bfb2-bada3b84efea",
+      "postedAt": "2026-10-08T02:36:58.576Z",
+      "postedHour": 2,
+      "dateContext": "2026-10-08",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Starting all three Spurs guards isn’t the gamble—ignoring the execution gap is. Rotations mean nothing if the film doesn’t capture what changed possession by possession. Once Monday hits, clarity’s gone, and so is the lesson. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "NBA insider believes the Spurs are considering starting all three of their star guards",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/san-antonio-spurs/news/insider-believes-spurs-considering-starting-all-star-guards/40945bf262747c31ba8de1e6",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-10-06T15:09:22Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "validation",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "starting_all",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-07T17:41:10.667Z",
+      "lastAttemptAt": "2026-10-08T02:36:58.583Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
