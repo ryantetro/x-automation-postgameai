@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-07T17:39:44.548Z",
+  "updatedAt": "2026-10-08T02:24:29.993Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -19396,19 +19396,91 @@
       "contentType": "list_post",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-10-07"
+    },
+    {
+      "runId": "b88a40da-fee3-4b10-bdd2-8c3a588d2979",
+      "postedAt": "2026-10-08T02:23:41.320Z",
+      "postedHour": 2,
+      "dateContext": "2026-10-08",
+      "sport": "canopy",
+      "angle": "Booth Proof in the Wild",
+      "source": "llm",
+      "status": "failed",
+      "text": "First lesson in the vendor handbook: your booth is judged before you say a word. Second lesson: it's not the graphics that speak, it's how upright your frame stays after the morning wind tests its patience.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "first_lesson",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Wednesday, 07-Oct-26 19:24:29 PDT."
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "durability_and_product_proof",
+      "voiceFamily": "observational_thought_leadership",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "outdoor festivals",
+      "productFocus": "frame quality",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "behind_the_scenes",
+      "imageConceptId": "durability-frame-close",
+      "imageStyleFamily": "mockup",
+      "imageShotType": "close_up",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected education to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside education; exploration selected observational_thought_leadership; exploration selected behind_the_scenes; exploration selected frame quality; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "proof_in_the_wild",
+      "contentBucket": "education",
+      "brandTagIncluded": false,
+      "candidateId": "durability_and_product_proof|proof_in_the_wild|education|observational_thought_leadership|behind_the_scenes|consideration|frame quality|outdoor festivals|none|soft_commercial:candidate:3",
+      "candidateBatchId": "b88a40da-fee3-4b10-bdd2-8c3a588d2979:canopy-batch",
+      "candidateScore": 140,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "durability_and_product_proof|proof_in_the_wild|education|observational_thought_leadership|behind_the_scenes|consideration|frame quality|outdoor festivals|none|soft_commercial",
+      "agentReasoningSummary": "exploration selected education to rebalance the canopy mix; exploration selected proof_in_the_wild to keep the canopy series mix balanced; durability_and_product_proof selected inside education; exploration selected observational_thought_leadership; exploration selected behind_the_scenes; exploration selected frame quality; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "booth_critic",
+      "contentType": "list_post",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-10-08"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-07T17:39:14.823Z",
+      "lastAttemptAt": "2026-10-08T02:23:41.327Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-07T17:39:14.823Z",
+      "lastAttemptAt": "2026-10-08T02:23:41.328Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
