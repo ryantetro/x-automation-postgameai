@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-08T17:45:14.463Z",
+  "updatedAt": "2026-10-09T02:51:49.133Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -21636,12 +21636,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b01da2f2-6238-4dc3-8a44-cb6f83235c6e",
+      "postedAt": "2026-10-09T02:51:44.942Z",
+      "postedHour": 2,
+      "dateContext": "2026-10-09",
+      "sport": "nfl",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Jamaal Williams is back, but the real challenge for the Patriots is their 48-hour window post-workout. Miss it, and talent fades faster than headlines. Most teams ignore this development gap until it's too late. #NFLCoaching #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "From Rushing Leader To Free Agency: Jamaal Williams Works Out For Patriots",
+      "newsArticleUrl": "https://www.foxsports.com/stories/nfl/jamaal-williams-new-england-patriots-tryout-free-agency",
+      "newsSourceName": "Fox Sports",
+      "newsPublishedAt": "2026-10-07T20:44:07Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "jamaal_williams",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-08T17:45:12.459Z",
+      "lastAttemptAt": "2026-10-09T02:51:44.949Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
