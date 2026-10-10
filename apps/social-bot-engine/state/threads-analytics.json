@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-10T02:13:08.459Z",
+  "updatedAt": "2026-10-10T16:12:45.202Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -21649,12 +21649,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "c0825fdd-fb99-49a8-8fce-68ed18fc566f",
+      "postedAt": "2026-10-10T16:12:42.070Z",
+      "postedHour": 16,
+      "dateContext": "2026-10-10",
+      "sport": "mlb",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "failed",
+      "text": "October's postseason drama won't expose the real issue. Coaches know the bases-loaded strikeout gets all the attention, but those two poorly executed throws in the 7th tell the true tale. That's where the gap between talent and execution reveals itself, and what’s lost in the highlight reel talk. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 10-Oct-26 09:12:45 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-10T02:13:05.660Z",
+      "lastAttemptAt": "2026-10-10T16:12:42.074Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
