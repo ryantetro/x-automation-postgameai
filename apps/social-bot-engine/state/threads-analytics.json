@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-11T01:45:15.982Z",
+  "updatedAt": "2026-10-11T16:37:36.411Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -21741,12 +21741,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "dab67af0-c702-40ba-b30a-e15600608790",
+      "postedAt": "2026-10-11T16:37:33.871Z",
+      "postedHour": 16,
+      "dateContext": "2026-10-11",
+      "sport": "nba",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Shai Gilgeous-Alexander owning OKC's playoff loss doesn't touch the real issue. Coaches know the root isn't just SGA's off night—it's the unaddressed tendencies that vanish in film study, sacrificed to hindsight by Friday's breakdown. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Shai Gilgeous-Alexander takes blame for OKC's 2026 NBA playoff loss to Spurs",
+      "newsArticleUrl": "https://okcthunderwire.usatoday.com/story/sports/nba/thunder/2026/10/10/shai-gilgeous-alexander-takes-blame-for-okc-2026-nba-playoff-loss-to-spurs/92190318007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-10T16:00:08Z",
+      "contentFrameId": "film_room_truth",
+      "contentFrameLabel": "The Film Room Truth",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Film Room Truth to diversify recent frame usage and fit threads.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "shai_gilgeous-alexander",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Sunday, 11-Oct-26 09:37:36 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-11T01:45:12.999Z",
+      "lastAttemptAt": "2026-10-11T16:37:33.876Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
