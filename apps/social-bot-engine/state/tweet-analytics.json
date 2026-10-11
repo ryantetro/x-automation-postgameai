@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-11T01:43:47.361Z",
+  "updatedAt": "2026-10-11T16:34:11.498Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -21854,12 +21854,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b2ba8017-2adc-4814-80f2-7abb630592df",
+      "postedAt": "2026-10-11T16:34:08.814Z",
+      "postedHour": 16,
+      "dateContext": "2026-10-11",
+      "sport": "nba",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Blame’s on Shai, but coaches know OKC's loss runs deeper: it's the prep gap that kills playoff dreams. You see tendencies, but Monday forgets what Sunday screams. The gap isn't skill; it's the vanishing lessons. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Shai Gilgeous-Alexander takes blame for OKC's 2026 NBA playoff loss to Spurs",
+      "newsArticleUrl": "https://okcthunderwire.usatoday.com/story/sports/nba/thunder/2026/10/10/shai-gilgeous-alexander-takes-blame-for-okc-2026-nba-playoff-loss-to-spurs/92190318007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-10T16:00:08Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-11T01:43:44.935Z",
+      "lastAttemptAt": "2026-10-11T16:34:08.820Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
