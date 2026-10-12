@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-11T16:34:11.498Z",
+  "updatedAt": "2026-10-12T02:11:34.913Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -21902,12 +21902,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "b01c673a-50c5-435b-b931-1473941f9cc8",
+      "postedAt": "2026-10-12T02:11:32.055Z",
+      "postedHour": 2,
+      "dateContext": "2026-10-12",
+      "sport": "nfl",
+      "angle": "shot selection or decision-making and efficiency stats",
+      "source": "llm",
+      "status": "failed",
+      "text": "Your game plan wasn't bad, but the 48-hour window will swallow your clearest thoughts if you let it. Week 6's shot selection mess? That's clarity fading fast, and if it slips away, you're back to square one by next weekend. #NFLCoaching #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "your_game",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-11T16:34:08.820Z",
+      "lastAttemptAt": "2026-10-12T02:11:32.061Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
