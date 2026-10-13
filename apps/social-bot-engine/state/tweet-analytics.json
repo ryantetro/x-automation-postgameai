@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-12T20:07:44.286Z",
+  "updatedAt": "2026-10-13T03:26:05.994Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -21990,12 +21990,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "acfa6e6f-517f-44ec-beaf-91cb360e9975",
+      "postedAt": "2026-10-13T03:26:04.204Z",
+      "postedHour": 3,
+      "dateContext": "2026-10-13",
+      "sport": "mlb",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "48 hours after the final out? That's your real season. Most staffs lose the thread after reviewing film in isolation. Gut-check moments don’t lie, but the clock on true insight is relentless. #MLBCoaching #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "specific_number",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-12T20:07:40.479Z",
+      "lastAttemptAt": "2026-10-13T03:26:04.210Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
