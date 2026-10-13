@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-13T03:26:58.499Z",
+  "updatedAt": "2026-10-13T18:09:57.768Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -21921,12 +21921,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d9bc0796-b0ff-4f74-b7e0-5593e6d0ccf9",
+      "postedAt": "2026-10-13T18:09:55.284Z",
+      "postedHour": 18,
+      "dateContext": "2026-10-13",
+      "sport": "mlb",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "October baseball always reveals the same gap. Coaches see the talent, but those split-second baserunning miscues in the heat of the 7th vanish in Sunday’s film room fog. That’s where seasons slip through the cracks. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "provocation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "october_baseball",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Tuesday, 13-Oct-26 11:09:57 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-13T03:26:55.336Z",
+      "lastAttemptAt": "2026-10-13T18:09:55.290Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
