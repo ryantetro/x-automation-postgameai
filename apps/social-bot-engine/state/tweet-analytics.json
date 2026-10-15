@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-15T01:18:40.858Z",
+  "updatedAt": "2026-10-15T15:30:17.029Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -22200,12 +22200,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "fee138d8-71b3-4f84-8878-9044c0ea39ce",
+      "postedAt": "2026-10-15T15:30:14.150Z",
+      "postedHour": 15,
+      "dateContext": "2026-10-15",
+      "sport": "nba",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Victor Wembanyama's potential distracts, but the Spurs' real challenge lies in the 48-hour blind spot postgame. Talent thrives or crumbles there, escaping film's glaring eye but slipping through coaching's grasp. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "'Take the expectations': Mitch Johnson embraces the noise Spurs, Victor Wembanyama will face",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/san-antonio-spurs/news/nba-news-take-expectations-mitch-johnson-embraces-noise-spurs-victor-wembanyama-will-face/33f24de301e097ee7168b98d",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-10-14T15:10:43Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-15T01:18:38.284Z",
+      "lastAttemptAt": "2026-10-15T15:30:14.154Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
