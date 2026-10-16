@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-15T15:30:17.029Z",
+  "updatedAt": "2026-10-16T01:04:29.803Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -22248,12 +22248,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "1bdbe08c-3748-4677-a988-dfc4efbab722",
+      "postedAt": "2026-10-16T01:04:27.413Z",
+      "postedHour": 1,
+      "dateContext": "2026-10-16",
+      "sport": "nfl",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "That game-changing sequence you spotted? Fading fast as the 48-hour window closes. By Tuesday, it’s a shallow stat—your prime intel window gone. #NFL #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "that_game-changing",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-15T15:30:14.154Z",
+      "lastAttemptAt": "2026-10-16T01:04:27.419Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
