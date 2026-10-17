@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-16T15:09:21.153Z",
+  "updatedAt": "2026-10-17T00:55:46.305Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -20662,19 +20662,91 @@
       "contentType": "list_post",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-10-16"
+    },
+    {
+      "runId": "05551761-5273-448b-af86-0474ce26c423",
+      "postedAt": "2026-10-17T00:55:08.224Z",
+      "postedHour": 0,
+      "dateContext": "2026-10-17",
+      "sport": "canopy",
+      "angle": "Booth Identity and Setup Taste",
+      "source": "llm",
+      "status": "failed",
+      "text": "Hot take: If your booth's identity is only visible at three feet or less, you're competing with the parking lot, not the market. A real booth looks like a brand from across the aisle.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "hot_take:",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Friday, 16-Oct-26 17:55:46 PDT."
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "buyer_intent_products",
+      "voiceFamily": "observational_thought_leadership",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "trade shows",
+      "productFocus": "custom canopies",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "before_after_transformation",
+      "imageConceptId": "buyer-canopy-tradeshow-wide",
+      "imageStyleFamily": "lifestyle",
+      "imageShotType": "wide",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected education to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside education; exploration selected observational_thought_leadership; exploration selected before_after_transformation; exploration selected custom canopies; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "booth_identity",
+      "contentBucket": "education",
+      "brandTagIncluded": false,
+      "candidateId": "buyer_intent_products|booth_identity|education|observational_thought_leadership|before_after_transformation|consideration|custom canopies|trade shows|none|soft_commercial:candidate:1",
+      "candidateBatchId": "05551761-5273-448b-af86-0474ce26c423:canopy-batch",
+      "candidateScore": 152,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "buyer_intent_products|booth_identity|education|observational_thought_leadership|before_after_transformation|consideration|custom canopies|trade shows|none|soft_commercial",
+      "agentReasoningSummary": "exploration selected education to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside education; exploration selected observational_thought_leadership; exploration selected before_after_transformation; exploration selected custom canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "hot_take_machine",
+      "contentType": "hot_take",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-10-17"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-16T15:08:43.759Z",
+      "lastAttemptAt": "2026-10-17T00:55:08.230Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-16T15:08:43.760Z",
+      "lastAttemptAt": "2026-10-17T00:55:08.231Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
