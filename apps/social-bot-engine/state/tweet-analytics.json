@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-18T00:45:35.218Z",
+  "updatedAt": "2026-10-18T14:19:55.742Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -22462,12 +22462,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "485ed5fb-81ec-40c8-b90b-99327b7cc723",
+      "postedAt": "2026-10-18T14:19:53.445Z",
+      "postedHour": 14,
+      "dateContext": "2026-10-18",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "failed",
+      "text": "Game-changing moments often get lost by Monday. Two minutes can redefine a season while the rest fades. Tape won't capture the urgency of split-second decisions unless you lock it down now. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "The 48-Hour Window",
+      "hookStructureId": "contradiction",
+      "hookStructureLabel": "Contradiction",
+      "emotionTarget": "recognition",
+      "frameReason": "Selected The 48-Hour Window to diversify recent frame usage and fit x.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "game-changing_moments",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-18T00:45:30.991Z",
+      "lastAttemptAt": "2026-10-18T14:19:53.451Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
