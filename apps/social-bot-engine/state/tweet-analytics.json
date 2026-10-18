@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-17T14:04:26.470Z",
+  "updatedAt": "2026-10-18T00:45:35.218Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -22414,12 +22414,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "9738a9d3-447f-47eb-a127-34b378b4292e",
+      "postedAt": "2026-10-18T00:45:30.986Z",
+      "postedHour": 0,
+      "dateContext": "2026-10-18",
+      "sport": "nba",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "failed",
+      "text": "Portland's Morant-Lillard experiment isn't the challenge—it's handling critical 4th quarter defensive possessions. Coaches know, those moments reveal gaps fans miss. Postgame clarity fades by next practice. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "NBA's five biggest starting lineup questions: Three guards for Spurs? Morant-Lillard backcourt in Portland?",
+      "newsArticleUrl": "https://www.cbssports.com/nba/news/nba-biggest-starting-lineup-questions-spurs-lakers-raptors-blazers-pelicans/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-10-16T13:51:56Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "validation",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-17T14:04:23.157Z",
+      "lastAttemptAt": "2026-10-18T00:45:30.991Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
