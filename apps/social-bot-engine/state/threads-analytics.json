@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-18T14:31:02.019Z",
+  "updatedAt": "2026-10-19T01:00:18.448Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -22413,12 +22413,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "f1f616fa-501d-4441-90f8-119ba784137d",
+      "postedAt": "2026-10-19T01:00:15.163Z",
+      "postedHour": 1,
+      "dateContext": "2026-10-19",
+      "sport": "nfl",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Most NFL coaches chase tendencies like they hold secrets, but the real gap shows when game plans ignore in-the-moment adjustments. That missed block on a blitz pickup isn't about the stats, it's about the half-second lapse that'll disappear in film rooms by Friday. postgame AI · getpostgame.ai #CoachingTruth #NFLInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "hot_take_dare",
+      "hookStructureLabel": "Hot Take Dare",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "most_nfl",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Sunday, 18-Oct-26 18:00:18 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-18T14:30:58.476Z",
+      "lastAttemptAt": "2026-10-19T01:00:15.166Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
