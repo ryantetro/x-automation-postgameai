@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-20T15:37:45.644Z",
+  "updatedAt": "2026-10-21T01:25:53.226Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -22589,12 +22589,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "56e3a7b7-aa96-4d84-8da8-2262c785daa4",
+      "postedAt": "2026-10-21T01:25:50.815Z",
+      "postedHour": 1,
+      "dateContext": "2026-10-21",
+      "sport": "soccer",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Owen Eshelman’s breakout at Washington State was no surprise to his high school coach. Coaches face the same gap—the moment they spot promise, but watch it slip away by Thursday practice if adjustments aren't nailed. postgame AI · getpostgame.ai #CoachingTruth #SoccerCoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "(MLS OR soccer) AND (injury OR tactics OR coach OR lineup OR pressing OR match OR form)",
+      "newsArticleTitle": "Owen Eshelman's high school coach saw this coming long before his Washington State breakout",
+      "newsArticleUrl": "https://www.si.com/college/washington-state/football/owen-eshelman-high-school-coach-saw-this-coming-long-before-his-washington-state-breakout",
+      "newsSourceName": "Sports Illustrated",
+      "newsPublishedAt": "2026-10-19T22:08:55Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Tuesday, 20-Oct-26 18:25:53 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-20T15:37:42.474Z",
+      "lastAttemptAt": "2026-10-21T01:25:50.821Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
