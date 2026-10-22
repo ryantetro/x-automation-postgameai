@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-22T01:06:57.445Z",
+  "updatedAt": "2026-10-22T15:47:54.704Z",
   "tweets": [
     {
       "runId": "632dbec3-a496-4874-b0f1-d6095a805723",
@@ -21442,19 +21442,91 @@
       "contentType": "observation",
       "brandMentioned": false,
       "lessonVersion": "lesson-2026-10-22"
+    },
+    {
+      "runId": "0b367017-df93-4f06-807c-c43b2880667c",
+      "postedAt": "2026-10-22T15:46:50.921Z",
+      "postedHour": 15,
+      "dateContext": "2026-10-22",
+      "sport": "canopy",
+      "angle": "Booth Identity and Setup Taste",
+      "source": "llm",
+      "status": "failed",
+      "text": "Two types of booths at every Utah market: 1) The \"White Tent Wonderland\"—blends in, forgotten by noon. 2) The \"Brand Fortress\"—owned by vendors who know a canopy isn't just a cover, but a statement.",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "",
+      "contentFrameId": "forty_eight_hour_window",
+      "contentFrameLabel": "",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "",
+      "emotionTarget": "recognition",
+      "frameReason": "",
+      "newsMomentType": "unknown",
+      "openingPattern": "unfinished_thought",
+      "linkTargetUrl": "https://www.viciousshade.com",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x",
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        },
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Tuesday, 19-May-26 11:22:10 PDT. The current time is Thursday, 22-Oct-26 08:47:54 PDT."
+        }
+      ],
+      "hasImage": true,
+      "campaignStrategyId": "buyer_intent_products",
+      "voiceFamily": "contrarian_take",
+      "buyerIntentLevel": "consideration",
+      "useCaseVertical": "retail pop-ups",
+      "productFocus": "custom canopies",
+      "urgencyMode": "none",
+      "ctaMode": "soft_commercial",
+      "creativeDirection": "before_after_transformation",
+      "imageConceptId": "buyer-canopy-tradeshow-wide",
+      "imageStyleFamily": "lifestyle",
+      "imageShotType": "wide",
+      "optimizerVersion": "canopy_agent_v2",
+      "selectionReason": "exploration selected education to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside education; exploration selected contrarian_take; exploration selected before_after_transformation; exploration selected custom canopies; agent mode explore. Brand tags showed up in 0% of recent canopy posts.; This series benefits from product-in-context visuals, so images stay on by default.; explicit variant override selected",
+      "seriesId": "booth_identity",
+      "contentBucket": "education",
+      "brandTagIncluded": false,
+      "candidateId": "buyer_intent_products|booth_identity|education|contrarian_take|before_after_transformation|consideration|custom canopies|retail pop-ups|none|soft_commercial:candidate:2",
+      "candidateBatchId": "0b367017-df93-4f06-807c-c43b2880667c:canopy-batch",
+      "candidateScore": 136,
+      "candidateRank": 1,
+      "selectedForPublish": true,
+      "agentMode": "explore",
+      "strategyEnvelopeId": "buyer_intent_products|booth_identity|education|contrarian_take|before_after_transformation|consideration|custom canopies|retail pop-ups|none|soft_commercial",
+      "agentReasoningSummary": "exploration selected education to rebalance the canopy mix; exploration selected booth_identity to keep the canopy series mix balanced; buyer_intent_products selected inside education; exploration selected contrarian_take; exploration selected before_after_transformation; exploration selected custom canopies; agent mode explore",
+      "performanceWindowLabel": "last_45_days",
+      "personaId": "event_insider",
+      "contentType": "list_post",
+      "brandMentioned": false,
+      "lessonVersion": "lesson-2026-10-22"
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-22T01:06:17.551Z",
+      "lastAttemptAt": "2026-10-22T15:46:50.931Z",
       "lastSuccessAt": "2026-04-09T11:52:42.862Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
     },
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-22T01:06:17.552Z",
+      "lastAttemptAt": "2026-10-22T15:46:50.931Z",
       "lastSuccessAt": "2026-05-19T13:55:49.929Z"
     }
   },
