@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-22T01:23:28.156Z",
+  "updatedAt": "2026-10-22T15:51:41.194Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -22729,12 +22729,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "d1c756f4-5853-4755-9989-bcd63a315cf4",
+      "postedAt": "2026-10-22T15:51:38.664Z",
+      "postedHour": 15,
+      "dateContext": "2026-10-22",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "JJ Redick's spotlight on Lakers' \"biggest unknown\" hides a common truth: it's not the talent, it's the unspoken gaps that mess up prep. Coaches know the postgame clarity fades by Thursday, leaving breakdowns unaddressed by film time. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "JJ Redick names Lakers' 'biggest unknown' for 2026-27 NBA season",
+      "newsArticleUrl": "https://lakerswire.usatoday.com/story/sports/nba/lakers/2026/10/21/jj-redick-names-lakers-biggest-unknown-for-2026-27-nba-season/92358526007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-21T14:01:03Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "jj_redick's",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 22-Oct-26 08:51:41 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-22T01:23:25.399Z",
+      "lastAttemptAt": "2026-10-22T15:51:38.675Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
