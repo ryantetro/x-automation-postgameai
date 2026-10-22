@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-22T01:22:35.853Z",
+  "updatedAt": "2026-10-22T15:47:51.794Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -22812,12 +22812,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "0293880a-0627-4539-befe-a698203c0c68",
+      "postedAt": "2026-10-22T15:47:47.360Z",
+      "postedHour": 15,
+      "dateContext": "2026-10-22",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "JJ Redick labels the Lakers' \"biggest unknown,\" but coaches know it's not talent. The real mystery is always: will today's insights translate before Monday's practice wipes them out? Lose the window, lose the edge. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "JJ Redick names Lakers' 'biggest unknown' for 2026-27 NBA season",
+      "newsArticleUrl": "https://lakerswire.usatoday.com/story/sports/nba/lakers/2026/10/21/jj-redick-names-lakers-biggest-unknown-for-2026-27-nba-season/92358526007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-21T14:01:03Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "unfinished_thought",
+      "hookStructureLabel": "Unfinished Thought",
+      "emotionTarget": "recognition",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "jj_redick",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-22T01:22:32.959Z",
+      "lastAttemptAt": "2026-10-22T15:47:47.367Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
