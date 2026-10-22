@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-21T15:55:15.637Z",
+  "updatedAt": "2026-10-22T01:23:28.156Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -22681,12 +22681,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "fb921ae1-4012-49bc-9efe-708333931437",
+      "postedAt": "2026-10-22T01:23:25.392Z",
+      "postedHour": 1,
+      "dateContext": "2026-10-22",
+      "sport": "nba",
+      "angle": "data analytics and game preparation (e.g. % improvement)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Juwan Howard getting votes as the top NBA assistant is a neat headline, but coaches see beyond the accolades. It's the half-time adjustments and mid-game reads that vanish from memory by the next practice—that's what decides your season, not the GM survey. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Nets' Juwan Howard receives votes for best assistant coach in the NBA",
+      "newsArticleUrl": "https://netswire.usatoday.com/story/sports/nba/nets/2026/10/20/nets-juwan-howard-receives-votes-for-best-assistant-coach-in-the-nba/92346730007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-21T00:54:32Z",
+      "contentFrameId": "conversation_that_doesnt_happen",
+      "contentFrameLabel": "The Conversation That Doesn't Happen",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment coaching_change to The Conversation That Doesn't Happen.",
+      "newsMomentType": "coaching_change",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "juwan_howard",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 21-Oct-26 18:23:28 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-21T15:55:12.183Z",
+      "lastAttemptAt": "2026-10-22T01:23:25.399Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
