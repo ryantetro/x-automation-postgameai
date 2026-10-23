@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-23T01:22:16.037Z",
+  "updatedAt": "2026-10-23T15:43:02.104Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -22821,12 +22821,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "bb6ff651-7d50-4033-b406-efebf4a9ea22",
+      "postedAt": "2026-10-23T15:42:59.670Z",
+      "postedHour": 15,
+      "dateContext": "2026-10-23",
+      "sport": "nfl",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "failed",
+      "text": "The Riley Moss vs. Ja'Quan McMillian decision isn't just about who stays. Coaches see the real gap in film session clarity when secondary misreads on 3rd and long fade away by Monday. That's where the season unravels. postgame AI · getpostgame.ai #CoachingTruth #NFLInsights",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Broncos should re-sign one cornerback and let the other walk in 2027",
+      "newsArticleUrl": "https://broncoswire.usatoday.com/story/sports/nfl/broncos/2026/10/22/denver-broncos-decision-riley-moss-or-jaquan-mcmillian/92354860007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-22T12:01:59Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "urgency",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "the_riley",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Friday, 23-Oct-26 08:43:02 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-23T01:22:12.376Z",
+      "lastAttemptAt": "2026-10-23T15:42:59.676Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
