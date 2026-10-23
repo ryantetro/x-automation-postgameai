@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-23T01:21:22.151Z",
+  "updatedAt": "2026-10-23T15:39:32.825Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -22904,12 +22904,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "c43918c7-c0ef-49ad-ad7d-912096fc46d4",
+      "postedAt": "2026-10-23T15:39:28.598Z",
+      "postedHour": 15,
+      "dateContext": "2026-10-23",
+      "sport": "nfl",
+      "angle": "film review timing and retention (e.g. within 24–48 hours)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Broncos’ decision on Moss vs. McMillian isn’t about highlights; it’s what they see post-whistle. The gap? Memory fades in 48 hours, widening the development divide. #NFLCoaching #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "newsArticleTitle": "Broncos should re-sign one cornerback and let the other walk in 2027",
+      "newsArticleUrl": "https://broncoswire.usatoday.com/story/sports/nfl/broncos/2026/10/22/denver-broncos-decision-riley-moss-or-jaquan-mcmillian/92354860007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-22T12:01:59Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "broncos’_decision",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-23T01:21:17.768Z",
+      "lastAttemptAt": "2026-10-23T15:39:28.605Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
