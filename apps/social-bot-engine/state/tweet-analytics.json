@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-25T00:55:55.012Z",
+  "updatedAt": "2026-10-25T14:51:05.327Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -23074,12 +23074,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "cd4e8861-b571-491a-a291-79e629ea8739",
+      "postedAt": "2026-10-25T14:51:02.442Z",
+      "postedHour": 14,
+      "dateContext": "2026-10-25",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Luka Doncic getting slammed isn't the issue. It's the endless hours spent dissecting film that never quite bridge talent and defense on the court. Coaches recognize the gap between data overload and actual execution. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Michael Wilbon slams Luka Doncic: 'He hasn’t shown us he cares'",
+      "newsArticleUrl": "https://lakerswire.usatoday.com/story/sports/nba/lakers/2026/10/24/michael-wilbon-slams-luka-doncic-he-hasnt-shown-us-he-cares/92414140007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-24T14:01:57Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "luka_doncic",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-25T00:55:49.789Z",
+      "lastAttemptAt": "2026-10-25T14:51:02.448Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
