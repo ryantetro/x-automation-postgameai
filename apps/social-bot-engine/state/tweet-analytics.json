@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-24T14:16:27.919Z",
+  "updatedAt": "2026-10-25T00:55:55.012Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -23030,12 +23030,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "70c97632-a39b-4287-add5-61b24ab17654",
+      "postedAt": "2026-10-25T00:55:49.785Z",
+      "postedHour": 0,
+      "dateContext": "2026-10-25",
+      "sport": "nba",
+      "angle": "hours spent on film / data (pro vs amateur)",
+      "source": "llm",
+      "status": "failed",
+      "text": "NBA coaching isn't endless film; it's catching what film misses. The real gap shows when coaches find the one adjustment that mattered. Miss it, and talent drowns in the noise. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "universal_truth",
+      "hookStructureLabel": "Universal Truth",
+      "emotionTarget": "vulnerability",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "nba_coaching",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-24T14:16:24.883Z",
+      "lastAttemptAt": "2026-10-25T00:55:49.789Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
