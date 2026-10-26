@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-26T01:04:45.891Z",
+  "updatedAt": "2026-10-26T17:17:29.492Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -23097,12 +23097,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "6e4860bf-8116-4de1-9f8e-71945606b312",
+      "postedAt": "2026-10-26T17:17:26.761Z",
+      "postedHour": 17,
+      "dateContext": "2026-10-26",
+      "sport": "nfl",
+      "angle": "key moments: focusing on 2–3 critical plays rather than everything",
+      "source": "llm",
+      "status": "failed",
+      "text": "Three overlooked plays define games, not highlight reels. Coaches see the gap widen when a missed block or blown coverage is forgotten by Tuesday's film session. That unaddressed moment is the ghost haunting Sundays. postgame AI · getpostgame.ai #CoachingTruth #NFLInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "NFL AND (injury OR offense OR defense OR coach OR lineup OR scheme OR efficiency OR free agency)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "three_overlooked",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Monday, 26-Oct-26 10:17:29 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-26T01:04:43.818Z",
+      "lastAttemptAt": "2026-10-26T17:17:26.771Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
