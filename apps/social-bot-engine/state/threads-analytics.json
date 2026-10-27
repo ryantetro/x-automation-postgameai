@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-26T17:17:29.492Z",
+  "updatedAt": "2026-10-27T01:56:54.928Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -23141,12 +23141,56 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "a5fb4a3e-07ff-4493-86ec-1d1fc20cf82e",
+      "postedAt": "2026-10-27T01:56:51.610Z",
+      "postedHour": 1,
+      "dateContext": "2026-10-27",
+      "sport": "mlb",
+      "angle": "opponent tendency analysis and preparation",
+      "source": "llm",
+      "status": "failed",
+      "text": "Phillies’ dramatic walk-off yesterday masks a glaring gap. Coaches notice how Harper’s heroics distract from the silent collapse in middle relief—a pattern that vanishes before Wednesday's film session. It exposes the space between talent on paper and in-game execution that doesn't lie. postgame AI · getpostgame.ai #CoachingTruth #MLBInsights",
+      "contentMode": "sports_only",
+      "newsUsed": false,
+      "newsQuery": "MLB AND (lineup OR bullpen OR defense OR analytics OR injury OR breakout OR manager)",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Selected The Development Gap to diversify recent frame usage and fit both.",
+      "newsMomentType": "unknown",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "phillies’_dramatic",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Monday, 26-Oct-26 18:56:54 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-26T17:17:26.771Z",
+      "lastAttemptAt": "2026-10-27T01:56:51.617Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
