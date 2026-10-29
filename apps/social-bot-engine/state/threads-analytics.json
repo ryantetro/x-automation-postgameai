@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-28T17:07:58.621Z",
+  "updatedAt": "2026-10-29T02:15:29.447Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -23317,12 +23317,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "6e66e4f4-7aa1-4d7d-8192-02d6af89bdbe",
+      "postedAt": "2026-10-29T02:15:26.203Z",
+      "postedHour": 2,
+      "dateContext": "2026-10-29",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Cooper Flagg's dazzling win hides the real issue. Coaches see past the highlights—it's those missed mid-game adjustments that get buried under stats by Thursday. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Cooper Flagg outduels former NBA MVP in return from injury",
+      "newsArticleUrl": "https://dukewire.usatoday.com/story/sports/college/duke/mens-basketball/2026/10/27/cooper-flagg-stats-dallas-mavericks-miami-heat/92456663007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-27T16:30:34Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "loss",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "scene_setter",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Wednesday, 28-Oct-26 19:15:29 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-28T17:07:55.662Z",
+      "lastAttemptAt": "2026-10-29T02:15:26.211Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
