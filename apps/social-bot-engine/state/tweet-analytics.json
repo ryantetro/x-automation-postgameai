@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-28T17:00:02.657Z",
+  "updatedAt": "2026-10-29T02:14:37.290Z",
   "tweets": [
     {
       "runId": "4c583875-c449-4eb9-bab2-5df4472651f8",
@@ -23376,12 +23376,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "709da16a-9097-4392-bf5f-b8b7f478d29f",
+      "postedAt": "2026-10-29T02:14:35.140Z",
+      "postedHour": 2,
+      "dateContext": "2026-10-29",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Cooper Flagg outduels former MVP, but that's not what sticks for coaches. Dallas' real win was born from situational awareness in tight fourths—a skill that vanishes from memory by next practice if left unrecognized. #NBA #CoachingTruth postgame AI · getpostgame.ai",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Cooper Flagg outduels former NBA MVP in return from injury",
+      "newsArticleUrl": "https://dukewire.usatoday.com/story/sports/college/duke/mens-basketball/2026/10/27/cooper-flagg-stats-dallas-mavericks-miami-heat/92456663007/",
+      "newsSourceName": "USA Today",
+      "newsPublishedAt": "2026-10-27T16:30:34Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "insider_pride",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "cooper_flagg",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "x"
+      ],
+      "publishResults": [
+        {
+          "platform": "x",
+          "status": "failed",
+          "statusCode": 402,
+          "error": "Request failed with code 402"
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "x": {
       "status": "blocked",
-      "lastAttemptAt": "2026-10-28T16:59:59.834Z",
+      "lastAttemptAt": "2026-10-29T02:14:35.148Z",
       "lastSuccessAt": "2026-05-15T00:01:18.192Z",
       "lastError": "Request failed with code 402",
       "lastErrorCode": "402"
