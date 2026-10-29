@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-29T02:15:29.447Z",
+  "updatedAt": "2026-10-29T17:23:29.088Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -23365,12 +23365,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "ab44b2fd-8f68-4708-80df-c440c60acbb2",
+      "postedAt": "2026-10-29T17:23:26.992Z",
+      "postedHour": 17,
+      "dateContext": "2026-10-29",
+      "sport": "nba",
+      "angle": "set pieces, in-game adjustments, or situational awareness",
+      "source": "llm",
+      "status": "failed",
+      "text": "Four games into a losing start, Giannis isn't fooled by the Heat's shiny playbook. Coaches know those two wasted timeouts with 90 seconds left betray the real gap—lost in film rooms by Thursday. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "Giannis Antetokounmpo gets brutally honest on Heat's 0-4 NBA season start",
+      "newsArticleUrl": "https://www.sportingnews.com/us/nba/miami-heat/news/nba-news-giannis-antetokounmpo-gets-brutally-honest-heats-0-4-nba-season-start/374cbe7c68d5b10bb15847db",
+      "newsSourceName": "Sporting News",
+      "newsPublishedAt": "2026-10-28T11:19:59Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "specific_number",
+      "hookStructureLabel": "Specific Number",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "four_games",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Thursday, 29-Oct-26 10:23:29 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-29T02:15:26.211Z",
+      "lastAttemptAt": "2026-10-29T17:23:26.998Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
