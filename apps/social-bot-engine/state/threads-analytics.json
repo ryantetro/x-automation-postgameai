@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-10-31T16:02:13.295Z",
+  "updatedAt": "2026-11-01T02:02:13.524Z",
   "tweets": [
     {
       "runId": "1f1b572b-53cd-42a2-a45f-3337e617c92f",
@@ -23589,12 +23589,60 @@
       "brandTagIncluded": true,
       "selectedForPublish": true,
       "brandMentioned": true
+    },
+    {
+      "runId": "a2fec455-1476-45d6-a90b-9071e8be053c",
+      "postedAt": "2026-11-01T02:02:11.481Z",
+      "postedHour": 2,
+      "dateContext": "2026-11-01",
+      "sport": "nba",
+      "angle": "specific feedback vs generic (stats or research on impact)",
+      "source": "llm",
+      "status": "failed",
+      "text": "Injury stats aren't the real lesson from this NBA season's rocky start. Coaches know those early injuries reveal the gap between players' on-paper potential and what gets sidelined by overlooked prep routines. postgame AI · getpostgame.ai #CoachingTruth #NBACoaching",
+      "contentMode": "news_preferred",
+      "newsUsed": true,
+      "newsQuery": "NBA AND (injury OR lineup OR defense OR offense OR efficiency OR coach OR playoff OR streak OR breakout)",
+      "newsArticleTitle": "NBA's 'unprecedented' early season injury crisis has players and coaches searching for answers",
+      "newsArticleUrl": "https://www.cbssports.com/nba/news/nba-unprecedented-early-season-injury-crisis-players-coaches-answers/",
+      "newsSourceName": "CBS Sports",
+      "newsPublishedAt": "2026-10-30T17:37:38Z",
+      "contentFrameId": "development_gap",
+      "contentFrameLabel": "The Development Gap",
+      "hookStructureId": "scene_setter",
+      "hookStructureLabel": "Scene-Setter",
+      "emotionTarget": "frustration",
+      "frameReason": "Mapped news moment star_underperformance to The Development Gap.",
+      "newsMomentType": "star_underperformance",
+      "prePublishChecks": {
+        "hookDetected": true,
+        "adviceDriftClear": true,
+        "openerVarietyClear": true
+      },
+      "openingPattern": "injury_stats",
+      "linkTargetUrl": "",
+      "outboundTracking": [],
+      "publishTargets": [
+        "threads"
+      ],
+      "publishResults": [
+        {
+          "platform": "threads",
+          "status": "failed",
+          "statusCode": 400,
+          "error": "Error validating access token: Session has expired on Thursday, 07-May-26 16:08:01 PDT. The current time is Saturday, 31-Oct-26 19:02:13 PDT."
+        }
+      ],
+      "hasImage": false,
+      "brandTagIncluded": true,
+      "selectedForPublish": true,
+      "brandMentioned": true
     }
   ],
   "analyticsHealth": {
     "threads": {
       "status": "healthy",
-      "lastAttemptAt": "2026-10-31T16:02:11.718Z",
+      "lastAttemptAt": "2026-11-01T02:02:11.488Z",
       "lastSuccessAt": "2026-05-07T13:02:06.206Z"
     }
   },
